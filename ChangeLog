@@ -1,3 +1,8 @@
+2004-11-08  Takeshi AIHANA <aihana@gnome.gr.jp>
+
+	* .cvsignore: Added to skip any files.
+	* configure.in: Added Japanese 'ja' to ALL_LINGUAS.
+
 2004-09-28  Roberto Majadas  <roberto.majadas@hispalinux.es>
 
 	* configure.in : Version : 0.2-1
