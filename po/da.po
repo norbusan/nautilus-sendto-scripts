@@ -1,15 +1,16 @@
 # Danish translation of nautilus-sendto.
-# Copyright (C) 2004 Roberto Majadas
+# Copyright (C) 2004, 05 Roberto Majadas
 # This file is distributed under the same license as the nautilus-sendto package.
 # David Nielsen <dnielsen@breakmygentoo.net>, 2004.
-# 
+# Martin Willemoes Hansen <mwh@sysrq.dk>, 2005.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: nautilus-sendto\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-12-12 19:39+0100\n"
-"PO-Revision-Date: 2004-12-07 22:38+0100\n"
-"Last-Translator: David Nielsen <dnielsen@breakmygentoo.net>\n"
+"POT-Creation-Date: 2005-01-05 15:34+0100\n"
+"PO-Revision-Date: 2005-01-05 15:34+0100\n"
+"Last-Translator: Martin Willemoes Hansen <mwh@sysrq.dk>\n"
 "Language-Team: Danish <dansk@klid.dk>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -33,6 +34,15 @@ msgstr "Nautilusintegration"
 msgid "Provides integration with Nautilus"
 msgstr "Tilbyder integration med Nautilus"
 
+#: src/Nautilus_Sendto_Component.server.in.in.h:1
+msgid "Nautilus Sendto component"
+msgstr "Nautilus Send til-komponent"
+
+#: src/Nautilus_Sendto_Component.server.in.in.h:2
+#: src/nautilus-sendto-force.glade.h:8 src/nautilus-sendto.glade.h:8
+msgid "Send To..."
+msgstr "Send til..."
+
 #: src/nautilus-sendto-command.c:58
 msgid "Default folder to use"
 msgstr "Standardmappe til brug"
@@ -53,15 +63,6 @@ msgstr "Filer"
 msgid "Nautilus Sendto"
 msgstr "Nautilus send til"
 
-#: src/Nautilus_Sendto_Component.server.in.in.h:1
-msgid "Nautilus Sendto component"
-msgstr "Nautilus Send til-komponent"
-
-#: src/Nautilus_Sendto_Component.server.in.in.h:2
-#: src/nautilus-sendto-force.glade.h:8 src/nautilus-sendto.glade.h:8
-msgid "Send To..."
-msgstr "Send til..."
-
 #: src/nautilus-sendto-force.glade.h:1 src/nautilus-sendto.glade.h:1
 msgid "*"
 msgstr "*"
@@ -77,7 +78,6 @@ msgstr ""
 ".tar.bz2"
 
 #: src/nautilus-sendto-force.glade.h:5 src/nautilus-sendto.glade.h:5
-#, fuzzy
 msgid "Send As :"
 msgstr "Send som:"
 
@@ -86,7 +86,6 @@ msgid "Send Packed in"
 msgstr "Send pakket i"
 
 #: src/nautilus-sendto-force.glade.h:7 src/nautilus-sendto.glade.h:7
-#, fuzzy
 msgid "Send To :"
 msgstr "Send til:"
 
