@@ -185,28 +185,20 @@ gboolean send_files (NstPlugin *plugin, GtkWidget *contact_widget,
 	gchar *evo_cmd, *cmd, *send_to, *send_to_info ;
 	GList *l;
 	GString *mailto;
-	GtkWidget *error_dialog;
 	
 	send_to = (gchar *) gtk_entry_get_text (GTK_ENTRY(contact_widget));
-	if (strlen (send_to) == 0){
-		error_dialog = gtk_message_dialog_new (NULL,
-						       GTK_DIALOG_MODAL,
-						       GTK_MESSAGE_ERROR,
-						       GTK_BUTTONS_CLOSE,
-						       _("You don't insert any email address"));
-		gtk_dialog_run (GTK_DIALOG (error_dialog));
-		gtk_widget_destroy (error_dialog);
-		return FALSE;
-	}
 	
-	send_to_info = g_hash_table_lookup (hash, send_to);
-	if (send_to_info != NULL){
-		mailto = g_string_new (send_to_info);
+	if (strlen (send_to) != 0){
+		send_to_info = g_hash_table_lookup (hash, send_to);
+		if (sendx_to_info != NULL){
+			mailto = g_string_new (send_to_info);
+		}else{
+			mailto = g_string_new ("mailto:");
+			g_string_append_printf (mailto, "%s", send_to);
+		}
 	}else{
-		mailto = g_string_new ("mailto:");
-		g_string_append_printf (mailto, "%s", send_to);
+		mailto = g_string_new ("mailto:\"\"");
 	}
-	
 	evo_cmd = g_find_program_in_path ("evolution");
 	if (evo_cmd == NULL){
 		evo_cmd = g_find_program_in_path ("evolution-1.5");
