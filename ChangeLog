@@ -1,3 +1,9 @@
+2004-11-09  Roberto Majadas  <roberto.majadas@hispalinux.es>
+
+	* Makefile.am configure.in 
+	gaim_plugin/Makefile.am 
+	src/plugins/Makefile.am : Added gaim detection in compile time
+
 2004-11-08  Takeshi AIHANA <aihana@gnome.gr.jp>
 
 	* .cvsignore: Added to skip any files.

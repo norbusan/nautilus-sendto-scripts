@@ -48,24 +48,27 @@ PKG_CHECK_MODULES(NAUTILUS_SENDTO,\
 AC_SUBST(NAUTILUS_SENDTO_CFLAGS)
 AC_SUBST(NAUTILUS_SENDTO_LIBS)
 
+
+dnl Gaim support if it's installed
+dnl ---------------------------------
+
+
 PKG_CHECK_MODULES(GAIM, gaim >= $GAIM_REQUIRED,
-[
-        AC_DEFINE(HAVE_GAIM, 1, [Define if we've found gaim.])
-])
+	[
+	AC_SUBST(GAIM_CFLAGS)
+	GAIM_LIBDIR=`pkg-config --variable=libdir gaim`
+	GAIM_DATADIR=`pkg-config --variable=datadir gaim`
+	AC_SUBST(GAIM_LIBDIR)
+	AC_SUBST(GAIM_DATADIR)
+	enable_gaim=yes
+	],
+	[
+	echo "Building without gaim"
+	enable_gaim=no
+	]
+)
 
-AC_SUBST(GAIM_CFLAGS)
-GAIM_LIBDIR=`pkg-config --variable=libdir gaim`
-GAIM_DATADIR=`pkg-config --variable=datadir gaim`
-AC_SUBST(GAIM_LIBDIR)
-AC_SUBST(GAIM_DATADIR)
-
-
-dnl  Check if plugins are enabled
-dnl -------------------------------
-want_plugins=yes
-AM_CONDITIONAL(PLUGINS, test "$want_plugins" = "yes")
-
-
+AM_CONDITIONAL(HAVE_GAIM, test "x$enable_gaim" = "xyes")
 
 dnl --------------------------------------------------
 

@@ -8,7 +8,13 @@ INCLUDES =                                      \
         -DGLADEDIR=\""$(gladedir)"\"            \
         $(NAUTILUS_SENDTO_CFLAGS)
 
-plugin_LTLIBRARIES = libevolution.la libgaim.la
+if HAVE_GAIM
+GAIM_PLUGIN = libgaim.la
+else
+GAIM_PLUGIN =
+endif
+
+plugin_LTLIBRARIES = libevolution.la $(GAIM_PLUGIN) 
 
 libevolution_la_SOURCES = evolution.c
 libevolution_la_LDFLAGS = -module -avoid-version

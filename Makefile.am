@@ -1,7 +1,8 @@
-SUBDIRS =                                               \
-                src                                     \
-		gaim_plugin				\
-		po
+if HAVE_GAIM
+GAIM_PLUGIN_DIR=gaim_plugin
+endif
+
+SUBDIRS = src $(GAIM_PLUGIN_DIR) po
 
 EXTRA_DIST =                    \
         AUTHORS                 \
