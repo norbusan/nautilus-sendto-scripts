@@ -1,7 +1,12 @@
+2005-02-19  Christophe Merlet  <redfox@redfoxcenter.org>
+
+        * fr.po: Added French translation from
+	Jean-Michel Ardantz <jmardantz@ifrance.com>.
+
 2005-02-13  David Lodge <dave@cirt.net>
-                                                                                
+
         * en_GB.po: Added British translation.
-                                                                                
+
 2005-02-07  Laurent Dhima  <laurenti@alblinux.net>
 
 	* sq.po: Added Albanian translation by Elian Myftiu.

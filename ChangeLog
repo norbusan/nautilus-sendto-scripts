@@ -1,3 +1,7 @@
+2005-02-19  Christophe Merlet  <redfox@redfoxcenter.org>
+
+	* configure.in: Added "fr" (French) to ALL_LINGUAS.
+
 2005-02-13  David Lodge <dave@cirt.net>
 
 	* configure.in: Added "en_GB" to ALL_LINGUAS.
