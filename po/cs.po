@@ -1,15 +1,15 @@
 # Czech translation of nautilus-sendto.
-# Copyright (C) 2004 nautilus-sendto'S COPYRIGHT HOLDER.
-# Copyright (C) 2004 Miloslav Trmac <mitr@volny.cz>
+# Copyright (C) 2004, 2005 nautilus-sendto'S COPYRIGHT HOLDER.
+# Copyright (C) 2004, 2005 Miloslav Trmac <mitr@volny.cz>
 # This file is distributed under the same license as the nautilus-sendto package.
-# Miloslav Trmac <mitr@volny.cz>, 2004
+# Miloslav Trmac <mitr@volny.cz>, 2004, 2005
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: nautilus-sendto VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-01-17 18:13+0100\n"
-"PO-Revision-Date: 2004-11-09 15:18+0100\n"
+"POT-Creation-Date: 2005-01-20 12:32+0100\n"
+"PO-Revision-Date: 2005-01-20 20:15+0100\n"
 "Last-Translator: Miloslav Trmac <mitr@volny.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -34,23 +34,23 @@ msgstr "Integrace s Nautilem"
 msgid "Provides integration with Nautilus"
 msgstr "Poskytuje integraci s Nautilem"
 
-#: src/nautilus-sendto-command.c:58
+#: src/nautilus-sendto-command.c:57
 msgid "Default folder to use"
 msgstr "Implicitní adresář, který používat"
 
-#: src/nautilus-sendto-command.c:59
+#: src/nautilus-sendto-command.c:58
 msgid "FOLDER"
 msgstr "Adresář"
 
-#: src/nautilus-sendto-command.c:128
+#: src/nautilus-sendto-command.c:127
 msgid "You don't insert the package name"
 msgstr "Nezadali jste název balíčku"
 
-#: src/nautilus-sendto-command.c:286
+#: src/nautilus-sendto-command.c:285
 msgid "Files"
 msgstr "Soubory"
 
-#: src/nautilus-sendto-command.c:422
+#: src/nautilus-sendto-command.c:421
 msgid "Nautilus Sendto"
 msgstr "Nautilus Odeslat"
 
@@ -69,17 +69,14 @@ msgid "Send To..."
 msgstr "Odeslat..."
 
 #: src/nautilus-sendto-force.glade.h:5 src/nautilus-sendto.glade.h:6
-#, fuzzy
 msgid "Send as:"
 msgstr "Odeslat jako:"
 
 #: src/nautilus-sendto-force.glade.h:6 src/nautilus-sendto.glade.h:7
-#, fuzzy
 msgid "Send packed in"
 msgstr "Odeslat zabaleno v"
 
 #: src/nautilus-sendto-force.glade.h:7 src/nautilus-sendto.glade.h:8
-#, fuzzy
 msgid "Send to:"
 msgstr "Odeslat komu:"
 
@@ -92,17 +89,16 @@ msgid "*"
 msgstr "*"
 
 #: src/nautilus-nste.c:108 src/nautilus-nste.c:123
-#, fuzzy
 msgid "Send to..."
 msgstr "Odeslat..."
 
 #: src/nautilus-nste.c:109
 msgid "Send file by mail, instant message ..."
-msgstr ""
+msgstr "Odeslat soubor e-mailem, instant message, ..."
 
 #: src/nautilus-nste.c:124
 msgid "Send files by mail, instant message ..."
-msgstr ""
+msgstr "Odeslat soubory e-mailem, instant message, ..."
 
 #: src/plugins/evolution.c:228
 msgid "Email (Evolution)"
@@ -111,12 +107,3 @@ msgstr "E-mail (Evolution)"
 #: src/plugins/gaim.c:218
 msgid "Instant Message (Gaim)"
 msgstr "Instant Message (Gaim)"
-
-#~ msgid "Nautilus Sendto component"
-#~ msgstr "Komponenta Nautilu Odeslat"
-
-#~ msgid "Sendo To..."
-#~ msgstr "Odeslat..."
-
-#~ msgid "You don't insert any email address"
-#~ msgstr "Nezadali jste e-mailovou adresu"
