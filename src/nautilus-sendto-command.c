@@ -26,7 +26,6 @@
 #include <dirent.h>
 #include <gnome.h>
 #include <bonobo/bonobo-main.h>
-#include <libebook/e-book.h>
 #include <glade/glade.h>
 #include "nautilus-sendto-plugin.h"
 

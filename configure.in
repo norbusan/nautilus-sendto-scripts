@@ -19,7 +19,7 @@ dnl --------------------------------------------------
 GLIB_REQUIRED=2.4.0
 GTK_REQUIRED=2.4.0
 GLADE_REQUIRED=2.4.0
-EBOOK_REQUIRED=0.0.97
+EBOOK_REQUIRED=1.0.0
 BONOBO_ACTIVATION_REQUIRED=2.6.0
 BONOBO_REQUIRED=2.6.0
 GNOME_REQUIRED=2.7.0
@@ -41,7 +41,6 @@ PKG_CHECK_MODULES(NAUTILUS_SENDTO,\
 	 gmodule-2.0 >= $GLIB_REQUIRED		  \
 	 gtk+-2.0    >= $GTK_REQUIRED             \
 	 libglade-2.0 >= $GLADE_REQUIRED            \
-	 libebook-1.0  >= $EBOOK_REQUIRED 	  \
 	 libbonobo-2.0 >= $BONOBO_REQUIRED	  \
 	 libgnome-2.0 >= $GNOME_REQUIRED	\
 	 libgnomeui-2.0 >= $GNOME_REQUIRED	\
@@ -50,6 +49,22 @@ PKG_CHECK_MODULES(NAUTILUS_SENDTO,\
 AC_SUBST(NAUTILUS_SENDTO_CFLAGS)
 AC_SUBST(NAUTILUS_SENDTO_LIBS)
 
+dnl Libebook support
+dnl ---------------------------------
+
+PKG_CHECK_MODULES(NST_EBOOK, libebook-1.0 >= $EBOOK_REQUIRED,
+	[
+	AC_SUBST(NST_EBOOK_CFLAGS)
+	AC_SUBST(NST_EBOOK_LIBS)
+	echo "Using libebook-1.0 !"
+	],
+	[
+        PKG_CHECK_MODULES(NST_EBOOK, libebook-1.2 >= $EBOOK_REQUIRED)
+        AC_SUBST(NST_EBOOK_CFLAGS)
+        AC_SUBST(NST_EBOOK_LIBS)
+	echo "Using libebook-1.2 !"
+	]
+)
 
 dnl Gaim support if it's installed
 dnl ---------------------------------
@@ -58,6 +73,7 @@ dnl ---------------------------------
 PKG_CHECK_MODULES(GAIM, gaim >= $GAIM_REQUIRED,
 	[
 	AC_SUBST(GAIM_CFLAGS)
+	AC_SUBST(GAIM_LIBS)
 	GAIM_LIBDIR=`pkg-config --variable=libdir gaim`
 	GAIM_DATADIR=`pkg-config --variable=datadir gaim`
 	AC_SUBST(GAIM_LIBDIR)

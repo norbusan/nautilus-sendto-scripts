@@ -190,7 +190,7 @@ gboolean send_files (NstPlugin *plugin, GtkWidget *contact_widget,
 	
 	if (strlen (send_to) != 0){
 		send_to_info = g_hash_table_lookup (hash, send_to);
-		if (sendx_to_info != NULL){
+		if (send_to_info != NULL){
 			mailto = g_string_new (send_to_info);
 		}else{
 			mailto = g_string_new ("mailto:");

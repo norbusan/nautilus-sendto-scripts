@@ -6,7 +6,9 @@ INCLUDES =                                      \
         -I$(top_srcdir)                         \
         -I$(top_builddir)                       \
         -DGLADEDIR=\""$(gladedir)"\"            \
-        $(NAUTILUS_SENDTO_CFLAGS)
+        $(NAUTILUS_SENDTO_CFLAGS)               \
+	$(NST_EBOOK_CFLAGS)			\
+	$(GAIM_CFLAGS)
 
 if HAVE_GAIM
 GAIM_PLUGIN = libgaim.la
@@ -18,7 +20,9 @@ plugin_LTLIBRARIES = libevolution.la $(GAIM_PLUGIN)
 
 libevolution_la_SOURCES = evolution.c
 libevolution_la_LDFLAGS = -module -avoid-version
+libevolution_la_LIBADD = $(NST_EBOOK_LIBS)
 
 libgaim_la_SOURCES = gaim.c
 libgaim_la_LDFLAGS = -module -avoid-version
+libgaim_la_LIBADD = $(GAIM_LIBS)
 

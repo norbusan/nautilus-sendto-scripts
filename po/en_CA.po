@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nautilus-sendto\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-11-09 17:41-0500\n"
+"POT-Creation-Date: 2005-01-17 18:13+0100\n"
 "PO-Revision-Date: 2004-11-09 17:41-0400\n"
 "Last-Translator: Adam Weinberger <adamw@gnome.org>\n"
 "Language-Team: Canadian English <adamw@FreeBSD.org>\n"
@@ -54,19 +54,7 @@ msgstr "Files"
 msgid "Nautilus Sendto"
 msgstr "Nautilus Sendto"
 
-#: src/Nautilus_Sendto_Component.server.in.in.h:1
-msgid "Nautilus Sendto component"
-msgstr "Nautilus Sendto component"
-
-#: src/Nautilus_Sendto_Component.server.in.in.h:2
-msgid "Send To..."
-msgstr "Send To..."
-
-#: src/nautilus-sendto-force.glade.h:1 src/nautilus-sendto.glade.h:1
-msgid "*"
-msgstr "*"
-
-#: src/nautilus-sendto-force.glade.h:2 src/nautilus-sendto.glade.h:2
+#: src/nautilus-sendto-force.glade.h:1 src/nautilus-sendto.glade.h:2
 msgid ""
 ".zip\n"
 ".tar.gz\n"
@@ -76,34 +64,59 @@ msgstr ""
 ".tar.gz\n"
 ".tar.bz2"
 
-#: src/nautilus-sendto-force.glade.h:5 src/nautilus-sendto.glade.h:5
-msgid "Send As :"
-msgstr "Send As:"
-
-#: src/nautilus-sendto-force.glade.h:6 src/nautilus-sendto.glade.h:6
-msgid "Send Packed in"
-msgstr "Send Packed in"
-
-#: src/nautilus-sendto-force.glade.h:7 src/nautilus-sendto.glade.h:7
-msgid "Send To :"
-msgstr "Send To:"
-
-#: src/nautilus-sendto-force.glade.h:8 src/nautilus-sendto.glade.h:8
-msgid "Sendo To..."
+#: src/nautilus-sendto-force.glade.h:4 src/nautilus-sendto.glade.h:5
+msgid "Send To..."
 msgstr "Send To..."
 
-#: src/nautilus-sendto-force.glade.h:9 src/nautilus-sendto.glade.h:9
+#: src/nautilus-sendto-force.glade.h:5 src/nautilus-sendto.glade.h:6
+#, fuzzy
+msgid "Send as:"
+msgstr "Send As:"
+
+#: src/nautilus-sendto-force.glade.h:6 src/nautilus-sendto.glade.h:7
+#, fuzzy
+msgid "Send packed in"
+msgstr "Send Packed in"
+
+#: src/nautilus-sendto-force.glade.h:7 src/nautilus-sendto.glade.h:8
+#, fuzzy
+msgid "Send to:"
+msgstr "Send To:"
+
+#: src/nautilus-sendto-force.glade.h:8 src/nautilus-sendto.glade.h:9
 msgid "_Send"
 msgstr "_Send"
 
-#: src/plugins/evolution.c:196
-msgid "You don't insert any email address"
-msgstr "You must specify the email address"
+#: src/nautilus-sendto.glade.h:1
+msgid "*"
+msgstr "*"
 
-#: src/plugins/evolution.c:236
+#: src/nautilus-nste.c:108 src/nautilus-nste.c:123
+#, fuzzy
+msgid "Send to..."
+msgstr "Send To..."
+
+#: src/nautilus-nste.c:109
+msgid "Send file by mail, instant message ..."
+msgstr ""
+
+#: src/nautilus-nste.c:124
+msgid "Send files by mail, instant message ..."
+msgstr ""
+
+#: src/plugins/evolution.c:228
 msgid "Email (Evolution)"
 msgstr "E-mail (Evolution)"
 
 #: src/plugins/gaim.c:218
 msgid "Instant Message (Gaim)"
 msgstr "Instant Message (Gaim)"
+
+#~ msgid "Nautilus Sendto component"
+#~ msgstr "Nautilus Sendto component"
+
+#~ msgid "Sendo To..."
+#~ msgstr "Send To..."
+
+#~ msgid "You don't insert any email address"
+#~ msgstr "You must specify the email address"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nautilus-sendto\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-01-03 00:35+0100\n"
+"POT-Creation-Date: 2005-01-17 18:13+0100\n"
 "PO-Revision-Date: 2005-01-03 00:35+0100\n"
 "Last-Translator: Christian Rose <menthos@menthos.com>\n"
 "Language-Team: Swedish <sv@li.org>\n"
@@ -35,15 +35,6 @@ msgstr "Nautilus-integration"
 msgid "Provides integration with Nautilus"
 msgstr "Tillhandahåller integration med Nautilus"
 
-#: src/Nautilus_Sendto_Component.server.in.in.h:1
-msgid "Nautilus Sendto component"
-msgstr "Skickatill-komponent för Nautilus"
-
-#: src/Nautilus_Sendto_Component.server.in.in.h:2
-#: src/nautilus-sendto-force.glade.h:8 src/nautilus-sendto.glade.h:8
-msgid "Send To..."
-msgstr "Skicka till..."
-
 #: src/nautilus-sendto-command.c:58
 msgid "Default folder to use"
 msgstr "Standardmapp att använda"
@@ -66,11 +57,7 @@ msgstr "Filer"
 msgid "Nautilus Sendto"
 msgstr "Nautilus Skickatill"
 
-#: src/nautilus-sendto-force.glade.h:1 src/nautilus-sendto.glade.h:1
-msgid "*"
-msgstr "*"
-
-#: src/nautilus-sendto-force.glade.h:2 src/nautilus-sendto.glade.h:2
+#: src/nautilus-sendto-force.glade.h:1 src/nautilus-sendto.glade.h:2
 msgid ""
 ".zip\n"
 ".tar.gz\n"
@@ -80,34 +67,45 @@ msgstr ""
 ".tar.gz\n"
 ".tar.bz2"
 
-# Det ska inte vara blanksteg innan kolon... borde buggrapporteras.
-#
-#: src/nautilus-sendto-force.glade.h:5 src/nautilus-sendto.glade.h:5
-msgid "Send As :"
+#: src/nautilus-sendto-force.glade.h:4 src/nautilus-sendto.glade.h:5
+msgid "Send To..."
+msgstr "Skicka till..."
+
+#: src/nautilus-sendto-force.glade.h:5 src/nautilus-sendto.glade.h:6
+msgid "Send as:"
 msgstr "Skicka som:"
 
-#: src/nautilus-sendto-force.glade.h:6 src/nautilus-sendto.glade.h:6
-msgid "Send Packed in"
+#: src/nautilus-sendto-force.glade.h:6 src/nautilus-sendto.glade.h:7
+#, fuzzy
+msgid "Send packed in"
 msgstr "Skicka paketerat i"
 
-# Det ska inte vara blanksteg innan kolon... borde buggrapporteras.
-#
-#: src/nautilus-sendto-force.glade.h:7 src/nautilus-sendto.glade.h:7
-msgid "Send To :"
+#: src/nautilus-sendto-force.glade.h:7 src/nautilus-sendto.glade.h:8
+msgid "Send to:"
 msgstr "Skicka till:"
 
-#: src/nautilus-sendto-force.glade.h:9 src/nautilus-sendto.glade.h:9
+#: src/nautilus-sendto-force.glade.h:8 src/nautilus-sendto.glade.h:9
 msgid "_Send"
 msgstr "_Skicka"
 
-# Konstigt originalmeddelande... borde nog buggrapporteras.
-#
-#: src/plugins/evolution.c:196
-msgid "You don't insert any email address"
-msgstr "Du infogar ingen e-postadress"
+#: src/nautilus-sendto.glade.h:1
+msgid "*"
+msgstr "*"
+
+#: src/nautilus-nste.c:108 src/nautilus-nste.c:123
+msgid "Send to..."
+msgstr "Skicka till..."
+
+#: src/nautilus-nste.c:109
+msgid "Send file by mail, instant message ..."
+msgstr ""
+
+#: src/nautilus-nste.c:124
+msgid "Send files by mail, instant message ..."
+msgstr ""
 
 # Tror inte det ska skrivas så i originalet... borde buggrapporteras.
-#: src/plugins/evolution.c:236
+#: src/plugins/evolution.c:228
 msgid "Email (Evolution)"
 msgstr "E-post (Evolution)"
 
@@ -115,19 +113,28 @@ msgstr "E-post (Evolution)"
 msgid "Instant Message (Gaim)"
 msgstr "Snabbmeddelande (Gaim)"
 
-#~ msgid "Send to..."
-#~ msgstr "Skicka till..."
+#~ msgid "Nautilus Sendto component"
+#~ msgstr "Skickatill-komponent för Nautilus"
+
+# Det ska inte vara blanksteg innan kolon... borde buggrapporteras.
+#
+#~ msgid "Send As :"
+#~ msgstr "Skicka som:"
+
+# Det ska inte vara blanksteg innan kolon... borde buggrapporteras.
+#
+#~ msgid "Send To :"
+#~ msgstr "Skicka till:"
+
+# Konstigt originalmeddelande... borde nog buggrapporteras.
+#
+#~ msgid "You don't insert any email address"
+#~ msgstr "Du infogar ingen e-postadress"
 
 #~ msgid "Send As:"
 #~ msgstr "Skicka som:"
 
-#~ msgid "Send as:"
-#~ msgstr "Skicka som:"
-
 #~ msgid "Send To:"
-#~ msgstr "Skicka till:"
-
-#~ msgid "Send to:"
 #~ msgstr "Skicka till:"
 
 #~ msgid "E-mail (Evolution)"

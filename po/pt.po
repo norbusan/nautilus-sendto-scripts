@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 2.10\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-12-09 22:53+0100\n"
+"POT-Creation-Date: 2005-01-17 18:13+0100\n"
 "PO-Revision-Date: 2004-12-09 23:00+0000\n"
 "Last-Translator: Duarte Loreto <happyguy_pt@hotmail.com>\n"
 "Language-Team: Portuguese <gnome_pt@yahoogroups.com>\n"
@@ -53,20 +53,7 @@ msgstr "Ficheiros"
 msgid "Nautilus Sendto"
 msgstr "EnviarPara Nautilus"
 
-#: src/Nautilus_Sendto_Component.server.in.in.h:1
-msgid "Nautilus Sendto component"
-msgstr "Componente EnviarPara do Nautilus"
-
-#: src/Nautilus_Sendto_Component.server.in.in.h:2
-#: src/nautilus-sendto-force.glade.h:8 src/nautilus-sendto.glade.h:8
-msgid "Send To..."
-msgstr "Enviar Para..."
-
-#: src/nautilus-sendto-force.glade.h:1 src/nautilus-sendto.glade.h:1
-msgid "*"
-msgstr "*"
-
-#: src/nautilus-sendto-force.glade.h:2 src/nautilus-sendto.glade.h:2
+#: src/nautilus-sendto-force.glade.h:1 src/nautilus-sendto.glade.h:2
 msgid ""
 ".zip\n"
 ".tar.gz\n"
@@ -76,30 +63,56 @@ msgstr ""
 ".tar.gz\n"
 ".tar.bz2"
 
-#: src/nautilus-sendto-force.glade.h:5 src/nautilus-sendto.glade.h:5
-msgid "Send As :"
+#: src/nautilus-sendto-force.glade.h:4 src/nautilus-sendto.glade.h:5
+msgid "Send To..."
+msgstr "Enviar Para..."
+
+#: src/nautilus-sendto-force.glade.h:5 src/nautilus-sendto.glade.h:6
+#, fuzzy
+msgid "Send as:"
 msgstr "Enviar Como :"
 
-#: src/nautilus-sendto-force.glade.h:6 src/nautilus-sendto.glade.h:6
-msgid "Send Packed in"
+#: src/nautilus-sendto-force.glade.h:6 src/nautilus-sendto.glade.h:7
+#, fuzzy
+msgid "Send packed in"
 msgstr "Enviar Empacotado como"
 
-#: src/nautilus-sendto-force.glade.h:7 src/nautilus-sendto.glade.h:7
-msgid "Send To :"
+#: src/nautilus-sendto-force.glade.h:7 src/nautilus-sendto.glade.h:8
+#, fuzzy
+msgid "Send to:"
 msgstr "Enviar Para :"
 
-#: src/nautilus-sendto-force.glade.h:9 src/nautilus-sendto.glade.h:9
+#: src/nautilus-sendto-force.glade.h:8 src/nautilus-sendto.glade.h:9
 msgid "_Send"
 msgstr "_Enviar"
 
-#: src/plugins/evolution.c:196
-msgid "You don't insert any email address"
-msgstr "Não introduziu qualquer endereço de email"
+#: src/nautilus-sendto.glade.h:1
+msgid "*"
+msgstr "*"
 
-#: src/plugins/evolution.c:236
+#: src/nautilus-nste.c:108 src/nautilus-nste.c:123
+#, fuzzy
+msgid "Send to..."
+msgstr "Enviar Para..."
+
+#: src/nautilus-nste.c:109
+msgid "Send file by mail, instant message ..."
+msgstr ""
+
+#: src/nautilus-nste.c:124
+msgid "Send files by mail, instant message ..."
+msgstr ""
+
+#: src/plugins/evolution.c:228
 msgid "Email (Evolution)"
 msgstr "Email (Evolution)"
 
 #: src/plugins/gaim.c:218
 msgid "Instant Message (Gaim)"
 msgstr "Mensagem Instantânea (Gaim)"
+
+#~ msgid "Nautilus Sendto component"
+#~ msgstr "Componente EnviarPara do Nautilus"
+
+#~ msgid "You don't insert any email address"
+#~ msgstr "Não introduziu qualquer endereço de email"

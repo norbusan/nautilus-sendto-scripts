@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nautilus-sendto.eu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-12-13 23:18+0100\n"
+"POT-Creation-Date: 2005-01-17 18:13+0100\n"
 "PO-Revision-Date: 2004-12-13 21:55+0100\n"
 "Last-Translator: \n"
 "Language-Team:  <en@li.org>\n"
@@ -57,20 +57,7 @@ msgstr "Fitxategiak"
 msgid "Nautilus Sendto"
 msgstr "Nautilus Sendto"
 
-#: src/Nautilus_Sendto_Component.server.in.in.h:1
-msgid "Nautilus Sendto component"
-msgstr "Nautilus Sendto osagaia"
-
-#: src/Nautilus_Sendto_Component.server.in.in.h:2
-#: src/nautilus-sendto-force.glade.h:8 src/nautilus-sendto.glade.h:8
-msgid "Send To..."
-msgstr "Bidali honi..."
-
-#: src/nautilus-sendto-force.glade.h:1 src/nautilus-sendto.glade.h:1
-msgid "*"
-msgstr "*"
-
-#: src/nautilus-sendto-force.glade.h:2 src/nautilus-sendto.glade.h:2
+#: src/nautilus-sendto-force.glade.h:1 src/nautilus-sendto.glade.h:2
 msgid ""
 ".zip\n"
 ".tar.gz\n"
@@ -80,33 +67,59 @@ msgstr ""
 ".tar.gz\n"
 ".tar.bz2"
 
-#: src/nautilus-sendto-force.glade.h:5 src/nautilus-sendto.glade.h:5
-msgid "Send As :"
+#: src/nautilus-sendto-force.glade.h:4 src/nautilus-sendto.glade.h:5
+msgid "Send To..."
+msgstr "Bidali honi..."
+
+#: src/nautilus-sendto-force.glade.h:5 src/nautilus-sendto.glade.h:6
+#, fuzzy
+msgid "Send as:"
 msgstr "Bidali honela:"
 
-#: src/nautilus-sendto-force.glade.h:6 src/nautilus-sendto.glade.h:6
-msgid "Send Packed in"
+#: src/nautilus-sendto-force.glade.h:6 src/nautilus-sendto.glade.h:7
+#, fuzzy
+msgid "Send packed in"
 msgstr "Bidali honela enpaketatua"
 
-#: src/nautilus-sendto-force.glade.h:7 src/nautilus-sendto.glade.h:7
-msgid "Send To :"
+#: src/nautilus-sendto-force.glade.h:7 src/nautilus-sendto.glade.h:8
+#, fuzzy
+msgid "Send to:"
 msgstr "Bidali honi :"
 
-#: src/nautilus-sendto-force.glade.h:9 src/nautilus-sendto.glade.h:9
+#: src/nautilus-sendto-force.glade.h:8 src/nautilus-sendto.glade.h:9
 msgid "_Send"
 msgstr "_Bidali"
 
-#: src/plugins/evolution.c:196
-msgid "You don't insert any email address"
-msgstr "Ez duzu helbide elektronikorik idatzi"
+#: src/nautilus-sendto.glade.h:1
+msgid "*"
+msgstr "*"
 
-#: src/plugins/evolution.c:236
+#: src/nautilus-nste.c:108 src/nautilus-nste.c:123
+#, fuzzy
+msgid "Send to..."
+msgstr "Bidali honi..."
+
+#: src/nautilus-nste.c:109
+msgid "Send file by mail, instant message ..."
+msgstr ""
+
+#: src/nautilus-nste.c:124
+msgid "Send files by mail, instant message ..."
+msgstr ""
+
+#: src/plugins/evolution.c:228
 msgid "Email (Evolution)"
 msgstr "Email (Evolution)"
 
 #: src/plugins/gaim.c:218
 msgid "Instant Message (Gaim)"
 msgstr "Berehalako mezularitza (Gaim)"
+
+#~ msgid "Nautilus Sendto component"
+#~ msgstr "Nautilus Sendto osagaia"
+
+#~ msgid "You don't insert any email address"
+#~ msgstr "Ez duzu helbide elektronikorik idatzi"
 
 #~ msgid "Sendo To..."
 #~ msgstr "Bidali honi..."
