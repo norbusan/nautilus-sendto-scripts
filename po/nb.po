@@ -1,0 +1,108 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: nautilus-sendto 0.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2005-01-19 15:58+0100\n"
+"PO-Revision-Date: 2005-01-19 16:01+0100\n"
+"Last-Translator: Kjartan Maraas <kmaraas@gnome.org>\n"
+"Language-Team: Norsk bokmal <i18n-nb@lister.ping.uio.no>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type
+#. ui requirement
+#. flags
+#. dependencies
+#. priority
+#. id
+#: gaim_plugin/nautilus-sendto-plugin.c:301
+msgid "Nautilus Integration"
+msgstr "Nautilus-integrasjon"
+
+#. name
+#. version
+#. summary
+#: gaim_plugin/nautilus-sendto-plugin.c:303
+#: gaim_plugin/nautilus-sendto-plugin.c:304
+msgid "Provides integration with Nautilus"
+msgstr "Tilbyr integrasjon med Nautilus"
+
+#: src/nautilus-sendto-command.c:57
+msgid "Default folder to use"
+msgstr "Forvalgt mappe som skal brukes"
+
+#: src/nautilus-sendto-command.c:58
+msgid "FOLDER"
+msgstr "MAPPE"
+
+#: src/nautilus-sendto-command.c:127
+msgid "You don't insert the package name"
+msgstr "Du oppga ikke navn på pakken"
+
+#: src/nautilus-sendto-command.c:285
+msgid "Files"
+msgstr "Filer"
+
+#: src/nautilus-sendto-command.c:421
+msgid "Nautilus Sendto"
+msgstr "Nautilus Send-til"
+
+#: src/nautilus-sendto-force.glade.h:1 src/nautilus-sendto.glade.h:2
+msgid ""
+".zip\n"
+".tar.gz\n"
+".tar.bz2"
+msgstr ""
+".zip\n"
+".tar.gz\n"
+".tar.bz2"
+
+#: src/nautilus-sendto-force.glade.h:4 src/nautilus-sendto.glade.h:5
+msgid "Send To..."
+msgstr "Send til..."
+
+#: src/nautilus-sendto-force.glade.h:5 src/nautilus-sendto.glade.h:6
+msgid "Send as:"
+msgstr "Send som:"
+
+#: src/nautilus-sendto-force.glade.h:6 src/nautilus-sendto.glade.h:7
+msgid "Send packed in"
+msgstr "Send pakket i"
+
+#: src/nautilus-sendto-force.glade.h:7 src/nautilus-sendto.glade.h:8
+msgid "Send to:"
+msgstr "Send til:"
+
+#: src/nautilus-sendto-force.glade.h:8 src/nautilus-sendto.glade.h:9
+msgid "_Send"
+msgstr "_Send"
+
+#: src/nautilus-sendto.glade.h:1
+msgid "*"
+msgstr "*"
+
+#: src/nautilus-nste.c:108 src/nautilus-nste.c:123
+msgid "Send to..."
+msgstr "Send til..."
+
+#: src/nautilus-nste.c:109
+msgid "Send file by mail, instant message ..."
+msgstr "Send fil som e-post, lynmelding..."
+
+#: src/nautilus-nste.c:124
+msgid "Send files by mail, instant message ..."
+msgstr "Send filer som e-post, lynmelding..."
+
+#: src/plugins/evolution.c:228
+msgid "Email (Evolution)"
+msgstr "E-post (Evolution)"
+
+#: src/plugins/gaim.c:218
+msgid "Instant Message (Gaim)"
+msgstr "Lynmelding (Gaim)"
