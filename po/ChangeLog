@@ -1,3 +1,9 @@
+2004-11-08  Takeshi AIHANA <aihana@gnome.gr.jp>
+
+	* .cvsignore: Added to skip any files.
+
+	* ja.po: Added Japanese translation.
+
 2004-11-06  Francisco Javier F. Serrador  <serrador@cvs.gnome.org>
 
 	* es.po: Added Spanish translation.

@@ -1,0 +1,108 @@
+# nautilus-sendto ja.po.
+# Copyright (C) 2004 Free Software Foundation, Inc.
+# This file is distributed under the same license as the 'nautilus-sendto' package.
+# Takeshi AIHANA <aihana@gnome.gr.jp>, 2004.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: nautilus-sendto HEAD\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2004-11-08 13:06+0900\n"
+"PO-Revision-Date: 2004-11-08 13:05+0900\n"
+"Last-Translator: Takeshi AIHANA <aihana@gnome.gr.jp>\n"
+"Language-Team: Japanese <gnome-translation@gnome.gr.jp>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type
+#. ui requirement
+#. flags
+#. dependencies
+#. priority
+#. id
+#: gaim_plugin/nautilus-sendto-plugin.c:301
+msgid "Nautilus Integration"
+msgstr "Nautilus との連携"
+
+#. name
+#. version
+#. summary
+#: gaim_plugin/nautilus-sendto-plugin.c:303
+#: gaim_plugin/nautilus-sendto-plugin.c:304
+msgid "Provides integration with Nautilus"
+msgstr "GNOME Nautilus との連携機能を提供します。"
+
+#: src/nautilus-sendto-command.c:58
+msgid "Default folder to use"
+msgstr "使用するデフォルトのフォルダを指定する"
+
+#: src/nautilus-sendto-command.c:59
+msgid "FOLDER"
+msgstr "FOLDER"
+
+#: src/nautilus-sendto-command.c:128
+msgid "You don't insert the package name"
+msgstr "パッケージ名を挿入していません"
+
+#: src/nautilus-sendto-command.c:281
+msgid "Files"
+msgstr "ファイル"
+
+#: src/nautilus-sendto-command.c:417
+msgid "Nautilus Sendto"
+msgstr "Nautilus Sendto"
+
+#: src/Nautilus_Sendto_Component.server.in.in.h:1
+msgid "Nautilus Sendto component"
+msgstr "Nautilus Sendto コンポーネント"
+
+#: src/Nautilus_Sendto_Component.server.in.in.h:2
+msgid "Send To..."
+msgstr "送る..."
+
+#: src/nautilus-sendto-force.glade.h:1 src/nautilus-sendto.glade.h:1
+msgid "*"
+msgstr "*"
+
+#: src/nautilus-sendto-force.glade.h:2 src/nautilus-sendto.glade.h:2
+msgid ""
+".zip\n"
+".tar.gz\n"
+".tar.bz2"
+msgstr ""
+".zip\n"
+".tar.gz\n"
+".tar.bz2"
+
+#: src/nautilus-sendto-force.glade.h:5 src/nautilus-sendto.glade.h:5
+msgid "Send As :"
+msgstr "利用するアプリ :"
+
+#: src/nautilus-sendto-force.glade.h:6 src/nautilus-sendto.glade.h:6
+msgid "Send Packed in"
+msgstr "書庫ファイルにまとめる"
+
+#: src/nautilus-sendto-force.glade.h:7 src/nautilus-sendto.glade.h:7
+msgid "Send To :"
+msgstr "送り先 :"
+
+#: src/nautilus-sendto-force.glade.h:8 src/nautilus-sendto.glade.h:8
+msgid "Sendo To..."
+msgstr "送る..."
+
+#: src/nautilus-sendto-force.glade.h:9 src/nautilus-sendto.glade.h:9
+msgid "_Send"
+msgstr "送信(_S)..."
+
+#: src/plugins/evolution.c:190
+msgid "You don't insert any email address"
+msgstr "E-メール・アドレスを指定していません"
+
+#: src/plugins/evolution.c:230
+msgid "Email (Evolution)"
+msgstr "メーラー (Evolution)"
+
+#: src/plugins/gaim.c:218
+msgid "Instant Message (Gaim)"
+msgstr "インスタント・メッセンジャー (Gaim)"
