@@ -1,4 +1,9 @@
-2005-01-22   Funda Wang  <fundawang@linux.net.cn>
+2005-01-22  Žygimantas Beručka  <uid0@akl.lt>
+
+	* lt.po: Updated Lithuanian translation.
+	* ChangeLog: Converted back to UTF-8. Please keep it this way. ;)
+
+2005-01-22  Funda Wang  <fundawang@linux.net.cn>
 
 	* zh_CN.po: Updated Simplified Chinese translation.
 
@@ -58,7 +63,7 @@
 
 	* el.po: Added Greek translation.
 
-2004-12-13  I�aki Larra�aga  <dooteo@euskalgnu.org>
+2004-12-13  Iñaki Larrañaga  <dooteo@euskalgnu.org>
 
 	* eu.po: Added Basque translation.
 
@@ -66,7 +71,7 @@
 
 	* da.po: Added Danish translation.
 
-2004-12-11  Žygimantas Beručka  <uid0@akl.lt>
+2004-12-11  Åœygimantas BeruÄka  <uid0@akl.lt>
 
 	* lt.po: Added Lithuanian translation.
 

@@ -1,15 +1,15 @@
 # Lithuanian translation of nautilus-sendto.
-# Copyright (C) 2004 Free Software Foundation, Inc.
+# Copyright (C) 2004-2005 Free Software Foundation, Inc.
 # This file is distributed under the same license as the nautilus-sendto package.
-# Žygimantas Beručka <uid0@akl.lt>, 2004.
+# Žygimantas Beručka <uid0@akl.lt>, 2004-2005.
 # 
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: nautilus-sendto HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-01-17 18:13+0100\n"
-"PO-Revision-Date: 2004-12-11 14:37+0200\n"
+"POT-Creation-Date: 2005-01-22 13:44+0200\n"
+"PO-Revision-Date: 2005-01-22 13:46+0200\n"
 "Last-Translator: Žygimantas Beručka <uid0@akl.lt>\n"
 "Language-Team: Lithuanian <komp_lt@konferencijos.lt>\n"
 "MIME-Version: 1.0\n"
@@ -34,23 +34,23 @@ msgstr "Nautilus integracija"
 msgid "Provides integration with Nautilus"
 msgstr "Suteikia Nautilus integraciją"
 
-#: src/nautilus-sendto-command.c:58
+#: src/nautilus-sendto-command.c:57
 msgid "Default folder to use"
 msgstr "Įprastas naudojamas aplankas"
 
-#: src/nautilus-sendto-command.c:59
+#: src/nautilus-sendto-command.c:58
 msgid "FOLDER"
 msgstr "APLANKAS"
 
-#: src/nautilus-sendto-command.c:128
+#: src/nautilus-sendto-command.c:127
 msgid "You don't insert the package name"
 msgstr "Jūs nenurodėte paketo pavadinimo"
 
-#: src/nautilus-sendto-command.c:286
+#: src/nautilus-sendto-command.c:285
 msgid "Files"
 msgstr "Bylos"
 
-#: src/nautilus-sendto-command.c:422
+#: src/nautilus-sendto-command.c:421
 msgid "Nautilus Sendto"
 msgstr "Nautilus sendto"
 
@@ -69,17 +69,14 @@ msgid "Send To..."
 msgstr "Siųsti į..."
 
 #: src/nautilus-sendto-force.glade.h:5 src/nautilus-sendto.glade.h:6
-#, fuzzy
 msgid "Send as:"
 msgstr "Siųsti kaip:"
 
 #: src/nautilus-sendto-force.glade.h:6 src/nautilus-sendto.glade.h:7
-#, fuzzy
 msgid "Send packed in"
 msgstr "Siųsti supakuotą"
 
 #: src/nautilus-sendto-force.glade.h:7 src/nautilus-sendto.glade.h:8
-#, fuzzy
 msgid "Send to:"
 msgstr "Siųsti kam:"
 
@@ -92,17 +89,16 @@ msgid "*"
 msgstr "*"
 
 #: src/nautilus-nste.c:108 src/nautilus-nste.c:123
-#, fuzzy
 msgid "Send to..."
 msgstr "Siųsti į..."
 
 #: src/nautilus-nste.c:109
 msgid "Send file by mail, instant message ..."
-msgstr ""
+msgstr "Siųsti bylą paštu, skubia žinute..."
 
 #: src/nautilus-nste.c:124
 msgid "Send files by mail, instant message ..."
-msgstr ""
+msgstr "Siųsti bylas paštu, skubia žinute..."
 
 #: src/plugins/evolution.c:228
 msgid "Email (Evolution)"
@@ -111,9 +107,3 @@ msgstr "El. paštu (Evolution)"
 #: src/plugins/gaim.c:218
 msgid "Instant Message (Gaim)"
 msgstr "Skubia žinute (Gaim)"
-
-#~ msgid "Nautilus Sendto component"
-#~ msgstr "Nautilus sendto komponentas"
-
-#~ msgid "You don't insert any email address"
-#~ msgstr "Jūs nenurodėte jokio el.pašto adreso"
