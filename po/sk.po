@@ -1,0 +1,108 @@
+# Slovak translations for nautilus-sendto package.
+# Copyright (C) 2004 Free Software Foundation, Inc.
+# This file is distributed under the same license as the nautilus-sendto package.
+# Marcel Telka <marcel@telka.sk>, 2004.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: nautilus-sendto\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2004-12-05 10:31+0100\n"
+"PO-Revision-Date: 2004-12-05 10:42+0100\n"
+"Last-Translator: Marcel Telka <marcel@telka.sk>\n"
+"Language-Team: Slovak <sk-i18n@lists.linux.sk>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type
+#. ui requirement
+#. flags
+#. dependencies
+#. priority
+#. id
+#: gaim_plugin/nautilus-sendto-plugin.c:301
+msgid "Nautilus Integration"
+msgstr "Nautilus integrácia"
+
+#. name
+#. version
+#. summary
+#: gaim_plugin/nautilus-sendto-plugin.c:303
+#: gaim_plugin/nautilus-sendto-plugin.c:304
+msgid "Provides integration with Nautilus"
+msgstr "Poskytuje integráciu s programom Nautilus"
+
+#: src/nautilus-sendto-command.c:58
+msgid "Default folder to use"
+msgstr "Predvolený priečinok, ktorý bude použitý"
+
+#: src/nautilus-sendto-command.c:59
+msgid "FOLDER"
+msgstr "PRIEČINOK"
+
+#: src/nautilus-sendto-command.c:128
+msgid "You don't insert the package name"
+msgstr "Nezadali ste názov balíka"
+
+#: src/nautilus-sendto-command.c:286
+msgid "Files"
+msgstr "Súbory"
+
+#: src/nautilus-sendto-command.c:422
+msgid "Nautilus Sendto"
+msgstr "Odoslať do pre Nautilus"
+
+#: src/Nautilus_Sendto_Component.server.in.in.h:1
+msgid "Nautilus Sendto component"
+msgstr "Komponent Odoslať do pre Nautilus"
+
+#: src/Nautilus_Sendto_Component.server.in.in.h:2
+msgid "Send To..."
+msgstr "Odoslať do..."
+
+#: src/nautilus-sendto-force.glade.h:1 src/nautilus-sendto.glade.h:1
+msgid "*"
+msgstr "*"
+
+#: src/nautilus-sendto-force.glade.h:2 src/nautilus-sendto.glade.h:2
+msgid ""
+".zip\n"
+".tar.gz\n"
+".tar.bz2"
+msgstr ""
+".zip\n"
+".tar.gz\n"
+".tar.bz2"
+
+#: src/nautilus-sendto-force.glade.h:5 src/nautilus-sendto.glade.h:5
+msgid "Send As :"
+msgstr "Odoslať ako :"
+
+#: src/nautilus-sendto-force.glade.h:6 src/nautilus-sendto.glade.h:6
+msgid "Send Packed in"
+msgstr "Odoslať zabalené v"
+
+#: src/nautilus-sendto-force.glade.h:7 src/nautilus-sendto.glade.h:7
+msgid "Send To :"
+msgstr "Odoslať do :"
+
+#: src/nautilus-sendto-force.glade.h:8 src/nautilus-sendto.glade.h:8
+msgid "Sendo To..."
+msgstr "Odoslať do..."
+
+#: src/nautilus-sendto-force.glade.h:9 src/nautilus-sendto.glade.h:9
+msgid "_Send"
+msgstr "_Odoslať"
+
+#: src/plugins/evolution.c:196
+msgid "You don't insert any email address"
+msgstr "Nezadali ste žiadnu adresu elektronickej pošty"
+
+#: src/plugins/evolution.c:236
+msgid "Email (Evolution)"
+msgstr "Elektronická pošta (Evolution)"
+
+#: src/plugins/gaim.c:218
+msgid "Instant Message (Gaim)"
+msgstr "Priama správa (Gaim)"
