@@ -1,4 +1,12 @@
 =============
+Version 0.3
+=============
+
+Nautilus Sendto
+	* Support for new nautilus extension interface
+	* HIG support for nautilus-sendto dialog (thanks Paolo Bacchilega)
+
+=============
 Version 0.2-1
 =============
 

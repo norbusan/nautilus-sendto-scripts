@@ -1,3 +1,13 @@
+2005-01-16  Roberto Majadas <roberto.majadas@hispalinux.es>
+
+	* configure.in : add dependecy with libnautilus-extension
+	* src/nautilus-nste.[ch]
+	  src/nautilus-sendto-module.c : new nautilus extension
+	* src/nautilus-sendto[-force].glade : HIG
+	* src/libmain.c
+	  src/nautilus-sendto-component.[hc]
+	  src/Nautilus_Sendto_Component.server.in.in : remove old stuff 
+
 2005-01-03  Christian Rose  <menthos@menthos.com>
 
 	* configure.in: Added "sv" to ALL_LINGUAS.
