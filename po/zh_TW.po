@@ -1,0 +1,109 @@
+# traditional Chinese translation of nautilus-sendto.
+# Copyright (C) 2005 Free Software Foundation, Inc.
+# Abel Cheung <maddog@linuxhall.org>, 2005.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: nautilus-sendto 0.3\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2005-03-05 08:41+0800\n"
+"PO-Revision-Date: 2005-03-05 08:58+0800\n"
+"Last-Translator: Abel Cheung <maddog@linuxhall.org>\n"
+"Language-Team: Chinese (traditional) <zh-l10n@linux.org.tw>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type
+#. ui requirement
+#. flags
+#. dependencies
+#. priority
+#. id
+#: ../gaim_plugin/nautilus-sendto-plugin.c:303
+msgid "Nautilus Integration"
+msgstr "Nautilus 整合"
+
+#. name
+#. version
+#. summary
+#: ../gaim_plugin/nautilus-sendto-plugin.c:305
+#: ../gaim_plugin/nautilus-sendto-plugin.c:306
+msgid "Provides integration with Nautilus"
+msgstr "提供和 Nautilus 整合的功能"
+
+#: ../src/nautilus-sendto-command.c:57
+msgid "Default folder to use"
+msgstr "指定預設資料夾"
+
+#: ../src/nautilus-sendto-command.c:58
+msgid "FOLDER"
+msgstr "資料夾"
+
+# (Abel) package name = compressed package file name
+#: ../src/nautilus-sendto-command.c:127
+msgid "You don't insert the package name"
+msgstr "您還未輸入壓縮檔的名稱"
+
+#: ../src/nautilus-sendto-command.c:287
+msgid "Files"
+msgstr "檔案"
+
+#: ../src/nautilus-sendto-command.c:425
+msgid "Nautilus Sendto"
+msgstr "Nautilus 傳送檔案"
+
+#: ../src/nautilus-sendto-force.glade.h:1 ../src/nautilus-sendto.glade.h:2
+msgid ""
+".zip\n"
+".tar.gz\n"
+".tar.bz2"
+msgstr ""
+".zip\n"
+".tar.gz\n"
+".tar.bz2"
+
+#: ../src/nautilus-sendto-force.glade.h:4 ../src/nautilus-sendto.glade.h:5
+msgid "Send To..."
+msgstr "傳送到..."
+
+# (Abel) 和原文有很大出入，但用家應該會較容易明白
+#: ../src/nautilus-sendto-force.glade.h:5 ../src/nautilus-sendto.glade.h:6
+msgid "Send as:"
+msgstr "傳送格式："
+
+#: ../src/nautilus-sendto-force.glade.h:6 ../src/nautilus-sendto.glade.h:7
+msgid "Send packed in"
+msgstr "將檔案壓縮成"
+
+#: ../src/nautilus-sendto-force.glade.h:7 ../src/nautilus-sendto.glade.h:8
+msgid "Send to:"
+msgstr "傳送到："
+
+#: ../src/nautilus-sendto-force.glade.h:8 ../src/nautilus-sendto.glade.h:9
+msgid "_Send"
+msgstr "傳送(_S)"
+
+#: ../src/nautilus-sendto.glade.h:1
+msgid "*"
+msgstr "*"
+
+#: ../src/nautilus-nste.c:108 ../src/nautilus-nste.c:123
+msgid "Send to..."
+msgstr "傳送到..."
+
+#: ../src/nautilus-nste.c:109
+msgid "Send file by mail, instant message ..."
+msgstr "經電子郵件、即時訊息等等途徑傳送檔案"
+
+#: ../src/nautilus-nste.c:124
+msgid "Send files by mail, instant message ..."
+msgstr "經電子郵件、即時訊息等等途徑傳送檔案"
+
+#: ../src/plugins/evolution.c:229
+msgid "Email (Evolution)"
+msgstr "電子郵件 (Evolution)"
+
+#: ../src/plugins/gaim.c:219
+msgid "Instant Message (Gaim)"
+msgstr "即時訊息 (Gaim)"
