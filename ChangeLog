@@ -1,3 +1,7 @@
+2005-03-05  Abel Cheung  <maddog@linuxhall.org>
+
+	* configure.in: Added "mk" "nb" "no" "vi" "zh_TW" to ALL_LINGUAS.
+
 2005-02-19  Christophe Merlet  <redfox@redfoxcenter.org>
 
 	* configure.in: Added "fr" (French) to ALL_LINGUAS.
