@@ -1,0 +1,15 @@
+2004-09-28  Roberto Majadas  <roberto.majadas@hispalinux.es>
+
+	* configure.in : Version : 0.2-1
+	* gaim_plugin/nautilus-sendto-plugin.c : Changes in gaim1.0 api
+	* src/plugins/evolution.c : Added support for evolution-2.0
+	
+2004-09-27  Roberto Majadas  <roberto.majadas@hispalinux.es>
+	
+	* configure.in : Version : 0.2
+	
+2004-08-22  Roberto Majadas  <roberto.majadas@hispalinux.es>
+
+	* configure.in: Version : 0.1
+	
+

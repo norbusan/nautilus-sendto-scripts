@@ -1,0 +1,42 @@
+=============
+Version 0.2-1
+=============
+
+Nautilus Sendto
+	*Added support for gaim 1.0
+	*Added support for evolution 2.0
+
+=============
+Version 0.2
+=============
+
+Nautilus Sendto
+	
+	*New plugins support!! Now evolution and gaim support are plugins
+	*New UI, more beatiful, more flexible
+	*All plugins support the gnome icon theme
+	
+Translations 
+	Nothing at the moment
+
+=============
+Version 0.1-1
+=============
+
+Nautilus Sendto
+	* A little bugfix
+
+==============
+Version 0.1
+==============
+
+Nautilus Sendto
+
+	* Nautilus context menu componente "Send To.."
+	* Support for send file or compressed files with nautilus
+	to evolution contact or gaim contact
+	* Gaim plugin for nautilus integration
+
+Translations
+	
+	Nothing at the moment 

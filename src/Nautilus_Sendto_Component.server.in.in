@@ -1,0 +1,22 @@
+<oaf_info>
+
+<oaf_server iid="OAFIID:Nautilus_Sendto_Component_Send"
+	type="shlib" location="@BONOBODIR@/libnautilus-sendto-component.so">
+	<oaf_attribute name="repo_ids" type="stringv">
+		<item value="IDL:Bonobo/Unknown:1.0"/>
+		<item value="IDL:Bonobo/Listener:1.0"/>
+	</oaf_attribute>
+	<oaf_attribute name="name" type="string" _value="Nautilus Sendto component"/>
+	<oaf_attribute name="description" type="string" _value="Nautilus Sendto component"/>
+        <oaf_attribute name="bonobo:supported_uri_schemes" type="stringv">
+                <item value="file"/>
+        </oaf_attribute>
+	<oaf_attribute name="bonobo:supported_mime_types" type="stringv">
+		<item value="*/*"/>
+	</oaf_attribute>
+	<oaf_attribute name="nautilus:context_menu_handler" type="boolean" value="true"/>
+	<oaf_attribute name="nautilus:can_handle_multiple_files" type="boolean" value="true"/>
+	<oaf_attribute name="nautilusverb:SendTo" type="string" _value="Send To..."/>
+</oaf_server>
+
+</oaf_info>

@@ -1,0 +1,99 @@
+AC_PREREQ(2.52)
+
+AC_INIT(nautilus-sendto, 0.2-1, http://www.gnome.org)
+AM_CONFIG_HEADER(config.h)
+
+AM_INIT_AUTOMAKE(AC_PACKAGE_NAME, AC_PACKAGE_VERSION)
+
+AM_MAINTAINER_MODE
+                                                                                
+AM_DISABLE_STATIC
+AC_PROG_CC
+AM_PROG_LIBTOOL
+AC_PROG_INSTALL
+AC_PROG_MAKE_SET
+
+
+dnl --------------------------------------------------
+
+GLIB_REQUIRED=2.4.0
+GTK_REQUIRED=2.4.0
+GLADE_REQUIRED=2.4.0
+EBOOK_REQUIRED=0.0.97
+BONOBO_ACTIVATION_REQUIRED=2.6.0
+BONOBO_REQUIRED=2.6.0
+GNOME_REQUIRED=2.7.0
+GAIM_REQUIRED=1.0.0
+GNOME_REQUIRED=2.7.0
+
+AC_SUBST(GLIB_REQUIRED)
+AC_SUBST(GTK_REQUIRED)
+AC_SUBST(GLADE_REQUIRED)
+AC_SUBST(EBOOK_REQUIRED)
+AC_SUBST(GAIM_REQUIRED)
+AC_SUBST(BONOBO_ACTIVATION_REQUIRED)
+AC_SUBST(BONOBO_REQUIRED)
+
+PKG_CHECK_MODULES(NAUTILUS_SENDTO,\
+	 glib-2.0 >= $GLIB_REQUIRED                \
+	 gthread-2.0 >= $GLIB_REQUIRED             \
+	 gmodule-2.0 >= $GLIB_REQUIRED		  \
+	 gtk+-2.0    >= $GTK_REQUIRED             \
+	 libglade-2.0 >= $GLADE_REQUIRED            \
+	 libebook-1.0  >= $EBOOK_REQUIRED 	  \
+	 libbonobo-2.0 >= $BONOBO_REQUIRED	  \
+	 libgnome-2.0 >= $GNOME_REQUIRED	\
+	 libgnomeui-2.0 >= $GNOME_REQUIRED	\
+	 bonobo-activation-2.0 >= $BONOBO_ACTIVATION_REQUIRED)
+AC_SUBST(NAUTILUS_SENDTO_CFLAGS)
+AC_SUBST(NAUTILUS_SENDTO_LIBS)
+
+PKG_CHECK_MODULES(GAIM, gaim >= $GAIM_REQUIRED,
+[
+        AC_DEFINE(HAVE_GAIM, 1, [Define if we've found gaim.])
+])
+
+AC_SUBST(GAIM_CFLAGS)
+GAIM_LIBDIR=`pkg-config --variable=libdir gaim`
+GAIM_DATADIR=`pkg-config --variable=datadir gaim`
+AC_SUBST(GAIM_LIBDIR)
+AC_SUBST(GAIM_DATADIR)
+
+
+dnl  Check if plugins are enabled
+dnl -------------------------------
+want_plugins=yes
+AM_CONDITIONAL(PLUGINS, test "$want_plugins" = "yes")
+
+
+
+dnl --------------------------------------------------
+
+GNOME_COMPILE_WARNINGS
+
+GNOME_COMMON_INIT
+
+ALL_LINGUAS=""
+
+GETTEXT_PACKAGE=nautilus-sendto
+AC_SUBST(GETTEXT_PACKAGE)
+AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE, "$GETTEXT_PACKAGE", [GetText Package])
+                                                                               
+AM_GLIB_GNU_GETTEXT
+AC_PROG_INTLTOOL
+
+if test "x${prefix}" = "xNONE"; then
+  AC_DEFINE_UNQUOTED(LOCALEDIR, "${ac_default_prefix}/${DATADIRNAME}/locale", [Locale dir])
+else
+  AC_DEFINE_UNQUOTED(LOCALEDIR, "${prefix}/${DATADIRNAME}/locale", [Locale dir])
+fi
+
+
+AC_OUTPUT([
+Makefile
+src/Makefile
+src/plugins/Makefile
+gaim_plugin/Makefile
+po/Makefile.in
+])
+
