@@ -1,3 +1,7 @@
+2004-12-05  Marcel Telka  <marcel@telka.sk>
+
+	* configure.in (ALL_LINGUAS): Added sk.
+
 2004-11-27  Changwoo Ryu  <cwryu@debian.org>
 
 	* configure.in: Added ko to ALL_LINGUAS.
