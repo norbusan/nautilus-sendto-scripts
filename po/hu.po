@@ -1,19 +1,22 @@
+# translation of nautilus-sendto to Hungarian
 # Hungarian translation of nautilus-sendto.
-# Copyright (C) 2004 Free Software Foundation, Inc.
+# Copyright (C) 2004, 2005 Free Software Foundation, Inc.
 # This file is distributed under the same license as the nautilus-sendto package.
 # Gabor Kelemen <kelemeng@gnome.hu>, 2004.
-#
+# Szabolcs Varga <shirokuma@shirokuma.hu>, 2005.
+# 
 msgid ""
 msgstr ""
-"Project-Id-Version: nautilus-sendto\n"
+"Project-Id-Version: nautilus-sendto.HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-01-17 18:13+0100\n"
-"PO-Revision-Date: 2004-11-18 11:55+0100\n"
-"Last-Translator: Gabor Kelemen <kelemeng@gnome.hu>\n"
-"Language-Team: Hungarian <gnome@gnome.hu>\n"
+"POT-Creation-Date: 2005-03-17 12:29+0100\n"
+"PO-Revision-Date: 2005-03-05 18:10+0100\n"
+"Last-Translator: Szabolcs Varga <shirokuma@shirokuma.hu>\n"
+"Language-Team: Hungarian <hu@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.3.1\n"
 
 #. type
 #. ui requirement
@@ -21,35 +24,35 @@ msgstr ""
 #. dependencies
 #. priority
 #. id
-#: gaim_plugin/nautilus-sendto-plugin.c:301
+#: gaim_plugin/nautilus-sendto-plugin.c:303
 msgid "Nautilus Integration"
-msgstr "Nautilus integráció"
+msgstr "Nautilus-integráció"
 
 #. name
 #. version
 #. summary
-#: gaim_plugin/nautilus-sendto-plugin.c:303
-#: gaim_plugin/nautilus-sendto-plugin.c:304
+#: gaim_plugin/nautilus-sendto-plugin.c:305
+#: gaim_plugin/nautilus-sendto-plugin.c:306
 msgid "Provides integration with Nautilus"
-msgstr "Integrációt biztosít a Nautilusszal"
+msgstr "Integráció biztosítása a Nautilusszal"
+
+#: src/nautilus-sendto-command.c:57
+msgid "Default folder to use"
+msgstr "Alapértelmezésként használandó mappa"
 
 #: src/nautilus-sendto-command.c:58
-msgid "Default folder to use"
-msgstr "Az alapértelmezésben használandó mappa"
-
-#: src/nautilus-sendto-command.c:59
 msgid "FOLDER"
 msgstr "MAPPA"
 
-#: src/nautilus-sendto-command.c:128
+#: src/nautilus-sendto-command.c:127
 msgid "You don't insert the package name"
 msgstr "Nem adott meg csomagnevet"
 
-#: src/nautilus-sendto-command.c:286
+#: src/nautilus-sendto-command.c:287
 msgid "Files"
 msgstr "Fájlok"
 
-#: src/nautilus-sendto-command.c:422
+#: src/nautilus-sendto-command.c:425
 msgid "Nautilus Sendto"
 msgstr "Nautilus küldés"
 
@@ -68,17 +71,14 @@ msgid "Send To..."
 msgstr "Küldés..."
 
 #: src/nautilus-sendto-force.glade.h:5 src/nautilus-sendto.glade.h:6
-#, fuzzy
 msgid "Send as:"
-msgstr "Küldés mint :"
+msgstr "Küldés mint:"
 
 #: src/nautilus-sendto-force.glade.h:6 src/nautilus-sendto.glade.h:7
-#, fuzzy
 msgid "Send packed in"
 msgstr "Küldés tömörítve"
 
 #: src/nautilus-sendto-force.glade.h:7 src/nautilus-sendto.glade.h:8
-#, fuzzy
 msgid "Send to:"
 msgstr "Küldés :"
 
@@ -91,28 +91,21 @@ msgid "*"
 msgstr "*"
 
 #: src/nautilus-nste.c:108 src/nautilus-nste.c:123
-#, fuzzy
 msgid "Send to..."
 msgstr "Küldés..."
 
 #: src/nautilus-nste.c:109
 msgid "Send file by mail, instant message ..."
-msgstr ""
+msgstr "Fájl küldése levélben, azonnali üzenetként..."
 
 #: src/nautilus-nste.c:124
 msgid "Send files by mail, instant message ..."
-msgstr ""
+msgstr "Fájlok küldése levélben, azonnali üzenetként..."
 
-#: src/plugins/evolution.c:228
+#: src/plugins/evolution.c:229
 msgid "Email (Evolution)"
 msgstr "E-mail (Evolution)"
 
-#: src/plugins/gaim.c:218
+#: src/plugins/gaim.c:219
 msgid "Instant Message (Gaim)"
 msgstr "Azonnali üzenet (Gaim)"
-
-#~ msgid "Nautilus Sendto component"
-#~ msgstr "Nautilus küldés komponens"
-
-#~ msgid "You don't insert any email address"
-#~ msgstr "Nem adott meg e-mail címet"
