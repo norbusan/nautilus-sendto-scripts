@@ -1,3 +1,7 @@
+2004-12-11  Žygimantas Beručka  <uid0@akl.lt>
+
+	* configure.in: Added Lithuanian (lt) to ALL_LINGUAS.
+
 2004-12-10  Alexander Shopov  <ash@contact.bg>
 
 	* configure.in (ALL_LINGUAS): Added "bg" (Bulgarian)
