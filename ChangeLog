@@ -1,3 +1,10 @@
+2005-01-27  Roberto Majadas  <roberto.majadas@hispalinux.es>  
+
+	* gaim_plugin/nautilus-sendto-plugin.c
+	  src/nautilus-sendto-command.c
+	  src/plugins/evolution.c
+	  src/plugins/gaim.c : Some void's added , thanks Gary Ekker.
+
 2005-01-17  Roberto Majadas  <roberto.majadas@hispalinux.es>
 
 	* configure.in 

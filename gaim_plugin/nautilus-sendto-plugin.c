@@ -62,6 +62,7 @@ guint save_blist_timeout_handler, take_spool_files_handler;
 gboolean taking_files;
 GString *buddies_str;
 
+void
 get_online_buddies (GaimBlistNode *node, GString *str){
 
     GaimBlistNode *aux;
@@ -158,7 +159,7 @@ init_plugin_stuff (){
     g_free (spool_tmp);
 }
 
-
+void
 send_file (GString *username, GString *cname,
 	   GString *protocol, GString *file){
 
@@ -172,6 +173,7 @@ send_file (GString *username, GString *cname,
     serv_send_file (account->gc, cname->str, file->str);
 }
 
+void
 process_file (gchar *file){
     GIOChannel *io;
     GString *username;

@@ -198,6 +198,7 @@ option_changed (GtkComboBox *cb, gpointer data){
 	gtk_widget_show ((GtkWidget *) aux->data);
 }
 
+void
 set_contact_widgets (NS_ui *ui){
 	GList *aux ;
 	GtkWidget *w;
@@ -214,6 +215,7 @@ set_contact_widgets (NS_ui *ui){
 	gtk_widget_show ((GtkWidget* ) ui->contact_widgets->data);
 }
 
+void
 set_model_for_options_combobox (NS_ui *ui){
 	GdkPixbuf *pixbuf;
         GtkTreeIter iter;
@@ -258,7 +260,7 @@ set_model_for_options_combobox (NS_ui *ui){
 	option = 0;
 }
 
-
+void
 nautilus_sendto_create_ui ()
 {
 	GladeXML *app;	
@@ -333,6 +335,7 @@ str_has_suffix (const char *haystack, const char *needle)
         return FALSE;
 }
 
+void
 nautilus_sendto_plugin_init (void)
 {
 	DIR *dir;
@@ -374,6 +377,7 @@ nautilus_sendto_plugin_init (void)
 	}	
 }
 
+void
 nautilus_sendto_init (GnomeProgram *program, int argc, char **argv)
 {
 	poptContext pctx;

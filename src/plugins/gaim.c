@@ -40,6 +40,7 @@ gboolean init (NstPlugin *plugin)
 	return TRUE;
 }
 
+void
 add_gaim_contacts_to_model (GtkListStore *store, GtkTreeIter *iter)
 {
 	GdkPixbuf *msn, *jabber, *yahoo, *aim;

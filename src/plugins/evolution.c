@@ -40,6 +40,7 @@ gboolean init (NstPlugin *plugin)
 	return TRUE;
 }
 
+void
 add_evolution_contacts_to_model (GtkWidget *entry, 
 				 GtkListStore *store, GtkTreeIter *iter)
 {
