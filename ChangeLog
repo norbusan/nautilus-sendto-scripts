@@ -1,3 +1,7 @@
+2004-11-15  Raphael Higino  <raphaelh@cvs.gnome.org>
+
+	* configure.in: Added pt_BR to ALL_LINGUAS.
+
 2004-11-14  Hendrik Richter  <hendrik@gnome-de.org>
 
 	* configure.in: Added de to ALL_LINGUAS.
