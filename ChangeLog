@@ -1,4 +1,8 @@
-2004-12-10  Duarte Loreto <happyguy_pt@hotmail.com>
+2004-12-10  Alexander Shopov  <ash@contact.bg>
+
+	* configure.in (ALL_LINGUAS): Added "bg" (Bulgarian)
+
+2004-12-10  Duarte Loreto  <happyguy_pt@hotmail.com>
 
 	* configure.in: Added Portuguese (pt) to ALL_LINGUAS.
 
@@ -8,7 +12,7 @@
 	Fixed typo (Sendo To... -> Send To...)
 	* configure.in (ALL_LINGUAS): Added fi.
 
-2004-12-07	Amanpreet Singh Alam <amanpreetalam@yahoo.com
+2004-12-07  Amanpreet Singh Alam  <amanpreetalam@yahoo.com
 
 	*configure.on: Add pa to ALL_LINGUAS
 
