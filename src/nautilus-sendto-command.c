@@ -152,7 +152,9 @@ send_button_cb (GtkWidget *widget, gpointer data)
 			packed_file = g_list_append (packed_file, f);
 			if (!p->info->send_files (p, w, packed_file))
 				return;
-		}			
+		}else{
+			return;
+		}
 	}else{
 		if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(ui->pack_checkbutton))){
 			f = pack_files (ui);
@@ -161,7 +163,10 @@ send_button_cb (GtkWidget *widget, gpointer data)
 				packed_file = g_list_append (packed_file, f);
 				if (!p->info->send_files (p, w, packed_file))
 					return;
-			}			
+			}else{
+				return;
+			}
+				
 		}else{
 			if (!p->info->send_files (p, w, file_list))
 				return;

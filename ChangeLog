@@ -3,6 +3,8 @@
 	* Makefile.am configure.in 
 	gaim_plugin/Makefile.am 
 	src/plugins/Makefile.am : Added gaim detection in compile time
+	* src/plugins/evolution.c : Added gettext support
+	* src/nautilus-sendto-command.c : Fix some bugs in the errors' dialogs
 
 2004-11-08  Takeshi AIHANA <aihana@gnome.gr.jp>
 

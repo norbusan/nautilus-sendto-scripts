@@ -21,6 +21,7 @@
  * Author:  Roberto Majadas <roberto.majadas@hispalinux.es>
  */
 
+#include <config.h>
 #include "../nautilus-sendto-plugin.h"
 #include <libebook/e-book.h>
 
@@ -30,6 +31,11 @@ static
 gboolean init (NstPlugin *plugin)
 {
 	printf ("Init evolution plugin\n");
+	
+	bindtextdomain (GETTEXT_PACKAGE, LOCALEDIR);
+        bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
+        textdomain (GETTEXT_PACKAGE);
+	
 	hash = g_hash_table_new (g_str_hash, g_str_equal);
 	return TRUE;
 }
