@@ -1,3 +1,7 @@
+2005-04-01  Steve Murphy  <murf@e-tools.com>
+
+        * configure.in: Added "rw" to ALL_LINGUAS.
+
 2005-03-05  Abel Cheung  <maddog@linuxhall.org>
 
 	* configure.in: Added "mk" "nb" "no" "vi" "zh_TW" to ALL_LINGUAS.
