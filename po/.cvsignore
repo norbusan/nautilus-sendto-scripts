@@ -6,3 +6,10 @@ Makefile.in
 Makefile.in.in
 Makevars.template
 POTFILES
+cat-id-tbl.c
+messages
+missing
+notexist
+po2tbl.sed
+po2tbl.sed.in
+stamp-cat-id

@@ -1,3 +1,7 @@
+2005-01-03  Christian Rose  <menthos@menthos.com>
+
+	* configure.in: Added "sv" to ALL_LINGUAS.
+
 2004-12-15  Kostas Papadimas <pkst@gnome.org>
 
 	* configure.in: Added "el" (Greek) to ALL_LINGUAS.

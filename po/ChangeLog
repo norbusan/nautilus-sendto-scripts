@@ -1,3 +1,9 @@
+2005-01-03  Christian Rose  <menthos@menthos.com>
+
+	* .cvsignore: Added a lot of missing entries.
+	* POTFILES.in: Sorted and added comment.
+	* sv.po: Added Swedish translation.
+
 2004-12-15 Kostas Papadimas <pkst@gnome.org>
 
 	* el.po: Updated Greek translation.
