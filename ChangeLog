@@ -1,3 +1,7 @@
+2004-11-09  Adam Weinberger  <adamw@gnome.org>
+
+	* configure.in: Added en_CA to ALL_LINGUAS.
+
 2004-11-09  Roberto Majadas  <roberto.majadas@hispalinux.es>
 
 	* Makefile.am configure.in 
