@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nautilus-sendto\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-01-17 18:13+0100\n"
-"PO-Revision-Date: 2005-01-05 15:34+0100\n"
+"POT-Creation-Date: 2005-02-01 11:14+0100\n"
+"PO-Revision-Date: 2005-02-01 11:15+0100\n"
 "Last-Translator: Martin Willemoes Hansen <mwh@sysrq.dk>\n"
 "Language-Team: Danish <dansk@klid.dk>\n"
 "MIME-Version: 1.0\n"
@@ -22,35 +22,35 @@ msgstr ""
 #. dependencies
 #. priority
 #. id
-#: gaim_plugin/nautilus-sendto-plugin.c:301
+#: gaim_plugin/nautilus-sendto-plugin.c:303
 msgid "Nautilus Integration"
 msgstr "Nautilusintegration"
 
 #. name
 #. version
 #. summary
-#: gaim_plugin/nautilus-sendto-plugin.c:303
-#: gaim_plugin/nautilus-sendto-plugin.c:304
+#: gaim_plugin/nautilus-sendto-plugin.c:305
+#: gaim_plugin/nautilus-sendto-plugin.c:306
 msgid "Provides integration with Nautilus"
 msgstr "Tilbyder integration med Nautilus"
 
-#: src/nautilus-sendto-command.c:58
+#: src/nautilus-sendto-command.c:57
 msgid "Default folder to use"
 msgstr "Standardmappe til brug"
 
-#: src/nautilus-sendto-command.c:59
+#: src/nautilus-sendto-command.c:58
 msgid "FOLDER"
 msgstr "MAPPE"
 
-#: src/nautilus-sendto-command.c:128
+#: src/nautilus-sendto-command.c:127
 msgid "You don't insert the package name"
 msgstr "Du indsætter pakkenavnet"
 
-#: src/nautilus-sendto-command.c:286
+#: src/nautilus-sendto-command.c:287
 msgid "Files"
 msgstr "Filer"
 
-#: src/nautilus-sendto-command.c:422
+#: src/nautilus-sendto-command.c:425
 msgid "Nautilus Sendto"
 msgstr "Nautilus send til"
 
@@ -69,17 +69,14 @@ msgid "Send To..."
 msgstr "Send til..."
 
 #: src/nautilus-sendto-force.glade.h:5 src/nautilus-sendto.glade.h:6
-#, fuzzy
 msgid "Send as:"
 msgstr "Send som:"
 
 #: src/nautilus-sendto-force.glade.h:6 src/nautilus-sendto.glade.h:7
-#, fuzzy
 msgid "Send packed in"
 msgstr "Send pakket i"
 
 #: src/nautilus-sendto-force.glade.h:7 src/nautilus-sendto.glade.h:8
-#, fuzzy
 msgid "Send to:"
 msgstr "Send til:"
 
@@ -92,23 +89,22 @@ msgid "*"
 msgstr "*"
 
 #: src/nautilus-nste.c:108 src/nautilus-nste.c:123
-#, fuzzy
 msgid "Send to..."
 msgstr "Send til..."
 
 #: src/nautilus-nste.c:109
 msgid "Send file by mail, instant message ..."
-msgstr ""
+msgstr "Send fil med e-brev, kvikbesked ..."
 
 #: src/nautilus-nste.c:124
 msgid "Send files by mail, instant message ..."
-msgstr ""
+msgstr "Send filer med e-brev, kvikbesked ..."
 
-#: src/plugins/evolution.c:228
+#: src/plugins/evolution.c:229
 msgid "Email (Evolution)"
 msgstr "E-post (Evolution)"
 
-#: src/plugins/gaim.c:218
+#: src/plugins/gaim.c:219
 msgid "Instant Message (Gaim)"
 msgstr "Kvikbesked (Gaim)"
 
