@@ -1,3 +1,7 @@
+2004-12-15  Kostas Papadimas <pkst@gnome.org>
+
+	* configure.in: Added "el" (Greek) to ALL_LINGUAS.
+
 2004-12-13  Iñaki Larrañaga  <dooteo@euskalgnu.org>
 
 	* configure.in: Added "eu" (Basque) to ALL_LINGUAS.
