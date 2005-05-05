@@ -1,3 +1,7 @@
+2005-05-05  Josep Puigdemont  <josep.puigdemont@gmail.com>
+
+	* configure.in: Added "ca" to ALL_LINGUAS.
+
 2005-04-26  Artur Flinta  <aflinta@cvs.gnome.org>
 
         * configure.in: Added "pl" to ALL_LINGUAS.
