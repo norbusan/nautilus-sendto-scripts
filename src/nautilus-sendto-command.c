@@ -25,7 +25,6 @@
 #include <sys/types.h>
 #include <dirent.h>
 #include <gnome.h>
-#include <bonobo/bonobo-main.h>
 #include <glade/glade.h>
 #include "nautilus-sendto-plugin.h"
 
@@ -390,17 +389,18 @@ nautilus_sendto_init (GnomeProgram *program, int argc, char **argv)
 	
 	pctx = g_value_get_pointer (&value);
 	glade_gnome_init ();
-	
-	if (bonobo_init (&argc, argv) == FALSE)
-		g_error ("Could not initialize Bonobo");
 
 	if (g_module_supported() == FALSE)
 		g_error ("Could not initialize gmodule support");
 
+	if (default_url == NULL) {
+		default_url = g_get_current_dir ();
+	}
+
 	while ((filename = poptGetArg (pctx)) != NULL) {
 		char *path;
 
-		path = g_build_path ("/",default_url, 
+		path = g_build_path ("/",default_url,
 				     filename, NULL);
 		file_list = g_list_prepend (file_list, path);
 		

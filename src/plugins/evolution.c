@@ -207,7 +207,7 @@ gboolean send_files (NstPlugin *plugin, GtkWidget *contact_widget,
 			evo_cmd = g_find_program_in_path ("evolution-2.0");
 	}
 	g_string_append_printf (mailto,"?attach=\"%s\"",file_list->data);
-	for (l = file_list->next ; l; l=l->next){				
+	for (l = file_list->next ; l; l=l->next){
 		g_string_append_printf (mailto,"&attach=\"%s\"",l->data);
 	}
 	cmd = g_strdup_printf ("%s %s", evo_cmd, mailto->str);

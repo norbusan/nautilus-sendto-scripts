@@ -26,6 +26,7 @@ GNOME_REQUIRED=2.7.0
 GAIM_REQUIRED=1.0.0
 GNOME_REQUIRED=2.7.0
 NAUTILUS_EXTENSION=2.8.0
+BLUETOOTH_REQUIRED=0.6.0
 
 AC_SUBST(GLIB_REQUIRED)
 AC_SUBST(GTK_REQUIRED)
@@ -87,6 +88,23 @@ PKG_CHECK_MODULES(GAIM, gaim >= $GAIM_REQUIRED,
 )
 
 AM_CONDITIONAL(HAVE_GAIM, test "x$enable_gaim" = "xyes")
+
+dnl Bluetooth support if it's installed
+dnl -----------------------------------
+
+PKG_CHECK_MODULES(BLUETOOTH, gnome-bluetooth >= $BLUETOOTH_REQUIRED,
+	[
+	AC_SUBST(BLUETOOTH_CFLAGS)
+	AC_SUBST(BLUETOOTH_LIBS)
+	enable_bluetooth=yes
+	],
+	[
+	echo "Building without Bluetooth"
+	enable_bluetooth=no
+	]
+)
+
+AM_CONDITIONAL(HAVE_BLUETOOTH, test "x$enable_bluetooth" = "xyes")
 
 dnl --------------------------------------------------
 
