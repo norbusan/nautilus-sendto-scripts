@@ -1,3 +1,8 @@
+2005-06-12  Roberto Majadas  <roberto.majadas@hispalinux.es>
+
+	* src/nautilus-sendto-command.c : Fix a bug with the contacts
+	widgets
+
 2005-06-12  Bastien Nocera  <hadess@hadess.net>
 
 	* gaim_plugin/.cvsignore:
