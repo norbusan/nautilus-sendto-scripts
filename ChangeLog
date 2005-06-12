@@ -1,5 +1,9 @@
 2005-06-12  Bastien Nocera  <hadess@hadess.net>
 
+	* AUTHORS: add myself for the bluetooth plugin
+
+2005-06-12  Bastien Nocera  <hadess@hadess.net>
+
 	Reviewed by: Roberto Majadas  <roberto.majadas@hispalinux.es>
 
 	* src/nautilus-sendto-command.c: (nautilus_sendto_init): don't try
