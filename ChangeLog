@@ -1,5 +1,11 @@
 2005-06-12  Bastien Nocera  <hadess@hadess.net>
 
+	* gaim_plugin/.cvsignore:
+	* src/.cvsignore:
+	* src/plugins/.cvsignore: spring cleaning
+
+2005-06-12  Bastien Nocera  <hadess@hadess.net>
+
 	* AUTHORS: add myself for the bluetooth plugin
 
 2005-06-12  Bastien Nocera  <hadess@hadess.net>
