@@ -1,3 +1,8 @@
+2005-06-20  Christian Rose  <menthos@menthos.com>
+
+	* POTFILES.in: Sorted and added missing file entry.
+	* sv.po: Updated Swedish translation.
+
 2005-05-16  Iñaki Larrañaga  <dooteo@euskalgnu.org>
 
 	* eu.po: Updated Basque translation.
