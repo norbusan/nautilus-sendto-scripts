@@ -1,0 +1,113 @@
+# translation of nautilus-sendto.HEAD.po to Galego
+# This file is distributed under the same license as the PACKAGE package.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER.
+# Ignacio Casal Quinteiro <nacho.resa@gmail.com>, 2005.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: nautilus-sendto.HEAD\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2005-06-23 12:46+0200\n"
+"PO-Revision-Date: 2005-06-23 12:45+0200\n"
+"Last-Translator: Ignacio Casal Quinteiro <nacho.resa@gmail.com>\n"
+"Language-Team: Galego\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.9.1\n"
+
+#. type
+#. ui requirement
+#. flags
+#. dependencies
+#. priority
+#. id
+#: ../gaim_plugin/nautilus-sendto-plugin.c:303
+msgid "Nautilus Integration"
+msgstr "Integración con Nautilus"
+
+#. name
+#. version
+#. summary
+#: ../gaim_plugin/nautilus-sendto-plugin.c:305
+#: ../gaim_plugin/nautilus-sendto-plugin.c:306
+msgid "Provides integration with Nautilus"
+msgstr "Proporciona integración con Nautilus"
+
+#: ../src/nautilus-nste.c:108 ../src/nautilus-nste.c:123
+msgid "Send to..."
+msgstr "Enviar a..."
+
+#: ../src/nautilus-nste.c:109
+msgid "Send file by mail, instant message ..."
+msgstr "Enviar un ficheiro por correo, por mensaxe instantánea..."
+
+#: ../src/nautilus-nste.c:124
+msgid "Send files by mail, instant message ..."
+msgstr "Enviar ficheiros por correo, por mensaxe instantánea..."
+
+#: ../src/nautilus-sendto-command.c:56
+msgid "Default folder to use"
+msgstr "Cartafol predeterminado a usar"
+
+#: ../src/nautilus-sendto-command.c:57
+msgid "FOLDER"
+msgstr "CARTAFOL"
+
+#: ../src/nautilus-sendto-command.c:126
+msgid "You don't insert the package name"
+msgstr "Non inserta o nome do paquete"
+
+#: ../src/nautilus-sendto-command.c:287
+msgid "Files"
+msgstr "Ficheiros"
+
+#: ../src/nautilus-sendto-command.c:426
+msgid "Nautilus Sendto"
+msgstr "Nautilus Sendto"
+
+#: ../src/nautilus-sendto-force.glade.h:1 ../src/nautilus-sendto.glade.h:2
+msgid ""
+".zip\n"
+".tar.gz\n"
+".tar.bz2"
+msgstr ""
+".zip\n"
+".tar.gz\n"
+".tar.bz2"
+
+#: ../src/nautilus-sendto-force.glade.h:4 ../src/nautilus-sendto.glade.h:5
+msgid "Send To..."
+msgstr "Enviar a...."
+
+#: ../src/nautilus-sendto-force.glade.h:5 ../src/nautilus-sendto.glade.h:6
+msgid "Send as:"
+msgstr "Enviar como:"
+
+#: ../src/nautilus-sendto-force.glade.h:6 ../src/nautilus-sendto.glade.h:7
+msgid "Send packed in"
+msgstr "Enviar empaquetado en"
+
+#: ../src/nautilus-sendto-force.glade.h:7 ../src/nautilus-sendto.glade.h:8
+msgid "Send to:"
+msgstr "Enviar a:"
+
+#: ../src/nautilus-sendto-force.glade.h:8 ../src/nautilus-sendto.glade.h:9
+msgid "_Send"
+msgstr "_Enviar"
+
+#: ../src/nautilus-sendto.glade.h:1
+msgid "*"
+msgstr "*"
+
+#: ../src/plugins/bluetooth.c:255
+msgid "Bluetooth (OBEX)"
+msgstr "Bluetooth (OBEX)"
+
+#: ../src/plugins/evolution.c:229
+msgid "Email (Evolution)"
+msgstr "Correo-e (Evolution)"
+
+#: ../src/plugins/gaim.c:219
+msgid "Instant Message (Gaim)"
+msgstr "Mensaxe instantánea (Gaim)"

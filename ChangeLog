@@ -1,3 +1,7 @@
+2005-06-23  Ignacio Casal Quinteiro  <nacho.resa@gmail.com>
+
+	* configure.in: Added 'gl' to ALL_LINGUAS.
+
 2005-06-12  Roberto Majadas  <roberto.majadas@hispalinux.es>
 
 	* src/nautilus-sendto-command.c : Fix a bug with the contacts
