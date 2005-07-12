@@ -3,19 +3,20 @@
 # This file is distributed under the same license as the nautilus-sendto package.
 # <>, 2005.
 # , fuzzy
+#  <>, 2005.
 # 
 # 
 msgid ""
 msgstr ""
-"Project-Id-Version: nautilus-sendto VERSION\n"
+"Project-Id-Version: nautilus-sendto 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-01-07 20:31+0100\n"
-"PO-Revision-Date: 2005-01-08 00:55+0100\n"
-"Last-Translator:  <>\n"
-"Language-Team: \n"
+"POT-Creation-Date: 2005-07-12 20:11+0000\n"
+"PO-Revision-Date: 2005-07-13 01:12+0200\n"
+"Last-Translator: Арангел Ангов <ufo@linux.net.mk>\n"
+"Language-Team: Macedonian <ossm-members@hedona.on.net.mk>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: "
+"Content-Transfer-Encoding: 8bit"
 
 #. type
 #. ui requirement
@@ -23,52 +24,51 @@ msgstr ""
 #. dependencies
 #. priority
 #. id
-#: gaim_plugin/nautilus-sendto-plugin.c:301
+#: ../gaim_plugin/nautilus-sendto-plugin.c:303
 msgid "Nautilus Integration"
-msgstr "Интеграција на Наутилус"
+msgstr "Интеграција со Наутилус"
 
 #. name
 #. version
 #. summary
-#: gaim_plugin/nautilus-sendto-plugin.c:303
-#: gaim_plugin/nautilus-sendto-plugin.c:304
+#: ../gaim_plugin/nautilus-sendto-plugin.c:305
+#: ../gaim_plugin/nautilus-sendto-plugin.c:306
 msgid "Provides integration with Nautilus"
 msgstr "Нуди интеграција со Наутилус"
 
-#: src/Nautilus_Sendto_Component.server.in.in.h:1
-msgid "Nautilus Sendto component"
-msgstr "Наутилус компонента за испраќање до"
+#: ../src/nautilus-nste.c:108 ../src/nautilus-nste.c:123
+msgid "Send to..."
+msgstr "Испрати на..."
 
-#: src/Nautilus_Sendto_Component.server.in.in.h:2
-#: src/nautilus-sendto-force.glade.h:8 src/nautilus-sendto.glade.h:8
-msgid "Send To..."
-msgstr "Испрати до..."
+#: ../src/nautilus-nste.c:109
+msgid "Send file by mail, instant message ..."
+msgstr "Испрати датотека преку пошта, инстант порака ..."
 
-#: src/nautilus-sendto-command.c:58
+#: ../src/nautilus-nste.c:124
+msgid "Send files by mail, instant message ..."
+msgstr "Испрати датотеки преку пошта, инстант порака ..."
+
+#: ../src/nautilus-sendto-command.c:56
 msgid "Default folder to use"
 msgstr "Стандардна папка за користење"
 
-#: src/nautilus-sendto-command.c:59
+#: ../src/nautilus-sendto-command.c:57
 msgid "FOLDER"
 msgstr "ПАПКА"
 
-#: src/nautilus-sendto-command.c:128
+#: ../src/nautilus-sendto-command.c:126
 msgid "You don't insert the package name"
 msgstr "Не го внесовте името на пакетот"
 
-#: src/nautilus-sendto-command.c:286
+#: ../src/nautilus-sendto-command.c:287
 msgid "Files"
 msgstr "Датотеки"
 
-#: src/nautilus-sendto-command.c:422
+#: ../src/nautilus-sendto-command.c:426
 msgid "Nautilus Sendto"
 msgstr "Наутилус „Испрати до“"
 
-#: src/nautilus-sendto-force.glade.h:1 src/nautilus-sendto.glade.h:1
-msgid "*"
-msgstr "*"
-
-#: src/nautilus-sendto-force.glade.h:2 src/nautilus-sendto.glade.h:2
+#: ../src/nautilus-sendto-force.glade.h:1 ../src/nautilus-sendto.glade.h:2
 msgid ""
 ".zip\n"
 ".tar.gz\n"
@@ -78,31 +78,44 @@ msgstr ""
 ".tar.gz\n"
 ".tar.bz2"
 
-#: src/nautilus-sendto-force.glade.h:5 src/nautilus-sendto.glade.h:5
-msgid "Send As :"
-msgstr "Зачувај како :"
+#: ../src/nautilus-sendto-force.glade.h:4 ../src/nautilus-sendto.glade.h:5
+msgid "Send To..."
+msgstr "Испрати до..."
 
-#: src/nautilus-sendto-force.glade.h:6 src/nautilus-sendto.glade.h:6
-msgid "Send Packed in"
+#: ../src/nautilus-sendto-force.glade.h:5 ../src/nautilus-sendto.glade.h:6
+msgid "Send as:"
+msgstr "Зачувај како:"
+
+#: ../src/nautilus-sendto-force.glade.h:6 ../src/nautilus-sendto.glade.h:7
+msgid "Send packed in"
 msgstr "Испрати спакувано во"
 
-#: src/nautilus-sendto-force.glade.h:7 src/nautilus-sendto.glade.h:7
-msgid "Send To :"
-msgstr "Испрати до :"
+#: ../src/nautilus-sendto-force.glade.h:7 ../src/nautilus-sendto.glade.h:8
+msgid "Send to:"
+msgstr "Испрати до:"
 
-#: src/nautilus-sendto-force.glade.h:9 src/nautilus-sendto.glade.h:9
+#: ../src/nautilus-sendto-force.glade.h:8 ../src/nautilus-sendto.glade.h:9
 msgid "_Send"
 msgstr "_Испрати"
 
-#: src/plugins/evolution.c:196
-msgid "You don't insert any email address"
-msgstr "Не внесовте адреса за е-пошта"
+#: ../src/nautilus-sendto.glade.h:1
+msgid "*"
+msgstr "*"
 
-#: src/plugins/evolution.c:236
+#: ../src/plugins/bluetooth.c:255
+msgid "Bluetooth (OBEX)"
+msgstr "Bluetooth (OBEX)"
+
+#: ../src/plugins/evolution.c:229
 msgid "Email (Evolution)"
 msgstr "Е-пошта (Еволушн)"
 
-#: src/plugins/gaim.c:218
+#: ../src/plugins/gaim.c:219
 msgid "Instant Message (Gaim)"
 msgstr "Инстант порака (Гејм)"
 
+#~ msgid "Nautilus Sendto component"
+#~ msgstr "Наутилус компонента за испраќање до"
+
+#~ msgid "You don't insert any email address"
+#~ msgstr "Не внесовте адреса за е-пошта"
