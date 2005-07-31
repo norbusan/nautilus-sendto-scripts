@@ -29,7 +29,7 @@ static gchar *blist_online;
 static 
 gboolean init (NstPlugin *plugin)
 {
-	printf ("Init gaim plugin\n");
+	g_print ("Init gaim plugin\n");
 	contact_list = NULL;
 
 	blist_online = g_build_path ("/", g_get_home_dir(),

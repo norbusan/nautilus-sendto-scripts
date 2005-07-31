@@ -44,7 +44,7 @@ enum {
 static gboolean
 init (NstPlugin *plugin)
 {
-	printf ("Init bluetooth plugin\n");
+	g_print ("Init bluetooth plugin\n");
 
 	btctl = gnomebt_controller_new ();
 	if (btctl_controller_is_initialised (BTCTL_CONTROLLER (btctl)) == FALSE) {
@@ -61,8 +61,8 @@ init (NstPlugin *plugin)
 }
 
 static void
-add_phone_to_list (GtkListStore *store, const char *name,
-		const char *bdaddr)
+add_phone_to_list (GtkListStore *store, const gchar *name,
+		const gchar *bdaddr)
 {
 	GtkTreeIter iter;
 
@@ -102,7 +102,7 @@ add_known_devices_to_list (GtkListStore *store)
 
 static void
 on_device_name_cb (GnomebtController *btctl,
-		char* device, char* name, gpointer data)
+		gchar* device, gchar* name, gpointer data)
 {
 	GtkListStore *store = (GtkListStore *) data;
 
@@ -196,7 +196,7 @@ send_files (NstPlugin *plugin, GtkWidget *contact_widget,
 	GList *list;
 	gboolean ret;
 	GtkTreeIter iter;
-	char *path, *bdaddr;
+	gchar *path, *bdaddr;
 	int option;
 	guint i;
 	GError *err = NULL;
@@ -222,17 +222,17 @@ send_files (NstPlugin *plugin, GtkWidget *contact_widget,
 	g_ptr_array_add (argv, bdaddr);
 
 	for (list = file_list; list != NULL; list = list->next) {
-		g_ptr_array_add (argv, (char *) list->data);
+		g_ptr_array_add (argv, (gchar *) list->data);
 	}
 	g_ptr_array_add (argv, NULL);
 
 	g_print ("launching command: ");
 	for (i = 0; i < argv->len - 1; i++) {
-		g_print ("%s ", (char *) g_ptr_array_index (argv, i));
+		g_print ("%s ", (gchar *) g_ptr_array_index (argv, i));
 	}
 	g_print ("\n");
 
-	ret = g_spawn_async (NULL, (char **) argv->pdata,
+	ret = g_spawn_async (NULL, (gchar **) argv->pdata,
 			NULL, G_SPAWN_SEARCH_PATH, NULL, NULL, NULL, &err);
 	g_ptr_array_free (argv, TRUE);
 

@@ -382,7 +382,7 @@ nautilus_sendto_init (GnomeProgram *program, int argc, char **argv)
 {
 	poptContext pctx;
 	GValue value = { 0 };
-	const char  *filename;
+	const gchar  *filename;
 
 	g_object_get_property (G_OBJECT (program),
 			       GNOME_PARAM_POPT_CONTEXT,
@@ -399,7 +399,7 @@ nautilus_sendto_init (GnomeProgram *program, int argc, char **argv)
 	}
 
 	while ((filename = poptGetArg (pctx)) != NULL) {
-		char *path;
+		gchar *path;
 
 		path = g_build_path ("/",default_url,
 				     filename, NULL);

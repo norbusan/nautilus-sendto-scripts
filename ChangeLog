@@ -1,3 +1,8 @@
+2005-07-31  Roberto Majadas <telemaco@gnome.org>
+
+	* Add a patch from Ruben Vermeersch for mayor use of glib instead libc
+	THANKS RUBEN !! :)
+
 2005-06-23  Ignacio Casal Quinteiro  <nacho.resa@gmail.com>
 
 	* configure.in: Added 'gl' to ALL_LINGUAS.

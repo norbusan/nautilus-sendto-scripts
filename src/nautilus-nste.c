@@ -41,7 +41,7 @@ sendto_callback (NautilusMenuItem *item,
 {
 	GList            *files, *scan;
 	NautilusFileInfo *file;
-	char             *uri, *path, *dir;
+	gchar            *uri, *path, *dir;
 	GString          *cmd;
 
 	files = g_object_get_data (G_OBJECT (item), "files");
@@ -90,7 +90,7 @@ nautilus_nste_get_file_items (NautilusMenuProvider *provider,
 	
 	for (scan = files; scan; scan = scan->next) {
 		NautilusFileInfo *file = scan->data;
-		char             *scheme;
+		gchar            *scheme;
 		gboolean          local;
 
 		scheme = nautilus_file_info_get_uri_scheme (file);

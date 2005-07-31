@@ -30,7 +30,7 @@ static GHashTable *hash = NULL;
 static 
 gboolean init (NstPlugin *plugin)
 {
-	printf ("Init evolution plugin\n");
+	g_print ("Init evolution plugin\n");
 	
 	bindtextdomain (GETTEXT_PACKAGE, LOCALEDIR);
         bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
@@ -59,14 +59,12 @@ add_evolution_contacts_to_model (GtkWidget *entry,
 
 	book = e_book_new_system_addressbook (NULL);
 	if (!book) {
-		printf ("failed to create local addressbook\n");
-		exit(0);
+		g_error ("failed to create local addressbook\n");
 	}
 	
 	status = e_book_open (book, FALSE, NULL);
 	if (status == FALSE) {
-		printf ("failed to open local addressbook\n");
-		exit(0);
+		g_error ("failed to open local addressbook\n");
 	}
 
 	query = e_book_query_field_exists (E_CONTACT_FULL_NAME);
@@ -74,24 +72,23 @@ add_evolution_contacts_to_model (GtkWidget *entry,
 	e_book_query_unref (query);
 	
 	if (status == FALSE) {
-		printf ("error %d getting card list\n", status);
-		exit(0);
+		g_error ("error %d getting card list\n", status);
 	}
 
 	for (c = cards; c; c = c->next) {
 		EContact *contact = E_CONTACT (c->data);		
-		char *family_name = e_contact_get_const (contact, E_CONTACT_FAMILY_NAME);
-		char *given_name = e_contact_get_const (contact, E_CONTACT_GIVEN_NAME);
+		gchar *family_name = e_contact_get_const (contact, E_CONTACT_FAMILY_NAME);
+		gchar *given_name = e_contact_get_const (contact, E_CONTACT_GIVEN_NAME);
 		GList *emails, *e;
 		
 		emails = e_contact_get (contact, E_CONTACT_EMAIL);
 		for (e = emails; e; e = e->next) {
 			GString *str;
-			char *email = e->data;
+			gchar *email = e->data;
 			
 			hash_value = g_strdup_printf ("mailto:%s",email);
 			if (strlen (family_name)==0){
-				/* Output : name <emai> */
+				/* Output : name <email> */
 				str = g_string_new("");				
 				g_string_printf (str, "%s <%s>", given_name, email);
 				gtk_list_store_append (store, iter);
