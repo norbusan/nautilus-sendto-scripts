@@ -1,4 +1,13 @@
 =============
+Version 0.4
+=============
+
+Nautilus Sendto
+	* New support for gnome-bluetooth (Bastien Nocera)
+	* Some Bugfixes (Ruben, me)
+	* Many translations added
+
+=============
 Version 0.3
 =============
 

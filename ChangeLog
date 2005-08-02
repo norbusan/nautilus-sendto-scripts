@@ -1,3 +1,7 @@
+2005-08-2  Roberto Majadas <telemaco@gnome.org>
+
+	* New version of nautilus-sendto (0.4)
+
 2005-07-31  Roberto Majadas <telemaco@gnome.org>
 
 	* Add a patch from Ruben Vermeersch for mayor use of glib instead libc

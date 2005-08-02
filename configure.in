@@ -1,6 +1,6 @@
 AC_PREREQ(2.52)
 
-AC_INIT(nautilus-sendto, 0.3, http://www.gnome.org)
+AC_INIT(nautilus-sendto, 0.4, http://www.gnome.org)
 AM_CONFIG_HEADER(config.h)
 
 AM_INIT_AUTOMAKE(AC_PACKAGE_NAME, AC_PACKAGE_VERSION)
