@@ -1,15 +1,15 @@
 # Finnish translation to nautilus-sendto
 # Copyright (C) 2004-2005 Free Software Foundation, Inc.
 # This file is distributed under the same license as the nautilus-sendto package.
-# Tommi Vainikainen <thv@iki.fi>, 2004-2005.
+# Tommi Vainikainen <Tommi.Vainikainen@iki.fi>, 2004-2005.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: nautilus-sendto\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-01-20 14:44+0200\n"
-"PO-Revision-Date: 2005-01-20 14:46+0200\n"
-"Last-Translator: Tommi Vainikainen <thv@iki.fi>\n"
+"POT-Creation-Date: 2005-08-03 15:15+0300\n"
+"PO-Revision-Date: 2005-08-03 15:16+0300\n"
+"Last-Translator: Tommi Vainikainen <Tommi.Vainikainen@iki.fi>\n"
 "Language-Team: Finnish <gnome-fi-laatu@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,85 +22,92 @@ msgstr ""
 #. dependencies
 #. priority
 #. id
-#: gaim_plugin/nautilus-sendto-plugin.c:301
+#: ../gaim_plugin/nautilus-sendto-plugin.c:303
 msgid "Nautilus Integration"
 msgstr "Nautilus-integraatio"
 
 #. name
 #. version
 #. summary
-#: gaim_plugin/nautilus-sendto-plugin.c:303
-#: gaim_plugin/nautilus-sendto-plugin.c:304
+#: ../gaim_plugin/nautilus-sendto-plugin.c:305
+#: ../gaim_plugin/nautilus-sendto-plugin.c:306
 msgid "Provides integration with Nautilus"
 msgstr "Tarjoaa integraation Nautilukseen"
 
-#: src/nautilus-sendto-command.c:57
+#: ../src/nautilus-nste.c:108 ../src/nautilus-nste.c:123
+msgid "Send to..."
+msgstr "Lähetä..."
+
+#: ../src/nautilus-nste.c:109
+msgid "Send file by mail, instant message ..."
+msgstr "Lähetä tiedosto sähköpostilla, pikaviestimellä..."
+
+#: ../src/nautilus-nste.c:124
+msgid "Send files by mail, instant message ..."
+msgstr "Lähetä tiedostoja sähköpostilla, pikaviestimellä..."
+
+#: ../src/nautilus-sendto-command.c:56
 msgid "Default folder to use"
 msgstr "Käytettävä oletuskansio"
 
-#: src/nautilus-sendto-command.c:58
+#: ../src/nautilus-sendto-command.c:57
 msgid "FOLDER"
 msgstr "KANSIO"
 
-#: src/nautilus-sendto-command.c:127
+#: ../src/nautilus-sendto-command.c:126
 msgid "You don't insert the package name"
 msgstr "Et antanut paketin nimeä"
 
-#: src/nautilus-sendto-command.c:285
+#: ../src/nautilus-sendto-command.c:287
 msgid "Files"
 msgstr "Tiedostot"
 
-#: src/nautilus-sendto-command.c:421
+#: ../src/nautilus-sendto-command.c:426
 msgid "Nautilus Sendto"
 msgstr "Nautilus-lähetä"
 
-#: src/nautilus-sendto-force.glade.h:1 src/nautilus-sendto.glade.h:2
+#: ../src/nautilus-sendto-force.glade.h:1 ../src/nautilus-sendto.glade.h:2
 msgid ""
 ".zip\n"
 ".tar.gz\n"
 ".tar.bz2"
-msgstr ".zip.tar.gz.tar.bz2"
+msgstr ""
+".zip\n"
+".tar.gz\n"
+".tar.bz2"
 
-#: src/nautilus-sendto-force.glade.h:4 src/nautilus-sendto.glade.h:5
+#: ../src/nautilus-sendto-force.glade.h:4 ../src/nautilus-sendto.glade.h:5
 msgid "Send To..."
 msgstr "Lähetä..."
 
-#: src/nautilus-sendto-force.glade.h:5 src/nautilus-sendto.glade.h:6
+#: ../src/nautilus-sendto-force.glade.h:5 ../src/nautilus-sendto.glade.h:6
 msgid "Send as:"
 msgstr "Lähetä nimellä:"
 
-#: src/nautilus-sendto-force.glade.h:6 src/nautilus-sendto.glade.h:7
+#: ../src/nautilus-sendto-force.glade.h:6 ../src/nautilus-sendto.glade.h:7
 msgid "Send packed in"
 msgstr "Lähetä paketoituna"
 
-#: src/nautilus-sendto-force.glade.h:7 src/nautilus-sendto.glade.h:8
+#: ../src/nautilus-sendto-force.glade.h:7 ../src/nautilus-sendto.glade.h:8
 msgid "Send to:"
 msgstr "Lähetä osoitteeseen:"
 
-#: src/nautilus-sendto-force.glade.h:8 src/nautilus-sendto.glade.h:9
+#: ../src/nautilus-sendto-force.glade.h:8 ../src/nautilus-sendto.glade.h:9
 msgid "_Send"
 msgstr "_Lähetä"
 
-#: src/nautilus-sendto.glade.h:1
+#: ../src/nautilus-sendto.glade.h:1
 msgid "*"
 msgstr "*"
 
-#: src/nautilus-nste.c:108 src/nautilus-nste.c:123
-msgid "Send to..."
-msgstr "Lähetä..."
+#: ../src/plugins/bluetooth.c:255
+msgid "Bluetooth (OBEX)"
+msgstr "Bluetooth (OBEX)"
 
-#: src/nautilus-nste.c:109
-msgid "Send file by mail, instant message ..."
-msgstr "Lähetä tiedosto sähköpostilla, pikaviestimellä..."
-
-#: src/nautilus-nste.c:124
-msgid "Send files by mail, instant message ..."
-msgstr "Lähetä tiedostoja sähköpostilla, pikaviestimellä..."
-
-#: src/plugins/evolution.c:228
+#: ../src/plugins/evolution.c:226
 msgid "Email (Evolution)"
 msgstr "Sähköposti (Evolution)"
 
-#: src/plugins/gaim.c:218
+#: ../src/plugins/gaim.c:219
 msgid "Instant Message (Gaim)"
 msgstr "Pikaviesti (Gaim)"
