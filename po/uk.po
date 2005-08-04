@@ -1,0 +1,112 @@
+# Ukrainian translation of nautilus-sendto.
+# Copyright (C) 2005 Free Software Foundation, Inc.
+# Maxim Dziumanenko <mvd@mylinux.ua>, 2005 
+msgid ""
+msgstr ""
+"Project-Id-Version: nautilus-sendto\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2005-08-04 13:20+0200\n"
+"PO-Revision-Date: 2005-08-04 11:46+0300\n"
+"Last-Translator: Maxim Dziumanenko <mvd@mylinux.ua>\n"
+"Language-Team: Ukrainian <uk@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
+"10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#. type
+#. ui requirement
+#. flags
+#. dependencies
+#. priority
+#. id
+#: ../gaim_plugin/nautilus-sendto-plugin.c:303
+msgid "Nautilus Integration"
+msgstr "Інтеграція з Nautilus"
+
+#. name
+#. version
+#. summary
+#: ../gaim_plugin/nautilus-sendto-plugin.c:305
+#: ../gaim_plugin/nautilus-sendto-plugin.c:306
+msgid "Provides integration with Nautilus"
+msgstr "Забезпечує інтеграцію з Nautilus"
+
+#: ../src/nautilus-nste.c:108 ../src/nautilus-nste.c:123
+msgid "Send to..."
+msgstr "Надіслати до..."
+
+#: ../src/nautilus-nste.c:109
+msgid "Send file by mail, instant message ..."
+msgstr "Надіслати файл поштою, миттєвим повідомленням..."
+
+#: ../src/nautilus-nste.c:124
+msgid "Send files by mail, instant message ..."
+msgstr "Надіслати файли поштою, миттєвим повідомленням..."
+
+#: ../src/nautilus-sendto-command.c:56
+msgid "Default folder to use"
+msgstr "Типова тека"
+
+#: ../src/nautilus-sendto-command.c:57
+msgid "FOLDER"
+msgstr "ТЕКА"
+
+#: ../src/nautilus-sendto-command.c:126
+msgid "You don't insert the package name"
+msgstr "Не слід вставляти назву пакету"
+
+#: ../src/nautilus-sendto-command.c:287
+msgid "Files"
+msgstr "Файли"
+
+#: ../src/nautilus-sendto-command.c:426
+msgid "Nautilus Sendto"
+msgstr "Nautilus Sendto"
+
+#: ../src/nautilus-sendto-force.glade.h:1 ../src/nautilus-sendto.glade.h:2
+msgid ""
+".zip\n"
+".tar.gz\n"
+".tar.bz2"
+msgstr ""
+".zip\n"
+".tar.gz\n"
+".tar.bz2"
+
+#: ../src/nautilus-sendto-force.glade.h:4 ../src/nautilus-sendto.glade.h:5
+msgid "Send To..."
+msgstr "Надіслати до..."
+
+#: ../src/nautilus-sendto-force.glade.h:5 ../src/nautilus-sendto.glade.h:6
+msgid "Send as:"
+msgstr "Надіслати як:"
+
+#: ../src/nautilus-sendto-force.glade.h:6 ../src/nautilus-sendto.glade.h:7
+msgid "Send packed in"
+msgstr "Надіслати упакованим у"
+
+#: ../src/nautilus-sendto-force.glade.h:7 ../src/nautilus-sendto.glade.h:8
+msgid "Send to:"
+msgstr "Надіслати до:"
+
+#: ../src/nautilus-sendto-force.glade.h:8 ../src/nautilus-sendto.glade.h:9
+msgid "_Send"
+msgstr "_Надіслати"
+
+#: ../src/nautilus-sendto.glade.h:1
+msgid "*"
+msgstr "*"
+
+#: ../src/plugins/bluetooth.c:255
+msgid "Bluetooth (OBEX)"
+msgstr "Bluetooth (OBEX)"
+
+#: ../src/plugins/evolution.c:226
+msgid "Email (Evolution)"
+msgstr "Ел.пошта (Evolution)"
+
+#: ../src/plugins/gaim.c:219
+msgid "Instant Message (Gaim)"
+msgstr "Миттєве повідомлення (Gaim)"
