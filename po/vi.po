@@ -1,18 +1,20 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Vietnamese translation for Nautilus SendTo.
+# Copyright © 2005 Gnome i18n Project for Vietnamese.
+# Clytie Siddall <clytie@riverland.net.au>, 2005.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2004-12-13 12:41+0100\n"
-"PO-Revision-Date: 2004-12-14 00:27+0700\n"
-"Last-Translator: Trinh Minh Thanh <tmthanh@yahoo.com>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"Project-Id-Version: nautilus-sendto Gnome HEAD\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2005-08-13 12:24+0000\n"
+"PO-Revision-Date: 2005-08-13 23:09+0930\n"
+"Last-Translator: Clytie Siddall <clytie@riverland.net.au>\n"
+"Language-Team: Vietnamese <gnomevi-list@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"X-Generator: LocFactoryEditor 1.2.2\n"
 
 #  type
 #  ui requirement
@@ -20,55 +22,60 @@ msgstr ""
 #  dependencies
 #  priority
 #  id
-#: gaim_plugin/nautilus-sendto-plugin.c:301
+#. type
+#. ui requirement
+#. flags
+#. dependencies
+#. priority
+#. id
+#: ../gaim_plugin/nautilus-sendto-plugin.c:303
 msgid "Nautilus Integration"
-msgstr "Tính tích hợp Nautilus"
+msgstr "Hợp nhất Nautilus"
 
 #  name
 #  version
 #  summary
-#: gaim_plugin/nautilus-sendto-plugin.c:303
-#: gaim_plugin/nautilus-sendto-plugin.c:304
+#. name
+#. version
+#. summary
+#: ../gaim_plugin/nautilus-sendto-plugin.c:305
+#: ../gaim_plugin/nautilus-sendto-plugin.c:306
 msgid "Provides integration with Nautilus"
-msgstr "Cung cấp tính tích hợp bằng Nautilus"
+msgstr "Hợp nhất với Nautilus."
 
-#: src/nautilus-sendto-command.c:58
+#: ../src/nautilus-nste.c:108 ../src/nautilus-nste.c:123
+msgid "Send to..."
+msgstr "Gửi đến..."
+
+#: ../src/nautilus-nste.c:109
+msgid "Send file by mail, instant message ..."
+msgstr "Gửi tập tin được đính kèm với thư, tin nhắn ..."
+
+#: ../src/nautilus-nste.c:124
+msgid "Send files by mail, instant message ..."
+msgstr "Gửi tập tin được đính kèm với thư, tin nhắn ..."
+
+#: ../src/nautilus-sendto-command.c:56
 msgid "Default folder to use"
-msgstr "Thư mục mặc định để dùng"
+msgstr "Danh mục mặc định cần dùng."
 
-#: src/nautilus-sendto-command.c:59
+#: ../src/nautilus-sendto-command.c:57
 msgid "FOLDER"
 msgstr "THƯ MỤC"
 
-#: src/nautilus-sendto-command.c:128
+#: ../src/nautilus-sendto-command.c:126
 msgid "You don't insert the package name"
-msgstr "Bạn không chèn tên gói tin"
+msgstr "Bạn không nên chèn tên gói tin."
 
-#: src/nautilus-sendto-command.c:286
+#: ../src/nautilus-sendto-command.c:287
 msgid "Files"
 msgstr "Tập tin"
 
-#: src/nautilus-sendto-command.c:422
+#: ../src/nautilus-sendto-command.c:426
 msgid "Nautilus Sendto"
-msgstr "Nautilus Sendto"
+msgstr "Nautilus Send-To"
 
-#: src/Nautilus_Sendto_Component.server.in.in.h:1
-msgid "Nautilus Sendto component"
-msgstr "Thành phần Nautilus Sendto"
-
-#: src/Nautilus_Sendto_Component.server.in.in.h:2
-#: src/nautilus-sendto-force.glade.h:8
-#: src/nautilus-sendto.glade.h:8
-msgid "Send To..."
-msgstr "Gửi đến..."
-
-#: src/nautilus-sendto-force.glade.h:1
-#: src/nautilus-sendto.glade.h:1
-msgid "*"
-msgstr "*"
-
-#: src/nautilus-sendto-force.glade.h:2
-#: src/nautilus-sendto.glade.h:2
+#: ../src/nautilus-sendto-force.glade.h:1 ../src/nautilus-sendto.glade.h:2
 msgid ""
 ".zip\n"
 ".tar.gz\n"
@@ -78,35 +85,38 @@ msgstr ""
 ".tar.gz\n"
 ".tar.bz2"
 
-#: src/nautilus-sendto-force.glade.h:5
-#: src/nautilus-sendto.glade.h:5
-msgid "Send As :"
+#: ../src/nautilus-sendto-force.glade.h:4 ../src/nautilus-sendto.glade.h:5
+msgid "Send To..."
+msgstr "Gửi đến..."
+
+#: ../src/nautilus-sendto-force.glade.h:5 ../src/nautilus-sendto.glade.h:6
+msgid "Send as:"
 msgstr "Gửi theo dạng:"
 
-#: src/nautilus-sendto-force.glade.h:6
-#: src/nautilus-sendto.glade.h:6
-msgid "Send Packed in"
-msgstr ""
+#: ../src/nautilus-sendto-force.glade.h:6 ../src/nautilus-sendto.glade.h:7
+msgid "Send packed in"
+msgstr "Gửi đóng gói trong"
 
-#: src/nautilus-sendto-force.glade.h:7
-#: src/nautilus-sendto.glade.h:7
-msgid "Send To :"
+#: ../src/nautilus-sendto-force.glade.h:7 ../src/nautilus-sendto.glade.h:8
+msgid "Send to:"
 msgstr "Gửi đến:"
 
-#: src/nautilus-sendto-force.glade.h:9
-#: src/nautilus-sendto.glade.h:9
+#: ../src/nautilus-sendto-force.glade.h:8 ../src/nautilus-sendto.glade.h:9
 msgid "_Send"
 msgstr "_Gửi"
 
-#: src/plugins/evolution.c:196
-msgid "You don't insert any email address"
-msgstr "Bạn không chèn địa chỉ email nào"
+#: ../src/nautilus-sendto.glade.h:1
+msgid "*"
+msgstr "*"
 
-#: src/plugins/evolution.c:236
+#: ../src/plugins/bluetooth.c:255
+msgid "Bluetooth (OBEX)"
+msgstr "Bluetooth (OBEX)"
+
+#: ../src/plugins/evolution.c:226
 msgid "Email (Evolution)"
-msgstr "Email (Evolution)"
+msgstr "Thư điện tử (Evolution)"
 
-#: src/plugins/gaim.c:218
+#: ../src/plugins/gaim.c:219
 msgid "Instant Message (Gaim)"
-msgstr "Thông điệp tức thời (Gaim)"
-
+msgstr "Tin nhắn tức khắc (Gaim)"
