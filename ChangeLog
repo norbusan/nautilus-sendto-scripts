@@ -1,3 +1,7 @@
+2005-08-20  Yair Hershkovitz  <yairhr@gmail.com>
+
+	* configure.in: Added "he" to ALL_LINGUAS.
+
 2005-08-04  Maxim Dziumanenko <mvd@mylinux.ua>
 
 	* configure.in: Added 'uk' to ALL_LINGUAS.	
