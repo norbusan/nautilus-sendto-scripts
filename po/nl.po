@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nautilus-sendto\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-02-01 06:10+0100\n"
-"PO-Revision-Date: 2005-02-01 10:30+0100\n"
+"POT-Creation-Date: 2005-08-23 12:38+0000\n"
+"PO-Revision-Date: 2005-08-23 22:18+0100\n"
 "Last-Translator: Reinout van Schouwen <reinout@cs.vu.nl>\n"
 "Language-Team: Dutch <vertaling@vrijschrift.org>\n"
 "MIME-Version: 1.0\n"
@@ -21,39 +21,51 @@ msgstr ""
 #. dependencies
 #. priority
 #. id
-#: gaim_plugin/nautilus-sendto-plugin.c:303
+#: ../gaim_plugin/nautilus-sendto-plugin.c:303
 msgid "Nautilus Integration"
 msgstr "Nautilus-integratie"
 
 #. name
 #. version
 #. summary
-#: gaim_plugin/nautilus-sendto-plugin.c:305
-#: gaim_plugin/nautilus-sendto-plugin.c:306
+#: ../gaim_plugin/nautilus-sendto-plugin.c:305
+#: ../gaim_plugin/nautilus-sendto-plugin.c:306
 msgid "Provides integration with Nautilus"
 msgstr "Voorziet in integratie met Nautilus"
 
-#: src/nautilus-sendto-command.c:57
+#: ../src/nautilus-nste.c:108 ../src/nautilus-nste.c:123
+msgid "Send to..."
+msgstr "Sturen naar..."
+
+#: ../src/nautilus-nste.c:109
+msgid "Send file by mail, instant message ..."
+msgstr "Bestand versturen per e-mail, direct bericht..."
+
+#: ../src/nautilus-nste.c:124
+msgid "Send files by mail, instant message ..."
+msgstr "Bestanden versturen per e-mail, direct bericht..."
+
+#: ../src/nautilus-sendto-command.c:56
 msgid "Default folder to use"
 msgstr "Standaardmap"
 
-#: src/nautilus-sendto-command.c:58
+#: ../src/nautilus-sendto-command.c:57
 msgid "FOLDER"
 msgstr "MAP"
 
-#: src/nautilus-sendto-command.c:127
+#: ../src/nautilus-sendto-command.c:126
 msgid "You don't insert the package name"
 msgstr "U heeft de pakketnaam niet ingevoerd"
 
-#: src/nautilus-sendto-command.c:287
+#: ../src/nautilus-sendto-command.c:287
 msgid "Files"
 msgstr "Bestanden"
 
-#: src/nautilus-sendto-command.c:425
+#: ../src/nautilus-sendto-command.c:426
 msgid "Nautilus Sendto"
 msgstr "Nautilus Sendto"
 
-#: src/nautilus-sendto-force.glade.h:1 src/nautilus-sendto.glade.h:2
+#: ../src/nautilus-sendto-force.glade.h:1 ../src/nautilus-sendto.glade.h:2
 msgid ""
 ".zip\n"
 ".tar.gz\n"
@@ -63,47 +75,39 @@ msgstr ""
 ".tar.gz\n"
 ".tar.bz2"
 
-#: src/nautilus-sendto-force.glade.h:4 src/nautilus-sendto.glade.h:5
+#: ../src/nautilus-sendto-force.glade.h:4 ../src/nautilus-sendto.glade.h:5
 msgid "Send To..."
 msgstr "Sturen naar..."
 
-#: src/nautilus-sendto-force.glade.h:5 src/nautilus-sendto.glade.h:6
+#: ../src/nautilus-sendto-force.glade.h:5 ../src/nautilus-sendto.glade.h:6
 msgid "Send as:"
 msgstr "Versturen als:"
 
-#: src/nautilus-sendto-force.glade.h:6 src/nautilus-sendto.glade.h:7
+#: ../src/nautilus-sendto-force.glade.h:6 ../src/nautilus-sendto.glade.h:7
 msgid "Send packed in"
 msgstr "Versturen verpakt in"
 
-#: src/nautilus-sendto-force.glade.h:7 src/nautilus-sendto.glade.h:8
+#: ../src/nautilus-sendto-force.glade.h:7 ../src/nautilus-sendto.glade.h:8
 msgid "Send to:"
 msgstr "Versturen naar:"
 
-#: src/nautilus-sendto-force.glade.h:8 src/nautilus-sendto.glade.h:9
+#: ../src/nautilus-sendto-force.glade.h:8 ../src/nautilus-sendto.glade.h:9
 msgid "_Send"
 msgstr "Ver_sturen"
 
-#: src/nautilus-sendto.glade.h:1
+#: ../src/nautilus-sendto.glade.h:1
 msgid "*"
 msgstr "*"
 
-#: src/nautilus-nste.c:108 src/nautilus-nste.c:123
-msgid "Send to..."
-msgstr "Sturen naar..."
+#: ../src/plugins/bluetooth.c:255
+msgid "Bluetooth (OBEX)"
+msgstr "Bluetooth (OBEX)"
 
-#: src/nautilus-nste.c:109
-msgid "Send file by mail, instant message ..."
-msgstr "Bestand versturen per e-mail, direct bericht..."
-
-#: src/nautilus-nste.c:124
-msgid "Send files by mail, instant message ..."
-msgstr "Bestanden versturen per e-mail, direct bericht..."
-
-#: src/plugins/evolution.c:229
+#: ../src/plugins/evolution.c:226
 msgid "Email (Evolution)"
 msgstr "E-mail (Evolution)"
 
-#: src/plugins/gaim.c:219
+#: ../src/plugins/gaim.c:219
 msgid "Instant Message (Gaim)"
 msgstr "Direct bericht (Gaim)"
 
