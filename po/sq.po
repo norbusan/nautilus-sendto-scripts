@@ -1,19 +1,19 @@
-# translation of nautilus-sendto.HEAD.po to Albanian
-# This file is distributed under the same license as the PACKAGE package.
-# Copyright (C) 2005 THE PACKAGE'S COPYRIGHT HOLDER.
+# Përkthimi i mesazheve të nautilus-sendto në shqip
+# This file is distributed under the same license as the Nautilus package.
+# Copyright (C) 2005 Free Software Foundation, Inc.
 # Elian Myftiu <elian@alblinux.net>, 2005.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: nautilus-sendto.HEAD\n"
+"Project-Id-Version: nautilus-sendto HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-02-04 14:17+0100\n"
-"PO-Revision-Date: 2005-02-04 20:36+0100\n"
+"POT-Creation-Date: 2005-09-07 13:46+0200\n"
+"PO-Revision-Date: 2005-09-07 18:56+0200\n"
 "Last-Translator: Elian Myftiu <elian@alblinux.net>\n"
 "Language-Team: Albanian <gnome-albanian-perkthyesit@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit"
+"Content-Transfer-Encoding: 8bit\n"
 
 #. type
 #. ui requirement
@@ -21,39 +21,51 @@ msgstr ""
 #. dependencies
 #. priority
 #. id
-#: gaim_plugin/nautilus-sendto-plugin.c:303
+#: ../gaim_plugin/nautilus-sendto-plugin.c:303
 msgid "Nautilus Integration"
 msgstr "Integrim i Nautilusit"
 
 #. name
 #. version
 #. summary
-#: gaim_plugin/nautilus-sendto-plugin.c:305
-#: gaim_plugin/nautilus-sendto-plugin.c:306
+#: ../gaim_plugin/nautilus-sendto-plugin.c:305
+#: ../gaim_plugin/nautilus-sendto-plugin.c:306
 msgid "Provides integration with Nautilus"
 msgstr "Pajis integrim me Nautilus"
 
-#: src/nautilus-sendto-command.c:57
+#: ../src/nautilus-nste.c:108 ../src/nautilus-nste.c:123
+msgid "Send to..."
+msgstr "Dërgo tek..."
+
+#: ../src/nautilus-nste.c:109
+msgid "Send file by mail, instant message ..."
+msgstr "Dërgo file me postë, mesazh çasti ..."
+
+#: ../src/nautilus-nste.c:124
+msgid "Send files by mail, instant message ..."
+msgstr "Dërgo file-t me postë, mesazh çasti ..."
+
+#: ../src/nautilus-sendto-command.c:56
 msgid "Default folder to use"
 msgstr "Kartela e parazgjedhur për tu përdorur"
 
-#: src/nautilus-sendto-command.c:58
+#: ../src/nautilus-sendto-command.c:57
 msgid "FOLDER"
 msgstr "KARTELA"
 
-#: src/nautilus-sendto-command.c:127
+#: ../src/nautilus-sendto-command.c:126
 msgid "You don't insert the package name"
 msgstr "Nuk shkruan emrin e paketit"
 
-#: src/nautilus-sendto-command.c:287
+#: ../src/nautilus-sendto-command.c:287
 msgid "Files"
 msgstr "File"
 
-#: src/nautilus-sendto-command.c:425
+#: ../src/nautilus-sendto-command.c:426
 msgid "Nautilus Sendto"
 msgstr "Nautilus Dërgo Tek"
 
-#: src/nautilus-sendto-force.glade.h:1 src/nautilus-sendto.glade.h:2
+#: ../src/nautilus-sendto-force.glade.h:1 ../src/nautilus-sendto.glade.h:2
 msgid ""
 ".zip\n"
 ".tar.gz\n"
@@ -63,47 +75,39 @@ msgstr ""
 ".tar.gz\n"
 ".tar.bz2"
 
-#: src/nautilus-sendto-force.glade.h:4 src/nautilus-sendto.glade.h:5
+#: ../src/nautilus-sendto-force.glade.h:4 ../src/nautilus-sendto.glade.h:5
 msgid "Send To..."
 msgstr "Dërgo Tek..."
 
-#: src/nautilus-sendto-force.glade.h:5 src/nautilus-sendto.glade.h:6
+#: ../src/nautilus-sendto-force.glade.h:5 ../src/nautilus-sendto.glade.h:6
 msgid "Send as:"
 msgstr "Dërgo si:"
 
-#: src/nautilus-sendto-force.glade.h:6 src/nautilus-sendto.glade.h:7
+#: ../src/nautilus-sendto-force.glade.h:6 ../src/nautilus-sendto.glade.h:7
 msgid "Send packed in"
 msgstr "Dërgo të paketuar"
 
-#: src/nautilus-sendto-force.glade.h:7 src/nautilus-sendto.glade.h:8
+#: ../src/nautilus-sendto-force.glade.h:7 ../src/nautilus-sendto.glade.h:8
 msgid "Send to:"
 msgstr "Dërgo tek:"
 
-#: src/nautilus-sendto-force.glade.h:8 src/nautilus-sendto.glade.h:9
+#: ../src/nautilus-sendto-force.glade.h:8 ../src/nautilus-sendto.glade.h:9
 msgid "_Send"
 msgstr "_Dërgo"
 
-#: src/nautilus-sendto.glade.h:1
+#: ../src/nautilus-sendto.glade.h:1
 msgid "*"
 msgstr "*"
 
-#: src/nautilus-nste.c:108 src/nautilus-nste.c:123
-msgid "Send to..."
-msgstr "Dërgo tek..."
+#: ../src/plugins/bluetooth.c:255
+msgid "Bluetooth (OBEX)"
+msgstr "Bluetooth (OBEX)"
 
-#: src/nautilus-nste.c:109
-msgid "Send file by mail, instant message ..."
-msgstr "Dërgo file me postë, mesazh çasti ..."
-
-#: src/nautilus-nste.c:124
-msgid "Send files by mail, instant message ..."
-msgstr "Dërgo file-t me postë, mesazh çasti ..."
-
-#: src/plugins/evolution.c:229
+#: ../src/plugins/evolution.c:226
 msgid "Email (Evolution)"
 msgstr "Email (Evolution)"
 
-#: src/plugins/gaim.c:219
+#: ../src/plugins/gaim.c:219
 msgid "Instant Message (Gaim)"
 msgstr "Mesazh Çasti (Gaim)"
 
