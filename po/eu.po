@@ -3,15 +3,14 @@
 # Copyright (C) 2005 Mikel Olasagasti
 # This file is distributed under the same license as the nautilus-sendto package.
 # Mikel Olasagasti <hey_neken@mundurat.net>, 2005.
-#  <hey_neken@mundurat.net>, 2005.
 # Iñaki Larrañaga  <dooteo@euskalgnu.org>, 2005.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: nautilus-sendto.HEAD.eu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-05-16 17:53+0200\n"
-"PO-Revision-Date: 2005-05-12 22:45+0200\n"
+"POT-Creation-Date: 2005-09-09 17:24+0200\n"
+"PO-Revision-Date: 2005-09-09 17:24+0200\n"
 "Last-Translator: Iñaki Larrañaga  <dooteo@euskalgnu.or\n"
 "Language-Team:  <itzulpena@euskalgnu.org>\n"
 "MIME-Version: 1.0\n"
@@ -37,15 +36,27 @@ msgstr "Nautilus-en integrazioa"
 msgid "Provides integration with Nautilus"
 msgstr "Nautilusekin integratzea eskaintzen du"
 
-#: ../src/nautilus-sendto-command.c:57
+#: ../src/nautilus-nste.c:108 ../src/nautilus-nste.c:123
+msgid "Send to..."
+msgstr "Bidali honi..."
+
+#: ../src/nautilus-nste.c:109
+msgid "Send file by mail, instant message ..."
+msgstr "Bidali fitxategia posta elektrikoz, berehalako mezularitza ..."
+
+#: ../src/nautilus-nste.c:124
+msgid "Send files by mail, instant message ..."
+msgstr "Bidali fitxategiak posta elektrikoz, berehalako mezularitza ..."
+
+#: ../src/nautilus-sendto-command.c:56
 msgid "Default folder to use"
 msgstr "Erabiliko den lehenetsitako karpeta"
 
-#: ../src/nautilus-sendto-command.c:58
+#: ../src/nautilus-sendto-command.c:57
 msgid "FOLDER"
 msgstr "KARPETA"
 
-#: ../src/nautilus-sendto-command.c:127
+#: ../src/nautilus-sendto-command.c:126
 msgid "You don't insert the package name"
 msgstr "Ez duzu paketearen izena idatzi"
 
@@ -53,7 +64,7 @@ msgstr "Ez duzu paketearen izena idatzi"
 msgid "Files"
 msgstr "Fitxategiak"
 
-#: ../src/nautilus-sendto-command.c:425
+#: ../src/nautilus-sendto-command.c:426
 msgid "Nautilus Sendto"
 msgstr "Nautilus Sendto"
 
@@ -91,19 +102,11 @@ msgstr "_Bidali"
 msgid "*"
 msgstr "*"
 
-#: ../src/nautilus-nste.c:108 ../src/nautilus-nste.c:123
-msgid "Send to..."
-msgstr "Bidali honi..."
+#: ../src/plugins/bluetooth.c:255
+msgid "Bluetooth (OBEX)"
+msgstr "Bluetooth (OBEX)"
 
-#: ../src/nautilus-nste.c:109
-msgid "Send file by mail, instant message ..."
-msgstr "Bidali fitxategia posta elektrikoz, berehalako mezularitza ..."
-
-#: ../src/nautilus-nste.c:124
-msgid "Send files by mail, instant message ..."
-msgstr "Bidali fitxategiak posta elektrikoz, berehalako mezularitza ..."
-
-#: ../src/plugins/evolution.c:229
+#: ../src/plugins/evolution.c:226
 msgid "Email (Evolution)"
 msgstr "Posta (Evolution)"
 
