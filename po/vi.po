@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: nautilus-sendto Gnome HEAD\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2005-08-13 12:24+0000\n"
-"PO-Revision-Date: 2005-08-13 23:09+0930\n"
+"PO-Revision-Date: 2005-09-16 17:21+0930\n"
 "Last-Translator: Clytie Siddall <clytie@riverland.net.au>\n"
 "Language-Team: Vietnamese <gnomevi-list@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -57,7 +57,7 @@ msgstr "Gửi tập tin được đính kèm với thư, tin nhắn ..."
 
 #: ../src/nautilus-sendto-command.c:56
 msgid "Default folder to use"
-msgstr "Danh mục mặc định cần dùng."
+msgstr "Thư mục mặc định cần dùng."
 
 #: ../src/nautilus-sendto-command.c:57
 msgid "FOLDER"
