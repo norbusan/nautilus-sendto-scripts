@@ -1,3 +1,7 @@
+2005-10-12  Pawan Chitrakar  <pchitrakar@gmail.com>
+
+	* configure.in: Added ne in ALL_LINGUAS
+
 2005-08-20  Yair Hershkovitz  <yairhr@gmail.com>
 
 	* configure.in: Added "he" to ALL_LINGUAS.

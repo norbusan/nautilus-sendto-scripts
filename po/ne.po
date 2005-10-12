@@ -1,0 +1,115 @@
+# translation of nautilus-sendto.HEAD.po to Nepali
+# This file is distributed under the same license as the PACKAGE package.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER.
+# Pawan Chitrakar <pawan@mpp.org.np>, 2005.
+# Shiva Prasad Pokharel <pokharelshiva@hotmail.com>, 2005.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: nautilus-sendto.HEAD\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2005-10-12 14:01+0545\n"
+"PO-Revision-Date: 2005-07-02 08:34+0545\n"
+"Last-Translator: Shiva Prasad Pokharel <pokharelshiva@hotmail.com>\n"
+"Language-Team: Nepali <info@mpp.org.np>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.9.1\n"
+"Plural-Forms: Nplurals=2;plural=(n!=1)\n"
+
+#. type
+#. ui requirement
+#. flags
+#. dependencies
+#. priority
+#. id
+#: ../gaim_plugin/nautilus-sendto-plugin.c:303
+msgid "Nautilus Integration"
+msgstr "नटलस अनुक्तन"
+
+#. name
+#. version
+#. summary
+#: ../gaim_plugin/nautilus-sendto-plugin.c:305
+#: ../gaim_plugin/nautilus-sendto-plugin.c:306
+msgid "Provides integration with Nautilus"
+msgstr "नटलस संग अनुक्तन प्रदान गर्दछ"
+
+#: ../src/nautilus-nste.c:108 ../src/nautilus-nste.c:123
+msgid "Send to..."
+msgstr "लाई पठाउनुहोस्... "
+
+#: ../src/nautilus-nste.c:109
+msgid "Send file by mail, instant message ..."
+msgstr "फाइल मेल द्वारा पठाउनुहोस्, जरुरी सन्देश..."
+
+#: ../src/nautilus-nste.c:124
+msgid "Send files by mail, instant message ..."
+msgstr "फाइलहरु मेल द्वारा पठाउनुहोस्, जरुरी सन्देश..."
+
+#: ../src/nautilus-sendto-command.c:56
+msgid "Default folder to use"
+msgstr "प्रयोगको लागी पूर्वनिर्धारित फोल्डरई"
+
+#: ../src/nautilus-sendto-command.c:57
+msgid "FOLDER"
+msgstr "फोल्डर"
+
+#: ../src/nautilus-sendto-command.c:126
+msgid "You don't insert the package name"
+msgstr "तपाइँ प्याकेज नाम राख्नु हुन्न"
+
+#: ../src/nautilus-sendto-command.c:287
+msgid "Files"
+msgstr "फाईलहरू"
+
+#: ../src/nautilus-sendto-command.c:426
+msgid "Nautilus Sendto"
+msgstr "नटलस सेन्डटो"
+
+#: ../src/nautilus-sendto-force.glade.h:1 ../src/nautilus-sendto.glade.h:2
+msgid ""
+".zip\n"
+".tar.gz\n"
+".tar.bz2"
+msgstr ""
+".जिप\n"
+".टार.जिजेट\n"
+".टार.विजेड२"
+
+#: ../src/nautilus-sendto-force.glade.h:4 ../src/nautilus-sendto.glade.h:5
+msgid "Send To..."
+msgstr "मा पठाउनुहोस्..."
+
+#: ../src/nautilus-sendto-force.glade.h:5 ../src/nautilus-sendto.glade.h:6
+msgid "Send as:"
+msgstr "को रुपमा पठाउनुहोस्:"
+
+#: ../src/nautilus-sendto-force.glade.h:6 ../src/nautilus-sendto.glade.h:7
+msgid "Send packed in"
+msgstr "प्याक गरियकोलाई  भित्र पठाउनुहोस्"
+
+#: ../src/nautilus-sendto-force.glade.h:7 ../src/nautilus-sendto.glade.h:8
+msgid "Send to:"
+msgstr "लाई पठाउनुहोस्:"
+
+#: ../src/nautilus-sendto-force.glade.h:8 ../src/nautilus-sendto.glade.h:9
+msgid "_Send"
+msgstr "_पठाऊनुहोस"
+
+#: ../src/nautilus-sendto.glade.h:1
+msgid "*"
+msgstr "*"
+
+#: ../src/plugins/bluetooth.c:255
+msgid "Bluetooth (OBEX)"
+msgstr ""
+
+#: ../src/plugins/evolution.c:226
+msgid "Email (Evolution)"
+msgstr "इमेल(इभुलोसन)"
+
+#: ../src/plugins/gaim.c:219
+msgid "Instant Message (Gaim)"
+msgstr "जरुरी सन्देश(गेईम)"
