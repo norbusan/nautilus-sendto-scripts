@@ -1,17 +1,17 @@
-# English translation of Nautilus send to.
-# Copyright (C) 2004 Free Software Foundation
+# Bulgarian translation of Nautilus send to.
+# Copyright (C) 2004, 2005 Free Software Foundation
 # This file is distributed under the same license as the Nautilus-sendto package.
 # Vladimir Petkov <vpetkov@i-space.org>, 2004.
-# 
-# 
+# Alexander Shopov <ash@contact.bg>, 2005.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: nautilus-sendto gnome 2.10 proposed\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-01-20 14:20+0200\n"
-"PO-Revision-Date: 2005-01-20 07:37+0200\n"
+"POT-Creation-Date: 2005-12-01 13:57+0200\n"
+"PO-Revision-Date: 2005-12-01 08:58+0200\n"
 "Last-Translator: Vladimir Petkov <vpetkov@i-space.org>\n"
-"Language-Team: Bulgarian <dict@linux.zonebg.com>\n"
+"Language-Team: Bulgarian <dict@fsa-bg.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -23,39 +23,51 @@ msgstr ""
 #. dependencies
 #. priority
 #. id
-#: gaim_plugin/nautilus-sendto-plugin.c:301
+#: ../gaim_plugin/nautilus-sendto-plugin.c:303
 msgid "Nautilus Integration"
 msgstr "Интеграция с Nautilus"
 
 #. name
 #. version
 #. summary
-#: gaim_plugin/nautilus-sendto-plugin.c:303
-#: gaim_plugin/nautilus-sendto-plugin.c:304
+#: ../gaim_plugin/nautilus-sendto-plugin.c:305
+#: ../gaim_plugin/nautilus-sendto-plugin.c:306
 msgid "Provides integration with Nautilus"
 msgstr "Осигурява интеграция с Nautilus"
 
-#: src/nautilus-sendto-command.c:57
+#: ../src/nautilus-nste.c:108 ../src/nautilus-nste.c:123
+msgid "Send to..."
+msgstr "Изпращане до..."
+
+#: ../src/nautilus-nste.c:109
+msgid "Send file by mail, instant message ..."
+msgstr "Изпращане на файл чрез писмо, бързо съобщение..."
+
+#: ../src/nautilus-nste.c:124
+msgid "Send files by mail, instant message ..."
+msgstr "Изпращане на файлове чрез писмо, бързо съобщение..."
+
+#: ../src/nautilus-sendto-command.c:56
 msgid "Default folder to use"
 msgstr "Стандартна папка в употреба"
 
-#: src/nautilus-sendto-command.c:58
+#: ../src/nautilus-sendto-command.c:57
 msgid "FOLDER"
 msgstr "ПАПКА"
 
-#: src/nautilus-sendto-command.c:127
+#: ../src/nautilus-sendto-command.c:126
 msgid "You don't insert the package name"
 msgstr "Не сте написали името на пакета"
 
-#: src/nautilus-sendto-command.c:285
+#: ../src/nautilus-sendto-command.c:287
 msgid "Files"
 msgstr "Файлове"
 
-#: src/nautilus-sendto-command.c:421
+#: ../src/nautilus-sendto-command.c:426
 msgid "Nautilus Sendto"
 msgstr "Nautilus Sendto"
 
-#: src/nautilus-sendto-force.glade.h:1 src/nautilus-sendto.glade.h:2
+#: ../src/nautilus-sendto-force.glade.h:1 ../src/nautilus-sendto.glade.h:2
 msgid ""
 ".zip\n"
 ".tar.gz\n"
@@ -65,46 +77,38 @@ msgstr ""
 ".tar.gz\n"
 ".tar.bz2"
 
-#: src/nautilus-sendto-force.glade.h:4 src/nautilus-sendto.glade.h:5
+#: ../src/nautilus-sendto-force.glade.h:4 ../src/nautilus-sendto.glade.h:5
 msgid "Send To..."
 msgstr "Изпращане до..."
 
-#: src/nautilus-sendto-force.glade.h:5 src/nautilus-sendto.glade.h:6
+#: ../src/nautilus-sendto-force.glade.h:5 ../src/nautilus-sendto.glade.h:6
 msgid "Send as:"
 msgstr "Изпращане като:"
 
-#: src/nautilus-sendto-force.glade.h:6 src/nautilus-sendto.glade.h:7
+#: ../src/nautilus-sendto-force.glade.h:6 ../src/nautilus-sendto.glade.h:7
 msgid "Send packed in"
 msgstr "Изпращане пакетирано в"
 
-#: src/nautilus-sendto-force.glade.h:7 src/nautilus-sendto.glade.h:8
+#: ../src/nautilus-sendto-force.glade.h:7 ../src/nautilus-sendto.glade.h:8
 msgid "Send to:"
 msgstr "Изпращане до:"
 
-#: src/nautilus-sendto-force.glade.h:8 src/nautilus-sendto.glade.h:9
+#: ../src/nautilus-sendto-force.glade.h:8 ../src/nautilus-sendto.glade.h:9
 msgid "_Send"
 msgstr "_Изпращане"
 
-#: src/nautilus-sendto.glade.h:1
+#: ../src/nautilus-sendto.glade.h:1
 msgid "*"
 msgstr "*"
 
-#: src/nautilus-nste.c:108 src/nautilus-nste.c:123
-msgid "Send to..."
-msgstr "Изпращане до..."
+#: ../src/plugins/bluetooth.c:255
+msgid "Bluetooth (OBEX)"
+msgstr "Bluetooth (OBEX)"
 
-#: src/nautilus-nste.c:109
-msgid "Send file by mail, instant message ..."
-msgstr "Изпращане на файл чрез писмо, бързо съобщение..."
-
-#: src/nautilus-nste.c:124
-msgid "Send files by mail, instant message ..."
-msgstr "Изпращане на файлове чрез писмо, бързо съобщение..."
-
-#: src/plugins/evolution.c:228
+#: ../src/plugins/evolution.c:226
 msgid "Email (Evolution)"
-msgstr "Ел. писмо (Evolution)"
+msgstr "Е-писмо (Evolution)"
 
-#: src/plugins/gaim.c:218
+#: ../src/plugins/gaim.c:219
 msgid "Instant Message (Gaim)"
 msgstr "Бързо съобщение (Gaim)"
