@@ -1,0 +1,125 @@
+# Italian translation of nautilus-sendto.
+# Copyright (C) 2004-2005 Free Software Foundation, Inc.
+# This file is distributed under the same license as the nautilus-sendto package.
+# Paolo Rampino <clickma@gmail.com>, 2004-2005.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: nautilus-sendto\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2005-01-22 12:40+0100\n"
+"PO-Revision-Date: 2005-12-07 15:02+0100\n"
+"Last-Translator: Paolo Rampino <paolo@clickma.it>\n"
+"Language-Team: Italian <gnome-l10n-it>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type
+#. ui requirement
+#. flags
+#. dependencies
+#. priority
+#. id
+#: gaim_plugin/nautilus-sendto-plugin.c:301
+msgid "Nautilus Integration"
+msgstr "Integrazione con Nautilus"
+
+#. name
+#. version
+#. summary
+#: gaim_plugin/nautilus-sendto-plugin.c:303
+#: gaim_plugin/nautilus-sendto-plugin.c:304
+msgid "Provides integration with Nautilus"
+msgstr "Si integra con Nautilus"
+
+#: src/nautilus-sendto-command.c:57
+msgid "Default folder to use"
+msgstr "Cartella principale da usare"
+
+#: src/nautilus-sendto-command.c:58
+msgid "FOLDER"
+msgstr "CARTELLA"
+
+#: src/nautilus-sendto-command.c:127
+msgid "You don't insert the package name"
+msgstr "Non hai inserito il nome del pacchetto"
+
+#: src/nautilus-sendto-command.c:285
+msgid "Files"
+msgstr "File"
+
+#: src/nautilus-sendto-command.c:421
+msgid "Nautilus Sendto"
+msgstr "Nautilus Invia a"
+
+#: src/nautilus-sendto-force.glade.h:1
+#: src/nautilus-sendto.glade.h:2
+msgid ""
+".zip\n"
+".tar.gz\n"
+".tar.bz2"
+msgstr ""
+".zip\n"
+".tar.gz\n"
+".tar.bz2"
+
+#: src/nautilus-sendto-force.glade.h:4
+#: src/nautilus-sendto.glade.h:5
+msgid "Send To..."
+msgstr "Invia a..."
+
+#: src/nautilus-sendto-force.glade.h:5
+#: src/nautilus-sendto.glade.h:6
+msgid "Send as:"
+msgstr "Invia come:"
+
+#: src/nautilus-sendto-force.glade.h:6
+#: src/nautilus-sendto.glade.h:7
+msgid "Send packed in"
+msgstr "Invia compresso in"
+
+#: src/nautilus-sendto-force.glade.h:7
+#: src/nautilus-sendto.glade.h:8
+msgid "Send to:"
+msgstr "Invia a:"
+
+#: src/nautilus-sendto-force.glade.h:8
+#: src/nautilus-sendto.glade.h:9
+msgid "_Send"
+msgstr "_Invia"
+
+#: src/nautilus-sendto.glade.h:1
+msgid "*"
+msgstr "*"
+
+#: src/nautilus-nste.c:108
+#: src/nautilus-nste.c:123
+msgid "Send to..."
+msgstr "Invia a..."
+
+#: src/nautilus-nste.c:109
+msgid "Send file by mail, instant message ..."
+msgstr "Invia file via email, messaggio istantaneo ..."
+
+#: src/nautilus-nste.c:124
+msgid "Send files by mail, instant message ..."
+msgstr "Invia file via email, messaggio istantaneo ..."
+
+#: src/plugins/evolution.c:228
+msgid "Email (Evolution)"
+msgstr "Email (Evolution)"
+
+#: src/plugins/gaim.c:218
+msgid "Instant Message (Gaim)"
+msgstr "Messaggio Istantaneo (Gaim)"
+
+#~ msgid "You didn't insert the package name"
+#~ msgstr "Você não digitou o nome do pacote"
+#~ msgid "Nautilus Sendto component"
+#~ msgstr "Componente do Nautilus Sendto"
+#~ msgid "You don't insert any email address"
+#~ msgstr "Você não digitou nenhum endereço de email"
+#~ msgid "You didn't insert any email address"
+#~ msgstr "Você não digitou nenhum endereço de email"
+

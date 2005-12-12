@@ -1,3 +1,7 @@
+2005-12-12  Bastien Nocera  <hadess@hadess.net>
+
+	* configure.in: Added it to ALL_LINGUAS
+
 2005-10-12  Pawan Chitrakar  <pchitrakar@gmail.com>
 
 	* configure.in: Added ne in ALL_LINGUAS
