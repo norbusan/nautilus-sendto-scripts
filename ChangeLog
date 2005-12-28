@@ -1,3 +1,7 @@
+2005-12-28  Roberto Majadas  <telemaco@gnome.org>
+
+	* src/nautilus-sendto[-force].glade: Some changes in UI
+
 2005-12-27  Roberto Majadas  <telemaco@gnome.org>
 
 	* src/plugins/evolution.c: Fix (I think so) the nautilus-sendto crash. Thanks Peter Johanson. [Bug 317081]
