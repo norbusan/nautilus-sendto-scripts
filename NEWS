@@ -1,3 +1,15 @@
+============
+Version 0.5
+============
+
+Nautilus Sendto
+	* Fix (I think so) the nautilus-sendto crash. Thanks Peter Johanson. [Bug 317081]
+        * Fix bluetooth bug in nautilus sendto plugin [Bug 324278]
+        * Now nautilus sendto compile evolution plugin if evolution is available
+        * Force the dependencies to gnome2.13-14
+        * Fix crash if no plugins [Bug 321063] .Thanks Alex Larsson
+	* Many translations !! THANKS ALL NAUTILUS-SENDTO TRANSLATORS !!!
+
 =============
 Version 0.4
 =============

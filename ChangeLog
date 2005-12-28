@@ -1,3 +1,15 @@
+2005-12-27  Roberto Majadas  <telemaco@gnome.org>
+
+	* src/plugins/evolution.c: Fix (I think so) the nautilus-sendto crash. Thanks Peter Johanson. [Bug 317081]
+	
+	* src/plugins/bluetooth.c: Added ubuntu bluetooth patch to nautilus sendto [Bug 324278]
+
+	* src/plugins/Makefile.am: Now nautilus sendto compile evolution plugin if evolution is available
+
+	* configure.in: Force the dependencies to gnome2.13-14
+
+	* src/nautilus-sendto-command.c: [Bug 321063 Crash if no plugins] Thanks Alex Larsson
+
 2005-12-12  Bastien Nocera  <hadess@hadess.net>
 
 	* configure.in: Added it to ALL_LINGUAS

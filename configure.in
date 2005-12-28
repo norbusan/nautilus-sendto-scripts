@@ -1,6 +1,6 @@
 AC_PREREQ(2.52)
 
-AC_INIT(nautilus-sendto, 0.4, http://www.gnome.org)
+AC_INIT(nautilus-sendto, 0.5, http://www.gnome.org)
 AM_CONFIG_HEADER(config.h)
 
 AM_INIT_AUTOMAKE(AC_PACKAGE_NAME, AC_PACKAGE_VERSION)
@@ -18,23 +18,25 @@ dnl --------------------------------------------------
 
 GLIB_REQUIRED=2.4.0
 GTK_REQUIRED=2.4.0
-GLADE_REQUIRED=2.4.0
-EBOOK_REQUIRED=1.0.0
-BONOBO_ACTIVATION_REQUIRED=2.6.0
-BONOBO_REQUIRED=2.6.0
-GNOME_REQUIRED=2.7.0
-GAIM_REQUIRED=1.0.0
-GNOME_REQUIRED=2.7.0
-NAUTILUS_EXTENSION=2.8.0
+GLADE_REQUIRED=2.5.1
+EBOOK_REQUIRED=1.5.3
+BONOBO_ACTIVATION_REQUIRED=2.13.0
+BONOBO_REQUIRED=2.13.0
+GNOME_REQUIRED=2.13.0
+GAIM_REQUIRED=1.5.0
+NAUTILUS_EXTENSION=2.13.3
 BLUETOOTH_REQUIRED=0.6.0
 
 AC_SUBST(GLIB_REQUIRED)
 AC_SUBST(GTK_REQUIRED)
 AC_SUBST(GLADE_REQUIRED)
+AC_SUBST(GNOME_REQUIRED)
 AC_SUBST(EBOOK_REQUIRED)
 AC_SUBST(GAIM_REQUIRED)
 AC_SUBST(BONOBO_ACTIVATION_REQUIRED)
 AC_SUBST(BONOBO_REQUIRED)
+AC_SUBST(NAUTILUS_EXTENSION)
+AC_SUBST(BLUETOOTH_REQUIRED)
 
 PKG_CHECK_MODULES(NAUTILUS_SENDTO,\
 	 glib-2.0 >= $GLIB_REQUIRED                \
@@ -53,19 +55,20 @@ AC_SUBST(NAUTILUS_SENDTO_LIBS)
 dnl Libebook support
 dnl ---------------------------------
 
-PKG_CHECK_MODULES(NST_EBOOK, libebook-1.0 >= $EBOOK_REQUIRED,
+PKG_CHECK_MODULES(NST_EBOOK, libebook-1.2 >= $EBOOK_REQUIRED,
 	[
 	AC_SUBST(NST_EBOOK_CFLAGS)
 	AC_SUBST(NST_EBOOK_LIBS)
-	echo "Using libebook-1.0 !"
+	echo "Using libebook-1.2 !"
+	enable_evolution=yes
 	],
 	[
-        PKG_CHECK_MODULES(NST_EBOOK, libebook-1.2 >= $EBOOK_REQUIRED)
-        AC_SUBST(NST_EBOOK_CFLAGS)
-        AC_SUBST(NST_EBOOK_LIBS)
-	echo "Using libebook-1.2 !"
+        echo "Building without evolution"
+	enable_evolution=no
 	]
 )
+
+AM_CONDITIONAL(HAVE_EVOLUTION, test "x$enable_evolution" = "xyes")
 
 dnl Gaim support if it's installed
 dnl ---------------------------------
@@ -136,3 +139,26 @@ gaim_plugin/Makefile
 po/Makefile.in
 ])
 
+echo "-------------------------------------------------------"
+echo "                                                       "
+
+if test "x${enable_evolution}" = "xyes" ; then
+   echo "     Enable evolution plugin : YES"
+else
+   echo "     Enable evolution plugin : NO"
+fi
+
+if test "x${enable_gaim}" = "xyes" ; then
+   echo "     Enable gaim plugin : YES"
+else
+   echo "     Enable gaim plugin : NO"
+fi
+
+if test "x${enable_bluetooth}" = "xyes" ; then
+   echo "     Enable bluetooth plugin : YES"
+else
+   echo "     Enable bluetooth plugin : NO"
+fi
+
+echo "                                                       "
+echo "-------------------------------------------------------"

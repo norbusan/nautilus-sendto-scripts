@@ -143,6 +143,9 @@ send_button_cb (GtkWidget *widget, gpointer data)
 	p = (NstPlugin *) g_list_nth_data (plugin_list, option);
 	w = (GtkWidget *) g_list_nth_data (ui->contact_widgets, option);
 	
+	if (p == NULL)
+		return;
+		
 	if (force_user_to_compress){
 		f = pack_files (ui);
 		if (f != NULL){
@@ -212,7 +215,8 @@ set_contact_widgets (NS_ui *ui){
 		gtk_widget_hide (GTK_WIDGET(w));
 		ui->contact_widgets = g_list_append (ui->contact_widgets, w);
 	}
-	gtk_widget_show ((GtkWidget* ) ui->contact_widgets->data);
+	if (ui->contact_widgets)
+		gtk_widget_show ((GtkWidget* ) ui->contact_widgets->data);
 }
 
 void

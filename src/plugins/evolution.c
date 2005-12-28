@@ -87,7 +87,7 @@ add_evolution_contacts_to_model (GtkWidget *entry,
 			gchar *email = e->data;
 			
 			hash_value = g_strdup_printf ("mailto:%s",email);
-			if (strlen (family_name)==0){
+			if (family_name != NULL && strlen (family_name)==0){	
 				/* Output : name <email> */
 				str = g_string_new("");				
 				g_string_printf (str, "%s <%s>", given_name, email);

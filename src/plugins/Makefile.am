@@ -23,7 +23,13 @@ else
 BLUETOOTH_PLUGIN = 
 endif
 
-plugin_LTLIBRARIES = libevolution.la $(GAIM_PLUGIN) $(BLUETOOTH_PLUGIN)
+if HAVE_EVOLUTION
+EVOLUTION_PLUGIN = libevolution.la
+else
+EVOLUTION_PLUGIN =
+endif
+
+plugin_LTLIBRARIES = $(EVOLUTION_PLUGIN) $(GAIM_PLUGIN) $(BLUETOOTH_PLUGIN)
 
 libevolution_la_SOURCES = evolution.c
 libevolution_la_LDFLAGS = -module -avoid-version
