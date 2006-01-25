@@ -1,3 +1,7 @@
+2006-01-25  Nickolay V. Shmyrev <nshmyrev@yandex.ru>
+
+	* configure.in: Add ru to ALL_LINGUAS.
+
 2005-12-28  Roberto Majadas  <telemaco@gnome.org>
 
 	* src/nautilus-sendto[-force].glade: Some changes in UI

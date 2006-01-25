@@ -1,0 +1,109 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: ru\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2005-12-30 15:30+0200\n"
+"PO-Revision-Date: 2005-12-30 19:26+0200\n"
+"Last-Translator: Leonid Kanter <leon@asplinux.ru>\n"
+"Language-Team:  <ru@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.11\n"
+
+#. type
+#. ui requirement
+#. flags
+#. dependencies
+#. priority
+#. id
+#: ../gaim_plugin/nautilus-sendto-plugin.c:303
+msgid "Nautilus Integration"
+msgstr "Интеграция с Nautilus"
+
+#. name
+#. version
+#. summary
+#: ../gaim_plugin/nautilus-sendto-plugin.c:305
+#: ../gaim_plugin/nautilus-sendto-plugin.c:306
+msgid "Provides integration with Nautilus"
+msgstr "Предоставляет интеграцию с Nautilus"
+
+#: ../src/nautilus-nste.c:108 ../src/nautilus-nste.c:123
+msgid "Send to..."
+msgstr "Отправить..."
+
+#: ../src/nautilus-nste.c:109
+msgid "Send file by mail, instant message ..."
+msgstr "Отправить файл по почте, в мгновенном сообщении ..."
+
+#: ../src/nautilus-nste.c:124
+msgid "Send files by mail, instant message ..."
+msgstr "Отправить файлы по почте, в мгновенном сообщении ..."
+
+#: ../src/nautilus-sendto-command.c:56
+msgid "Default folder to use"
+msgstr "Папка, используемая по умолчанию"
+
+#: ../src/nautilus-sendto-command.c:57
+msgid "FOLDER"
+msgstr "ПАПКА"
+
+#: ../src/nautilus-sendto-command.c:126
+msgid "You don't insert the package name"
+msgstr "Вы не ввели имя архива"
+
+#: ../src/nautilus-sendto-command.c:287
+msgid "Files"
+msgstr "files"
+
+#: ../src/nautilus-sendto-command.c:426
+msgid "Nautilus Sendto"
+msgstr "Nautilus Sendto"
+
+#: ../src/nautilus-sendto-force.glade.h:1 ../src/nautilus-sendto.glade.h:2
+msgid ""
+".zip\n"
+".tar.gz\n"
+".tar.bz2"
+msgstr ""
+".zip\n"
+".tar.gz\n"
+".tar.bz2"
+
+#: ../src/nautilus-sendto-force.glade.h:4 ../src/nautilus-sendto.glade.h:5
+msgid "Send To..."
+msgstr "Отправить..."
+
+#: ../src/nautilus-sendto-force.glade.h:5 ../src/nautilus-sendto.glade.h:6
+msgid "Send as:"
+msgstr "Отправить как:"
+
+#: ../src/nautilus-sendto-force.glade.h:6 ../src/nautilus-sendto.glade.h:7
+msgid "Send packed in"
+msgstr "Запаковать в архив"
+
+#: ../src/nautilus-sendto-force.glade.h:7 ../src/nautilus-sendto.glade.h:8
+msgid "Send to:"
+msgstr "Куда:"
+
+#: ../src/nautilus-sendto-force.glade.h:8 ../src/nautilus-sendto.glade.h:9
+msgid "_Send"
+msgstr "_Отправить"
+
+#: ../src/nautilus-sendto.glade.h:1
+msgid "*"
+msgstr "*"
+
+#: ../src/plugins/bluetooth.c:255
+msgid "Bluetooth (OBEX)"
+msgstr "Bluetooth (OBEX)"
+
+#: ../src/plugins/evolution.c:226
+msgid "Email (Evolution)"
+msgstr "Электронная почта (Evolution)"
+
+#: ../src/plugins/gaim.c:219
+msgid "Instant Message (Gaim)"
+msgstr "Мгновенное сообщение (Gaim)"
+
