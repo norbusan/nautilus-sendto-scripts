@@ -1,3 +1,7 @@
+2006-02-11  Theppitak Karoonboonyanan  <thep@linux.thai.net>
+
+	* configure.in: Added 'th' (Thai) to ALL_LINGUAS.
+
 2006-01-25  Nickolay V. Shmyrev <nshmyrev@yandex.ru>
 
 	* configure.in: Add ru to ALL_LINGUAS.
