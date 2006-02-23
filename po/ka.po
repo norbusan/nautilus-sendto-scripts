@@ -1,0 +1,79 @@
+# Georgian translation for Nautilus Send-To.
+# Copyright © 2006 Ubuntu Georgian Translators.
+# Alexander Didebulidze <didebuli@in.tum.de>, 2006.
+msgid ""
+msgstr ""
+"Project-Id-Version: nautilus-sendto HEAD\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2005-09-27 17:44+0100\n"
+"PO-Revision-Date: 2006-01-25 18:46+0100\n"
+"Last-Translator: Alexander Didebulidze <didebuli@in.tum.de>\n"
+"Language-Team: Georgian <ka@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+
+msgid "*"
+msgstr "*"
+
+msgid ""
+".zip\n"
+".tar.gz\n"
+".tar.bz2"
+msgstr ""
+".zip\n"
+".tar.gz\n"
+".tar.bz2"
+
+msgid "Default folder to use"
+msgstr "Default folder to use"
+
+msgid "Email (Evolution)"
+msgstr "Email (Evolution)"
+
+msgid "FOLDER"
+msgstr "FOLDER"
+
+msgid "Files"
+msgstr "ფაილები"
+
+msgid "Instant Message (Gaim)"
+msgstr "Instant Message (Gaim)"
+
+msgid "Nautilus Integration"
+msgstr "Nautilus Integration"
+
+msgid "Nautilus Sendto"
+msgstr "Nautilus Sendto"
+
+msgid "Provides integration with Nautilus"
+msgstr "Provides integration with Nautilus"
+
+msgid "Send To..."
+msgstr "გაუგზავნე ..."
+
+msgid "Send as:"
+msgstr "გააგზავნე როგორც:"
+
+msgid "Send file by mail, instant message ..."
+msgstr "Send file by mail, instant message ..."
+
+msgid "Send files by mail, instant message ..."
+msgstr "Send files by mail, instant message ..."
+
+msgid "Send packed in"
+msgstr "Send packed in"
+
+msgid "Send to..."
+msgstr "გაუგზავნე..."
+
+msgid "Send to:"
+msgstr "გაუგზავნე:"
+
+msgid "You don't insert the package name"
+msgstr "You don't insert the package name"
+
+msgid "_Send"
+msgstr "_გაგზავნა"
+
