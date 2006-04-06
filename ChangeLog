@@ -1,5 +1,11 @@
 2006-04-06  Bastien Nocera  <hadess@hadess.net>
 
+	* src/nautilus-sendto-command.c: (nautilus_sendto_create_ui): Patch
+	from Ruben Vermeersch <ruben@lambda1.be> to send files when enter is
+	pressed in the archive name entry (Closes: #330137)
+
+2006-04-06  Bastien Nocera  <hadess@hadess.net>
+
 	* src/nautilus-sendto-command.c: (nautilus_sendto_plugin_init):
 	Use g_str_has_suffix instead of our home-made str_has_suffix, and 
 	use g_dir_open instead of opendir

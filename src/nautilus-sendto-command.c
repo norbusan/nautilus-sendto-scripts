@@ -300,6 +300,8 @@ nautilus_sendto_create_ui ()
 			  G_CALLBACK (destroy_dialog), NULL);
 	g_signal_connect (G_OBJECT (ui->send_button), "clicked",
 			  G_CALLBACK (send_button_cb), ui);
+	g_signal_connect (G_OBJECT (ui->pack_entry), "activate",
+			  G_CALLBACK (send_button_cb), ui);
 
 	if (force_user_to_compress == FALSE){
 		ui->pack_checkbutton = glade_xml_get_widget (app, "pack_checkbutton");
