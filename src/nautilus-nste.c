@@ -87,7 +87,9 @@ nautilus_nste_get_file_items (NautilusMenuProvider *provider,
 	gboolean  one_archive = FALSE;
 	NautilusMenuItem *item;
 
-	
+	if (files == NULL)
+		return NULL;
+
 	for (scan = files; scan; scan = scan->next) {
 		NautilusFileInfo *file = scan->data;
 		gchar            *scheme;
@@ -100,13 +102,13 @@ nautilus_nste_get_file_items (NautilusMenuProvider *provider,
 		if (!local)
 			return NULL;
 	}
-	
+
 	one_item = (files != NULL) && (files->next == NULL);
 	if (one_item && 
 	    !nautilus_file_info_is_directory ((NautilusFileInfo *)files->data)) {
 		item = nautilus_menu_item_new ("NautilusNste::sendto",
 					       _("Send to..."),
-					       _("Send file by mail, instant message ..."),
+					       _("Send file by mail, instant message..."),
 					       NULL);
 		g_signal_connect (item, 
 				  "activate",
@@ -121,7 +123,7 @@ nautilus_nste_get_file_items (NautilusMenuProvider *provider,
 	}else{
 		item = nautilus_menu_item_new ("NautilusNste::sendto",
 					       _("Send to..."),
-					       _("Send files by mail, instant message ..."),
+					       _("Send files by mail, instant message..."),
 					       NULL);
 		g_signal_connect (item, 
 				  "activate",
