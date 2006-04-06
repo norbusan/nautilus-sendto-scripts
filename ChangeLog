@@ -1,3 +1,18 @@
+2006-04-07  Bastien Nocera  <hadess@hadess.net>
+
+	* src/nautilus-nste.c: (sendto_callback):
+	* src/nautilus-sendto-command.c: (nautilus_sendto_plugin_init),
+	(nautilus_sendto_init), (main):
+	* src/plugins/bluetooth.c: (send_files):
+	* src/plugins/evolution.c: (send_files):
+	* src/plugins/gaim.c: (send_files):
+	Show the help when started without any arguments, or no filenames,
+	Pass URIs from the nautilus plugin to nautilus-sendto, pass URIs to
+	the plugins, fixes sending and receiving files with special characters
+	(Closes: #318428)
+	Check that filenames passed are not absolute before prepending
+	the current path, or the "default_dir" (Closes: #335255)
+
 2006-04-06  Bastien Nocera  <hadess@hadess.net>
 
 	* src/nautilus-nste.c: (nautilus_nste_get_file_items):

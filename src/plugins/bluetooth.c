@@ -231,12 +231,13 @@ send_files (NstPlugin *plugin, GtkWidget *contact_widget,
 	}
 	g_ptr_array_add (argv, NULL);
 
+#if 0
 	g_print ("launching command: ");
 	for (i = 0; i < argv->len - 1; i++) {
 		g_print ("%s ", (gchar *) g_ptr_array_index (argv, i));
 	}
 	g_print ("\n");
-
+#endif
 	ret = g_spawn_async (NULL, (gchar **) argv->pdata,
 			NULL, G_SPAWN_SEARCH_PATH, NULL, NULL, NULL, &err);
 	g_ptr_array_free (argv, TRUE);

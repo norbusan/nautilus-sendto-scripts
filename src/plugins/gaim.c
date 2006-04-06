@@ -188,8 +188,12 @@ gboolean send_files (NstPlugin *plugin, GtkWidget *contact_widget,
 	contact_info = (gchar *) g_list_nth_data (contact_list, option);
 	gaimto = g_string_new (contact_info);
 	
-	for (l = file_list ; l; l=l->next){				
-		g_string_append_printf (gaimto,"%s\n",l->data);
+	for (l = file_list ; l; l=l->next){
+		char *path;
+
+		path = g_filename_from_uri (l->data, NULL, NULL);
+		g_string_append_printf (gaimto,"%s\n", path);
+		g_free (path);
 	}
 	g_string_append_printf (gaimto,"\n");
 	t = time (NULL);

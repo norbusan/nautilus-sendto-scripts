@@ -41,32 +41,19 @@ sendto_callback (NautilusMenuItem *item,
 {
 	GList            *files, *scan;
 	NautilusFileInfo *file;
-	gchar            *uri, *path, *dir;
+	gchar            *uri, *path;
 	GString          *cmd;
 
 	files = g_object_get_data (G_OBJECT (item), "files");
 	file = files->data;
 
-	uri = nautilus_file_info_get_uri (file);
-	path = gnome_vfs_get_local_path_from_uri (uri);
-	dir = g_path_get_dirname (path);
-
 	cmd = g_string_new ("nautilus-sendto");
-	g_string_append_printf (cmd," --default-dir=\"%s\" ", dir);
-
-	g_free (dir);
-	g_free (path);
-	g_free (uri);
 
 	for (scan = files; scan; scan = scan->next) {
 		NautilusFileInfo *file = scan->data;
-		
+
 		uri = nautilus_file_info_get_uri (file);
-		path = gnome_vfs_get_local_path_from_uri (uri);
-
-		g_string_append_printf (cmd, " \"%s\"",  g_path_get_basename (path));
-
-		g_free (path);
+		g_string_append_printf (cmd, " \"%s\"", uri);
 		g_free (uri);
 	}
 

@@ -28,7 +28,6 @@
 #include <glade/glade.h>
 #include "nautilus-sendto-plugin.h"
 
-
 static 
 gchar *default_url = NULL;
 gboolean force_user_to_compress = FALSE;
@@ -54,7 +53,7 @@ struct _NS_ui {
 struct poptOption options[] = {
 	{ "default-dir", 0, POPT_ARG_STRING, &default_url, 0,
 	  N_("Default folder to use"),
-	  N_("FOLDER") },	
+	  N_("FOLDER") },
 	{ NULL, '\0', 0, NULL, 0 }
 };
 
@@ -325,11 +324,12 @@ nautilus_sendto_plugin_init (void)
 	GError *err = NULL;
 
 	dir = g_dir_open (PLUGINDIR, 0, &err);
+
 	if (dir == NULL){
 		g_error ("Can't open the plugins dir: %s", err ? err->message : "No reason");
 		if (err)
 			g_error_free (err);
-	}else{		
+	}else{
 		while (item = g_dir_read_name(dir)){
 			if (g_str_has_suffix (item, SOEXT)){
 				gchar *module_path;
@@ -361,7 +361,7 @@ nautilus_sendto_init (GnomeProgram *program, int argc, char **argv)
 {
 	poptContext pctx;
 	GValue value = { 0 };
-	const gchar  *filename;
+	const char *filename;
 
 	g_object_get_property (G_OBJECT (program),
 			       GNOME_PARAM_POPT_CONTEXT,
@@ -378,17 +378,43 @@ nautilus_sendto_init (GnomeProgram *program, int argc, char **argv)
 	}
 
 	while ((filename = poptGetArg (pctx)) != NULL) {
-		gchar *path;
-
-		path = g_build_path ("/",default_url,
-				     filename, NULL);
-		file_list = g_list_prepend (file_list, path);
-		
-		if (g_file_test (path, G_FILE_TEST_IS_DIR))
-			force_user_to_compress = TRUE;
+ 		char *path;
+ 
+ 		if (g_str_has_prefix (filename, "file://")) {
+ 			file_list = g_list_prepend (file_list,
+ 					g_strdup (filename));
+ 			path = g_filename_from_uri (filename, NULL, NULL);
+ 			if (path != NULL
+ 			    && g_file_test (path, G_FILE_TEST_IS_DIR)) {
+ 				force_user_to_compress = TRUE;
+ 			}
+ 			g_free (path);
+ 		} else {
+ 			char *uri;
+ 			if (filename[0] != G_DIR_SEPARATOR) {
+ 				path = g_build_filename (default_url,
+						filename, NULL);
+			} else {
+				path = g_strdup (filename);
+			}
+ 
+ 			uri = g_filename_to_uri (path, NULL, NULL);
+			/* FIXME bugzilla 337553 */
+ 			file_list = g_list_prepend (file_list, uri);
+ 
+ 			if (g_file_test (path, G_FILE_TEST_IS_DIR))
+ 				force_user_to_compress = TRUE;
+ 
+ 			g_free (path);
+ 		}
 	}
-	file_list = g_list_reverse (file_list);
 
+	if (file_list == NULL) {
+		poptPrintHelp (pctx, stdout, 0);
+		exit (1);
+	}
+
+	file_list = g_list_reverse (file_list);
 }
 
 int main (int argc, char **argv)
@@ -404,7 +430,7 @@ int main (int argc, char **argv)
 				      GNOME_PARAM_POPT_TABLE, options,
 				      GNOME_PARAM_HUMAN_READABLE_NAME, _("Nautilus Sendto"),
 				      NULL);
-		
+
 	nautilus_sendto_init (program, argc, argv);	
 	nautilus_sendto_plugin_init ();
 	nautilus_sendto_create_ui();
@@ -412,3 +438,4 @@ int main (int argc, char **argv)
 	gtk_main ();
 	return 0;
 }
+
