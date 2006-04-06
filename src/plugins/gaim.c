@@ -217,6 +217,7 @@ static
 NstPluginInfo plugin_info = {
 	"im",
 	N_("Instant Message (Gaim)"),
+	FALSE,
 	init,
 	get_contacts_widget,
 	send_files,

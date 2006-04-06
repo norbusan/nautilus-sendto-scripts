@@ -313,75 +313,48 @@ nautilus_sendto_create_ui ()
 
 }
 
-static gboolean
-str_has_suffix (const char *haystack, const char *needle)
-{
-        const char *h, *n;
-
-        if (needle == NULL) {
-                return TRUE;
-        }
-        if (haystack == NULL) {
-                return needle[0] == '\0';
-        }
-
-        /* Eat one character at a time. */
-        h = haystack + strlen(haystack);
-        n = needle + strlen(needle);
-        do {
-                if (n == needle) {
-                        return TRUE;
-                }
-                if (h == haystack) {
-                        return FALSE;
-                }
-        } while (*--h == *--n);
-        return FALSE;
-}
-
-void
+static void
 nautilus_sendto_plugin_init (void)
 {
-	DIR *dir;
-	struct dirent *ep;
+	GDir *dir;
+	const char *item;
 	NstPlugin *p = NULL;
 	gboolean (*nst_init_plugin)(NstPlugin *p);
-	
-	dir = opendir (PLUGINDIR);
+	GError *err = NULL;
+
+	dir = g_dir_open (PLUGINDIR, 0, &err);
 	if (dir == NULL){
-		g_error ("Can't open the plugins dir");
+		g_error ("Can't open the plugins dir: %s", err ? err->message : "No reason");
+		if (err)
+			g_error_free (err);
 	}else{		
-		while (ep = readdir(dir)){
-			gchar *file;
-			if ((strcmp (ep->d_name,".")==0)   ||
-			(strcmp (ep->d_name, "..")==0))
-                        	continue ;
-			if (str_has_suffix (ep->d_name, SOEXT)){
-				GString *str = g_string_new (ep->d_name);
+		while (item = g_dir_read_name(dir)){
+			if (g_str_has_suffix (item, SOEXT)){
 				gchar *module_path;
-				
-				str = g_string_truncate (str, str->len - SOEXT_LEN);
+
 				p = g_new0(NstPlugin, 1);
-				module_path = g_module_build_path (PLUGINDIR, str->str);
+				module_path = g_module_build_path (PLUGINDIR, item);
 				p->module = g_module_open (module_path, G_MODULE_BIND_LAZY);
 			        if (!p->module)
-                			g_error ("error: %s", g_module_error ());
+                			g_error ("error opening %s: %s", module_path, g_module_error ());
 				if (!g_module_symbol (p->module, "nst_init_plugin", (gpointer *)&nst_init_plugin))
 			                g_error ("error: %s", g_module_error ());	
 				nst_init_plugin (p);
 				if (p->info->init(p)){
 					plugin_list = g_list_append (plugin_list, p);
 				}else{
-					g_module_close (p->module);
+					if (!p->info->never_unload)
+						g_module_close (p->module);
+					g_free (p);
 				}
 				g_free (module_path);
-				g_string_free (str, TRUE);				
 			}
 		}
+		g_dir_close (dir);
 	}	
 }
 
-void
+static void
 nautilus_sendto_init (GnomeProgram *program, int argc, char **argv)
 {
 	poptContext pctx;

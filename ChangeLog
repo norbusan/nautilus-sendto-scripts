@@ -1,3 +1,21 @@
+2006-04-06  Bastien Nocera  <hadess@hadess.net>
+
+	* src/nautilus-sendto-command.c: (nautilus_sendto_plugin_init):
+	Use g_str_has_suffix instead of our home-made str_has_suffix, and 
+	use g_dir_open instead of opendir
+	* src/plugins/Makefile.am: namespace the plugins so as to avoid
+	clashes with system libraries, confusing the hell out of libtool
+	(libbluetooth.so is the generated library, as well as the system
+	 bluetooth library)
+	* src/plugins/bluetooth.c: (init): use GError properly
+	* src/plugins/evolution.c: (add_evolution_contacts_to_model): fix
+	a compilation warning
+	* src/plugins/gaim.c:
+	* src/nautilus-sendto-plugin.h:
+	Update the plugin struct to allow plugins not to be unloaded, fixes
+	the crashes on startup when the bluetooth plugin fails to initialise
+	(Closes: #334587)
+
 2006-04-04  Gora Mohanty  <gmohanty@cvs.gnome.org>
 
         * configure.in: Added 'or' (Oriya) to ALL_LINGUAS.

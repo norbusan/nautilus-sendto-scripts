@@ -35,6 +35,7 @@ struct _NstPluginInfo
 {
 	gchar *icon;
 	gchar *description;
+	gboolean never_unload;
 	gboolean (*init)(NstPlugin *plugin);
 	GtkWidget* (*get_contacts_widget)(NstPlugin *plugin);
 	gboolean (*send_files)(NstPlugin *plugin, GtkWidget *contact_widget,

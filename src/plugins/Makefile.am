@@ -12,34 +12,34 @@ INCLUDES =                                      \
 	$(BLUETOOTH_CFLAGS)
 
 if HAVE_GAIM
-GAIM_PLUGIN = libgaim.la
+GAIM_PLUGIN = libnstgaim.la
 else
 GAIM_PLUGIN =
 endif
 
 if HAVE_BLUETOOTH
-BLUETOOTH_PLUGIN = libbluetooth.la
+BLUETOOTH_PLUGIN = libnstbluetooth.la
 else
 BLUETOOTH_PLUGIN = 
 endif
 
 if HAVE_EVOLUTION
-EVOLUTION_PLUGIN = libevolution.la
+EVOLUTION_PLUGIN = libnstevolution.la
 else
 EVOLUTION_PLUGIN =
 endif
 
 plugin_LTLIBRARIES = $(EVOLUTION_PLUGIN) $(GAIM_PLUGIN) $(BLUETOOTH_PLUGIN)
 
-libevolution_la_SOURCES = evolution.c
-libevolution_la_LDFLAGS = -module -avoid-version
-libevolution_la_LIBADD = $(NST_EBOOK_LIBS)
+libnstevolution_la_SOURCES = evolution.c
+libnstevolution_la_LDFLAGS = -module -avoid-version
+libnstevolution_la_LIBADD = $(NST_EBOOK_LIBS)
 
-libgaim_la_SOURCES = gaim.c
-libgaim_la_LDFLAGS = -module -avoid-version
-libgaim_la_LIBADD = $(GAIM_LIBS)
+libnstgaim_la_SOURCES = gaim.c
+libnstgaim_la_LDFLAGS = -module -avoid-version
+libnstgaim_la_LIBADD = $(GAIM_LIBS)
 
-libbluetooth_la_SOURCES = bluetooth.c
-libbluetooth_la_LDFLAGS = -module -avoid-version
-libbluetooth_la_LIBADD = $(BLUETOOTH_LIBS)
+libnstbluetooth_la_SOURCES = bluetooth.c
+libnstbluetooth_la_LDFLAGS = -module -avoid-version
+libnstbluetooth_la_LIBADD = $(BLUETOOTH_LIBS)
 

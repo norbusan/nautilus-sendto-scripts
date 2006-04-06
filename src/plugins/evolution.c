@@ -77,8 +77,8 @@ add_evolution_contacts_to_model (GtkWidget *entry,
 
 	for (c = cards; c; c = c->next) {
 		EContact *contact = E_CONTACT (c->data);		
-		gchar *family_name = e_contact_get_const (contact, E_CONTACT_FAMILY_NAME);
-		gchar *given_name = e_contact_get_const (contact, E_CONTACT_GIVEN_NAME);
+		const char *family_name = e_contact_get_const (contact, E_CONTACT_FAMILY_NAME);
+		const char *given_name = e_contact_get_const (contact, E_CONTACT_GIVEN_NAME);
 		GList *emails, *e;
 		
 		emails = e_contact_get (contact, E_CONTACT_EMAIL);
@@ -224,6 +224,7 @@ static
 NstPluginInfo plugin_info = {
 	"stock_mail",
 	N_("Email (Evolution)"),
+	FALSE,
 	init,
 	get_contacts_widget,
 	send_files,

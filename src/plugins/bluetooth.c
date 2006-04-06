@@ -47,14 +47,16 @@ init (NstPlugin *plugin)
 	g_print ("Init bluetooth plugin\n");
 
 	btctl = gnomebt_controller_new ();
-	GError* e = g_new(GError, 1);
+	GError* e = NULL;
+
 	if (btctl_controller_is_initialised (BTCTL_CONTROLLER (btctl), &e) == FALSE) {
 		g_object_unref (btctl);
-		g_free(e);
+		g_print ("Couldn't init bluetooth plugin: %s\n", e ? e->message : "No reason");
+		if (e)
+			g_error_free (e);
 		return FALSE;
 	}
-	
-	g_free(e);
+
 	discovered = 0;
 	id = -1;
 
@@ -256,6 +258,7 @@ static
 NstPluginInfo plugin_info = {
 	"stock_bluetooth",
 	N_("Bluetooth (OBEX)"),
+	TRUE,
 	init,
 	get_contacts_widget,
 	send_files,
