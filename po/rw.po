@@ -120,12 +120,12 @@ msgstr "Kuri"
 
 #: src/nautilus-nste.c:109
 #, fuzzy
-msgid "Send file by mail, instant message ..."
+msgid "Send file by mail, instant message..."
 msgstr "IDOSIYE ku Ubutumwa By'ako kanya Ubutumwa"
 
 #: src/nautilus-nste.c:124
 #, fuzzy
-msgid "Send files by mail, instant message ..."
+msgid "Send files by mail, instant message..."
 msgstr "Idosiye ku Ubutumwa By'ako kanya Ubutumwa"
 
 #: src/plugins/evolution.c:229

@@ -38,11 +38,11 @@ msgid "Send to..."
 msgstr "Send til..."
 
 #: ../src/nautilus-nste.c:109
-msgid "Send file by mail, instant message ..."
+msgid "Send file by mail, instant message..."
 msgstr "Send fil via e-post, lynmelding, etc."
 
 #: ../src/nautilus-nste.c:124
-msgid "Send files by mail, instant message ..."
+msgid "Send files by mail, instant message..."
 msgstr "Send filer via e-post, lynmelding, etc..."
 
 #: ../src/nautilus-sendto-command.c:56

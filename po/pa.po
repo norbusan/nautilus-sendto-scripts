@@ -98,11 +98,11 @@ msgid "Send to..."
 msgstr "ਭੇਜੋ..."
 
 #: src/nautilus-nste.c:109
-msgid "Send file by mail, instant message ..."
+msgid "Send file by mail, instant message..."
 msgstr ""
 
 #: src/nautilus-nste.c:124
-msgid "Send files by mail, instant message ..."
+msgid "Send files by mail, instant message..."
 msgstr ""
 
 #: src/plugins/evolution.c:228

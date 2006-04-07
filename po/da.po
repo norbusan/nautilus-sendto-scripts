@@ -93,12 +93,12 @@ msgid "Send to..."
 msgstr "Send til..."
 
 #: src/nautilus-nste.c:109
-msgid "Send file by mail, instant message ..."
-msgstr "Send fil med e-brev, kvikbesked ..."
+msgid "Send file by mail, instant message..."
+msgstr "Send fil med e-brev, kvikbesked..."
 
 #: src/nautilus-nste.c:124
-msgid "Send files by mail, instant message ..."
-msgstr "Send filer med e-brev, kvikbesked ..."
+msgid "Send files by mail, instant message..."
+msgstr "Send filer med e-brev, kvikbesked..."
 
 #: src/plugins/evolution.c:229
 msgid "Email (Evolution)"

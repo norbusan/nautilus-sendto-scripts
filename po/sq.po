@@ -38,12 +38,12 @@ msgid "Send to..."
 msgstr "Dërgo tek..."
 
 #: ../src/nautilus-nste.c:109
-msgid "Send file by mail, instant message ..."
-msgstr "Dërgo file me postë, mesazh çasti ..."
+msgid "Send file by mail, instant message..."
+msgstr "Dërgo file me postë, mesazh çasti..."
 
 #: ../src/nautilus-nste.c:124
-msgid "Send files by mail, instant message ..."
-msgstr "Dërgo file-t me postë, mesazh çasti ..."
+msgid "Send files by mail, instant message..."
+msgstr "Dërgo file-t me postë, mesazh çasti..."
 
 #: ../src/nautilus-sendto-command.c:56
 msgid "Default folder to use"

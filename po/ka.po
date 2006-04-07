@@ -51,16 +51,16 @@ msgid "Provides integration with Nautilus"
 msgstr "Provides integration with Nautilus"
 
 msgid "Send To..."
-msgstr "გაუგზავნე ..."
+msgstr "გაუგზავნე..."
 
 msgid "Send as:"
 msgstr "გააგზავნე როგორც:"
 
-msgid "Send file by mail, instant message ..."
-msgstr "Send file by mail, instant message ..."
+msgid "Send file by mail, instant message..."
+msgstr "Send file by mail, instant message..."
 
-msgid "Send files by mail, instant message ..."
-msgstr "Send files by mail, instant message ..."
+msgid "Send files by mail, instant message..."
+msgstr "Send files by mail, instant message..."
 
 msgid "Send packed in"
 msgstr "Send packed in"

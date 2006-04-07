@@ -40,11 +40,11 @@ msgid "Send to..."
 msgstr "Skicka till..."
 
 #: src/nautilus-nste.c:109
-msgid "Send file by mail, instant message ..."
+msgid "Send file by mail, instant message..."
 msgstr "Skicka filen med e-post, snabbmeddelandeprogram..."
 
 #: src/nautilus-nste.c:124
-msgid "Send files by mail, instant message ..."
+msgid "Send files by mail, instant message..."
 msgstr "Skicka filerna med e-post, snabbmeddelandeprogram..."
 
 #: src/nautilus-sendto-command.c:56
@@ -115,12 +115,6 @@ msgstr "E-post (Evolution)"
 #: src/plugins/gaim.c:219
 msgid "Instant Message (Gaim)"
 msgstr "Snabbmeddelande (Gaim)"
-
-#~ msgid "Send file by mail, instant message..."
-#~ msgstr "Skicka filen med e-post, snabbmeddelandeprogram..."
-
-#~ msgid "Send files by mail, instant message..."
-#~ msgstr "Skicka filerna med e-post, snabbmeddelandeprogram..."
 
 #~ msgid "Bluetooth"
 #~ msgstr "Bluetooth"

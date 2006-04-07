@@ -34,12 +34,12 @@ msgid "Send to..."
 msgstr "Отправить..."
 
 #: ../src/nautilus-nste.c:109
-msgid "Send file by mail, instant message ..."
-msgstr "Отправить файл по почте, в мгновенном сообщении ..."
+msgid "Send file by mail, instant message..."
+msgstr "Отправить файл по почте, в мгновенном сообщении..."
 
 #: ../src/nautilus-nste.c:124
-msgid "Send files by mail, instant message ..."
-msgstr "Отправить файлы по почте, в мгновенном сообщении ..."
+msgid "Send files by mail, instant message..."
+msgstr "Отправить файлы по почте, в мгновенном сообщении..."
 
 #: ../src/nautilus-sendto-command.c:56
 msgid "Default folder to use"

@@ -1,3 +1,7 @@
+2006-04-07  Bastien Nocera  <hadess@hadess.net>
+
+	* *.po: correct the ellipsis as per the changes in the source
+
 2006-04-04  Gora Mohanty  <gmohanty@cvs.gnome.org>
 
         * or.po: Added Oriya translation.

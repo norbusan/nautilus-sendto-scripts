@@ -93,11 +93,11 @@ msgid "Send to..."
 msgstr "傳送到..."
 
 #: ../src/nautilus-nste.c:109
-msgid "Send file by mail, instant message ..."
+msgid "Send file by mail, instant message..."
 msgstr "經電子郵件、即時訊息等等途徑傳送檔案"
 
 #: ../src/nautilus-nste.c:124
-msgid "Send files by mail, instant message ..."
+msgid "Send files by mail, instant message..."
 msgstr "經電子郵件、即時訊息等等途徑傳送檔案"
 
 #: ../src/plugins/evolution.c:229

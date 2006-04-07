@@ -40,11 +40,11 @@ msgid "Send to..."
 msgstr "Изпращане до..."
 
 #: ../src/nautilus-nste.c:109
-msgid "Send file by mail, instant message ..."
+msgid "Send file by mail, instant message..."
 msgstr "Изпращане на файл чрез писмо, бързо съобщение..."
 
 #: ../src/nautilus-nste.c:124
-msgid "Send files by mail, instant message ..."
+msgid "Send files by mail, instant message..."
 msgstr "Изпращане на файлове чрез писмо, бързо съобщение..."
 
 #: ../src/nautilus-sendto-command.c:56

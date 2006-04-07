@@ -97,12 +97,12 @@ msgid "Send to..."
 msgstr "Wysłanie do..."
 
 #: ../src/nautilus-nste.c:109
-msgid "Send file by mail, instant message ..."
-msgstr "Wysyła plik poprzez e-mail, komunikator ..."
+msgid "Send file by mail, instant message..."
+msgstr "Wysyła plik poprzez e-mail, komunikator..."
 
 #: ../src/nautilus-nste.c:124
-msgid "Send files by mail, instant message ..."
-msgstr "Wysyła plik poprzez e-mail, komunikator ..."
+msgid "Send files by mail, instant message..."
+msgstr "Wysyła plik poprzez e-mail, komunikator..."
 
 #: ../src/plugins/evolution.c:229
 msgid "Email (Evolution)"
