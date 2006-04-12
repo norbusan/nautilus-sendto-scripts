@@ -356,6 +356,40 @@ nautilus_sendto_plugin_init (void)
 	}	
 }
 
+static char *
+escape_ampersands (const char *url)
+{
+	int i;
+	char *str, *ptr;
+
+	/* Count the number of ampersands */
+	i = 0;
+	ptr = (char *) url;
+	while ((ptr = strchr (ptr, '&')) != NULL) {
+		i++;
+		ptr++;
+	}
+
+	/* No ampersands ? */
+	if (i == 0)
+		return NULL;
+
+	/* Replace the '&' */
+	str = g_malloc0 (strlen (url) - i + 3 * i + 1);
+	ptr = str;
+	for (i = 0; url[i] != '\0'; i++) {
+		if (url[i] != '&') {
+			*ptr++ = url[i];
+		} else {
+			*ptr++ = '%';
+			*ptr++ = '2';
+			*ptr++ = '6';
+		}
+	}
+
+	return str;
+}
+
 static void
 nautilus_sendto_init (GnomeProgram *program, int argc, char **argv)
 {
@@ -390,7 +424,8 @@ nautilus_sendto_init (GnomeProgram *program, int argc, char **argv)
  			}
  			g_free (path);
  		} else {
- 			char *uri;
+ 			char *uri, *escaped;
+
  			if (filename[0] != G_DIR_SEPARATOR) {
  				path = g_build_filename (default_url,
 						filename, NULL);
@@ -399,8 +434,9 @@ nautilus_sendto_init (GnomeProgram *program, int argc, char **argv)
 			}
  
  			uri = g_filename_to_uri (path, NULL, NULL);
-			/* FIXME bugzilla 337553 */
+			escaped = escape_ampersands (uri);
  			file_list = g_list_prepend (file_list, uri);
+			g_free (uri);
  
  			if (g_file_test (path, G_FILE_TEST_IS_DIR))
  				force_user_to_compress = TRUE;

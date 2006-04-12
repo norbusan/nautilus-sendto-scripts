@@ -1,3 +1,9 @@
+2006-04-12  Bastien Nocera  <hadess@hadess.net>
+
+	* src/nautilus-sendto-command.c: (escape_ampersands),
+	(nautilus_sendto_init): escape ampersands in filenames passed on the
+	command-line
+
 2006-04-07  Bastien Nocera  <hadess@hadess.net>
 
 	* src/nautilus-nste.c: (sendto_callback):
