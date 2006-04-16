@@ -1,3 +1,15 @@
+2006-04-16  Bastien Nocera  <hadess@hadess.net>
+
+	* src/nautilus-sendto-command.c: (pack_files),
+	(send_if_no_pack_cb), (set_contact_widgets),
+	(nautilus_sendto_create_ui), (nautilus_sendto_plugin_init),
+	(nautilus_sendto_init):
+	Pass filenames not URIs to file-roller, mark a couple of function as
+	static, focus the filename widget when activating the recipient entry
+	if "Send packed in" is enabled (Closes: #330137), don't crash on
+	startup when a module can't be loaded, fix sending filenames without
+	ampersands
+
 2006-04-12  Bastien Nocera  <hadess@hadess.net>
 
 	* src/nautilus-sendto-command.c: (escape_ampersands),

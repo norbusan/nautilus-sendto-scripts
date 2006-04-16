@@ -63,9 +63,10 @@ destroy_dialog (GtkWidget *widget, gpointer data )
         gtk_main_quit ();
 }
 
-gchar *
-pack_files (NS_ui *ui){
-	gchar *file_roller_cmd;
+static char *
+pack_files (NS_ui *ui)
+{
+	char *file_roller_cmd;
 	GtkWidget *error_dialog;
 
 	file_roller_cmd = g_find_program_in_path ("file-roller");
@@ -103,12 +104,17 @@ pack_files (NS_ui *ui){
 				 file_roller_cmd, tmp_work_dir,
 				 gtk_entry_get_text(GTK_ENTRY(ui->pack_entry)),
 				 pack_type);
-		
-		for (l = file_list ; l; l=l->next){				
-			g_string_append_printf (cmd," \"%s\"",l->data);
+
+		/* file-roller doesn't understand URIs */
+		for (l = file_list ; l; l=l->next){
+			char *file;
+
+			file = g_filename_from_uri (l->data, NULL, NULL);
+			g_string_append_printf (cmd," \"%s\"", file);
+			g_free (file);
 		}
 
-		g_printf ("%s\n", cmd->str);				
+		g_printf ("%s\n", cmd->str);
 		g_spawn_command_line_sync (cmd->str, NULL, NULL, NULL, NULL);
 		g_string_free (cmd, TRUE);
 		packed_file = g_string_new("");
@@ -130,7 +136,7 @@ pack_files (NS_ui *ui){
 	
 }
 
-void
+static void
 send_button_cb (GtkWidget *widget, gpointer data)
 {
 	NS_ui *ui = (NS_ui *) data;
@@ -175,6 +181,22 @@ send_button_cb (GtkWidget *widget, gpointer data)
 	destroy_dialog (NULL,NULL);
 }
 
+static void
+send_if_no_pack_cb (GtkWidget *widget, gpointer data)
+{
+	NS_ui *ui = (NS_ui *) data;
+
+	if (force_user_to_compress || gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (ui->pack_checkbutton))) {
+		if (force_user_to_compress) {
+			gtk_widget_grab_focus (ui->pack_entry);
+		} else {
+			gtk_widget_grab_focus (ui->pack_checkbutton);
+		}
+	} else {
+		send_button_cb (widget, data);
+	}
+}
+
 void
 toggle_pack_check (GtkWidget *widget, gpointer data )
 {
@@ -213,6 +235,10 @@ set_contact_widgets (NS_ui *ui){
 		gtk_box_pack_end_defaults (GTK_BOX(ui->hbox_contacts_ws),w);
 		gtk_widget_hide (GTK_WIDGET(w));
 		ui->contact_widgets = g_list_append (ui->contact_widgets, w);
+		if (GTK_IS_ENTRY (w)) {
+			g_signal_connect (G_OBJECT (w), "activate",
+					G_CALLBACK (send_if_no_pack_cb), ui);
+		}
 	}
 	if (ui->contact_widgets)
 		gtk_widget_show ((GtkWidget* ) ui->contact_widgets->data);
@@ -263,8 +289,8 @@ set_model_for_options_combobox (NS_ui *ui){
 	option = 0;
 }
 
-void
-nautilus_sendto_create_ui ()
+static void
+nautilus_sendto_create_ui (void)
 {
 	GladeXML *app;	
 	gint toggle;
@@ -332,15 +358,24 @@ nautilus_sendto_plugin_init (void)
 	}else{
 		while (item = g_dir_read_name(dir)){
 			if (g_str_has_suffix (item, SOEXT)){
-				gchar *module_path;
+				char *module_path;
 
 				p = g_new0(NstPlugin, 1);
 				module_path = g_module_build_path (PLUGINDIR, item);
 				p->module = g_module_open (module_path, G_MODULE_BIND_LAZY);
-			        if (!p->module)
-                			g_error ("error opening %s: %s", module_path, g_module_error ());
-				if (!g_module_symbol (p->module, "nst_init_plugin", (gpointer *)&nst_init_plugin))
-			                g_error ("error: %s", g_module_error ());	
+			        if (!p->module) {
+                			g_warning ("error opening %s: %s", module_path, g_module_error ());
+					g_free (module_path);
+					continue;
+				}
+				g_free (module_path);
+
+				if (!g_module_symbol (p->module, "nst_init_plugin", (gpointer *)&nst_init_plugin)) {
+			                g_warning ("error: %s", g_module_error ());
+					g_module_close (p->module);
+					continue;
+				}
+
 				nst_init_plugin (p);
 				if (p->info->init(p)){
 					plugin_list = g_list_append (plugin_list, p);
@@ -349,7 +384,6 @@ nautilus_sendto_plugin_init (void)
 						g_module_close (p->module);
 					g_free (p);
 				}
-				g_free (module_path);
 			}
 		}
 		g_dir_close (dir);
@@ -435,8 +469,12 @@ nautilus_sendto_init (GnomeProgram *program, int argc, char **argv)
  
  			uri = g_filename_to_uri (path, NULL, NULL);
 			escaped = escape_ampersands (uri);
- 			file_list = g_list_prepend (file_list, uri);
-			g_free (uri);
+			if (escaped) {
+				file_list = g_list_prepend (file_list, escaped);
+				g_free (uri);
+			} else {
+				file_list = g_list_prepend (file_list, uri);
+			}
  
  			if (g_file_test (path, G_FILE_TEST_IS_DIR))
  				force_user_to_compress = TRUE;
