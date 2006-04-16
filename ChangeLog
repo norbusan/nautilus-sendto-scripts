@@ -1,5 +1,9 @@
 2006-04-16  Bastien Nocera  <hadess@hadess.net>
 
+	* src/nautilus-sendto-command.c: mark a few more functions as static
+
+2006-04-16  Bastien Nocera  <hadess@hadess.net>
+
 	* src/nautilus-sendto-command.c: (pack_files),
 	(send_if_no_pack_cb), (set_contact_widgets),
 	(nautilus_sendto_create_ui), (nautilus_sendto_plugin_init),

@@ -57,7 +57,7 @@ struct poptOption options[] = {
 	{ NULL, '\0', 0, NULL, 0 }
 };
 
-void 
+static void 
 destroy_dialog (GtkWidget *widget, gpointer data )
 {
         gtk_main_quit ();
@@ -197,7 +197,7 @@ send_if_no_pack_cb (GtkWidget *widget, gpointer data)
 	}
 }
 
-void
+static void
 toggle_pack_check (GtkWidget *widget, gpointer data )
 {
 	GtkToggleButton *t = GTK_TOGGLE_BUTTON (widget);
@@ -209,7 +209,7 @@ toggle_pack_check (GtkWidget *widget, gpointer data )
 	gtk_widget_set_sensitive (ui_x->pack_entry, toogle);
 }
 
-void
+static void
 option_changed (GtkComboBox *cb, gpointer data){
 	NS_ui *ui = (NS_ui *) data ;
 	GList *aux;	
@@ -221,7 +221,7 @@ option_changed (GtkComboBox *cb, gpointer data){
 	gtk_widget_show ((GtkWidget *) aux->data);
 }
 
-void
+static void
 set_contact_widgets (NS_ui *ui){
 	GList *aux ;
 	GtkWidget *w;
@@ -244,7 +244,7 @@ set_contact_widgets (NS_ui *ui){
 		gtk_widget_show ((GtkWidget* ) ui->contact_widgets->data);
 }
 
-void
+static void
 set_model_for_options_combobox (NS_ui *ui){
 	GdkPixbuf *pixbuf;
         GtkTreeIter iter;
