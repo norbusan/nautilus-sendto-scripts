@@ -1,3 +1,8 @@
+2006-04-18  Kjartan Maraas <kmaraas@gnome.org>
+
+	* configure.in: Remove obsolete entry for no_NO
+	* po/no.po: And the translation.
+
 2006-04-16  Bastien Nocera  <hadess@hadess.net>
 
 	* src/nautilus-sendto-command.c: mark a few more functions as static
