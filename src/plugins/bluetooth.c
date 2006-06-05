@@ -44,10 +44,16 @@ enum {
 static gboolean
 init (NstPlugin *plugin)
 {
-	g_print ("Init bluetooth plugin\n");
+	GError *e = NULL;
+	char *cmd;
+
+	/* Check whether gnome-obex-send is available */
+	cmd = g_find_program_in_path ("gnome-obex-send");
+	if (cmd == NULL)
+		return FALSE;
+	g_free (cmd);
 
 	btctl = gnomebt_controller_new ();
-	GError* e = NULL;
 
 	if (btctl_controller_is_initialised (BTCTL_CONTROLLER (btctl), &e) == FALSE) {
 		g_object_unref (btctl);

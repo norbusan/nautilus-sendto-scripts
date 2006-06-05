@@ -1,3 +1,9 @@
+2006-06-05  Bastien Nocera  <hadess@hadess.net>
+
+	* src/plugins/bluetooth.c: (init): remove useless debug print,
+	check that "gnome-obex-send" is available when initialising the
+	Bluetooth plugin, fix C99 declaration
+
 2006-04-18  Kjartan Maraas <kmaraas@gnome.org>
 
 	* configure.in: Remove obsolete entry for no_NO
