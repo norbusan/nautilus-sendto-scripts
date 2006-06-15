@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: nautilus-sendto HEAD\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2005-01-20 15:23+0100\n"
-"PO-Revision-Date: 2005-01-20 15:23+0100\n"
-"Last-Translator: Frank Arnold <frank@scirocco-5v-turbo.de>\n"
+"PO-Revision-Date: 2006-06-15 17:31+0200\n"
+"Last-Translator: Hendrik Richter <hendrikr@gnome.org>\n"
 "Language-Team: German <gnome-de@gnome.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -66,7 +66,7 @@ msgstr ""
 
 #: src/nautilus-sendto-force.glade.h:4 src/nautilus-sendto.glade.h:5
 msgid "Send To..."
-msgstr "Senden an…"
+msgstr "Senden an …"
 
 #: src/nautilus-sendto-force.glade.h:5 src/nautilus-sendto.glade.h:6
 msgid "Send as:"
@@ -90,7 +90,7 @@ msgstr "*"
 
 #: src/nautilus-nste.c:108 src/nautilus-nste.c:123
 msgid "Send to..."
-msgstr "Senden an…"
+msgstr "Senden an …"
 
 #: src/nautilus-nste.c:109
 msgid "Send file by mail, instant message..."
@@ -112,7 +112,10 @@ msgstr "Instant Message (Gaim)"
 #~ msgstr "Nautilus Sendto Komponente"
 
 #~ msgid "Sendo To..."
-#~ msgstr "Senden an…"
+#~ msgstr "Senden an …"
 
 #~ msgid "You don't insert any email address"
 #~ msgstr "Sie haben keine Email-Adresse eingegeben"
+
+
+
