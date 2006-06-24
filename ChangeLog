@@ -1,5 +1,6 @@
 2006-06-24  Roberto Majadas  <telemaco@openshine.com>
 
+	* autogen.sh: added version 1.9 of automake
 	* src/plugins/gajim.c: Added support full support for gajim. Thanks Dimitur Kirov
 	* src/plugins/balsa.c: Added initial support for balsa. Thanks Peter Enseleit
 	* src/plugins/sylpheed-claws.c: Added full support for sylpheed-claws . Thanks Peter Enseleit
