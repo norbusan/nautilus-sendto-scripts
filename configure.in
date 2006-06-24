@@ -1,6 +1,6 @@
 AC_PREREQ(2.52)
 
-AC_INIT(nautilus-sendto, 0.5, http://www.gnome.org)
+AC_INIT(nautilus-sendto, 0.6, http://www.gnome.org)
 AM_CONFIG_HEADER(config.h)
 
 AM_INIT_AUTOMAKE(AC_PACKAGE_NAME, AC_PACKAGE_VERSION)
@@ -26,6 +26,7 @@ GNOME_REQUIRED=2.13.0
 GAIM_REQUIRED=1.5.0
 NAUTILUS_EXTENSION=2.13.3
 BLUETOOTH_REQUIRED=0.6.0
+DBUS_REQUIRED=0.60
 
 AC_SUBST(GLIB_REQUIRED)
 AC_SUBST(GTK_REQUIRED)
@@ -37,6 +38,7 @@ AC_SUBST(BONOBO_ACTIVATION_REQUIRED)
 AC_SUBST(BONOBO_REQUIRED)
 AC_SUBST(NAUTILUS_EXTENSION)
 AC_SUBST(BLUETOOTH_REQUIRED)
+AC_SUBST(DBUS_REQUIRED)
 
 PKG_CHECK_MODULES(NAUTILUS_SENDTO,\
 	 glib-2.0 >= $GLIB_REQUIRED                \
@@ -111,6 +113,62 @@ AM_CONDITIONAL(HAVE_BLUETOOTH, test "x$enable_bluetooth" = "xyes")
 
 dnl --------------------------------------------------
 
+dnl Balsa support
+dnl -------------------------------------------------
+
+enable_balsa=no
+AM_CONDITIONAL(HAVE_BALSA, test "x$enable_balsa" = "xyes")
+dnl -------------------------------------------------
+
+
+dnl Sylpheed support
+dnl -------------------------------------------------
+
+enable_sylpheed=yes
+AM_CONDITIONAL(HAVE_SYLPHEED, test "x$enable_sylpheed" = "xyes")
+dnl -------------------------------------------------
+
+
+dnl Thunderbird support
+dnl -------------------------------------------------
+
+enable_thunderbird=no
+AM_CONDITIONAL(HAVE_THUNDERBIRD, test "x$enable_thunderbird" = "xyes")
+dnl -------------------------------------------------
+
+dnl Gajim support
+dnl -------------------------------------------------
+
+AC_ARG_WITH(gajim,
+        [AS_HELP_STRING(--with-gajim,[Path to Gajim install prefix])],
+        [GAJIM_PATH="$withval"],[GAJIM_PATH="$prefix"])
+
+GAJIM_SHARE_DIR="$GAJIM_PATH"/share/gajim
+
+PKG_CHECK_MODULES(DBUS, dbus-1 >= $DBUS_REQUIRED dbus-glib-1 >= $DBUS_REQUIRED,
+        [
+        AC_SUBST(DBUS_CFLAGS)
+        AC_SUBST(DBUS_LIBS)
+	if test -f "$GAJIM_SHARE_DIR"/data/pixmaps/gajim.png ;
+	then
+		enable_gajim=yes
+		AC_DEFINE_UNQUOTED(GAJIM_SHARE_DIR, "$GAJIM_SHARE_DIR", [path to gajim share dir])
+	else
+		echo "Building without Gajim support"
+		enable_gajim=no
+	fi
+        ],
+        [
+        echo "Building without Gajim support"
+        enable_gajim=no
+        ]
+)
+
+AM_CONDITIONAL(HAVE_GAJIM, test "x$enable_gajim" = "xyes")
+
+dnl -------------------------------------------------
+
+
 GNOME_COMPILE_WARNINGS
 
 GNOME_COMMON_INIT
@@ -158,6 +216,30 @@ if test "x${enable_bluetooth}" = "xyes" ; then
    echo "     Enable bluetooth plugin : YES"
 else
    echo "     Enable bluetooth plugin : NO"
+fi
+
+if test "x${enable_balsa}" = "xyes" ; then
+   echo "     Enable balsa plugin : YES"
+else
+   echo "     Enable balsa plugin (under development, don't support attachments) : NO"
+fi
+
+if test "x${enable_sylpheed}" = "xyes" ; then
+   echo "     Enable sylpheed plugin : YES"
+else
+   echo "     Enable sylpheed plugin : NO"
+fi
+
+if test "x${enable_thunderbird}" = "xyes" ; then
+   echo "     Enable thunderbird plugin : YES"
+else
+   echo "     Enable thunderbird plugin (under development, don't support attachments) : NO"
+fi
+
+if test "x${enable_gajim}" = "xyes" ; then
+   echo "     Enable gajim plugin : YES"
+else
+   echo "     Enable gajim plugin : NO"
 fi
 
 echo "                                                       "

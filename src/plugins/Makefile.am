@@ -9,7 +9,8 @@ INCLUDES =                                      \
         $(NAUTILUS_SENDTO_CFLAGS)               \
 	$(NST_EBOOK_CFLAGS)			\
 	$(GAIM_CFLAGS)				\
-	$(BLUETOOTH_CFLAGS)
+	$(BLUETOOTH_CFLAGS)			\
+	$(DBUS_CFLAGS)
 
 if HAVE_GAIM
 GAIM_PLUGIN = libnstgaim.la
@@ -29,7 +30,31 @@ else
 EVOLUTION_PLUGIN =
 endif
 
-plugin_LTLIBRARIES = $(EVOLUTION_PLUGIN) $(GAIM_PLUGIN) $(BLUETOOTH_PLUGIN)
+if HAVE_BALSA
+BALSA_PLUGIN = libnstbalsa.la
+else
+BALSA_PLUGIN = 
+endif
+
+if HAVE_SYLPHEED
+SYLPHEED_PLUGIN = libnstsylpheed.la
+else
+SYLPHEED_PLUGIN = 
+endif
+
+if HAVE_THUNDERBIRD
+THUNDERBIRD_PLUGIN = libnstthunderbird.la
+else
+THUNDERBIRD_PLUGIN = 
+endif
+
+if HAVE_GAJIM
+GAJIM_PLUGIN = libnstgajim.la
+else
+GAJIM_PLUGIN = 
+endif
+
+plugin_LTLIBRARIES = $(EVOLUTION_PLUGIN) $(GAIM_PLUGIN) $(BLUETOOTH_PLUGIN) $(BALSA_PLUGIN) $(SYLPHEED_PLUGIN) $(THUNDERBIRD_PLUGIN) $(GAJIM_PLUGIN)
 
 libnstevolution_la_SOURCES = evolution.c
 libnstevolution_la_LDFLAGS = -module -avoid-version
@@ -42,4 +67,20 @@ libnstgaim_la_LIBADD = $(GAIM_LIBS)
 libnstbluetooth_la_SOURCES = bluetooth.c
 libnstbluetooth_la_LDFLAGS = -module -avoid-version
 libnstbluetooth_la_LIBADD = $(BLUETOOTH_LIBS)
+
+libnstbalsa_la_SOURCES = balsa.c
+libnstbalsa_la_LDFLAGS = -module -avoid-version
+#libnstbalsa_la_LIBADD = $(BALSA_LIBS)
+
+libnstsylpheed_la_SOURCES = sylpheed-claws.c
+libnstsylpheed_la_LDFLAGS = -module -avoid-version
+#libnstsylpheed_la_LIBADD = $(SYLPHEED_LIBS)
+
+libnstthunderbird_la_SOURCES = thunderbird.c
+libnstthunderbird_la_LDFLAGS = -module -avoid-version
+#libnstthunderbird_la_LIBADD = $(THUNDERBIRD_LIBS)
+
+libnstgajim_la_SOURCES = gajim.c
+libnstgajim_la_LDFLAGS = -module -avoid-version
+libnstgajim_la_LIBADD = $(DBUS_LIBS)
 

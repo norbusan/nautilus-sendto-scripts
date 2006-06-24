@@ -1,4 +1,20 @@
 ============
+Version 0.6
+============
+
+Nautilus Sendto
+	* Added support for gajim 
+	* Added support for sylpheed-claws
+	* Added initial support for thunderbird. Thunderbird don't support attachment by command line atm.
+	* Added initial support for Balsa. Balsa don't support attachment by command line atm.
+	* Many bugfixes
+
+	Special Thanks to :
+		Bastien Nocera (He resolve many many bugs while i was busy in my work, Thanks guy !)
+		Dimitur Kirov (He developed gajim support)
+		Peter Enseleit (he developed balsa, sylpheed and thunderbird support) 
+
+============
 Version 0.5
 ============
 

@@ -1,3 +1,12 @@
+2006-06-24  Roberto Majadas  <telemaco@openshine.com>
+
+	* src/plugins/gajim.c: Added support full support for gajim. Thanks Dimitur Kirov
+	* src/plugins/balsa.c: Added initial support for balsa. Thanks Peter Enseleit
+	* src/plugins/sylpheed-claws.c: Added full support for sylpheed-claws . Thanks Peter Enseleit
+	* src/plugins/thunderbird.c: Added initial support for thunderbird.
+	* src/configure.in : Added plugins
+	* src/plugins/Makefile.am : Added plugins 
+
 2006-06-05  Bastien Nocera  <hadess@hadess.net>
 
 	* src/plugins/bluetooth.c: (init): remove useless debug print,
