@@ -1,3 +1,7 @@
+2006-06-25  Roberto Majadas  <telemaco@openshine.com>
+
+	* POTFILES.in: Added balsa.c gajim.c sylpheed-claws.c thunderbird.c
+
 2006-06-15  Hendrik Richter  <hendrikr@gnome.org>
 
 	* de.po: Updated German translation.
