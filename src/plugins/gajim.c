@@ -239,7 +239,7 @@ gboolean _get_contacts() {
 		if (!dbus_g_proxy_call (proxy, "list_contacts", &error, 
 				G_TYPE_STRING, account, // call arguments
 				G_TYPE_INVALID, // delimiter
-				// retrun value is callection of maps
+				// return value is collection of maps
 				dbus_g_type_get_collection ("GSList", 
 					dbus_g_type_get_map ("GHashTable", 
 						G_TYPE_STRING, G_TYPE_VALUE)), 
@@ -433,9 +433,9 @@ gboolean send_files (NstPlugin *plugin, GtkWidget *contact_widget,
 		}
 	}
 	else {
-		g_warning("[Gajim] missing recepient");
+		g_warning("[Gajim] missing recipient");
 		show_error(_("Sending file failed"), 
-						_("Recepient is missing."));
+						_("Recipient is missing."));
 		return FALSE;
 	}
 	
@@ -463,7 +463,7 @@ gboolean send_files (NstPlugin *plugin, GtkWidget *contact_widget,
 			if(error->domain != DBUS_GERROR || error->code != DBUS_GERROR_INVALID_ARGS) {
 				g_warning("[Gajim] sending file %s to %s failed:", file_iter->data, send_to);
 				g_error_free(error);
-				show_error(_("Sending file failed"), _("Unknown recepient."));
+				show_error(_("Sending file failed"), _("Unknown recipient."));
 				return FALSE;
 			}
 			g_error_free(error);
