@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nautilus-sendto VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-02-06 12:44+0100\n"
-"PO-Revision-Date: 2006-02-09 14:36+0700\n"
-"Last-Translator: Isriya Paireepairit <markpeak@gmail.com>\n"
+"POT-Creation-Date: 2006-06-30 19:21+0700\n"
+"PO-Revision-Date: 2006-06-30 19:35+0700\n"
+"Last-Translator: Theppitak Karoonboonyanan <thep@linux.thai.net>\n"
 "Language-Team: Thai <l10n@opentle.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -33,35 +33,35 @@ msgstr "การเชื่อมรวมกับ Nautilus"
 msgid "Provides integration with Nautilus"
 msgstr "เชื่อมรวมการทำงานกับ Nautilus"
 
-#: ../src/nautilus-nste.c:108 ../src/nautilus-nste.c:123
+#: ../src/nautilus-nste.c:97 ../src/nautilus-nste.c:112
 msgid "Send to..."
 msgstr "ส่งไปยัง..."
 
-#: ../src/nautilus-nste.c:109
+#: ../src/nautilus-nste.c:98
 msgid "Send file by mail, instant message..."
 msgstr "ส่งแฟ้มทางอีเมล, ข้อความด่วน..."
 
-#: ../src/nautilus-nste.c:124
+#: ../src/nautilus-nste.c:113
 msgid "Send files by mail, instant message..."
 msgstr "ส่งแฟ้มทางอีเมล, ข้อความด่วน..."
 
-#: ../src/nautilus-sendto-command.c:56
+#: ../src/nautilus-sendto-command.c:55
 msgid "Default folder to use"
 msgstr "โฟลเดอร์ปริยายที่จะใช้"
 
-#: ../src/nautilus-sendto-command.c:57
+#: ../src/nautilus-sendto-command.c:56
 msgid "FOLDER"
 msgstr "FOLDER"
 
-#: ../src/nautilus-sendto-command.c:126
+#: ../src/nautilus-sendto-command.c:131
 msgid "You don't insert the package name"
 msgstr "คุณไม่ได้ใส่ชื่อแฟ้มรวม"
 
-#: ../src/nautilus-sendto-command.c:291
+#: ../src/nautilus-sendto-command.c:316
 msgid "Files"
 msgstr "Files"
 
-#: ../src/nautilus-sendto-command.c:430
+#: ../src/nautilus-sendto-command.c:505
 msgid "Nautilus Sendto"
 msgstr "Nautilus Sendto"
 
@@ -85,7 +85,7 @@ msgstr "ส่งเป็น:"
 
 #: ../src/nautilus-sendto-force.glade.h:6 ../src/nautilus-sendto.glade.h:6
 msgid "Send packed in"
-msgstr "ส่งทั้งหมดเป็นไฟล์เดียว"
+msgstr "ส่งแบบบีบอัดในแฟ้ม"
 
 #: ../src/nautilus-sendto-force.glade.h:7 ../src/nautilus-sendto.glade.h:7
 msgid "Send to:"
@@ -95,15 +95,52 @@ msgstr "ไปที่:"
 msgid "_Send"
 msgstr "_ส่ง"
 
-#: ../src/plugins/bluetooth.c:258
-msgid "Bluetooth (OBEX)"
-msgstr "Bluetooth (OBEX)"
+#: ../src/plugins/balsa.c:100
+msgid "Email (Balsa)"
+msgstr "อีเมล (Balsa)"
 
-#: ../src/plugins/evolution.c:226
+#: ../src/plugins/bluetooth.c:267
+msgid "Bluetooth (OBEX)"
+msgstr "บลูทูธ (OBEX)"
+
+#: ../src/plugins/evolution.c:228
 msgid "Email (Evolution)"
 msgstr "อีเมล (Evolution)"
 
-#: ../src/plugins/gaim.c:219
+#: ../src/plugins/gaim.c:223
 msgid "Instant Message (Gaim)"
 msgstr "ข้อความด่วน (Gaim)"
 
+#: ../src/plugins/gajim.c:412
+msgid "Unable to send file"
+msgstr "ไม่สามารถส่งแฟ้มได้"
+
+#: ../src/plugins/gajim.c:413
+msgid "There is no connection to gajim remote service."
+msgstr "ไม่มีการเชื่อมต่อไปยังบริการ gajim ในเครือข่าย"
+
+#: ../src/plugins/gajim.c:437 ../src/plugins/gajim.c:466
+msgid "Sending file failed"
+msgstr "ส่งแฟ้มไม่สำเร็จ"
+
+#: ../src/plugins/gajim.c:438
+msgid "Recipient is missing."
+msgstr "ไม่ได้ระบุผู้รับ"
+
+#: ../src/plugins/gajim.c:466
+msgid "Unknown recipient."
+msgstr "ผู้รับผิดพลาด"
+
+#. we can use 'Gajim' instead, but Yann
+#. said that on debian icon is too large
+#: ../src/plugins/gajim.c:488
+msgid "Instant Message (Gajim)"
+msgstr "ข้อความด่วน (Gajim)"
+
+#: ../src/plugins/sylpheed-claws.c:120
+msgid "Email (Sylpheed-Claws)"
+msgstr "อีเมล (Sylpheed-Claws)"
+
+#: ../src/plugins/thunderbird.c:100
+msgid "Email (Thunderbird)"
+msgstr "อีเมล (Thunderbird)"
