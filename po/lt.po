@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nautilus-sendto HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-03-20 13:53+0200\n"
-"PO-Revision-Date: 2006-03-20 13:55+0200\n"
+"POT-Creation-Date: 2006-07-01 12:33+0300\n"
+"PO-Revision-Date: 2006-07-01 12:35+0300\n"
 "Last-Translator: Žygimantas Beručka <zygis@gnome.org>\n"
 "Language-Team: Lithuanian <komp_lt@konferencijos.lt>\n"
 "MIME-Version: 1.0\n"
@@ -34,35 +34,35 @@ msgstr "Nautilus integracija"
 msgid "Provides integration with Nautilus"
 msgstr "Suteikia Nautilus integraciją"
 
-#: ../src/nautilus-nste.c:108 ../src/nautilus-nste.c:123
+#: ../src/nautilus-nste.c:97 ../src/nautilus-nste.c:112
 msgid "Send to..."
 msgstr "Siųsti į..."
 
-#: ../src/nautilus-nste.c:109
+#: ../src/nautilus-nste.c:98
 msgid "Send file by mail, instant message..."
 msgstr "Siųsti rinkmeną paštu, skubia žinute..."
 
-#: ../src/nautilus-nste.c:124
+#: ../src/nautilus-nste.c:113
 msgid "Send files by mail, instant message..."
 msgstr "Siųsti rinkmenas paštu, skubia žinute..."
 
-#: ../src/nautilus-sendto-command.c:56
+#: ../src/nautilus-sendto-command.c:55
 msgid "Default folder to use"
 msgstr "Numatytasis naudotinas aplankas"
 
-#: ../src/nautilus-sendto-command.c:57
+#: ../src/nautilus-sendto-command.c:56
 msgid "FOLDER"
 msgstr "APLANKAS"
 
-#: ../src/nautilus-sendto-command.c:126
+#: ../src/nautilus-sendto-command.c:131
 msgid "You don't insert the package name"
 msgstr "Jūs nenurodėte paketo pavadinimo"
 
-#: ../src/nautilus-sendto-command.c:291
+#: ../src/nautilus-sendto-command.c:316
 msgid "Files"
 msgstr "Rinkmenos"
 
-#: ../src/nautilus-sendto-command.c:430
+#: ../src/nautilus-sendto-command.c:505
 msgid "Nautilus Sendto"
 msgstr "Nautilus sendto"
 
@@ -96,14 +96,52 @@ msgstr "Siųsti kam:"
 msgid "_Send"
 msgstr "_Siųsti"
 
-#: ../src/plugins/bluetooth.c:258
+#: ../src/plugins/balsa.c:100
+msgid "Email (Balsa)"
+msgstr "El. paštu (Balsa)"
+
+#: ../src/plugins/bluetooth.c:267
 msgid "Bluetooth (OBEX)"
 msgstr "Bluetooth (OBEX)"
 
-#: ../src/plugins/evolution.c:226
+#: ../src/plugins/evolution.c:228
 msgid "Email (Evolution)"
 msgstr "El. paštu (Evolution)"
 
-#: ../src/plugins/gaim.c:219
+#: ../src/plugins/gaim.c:223
 msgid "Instant Message (Gaim)"
 msgstr "Skubia žinute (Gaim)"
+
+#: ../src/plugins/gajim.c:412
+msgid "Unable to send file"
+msgstr "Nepavyko išsiųsti rinkmenos"
+
+#: ../src/plugins/gajim.c:413
+msgid "There is no connection to gajim remote service."
+msgstr "Nėra ryšio su gajim nutolusia paslauga."
+
+#: ../src/plugins/gajim.c:437 ../src/plugins/gajim.c:466
+msgid "Sending file failed"
+msgstr "Išsiųsti rinkmenos nepavyko"
+
+#: ../src/plugins/gajim.c:438
+msgid "Recipient is missing."
+msgstr "Trūksta gavėjo."
+
+#: ../src/plugins/gajim.c:466
+msgid "Unknown recipient."
+msgstr "Nežinomas gavėjas."
+
+#. we can use 'Gajim' instead, but Yann
+#. said that on debian icon is too large
+#: ../src/plugins/gajim.c:488
+msgid "Instant Message (Gajim)"
+msgstr "Skubia žinute (Gajim)"
+
+#: ../src/plugins/sylpheed-claws.c:120
+msgid "Email (Sylpheed-Claws)"
+msgstr "El. paštu (Sylpheed-Claws)"
+
+#: ../src/plugins/thunderbird.c:100
+msgid "Email (Thunderbird)"
+msgstr "El. paštu (Thunderbird)"
