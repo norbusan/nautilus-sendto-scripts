@@ -135,11 +135,6 @@ gboolean init_dbus ()
 
 	error = NULL;
 	connection = dbus_g_bus_get (DBUS_BUS_SESSION, &error);
-	if (connection == NULL)
-	{
-		g_warning("[Gajim] unable to connect to session bus.");
-		return FALSE;
-	}
 	if(error != NULL) {
 		g_warning("[Gajim] unable to get session bus, error was:\n %s", error->message);
 		g_error_free(error);
@@ -149,6 +144,7 @@ gboolean init_dbus ()
 									 SERVICE,
 									 OBJ_PATH,
 									 INTERFACE);
+	dbus_g_connection_unref(connection);
 	if (proxy == NULL){
 		return FALSE;
 	}
@@ -157,13 +153,11 @@ gboolean init_dbus ()
 	if (!dbus_g_proxy_call (proxy, "list_accounts", &error, G_TYPE_INVALID,
 				G_TYPE_STRV, &accounts, G_TYPE_INVALID))
 	{
-		g_print ("sdsdsd : %s\n", error->message);
 		g_object_unref(proxy);
-		dbus_g_connection_unref(connection);
 		g_error_free(error);
 		return FALSE;		
 	}
-
+	g_strfreev(accounts);
 	return TRUE;
 }
 
@@ -260,18 +254,14 @@ static
 gboolean init (NstPlugin *plugin)
 {
 		
-	bindtextdomain (GETTEXT_PACKAGE, LOCALEDIR);
-	bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
-	textdomain (GETTEXT_PACKAGE);
+	g_print ("Init gajim plugin\n");
 	g_type_init();
-
-    	// connect to gajim dbus service
+	
+	// connect to gajim dbus service
 	jid_table = g_hash_table_new (g_str_hash, g_str_equal);
-	if (init_dbus() == FALSE) {
+	if (!init_dbus()) {
 		return FALSE;
 	}
-	
-	g_print ("Init gajim plugin\n");
 	return TRUE;
 }
 
@@ -483,10 +473,9 @@ gboolean destroy (NstPlugin *plugin){
 
 static
 NstPluginInfo plugin_info = {
-	"im-jabber", /* we can use 'Gajim' instead, but Yann
-	said that on debian icon is too large */
+	"im-jabber", 
 	N_("Instant Message (Gajim)"),
-	FALSE,
+	TRUE,
 	init,
 	get_contacts_widget,
 	send_files,

@@ -1,3 +1,7 @@
+2006-07-12  Roberto Majadas  <telemaco@openshine.com>
+
+	* src/plugins/gajim.c: Added the patch of  Dimitur Kiro , BUG #346750
+
 2006-06-30  Francisco Javier F. Serrador  <serrador@openshine.com>
 
 	* src/plugins/gajim.c (send_files): Corrected some typos
