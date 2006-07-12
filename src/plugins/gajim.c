@@ -398,6 +398,8 @@ gboolean send_files (NstPlugin *plugin, GtkWidget *contact_widget,
 	gchar *send_to;
 	gchar *jid;
 	gchar *account;
+	gchar *file_path;
+
 	if(proxy == NULL) {
 		show_error(_("Unable to send file"), 
 			   _("There is no connection to gajim remote service."));
@@ -433,21 +435,31 @@ gboolean send_files (NstPlugin *plugin, GtkWidget *contact_widget,
 	for(file_iter = file_list; file_iter != NULL; 
 					file_iter = g_list_next(file_iter)) {
 		g_debug("[Gajim] file: %s", file_iter->data);
-		error= NULL; 
+		error= NULL;
+		file_path = g_filename_from_uri(file_iter->data, NULL, &error);
+		if(error != NULL) {
+			g_warning("%d Unable to convert URI `%s' to absolute file path",
+				error->code, file_iter->data);
+			g_error_free(error);
+			continue;
+		}
+
+		g_debug("[Gajim] file: %s", file_path);
 		if(account) {
 			dbus_g_proxy_call (proxy, "send_file", &error, 
-				G_TYPE_STRING, file_iter->data, 
-				G_TYPE_STRING, jid, 
-				G_TYPE_STRING, account, 
-				G_TYPE_INVALID, //delimiter
-				G_TYPE_INVALID);
+					   G_TYPE_STRING, file_path,
+					   G_TYPE_STRING, jid, 
+					   G_TYPE_STRING, account, 
+					   G_TYPE_INVALID, //delimiter
+					   G_TYPE_INVALID);
 		} else {
 			dbus_g_proxy_call (proxy, "send_file", &error, 
-				G_TYPE_STRING, file_iter->data, 
-				G_TYPE_STRING, jid, 
-				G_TYPE_INVALID, //delim
-				G_TYPE_INVALID);
+					   G_TYPE_STRING, file_path, 
+					   G_TYPE_STRING, jid, 
+					   G_TYPE_INVALID, //delimiter
+					   G_TYPE_INVALID);
 		}
+		g_free(file_path);
 		if(error != NULL)
 		{
 			if(error->domain != DBUS_GERROR || error->code != DBUS_GERROR_INVALID_ARGS) {
