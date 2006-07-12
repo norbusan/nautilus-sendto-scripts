@@ -30,12 +30,32 @@ static GHashTable *hash = NULL;
 static 
 gboolean init (NstPlugin *plugin)
 {
+	gchar *tmp = NULL;
+	gchar *cmds[] = {"evolution",
+			 "evolution-2.0",
+			 "evolution-2.2",
+			 "evolution-2.4",
+			 "evolution-2.6",
+			 "evolution-2.8", /* for the future */
+			 "evolution-3.0", /* but how far to go ? */
+			 NULL};
+	guint i;
+
 	g_print ("Init evolution plugin\n");
 	
 	bindtextdomain (GETTEXT_PACKAGE, LOCALEDIR);
         bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
         textdomain (GETTEXT_PACKAGE);
 	
+	for (i = 0; cmds[i] != NULL; i++) {
+		tmp = g_find_program_in_path (cmds[i]);
+		if (tmp != NULL)
+			break;
+	}
+	if (tmp == NULL)
+		return FALSE;
+	g_free (tmp);
+
 	hash = g_hash_table_new (g_str_hash, g_str_equal);
 	return TRUE;
 }
