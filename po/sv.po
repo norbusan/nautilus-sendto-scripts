@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nautilus-sendto\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-06-26 04:33+0200\n"
-"PO-Revision-Date: 2006-06-26 08:56+0100\n"
+"POT-Creation-Date: 2006-07-16 04:59+0200\n"
+"PO-Revision-Date: 2006-07-16 17:46+0100\n"
 "Last-Translator: Daniel Nylander <po@danielnylander.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "MIME-Version: 1.0\n"
@@ -117,7 +117,7 @@ msgid "Bluetooth (OBEX)"
 msgstr "Bluetooth (OBEX)"
 
 # Tror inte det ska skrivas så i originalet... borde buggrapporteras.
-#: ../src/plugins/evolution.c:228
+#: ../src/plugins/evolution.c:248
 msgid "Email (Evolution)"
 msgstr "E-post (Evolution)"
 
@@ -125,30 +125,28 @@ msgstr "E-post (Evolution)"
 msgid "Instant Message (Gaim)"
 msgstr "Snabbmeddelande (Gaim)"
 
-#: ../src/plugins/gajim.c:412
+#: ../src/plugins/gajim.c:404
 msgid "Unable to send file"
 msgstr "Kunde inte skicka fil"
 
-#: ../src/plugins/gajim.c:413
+#: ../src/plugins/gajim.c:405
 msgid "There is no connection to gajim remote service."
 msgstr "Det finns ingen anslutning till gajims fjärrtjänst"
 
-#: ../src/plugins/gajim.c:437
-#: ../src/plugins/gajim.c:466
+#: ../src/plugins/gajim.c:429
+#: ../src/plugins/gajim.c:468
 msgid "Sending file failed"
 msgstr "Sändning av fil misslyckades"
 
-#: ../src/plugins/gajim.c:438
-msgid "Recepient is missing."
+#: ../src/plugins/gajim.c:430
+msgid "Recipient is missing."
 msgstr "Mottagare saknas."
 
-#: ../src/plugins/gajim.c:466
-msgid "Unknown recepient."
+#: ../src/plugins/gajim.c:468
+msgid "Unknown recipient."
 msgstr "Okänd mottagare."
 
-#. we can use 'Gajim' instead, but Yann
-#. said that on debian icon is too large
-#: ../src/plugins/gajim.c:488
+#: ../src/plugins/gajim.c:489
 msgid "Instant Message (Gajim)"
 msgstr "Snabbmeddelande (Gajim)"
 
