@@ -1,22 +1,22 @@
-# translation of nautilus-sendto.eu.po to basque
-# Basque translation of nautilus-sendto.
+# translation of nautilus-sendto.po to basque
 # Copyright (C) 2005 Mikel Olasagasti
 # This file is distributed under the same license as the nautilus-sendto package.
 # Mikel Olasagasti <hey_neken@mundurat.net>, 2005.
-# Iñaki Larrañaga  <dooteo@euskalgnu.org>, 2005.
+# Iñaki Larrañaga Murgoitio <dooteo@euskalgnu.org>, 2005, 2006.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: nautilus-sendto.HEAD.eu\n"
+"Project-Id-Version: eu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-09-09 17:24+0200\n"
-"PO-Revision-Date: 2005-09-09 17:24+0200\n"
-"Last-Translator: Iñaki Larrañaga  <dooteo@euskalgnu.or\n"
-"Language-Team:  <itzulpena@euskalgnu.org>\n"
+"POT-Creation-Date: 2006-07-17 13:01+0000\n"
+"PO-Revision-Date: 2006-07-17 13:03+0000\n"
+"Last-Translator: Iñaki Larrañaga Murgoitio <dooteo@euskalgnu.org>\n"
+"Language-Team: Basque <itzulpena@euskalgnu.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=ISO-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.9.1\n"
+"X-Generator: KBabel 1.10.2\n"
+"Plural-Forms: Plural-Forms: Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. type
 #. ui requirement
@@ -36,39 +36,39 @@ msgstr "Nautilus-en integrazioa"
 msgid "Provides integration with Nautilus"
 msgstr "Nautilusekin integratzea eskaintzen du"
 
-#: ../src/nautilus-nste.c:108 ../src/nautilus-nste.c:123
+#: ../src/nautilus-nste.c:97 ../src/nautilus-nste.c:112
 msgid "Send to..."
 msgstr "Bidali honi..."
 
-#: ../src/nautilus-nste.c:109
+#: ../src/nautilus-nste.c:98
 msgid "Send file by mail, instant message..."
 msgstr "Bidali fitxategia posta elektrikoz, berehalako mezularitza..."
 
-#: ../src/nautilus-nste.c:124
+#: ../src/nautilus-nste.c:113
 msgid "Send files by mail, instant message..."
 msgstr "Bidali fitxategiak posta elektrikoz, berehalako mezularitza..."
 
-#: ../src/nautilus-sendto-command.c:56
+#: ../src/nautilus-sendto-command.c:55
 msgid "Default folder to use"
 msgstr "Erabiliko den lehenetsitako karpeta"
 
-#: ../src/nautilus-sendto-command.c:57
+#: ../src/nautilus-sendto-command.c:56
 msgid "FOLDER"
 msgstr "KARPETA"
 
-#: ../src/nautilus-sendto-command.c:126
+#: ../src/nautilus-sendto-command.c:131
 msgid "You don't insert the package name"
 msgstr "Ez duzu paketearen izena idatzi"
 
-#: ../src/nautilus-sendto-command.c:287
+#: ../src/nautilus-sendto-command.c:316
 msgid "Files"
 msgstr "Fitxategiak"
 
-#: ../src/nautilus-sendto-command.c:426
+#: ../src/nautilus-sendto-command.c:505
 msgid "Nautilus Sendto"
 msgstr "Nautilus Sendto"
 
-#: ../src/nautilus-sendto-force.glade.h:1 ../src/nautilus-sendto.glade.h:2
+#: ../src/nautilus-sendto-force.glade.h:1 ../src/nautilus-sendto.glade.h:1
 msgid ""
 ".zip\n"
 ".tar.gz\n"
@@ -78,38 +78,71 @@ msgstr ""
 ".tar.gz\n"
 ".tar.bz2"
 
-#: ../src/nautilus-sendto-force.glade.h:4 ../src/nautilus-sendto.glade.h:5
+#: ../src/nautilus-sendto-force.glade.h:4 ../src/nautilus-sendto.glade.h:4
 msgid "Send To..."
 msgstr "Bidali honi..."
 
-#: ../src/nautilus-sendto-force.glade.h:5 ../src/nautilus-sendto.glade.h:6
+#: ../src/nautilus-sendto-force.glade.h:5 ../src/nautilus-sendto.glade.h:5
 msgid "Send as:"
 msgstr "Bidali honela:"
 
-#: ../src/nautilus-sendto-force.glade.h:6 ../src/nautilus-sendto.glade.h:7
+#: ../src/nautilus-sendto-force.glade.h:6 ../src/nautilus-sendto.glade.h:6
 msgid "Send packed in"
 msgstr "Bidali hemen enpaketatua"
 
-#: ../src/nautilus-sendto-force.glade.h:7 ../src/nautilus-sendto.glade.h:8
+#: ../src/nautilus-sendto-force.glade.h:7 ../src/nautilus-sendto.glade.h:7
 msgid "Send to:"
 msgstr "Bidali honi:"
 
-#: ../src/nautilus-sendto-force.glade.h:8 ../src/nautilus-sendto.glade.h:9
+#: ../src/nautilus-sendto-force.glade.h:8 ../src/nautilus-sendto.glade.h:8
 msgid "_Send"
 msgstr "_Bidali"
 
-#: ../src/nautilus-sendto.glade.h:1
-msgid "*"
-msgstr "*"
+#: ../src/plugins/balsa.c:100
+msgid "Email (Balsa)"
+msgstr "Posta (Balsa)"
 
-#: ../src/plugins/bluetooth.c:255
+#: ../src/plugins/bluetooth.c:267
 msgid "Bluetooth (OBEX)"
 msgstr "Bluetooth (OBEX)"
 
-#: ../src/plugins/evolution.c:226
+#: ../src/plugins/evolution.c:248
 msgid "Email (Evolution)"
 msgstr "Posta (Evolution)"
 
-#: ../src/plugins/gaim.c:219
+#: ../src/plugins/gaim.c:223
 msgid "Instant Message (Gaim)"
 msgstr "Berehalako mezularitza (Gaim)"
+
+#: ../src/plugins/gajim.c:404
+msgid "Unable to send file"
+msgstr "Ezin da fitxategia bidali"
+
+#: ../src/plugins/gajim.c:405
+msgid "There is no connection to gajim remote service."
+msgstr "Ez dago konexiorik urruneko gajim zerbitzuarekin."
+
+#: ../src/plugins/gajim.c:429 ../src/plugins/gajim.c:468
+msgid "Sending file failed"
+msgstr "Huts egin du fitxategia bidaltzean"
+
+#: ../src/plugins/gajim.c:430
+msgid "Recipient is missing."
+msgstr "Hartzailea falta da."
+
+#: ../src/plugins/gajim.c:468
+msgid "Unknown recipient."
+msgstr "Hartzaile ezezaguna."
+
+#: ../src/plugins/gajim.c:489
+msgid "Instant Message (Gajim)"
+msgstr "Berehalako mezularitza (Gajim)"
+
+#: ../src/plugins/sylpheed-claws.c:120
+msgid "Email (Sylpheed-Claws)"
+msgstr "Posta (Sylpheed-Claws)"
+
+#: ../src/plugins/thunderbird.c:100
+msgid "Email (Thunderbird)"
+msgstr "Posta (Thunderbird)"
+
