@@ -1,5 +1,11 @@
 2006-07-17  Bastien Nocera  <hadess@hadess.net>
 
+	* src/nautilus-sendto-command.c: (pack_files): Patch from Colin
+	Leroy <colin@colino.net> to pass a URI to the plugin when sending
+	an archive instead of a filename (Closes: #347392)
+
+2006-07-17  Bastien Nocera  <hadess@hadess.net>
+
 	* src/nautilus-sendto-command.c: (send_button_cb): Patch from Colin
 	Leroy <colin@colino.net> to fix a few leaks (Closes: #347391)
 

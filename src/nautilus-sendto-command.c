@@ -164,9 +164,9 @@ pack_files (NS_ui *ui)
 	if (strlen (gtk_entry_get_text(GTK_ENTRY(ui->pack_entry))) != 0)
 	{
 		GList *l;
-		GString *cmd, *packed_file;
-		gchar *pack_type, *tmp_dir, *tmp_work_dir;
-		
+		GString *cmd, *tmp;
+		char *pack_type, *tmp_dir, *tmp_work_dir, *packed_file;
+
 		tmp_dir = g_strdup_printf ("%s/nautilus-sendto-%s", 
 				   g_get_tmp_dir(), g_get_user_name());	
 		mkdir (tmp_dir, 0700);
@@ -174,9 +174,9 @@ pack_files (NS_ui *ui)
 						g_get_tmp_dir(), g_get_user_name(),
 						time(NULL));
 		mkdir (tmp_work_dir, 0700);
-		g_free(tmp_dir);
+		g_free (tmp_dir);
 
-		switch (gtk_combo_box_get_active(GTK_COMBO_BOX(ui->pack_combobox)))
+		switch (gtk_combo_box_get_active (GTK_COMBO_BOX(ui->pack_combobox)))
 		{
 		case 0:
 			pack_type = g_strdup (".zip");
@@ -192,7 +192,7 @@ pack_files (NS_ui *ui)
 		cmd = g_string_new ("");
 		g_string_printf (cmd, "%s --add-to=\"%s/%s%s\"",
 				 file_roller_cmd, tmp_work_dir,
-				 gtk_entry_get_text(GTK_ENTRY(ui->pack_entry)),
+				 gtk_entry_get_text (GTK_ENTRY(ui->pack_entry)),
 				 pack_type);
 
 		/* file-roller doesn't understand URIs */
@@ -207,12 +207,14 @@ pack_files (NS_ui *ui)
 		g_printf ("%s\n", cmd->str);
 		g_spawn_command_line_sync (cmd->str, NULL, NULL, NULL, NULL);
 		g_string_free (cmd, TRUE);
-		packed_file = g_string_new("");
-		g_string_printf (packed_file,"%s/%s%s",tmp_work_dir,
- 				 gtk_entry_get_text(GTK_ENTRY(ui->pack_entry)),
+		tmp = g_string_new("");
+		g_string_printf (tmp,"%s/%s%s", tmp_work_dir,
+ 				 gtk_entry_get_text (GTK_ENTRY(ui->pack_entry)),
 				 pack_type);
 		g_free (tmp_work_dir);
-		return g_string_free (packed_file, FALSE);
+		packed_file = g_filename_to_uri (tmp->str, NULL, NULL);
+		g_string_free(tmp, TRUE);
+		return packed_file;
 	}else{
 		error_dialog = gtk_message_dialog_new (GTK_WINDOW(ui->dialog),
 						       GTK_DIALOG_MODAL,
