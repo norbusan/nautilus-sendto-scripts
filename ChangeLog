@@ -1,3 +1,10 @@
+2006-07-17  Bastien Nocera  <hadess@hadess.net>
+
+	* src/nautilus-sendto-command.c: (get_filename_from_list),
+	(nautilus_sendto_create_ui): Patch from Colin Leroy <colin@colino.net>
+	to try a good guess at an archive name depending on the filenames
+	to be sent (Closes: #337558)
+
 2006-07-12  Roberto Majadas  <telemaco@openshine.com>
 
 	* src/plugins/gajim.c: Added the patch of  Dimitur Kiro , BUG #346750 and BUG #346862

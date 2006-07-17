@@ -64,6 +64,96 @@ destroy_dialog (GtkWidget *widget, gpointer data )
 }
 
 static char *
+get_filename_from_list (void)
+{
+	GList *l;
+	GString *common_part = NULL;
+	gboolean matches = TRUE;
+	guint offset = 0;
+	const char *encoding;
+	gboolean use_utf8 = TRUE;
+
+	encoding = g_getenv ("G_FILENAME_ENCODING");
+
+	if (encoding != NULL && strcasecmp(encoding, "UTF-8") != 0)
+		use_utf8 = FALSE;
+
+	if (file_list == NULL)
+		return NULL;
+
+	common_part = g_string_new("");
+
+	while (TRUE) {
+		gunichar cur_char = '\0';
+		for (l = file_list; l ; l = l->next) {
+			char *path = NULL, *name = NULL;
+			char *offset_name = NULL;
+
+			path = g_filename_from_uri ((char *) l->data,
+					NULL, NULL);
+			if (!path)
+				break;
+
+			name = g_path_get_basename (path);
+
+			if (!use_utf8) {
+				char *tmp;
+
+				tmp = g_filename_to_utf8 (name, -1,
+						NULL, NULL, NULL);
+				g_free (name);
+				name = tmp;
+			}
+
+			if (!name) {
+				g_free (path);
+				break;
+			}
+
+			if (offset >= g_utf8_strlen (name, -1)) {
+				g_free(name);
+				g_free(path);
+				matches = FALSE;
+				break;
+			}
+
+			offset_name = g_utf8_offset_to_pointer (name, offset);
+
+			if (offset_name == g_utf8_strrchr (name, -1, '.')) {
+				g_free (name);
+				g_free (path);
+				matches = FALSE;
+				break;
+			}
+			if (cur_char == '\0') {
+				cur_char = g_utf8_get_char (offset_name);
+			} else if (cur_char != g_utf8_get_char (offset_name)) {
+				g_free (name);
+				g_free (path);
+				matches = FALSE;
+				break;
+			}
+			g_free (name);
+			g_free (path);
+		}
+		if (matches == TRUE && cur_char != '\0') {
+			offset++;
+			common_part = g_string_append_unichar (common_part,
+					cur_char);
+		} else {
+			break;
+		}
+	}
+
+	if (g_utf8_strlen (common_part->str, -1) < 4) {
+		g_string_free (common_part, TRUE);
+		return NULL;
+	}
+
+	return g_string_free (common_part, FALSE);
+}
+
+static char *
 pack_files (NS_ui *ui)
 {
 	char *file_roller_cmd;
@@ -295,6 +385,7 @@ nautilus_sendto_create_ui (void)
 	GladeXML *app;	
 	gint toggle;
 	NS_ui *ui;
+	gboolean one_file = FALSE;
 
 	if (force_user_to_compress == FALSE)
 		app = glade_xml_new (GLADEDIR "/" "nautilus-sendto.glade", NULL, NULL);
@@ -313,7 +404,35 @@ nautilus_sendto_create_ui (void)
 	
 		
 	gtk_combo_box_set_active (GTK_COMBO_BOX(ui->pack_combobox), 0);
+
+	if (file_list != NULL && file_list->next != NULL)
+		one_file = FALSE;
+	else if (file_list != NULL)
+		one_file = TRUE;
+	
 	gtk_entry_set_text (GTK_ENTRY (ui->pack_entry), _("Files"));
+
+	if (one_file) {
+		char *filepath = NULL, *filename = NULL;
+
+		filepath = g_filename_from_uri ((gchar *)file_list->data,
+				NULL, NULL);
+
+		if (filepath != NULL)
+			filename = g_path_get_basename (filepath);
+		if (filename != NULL && filename[0] != '\0')
+			gtk_entry_set_text (GTK_ENTRY (ui->pack_entry), filename);
+
+		g_free (filename);
+		g_free (filepath);
+	} else {
+		char *filename = get_filename_from_list ();
+		if (filename != NULL && filename[0] != '\0') {
+			gtk_entry_set_text (GTK_ENTRY (ui->pack_entry),
+					filename);
+		}
+		g_free (filename);
+	}
 /*	create_entry_completion (ui->entry); */
 	set_contact_widgets (ui);
 	set_model_for_options_combobox (ui);
