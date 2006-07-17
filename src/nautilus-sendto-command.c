@@ -246,8 +246,11 @@ send_button_cb (GtkWidget *widget, gpointer data)
 		if (f != NULL){
 			GList *packed_file = NULL;		
 			packed_file = g_list_append (packed_file, f);
-			if (!p->info->send_files (p, w, packed_file))
+			if (!p->info->send_files (p, w, packed_file)) {
+				g_list_free (packed_file);
 				return;
+			}
+			g_list_free (packed_file);
 		}else{
 			return;
 		}
@@ -257,15 +260,23 @@ send_button_cb (GtkWidget *widget, gpointer data)
 			if (f != NULL){
 				GList *packed_file = NULL;
 				packed_file = g_list_append (packed_file, f);
-				if (!p->info->send_files (p, w, packed_file))
+				if (!p->info->send_files (p, w, packed_file)) {
+					g_list_free (packed_file);
 					return;
+				}
+				g_list_free (packed_file);
 			}else{
 				return;
 			}
 				
 		}else{
-			if (!p->info->send_files (p, w, file_list))
+			if (!p->info->send_files (p, w, file_list)) {
+				g_list_free (file_list);
+				file_list = NULL;
 				return;
+			}
+			g_list_free (file_list);
+			file_list = NULL;
 		}
 	}
 	destroy_dialog (NULL,NULL);
