@@ -1,22 +1,24 @@
+# translation of eu.po to Basque
 # translation of nautilus-sendto.po to basque
-# Copyright (C) 2005 Mikel Olasagasti
+# Copyright (C) 2004-2006 Free Software Foundation, Inc.
 # This file is distributed under the same license as the nautilus-sendto package.
 # Mikel Olasagasti <hey_neken@mundurat.net>, 2005.
-# I�aki Larra�aga Murgoitio <dooteo@euskalgnu.org>, 2005, 2006.
+# IÃ±aki LarraÃ±aga Murgoitio <dooteo@euskalgnu.org>, 2005, 2006.
+# Iñaki Larrañaga Murgoitio <dooteo@euskalgnu.org>, 2006.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: eu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-07-17 13:01+0000\n"
-"PO-Revision-Date: 2006-07-17 13:03+0000\n"
-"Last-Translator: I�aki Larra�aga Murgoitio <dooteo@euskalgnu.org>\n"
+"POT-Creation-Date: 2006-08-09 15:04+0000\n"
+"PO-Revision-Date: 2006-08-09 15:07+0000\n"
+"Last-Translator: Iñaki Larrañaga Murgoitio <dooteo@euskalgnu.org>\n"
 "Language-Team: Basque <itzulpena@euskalgnu.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=ISO-8859-1\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.10.2\n"
-"Plural-Forms: Plural-Forms: Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. type
 #. ui requirement
@@ -56,15 +58,15 @@ msgstr "Erabiliko den lehenetsitako karpeta"
 msgid "FOLDER"
 msgstr "KARPETA"
 
-#: ../src/nautilus-sendto-command.c:131
+#: ../src/nautilus-sendto-command.c:223
 msgid "You don't insert the package name"
 msgstr "Ez duzu paketearen izena idatzi"
 
-#: ../src/nautilus-sendto-command.c:316
+#: ../src/nautilus-sendto-command.c:426
 msgid "Files"
 msgstr "Fitxategiak"
 
-#: ../src/nautilus-sendto-command.c:505
+#: ../src/nautilus-sendto-command.c:637
 msgid "Nautilus Sendto"
 msgstr "Nautilus Sendto"
 
