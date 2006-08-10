@@ -1,15 +1,16 @@
 # Norwegian bokmål translation of nautilus-sendto.
-# Copyright (C) 2005 Free Software Foundation
+# Copyright (C) 2006 Free Software Foundation
 # This file is distributed under the same license as the nautilus-sendto package
 # Kjartan Maraas <kmaraas@gnome.org>, 2005.
+# Øivind Hoel <ohoel@cvs.gnome.org>, 2006.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: nautilus-sendto 0.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-10-02 18:09+0200\n"
-"PO-Revision-Date: 2005-10-02 18:15+0200\n"
-"Last-Translator: Kjartan Maraas <kmaraas@gnome.org>\n"
+"POT-Creation-Date: 2006-08-10 08:20+0200\n"
+"PO-Revision-Date: 2006-08-10 08:24+0100\n"
+"Last-Translator: Øivind Hoel <ohoel@cvs.gnome.org>\n"
 "Language-Team: Norwegian bokmål <i18n-nb@lister.ping.uio.no>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -33,39 +34,41 @@ msgstr "Integrasjon mot Nautilus"
 msgid "Provides integration with Nautilus"
 msgstr "Gir integrasjon mot Nautilus"
 
-#: ../src/nautilus-nste.c:108 ../src/nautilus-nste.c:123
+#: ../src/nautilus-nste.c:97
+#: ../src/nautilus-nste.c:112
 msgid "Send to..."
 msgstr "Send til..."
 
-#: ../src/nautilus-nste.c:109
+#: ../src/nautilus-nste.c:98
 msgid "Send file by mail, instant message..."
 msgstr "Send fil via e-post, lynmelding, etc."
 
-#: ../src/nautilus-nste.c:124
+#: ../src/nautilus-nste.c:113
 msgid "Send files by mail, instant message..."
 msgstr "Send filer via e-post, lynmelding, etc..."
 
-#: ../src/nautilus-sendto-command.c:56
+#: ../src/nautilus-sendto-command.c:55
 msgid "Default folder to use"
 msgstr "Forvalgt mappe som skal brukes"
 
-#: ../src/nautilus-sendto-command.c:57
+#: ../src/nautilus-sendto-command.c:56
 msgid "FOLDER"
 msgstr "MAPPE"
 
-#: ../src/nautilus-sendto-command.c:126
+#: ../src/nautilus-sendto-command.c:223
 msgid "You don't insert the package name"
 msgstr "Du oppga ikke navn på pakken"
 
-#: ../src/nautilus-sendto-command.c:287
+#: ../src/nautilus-sendto-command.c:426
 msgid "Files"
 msgstr "Filer"
 
-#: ../src/nautilus-sendto-command.c:426
+#: ../src/nautilus-sendto-command.c:637
 msgid "Nautilus Sendto"
 msgstr "Send filer"
 
-#: ../src/nautilus-sendto-force.glade.h:1 ../src/nautilus-sendto.glade.h:2
+#: ../src/nautilus-sendto-force.glade.h:1
+#: ../src/nautilus-sendto.glade.h:1
 msgid ""
 ".zip\n"
 ".tar.gz\n"
@@ -75,38 +78,80 @@ msgstr ""
 ".tar.gz\n"
 ".tar.bz2"
 
-#: ../src/nautilus-sendto-force.glade.h:4 ../src/nautilus-sendto.glade.h:5
+#: ../src/nautilus-sendto-force.glade.h:4
+#: ../src/nautilus-sendto.glade.h:4
 msgid "Send To..."
 msgstr "Send til..."
 
-#: ../src/nautilus-sendto-force.glade.h:5 ../src/nautilus-sendto.glade.h:6
+#: ../src/nautilus-sendto-force.glade.h:5
+#: ../src/nautilus-sendto.glade.h:5
 msgid "Send as:"
 msgstr "Send som:"
 
-#: ../src/nautilus-sendto-force.glade.h:6 ../src/nautilus-sendto.glade.h:7
+#: ../src/nautilus-sendto-force.glade.h:6
+#: ../src/nautilus-sendto.glade.h:6
 msgid "Send packed in"
 msgstr "Send pakket som"
 
-#: ../src/nautilus-sendto-force.glade.h:7 ../src/nautilus-sendto.glade.h:8
+#: ../src/nautilus-sendto-force.glade.h:7
+#: ../src/nautilus-sendto.glade.h:7
 msgid "Send to:"
 msgstr "Send til:"
 
-#: ../src/nautilus-sendto-force.glade.h:8 ../src/nautilus-sendto.glade.h:9
+#: ../src/nautilus-sendto-force.glade.h:8
+#: ../src/nautilus-sendto.glade.h:8
 msgid "_Send"
 msgstr "_Send"
 
-#: ../src/nautilus-sendto.glade.h:1
-msgid "*"
-msgstr "*"
+#: ../src/plugins/balsa.c:100
+msgid "Email (Balsa)"
+msgstr "E-post (Balsa)"
 
-#: ../src/plugins/bluetooth.c:255
+#: ../src/plugins/bluetooth.c:267
 msgid "Bluetooth (OBEX)"
 msgstr "Blåtann (OBEX)"
 
-#: ../src/plugins/evolution.c:226
+#: ../src/plugins/evolution.c:248
 msgid "Email (Evolution)"
 msgstr "E-post (Evolution)"
 
-#: ../src/plugins/gaim.c:219
+#: ../src/plugins/gaim.c:223
 msgid "Instant Message (Gaim)"
 msgstr "Lynmelding (Gaim)"
+
+#: ../src/plugins/gajim.c:404
+msgid "Unable to send file"
+msgstr "Kunne ikke sende fil"
+
+#: ../src/plugins/gajim.c:405
+msgid "There is no connection to gajim remote service."
+msgstr "Ingen tilkobling til gajim-tjenesten finnes."
+
+#: ../src/plugins/gajim.c:429
+#: ../src/plugins/gajim.c:468
+msgid "Sending file failed"
+msgstr "Sending av fil mislyktes"
+
+#: ../src/plugins/gajim.c:430
+msgid "Recipient is missing."
+msgstr "Mottager mangler."
+
+#: ../src/plugins/gajim.c:468
+msgid "Unknown recipient."
+msgstr "Ukjent mottager."
+
+#: ../src/plugins/gajim.c:489
+msgid "Instant Message (Gajim)"
+msgstr "Lynmelding (Gajim)"
+
+#: ../src/plugins/sylpheed-claws.c:120
+msgid "Email (Sylpheed-Claws)"
+msgstr "E-post (Sylpheed-Claws)"
+
+#: ../src/plugins/thunderbird.c:100
+msgid "Email (Thunderbird)"
+msgstr "E-post (Thunderbird)"
+
+#~ msgid "*"
+#~ msgstr "*"
+
