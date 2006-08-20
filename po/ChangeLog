@@ -1,3 +1,7 @@
+2006-08-20  Wouter Bolsterlee  <uws+gnome@xs4all.nl>
+
+	* nl.po: Translation updated by Wouter Bolsterlee.
+
 2006-08-10  Øivind Hoel <ohoel@cvs.gnome.org>
 
 	* nb.po: Updated Norwegian Bokmål translation.
@@ -12,7 +16,7 @@
 
 2006-07-16  Daniel Nylander  <po@danielnylander.se>
 
-        * sv.po: Updated Swedish translation.
+	* sv.po: Updated Swedish translation.
 	
 2006-07-06  Nickolay V. Shmyrev  <nshmyrev@yandex.ru>
 
@@ -37,7 +41,7 @@
 
 2006-06-26  Daniel Nylander  <po@danielnylander.se>
 
-        * sv.po: Updated Swedish translation.
+	* sv.po: Updated Swedish translation.
 	
 2006-06-25  Roberto Majadas  <telemaco@openshine.com>
 
@@ -53,7 +57,7 @@
 
 2006-04-04  Gora Mohanty  <gmohanty@cvs.gnome.org>
 
-        * or.po: Added Oriya translation.
+	* or.po: Added Oriya translation.
 
 2006-03-20  Žygimantas Beručka  <zygis@gnome.org>
 
@@ -100,7 +104,7 @@
 
 2005-09-16  Clytie Siddall <clytie@riverland.net.au>
 
-        * vi.po: Updated Vietnamese translation.
+	* vi.po: Updated Vietnamese translation.
 
 2005-09-09  Inaki Larranaga  <dooteo@euskalgnu.org>
 
@@ -112,7 +116,7 @@
 
 2005-08-30  Josep Puigdemont  <josep.puigdemont@gmail.com>
 
-        * ca.po: Updated Catalan translation.
+	* ca.po: Updated Catalan translation.
 
 2005-08-28  Kostas Papadimas  <pkst@gnome.org>
 
@@ -128,7 +132,7 @@
 
 2005-08-13  Clytie Siddall <clytie@riverland.net.au>
 
-        * vi.po: Updated Vietnamese translation.
+	* vi.po: Updated Vietnamese translation.
 
 2005-08-04  Abel Cheung  <abelcheung@gmail.com>
 
@@ -197,7 +201,7 @@
 
 2005-04-01  Steve Murphy  <murf@e-tools.com>
 
-        * rw.po: Added Kinyarwanda translation.
+	* rw.po: Added Kinyarwanda translation.
 
 2005-03-18  Gabor Kelemen  <kelemeng@gnome.hu>
 
@@ -213,12 +217,12 @@
 
 2005-02-19  Christophe Merlet  <redfox@redfoxcenter.org>
 
-        * fr.po: Added French translation from
+	* fr.po: Added French translation from
 	Jean-Michel Ardantz <jmardantz@ifrance.com>.
 
 2005-02-13  David Lodge <dave@cirt.net>
 
-        * en_GB.po: Added British translation.
+	* en_GB.po: Added British translation.
 
 2005-02-07  Laurent Dhima  <laurenti@alblinux.net>
 
