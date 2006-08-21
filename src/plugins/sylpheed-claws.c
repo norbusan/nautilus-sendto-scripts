@@ -65,7 +65,7 @@ gboolean send_files (NstPlugin *plugin, GtkWidget *contact_widget,
 	gchar *sc_cmd, *cmd, *send_to, *send_to_info ;
 	GList *l;
 	GString *mailto;
-	GString *tmp_str;
+	gchar *tmp_str;
 	GtkWidget *error_dialog;
 	
 	send_to = (gchar *) gtk_entry_get_text (GTK_ENTRY(contact_widget));
@@ -90,16 +90,14 @@ gboolean send_files (NstPlugin *plugin, GtkWidget *contact_widget,
 	if(sc_cmd == NULL)
 		return FALSE;
 	/* tmp_str is used for delete file:/// at the start of the filename path */
-	tmp_str = g_string_new(file_list->data);
-	tmp_str = g_string_erase (tmp_str, 0, 7);
-	g_string_append_printf (mailto," --attach \"%s\"",tmp_str->str);
-	g_string_free(tmp_str, TRUE);
+	tmp_str = g_filename_from_uri(file_list->data, NULL, NULL);
+	g_string_append_printf (mailto," --attach \"%s\"",tmp_str);
+	g_free(tmp_str);
 	
 	for (l = file_list->next ; l; l=l->next){
-		tmp_str = g_string_new(l->data);
-		tmp_str = g_string_erase (tmp_str, 0, 7);
-		g_string_append_printf (mailto," \"%s\"",tmp_str->str);
-		g_string_free(tmp_str, TRUE);
+		tmp_str = g_filename_from_uri(l->data, NULL, NULL);
+		g_string_append_printf (mailto," \"%s\"",tmp_str);
+		g_free(tmp_str);
 	}
 	cmd = g_strdup_printf ("%s %s", sc_cmd, mailto->str);
 	g_spawn_command_line_async (cmd, NULL);

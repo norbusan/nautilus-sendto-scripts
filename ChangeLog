@@ -1,5 +1,11 @@
 2006-08-21  Bastien Nocera  <hadess@hadess.net>
 
+	* src/plugins/sylpheed-claws.c: (send_files): Make sure we pass
+	real URIs to the sylpheed plugin, patch from Colin Leroy
+	<colin@colino.net> (Closes: #347777)
+
+2006-08-21  Bastien Nocera  <hadess@hadess.net>
+
 	* .cvsignore: upd
 
 2006-08-21  Bastien Nocera  <hadess@hadess.net>
