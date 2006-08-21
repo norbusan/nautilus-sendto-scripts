@@ -1,5 +1,9 @@
 2006-08-21  Bastien Nocera  <hadess@hadess.net>
 
+	* .cvsignore: upd
+
+2006-08-21  Bastien Nocera  <hadess@hadess.net>
+
 	* Makefile.am:
 	* configure.in:
 	* nst.schemas.in:

@@ -20,6 +20,7 @@ ltmain.sh
 m4
 missing
 mkinstalldirs
+nst.schemas
 stamp-h*
 stamp.h
 xml-i18n-*
