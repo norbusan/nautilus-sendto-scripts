@@ -220,6 +220,7 @@ gboolean destroy (NstPlugin *plugin){
 static 
 NstPluginInfo plugin_info = {
 	"im",
+	"gaim",
 	N_("Instant Message (Gaim)"),
 	FALSE,
 	init,

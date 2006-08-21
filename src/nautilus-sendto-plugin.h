@@ -34,6 +34,7 @@ typedef struct _NstPlugin NstPlugin;
 struct _NstPluginInfo 
 {
 	gchar *icon;
+	gchar *id;
 	gchar *description;
 	gboolean never_unload;
 	gboolean (*init)(NstPlugin *plugin);

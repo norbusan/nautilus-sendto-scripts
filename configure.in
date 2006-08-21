@@ -50,7 +50,8 @@ PKG_CHECK_MODULES(NAUTILUS_SENDTO,\
 	 libgnome-2.0 >= $GNOME_REQUIRED	\
 	 libgnomeui-2.0 >= $GNOME_REQUIRED	\
 	 bonobo-activation-2.0 >= $BONOBO_ACTIVATION_REQUIRED \
-	 libnautilus-extension >= $NAUTILUS_EXTENSION)
+	 libnautilus-extension >= $NAUTILUS_EXTENSION \
+	 gconf-2.0 >= $GNOME_REQUIRED)
 AC_SUBST(NAUTILUS_SENDTO_CFLAGS)
 AC_SUBST(NAUTILUS_SENDTO_LIBS)
 
@@ -188,6 +189,8 @@ else
   AC_DEFINE_UNQUOTED(LOCALEDIR, "${prefix}/${DATADIRNAME}/locale", [Locale dir])
 fi
 
+AC_PATH_PROG(GCONFTOOL, gconftool-2)
+AM_GCONF_SOURCE_2
 
 AC_OUTPUT([
 Makefile

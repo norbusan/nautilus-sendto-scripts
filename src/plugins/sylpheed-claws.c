@@ -117,6 +117,7 @@ gboolean destroy (NstPlugin *plugin){
 static 
 NstPluginInfo plugin_info = {
 	"stock_mail",
+	"sylpheed-claws",
 	N_("Email (Sylpheed-Claws)"),
 	FALSE,
 	init,

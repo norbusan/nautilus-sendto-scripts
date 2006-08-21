@@ -486,6 +486,7 @@ gboolean destroy (NstPlugin *plugin){
 static
 NstPluginInfo plugin_info = {
 	"im-jabber", 
+	"gajim",
 	N_("Instant Message (Gajim)"),
 	TRUE,
 	init,

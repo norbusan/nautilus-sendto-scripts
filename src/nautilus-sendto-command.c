@@ -26,7 +26,12 @@
 #include <dirent.h>
 #include <gnome.h>
 #include <glade/glade.h>
+#include <gconf/gconf-client.h>
 #include "nautilus-sendto-plugin.h"
+
+#define NAUTILUS_SENDTO_GCONF		"/desktop/gnome/nautilus-sendto"
+#define NAUTILUS_SENDTO_LAST_MEDIUM	NAUTILUS_SENDTO_GCONF"/last_medium"
+#define NAUTILUS_SENDTO_LAST_COMPRESS	NAUTILUS_SENDTO_GCONF"/last_compress"
 
 static 
 gchar *default_url = NULL;
@@ -34,7 +39,9 @@ gboolean force_user_to_compress = FALSE;
 GList *file_list = NULL;
 GList *plugin_list = NULL;
 GHashTable *hash ;
-guint option;
+guint option = 0;
+
+static GConfClient *gconf_client = NULL;
 
 typedef struct _NS_ui NS_ui;
 
@@ -189,6 +196,11 @@ pack_files (NS_ui *ui)
 			break;
 		}
 
+		gconf_client_set_int(gconf_client, 
+				NAUTILUS_SENDTO_LAST_COMPRESS, 
+				gtk_combo_box_get_active(GTK_COMBO_BOX(ui->pack_combobox)), 
+				NULL);
+
 		cmd = g_string_new ("");
 		g_string_printf (cmd, "%s --add-to=\"%s/%s%s\"",
 				 file_roller_cmd, tmp_work_dir,
@@ -242,7 +254,10 @@ send_button_cb (GtkWidget *widget, gpointer data)
 	
 	if (p == NULL)
 		return;
-		
+
+	gconf_client_set_string (gconf_client, 
+				NAUTILUS_SENDTO_LAST_MEDIUM, p->info->id, NULL);
+
 	if (force_user_to_compress){
 		f = pack_files (ui);
 		if (f != NULL){
@@ -356,10 +371,16 @@ set_model_for_options_combobox (NS_ui *ui){
 	GtkCellRenderer *renderer;
 	GList *aux;
 	NstPlugin *p;
-	
+	gchar *last_used = NULL;
+	int i = 0;
+
 	it = gtk_icon_theme_get_default ();
 
 	model = gtk_tree_store_new (2, GDK_TYPE_PIXBUF, G_TYPE_STRING);
+
+	last_used = gconf_client_get_string (gconf_client,
+			NAUTILUS_SENDTO_LAST_MEDIUM, NULL);
+
 	for (aux = plugin_list; aux; aux = aux->next){
 		p = (NstPlugin *) aux->data;
 		pixbuf = gtk_icon_theme_load_icon (it, p->info->icon, 16, 
@@ -369,7 +390,12 @@ set_model_for_options_combobox (NS_ui *ui){
 					0, pixbuf,
 					1, p->info->description,
 					-1);
+		if (last_used != NULL && !strcmp(last_used, p->info->id))
+			option = i;
+		i++;
 	}
+	g_free(last_used);
+
 	gtk_combo_box_set_model (GTK_COMBO_BOX(ui->options_combobox),
 				GTK_TREE_MODEL (model));
 	renderer = gtk_cell_renderer_pixbuf_new ();
@@ -388,8 +414,8 @@ set_model_for_options_combobox (NS_ui *ui){
 					renderer,
                                         "text", 1,
                                         NULL);
-	gtk_combo_box_set_active (GTK_COMBO_BOX (ui->options_combobox), 0);
-	option = 0;
+
+	gtk_combo_box_set_active (GTK_COMBO_BOX (ui->options_combobox), option);
 }
 
 static void
@@ -416,7 +442,10 @@ nautilus_sendto_create_ui (void)
 	ui->pack_entry = glade_xml_get_widget (app, "pack_entry");
 	
 		
-	gtk_combo_box_set_active (GTK_COMBO_BOX(ui->pack_combobox), 0);
+ 	gtk_combo_box_set_active (GTK_COMBO_BOX(ui->pack_combobox), 
+ 		gconf_client_get_int(gconf_client, 
+ 				NAUTILUS_SENDTO_LAST_COMPRESS, NULL));
+ 
 
 	if (file_list != NULL && file_list->next != NULL)
 		one_file = FALSE;
@@ -637,11 +666,14 @@ int main (int argc, char **argv)
 				      GNOME_PARAM_HUMAN_READABLE_NAME, _("Nautilus Sendto"),
 				      NULL);
 
+	gconf_client = gconf_client_get_default();
 	nautilus_sendto_init (program, argc, argv);	
 	nautilus_sendto_plugin_init ();
 	nautilus_sendto_create_ui();
 			
 	gtk_main ();
+	g_object_unref(gconf_client);
+
 	return 0;
 }
 
