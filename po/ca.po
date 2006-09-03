@@ -2,14 +2,14 @@
 # Copyright © 2005 The Free Software Foundation, Inc.
 # This file is distributed under the same license as the
 #   nautilus-sendto package.
-# Gil Forcada <gilforcada@guifi.net>, 2005.
+# Gil Forcada <gilforcada@guifi.net>, 2005, 2006.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: nautilus-sendto\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-08-30 02:18+0200\n"
-"PO-Revision-Date: 2005-08-30 02:18+0200\n"
+"POT-Creation-Date: 2006-08-22 20:59+0200\n"
+"PO-Revision-Date: 2006-08-23 00:12+0200\n"
 "Last-Translator: Gil Forcada <gilforcada@guifi.net>\n"
 "Language-Team: Catalan <tradgnome@softcatala.org>\n"
 "MIME-Version: 1.0\n"
@@ -32,41 +32,41 @@ msgstr "Integració amb el Nautilus"
 #: ../gaim_plugin/nautilus-sendto-plugin.c:305
 #: ../gaim_plugin/nautilus-sendto-plugin.c:306
 msgid "Provides integration with Nautilus"
-msgstr "Proveeix integració amb el Nautilus"
+msgstr "Proporciona integració amb el Nautilus"
 
-#: ../src/nautilus-nste.c:108 ../src/nautilus-nste.c:123
+#: ../src/nautilus-nste.c:97 ../src/nautilus-nste.c:112
 msgid "Send to..."
 msgstr "Envia a..."
 
-#: ../src/nautilus-nste.c:109
+#: ../src/nautilus-nste.c:98
 msgid "Send file by mail, instant message..."
 msgstr "Envia un fitxer per correu electrònic, missatgeria instantània..."
 
-#: ../src/nautilus-nste.c:124
+#: ../src/nautilus-nste.c:113
 msgid "Send files by mail, instant message..."
 msgstr "Envia els fitxers per correu electrònic, missatgeria instantània..."
 
-#: ../src/nautilus-sendto-command.c:56
+#: ../src/nautilus-sendto-command.c:62
 msgid "Default folder to use"
 msgstr "Directori per defecte a utilitzar"
 
-#: ../src/nautilus-sendto-command.c:57
+#: ../src/nautilus-sendto-command.c:63
 msgid "FOLDER"
 msgstr "DIRECTORI"
 
-#: ../src/nautilus-sendto-command.c:126
+#: ../src/nautilus-sendto-command.c:235
 msgid "You don't insert the package name"
-msgstr "No heu d'interir el nom del paquet"
+msgstr "No heu entrat el nom del paquet"
 
-#: ../src/nautilus-sendto-command.c:287
+#: ../src/nautilus-sendto-command.c:455
 msgid "Files"
 msgstr "Fitxers"
 
-#: ../src/nautilus-sendto-command.c:426
+#: ../src/nautilus-sendto-command.c:666
 msgid "Nautilus Sendto"
 msgstr "Enviador Nautilus"
 
-#: ../src/nautilus-sendto-force.glade.h:1 ../src/nautilus-sendto.glade.h:2
+#: ../src/nautilus-sendto-force.glade.h:1 ../src/nautilus-sendto.glade.h:1
 msgid ""
 ".zip\n"
 ".tar.gz\n"
@@ -76,38 +76,73 @@ msgstr ""
 ".tar.gz\n"
 ".tar.bz2"
 
-#: ../src/nautilus-sendto-force.glade.h:4 ../src/nautilus-sendto.glade.h:5
+#: ../src/nautilus-sendto-force.glade.h:4 ../src/nautilus-sendto.glade.h:4
 msgid "Send To..."
 msgstr "Envia a..."
 
-#: ../src/nautilus-sendto-force.glade.h:5 ../src/nautilus-sendto.glade.h:6
+#: ../src/nautilus-sendto-force.glade.h:5 ../src/nautilus-sendto.glade.h:5
 msgid "Send as:"
 msgstr "Envia com a:"
 
-#: ../src/nautilus-sendto-force.glade.h:6 ../src/nautilus-sendto.glade.h:7
+#: ../src/nautilus-sendto-force.glade.h:6 ../src/nautilus-sendto.glade.h:6
 msgid "Send packed in"
 msgstr "Envia empaquetat en"
 
-#: ../src/nautilus-sendto-force.glade.h:7 ../src/nautilus-sendto.glade.h:8
+#: ../src/nautilus-sendto-force.glade.h:7 ../src/nautilus-sendto.glade.h:7
 msgid "Send to:"
 msgstr "Envia a:"
 
-#: ../src/nautilus-sendto-force.glade.h:8 ../src/nautilus-sendto.glade.h:9
+#: ../src/nautilus-sendto-force.glade.h:8 ../src/nautilus-sendto.glade.h:8
 msgid "_Send"
 msgstr "En_via"
 
-#: ../src/nautilus-sendto.glade.h:1
-msgid "*"
-msgstr "*"
+#: ../src/plugins/balsa.c:101
+msgid "Email (Balsa)"
+msgstr "Correu electrònic (Balsa)"
 
-#: ../src/plugins/bluetooth.c:255
+#: ../src/plugins/bluetooth.c:268
 msgid "Bluetooth (OBEX)"
 msgstr "Bluetooth (OBEX)"
 
-#: ../src/plugins/evolution.c:226
+#: ../src/plugins/evolution.c:249
 msgid "Email (Evolution)"
 msgstr "Correu electrònic (Evolution)"
 
-#: ../src/plugins/gaim.c:219
+#: ../src/plugins/gaim.c:224
 msgid "Instant Message (Gaim)"
 msgstr "Missatgeria instantània (Gaim)"
+
+#: ../src/plugins/gajim.c:404
+msgid "Unable to send file"
+msgstr "No s'ha pogut enviar el fitxer"
+
+#: ../src/plugins/gajim.c:405
+msgid "There is no connection to gajim remote service."
+msgstr "No hi ha connexió amb el servei remot gajim."
+
+#: ../src/plugins/gajim.c:429 ../src/plugins/gajim.c:468
+msgid "Sending file failed"
+msgstr "S'ha produït un error en enviar el fitxer"
+
+#: ../src/plugins/gajim.c:430
+msgid "Recipient is missing."
+msgstr "Falta el destinatari."
+
+#: ../src/plugins/gajim.c:468
+msgid "Unknown recipient."
+msgstr "Destinatari desconegut."
+
+#: ../src/plugins/gajim.c:490
+msgid "Instant Message (Gajim)"
+msgstr "Missatgeria instantània (Gajim)"
+
+#: ../src/plugins/sylpheed-claws.c:119
+msgid "Email (Sylpheed-Claws)"
+msgstr "Correu electrònic (Sylpheed-Claws)"
+
+#: ../src/plugins/thunderbird.c:101
+msgid "Email (Thunderbird)"
+msgstr "Correu electrònic (Thunderbird)"
+
+#~ msgid "*"
+#~ msgstr "*"
