@@ -1,3 +1,7 @@
+2006-09-11  Pema Geyleg  <pgeyleg@gmail.com>
+
+	* configure.in: Added 'dz' in ALL_LINGUAS
+
 2006-08-21  Bastien Nocera  <hadess@hadess.net>
 
 	* src/plugins/sylpheed-claws.c: (send_files): Make sure we pass
