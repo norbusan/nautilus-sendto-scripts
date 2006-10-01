@@ -3,16 +3,16 @@
 # This file is distributed under the GNU General Public License Version 2.
 #
 # maintainer: Jean-Michel Ardantz <jmardantz@ifrance.com>, 2004.
-# Contributors :
 # Christophe Bliard <christophe.bliard@trux.info>,2006.
+# Jonathan Ernst <jonathan@ernstfamily.ch>, 2006.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: nautilus-sendto 0.5\n"
+"Project-Id-Version: nautilus-sendto 0.7\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-03-13 19:20+0100\n"
-"PO-Revision-Date: 2006-03-13 13:00+0100\n"
-"Last-Translator: Christophe Bliard <christophe.bliard@trux.info>\n"
+"POT-Creation-Date: 2006-10-01 15:12+0200\n"
+"PO-Revision-Date: 2006-10-01 15:10+0200\n"
+"Last-Translator: Jonathan Ernst <jonathan@ernstfamily.ch>\n"
 "Language-Team: GNOME French Team <gnomefr@traduc.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -36,35 +36,35 @@ msgstr "Intégration à Nautilus"
 msgid "Provides integration with Nautilus"
 msgstr "Permet une intégration à Nautilus"
 
-#: ../src/nautilus-nste.c:108 ../src/nautilus-nste.c:123
+#: ../src/nautilus-nste.c:97 ../src/nautilus-nste.c:112
 msgid "Send to..."
 msgstr "Envoyer à..."
 
-#: ../src/nautilus-nste.c:109
+#: ../src/nautilus-nste.c:98
 msgid "Send file by mail, instant message..."
 msgstr "Envoyer le fichier par courriel, messagerie instantanée..."
 
-#: ../src/nautilus-nste.c:124
+#: ../src/nautilus-nste.c:113
 msgid "Send files by mail, instant message..."
 msgstr "Envoyer les fichiers par courriel, messagerie instantanée..."
 
-#: ../src/nautilus-sendto-command.c:56
+#: ../src/nautilus-sendto-command.c:62
 msgid "Default folder to use"
 msgstr "Dossier par défaut à utiliser"
 
-#: ../src/nautilus-sendto-command.c:57
+#: ../src/nautilus-sendto-command.c:63
 msgid "FOLDER"
 msgstr "DOSSIER"
 
-#: ../src/nautilus-sendto-command.c:126
+#: ../src/nautilus-sendto-command.c:235
 msgid "You don't insert the package name"
-msgstr "Vous n'avez pas saisie de nom d'archive"
+msgstr "Vous n'avez pas saisi de nom d'archive"
 
-#: ../src/nautilus-sendto-command.c:291
+#: ../src/nautilus-sendto-command.c:455
 msgid "Files"
-msgstr "Nom Fichier"
+msgstr "Fichiers"
 
-#: ../src/nautilus-sendto-command.c:430
+#: ../src/nautilus-sendto-command.c:666
 msgid "Nautilus Sendto"
 msgstr "Nautilus Sendto"
 
@@ -98,17 +98,50 @@ msgstr "Envoyer à :"
 msgid "_Send"
 msgstr "_Envoyer"
 
-#: ../src/plugins/bluetooth.c:258
+#: ../src/plugins/balsa.c:101
+msgid "Email (Balsa)"
+msgstr "Courrier électronique (Balsa)"
+
+#: ../src/plugins/bluetooth.c:268
 msgid "Bluetooth (OBEX)"
 msgstr "Bluetooth (OBEX)"
 
-#: ../src/plugins/evolution.c:226
+#: ../src/plugins/evolution.c:249
 msgid "Email (Evolution)"
 msgstr "Courrier électronique (Evolution)"
 
-#: ../src/plugins/gaim.c:219
+#: ../src/plugins/gaim.c:224
 msgid "Instant Message (Gaim)"
 msgstr "Messagerie instantanée (Gaim)"
 
-#~ msgid "*"
-#~ msgstr "*"
+#: ../src/plugins/gajim.c:404
+msgid "Unable to send file"
+msgstr "Impossible d'envoyer le fichier"
+
+#: ../src/plugins/gajim.c:405
+msgid "There is no connection to gajim remote service."
+msgstr "Il n'y a pas de connexion au service à distance de Gajim."
+
+#: ../src/plugins/gajim.c:429 ../src/plugins/gajim.c:468
+msgid "Sending file failed"
+msgstr "L'envoi du fichier a échoué"
+
+#: ../src/plugins/gajim.c:430
+msgid "Recipient is missing."
+msgstr "Le destinataire est manquant."
+
+#: ../src/plugins/gajim.c:468
+msgid "Unknown recipient."
+msgstr "Destinataire inconnu."
+
+#: ../src/plugins/gajim.c:490
+msgid "Instant Message (Gajim)"
+msgstr "Messagerie instantanée (Gajim)"
+
+#: ../src/plugins/sylpheed-claws.c:119
+msgid "Email (Sylpheed-Claws)"
+msgstr "Courrier électronique (Sylpheed-Claws)"
+
+#: ../src/plugins/thunderbird.c:101
+msgid "Email (Thunderbird)"
+msgstr "Courrier électronique (Thunderbird)"
