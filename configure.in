@@ -174,7 +174,7 @@ GNOME_COMPILE_WARNINGS
 
 GNOME_COMMON_INIT
 
-ALL_LINGUAS="bg ca cs da de dz el en_CA en_GB es eu fi fr gl he hu it ja ko lt mk nb ne nl or pa pl pt pt_BR ru rw sk sq sv th vi uk zh_CN zh_TW"
+ALL_LINGUAS="bg ca cs da de dz el en_CA en_GB es et eu fi fr gl he hu it ja ko lt mk nb ne nl or pa pl pt pt_BR ru rw sk sq sv th vi uk zh_CN zh_TW"
 
 GETTEXT_PACKAGE=nautilus-sendto
 AC_SUBST(GETTEXT_PACKAGE)

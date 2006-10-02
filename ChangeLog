@@ -1,3 +1,7 @@
+2006-10-02  Priit Laes  <plaes@cvs.gnome.org>
+
+	* configure.in: Added 'et' in ALL_LINGUAS
+
 2006-09-11  Pema Geyleg  <pgeyleg@gmail.com>
 
 	* configure.in: Added 'dz' in ALL_LINGUAS
