@@ -1,5 +1,6 @@
 2006-10-07  Roberto Majadas  <telemaco@openshine.com>
 
+	* gaim_plugin/nautilus-sendto-plugin.c: Fix build error in gaim2
 	* src/plugins/evolution.c: Added patch that close "Bug 348941 Evolution Autocompletion not offered for all Address Books" . Thanks Øystein Gisnås, Karsten Bräckelmann
 	* nautilus-sendto.1: Added man-page . Thanks Øystein Gisnås
 

@@ -31,13 +31,13 @@
 #endif
 
 #include <glib.h>
+#include <glib/gi18n.h>
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <fcntl.h>
 #include <unistd.h>
 #include <dirent.h>
 
-#include "internal.h"
 #include "conversation.h"
 #include "core.h"
 #include "debug.h"
