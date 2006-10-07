@@ -1,3 +1,7 @@
+2006-10-07  Roberto Majadas  <telemaco@openshine.com>
+
+	* src/plugins/evolution.c: Added patch that close "Bug 348941 Evolution Autocompletion not offered for all Address Books" . Thanks Øystein Gisnås, Karsten Bräckelmann
+
 2006-10-02  Priit Laes  <plaes@cvs.gnome.org>
 
 	* configure.in: Added 'et' in ALL_LINGUAS

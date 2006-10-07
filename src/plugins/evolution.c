@@ -61,107 +61,126 @@ gboolean init (NstPlugin *plugin)
 }
 
 void
+add_name_to_model (const gchar *name, GtkListStore *store, GtkTreeIter *iter, GdkPixbuf *pixbuf, gchar *hash_value)
+{
+	gchar *hash_key;
+
+	gtk_list_store_append (store, iter);
+	gtk_list_store_set (store, iter, 0, pixbuf, 1, name, -1);
+	hash_key = g_strdup (name);
+	g_hash_table_insert (hash, hash_key, hash_value);
+}
+
+void
 add_evolution_contacts_to_model (GtkWidget *entry, 
 				 GtkListStore *store, GtkTreeIter *iter)
 {
 	GdkPixbuf *pixbuf;
 	GtkIconTheme *it;
-	EBook *book;
-	EBookQuery *query;
-	GList *cards, *c;
-	gboolean status;
-	gchar *hash_key;
-	gchar *hash_value;
+	GError *err = NULL;
+	GSList *g, *s, *addr_sources = NULL;
+	ESourceList *all_abooks;
 	
 	it = gtk_icon_theme_get_default ();
 	pixbuf = gtk_icon_theme_load_icon (it, "stock_mail", 16, 
 					GTK_ICON_LOOKUP_USE_BUILTIN, NULL);
 
-	book = e_book_new_system_addressbook (NULL);
-	if (!book) {
-		g_error ("failed to create local addressbook\n");
+	/* Collect address books marked for auto-complete */
+	if (!e_book_get_addressbooks (&all_abooks, &err)) {
+		g_error_free (err);
+		g_error ("Unable to get addressbooks: %s", err->message);
 	}
-	
-	status = e_book_open (book, FALSE, NULL);
-	if (status == FALSE) {
-		g_error ("failed to open local addressbook\n");
-	}
-
-	query = e_book_query_field_exists (E_CONTACT_FULL_NAME);
-	status = e_book_get_contacts (book, query, &cards, NULL);
-	e_book_query_unref (query);
-	
-	if (status == FALSE) {
-		g_error ("error %d getting card list\n", status);
-	}
-
-	for (c = cards; c; c = c->next) {
-		EContact *contact = E_CONTACT (c->data);		
-		const char *family_name = e_contact_get_const (contact, E_CONTACT_FAMILY_NAME);
-		const char *given_name = e_contact_get_const (contact, E_CONTACT_GIVEN_NAME);
-		GList *emails, *e;
-		
-		emails = e_contact_get (contact, E_CONTACT_EMAIL);
-		for (e = emails; e; e = e->next) {
-			GString *str;
-			gchar *email = e->data;
-			
-			hash_value = g_strdup_printf ("mailto:%s",email);
-			if (family_name != NULL && strlen (family_name)==0){	
-				/* Output : name <email> */
-				str = g_string_new("");				
-				g_string_printf (str, "%s <%s>", given_name, email);
-				gtk_list_store_append (store, iter);
-				gtk_list_store_set (store, iter, 0, pixbuf, 1, str->str, -1);
-				hash_key = g_strdup (str->str);
-				g_hash_table_insert (hash, hash_key, hash_value);
-				g_string_free (str, TRUE);
-				/* Output : email (name) */
-				str = g_string_new("");
-				g_string_printf (str, "%s (%s)", email, given_name);
-				gtk_list_store_append (store, iter);
-				gtk_list_store_set (store, iter, 0, pixbuf, 1, str->str, -1);
-				hash_key = g_strdup (str->str);
-				g_hash_table_insert (hash, hash_key, hash_value);
-				g_string_free (str, TRUE);
-				
-			}else{
-				/* Output : family_name, name <email> */
-				str = g_string_new("");
-				g_string_printf (str, "%s, %s <%s>", family_name, 
-						 given_name, email);
-				gtk_list_store_append (store, iter);
-				gtk_list_store_set (store, iter, 0, pixbuf, 1, str->str, -1);
-				hash_key = g_strdup (str->str);
-				g_hash_table_insert (hash, hash_key, hash_value);
-				g_string_free (str, TRUE);
-				/* Output : name family_name <email> */
-				str = g_string_new("");
-				g_string_printf (str, "%s %s <%s>", given_name, 
-						 family_name, email);
-				gtk_list_store_append (store, iter);
-				gtk_list_store_set (store, iter, 0, pixbuf, 1, str->str, -1);
-				hash_key = g_strdup (str->str);
-				g_hash_table_insert (hash, hash_key, hash_value);
-				g_string_free (str, TRUE);
-				/* Output : email (family_name, name) */
-				str = g_string_new("");
-				g_string_printf (str, "%s (%s, %s)", email, 
-						 family_name, given_name);
-				gtk_list_store_append (store, iter);
-				gtk_list_store_set (store, iter, 0, pixbuf, 1, str->str, -1);
-				hash_key = g_strdup (str->str);
-				g_hash_table_insert (hash, hash_key, hash_value);
-				g_string_free (str, TRUE);
-			}			
-
+	for (g = e_source_list_peek_groups (all_abooks); g; g = g_slist_next (g)) {
+		for (s = e_source_group_peek_sources ((ESourceGroup *) g->data); s; s = g_slist_next (s)) {
+			ESource *source = s->data;
+			const char *completion = e_source_get_property (source, "completion");
+			if (completion && !g_ascii_strcasecmp (completion, "true")) {
+				addr_sources = g_slist_prepend (addr_sources, source);
+				g_object_ref (source);
+			}
+			g_object_unref (source);
 		}
-		g_list_foreach (emails, (GFunc)g_free, NULL);
-		g_list_free (emails);
-		g_object_unref (contact);
-		
+		g_slist_free (s);
 	}
-	g_list_free (cards);
+	g_slist_free (g);
+
+	/* Extract contacts from address books */
+	for (s = addr_sources; s; s = g_slist_next (s)) {
+		ESource *source = s->data;
+		EBook *book;
+		EBookQuery *query;
+		GList *contacts, *c;
+
+		if (!(book = e_book_new (source, &err))) {
+			g_warning ("Unable to create addressbook: %s", err->message);
+			g_error_free (err);
+			continue;
+		}
+		if (!e_book_open (book, TRUE, &err)) {
+			g_warning ("Unable to open addressbook: %s", err->message);
+			g_error_free (err);
+			g_object_unref (book);
+			continue;
+		}
+		query = e_book_query_field_exists (E_CONTACT_FULL_NAME);
+		if (!e_book_get_contacts (book, query, &contacts, &err)) {
+			g_warning ("Unable to get contacts: %s", err->message);
+			g_error_free (err);
+			g_object_unref (book);
+			continue;
+		}
+		e_book_query_unref (query);
+		g_object_unref (book);
+
+		/* Add all contacts */
+		for (c = contacts; c; c = g_list_next (c)) {
+			EContact *contact = E_CONTACT (c->data);
+			const char *family_name = e_contact_get_const (contact, E_CONTACT_FAMILY_NAME);
+			const char *given_name = e_contact_get_const (contact, E_CONTACT_GIVEN_NAME);
+			GList *emails, *e;
+
+			/* Iterate over all email addresses for a contact */
+			emails = e_contact_get (contact, E_CONTACT_EMAIL);
+			for (e = emails; e; e = e->next) {
+				gchar *email = e->data, *hash_value, *full_name, *str;
+				gboolean both_names_set = FALSE;
+
+				hash_value = g_strdup_printf ("mailto:%s", email);
+				if (family_name != NULL && strlen (family_name) > 0 &&
+				    given_name != NULL && strlen (given_name) > 0)
+					both_names_set = TRUE;
+				/* Create the full name as "family_name given_name" */
+				/* TODO don't print given_name or family at all when they are NULL */
+				full_name = g_strdup_printf ("%s%s%s", given_name, both_names_set ? " " : "", family_name);
+
+				/* Output: email (full_name) */
+				str = g_strdup_printf ("%s (%s)", email, full_name);
+				add_name_to_model (str, store, iter, pixbuf, hash_value);
+				g_free (str);
+				/* Output: full_name <email> */
+				str = g_strdup_printf ("%s <%s>", full_name, email);
+				add_name_to_model (str, store, iter, pixbuf, hash_value);
+				g_free (str);
+				if (both_names_set) {
+					/* Output: family_name, given_name <email> */
+					str = g_strdup_printf ("%s, %s <%s>", family_name, given_name, email);
+					add_name_to_model (str, store, iter, pixbuf, hash_value);
+					g_free (str);
+				}
+				g_free (full_name);
+				
+			}
+			g_object_unref (contact);
+			g_list_free (e);
+			g_list_free (emails);
+		}
+		g_object_unref (source);
+		g_list_free (c);
+		g_list_free (contacts);
+	}
+	g_object_unref (all_abooks);
+	g_slist_free (s);
+	g_slist_free (addr_sources);
 }
 
 static
