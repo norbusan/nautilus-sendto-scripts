@@ -4,6 +4,8 @@ endif
 
 SUBDIRS = src $(GAIM_PLUGIN_DIR) po
 
+man_MANS = nautilus-sendto.1
+
 EXTRA_DIST =                    \
         AUTHORS                 \
 	NEWS                    \
@@ -11,6 +13,7 @@ EXTRA_DIST =                    \
 	intltool-merge.in       \
 	intltool-update.in      \
 	intltool-extract.in	\
+	$(man_MANS)             \
 	$(schema_in_files)
 
 CLEANFILES = 			\
