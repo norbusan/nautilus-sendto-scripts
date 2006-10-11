@@ -1,4 +1,15 @@
 ============
+Version 0.8
+============
+
+Nautilus Sendto
+	* Fix build error in gaim2
+	* Solved evolution Bug #348941 Evolution Autocompletion not offered for all Address Books. Thanks Øystein Gisnås, Karsten Bräckelmann
+	* Added man page
+	* Nautilus-sendto remember the last selected medium used to send files . Thanks Colin Leroy and Bastien Nocera
+	* Some bug fixes more.
+
+============
 Version 0.7
 ============
 

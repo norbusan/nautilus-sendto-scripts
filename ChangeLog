@@ -1,3 +1,8 @@
+2006-10-11  Roberto Majadas <telemaco@openshine.com>
+
+	* Changes in my email adress
+	* updated version to nautilus-sendto (0.8)
+
 2006-10-07  Roberto Majadas  <telemaco@openshine.com>
 
 	* gaim_plugin/nautilus-sendto-plugin.c: Fix build error in gaim2

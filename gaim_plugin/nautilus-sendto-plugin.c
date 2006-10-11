@@ -18,7 +18,7 @@
  * Free Software Foundation, Inc., 59 Temple Place - Suite 330,
  * Boston, MA 02111-1307, USA.
  *
- * Author:  Roberto Majadas <roberto.majadas@hispalinux.es>
+ * Author:  Roberto Majadas <roberto.majadas@openshine.com>
  */
 
 
@@ -301,11 +301,11 @@ static GaimPluginInfo info = {
     
     "gtk-nautilus",					/* id */
     N_("Nautilus Integration"),				/* name */
-    "0.2",						/* version */
+    "0.8",						/* version */
     N_("Provides integration with Nautilus"),		/* summary */ 
     N_("Provides integration with Nautilus"),		/* description */
     
-    "Roberto Majadas <roberto@hispalinux.es>",	/* author */
+    "Roberto Majadas <roberto.majadas@openshine.com>",	/* author */
     "www.gnome.org",                    /* homepage */
     
     plugin_load,			/* load */

@@ -18,7 +18,7 @@
  * Free Software Foundation, Inc., 59 Temple Place - Suite 330,
  * Boston, MA 02111-1307, USA.
  *
- * Author:  Roberto Majadas <roberto.majadas@hispalinux.es>
+ * Author:  Roberto Majadas <roberto.majadas@openshine.com>
  */
 
 #ifndef _NAUTILUS_SENDTO_PLUGIN_H_
