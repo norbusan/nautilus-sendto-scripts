@@ -7,17 +7,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nautilus_sendto.head.pot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-04-19 04:15+0200\n"
-"PO-Revision-Date: 2006-04-28 11:06-0500\n"
-"Last-Translator: sonam pelden\n"
+"POT-Creation-Date: 2006-10-30 04:48+0100\n"
+"PO-Revision-Date: 2006-10-30 04:37+0530\n"
+"Last-Translator: yangka <yanang_ka@hotmail.com>\n"
 "Language-Team: Dzongkha <pgeyleg@dit.gov.bt>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: 2;(n!=1);\n"
+"Plural-Forms: nplurals=2;plural=(n!=1);\n"
 "X-Poedit-Language: Dzongkha\n"
 "X-Poedit-Country: Bhutan\n"
-"X-Poedit-SourceCharset: CHARSET\n"
+"X-Poedit-SourceCharset: utf-8\n"
 
 #. type
 #. ui requirement
@@ -50,23 +50,23 @@ msgstr "ཡིག་སྣོད་འདི་ཡིག་འཕྲིན་ག
 msgid "Send files by mail, instant message..."
 msgstr "ཡིག་སྣོད་འདི་ཚུ་ཡིག་འཕྲིན་གྱི་ཐོག་ལས་གཏང་ནི་དང་ འཕྲིན་དོན་འདི་འཕྲལ་མྱུར་གཏང་..."
 
-#: ../src/nautilus-sendto-command.c:55
+#: ../src/nautilus-sendto-command.c:62
 msgid "Default folder to use"
 msgstr "ལག་ལེན་འཐབ་ནའི་དོན་ལུ་སྣོད་འཛིན་སྔོན་སྒྲིག་འབད།"
 
-#: ../src/nautilus-sendto-command.c:56
+#: ../src/nautilus-sendto-command.c:63
 msgid "FOLDER"
 msgstr "སྣོད་འཛིན།"
 
-#: ../src/nautilus-sendto-command.c:131
+#: ../src/nautilus-sendto-command.c:235
 msgid "You don't insert the package name"
 msgstr "ཐུམ་སྒྲིལ་གྱི་མིང་འདི་ ཁྱོད་ཀྱིས་མ་བཙུགས།"
 
-#: ../src/nautilus-sendto-command.c:316
+#: ../src/nautilus-sendto-command.c:455
 msgid "Files"
 msgstr "ཡིག་སྣོད།"
 
-#: ../src/nautilus-sendto-command.c:505
+#: ../src/nautilus-sendto-command.c:666
 msgid "Nautilus Sendto"
 msgstr "ནའུ་ཊི་ལཱསི་གི་གཏང་ཡུལ།"
 
@@ -106,15 +106,52 @@ msgstr "གཏང་ཡུལ:"
 msgid "_Send"
 msgstr "གཏང་།(_S)"
 
-#: ../src/plugins/bluetooth.c:261
+#: ../src/plugins/balsa.c:101
+msgid "Email (Balsa)"
+msgstr "གློག་འཕྲིན།(བཱལ་ས)"
+
+#: ../src/plugins/bluetooth.c:268
 msgid "Bluetooth (OBEX)"
 msgstr "བུལུ་ཊུཊི།(ཨོ་བི་ཨེགས)"
 
-#: ../src/plugins/evolution.c:228
+#: ../src/plugins/evolution.c:268
 msgid "Email (Evolution)"
 msgstr "གློག་འཕྲིན།(ཨི་བོ་ལུ་ཤཱན།)"
 
-#: ../src/plugins/gaim.c:223
+#: ../src/plugins/gaim.c:224
 msgid "Instant Message (Gaim)"
 msgstr "འཕྲལ་མྱུར་འཕྲིན་དོན།(གེམ)"
+
+#: ../src/plugins/gajim.c:404
+msgid "Unable to send file"
+msgstr "ཡིག་སྣོད་གཏང་མི་ཚུགསཔ།"
+
+#: ../src/plugins/gajim.c:405
+msgid "There is no connection to gajim remote service."
+msgstr "གེམ་ཐག་རིང་གི་ཞབས་ཏོག་ལུ་མཐུན་ལམ་མེདཔ།"
+
+#: ../src/plugins/gajim.c:429
+#: ../src/plugins/gajim.c:468
+msgid "Sending file failed"
+msgstr "ཡིག་སྣོད་གཏང་དེ་འཐུས་ཤོར་འབྱུང་ཡོདཔ།"
+
+#: ../src/plugins/gajim.c:430
+msgid "Recipient is missing."
+msgstr "ཐོབ་མཁན་འདི་བརླག་བསྟོར་འབྱུང་ཡོདཔ།"
+
+#: ../src/plugins/gajim.c:468
+msgid "Unknown recipient."
+msgstr "ཐོབ་མཁན་མ་ཤེསཔ།"
+
+#: ../src/plugins/gajim.c:490
+msgid "Instant Message (Gajim)"
+msgstr "འཕྲལ་མྱུར་འཕྲིན་དོན(གེམ)"
+
+#: ../src/plugins/sylpheed-claws.c:119
+msgid "Email (Sylpheed-Claws)"
+msgstr "གློག་འཕྲིན (སིལཕིཌི-ཀལ་སི)"
+
+#: ../src/plugins/thunderbird.c:101
+msgid "Email (Thunderbird)"
+msgstr "གློག་འཕྲིན(ཐཱན་ཌར་བཌི)"
 
