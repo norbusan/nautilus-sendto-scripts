@@ -1,3 +1,8 @@
+2006-11-18  Djihed Afifi <djihed@gmail.com> 
+
+	* ar.po: Added Arabic Translation.
+	* LINGUAS: Added ar.
+
 2006-11-6  Vladimer Sichinava  <vsichi@gnome.org>
 
         * ka.po: Updated Georgian translation
