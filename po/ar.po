@@ -1,21 +1,24 @@
+# translation of nautilus-sendto.HEAD.ar.po to Arabic
 # Arabic translations for PACKAGE package.
 # Copyright (C) 2006 THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# Automatically generated, 2006.
 #
+# Automatically generated, 2006.
+# Khaled Hosny <khaledhosny@eglug.org>, 2006.
 msgid ""
 msgstr ""
-"Project-Id-Version: Project\n"
+"Project-Id-Version: nautilus-sendto.HEAD.ar\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-11-17 21:14+0000\n"
-"PO-Revision-Date: 2006-11-18 00:23+0100\n"
-"Last-Translator: Djihed Afifi <djihed@gmail.com>\n"
-"Language-Team: Arabic <doc@arabeyes.org>\n"
+"PO-Revision-Date: 2006-11-23 20:16+0200\n"
+"Last-Translator: Khaled Hosny <khaledhosny@eglug.org>\n"
+"Language-Team: Arabic <support@arabeyes.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=6; plural=n == 0 ? 0 : n == 1 ? 1 : n == 2 ? 2 : n >= 3 && n <= 10 ? 3 : n >= 11 && n <= 99 ? 4 : 5;\n"
+"Plural-Forms: Plural-Forms: nplurals=4; plural=n==1 ? 0 : n==2 ? 1 : n>=3 && n<=10 ? 2 : 3\n"
 "X-Poedit-Language: Arabic\n"
+"X-Generator: KBabel 1.11.4\n"
 
 #. type
 #. ui requirement
@@ -24,152 +27,132 @@ msgstr ""
 #. priority
 #. id
 #: ../gaim_plugin/nautilus-sendto-plugin.c:303
-#, fuzzy
 msgid "Nautilus Integration"
-msgstr "تشغيل آلي لنوتلِس"
+msgstr "التكامل مع نوتلس"
 
 #. name
 #. version
 #. summary
 #: ../gaim_plugin/nautilus-sendto-plugin.c:305
 #: ../gaim_plugin/nautilus-sendto-plugin.c:306
-#, fuzzy
 msgid "Provides integration with Nautilus"
-msgstr "نوتلس: لا يمكن استخدام %s مع العناوين URI.\n"
+msgstr "توفّر تكامل مع نوتلس"
 
 #: ../src/nautilus-nste.c:97
 #: ../src/nautilus-nste.c:112
-#, fuzzy
 msgid "Send to..."
-msgstr "إرسال إلى:"
+msgstr "أرسل إلى..."
 
 #: ../src/nautilus-nste.c:98
 msgid "Send file by mail, instant message..."
-msgstr ""
+msgstr "أرسل الملف بالبريد، رسالة آنية..."
 
 #: ../src/nautilus-nste.c:113
 msgid "Send files by mail, instant message..."
-msgstr ""
+msgstr "أرسل الملفات بالبريد، رسالة آنية..."
 
 #: ../src/nautilus-sendto-command.c:62
-#, fuzzy
 msgid "Default folder to use"
-msgstr "القاموس الافتراضي المستخدم"
+msgstr "المجلد الإفتراضي ليستخدم"
 
 #: ../src/nautilus-sendto-command.c:63
-#, fuzzy
 msgid "FOLDER"
-msgstr "الدليل"
+msgstr "مجلد"
 
 #: ../src/nautilus-sendto-command.c:235
 msgid "You don't insert the package name"
-msgstr ""
+msgstr "لم تدخِل اسم الحزمة"
 
 #: ../src/nautilus-sendto-command.c:455
-#, fuzzy
 msgid "Files"
 msgstr "ملفات"
 
 #: ../src/nautilus-sendto-command.c:666
-#, fuzzy
 msgid "Nautilus Sendto"
-msgstr "تشغيل آلي لنوتلِس"
+msgstr "أرسل إلى - نوتلِس"
 
 #: ../src/nautilus-sendto-force.glade.h:1
 #: ../src/nautilus-sendto.glade.h:1
-#, fuzzy
 msgid ""
 ".zip\n"
 ".tar.gz\n"
 ".tar.bz2"
-msgstr "Tar مضغوط بـ bzip2 (.tar.bz2)"
+msgstr ""
+".zip\n"
+".tar.gz\n"
+".tar.bz2"
 
 #: ../src/nautilus-sendto-force.glade.h:4
 #: ../src/nautilus-sendto.glade.h:4
-#, fuzzy
 msgid "Send To..."
-msgstr "إرسال إلى:"
+msgstr "أرسل إلى..."
 
 #: ../src/nautilus-sendto-force.glade.h:5
 #: ../src/nautilus-sendto.glade.h:5
-#, fuzzy
 msgid "Send as:"
-msgstr "أر_سل نغمات DTMF على شكل:"
+msgstr "أرسِل كـ:"
 
 #: ../src/nautilus-sendto-force.glade.h:6
 #: ../src/nautilus-sendto.glade.h:6
-#, fuzzy
 msgid "Send packed in"
-msgstr "إرسال البريد بتهيئة HTML"
+msgstr "أرسٍل الحزمة في"
 
 #: ../src/nautilus-sendto-force.glade.h:7
 #: ../src/nautilus-sendto.glade.h:7
-#, fuzzy
 msgid "Send to:"
-msgstr "إرسال إلى:"
+msgstr "أرسِل إلى:"
 
 #: ../src/nautilus-sendto-force.glade.h:8
 #: ../src/nautilus-sendto.glade.h:8
-#, fuzzy
 msgid "_Send"
-msgstr "إر_سال"
+msgstr "أر_سل"
 
 #: ../src/plugins/balsa.c:101
-#, fuzzy
 msgid "Email (Balsa)"
-msgstr "عنوان البريد الإلكتروني"
+msgstr "بريد إلكتروني (Balsa)"
 
 #: ../src/plugins/bluetooth.c:268
 msgid "Bluetooth (OBEX)"
-msgstr ""
+msgstr "بلوتوث (OBEX)"
 
 #: ../src/plugins/evolution.c:268
-#, fuzzy
 msgid "Email (Evolution)"
-msgstr "خطأ إيفُليوشِن"
+msgstr "بريد إلكتروني (إيفوليوشن)"
 
 #: ../src/plugins/gaim.c:224
-#, fuzzy
 msgid "Instant Message (Gaim)"
-msgstr "مقطع صوتي لرسالة فورية جديدة"
+msgstr "رسالة آنية (جايم)"
 
 #: ../src/plugins/gajim.c:404
-#, fuzzy
 msgid "Unable to send file"
-msgstr "لا يمكن العثور على الملف %s"
+msgstr "لا يمكن إرسال الملف"
 
 #: ../src/plugins/gajim.c:405
 msgid "There is no connection to gajim remote service."
-msgstr ""
+msgstr "لا يوجد اتصال مع خدمة gajim عن بعد."
 
 #: ../src/plugins/gajim.c:429
 #: ../src/plugins/gajim.c:468
-#, fuzzy
 msgid "Sending file failed"
-msgstr "فشل إنشاء الملف المؤقّت."
+msgstr "فشل إرسال الملف"
 
 #: ../src/plugins/gajim.c:430
-#, fuzzy
 msgid "Recipient is missing."
-msgstr "دليل الجلسة مفقود"
+msgstr "المتلقّي مفقود."
 
 #: ../src/plugins/gajim.c:468
-#, fuzzy
 msgid "Unknown recipient."
-msgstr "NAT غير معروف"
+msgstr "متلقّي مجهول."
 
 #: ../src/plugins/gajim.c:490
-#, fuzzy
 msgid "Instant Message (Gajim)"
-msgstr "مقطع صوتي لرسالة فورية جديدة"
+msgstr "رسالة آنية (Gajim)"
 
 #: ../src/plugins/sylpheed-claws.c:119
-#, fuzzy
 msgid "Email (Sylpheed-Claws)"
-msgstr "عنوان البريد الالكتروني للموصول"
+msgstr "بريد إلكتروني (Sylpheed-Claws)"
 
 #: ../src/plugins/thunderbird.c:101
-#, fuzzy
 msgid "Email (Thunderbird)"
-msgstr "موزيلا ثاندربيرد"
+msgstr "بريد إلكتروني (ثندربيرد)"
 
