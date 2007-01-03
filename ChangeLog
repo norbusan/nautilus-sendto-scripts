@@ -1,3 +1,10 @@
+2007-01-03  Bastien Nocera  <hadess@hadess.net>
+
+	* src/plugins/sylpheed-claws.c: (get_claws_command), (init),
+	(send_files): Patch from Colin Leroy <colin@colino.net>
+	to refactor the binary name search for the Sylpheed Claws
+	plugin (Closes: #386767)
+
 2006-12-11  Ales Nyakhaychyk  <nab@mail.by>
 
 	* configure.in: Add 'be' in ALL_LINGUAS
@@ -10,8 +17,8 @@
 2006-10-07  Roberto Majadas  <telemaco@openshine.com>
 
 	* gaim_plugin/nautilus-sendto-plugin.c: Fix build error in gaim2
-	* src/plugins/evolution.c: Added patch that close "Bug 348941 Evolution Autocompletion not offered for all Address Books" . Thanks Øystein Gisnås, Karsten Bräckelmann
-	* nautilus-sendto.1: Added man-page . Thanks Øystein Gisnås
+	* src/plugins/evolution.c: Added patch that close "Bug 348941 Evolution Autocompletion not offered for all Address Books" . Thanks ?ystein Gisn?s, Karsten Br?ckelmann
+	* nautilus-sendto.1: Added man-page . Thanks ?ystein Gisn?s
 
 2006-10-02  Priit Laes  <plaes@cvs.gnome.org>
 

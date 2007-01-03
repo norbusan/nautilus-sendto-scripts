@@ -27,6 +27,25 @@
 
 static GHashTable *hash = NULL;
 
+static const gchar const *possible_binaries[] = 
+{	"claws-mail",
+	"sylpheed-claws-gtk2",
+	"sylpheed-claws",
+	"sylpheed"
+};
+
+static gchar *get_claws_command(void)
+{
+	gchar *cmd = NULL;
+	gint i;
+
+	for (i = 0; cmd == NULL && i < G_N_ELEMENTS(possible_binaries); i++) {
+		cmd = g_find_program_in_path (possible_binaries[i]);
+	}
+
+	return cmd;
+}
+
 static 
 gboolean init (NstPlugin *plugin)
 {
@@ -35,15 +54,12 @@ gboolean init (NstPlugin *plugin)
 	printf ("Init sylpheed-claws plugin\n");
 	hash = g_hash_table_new (g_str_hash, g_str_equal);
 
-	sc_cmd = g_find_program_in_path ("sylpheed-claws-gtk2");
-	if (sc_cmd == NULL){
-		sc_cmd = g_find_program_in_path ("sylpheed-claws");
-		if (sc_cmd == NULL)
-			sc_cmd = g_find_program_in_path ("sylpheed");
-	}
-	
+	sc_cmd = get_claws_command();
+
 	if(sc_cmd == NULL)
 		return FALSE;
+
+	g_free(sc_cmd);
 
 	return TRUE;
 }
@@ -80,12 +96,7 @@ gboolean send_files (NstPlugin *plugin, GtkWidget *contact_widget,
 		g_string_append_printf (mailto, "%s", send_to);		
 	}
 	
-	sc_cmd = g_find_program_in_path ("sylpheed-claws-gtk2");
-	if (sc_cmd == NULL){
-		sc_cmd = g_find_program_in_path ("sylpheed-claws");
-		if (sc_cmd == NULL)
-			sc_cmd = g_find_program_in_path ("sylpheed");
-	}
+	sc_cmd = get_claws_command();
 	
 	if(sc_cmd == NULL)
 		return FALSE;
@@ -116,7 +127,7 @@ static
 NstPluginInfo plugin_info = {
 	"stock_mail",
 	"sylpheed-claws",
-	N_("Email (Sylpheed-Claws)"),
+	N_("Email (Claws Mail)"),
 	FALSE,
 	init,
 	get_contacts_widget,
