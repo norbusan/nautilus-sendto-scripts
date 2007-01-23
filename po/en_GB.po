@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nautilus-sendto\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-09-11 23:07+0100\n"
-"PO-Revision-Date: 2006-09-11 23:07-0000\n"
+"POT-Creation-Date: 2007-01-23 20:21+0000\n"
+"PO-Revision-Date: 2007-01-23 20:21-0000\n"
 "Last-Translator: David Lodge <dave@cirt.net>\n"
 "Language-Team: English (British) <en@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -110,7 +110,7 @@ msgstr "Email (Balsa)"
 msgid "Bluetooth (OBEX)"
 msgstr "Bluetooth (OBEX)"
 
-#: ../src/plugins/evolution.c:249
+#: ../src/plugins/evolution.c:268
 msgid "Email (Evolution)"
 msgstr "Email (Evolution)"
 
@@ -143,14 +143,16 @@ msgstr "Unknown recipient."
 msgid "Instant Message (Gajim)"
 msgstr "Instant Message (Gajim)"
 
-#: ../src/plugins/sylpheed-claws.c:119
-msgid "Email (Sylpheed-Claws)"
-msgstr "Email (Sylpheed-Claws)"
+#: ../src/plugins/sylpheed-claws.c:130
+msgid "Email (Claws Mail)"
+msgstr "Email (Claws Mail)"
 
 #: ../src/plugins/thunderbird.c:101
 msgid "Email (Thunderbird)"
 msgstr "Email (Thunderbird)"
 
+#~ msgid "Email (Sylpheed-Claws)"
+#~ msgstr "Email (Sylpheed-Claws)"
 #~ msgid "*"
 #~ msgstr "*"
 
