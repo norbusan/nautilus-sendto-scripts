@@ -4,19 +4,20 @@
 #
 # Amanpreet Singh Alam <aalam@redhat.com>, 2004.
 # A S Alam <apbrar@gmail.com>, 2006.
+# A S Alam <aalam@users.sf.net>, 2007.
 msgid ""
 msgstr ""
 "Project-Id-Version: nautilus-sendto.HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-04-23 04:13+0200\n"
-"PO-Revision-Date: 2006-04-23 13:04+0530\n"
-"Last-Translator: A S Alam <apbrar@gmail.com>\n"
+"POT-Creation-Date: 2007-01-04 03:36+0000\n"
+"PO-Revision-Date: 2007-02-08 06:30+0530\n"
+"Last-Translator: A S Alam <aalam@users.sf.net>\n"
 "Language-Team: Punjabi <fedora-trans-pa@redhat.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.11.2\n"
-"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"X-Generator: KBabel 1.11.4\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. type
 #. ui requirement
@@ -26,7 +27,7 @@ msgstr ""
 #. id
 #: ../gaim_plugin/nautilus-sendto-plugin.c:303
 msgid "Nautilus Integration"
-msgstr "ਨਟਾਲਿਸ ਜੋੜ"
+msgstr "ਨਟੀਲਸ ਜੋੜ"
 
 #. name
 #. version
@@ -34,7 +35,7 @@ msgstr "ਨਟਾਲਿਸ ਜੋੜ"
 #: ../gaim_plugin/nautilus-sendto-plugin.c:305
 #: ../gaim_plugin/nautilus-sendto-plugin.c:306
 msgid "Provides integration with Nautilus"
-msgstr "ਨਟਾਲਿਸ ਲਈ ਜੋੜ ਉਪਲੱਬਧ ਕਰਵਾਉਦਾ ਹੈ।"
+msgstr "ਨਟੀਲਸ ਲਈ ਜੋੜ ਉਪਲੱਬਧ ਕਰਵਾਉਦਾ ਹੈ।"
 
 #: ../src/nautilus-nste.c:97 ../src/nautilus-nste.c:112
 msgid "Send to..."
@@ -42,31 +43,31 @@ msgstr "ਇੱਥੇ ਭੇਜੋ..."
 
 #: ../src/nautilus-nste.c:98
 msgid "Send file by mail, instant message..."
-msgstr "ਫਾਇਲ ਪੱਤਰ, ਤੁਰੰਤ ਸੁਨੇਹੇ ਰਾਹੀਂ ਭੇਜੋ..."
+msgstr "ਫਾਇਲ ਮੇਲ, ਤੁਰੰਤ ਸੁਨੇਹੇ ਰਾਹੀਂ ਭੇਜੋ..."
 
 #: ../src/nautilus-nste.c:113
 msgid "Send files by mail, instant message..."
-msgstr "ਫਾਇਲਾਂ ਪੱਤਰ, ਤੁਰੰਤ ਸੁਨੇਹੇ ਰਾਹੀਂ ਭੇਜੋ..."
+msgstr "ਫਾਇਲਾਂ ਮੇਲ, ਤੁਰੰਤ ਸੁਨੇਹੇ ਰਾਹੀਂ ਭੇਜੋ..."
 
-#: ../src/nautilus-sendto-command.c:55
+#: ../src/nautilus-sendto-command.c:62
 msgid "Default folder to use"
 msgstr "ਵਰਤਣ ਲਈ ਮੂਲ ਫੋਲਡਰ"
 
-#: ../src/nautilus-sendto-command.c:56
+#: ../src/nautilus-sendto-command.c:63
 msgid "FOLDER"
 msgstr "ਫੋਲਡਰ"
 
-#: ../src/nautilus-sendto-command.c:131
+#: ../src/nautilus-sendto-command.c:235
 msgid "You don't insert the package name"
-msgstr "ਤੁਹਾਨੂੰ ਪੈਕੇਜ ਨਾਂ ਨਹੀਂ ਦਿੱਤਾ ਹੈ"
+msgstr "ਤੁਸੀਂ ਪੈਕੇਜ ਨਾਂ ਨਹੀਂ ਦਿੱਤਾ ਹੈ"
 
-#: ../src/nautilus-sendto-command.c:316
+#: ../src/nautilus-sendto-command.c:455
 msgid "Files"
 msgstr "ਫਾਇਲਾਂ"
 
-#: ../src/nautilus-sendto-command.c:505
+#: ../src/nautilus-sendto-command.c:666
 msgid "Nautilus Sendto"
-msgstr "ਨਟਾਲਿਸ ਭੇਜੋ"
+msgstr "ਨਟੀਲਸ ਭੇਜੋ"
 
 #: ../src/nautilus-sendto-force.glade.h:1 ../src/nautilus-sendto.glade.h:1
 msgid ""
@@ -98,15 +99,51 @@ msgstr "ਇਸ ਨੂੰ ਭੇਜੋ:"
 msgid "_Send"
 msgstr "ਭੇਜੋ(_S)"
 
-#: ../src/plugins/bluetooth.c:261
+#: ../src/plugins/balsa.c:101
+msgid "Email (Balsa)"
+msgstr "ਈਮੇਲ (ਬਲਸਾ)"
+
+#: ../src/plugins/bluetooth.c:268
 msgid "Bluetooth (OBEX)"
 msgstr "ਬਲਿਊ-ਟੁੱਥ (OBEX)"
 
-#: ../src/plugins/evolution.c:228
+#: ../src/plugins/evolution.c:268
 msgid "Email (Evolution)"
 msgstr "ਈ-ਮੇਲ (ਈਵੇਲੂਸ਼ਨ)"
 
-#: ../src/plugins/gaim.c:223
+#: ../src/plugins/gaim.c:224
 msgid "Instant Message (Gaim)"
 msgstr "ਸੁਨੇਹਾ ਭੇਜੋ (ਗੇਮ)"
+
+#: ../src/plugins/gajim.c:404
+msgid "Unable to send file"
+msgstr "ਫਾਇਲ ਭੇਜਣ ਲਈ ਅਸਫ਼ਲ"
+
+#: ../src/plugins/gajim.c:405
+msgid "There is no connection to gajim remote service."
+msgstr "ਗਜੀਮ ਰਿਮੋਟ ਸੇਵਾ ਨਾਲ ਕੋਈ ਕੁਨੈਕਸ਼ਨ ਨਹੀਂ ਹੈ।"
+
+#: ../src/plugins/gajim.c:429 ../src/plugins/gajim.c:468
+msgid "Sending file failed"
+msgstr "ਫਾਇਲ ਭੇਜਣ ਲਈ ਫੇਲ੍ਹ"
+
+#: ../src/plugins/gajim.c:430
+msgid "Recipient is missing."
+msgstr "ਪ੍ਰਾਪਤ ਕਰਤਾ ਨਹੀਂ ਹੈ।"
+
+#: ../src/plugins/gajim.c:468
+msgid "Unknown recipient."
+msgstr "ਅਣਜਾਣ ਪ੍ਰਾਪਤ ਕਰਤਾ।"
+
+#: ../src/plugins/gajim.c:490
+msgid "Instant Message (Gajim)"
+msgstr "ਸੁਨੇਹਾ ਭੇਜੋ (ਗਜੀਮ)"
+
+#: ../src/plugins/sylpheed-claws.c:130
+msgid "Email (Claws Mail)"
+msgstr "ਈਮੇਲ (ਕਲਾਵਸ ਮੇਲ)"
+
+#: ../src/plugins/thunderbird.c:101
+msgid "Email (Thunderbird)"
+msgstr "ਈ-ਮੇਲ (ਥੰਡਰਬਰਡ)"
 
