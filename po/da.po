@@ -1,17 +1,18 @@
 # Danish translation of nautilus-sendto.
-# Copyright (C) 2004, 05 Roberto Majadas
+# Copyright (C) 2004-07 Roberto Majadas
 # This file is distributed under the same license as the nautilus-sendto package.
 # David Nielsen <dnielsen@breakmygentoo.net>, 2004.
 # Martin Willemoes Hansen <mwh@sysrq.dk>, 2005.
+# Peter Bach <bach.peter@gmail.com>, 2007.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: nautilus-sendto\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-02-01 11:14+0100\n"
-"PO-Revision-Date: 2005-02-01 11:15+0100\n"
-"Last-Translator: Martin Willemoes Hansen <mwh@sysrq.dk>\n"
-"Language-Team: Danish <dansk@klid.dk>\n"
+"POT-Creation-Date: 2007-02-23 15:20+0200\n"
+"PO-Revision-Date: 2007-02-23 15:26+0200\n"
+"Last-Translator: Peter Bach <bach.peter@gmail.com>\n"
+"Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -22,39 +23,53 @@ msgstr ""
 #. dependencies
 #. priority
 #. id
-#: gaim_plugin/nautilus-sendto-plugin.c:303
+#: ../gaim_plugin/nautilus-sendto-plugin.c:303
 msgid "Nautilus Integration"
 msgstr "Nautilusintegration"
 
 #. name
 #. version
 #. summary
-#: gaim_plugin/nautilus-sendto-plugin.c:305
-#: gaim_plugin/nautilus-sendto-plugin.c:306
+#: ../gaim_plugin/nautilus-sendto-plugin.c:305
+#: ../gaim_plugin/nautilus-sendto-plugin.c:306
 msgid "Provides integration with Nautilus"
 msgstr "Tilbyder integration med Nautilus"
 
-#: src/nautilus-sendto-command.c:57
+#: ../src/nautilus-nste.c:97
+#: ../src/nautilus-nste.c:112
+msgid "Send to..."
+msgstr "Send til..."
+
+#: ../src/nautilus-nste.c:98
+msgid "Send file by mail, instant message..."
+msgstr "Send fil med e-post, kvikbesked..."
+
+#: ../src/nautilus-nste.c:113
+msgid "Send files by mail, instant message..."
+msgstr "Send filer med e-post, kvikbesked..."
+
+#: ../src/nautilus-sendto-command.c:62
 msgid "Default folder to use"
 msgstr "Standardmappe til brug"
 
-#: src/nautilus-sendto-command.c:58
+#: ../src/nautilus-sendto-command.c:63
 msgid "FOLDER"
 msgstr "MAPPE"
 
-#: src/nautilus-sendto-command.c:127
+#: ../src/nautilus-sendto-command.c:235
 msgid "You don't insert the package name"
-msgstr "Du indsætter pakkenavnet"
+msgstr "Du indsætter ikke pakkenavnet"
 
-#: src/nautilus-sendto-command.c:287
+#: ../src/nautilus-sendto-command.c:455
 msgid "Files"
 msgstr "Filer"
 
-#: src/nautilus-sendto-command.c:425
+#: ../src/nautilus-sendto-command.c:666
 msgid "Nautilus Sendto"
 msgstr "Nautilus send til"
 
-#: src/nautilus-sendto-force.glade.h:1 src/nautilus-sendto.glade.h:2
+#: ../src/nautilus-sendto-force.glade.h:1
+#: ../src/nautilus-sendto.glade.h:1
 msgid ""
 ".zip\n"
 ".tar.gz\n"
@@ -64,55 +79,86 @@ msgstr ""
 ".tar.gz\n"
 ".tar.bz2"
 
-#: src/nautilus-sendto-force.glade.h:4 src/nautilus-sendto.glade.h:5
+#: ../src/nautilus-sendto-force.glade.h:4
+#: ../src/nautilus-sendto.glade.h:4
 msgid "Send To..."
 msgstr "Send til..."
 
-#: src/nautilus-sendto-force.glade.h:5 src/nautilus-sendto.glade.h:6
+#: ../src/nautilus-sendto-force.glade.h:5
+#: ../src/nautilus-sendto.glade.h:5
 msgid "Send as:"
 msgstr "Send som:"
 
-#: src/nautilus-sendto-force.glade.h:6 src/nautilus-sendto.glade.h:7
+#: ../src/nautilus-sendto-force.glade.h:6
+#: ../src/nautilus-sendto.glade.h:6
 msgid "Send packed in"
 msgstr "Send pakket i"
 
-#: src/nautilus-sendto-force.glade.h:7 src/nautilus-sendto.glade.h:8
+#: ../src/nautilus-sendto-force.glade.h:7
+#: ../src/nautilus-sendto.glade.h:7
 msgid "Send to:"
 msgstr "Send til:"
 
-#: src/nautilus-sendto-force.glade.h:8 src/nautilus-sendto.glade.h:9
+#: ../src/nautilus-sendto-force.glade.h:8
+#: ../src/nautilus-sendto.glade.h:8
 msgid "_Send"
 msgstr "_Send"
 
-#: src/nautilus-sendto.glade.h:1
-msgid "*"
-msgstr "*"
+#: ../src/plugins/balsa.c:101
+msgid "Email (Balsa)"
+msgstr "E-post (Balsa)"
 
-#: src/nautilus-nste.c:108 src/nautilus-nste.c:123
-msgid "Send to..."
-msgstr "Send til..."
+#: ../src/plugins/bluetooth.c:268
+msgid "Bluetooth (OBEX)"
+msgstr "Bluetooth (OBEX)"
 
-#: src/nautilus-nste.c:109
-msgid "Send file by mail, instant message..."
-msgstr "Send fil med e-brev, kvikbesked..."
-
-#: src/nautilus-nste.c:124
-msgid "Send files by mail, instant message..."
-msgstr "Send filer med e-brev, kvikbesked..."
-
-#: src/plugins/evolution.c:229
+#: ../src/plugins/evolution.c:268
 msgid "Email (Evolution)"
 msgstr "E-post (Evolution)"
 
-#: src/plugins/gaim.c:219
+#: ../src/plugins/gaim.c:224
 msgid "Instant Message (Gaim)"
 msgstr "Kvikbesked (Gaim)"
 
+#: ../src/plugins/gajim.c:404
+msgid "Unable to send file"
+msgstr "Kan ikke sende fil"
+
+#: ../src/plugins/gajim.c:405
+msgid "There is no connection to gajim remote service."
+msgstr "Der er ikke nogen forbindelse til gajim- fjerntjeneste."
+
+#: ../src/plugins/gajim.c:429
+#: ../src/plugins/gajim.c:468
+msgid "Sending file failed"
+msgstr "Sending af fil fejlede"
+
+#: ../src/plugins/gajim.c:430
+msgid "Recipient is missing."
+msgstr "Modtager mangler."
+
+#: ../src/plugins/gajim.c:468
+msgid "Unknown recipient."
+msgstr "Ukendt modtager."
+
+#: ../src/plugins/gajim.c:490
+msgid "Instant Message (Gajim)"
+msgstr "Kvikbesked (Gajim)"
+
+#: ../src/plugins/sylpheed-claws.c:130
+msgid "Email (Claws Mail)"
+msgstr "E-post (Claws Mail)"
+
+#: ../src/plugins/thunderbird.c:101
+msgid "Email (Thunderbird)"
+msgstr "E-Post (Thunderbird)"
+
+#~ msgid "*"
+#~ msgstr "*"
 #~ msgid "Nautilus Sendto component"
 #~ msgstr "Nautilus Send til-komponent"
-
 #~ msgid "You don't insert any email address"
 #~ msgstr "Du har ikke indtastet nogen e-post-adresse"
-
 #~ msgid "Sendo To..."
 #~ msgstr "Send til..."
+
