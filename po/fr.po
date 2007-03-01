@@ -1,17 +1,17 @@
 # French translation of nautilus-sendto
-# Copyright (C) 2004-2006 Free Software Foundation, Inc.
+# Copyright (C) 2004-2007 Free Software Foundation, Inc.
 # This file is distributed under the GNU General Public License Version 2.
 #
-# maintainer: Jean-Michel Ardantz <jmardantz@ifrance.com>, 2004.
-# Christophe Bliard <christophe.bliard@trux.info>,2006.
-# Jonathan Ernst <jonathan@ernstfamily.ch>, 2006.
+# Jean-Michel Ardantz <jmardantz@ifrance.com>, 2004.
+# Christophe Bliard <christophe.bliard@trux.info>, 2006.
+# Jonathan Ernst <jonathan@ernstfamily.ch>, 2006-2007.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: nautilus-sendto 0.7\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-10-01 15:12+0200\n"
-"PO-Revision-Date: 2006-10-01 15:10+0200\n"
+"POT-Creation-Date: 2007-03-01 23:53+0100\n"
+"PO-Revision-Date: 2007-01-26 10:57+0100\n"
 "Last-Translator: Jonathan Ernst <jonathan@ernstfamily.ch>\n"
 "Language-Team: GNOME French Team <gnomefr@traduc.org>\n"
 "MIME-Version: 1.0\n"
@@ -106,7 +106,7 @@ msgstr "Courrier électronique (Balsa)"
 msgid "Bluetooth (OBEX)"
 msgstr "Bluetooth (OBEX)"
 
-#: ../src/plugins/evolution.c:249
+#: ../src/plugins/evolution.c:268
 msgid "Email (Evolution)"
 msgstr "Courrier électronique (Evolution)"
 
@@ -138,9 +138,9 @@ msgstr "Destinataire inconnu."
 msgid "Instant Message (Gajim)"
 msgstr "Messagerie instantanée (Gajim)"
 
-#: ../src/plugins/sylpheed-claws.c:119
-msgid "Email (Sylpheed-Claws)"
-msgstr "Courrier électronique (Sylpheed-Claws)"
+#: ../src/plugins/sylpheed-claws.c:130
+msgid "Email (Claws Mail)"
+msgstr "Courrier électronique (Claws Mail)"
 
 #: ../src/plugins/thunderbird.c:101
 msgid "Email (Thunderbird)"
