@@ -97,32 +97,23 @@ nautilus_nste_get_file_items (NautilusMenuProvider *provider,
 					       _("Send to..."),
 					       _("Send file by mail, instant message..."),
 					       NULL);
-		g_signal_connect (item, 
-				  "activate",
-				  G_CALLBACK (sendto_callback),
-			  	provider);
-		g_object_set_data_full (G_OBJECT (item), 
-					"files",
-					nautilus_file_info_list_copy (files),
-					(GDestroyNotify) nautilus_file_info_list_free);
-
-		items = g_list_append (items, item);
-	}else{
+	} else {
 		item = nautilus_menu_item_new ("NautilusNste::sendto",
 					       _("Send to..."),
 					       _("Send files by mail, instant message..."),
 					       NULL);
-		g_signal_connect (item, 
-				  "activate",
-				  G_CALLBACK (sendto_callback),
-			  	provider);
-		g_object_set_data_full (G_OBJECT (item), 
-					"files",
-					nautilus_file_info_list_copy (files),
-					(GDestroyNotify) nautilus_file_info_list_free);
-
-		items = g_list_append (items, item);		
 	}
+  g_signal_connect (item, 
+      "activate",
+      G_CALLBACK (sendto_callback),
+      provider);
+  g_object_set_data_full (G_OBJECT (item), 
+      "files",
+      nautilus_file_info_list_copy (files),
+      (GDestroyNotify) nautilus_file_info_list_free);
+
+  items = g_list_append (items, item);
+
 	return items;
 }
 

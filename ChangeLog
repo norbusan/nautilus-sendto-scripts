@@ -1,5 +1,11 @@
 2007-03-06  Bastien Nocera  <hadess@hadess.net>
 
+	* src/nautilus-nste.c: (nautilus_nste_get_file_items):
+	Patch from Alberto Ruiz <aruiz@gnome.org> to remove duplicate code
+	(Closes: #395848)
+
+2007-03-06  Bastien Nocera  <hadess@hadess.net>
+
 	* configure.in: require dbus-glib for the bluetooth plugin
 	* src/nautilus-sendto-plugin.h:
 	* src/nautilus-sendto-command.c: (status_label_clear),
