@@ -60,7 +60,7 @@ gboolean init (NstPlugin *plugin)
 	return TRUE;
 }
 
-void
+static void
 add_name_to_model (const gchar *name, GtkListStore *store, GtkTreeIter *iter, GdkPixbuf *pixbuf, gchar *hash_value)
 {
 	gchar *hash_key;
@@ -71,7 +71,7 @@ add_name_to_model (const gchar *name, GtkListStore *store, GtkTreeIter *iter, Gd
 	g_hash_table_insert (hash, hash_key, hash_value);
 }
 
-void
+static void
 add_evolution_contacts_to_model (GtkWidget *entry, 
 				 GtkListStore *store, GtkTreeIter *iter)
 {
@@ -244,9 +244,9 @@ gboolean send_files (NstPlugin *plugin, GtkWidget *contact_widget,
 		if (evo_cmd == NULL)
 			return FALSE;
 	}
-	g_string_append_printf (mailto,"?attach=\"%s\"",file_list->data);
+	g_string_append_printf (mailto,"?attach=\"%s\"", (char *)file_list->data);
 	for (l = file_list->next ; l; l=l->next){
-		g_string_append_printf (mailto,"&attach=\"%s\"",l->data);
+		g_string_append_printf (mailto,"&attach=\"%s\"", (char *)l->data);
 	}
 	cmd = g_strdup_printf ("%s %s", evo_cmd, mailto->str);
 	g_spawn_command_line_async (cmd, NULL);

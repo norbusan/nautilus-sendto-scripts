@@ -78,12 +78,11 @@ static
 gboolean send_files (NstPlugin *plugin, GtkWidget *contact_widget,
 			GList *file_list)
 {
-	gchar *sc_cmd, *cmd, *send_to, *send_to_info ;
+	gchar *sc_cmd, *cmd, *send_to;
 	GList *l;
 	GString *mailto;
 	gchar *tmp_str;
-	GtkWidget *error_dialog;
-	
+
 	send_to = (gchar *) gtk_entry_get_text (GTK_ENTRY(contact_widget));
 		
 	if (strlen (send_to) == 0)

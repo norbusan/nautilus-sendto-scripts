@@ -1,11 +1,12 @@
 SUBDIRS = plugins
-INCLUDES =                                      \
-        -DDATADIR=\"$(datadir)\"                \
+INCLUDES =					\
+	-DDATADIR=\"$(datadir)\"		\
 	-DPLUGINDIR=\"$(libdir)/nautilus-sendto/plugins\"	\
-        -I$(top_srcdir)                         \
-        -I$(top_builddir)                       \
+	-I$(top_srcdir)				\
+	-I$(top_builddir)			\
 	-DGLADEDIR=\""$(gladedir)"\"		\
-        $(NAUTILUS_SENDTO_CFLAGS)
+	$(NAUTILUS_SENDTO_CFLAGS)		\
+	$(WARN_CFLAGS)
 
 glade_DATA = nautilus-sendto.glade
 gladedir = $(datadir)/nautilus-sendto/glade

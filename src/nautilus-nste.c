@@ -41,7 +41,7 @@ sendto_callback (NautilusMenuItem *item,
 {
 	GList            *files, *scan;
 	NautilusFileInfo *file;
-	gchar            *uri, *path;
+	gchar            *uri;
 	GString          *cmd;
 
 	files = g_object_get_data (G_OBJECT (item), "files");
@@ -69,9 +69,7 @@ nautilus_nste_get_file_items (NautilusMenuProvider *provider,
 {
 	GList    *items = NULL;
 	GList    *scan;
-	gboolean  can_write = FALSE;
 	gboolean  one_item;
-	gboolean  one_archive = FALSE;
 	NautilusMenuItem *item;
 
 	if (files == NULL)

@@ -181,7 +181,7 @@ pack_files (NS_ui *ui)
 		tmp_dir = g_strdup_printf ("%s/nautilus-sendto-%s", 
 				   g_get_tmp_dir(), g_get_user_name());	
 		mkdir (tmp_dir, 0700);
-		tmp_work_dir = g_strdup_printf ("%s/nautilus-sendto-%s/%i", 
+		tmp_work_dir = g_strdup_printf ("%s/nautilus-sendto-%s/%li",
 						g_get_tmp_dir(), g_get_user_name(),
 						time(NULL));
 		mkdir (tmp_work_dir, 0700);
@@ -198,6 +198,9 @@ pack_files (NS_ui *ui)
 		case 2: 
 			pack_type = g_strdup (".tar.bz2");
 			break;
+		default:
+			pack_type = NULL;
+			g_assert_not_reached ();
 		}
 
 		gconf_client_set_int(gconf_client, 
@@ -220,7 +223,6 @@ pack_files (NS_ui *ui)
 			g_free (file);
 		}
 
-		g_printf ("%s\n", cmd->str);
 		g_spawn_command_line_sync (cmd->str, NULL, NULL, NULL, NULL);
 		g_string_free (cmd, TRUE);
 		tmp = g_string_new("");
@@ -261,7 +263,6 @@ send_button_cb (GtkWidget *widget, gpointer data)
 	gchar *f, *error;
 	NstPlugin *p;
 	GtkWidget *w;
-	GtkWidget *error_dialog;
 
 	gtk_widget_set_sensitive (ui->dialog, FALSE);
 	while (gtk_events_pending ())
@@ -566,7 +567,7 @@ nautilus_sendto_plugin_init (void)
 		if (err)
 			g_error_free (err);
 	}else{
-		while (item = g_dir_read_name(dir)){
+		while ((item = g_dir_read_name(dir))){
 			if (g_str_has_suffix (item, SOEXT)){
 				char *module_path;
 

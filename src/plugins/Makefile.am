@@ -10,7 +10,8 @@ INCLUDES =                                      \
 	$(NST_EBOOK_CFLAGS)			\
 	$(GAIM_CFLAGS)				\
 	$(BLUETOOTH_CFLAGS)			\
-	$(DBUS_CFLAGS)
+	$(DBUS_CFLAGS)				\
+	$(WARN_CFLAGS)
 
 if HAVE_GAIM
 GAIM_PLUGIN = libnstgaim.la

@@ -115,7 +115,6 @@ static void
 add_phone_to_list (GtkListStore *store, const char *name, const char *bdaddr)
 {
 	GtkTreeIter iter;
-	int i, n_children;
 	gboolean found = FALSE;
 
 	found = find_iter_for_address (store, bdaddr, &iter);
@@ -309,7 +308,6 @@ get_contacts_widget (NstPlugin *plugin)
 	GtkWidget *hbox;
 	GtkCellRenderer *renderer;
 	GtkListStore *store;
-	GtkTreeIter iter;
 
 	/* The model */
 	store = gtk_list_store_new (NUM_COLS, G_TYPE_STRING, G_TYPE_STRING);
@@ -386,8 +384,6 @@ send_files (NstPlugin *plugin, GtkWidget *contact_widget,
 	GList *list;
 	gboolean ret;
 	char *bdaddr;
-	int option;
-	guint i;
 	GError *err = NULL;
 
 	if (get_select_device (NULL, &bdaddr) == FALSE)

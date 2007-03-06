@@ -1,5 +1,23 @@
 2007-03-06  Bastien Nocera  <hadess@hadess.net>
 
+	* configure.in:
+	* src/Makefile.am:
+	* src/plugins/Makefile.am: use gnome-common macros to get
+	more warnings whilst compiling
+
+	* src/nautilus-nste.c: (sendto_callback),
+	(nautilus_nste_get_file_items):
+	* src/nautilus-sendto-command.c: (pack_files), (send_button_cb),
+	(nautilus_sendto_plugin_init):
+	* src/nautilus-sendto-plugin.h:
+	* src/plugins/bluetooth.c: (add_phone_to_list),
+	(get_contacts_widget), (send_files):
+	* src/plugins/evolution.c: (send_files):
+	* src/plugins/sylpheed-claws.c: (send_files):
+	Fix plenty of warnings (Closes: #349045)
+
+2007-03-06  Bastien Nocera  <hadess@hadess.net>
+
 	* src/nautilus-nste.c: (nautilus_nste_get_file_items):
 	Patch from Alberto Ruiz <aruiz@gnome.org> to remove duplicate code
 	(Closes: #395848)

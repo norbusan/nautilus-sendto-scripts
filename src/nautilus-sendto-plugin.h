@@ -52,6 +52,7 @@ struct _NstPlugin
 };
 
 # define NST_INIT_PLUGIN(plugininfo) \
+	gboolean nst_init_plugin(NstPlugin *plugin); \
         G_MODULE_EXPORT gboolean nst_init_plugin(NstPlugin *plugin) { \
 		plugin->info = &(plugininfo);\
                 return TRUE;\
