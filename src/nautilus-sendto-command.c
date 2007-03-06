@@ -32,9 +32,9 @@
 #define NAUTILUS_SENDTO_GCONF		"/desktop/gnome/nautilus-sendto"
 #define NAUTILUS_SENDTO_LAST_MEDIUM	NAUTILUS_SENDTO_GCONF"/last_medium"
 #define NAUTILUS_SENDTO_LAST_COMPRESS	NAUTILUS_SENDTO_GCONF"/last_compress"
+#define NAUTILUS_SENDTO_STATUS_LABEL_TIMEOUT 10000
 
-static 
-gchar *default_url = NULL;
+static gchar *default_url = NULL;
 gboolean force_user_to_compress = FALSE;
 GList *file_list = NULL;
 GList *plugin_list = NULL;
@@ -55,6 +55,10 @@ struct _NS_ui {
 	GtkWidget *pack_checkbutton;
 	GtkWidget *pack_entry;
 	GList *contact_widgets;
+
+	GtkWidget *status_image;
+	GtkWidget *status_label;
+	guint status_timeoutid;
 };
 
 struct poptOption options[] = {
@@ -240,20 +244,58 @@ pack_files (NS_ui *ui)
 	
 }
 
+static gboolean
+status_label_clear (gpointer data)
+{
+	NS_ui *ui = (NS_ui *) data;
+	gtk_label_set_label (GTK_LABEL (ui->status_label), " ");
+	gtk_widget_hide (ui->status_image);
+
+	return FALSE;
+}
+
 static void
 send_button_cb (GtkWidget *widget, gpointer data)
 {
 	NS_ui *ui = (NS_ui *) data;
-	gchar *f;
+	gchar *f, *error;
 	NstPlugin *p;
 	GtkWidget *w;
 	GtkWidget *error_dialog;
-	
+
+	gtk_widget_set_sensitive (ui->dialog, FALSE);
+	while (gtk_events_pending ())
+		gtk_main_iteration ();
+
 	p = (NstPlugin *) g_list_nth_data (plugin_list, option);
 	w = (GtkWidget *) g_list_nth_data (ui->contact_widgets, option);
-	
+
+	if (ui->status_timeoutid != 0) {
+		g_source_remove (ui->status_timeoutid);
+		ui->status_timeoutid = 0;
+		status_label_clear (ui->status_label);
+	}
+
 	if (p == NULL)
 		return;
+
+	if (p->info->validate_destination != NULL) {
+		error = NULL;
+		if (p->info->validate_destination (p, w, &error) == FALSE) {
+			char *message;
+
+			message = g_strdup_printf ("<b>%s</b>", error);
+			g_free (error);
+			gtk_label_set_markup (GTK_LABEL (ui->status_label), message);
+			g_free (message);
+			ui->status_timeoutid = g_timeout_add (NAUTILUS_SENDTO_STATUS_LABEL_TIMEOUT,
+							      status_label_clear,
+							      ui);
+			gtk_widget_show (ui->status_image);
+			gtk_widget_set_sensitive (ui->dialog, TRUE);
+			return;
+		}
+	}
 
 	gconf_client_set_string (gconf_client, 
 				NAUTILUS_SENDTO_LAST_MEDIUM, p->info->id, NULL);
@@ -285,7 +327,6 @@ send_button_cb (GtkWidget *widget, gpointer data)
 			}else{
 				return;
 			}
-				
 		}else{
 			if (!p->info->send_files (p, w, file_list)) {
 				g_list_free (file_list);
@@ -346,7 +387,7 @@ set_contact_widgets (NS_ui *ui){
 	NstPlugin *p;
 
 	ui->contact_widgets = NULL;
-	
+
 	for (aux = plugin_list; aux; aux = aux->next){
 		p = (NstPlugin *) aux->data;
 		w = p->info->get_contacts_widget(p);
@@ -415,7 +456,15 @@ set_model_for_options_combobox (NS_ui *ui){
                                         "text", 1,
                                         NULL);
 
-	gtk_combo_box_set_active (GTK_COMBO_BOX (ui->options_combobox), option);
+	g_signal_connect (G_OBJECT (ui->options_combobox), "changed",
+			  G_CALLBACK (option_changed), ui);
+
+	/* We changed the option from underneath the UI */
+	if (option != 0) {
+		/* Hide the default entry */
+		gtk_widget_hide ((GtkWidget* ) ui->contact_widgets->data);
+		gtk_combo_box_set_active (GTK_COMBO_BOX (ui->options_combobox), option);
+	}
 }
 
 static void
@@ -426,10 +475,7 @@ nautilus_sendto_create_ui (void)
 	NS_ui *ui;
 	gboolean one_file = FALSE;
 
-	if (force_user_to_compress == FALSE)
-		app = glade_xml_new (GLADEDIR "/" "nautilus-sendto.glade", NULL, NULL);
-	else
-		app = glade_xml_new (GLADEDIR "/" "nautilus-sendto-force.glade", NULL, NULL);
+	app = glade_xml_new (GLADEDIR "/" "nautilus-sendto.glade", NULL, NULL);
 
 	ui = g_new0 (NS_ui, 1);
 
@@ -440,8 +486,10 @@ nautilus_sendto_create_ui (void)
 	ui->send_button = glade_xml_get_widget (app, "send_button");
 	ui->pack_combobox = glade_xml_get_widget (app, "pack_combobox");	
 	ui->pack_entry = glade_xml_get_widget (app, "pack_entry");
-	
-		
+	ui->pack_checkbutton = glade_xml_get_widget (app, "pack_checkbutton");
+	ui->status_label = glade_xml_get_widget (app, "status_label");
+	ui->status_image = glade_xml_get_widget (app, "status_image");
+
  	gtk_combo_box_set_active (GTK_COMBO_BOX(ui->pack_combobox), 
  		gconf_client_get_int(gconf_client, 
  				NAUTILUS_SENDTO_LAST_COMPRESS, NULL));
@@ -475,11 +523,9 @@ nautilus_sendto_create_ui (void)
 		}
 		g_free (filename);
 	}
-/*	create_entry_completion (ui->entry); */
+
 	set_contact_widgets (ui);
 	set_model_for_options_combobox (ui);
-	g_signal_connect (G_OBJECT (ui->options_combobox), "changed",
-                          G_CALLBACK (option_changed), ui);
 	g_signal_connect (G_OBJECT (ui->dialog), "destroy",
                           G_CALLBACK (destroy_dialog), NULL);
 	g_signal_connect (G_OBJECT (ui->cancel_button), "clicked",
@@ -490,13 +536,16 @@ nautilus_sendto_create_ui (void)
 			  G_CALLBACK (send_button_cb), ui);
 
 	if (force_user_to_compress == FALSE){
-		ui->pack_checkbutton = glade_xml_get_widget (app, "pack_checkbutton");
 		toggle = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (ui->pack_checkbutton));
 		gtk_widget_set_sensitive (ui->pack_combobox, toggle);
 		gtk_widget_set_sensitive (ui->pack_entry, toggle);
 		g_signal_connect (G_OBJECT (ui->pack_checkbutton), "toggled",
 				  G_CALLBACK (toggle_pack_check), ui);
+	} else {
+		gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (ui->pack_checkbutton), TRUE);
+		gtk_widget_set_sensitive (ui->pack_checkbutton, FALSE);
 	}
+
 	gtk_widget_show (ui->dialog);
 
 }

@@ -64,7 +64,14 @@ libnstgaim_la_SOURCES = gaim.c
 libnstgaim_la_LDFLAGS = -module -avoid-version
 libnstgaim_la_LIBADD = $(GAIM_LIBS)
 
-libnstbluetooth_la_SOURCES = bluetooth.c
+bluetooth-marshal.h: bluetooth-marshal.list
+	$(GLIB_GENMARSHAL) --prefix=nst_bluetooth_marshal $< --header > $@
+
+bluetooth-marshal.c: bluetooth-marshal.list
+	$(GLIB_GENMARSHAL) --prefix=nst_bluetooth_marshal $< --body > $@
+bluetooth.c: bluetooth-marshal.c bluetooth-marshal.h
+
+libnstbluetooth_la_SOURCES = bluetooth.c bluetooth-marshal.h bluetooth-marshal.c
 libnstbluetooth_la_LDFLAGS = -module -avoid-version
 libnstbluetooth_la_LIBADD = $(BLUETOOTH_LIBS)
 
@@ -83,4 +90,7 @@ libnstthunderbird_la_LDFLAGS = -module -avoid-version
 libnstgajim_la_SOURCES = gajim.c
 libnstgajim_la_LDFLAGS = -module -avoid-version
 libnstgajim_la_LIBADD = $(DBUS_LIBS)
+
+EXTRA_DIST = bluetooth-marshal.list
+CLEANFILES = bluetooth-marshal.h bluetooth-marshal.c
 

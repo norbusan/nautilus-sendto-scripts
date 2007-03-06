@@ -1,3 +1,34 @@
+2007-03-06  Bastien Nocera  <hadess@hadess.net>
+
+	* configure.in: require dbus-glib for the bluetooth plugin
+	* src/nautilus-sendto-plugin.h:
+	* src/nautilus-sendto-command.c: (status_label_clear),
+	(send_button_cb), (set_model_for_options_combobox),
+	(nautilus_sendto_create_ui):
+	Add support for the plugins validating the destination,
+	show error message when validating the destination fails,
+	remove use of nautilus-sendto-force.glade,
+	fix problems with extra contact widgets showing up when
+	the default plugin isn't the first one in the list
+
+	* src/plugins/balsa.c:
+	* src/plugins/evolution.c:
+	* src/plugins/gajim.c:
+	* src/plugins/sylpheed-claws.c:
+	* src/plugins/thunderbird.c:
+	Modify files for the validation function
+
+	* src/Makefile.am: remove nautilus-sendto-force.glade
+	* src/nautilus-sendto-force.glade: Removed as per above
+
+	* src/nautilus-sendto.glade: some HIG changes
+
+	* src/plugins/Makefile.am:
+	* src/plugins/bluetooth.c: use BlueZ over D-Bus to discover
+	known devices (Closes: #380408, #341193)
+
+	* src/plugins/gaim.c: (init): fix memory leak
+
 2007-02-12  Matic Zgur <mr.zgur@gmail.com>
 
 	* configure.in: Added 'sl' to ALL_LINGUAS.

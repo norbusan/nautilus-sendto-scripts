@@ -7,9 +7,7 @@ INCLUDES =                                      \
 	-DGLADEDIR=\""$(gladedir)"\"		\
         $(NAUTILUS_SENDTO_CFLAGS)
 
-glade_DATA =					\
-	nautilus-sendto.glade			\
-	nautilus-sendto-force.glade
+glade_DATA = nautilus-sendto.glade
 gladedir = $(datadir)/nautilus-sendto/glade
 
 bin_PROGRAMS = nautilus-sendto

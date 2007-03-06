@@ -35,8 +35,11 @@ gboolean init (NstPlugin *plugin)
 	blist_online = g_build_path ("/", g_get_home_dir(),
 				     ".gnome2/nautilus-sendto/buddies_online",
 				     NULL);
-	if (!g_file_test (blist_online, G_FILE_TEST_EXISTS))
-		return FALSE;	
+	if (!g_file_test (blist_online, G_FILE_TEST_EXISTS)) {
+		g_free (blist_online);
+		blist_online = NULL;
+		return FALSE;
+	}
 	return TRUE;
 }
 
@@ -225,6 +228,7 @@ NstPluginInfo plugin_info = {
 	FALSE,
 	init,
 	get_contacts_widget,
+	NULL,
 	send_files,
 	destroy
 }; 

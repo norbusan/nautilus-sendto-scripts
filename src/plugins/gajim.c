@@ -491,6 +491,7 @@ NstPluginInfo plugin_info = {
 	TRUE,
 	init,
 	get_contacts_widget,
+	NULL,
 	send_files,
 	destroy
 };

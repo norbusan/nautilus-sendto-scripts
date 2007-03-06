@@ -23,19 +23,21 @@
  */
 
 #include "../nautilus-sendto-plugin.h"
-#include <gnomebt-controller.h>
+#include <bluetooth-marshal.h>
+#include <dbus/dbus-glib.h>
 #include <gnomebt-spinner.h>
 
+#define OBEX_SERVICE_CLASS_NAME "object transfer"
+
 static GtkTreeModel *model;
-static GnomebtController *btctl;
-static GdkPixbuf *phone_pix;
 static int discovered;
 static GtkWidget *combobox;
 static GnomebtSpinner *spinner;
 static guint id;
 
+DBusGProxy *object;
+
 enum {
-	ICON_COL,
 	NAME_COL,
 	BDADDR_COL,
 	NUM_COLS
@@ -46,6 +48,8 @@ init (NstPlugin *plugin)
 {
 	GError *e = NULL;
 	char *cmd;
+	DBusGConnection *conn;
+	const char *adapter;
 
 	/* Check whether gnome-obex-send is available */
 	cmd = g_find_program_in_path ("gnome-obex-send");
@@ -53,33 +57,79 @@ init (NstPlugin *plugin)
 		return FALSE;
 	g_free (cmd);
 
-	btctl = gnomebt_controller_new ();
-
-	if (btctl_controller_is_initialised (BTCTL_CONTROLLER (btctl), &e) == FALSE) {
-		g_object_unref (btctl);
-		g_print ("Couldn't init bluetooth plugin: %s\n", e ? e->message : "No reason");
-		if (e)
-			g_error_free (e);
+	conn = dbus_g_bus_get (DBUS_BUS_SYSTEM, &e);
+	if (e != NULL) {
+		g_warning ("Couldn't connect to bus: %s",
+			   e->message);
+		g_error_free (e);
 		return FALSE;
 	}
+
+	object = dbus_g_proxy_new_for_name (conn, "org.bluez",
+					    "/org/bluez", "org.bluez.Manager");
+	dbus_g_proxy_call (object, "DefaultAdapter", &e,
+			   G_TYPE_INVALID, G_TYPE_STRING, &adapter, G_TYPE_INVALID);
+	if (e != NULL) {
+		g_warning ("Couldn't get default bluetooth adapter: %s",
+			   e->message);
+		g_error_free (e);
+		return FALSE;
+	}
+
+	object = dbus_g_proxy_new_for_name (conn, "org.bluez",
+					    adapter, "org.bluez.Adapter");
 
 	discovered = 0;
 	id = -1;
 
-	//phone_pix = gtk_icon_theme_load_icon (it, "
-
 	return TRUE;
 }
 
+static gboolean
+find_iter_for_address (GtkListStore *store, const char *bdaddr, GtkTreeIter *iter)
+{
+	int i, n_children; 
+	gboolean found = FALSE;
+
+	n_children = gtk_tree_model_iter_n_children (GTK_TREE_MODEL (store), NULL);
+	for (i = 0; i < n_children; i++) {
+		char *address;
+
+		if (gtk_tree_model_iter_nth_child (GTK_TREE_MODEL (store),
+						   iter, NULL, i) == FALSE)
+			break;
+		gtk_tree_model_get (GTK_TREE_MODEL (store), iter,
+				    BDADDR_COL, &address, -1);
+		if (g_str_equal (address, bdaddr) != FALSE) {
+			found = TRUE;
+			g_free (address);
+			break;
+		}
+		g_free (address);
+	}
+
+	return found;
+}
+
 static void
-add_phone_to_list (GtkListStore *store, const gchar *name,
-		const gchar *bdaddr)
+add_phone_to_list (GtkListStore *store, const char *name, const char *bdaddr)
 {
 	GtkTreeIter iter;
+	int i, n_children;
+	gboolean found = FALSE;
 
-	gtk_list_store_append (store, &iter);
+	found = find_iter_for_address (store, bdaddr, &iter);
+	if (found == FALSE) {
+		gtk_list_store_append (store, &iter);
+	} else {
+		if (name == NULL)
+			return;
+	}
+
+	if (name == NULL)
+		name = bdaddr;
+
 	gtk_list_store_set (store, &iter,
-			ICON_COL, phone_pix,
 			NAME_COL, name,
 			BDADDR_COL, bdaddr,
 			-1);
@@ -92,43 +142,121 @@ add_phone_to_list (GtkListStore *store, const gchar *name,
 	discovered++;
 }
 
-static gboolean
+static void
+add_devices_to_list (GtkListStore *store, const char **array)
+{
+	GError *e = NULL;
+	while (*array) {
+		const char *name;
+		dbus_g_proxy_call (object, "GetRemoteName", &e,
+				   G_TYPE_STRING, *array, G_TYPE_INVALID,
+				   G_TYPE_STRING, &name, G_TYPE_INVALID);
+		if (e == NULL) {
+			add_phone_to_list (store, name, *array);
+		} else {
+			g_error_free (e);
+			e = NULL;
+		}
+		array++;
+	}
+}
+
+static void
 add_known_devices_to_list (GtkListStore *store)
 {
-	GSList *list, *item;
+	GError *e = NULL;
+	const char **array;
 
-	list = gnomebt_controller_known_devices (btctl);
-	if (list == NULL)
-		return FALSE;
-	for (item = list; item != NULL; item = item->next) {
-		GnomebtDeviceDesc *dd= (GnomebtDeviceDesc *) item->data;
+	dbus_g_proxy_call (object, "ListRemoteDevices", &e,
+			   G_TYPE_INVALID, G_TYPE_STRV, &array, G_TYPE_INVALID);
+	if (e == NULL) {
+		add_devices_to_list (store, array);
+	} else {
+		/* Most likely bluez-utils < 3.8, so no ListRemoteDevices */
+		const char *name;
 
-		/* FIXME use the class to have a nice icon thing */
-		add_phone_to_list (store, dd->name, dd->bdaddr);
+		name = dbus_g_error_get_name (e);
+		if (g_str_equal (name, "org.bluez.Error.UnknownMethod") != FALSE) {
+			g_error_free (e);
+			e = NULL;
+			dbus_g_proxy_call (object, "ListBondings", &e,
+					   G_TYPE_INVALID, G_TYPE_STRV, &array, G_TYPE_INVALID);
+			if (e == NULL) {
+				add_devices_to_list (store, array);
+			} else {
+				g_error_free (e);
+			}
+		} else {
+			g_error_free (e);
+		}
 	}
-	gnomebt_device_desc_list_free (list);
-
-	return TRUE;
 }
 
 static void
-on_device_name_cb (GnomebtController *btctl,
-		gchar* device, gchar* name, gpointer data)
+discovery_started (DBusGProxy *object, gpointer user_data)
 {
-	GtkListStore *store = (GtkListStore *) data;
-
-	/* We don't get new discovery for already known devices */
-	add_phone_to_list (store, name, device);
+	/* Discovery started! */
 }
 
 static void
-on_status_change_cb (GnomebtController *btctl, int status, gpointer data)
+remote_device_found (DBusGProxy *object,
+		     const char *address, guint class, int rssi,
+		     GtkListStore *store)
 {
-	if (status != BTCTL_STATUS_COMPLETE)
+	GError *e = NULL;
+	const char *name;
+
+	dbus_g_proxy_call (object, "GetRemoteName", &e,
+			   G_TYPE_STRING, address, G_TYPE_INVALID,
+			   G_TYPE_STRING, &name, G_TYPE_INVALID);
+	if (e != NULL) {
+		const char *name;
+
+		name = dbus_g_error_get_name (e);
+		if (g_str_equal (name, "org.bluez.Error.RequestDeferred") != FALSE) {
+			add_phone_to_list (store, NULL, address);
+		}
+		g_error_free (e);
+	} else {
+		add_phone_to_list (store, name, address);
+	}
+}
+
+static void
+remote_name_updated (DBusGProxy *object,
+		     const char *address, const char *name,
+		     GtkListStore *store)
+{
+	add_phone_to_list (store, name, address);
+}
+
+static void
+discovery_completed (DBusGProxy *object, gpointer user_data)
+{
+	GError *e = NULL;
+
+	/* Discovery finished, launch a periodic discovery */
+
+	dbus_g_proxy_call (object, "StartPeriodicDiscovery", &e,
+			   G_TYPE_INVALID, G_TYPE_INVALID);
+	if (e != NULL) {
+		g_warning ("Couldn't start periodic discovery: %s",
+			   e->message);
+		g_error_free (e);
+	}
+}
+
+static void
+remote_device_disappeared (DBusGProxy *object,
+			   const char *address,
+			   gpointer user_data)
+{
+	GtkListStore *store = (GtkListStore *) user_data;
+	GtkTreeIter iter;
+
+	if (find_iter_for_address (store, address, &iter) == FALSE)
 		return;
-
-	g_source_remove (id);
-	gnomebt_spinner_reset (spinner);
+	gtk_list_store_remove (store, &iter);
 }
 
 static gboolean
@@ -141,11 +269,37 @@ spin_spinner (gpointer data)
 static void
 start_device_scanning (GtkListStore *store)
 {
-	g_signal_connect (G_OBJECT (btctl), "device_name",
-			G_CALLBACK (on_device_name_cb), store);
-	g_signal_connect (G_OBJECT (btctl), "status_change",
-			G_CALLBACK (on_status_change_cb), NULL);
-	btctl_controller_discover_async (BTCTL_CONTROLLER (btctl));
+	dbus_g_proxy_add_signal (object, "DiscoveryStarted", G_TYPE_INVALID);
+	dbus_g_proxy_connect_signal (object, "DiscoveryStarted",
+				     G_CALLBACK (discovery_started), NULL, NULL);
+
+	dbus_g_object_register_marshaller(nst_bluetooth_marshal_VOID__STRING_UINT_INT,
+					  G_TYPE_NONE, G_TYPE_STRING, G_TYPE_UINT,
+					  G_TYPE_INT, G_TYPE_INVALID);
+	dbus_g_proxy_add_signal (object, "RemoteDeviceFound",
+				 G_TYPE_STRING, G_TYPE_UINT, G_TYPE_INT, G_TYPE_INVALID);
+	dbus_g_proxy_connect_signal (object, "RemoteDeviceFound",
+				     G_CALLBACK (remote_device_found), store, NULL);
+
+	dbus_g_object_register_marshaller(nst_bluetooth_marshal_VOID__STRING_STRING,
+					  G_TYPE_NONE, G_TYPE_STRING,
+					  G_TYPE_STRING, G_TYPE_INVALID);
+	dbus_g_proxy_add_signal (object, "RemoteNameUpdated",
+				 G_TYPE_STRING, G_TYPE_STRING, G_TYPE_INVALID);
+	dbus_g_proxy_connect_signal (object, "RemoteNameUpdated",
+				     G_CALLBACK (remote_name_updated), store, NULL);
+
+	dbus_g_proxy_add_signal (object, "RemoteDeviceDisappeared",
+				 G_TYPE_STRING, G_TYPE_INVALID);
+	dbus_g_proxy_connect_signal (object, "RemoteDeviceDisappeared",
+				     G_CALLBACK (remote_device_disappeared), store, NULL);
+
+	dbus_g_proxy_add_signal (object, "DiscoveryCompleted", G_TYPE_INVALID);
+	dbus_g_proxy_connect_signal (object, "DiscoveryCompleted",
+				     G_CALLBACK (discovery_completed), NULL, NULL);
+
+	dbus_g_proxy_call (object, "DiscoverDevices",
+			   G_TYPE_INVALID, G_TYPE_INVALID);
 	id = g_timeout_add (200, (GSourceFunc) spin_spinner, NULL);
 }
 
@@ -158,27 +312,18 @@ get_contacts_widget (NstPlugin *plugin)
 	GtkTreeIter iter;
 
 	/* The model */
-	store = gtk_list_store_new (NUM_COLS,
-			GDK_TYPE_PIXBUF, G_TYPE_STRING, G_TYPE_STRING);
+	store = gtk_list_store_new (NUM_COLS, G_TYPE_STRING, G_TYPE_STRING);
 	model = GTK_TREE_MODEL (store);
 
 	/* The widget itself */
 	combobox = gtk_combo_box_new_with_model (model);
-	renderer = gtk_cell_renderer_pixbuf_new ();
-	gtk_cell_layout_pack_start (GTK_CELL_LAYOUT (combobox),
-			renderer,
-			FALSE);
-	gtk_cell_layout_set_attributes (GTK_CELL_LAYOUT (combobox), 
-			renderer,
-			"pixbuf", 0,
-			NULL);		
 	renderer = gtk_cell_renderer_text_new ();
 	gtk_cell_layout_pack_start (GTK_CELL_LAYOUT (combobox),
 			renderer,
 			TRUE);
 	gtk_cell_layout_set_attributes (GTK_CELL_LAYOUT (combobox), 
 			renderer,
-			"text", 1,
+			"text", NAME_COL,
 			NULL);
 	gtk_combo_box_set_active (GTK_COMBO_BOX (combobox), 0);
 	gtk_widget_set_sensitive (combobox, FALSE);
@@ -200,17 +345,14 @@ get_contacts_widget (NstPlugin *plugin)
 }
 
 static gboolean
-send_files (NstPlugin *plugin, GtkWidget *contact_widget,
-		GList *file_list)
+get_select_device (char **name, char **bdaddr)
 {
-	GPtrArray *argv;
-	GList *list;
-	gboolean ret;
-	GtkTreeIter iter;
-	gchar *path, *bdaddr;
 	int option;
-	guint i;
-	GError *err = NULL;
+	GtkTreeIter iter;
+	char *path, *_bdaddr, *_name;
+	gboolean ret;
+
+	g_return_val_if_fail (bdaddr != NULL, FALSE);
 
 	option = gtk_combo_box_get_active (GTK_COMBO_BOX (combobox));
 	if (option == -1) {
@@ -225,7 +367,31 @@ send_files (NstPlugin *plugin, GtkWidget *contact_widget,
 		g_warning ("Couldn't get bluetooth address of the device");
 		return FALSE;
 	}
-	gtk_tree_model_get (model, &iter, BDADDR_COL, &bdaddr, -1);
+	gtk_tree_model_get (model, &iter,
+			    BDADDR_COL, &_bdaddr,
+			    NAME_COL, &_name,
+			    -1);
+	if (name)
+		*name = _name;
+	*bdaddr = _bdaddr;
+
+	return ret;
+}
+
+static gboolean
+send_files (NstPlugin *plugin, GtkWidget *contact_widget,
+		GList *file_list)
+{
+	GPtrArray *argv;
+	GList *list;
+	gboolean ret;
+	char *bdaddr;
+	int option;
+	guint i;
+	GError *err = NULL;
+
+	if (get_select_device (NULL, &bdaddr) == FALSE)
+		return FALSE;
 
 	argv = g_ptr_array_new ();
 	g_ptr_array_add (argv, "gnome-obex-send");
@@ -256,19 +422,60 @@ send_files (NstPlugin *plugin, GtkWidget *contact_widget,
 }
 
 static gboolean
+validate_destination (NstPlugin *plugin,
+		      GtkWidget *contact_widget,
+		      char **error)
+{
+	GError *e = NULL;
+	char *bdaddr, *name, **array;
+	gboolean found = TRUE;
+
+	g_return_val_if_fail (error != NULL, FALSE);
+
+	//FIXME shouldn't error if there's no selected device
+
+	if (get_select_device (&name, &bdaddr) == FALSE) {
+		*error = g_strdup (_("Programming error, could not find the device in the list"));
+		return FALSE;
+	}
+
+	dbus_g_proxy_call (object, "GetRemoteServiceClasses", &e,
+			   G_TYPE_STRING, bdaddr, G_TYPE_INVALID,
+			   G_TYPE_STRV, &array, G_TYPE_INVALID);
+	if (e == NULL) {
+		found = FALSE;
+		while (*array) {
+			if (g_str_equal (*array, OBEX_SERVICE_CLASS_NAME) != FALSE) {
+				found = TRUE;
+				break;
+			}
+			array++;
+		}
+	} else {
+		g_error_free (e);
+	}
+
+	if (found == FALSE)
+		*error = g_strdup_printf (_("Device does not support Obex File Transfer"));
+
+	return found;
+}
+
+static gboolean
 destroy (NstPlugin *plugin){
 	//FIXME
 	return TRUE;
 }
 
-static 
+static
 NstPluginInfo plugin_info = {
 	"stock_bluetooth",
 	"bluetooth",
-	N_("Bluetooth (OBEX)"),
+	N_("Bluetooth (OBEX Push)"),
 	TRUE,
 	init,
 	get_contacts_widget,
+	validate_destination,
 	send_files,
 	destroy
 }; 

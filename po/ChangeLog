@@ -1,3 +1,8 @@
+2007-03-06  Bastien Nocera  <hadess@hadess.net>
+
+	* POTFILES.in: update for added/removed files, add
+	nst.schemas.in (Closes: #375982)
+
 2007-03-5  Djihed Afifi <djihed@gmail.com> 
 
 	* ar.po: Updated Arabic Translation by Djihed Afifi.

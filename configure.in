@@ -98,7 +98,7 @@ AM_CONDITIONAL(HAVE_GAIM, test "x$enable_gaim" = "xyes")
 dnl Bluetooth support if it's installed
 dnl -----------------------------------
 
-PKG_CHECK_MODULES(BLUETOOTH, gnome-bluetooth >= $BLUETOOTH_REQUIRED,
+PKG_CHECK_MODULES(BLUETOOTH, gnome-bluetooth >= $BLUETOOTH_REQUIRED dbus-glib-1 >= $DBUS_REQUIRED,
 	[
 	AC_SUBST(BLUETOOTH_CFLAGS)
 	AC_SUBST(BLUETOOTH_LIBS)
@@ -111,6 +111,9 @@ PKG_CHECK_MODULES(BLUETOOTH, gnome-bluetooth >= $BLUETOOTH_REQUIRED,
 )
 
 AM_CONDITIONAL(HAVE_BLUETOOTH, test "x$enable_bluetooth" = "xyes")
+
+GLIB_GENMARSHAL=`$PKG_CONFIG --variable=glib_genmarshal glib-2.0`
+AC_SUBST(GLIB_GENMARSHAL)
 
 dnl --------------------------------------------------
 
