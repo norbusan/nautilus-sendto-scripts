@@ -1,5 +1,12 @@
 2007-03-09  Bastien Nocera  <hadess@hadess.net>
 
+	* configure.in:
+	* src/plugins/bluetooth.c: (init), (start_device_scanning),
+	(get_contacts_widget): remove gnome-bluetooth dependency, we
+	don't need a spinner for that (Closes: #415414)
+
+2007-03-09  Bastien Nocera  <hadess@hadess.net>
+
 	* configure.in: require glib 2.6.0 for Goption, split
 	nautilus-sendto (the binary) and the nautilus extension
 	requirements

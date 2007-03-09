@@ -26,7 +26,6 @@
 
 #include <bluetooth-marshal.h>
 #include <dbus/dbus-glib.h>
-#include <gnomebt-spinner.h>
 #include <glib/gi18n-lib.h>
 #include "../nautilus-sendto-plugin.h"
 
@@ -35,8 +34,6 @@
 static GtkTreeModel *model;
 static int discovered;
 static GtkWidget *combobox;
-static GnomebtSpinner *spinner;
-static guint id;
 
 DBusGProxy *object;
 
@@ -93,7 +90,6 @@ init (NstPlugin *plugin)
 					    adapter, "org.bluez.Adapter");
 
 	discovered = 0;
-	id = -1;
 
 	return TRUE;
 }
@@ -271,13 +267,6 @@ remote_device_disappeared (DBusGProxy *object,
 	gtk_list_store_remove (store, &iter);
 }
 
-static gboolean
-spin_spinner (gpointer data)
-{
-	gnomebt_spinner_spin (spinner);
-	return TRUE;
-}
-
 static void
 start_device_scanning (GtkListStore *store)
 {
@@ -312,13 +301,11 @@ start_device_scanning (GtkListStore *store)
 
 	dbus_g_proxy_call (object, "DiscoverDevices",
 			   G_TYPE_INVALID, G_TYPE_INVALID);
-	id = g_timeout_add (200, (GSourceFunc) spin_spinner, NULL);
 }
 
 static GtkWidget*
 get_contacts_widget (NstPlugin *plugin)
 {
-	GtkWidget *hbox;
 	GtkCellRenderer *renderer;
 	GtkListStore *store;
 
@@ -339,20 +326,12 @@ get_contacts_widget (NstPlugin *plugin)
 	gtk_combo_box_set_active (GTK_COMBO_BOX (combobox), 0);
 	gtk_widget_set_sensitive (combobox, FALSE);
 
-	/* The spinner */
-	spinner = gnomebt_spinner_new ();
-
-	/* The box */
-	hbox = gtk_hbox_new (FALSE, 4);
-	gtk_box_pack_start (GTK_BOX (hbox), combobox, TRUE, TRUE, 0);
-	gtk_box_pack_start (GTK_BOX (hbox), GTK_WIDGET (spinner),
-			FALSE, FALSE, 0);
-
 	add_known_devices_to_list (store);
 	start_device_scanning (store);
-	gtk_widget_show_all (hbox);
 
-	return hbox;
+	gtk_widget_show_all (combobox);
+
+	return combobox;
 }
 
 static gboolean
