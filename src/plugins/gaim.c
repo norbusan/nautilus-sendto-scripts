@@ -22,6 +22,8 @@
  */
 
 #include "config.h"
+#include <string.h>
+#include <glib/gi18n-lib.h>
 #include "../nautilus-sendto-plugin.h"
 
 static GList *contact_list;
@@ -51,11 +53,9 @@ add_gaim_contacts_to_model (GtkListStore *store, GtkTreeIter *iter)
 	GtkIconTheme *it;
 	GList *list = NULL;
 	GList *l;
-	GString *im_str;
 	gchar *contact_info;
 	GIOChannel *io;	
-	gint i, list_len;
-		
+
 	io = g_io_channel_new_file (blist_online, "r", NULL);
 
 	if (io != NULL){

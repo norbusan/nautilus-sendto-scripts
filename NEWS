@@ -1,4 +1,15 @@
 ============
+Version 0.9
+============
+
+Nautilus Sendto
+	* Search the Sylpheed-claws binary harder
+	* Use D-Bus and bluez-utils for the bluetooth plugin,
+	  remove compile-time dependency on gnome-bluetooth
+	* Show an error when no plugins can be found on startup
+	* Cleanup run-time dependencies
+
+============
 Version 0.8
 ============
 

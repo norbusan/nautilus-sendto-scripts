@@ -1,9 +1,9 @@
 AC_PREREQ(2.52)
 
-AC_INIT(nautilus-sendto, 0.8, http://www.gnome.org)
+AC_INIT(nautilus-sendto, 0.9, http://www.gnome.org)
 AM_CONFIG_HEADER(config.h)
 
-AM_INIT_AUTOMAKE(AC_PACKAGE_NAME, AC_PACKAGE_VERSION)
+AM_INIT_AUTOMAKE([1.9 dist-bzip2 no-dist-gzip check-news])
 
 AM_MAINTAINER_MODE
                                                                                 

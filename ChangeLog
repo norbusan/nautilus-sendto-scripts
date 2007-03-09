@@ -1,5 +1,12 @@
 2007-03-09  Bastien Nocera  <hadess@hadess.net>
 
+	* src/plugins/gaim.c: (add_gaim_contacts_to_model): fix some
+	compilation warnings
+	* NEWS: upd
+	* configure.in: version 0.9 released
+
+2007-03-09  Bastien Nocera  <hadess@hadess.net>
+
 	* configure.in:
 	* src/plugins/bluetooth.c: (init), (start_device_scanning),
 	(get_contacts_widget): remove gnome-bluetooth dependency, we
