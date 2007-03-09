@@ -24,9 +24,8 @@
 #ifndef _NAUTILUS_SENDTO_PLUGIN_H_
 #define _NAUTILUS_SENDTO_PLUGIN_H_
 
-#include <gnome.h>
-#include <glib.h>
 #include <gmodule.h>
+#include <gtk/gtk.h>
 
 typedef struct _NstPluginInfo NstPluginInfo;
 typedef struct _NstPlugin NstPlugin;

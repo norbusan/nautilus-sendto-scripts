@@ -21,6 +21,7 @@
  * Author:  Roberto Majadas <roberto.majadas@openshine.com>
  */
 
+#include "config.h"
 #include "../nautilus-sendto-plugin.h"
 
 static GList *contact_list;

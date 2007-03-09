@@ -22,20 +22,18 @@
  *
  */
 
-#include <config.h>
-#include "../nautilus-sendto-plugin.h"
-
-#define DBUS_API_SUBJECT_TO_CHANGE 1
+#include "config.h"
+#include <glib/glib-i18n.h>
 #include <dbus/dbus.h>
 #include <dbus/dbus-glib.h>
-
+#include "../nautilus-sendto-plugin.h"
 
 #define OBJ_PATH "/org/gajim/dbus/RemoteObject"
 #define INTERFACE "org.gajim.dbus.RemoteInterface"
 #define SERVICE "org.gajim.dbus"
 
 const gchar *COMPLETION_PROPS[] = {"name", "jid"};
-// list of contacts, which are not offline
+/* list of contacts, which are not offline */
 static GHashTable *jid_table = NULL;
 static gchar *iconset;
 
@@ -53,11 +51,11 @@ static void _foreach_contact(gpointer contact, gpointer user_data)
 	GValue *value;
 	GHashTable *contact_table;
 	
-	// holds contact props of already exisiting jid/nick
+	/* holds contact props of already exisiting jid/nick */
 	GHashTable *existing_contact;
 	
-	// name of the contact in completion list
-	// it may be jid, nick, jid (account), or nick(account)
+	/* name of the contact in completion list
+	   it may be jid, nick, jid (account), or nick(account) */
 	GString *contact_str;
 	
 	gchar *jid;
@@ -82,12 +80,12 @@ static void _foreach_contact(gpointer contact, gpointer user_data)
 		g_hash_table_destroy(contact_table);
 		return;
 	}
-	// remove unneeded item with key resource and add account
-	// to contact properties
+	/* remove unneeded item with key resource and add account
+	   to contact properties */
 	g_hash_table_insert(contact_table, "account", account);
 	g_hash_table_remove(contact_table, "resource");
 	
-	// add nick the same way as jid
+	/* add nick the same way as jid */
 	for(i=0;i<2;i++) {
 		value = g_hash_table_lookup(contact_table, COMPLETION_PROPS[i]);	
 		if(value == NULL || !G_VALUE_HOLDS_STRING(value)) {
@@ -97,7 +95,7 @@ static void _foreach_contact(gpointer contact, gpointer user_data)
 		jid = g_value_dup_string((GValue *)value);
 		existing_contact = g_hash_table_lookup(jid_table, jid);
 		if(existing_contact) {
-			// add existing contact as nick (account)
+			/* add existing contact as nick (account) */
 			contact_str = g_string_new(jid);
 			g_string_append(contact_str, " (");
 			g_string_append(contact_str, 
@@ -107,7 +105,7 @@ static void _foreach_contact(gpointer contact, gpointer user_data)
 													existing_contact);
 			g_string_free(contact_str, FALSE);
 			
-			// add current contact as nick (account)
+			/* add current contact as nick (account) */
 			contact_str = g_string_new(jid);
 			g_string_append(contact_str, " (");
 			g_string_append(contact_str, 
@@ -176,7 +174,7 @@ void _handle_dbus_exception(GError *error, gboolean empty_list_messages) {
 			error->message);
 	}
 	else if(empty_list_messages) {
-		// empty list and error goes here
+		/* empty list and error goes here */
 		g_warning ("[Gajim] empty result set: %d %d %s\n", error->domain, 
 			   error->code, error->message);
 	}
@@ -201,7 +199,7 @@ gboolean _get_contacts() {
 		g_warning("[Gajim] unable to connect to session bus");
 		return FALSE;
 	}
-	// get gajim prefs and lookup for iconset 
+	/* get gajim prefs and lookup for iconset */
 	if (!dbus_g_proxy_call(proxy, "prefs_list", &error, G_TYPE_INVALID, 
 			dbus_g_type_get_map ("GHashTable", G_TYPE_STRING, G_TYPE_STRING), 
 			&prefs_map, G_TYPE_INVALID))
@@ -217,7 +215,7 @@ gboolean _get_contacts() {
 		return FALSE;
 	}
 	g_hash_table_destroy(prefs_map);
-	// END get gajim prefs
+	/* END get gajim prefs */
 	error= NULL; 
 	if (!dbus_g_proxy_call (proxy, "list_accounts", &error, G_TYPE_INVALID,
 			G_TYPE_STRV,
@@ -229,11 +227,11 @@ gboolean _get_contacts() {
 	for(account_iter = accounts; *account_iter ; account_iter++) {
 		account = g_strdup(*account_iter);
 		error = NULL;	
-		// query gajim remote object and put results in 'contacts_list'
+		/* query gajim remote object and put results in 'contacts_list' */
 		if (!dbus_g_proxy_call (proxy, "list_contacts", &error, 
-				G_TYPE_STRING, account, // call arguments
-				G_TYPE_INVALID, // delimiter
-				// return value is collection of maps
+				G_TYPE_STRING, account, /* call arguments */
+				G_TYPE_INVALID, /* delimiter */
+				/* return value is collection of maps */
 				dbus_g_type_get_collection ("GSList", 
 					dbus_g_type_get_map ("GHashTable", 
 						G_TYPE_STRING, G_TYPE_VALUE)), 
@@ -257,7 +255,7 @@ gboolean init (NstPlugin *plugin)
 	g_print ("Init gajim plugin\n");
 	g_type_init();
 	
-	// connect to gajim dbus service
+	/* connect to gajim dbus service */
 	jid_table = g_hash_table_new (g_str_hash, g_str_equal);
 	if (!init_dbus()) {
 		return FALSE;
@@ -450,13 +448,13 @@ gboolean send_files (NstPlugin *plugin, GtkWidget *contact_widget,
 					   G_TYPE_STRING, file_path,
 					   G_TYPE_STRING, jid, 
 					   G_TYPE_STRING, account, 
-					   G_TYPE_INVALID, //delimiter
+					   G_TYPE_INVALID,
 					   G_TYPE_INVALID);
 		} else {
 			dbus_g_proxy_call (proxy, "send_file", &error, 
 					   G_TYPE_STRING, file_path, 
 					   G_TYPE_STRING, jid, 
-					   G_TYPE_INVALID, //delimiter
+					   G_TYPE_INVALID,
 					   G_TYPE_INVALID);
 		}
 		g_free(file_path);

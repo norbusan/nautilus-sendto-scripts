@@ -22,8 +22,10 @@
  *          Roberto Majadas <telemaco@openshine.com>
  */
 
-#include "../nautilus-sendto-plugin.h"
+#include "config.h"
 
+#include <glib/gi18n-lib.h>
+#include "../nautilus-sendto-plugin.h"
 
 static GHashTable *hash = NULL;
 

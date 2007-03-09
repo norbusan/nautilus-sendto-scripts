@@ -21,10 +21,13 @@
  * Author:  Roberto Majadas <roberto.majadas@openshine.com>
  */
 
-#include <config.h>
+#include "config.h"
 #include <sys/types.h>
 #include <dirent.h>
-#include <gnome.h>
+#include <string.h>
+#include <stdlib.h>
+#include <glib/gi18n.h>
+#include <glib/gstdio.h>
 #include <glade/glade.h>
 #include <gconf/gconf-client.h>
 #include "nautilus-sendto-plugin.h"
@@ -34,7 +37,10 @@
 #define NAUTILUS_SENDTO_LAST_COMPRESS	NAUTILUS_SENDTO_GCONF"/last_compress"
 #define NAUTILUS_SENDTO_STATUS_LABEL_TIMEOUT 10000
 
+/* Options */
 static gchar *default_url = NULL;
+static char **filenames = NULL;
+
 gboolean force_user_to_compress = FALSE;
 GList *file_list = NULL;
 GList *plugin_list = NULL;
@@ -61,11 +67,10 @@ struct _NS_ui {
 	guint status_timeoutid;
 };
 
-struct poptOption options[] = {
-	{ "default-dir", 0, POPT_ARG_STRING, &default_url, 0,
-	  N_("Default folder to use"),
-	  N_("FOLDER") },
-	{ NULL, '\0', 0, NULL, 0 }
+static const GOptionEntry entries[] = {
+	{ "default-dir", 'd', 0, G_OPTION_ARG_FILENAME, &default_url, N_("Default folder to use"), NULL },
+	{ G_OPTION_REMAINING, '\0', 0, G_OPTION_ARG_FILENAME_ARRAY, &filenames, "Movies to index", NULL },
+	{ NULL }
 };
 
 static void 
@@ -180,11 +185,11 @@ pack_files (NS_ui *ui)
 
 		tmp_dir = g_strdup_printf ("%s/nautilus-sendto-%s", 
 				   g_get_tmp_dir(), g_get_user_name());	
-		mkdir (tmp_dir, 0700);
+		g_mkdir (tmp_dir, 0700);
 		tmp_work_dir = g_strdup_printf ("%s/nautilus-sendto-%s/%li",
 						g_get_tmp_dir(), g_get_user_name(),
 						time(NULL));
-		mkdir (tmp_work_dir, 0700);
+		g_mkdir (tmp_work_dir, 0700);
 		g_free (tmp_dir);
 
 		switch (gtk_combo_box_get_active (GTK_COMBO_BOX(ui->pack_combobox)))
@@ -400,8 +405,6 @@ set_contact_widgets (NS_ui *ui){
 					G_CALLBACK (send_if_no_pack_cb), ui);
 		}
 	}
-	if (ui->contact_widgets)
-		gtk_widget_show ((GtkWidget* ) ui->contact_widgets->data);
 }
 
 static void
@@ -460,12 +463,7 @@ set_model_for_options_combobox (NS_ui *ui){
 	g_signal_connect (G_OBJECT (ui->options_combobox), "changed",
 			  G_CALLBACK (option_changed), ui);
 
-	/* We changed the option from underneath the UI */
-	if (option != 0) {
-		/* Hide the default entry */
-		gtk_widget_hide ((GtkWidget* ) ui->contact_widgets->data);
-		gtk_combo_box_set_active (GTK_COMBO_BOX (ui->options_combobox), option);
-	}
+	gtk_combo_box_set_active (GTK_COMBO_BOX (ui->options_combobox), option);
 }
 
 static void
@@ -551,7 +549,7 @@ nautilus_sendto_create_ui (void)
 
 }
 
-static void
+static gboolean
 nautilus_sendto_plugin_init (void)
 {
 	GDir *dir;
@@ -562,13 +560,14 @@ nautilus_sendto_plugin_init (void)
 
 	dir = g_dir_open (PLUGINDIR, 0, &err);
 
-	if (dir == NULL){
-		g_error ("Can't open the plugins dir: %s", err ? err->message : "No reason");
+	if (dir == NULL) {
+		g_warning ("Can't open the plugins dir: %s", err ? err->message : "No reason");
 		if (err)
 			g_error_free (err);
-	}else{
-		while ((item = g_dir_read_name(dir))){
-			if (g_str_has_suffix (item, SOEXT)){
+		return FALSE;
+	} else {
+		while ((item = g_dir_read_name(dir))) {
+			if (g_str_has_suffix (item, SOEXT)) {
 				char *module_path;
 
 				p = g_new0(NstPlugin, 1);
@@ -581,16 +580,16 @@ nautilus_sendto_plugin_init (void)
 				}
 				g_free (module_path);
 
-				if (!g_module_symbol (p->module, "nst_init_plugin", (gpointer *)&nst_init_plugin)) {
+				if (!g_module_symbol (p->module, "nst_init_plugin", (gpointer *) &nst_init_plugin)) {
 			                g_warning ("error: %s", g_module_error ());
 					g_module_close (p->module);
 					continue;
 				}
 
 				nst_init_plugin (p);
-				if (p->info->init(p)){
+				if (p->info->init(p)) {
 					plugin_list = g_list_append (plugin_list, p);
-				}else{
+				} else {
 					if (!p->info->never_unload)
 						g_module_close (p->module);
 					g_free (p);
@@ -598,7 +597,8 @@ nautilus_sendto_plugin_init (void)
 			}
 		}
 		g_dir_close (dir);
-	}	
+	}
+	return g_list_length (plugin_list) != 0;
 }
 
 static char *
@@ -636,18 +636,9 @@ escape_ampersands (const char *url)
 }
 
 static void
-nautilus_sendto_init (GnomeProgram *program, int argc, char **argv)
+nautilus_sendto_init (void)
 {
-	poptContext pctx;
-	GValue value = { 0 };
-	const char *filename;
-
-	g_object_get_property (G_OBJECT (program),
-			       GNOME_PARAM_POPT_CONTEXT,
-                               g_value_init (&value, G_TYPE_POINTER));
-	
-	pctx = g_value_get_pointer (&value);
-	glade_gnome_init ();
+	int i;
 
 	if (g_module_supported() == FALSE)
 		g_error ("Could not initialize gmodule support");
@@ -656,8 +647,11 @@ nautilus_sendto_init (GnomeProgram *program, int argc, char **argv)
 		default_url = g_get_current_dir ();
 	}
 
-	while ((filename = poptGetArg (pctx)) != NULL) {
+	for (i = 0; filenames != NULL && filenames[i] != NULL; i++) {
+		const char *filename;
  		char *path;
+
+		filename = filenames[i];
  
  		if (g_str_has_prefix (filename, "file://")) {
  			file_list = g_list_prepend (file_list,
@@ -695,7 +689,7 @@ nautilus_sendto_init (GnomeProgram *program, int argc, char **argv)
 	}
 
 	if (file_list == NULL) {
-		poptPrintHelp (pctx, stdout, 0);
+		g_print (_("Expects URIs or filenames to be passed as options\n"));
 		exit (1);
 	}
 
@@ -704,22 +698,46 @@ nautilus_sendto_init (GnomeProgram *program, int argc, char **argv)
 
 int main (int argc, char **argv)
 {
-	GnomeProgram *program;
-		
+	GOptionContext *context;
+	GError *error = NULL;
+
 	bindtextdomain (GETTEXT_PACKAGE, LOCALEDIR);
 	bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
 	textdomain (GETTEXT_PACKAGE);
-	
-	program = gnome_program_init ("nautilus-sendto", VERSION,
-				      LIBGNOMEUI_MODULE, argc, argv,
-				      GNOME_PARAM_POPT_TABLE, options,
-				      GNOME_PARAM_HUMAN_READABLE_NAME, _("Nautilus Sendto"),
-				      NULL);
+
+	g_thread_init (NULL);
+	context = g_option_context_new (_("Nautilus Sendto"));
+	g_option_context_add_main_entries (context, entries, GETTEXT_PACKAGE);
+	g_option_context_add_group (context, gtk_get_option_group (TRUE));
+	if (g_option_context_parse (context, &argc, &argv, &error) == FALSE) {
+		g_print (_("Could not parse command-line options: %s\n"), error->message);
+		g_error_free (error);
+		return 1;
+	}
 
 	gconf_client = gconf_client_get_default();
-	nautilus_sendto_init (program, argc, argv);	
-	nautilus_sendto_plugin_init ();
-	nautilus_sendto_create_ui();
+	nautilus_sendto_init ();
+	if (nautilus_sendto_plugin_init () == FALSE) {
+		GtkWidget *error_dialog;
+
+		error_dialog =
+			gtk_message_dialog_new (NULL,
+						GTK_DIALOG_MODAL,
+						GTK_MESSAGE_ERROR,
+						GTK_BUTTONS_OK,
+						_("Could not load any plugins."));
+		gtk_message_dialog_format_secondary_text
+			(GTK_MESSAGE_DIALOG (error_dialog),
+			 _("Please verify your installation"));
+
+		gtk_window_set_title (GTK_WINDOW (error_dialog), ""); /* as per HIG */
+		gtk_container_set_border_width (GTK_CONTAINER (error_dialog), 5);
+		gtk_dialog_set_default_response (GTK_DIALOG (error_dialog),
+						 GTK_RESPONSE_OK);
+		gtk_dialog_run (GTK_DIALOG (error_dialog));
+		return 1;
+	}
+	nautilus_sendto_create_ui ();
 			
 	gtk_main ();
 	g_object_unref(gconf_client);

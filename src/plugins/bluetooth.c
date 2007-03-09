@@ -22,10 +22,13 @@
  * Author:  Bastien Nocera <hadess@hadess.net>
  */
 
-#include "../nautilus-sendto-plugin.h"
+#include "config.h"
+
 #include <bluetooth-marshal.h>
 #include <dbus/dbus-glib.h>
 #include <gnomebt-spinner.h>
+#include <glib/gi18n-lib.h>
+#include "../nautilus-sendto-plugin.h"
 
 #define OBEX_SERVICE_CLASS_NAME "object transfer"
 
@@ -70,6 +73,16 @@ init (NstPlugin *plugin)
 	dbus_g_proxy_call (object, "DefaultAdapter", &e,
 			   G_TYPE_INVALID, G_TYPE_STRING, &adapter, G_TYPE_INVALID);
 	if (e != NULL) {
+		const char *name;
+
+		name = dbus_g_error_get_name (e);
+
+		/* No adapter */
+		if (g_str_equal (name, "org.bluez.Error.NoSuchAdapter") != FALSE) {
+			g_error_free (e);
+			return FALSE;
+		}
+
 		g_warning ("Couldn't get default bluetooth adapter: %s",
 			   e->message);
 		g_error_free (e);

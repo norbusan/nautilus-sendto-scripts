@@ -6,6 +6,7 @@ INCLUDES =					\
 	-I$(top_builddir)			\
 	-DGLADEDIR=\""$(gladedir)"\"		\
 	$(NAUTILUS_SENDTO_CFLAGS)		\
+	$(NAUTILUS_EXT_SENDTO_CFLAGS)		\
 	$(WARN_CFLAGS)
 
 glade_DATA = nautilus-sendto.glade
@@ -27,6 +28,6 @@ libnautilus_sendto_la_SOURCES =		\
 	nautilus-sendto-module.c
 
 libnautilus_sendto_la_LDFLAGS = -module -avoid-version
-libnautilus_sendto_la_LIBADD  = $(NAUTILUS_SENDTO_LIBS)
+libnautilus_sendto_la_LIBADD  = $(NAUTILUS_EXT_SENDTO_LIBS)
 
 EXTRA_DIST = $(glade_DATA)
