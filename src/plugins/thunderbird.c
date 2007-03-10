@@ -24,7 +24,8 @@
 
 #include "config.h"
 #include "../nautilus-sendto-plugin.h"
-#include <glib/glib-i18n.h>
+#include <string.h>
+#include <glib/gi18n-lib.h>
 
 static GHashTable *hash = NULL;
 
@@ -57,11 +58,10 @@ static
 gboolean send_files (NstPlugin *plugin, GtkWidget *contact_widget,
 			GList *file_list)
 {
-	gchar *t_cmd, *cmd, *send_to, *send_to_info ;
+	gchar *t_cmd, *cmd, *send_to;
 	GList *l;
 	GString *mailto;
-	GtkWidget *error_dialog;
-	
+
 	send_to = (gchar *) gtk_entry_get_text (GTK_ENTRY(contact_widget));
 		
 	if (strlen (send_to) == 0)

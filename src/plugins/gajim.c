@@ -23,7 +23,7 @@
  */
 
 #include "config.h"
-#include <glib/glib-i18n.h>
+#include <glib/gi18n-lib.h>
 #include <dbus/dbus.h>
 #include <dbus/dbus-glib.h>
 #include "../nautilus-sendto-plugin.h"

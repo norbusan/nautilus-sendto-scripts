@@ -1,3 +1,8 @@
+2007-03-10  Bastien Nocera  <hadess@hadess.net>
+
+	* src/plugins/gajim.c:
+	* src/plugins/thunderbird.c: (send_files): Fix compilation
+
 2007-03-09  Bastien Nocera  <hadess@hadess.net>
 
 	* src/plugins/gaim.c: (add_gaim_contacts_to_model): fix some
