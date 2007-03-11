@@ -1,3 +1,12 @@
+2007-03-11  Bastien Nocera  <hadess@hadess.net>
+
+	* src/Makefile.am: add -no-undefined to avoid undefined
+	symbols on load
+	* src/nautilus-nste.c: (nautilus_nste_instance_init),
+	(nautilus_nste_get_type), (nautilus_nste_register_type):
+	Revert G_DEFINE_TYPE cleanup, it breaks loading the
+	extension (Closes: #416738)
+
 2007-03-10  Bastien Nocera  <hadess@hadess.net>
 
 	* src/plugins/gajim.c:

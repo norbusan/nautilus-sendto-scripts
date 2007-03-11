@@ -101,16 +101,16 @@ nautilus_nste_get_file_items (NautilusMenuProvider *provider,
 					       _("Send files by mail, instant message..."),
 					       NULL);
 	}
-	g_signal_connect (item, 
-			  "activate",
-			  G_CALLBACK (sendto_callback),
-			  provider);
-	g_object_set_data_full (G_OBJECT (item), 
-				"files",
-				nautilus_file_info_list_copy (files),
-				(GDestroyNotify) nautilus_file_info_list_free);
+  g_signal_connect (item, 
+      "activate",
+      G_CALLBACK (sendto_callback),
+      provider);
+  g_object_set_data_full (G_OBJECT (item), 
+      "files",
+      nautilus_file_info_list_copy (files),
+      (GDestroyNotify) nautilus_file_info_list_free);
 
-	items = g_list_append (items, item);
+  items = g_list_append (items, item);
 
 	return items;
 }
@@ -122,10 +122,12 @@ nautilus_nste_menu_provider_iface_init (NautilusMenuProviderIface *iface)
 	iface->get_file_items = nautilus_nste_get_file_items;
 }
 
+
 static void 
-nautilus_nste_init (NautilusNste *nste)
+nautilus_nste_instance_init (NautilusNste *nste)
 {
 }
+
 
 static void
 nautilus_nste_class_init (NautilusNsteClass *class)
@@ -133,5 +135,45 @@ nautilus_nste_class_init (NautilusNsteClass *class)
 	parent_class = g_type_class_peek_parent (class);
 }
 
-G_DEFINE_TYPE(NautilusNste, nautilus_nste, G_TYPE_OBJECT)
 
+static GType nste_type = 0;
+
+
+GType
+nautilus_nste_get_type (void) 
+{
+	return nste_type;
+}
+
+
+void
+nautilus_nste_register_type (GTypeModule *module)
+{
+	static const GTypeInfo info = {
+		sizeof (NautilusNsteClass),
+		(GBaseInitFunc) NULL,
+		(GBaseFinalizeFunc) NULL,
+		(GClassInitFunc) nautilus_nste_class_init,
+		NULL, 
+		NULL,
+		sizeof (NautilusNste),
+		0,
+		(GInstanceInitFunc) nautilus_nste_instance_init,
+	};
+
+	static const GInterfaceInfo menu_provider_iface_info = {
+		(GInterfaceInitFunc) nautilus_nste_menu_provider_iface_init,
+		NULL,
+		NULL
+	};
+
+	nste_type = g_type_module_register_type (module,
+					         G_TYPE_OBJECT,
+					         "NautilusNste",
+					         &info, 0);
+
+	g_type_module_add_interface (module,
+				     nste_type,
+				     NAUTILUS_TYPE_MENU_PROVIDER,
+				     &menu_provider_iface_info);
+}

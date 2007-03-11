@@ -27,7 +27,7 @@ libnautilus_sendto_la_SOURCES =		\
 	nautilus-nste.h			\
 	nautilus-sendto-module.c
 
-libnautilus_sendto_la_LDFLAGS = -module -avoid-version
+libnautilus_sendto_la_LDFLAGS = -module -avoid-version -no-undefined
 libnautilus_sendto_la_LIBADD  = $(NAUTILUS_EXT_SENDTO_LIBS)
 
 EXTRA_DIST = $(glade_DATA)
