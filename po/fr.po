@@ -5,18 +5,41 @@
 # Jean-Michel Ardantz <jmardantz@ifrance.com>, 2004.
 # Christophe Bliard <christophe.bliard@trux.info>, 2006.
 # Jonathan Ernst <jonathan@ernstfamily.ch>, 2006-2007.
+# Claude Paroz <claude@2xlibre.net>, 2007.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: nautilus-sendto 0.7\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-03-01 23:53+0100\n"
-"PO-Revision-Date: 2007-01-26 10:57+0100\n"
-"Last-Translator: Jonathan Ernst <jonathan@ernstfamily.ch>\n"
+"POT-Creation-Date: 2007-03-11 21:12+0100\n"
+"PO-Revision-Date: 2007-03-11 21:13+0100\n"
+"Last-Translator: Claude Paroz <claude@2xlibre.net>\n"
 "Language-Team: GNOME French Team <gnomefr@traduc.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#: ../nst.schemas.in.h:1
+msgid "Last plugin used to send"
+msgstr "Dernier greffon utilisé pour l'envoi"
+
+#: ../nst.schemas.in.h:2
+msgid "Last type of archive used"
+msgstr "Dernier type d'archive utilisé"
+
+#: ../nst.schemas.in.h:3
+msgid ""
+"Used to store which plugin was used the last time files were sent using "
+"nautilus-sendto."
+msgstr ""
+"Utilisé pour mémoriser le dernier greffon qui a servi à l'envoi lors de la "
+"dernière utilisation de nautilus-sendto."
+
+#: ../nst.schemas.in.h:4
+msgid ""
+"Used to store which type of archive was used the last time (0: zip, 1: tar."
+"gz, 2: tar.bz2)."
+msgstr "Utilisé pour mémoriser quel type d'archive a été utilisé en dernier (0 : zip, 1 : tar.gz, 2 : tar.bz2)."
 
 #. type
 #. ui requirement
@@ -36,39 +59,56 @@ msgstr "Intégration à Nautilus"
 msgid "Provides integration with Nautilus"
 msgstr "Permet une intégration à Nautilus"
 
-#: ../src/nautilus-nste.c:97 ../src/nautilus-nste.c:112
+#: ../src/nautilus-nste.c:95 ../src/nautilus-nste.c:100
 msgid "Send to..."
 msgstr "Envoyer à..."
 
-#: ../src/nautilus-nste.c:98
+#: ../src/nautilus-nste.c:96
 msgid "Send file by mail, instant message..."
 msgstr "Envoyer le fichier par courriel, messagerie instantanée..."
 
-#: ../src/nautilus-nste.c:113
+#: ../src/nautilus-nste.c:101
 msgid "Send files by mail, instant message..."
 msgstr "Envoyer les fichiers par courriel, messagerie instantanée..."
 
-#: ../src/nautilus-sendto-command.c:62
+#: ../src/nautilus-sendto-command.c:71
 msgid "Default folder to use"
 msgstr "Dossier par défaut à utiliser"
 
-#: ../src/nautilus-sendto-command.c:63
-msgid "FOLDER"
-msgstr "DOSSIER"
-
-#: ../src/nautilus-sendto-command.c:235
+#: ../src/nautilus-sendto-command.c:246
 msgid "You don't insert the package name"
 msgstr "Vous n'avez pas saisi de nom d'archive"
 
-#: ../src/nautilus-sendto-command.c:455
+#: ../src/nautilus-sendto-command.c:502
 msgid "Files"
 msgstr "Fichiers"
 
-#: ../src/nautilus-sendto-command.c:666
+#: ../src/nautilus-sendto-command.c:692
+msgid "Expects URIs or filenames to be passed as options\n"
+msgstr "Les options attendues sont des URI ou des noms de fichiers\n"
+
+#: ../src/nautilus-sendto-command.c:709
 msgid "Nautilus Sendto"
 msgstr "Nautilus Sendto"
 
-#: ../src/nautilus-sendto-force.glade.h:1 ../src/nautilus-sendto.glade.h:1
+#: ../src/nautilus-sendto-command.c:713
+#, c-format
+msgid "Could not parse command-line options: %s\n"
+msgstr "Impossible d'analyser les options de la ligne de commande : %s\n"
+
+#: ../src/nautilus-sendto-command.c:728
+msgid "Could not load any plugins."
+msgstr "Impossible de charger un greffon."
+
+#: ../src/nautilus-sendto-command.c:731
+msgid "Please verify your installation"
+msgstr "Veuillez contrôler votre installation"
+
+#: ../src/nautilus-sendto.glade.h:1
+msgid " "
+msgstr " "
+
+#: ../src/nautilus-sendto.glade.h:2
 msgid ""
 ".zip\n"
 ".tar.gz\n"
@@ -78,70 +118,87 @@ msgstr ""
 ".tar.gz\n"
 ".tar.bz2"
 
-#: ../src/nautilus-sendto-force.glade.h:4 ../src/nautilus-sendto.glade.h:4
+#: ../src/nautilus-sendto.glade.h:5
+msgid "<b>Compression</b>"
+msgstr "<b>Compression</b>"
+
+#: ../src/nautilus-sendto.glade.h:6
+msgid "<b>Destination</b>"
+msgstr "<b>Destination</b>"
+
+#: ../src/nautilus-sendto.glade.h:7
 msgid "Send To..."
 msgstr "Envoyer à..."
 
-#: ../src/nautilus-sendto-force.glade.h:5 ../src/nautilus-sendto.glade.h:5
+#: ../src/nautilus-sendto.glade.h:8
 msgid "Send as:"
 msgstr "Envoyer comme :"
 
-#: ../src/nautilus-sendto-force.glade.h:6 ../src/nautilus-sendto.glade.h:6
+#: ../src/nautilus-sendto.glade.h:9
 msgid "Send packed in"
 msgstr "Envoyer lié dans"
 
-#: ../src/nautilus-sendto-force.glade.h:7 ../src/nautilus-sendto.glade.h:7
+#: ../src/nautilus-sendto.glade.h:10
 msgid "Send to:"
 msgstr "Envoyer à :"
 
-#: ../src/nautilus-sendto-force.glade.h:8 ../src/nautilus-sendto.glade.h:8
+#: ../src/nautilus-sendto.glade.h:11
 msgid "_Send"
 msgstr "_Envoyer"
 
-#: ../src/plugins/balsa.c:101
+#: ../src/plugins/balsa.c:103
 msgid "Email (Balsa)"
 msgstr "Courrier électronique (Balsa)"
 
-#: ../src/plugins/bluetooth.c:268
-msgid "Bluetooth (OBEX)"
-msgstr "Bluetooth (OBEX)"
+#: ../src/plugins/bluetooth.c:426
+msgid "Programming error, could not find the device in the list"
+msgstr ""
+"Erreur de programmation, impossible de trouver le périphérique dans la liste"
 
-#: ../src/plugins/evolution.c:268
+#: ../src/plugins/bluetooth.c:447
+msgid "Device does not support Obex File Transfer"
+msgstr "Le périphérique ne prend pas en charge les transferts de fichiers Obex"
+
+#: ../src/plugins/bluetooth.c:462
+msgid "Bluetooth (OBEX Push)"
+msgstr "Bluetooth (OBEX Push)"
+
+#: ../src/plugins/evolution.c:271
 msgid "Email (Evolution)"
 msgstr "Courrier électronique (Evolution)"
 
-#: ../src/plugins/gaim.c:224
+#: ../src/plugins/gaim.c:228
 msgid "Instant Message (Gaim)"
 msgstr "Messagerie instantanée (Gaim)"
 
-#: ../src/plugins/gajim.c:404
+#: ../src/plugins/gajim.c:402
 msgid "Unable to send file"
 msgstr "Impossible d'envoyer le fichier"
 
-#: ../src/plugins/gajim.c:405
+#: ../src/plugins/gajim.c:403
 msgid "There is no connection to gajim remote service."
 msgstr "Il n'y a pas de connexion au service à distance de Gajim."
 
-#: ../src/plugins/gajim.c:429 ../src/plugins/gajim.c:468
+#: ../src/plugins/gajim.c:427 ../src/plugins/gajim.c:466
 msgid "Sending file failed"
 msgstr "L'envoi du fichier a échoué"
 
-#: ../src/plugins/gajim.c:430
+#: ../src/plugins/gajim.c:428
 msgid "Recipient is missing."
 msgstr "Le destinataire est manquant."
 
-#: ../src/plugins/gajim.c:468
+#: ../src/plugins/gajim.c:466
 msgid "Unknown recipient."
 msgstr "Destinataire inconnu."
 
-#: ../src/plugins/gajim.c:490
+#: ../src/plugins/gajim.c:488
 msgid "Instant Message (Gajim)"
 msgstr "Messagerie instantanée (Gajim)"
 
-#: ../src/plugins/sylpheed-claws.c:130
+#: ../src/plugins/sylpheed-claws.c:131
 msgid "Email (Claws Mail)"
 msgstr "Courrier électronique (Claws Mail)"
 
-#: ../src/plugins/thunderbird.c:101
+#: ../src/plugins/thunderbird.c:102
 msgid "Email (Thunderbird)"
 msgstr "Courrier électronique (Thunderbird)"
