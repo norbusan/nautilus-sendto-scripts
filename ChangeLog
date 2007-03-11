@@ -1,5 +1,10 @@
 2007-03-11  Bastien Nocera  <hadess@hadess.net>
 
+	* NEWS: upd
+	* configure.in: version 0.10 released
+
+2007-03-11  Bastien Nocera  <hadess@hadess.net>
+
 	* src/Makefile.am: add -no-undefined to avoid undefined
 	symbols on load
 	* src/nautilus-nste.c: (nautilus_nste_instance_init),

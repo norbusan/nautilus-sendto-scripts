@@ -1,3 +1,11 @@
+=============
+Version 0.10
+=============
+
+Nautilus Sendto
+	* Fix compilation of the gajim and thunderbird plugins
+	* Fix loading the nautilus extension
+
 ============
 Version 0.9
 ============
