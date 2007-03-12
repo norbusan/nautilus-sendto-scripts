@@ -1,3 +1,8 @@
+2007-03-12  Bastien Nocera  <hadess@hadess.net>
+
+	* src/plugins/bluetooth-marshal.list: Add the missing
+	bluetooth-marshal.list to SVN, duh!
+
 2007-03-11  Bastien Nocera  <hadess@hadess.net>
 
 	* NEWS: upd
