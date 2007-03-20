@@ -8,13 +8,37 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nautilus-sendto\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-08-22 20:59+0200\n"
-"PO-Revision-Date: 2006-08-23 00:12+0200\n"
+"POT-Creation-Date: 2007-03-20 09:00+0100\n"
+"PO-Revision-Date: 2007-03-20 09:04+0100\n"
 "Last-Translator: Gil Forcada <gilforcada@guifi.net>\n"
 "Language-Team: Catalan <tradgnome@softcatala.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#: ../nst.schemas.in.h:1
+msgid "Last plugin used to send"
+msgstr "Últim connector que s'ha fet servir per enviar"
+
+#: ../nst.schemas.in.h:2
+msgid "Last type of archive used"
+msgstr "Últim tipus d'arxiu que s'ha fet servir"
+
+#: ../nst.schemas.in.h:3
+msgid ""
+"Used to store which plugin was used the last time files were sent using "
+"nautilus-sendto."
+msgstr ""
+"Es fa servir per a emmagatzemar el connector emprat la darrera vegada que es "
+"va enviar un fitxer amb el nautilus-sendto."
+
+#: ../nst.schemas.in.h:4
+msgid ""
+"Used to store which type of archive was used the last time (0: zip, 1: tar."
+"gz, 2: tar.bz2)."
+msgstr ""
+"Es fa servir per a emmagatzemar quin tipus d'arxiu es va emprar la darrera "
+"vegada (0: zip, 1:tar.gz, 2: tar.bz2)"
 
 #. type
 #. ui requirement
@@ -34,39 +58,56 @@ msgstr "Integració amb el Nautilus"
 msgid "Provides integration with Nautilus"
 msgstr "Proporciona integració amb el Nautilus"
 
-#: ../src/nautilus-nste.c:97 ../src/nautilus-nste.c:112
+#: ../src/nautilus-nste.c:95 ../src/nautilus-nste.c:100
 msgid "Send to..."
 msgstr "Envia a..."
 
-#: ../src/nautilus-nste.c:98
+#: ../src/nautilus-nste.c:96
 msgid "Send file by mail, instant message..."
 msgstr "Envia un fitxer per correu electrònic, missatgeria instantània..."
 
-#: ../src/nautilus-nste.c:113
+#: ../src/nautilus-nste.c:101
 msgid "Send files by mail, instant message..."
 msgstr "Envia els fitxers per correu electrònic, missatgeria instantània..."
 
-#: ../src/nautilus-sendto-command.c:62
+#: ../src/nautilus-sendto-command.c:71
 msgid "Default folder to use"
 msgstr "Directori per defecte a utilitzar"
 
-#: ../src/nautilus-sendto-command.c:63
-msgid "FOLDER"
-msgstr "DIRECTORI"
-
-#: ../src/nautilus-sendto-command.c:235
+#: ../src/nautilus-sendto-command.c:246
 msgid "You don't insert the package name"
 msgstr "No heu entrat el nom del paquet"
 
-#: ../src/nautilus-sendto-command.c:455
+#: ../src/nautilus-sendto-command.c:502
 msgid "Files"
 msgstr "Fitxers"
 
-#: ../src/nautilus-sendto-command.c:666
+#: ../src/nautilus-sendto-command.c:692
+msgid "Expects URIs or filenames to be passed as options\n"
+msgstr "Espera que es passin com a opcions URI o noms de fitxers\n"
+
+#: ../src/nautilus-sendto-command.c:709
 msgid "Nautilus Sendto"
 msgstr "Enviador Nautilus"
 
-#: ../src/nautilus-sendto-force.glade.h:1 ../src/nautilus-sendto.glade.h:1
+#: ../src/nautilus-sendto-command.c:713
+#, c-format
+msgid "Could not parse command-line options: %s\n"
+msgstr "No s'ha pogut analitzar les opcions de línia d'ordres: %s\n"
+
+#: ../src/nautilus-sendto-command.c:728
+msgid "Could not load any plugins."
+msgstr "No s'ha pogut carregar cap connector."
+
+#: ../src/nautilus-sendto-command.c:731
+msgid "Please verify your installation"
+msgstr "Comproveu la vostra instal·lació"
+
+#: ../src/nautilus-sendto.glade.h:1
+msgid " "
+msgstr " "
+
+#: ../src/nautilus-sendto.glade.h:2
 msgid ""
 ".zip\n"
 ".tar.gz\n"
@@ -76,73 +117,95 @@ msgstr ""
 ".tar.gz\n"
 ".tar.bz2"
 
-#: ../src/nautilus-sendto-force.glade.h:4 ../src/nautilus-sendto.glade.h:4
+#: ../src/nautilus-sendto.glade.h:5
+msgid "<b>Compression</b>"
+msgstr "<b>Compressió</b>"
+
+#: ../src/nautilus-sendto.glade.h:6
+msgid "<b>Destination</b>"
+msgstr "<b>Destinació</b>"
+
+#: ../src/nautilus-sendto.glade.h:7
 msgid "Send To..."
 msgstr "Envia a..."
 
-#: ../src/nautilus-sendto-force.glade.h:5 ../src/nautilus-sendto.glade.h:5
+#: ../src/nautilus-sendto.glade.h:8
 msgid "Send as:"
 msgstr "Envia com a:"
 
-#: ../src/nautilus-sendto-force.glade.h:6 ../src/nautilus-sendto.glade.h:6
+#: ../src/nautilus-sendto.glade.h:9
 msgid "Send packed in"
 msgstr "Envia empaquetat en"
 
-#: ../src/nautilus-sendto-force.glade.h:7 ../src/nautilus-sendto.glade.h:7
+#: ../src/nautilus-sendto.glade.h:10
 msgid "Send to:"
 msgstr "Envia a:"
 
-#: ../src/nautilus-sendto-force.glade.h:8 ../src/nautilus-sendto.glade.h:8
+#: ../src/nautilus-sendto.glade.h:11
 msgid "_Send"
 msgstr "En_via"
 
-#: ../src/plugins/balsa.c:101
+#: ../src/plugins/balsa.c:103
 msgid "Email (Balsa)"
 msgstr "Correu electrònic (Balsa)"
 
-#: ../src/plugins/bluetooth.c:268
-msgid "Bluetooth (OBEX)"
-msgstr "Bluetooth (OBEX)"
+#: ../src/plugins/bluetooth.c:426
+msgid "Programming error, could not find the device in the list"
+msgstr "Error de programació, no s'ha pogut trobar el dispositiu a la llista"
 
-#: ../src/plugins/evolution.c:249
+#: ../src/plugins/bluetooth.c:447
+msgid "Device does not support Obex File Transfer"
+msgstr "El dispositiu no permet la Transferència de Fitxer Obex"
+
+#: ../src/plugins/bluetooth.c:462
+msgid "Bluetooth (OBEX Push)"
+msgstr "Bluetooth (OBEX Push)"
+
+#: ../src/plugins/evolution.c:271
 msgid "Email (Evolution)"
 msgstr "Correu electrònic (Evolution)"
 
-#: ../src/plugins/gaim.c:224
+#: ../src/plugins/gaim.c:228
 msgid "Instant Message (Gaim)"
 msgstr "Missatgeria instantània (Gaim)"
 
-#: ../src/plugins/gajim.c:404
+#: ../src/plugins/gajim.c:402
 msgid "Unable to send file"
 msgstr "No s'ha pogut enviar el fitxer"
 
-#: ../src/plugins/gajim.c:405
+#: ../src/plugins/gajim.c:403
 msgid "There is no connection to gajim remote service."
 msgstr "No hi ha connexió amb el servei remot gajim."
 
-#: ../src/plugins/gajim.c:429 ../src/plugins/gajim.c:468
+#: ../src/plugins/gajim.c:427 ../src/plugins/gajim.c:466
 msgid "Sending file failed"
 msgstr "S'ha produït un error en enviar el fitxer"
 
-#: ../src/plugins/gajim.c:430
+#: ../src/plugins/gajim.c:428
 msgid "Recipient is missing."
 msgstr "Falta el destinatari."
 
-#: ../src/plugins/gajim.c:468
+#: ../src/plugins/gajim.c:466
 msgid "Unknown recipient."
 msgstr "Destinatari desconegut."
 
-#: ../src/plugins/gajim.c:490
+#: ../src/plugins/gajim.c:488
 msgid "Instant Message (Gajim)"
 msgstr "Missatgeria instantània (Gajim)"
 
-#: ../src/plugins/sylpheed-claws.c:119
-msgid "Email (Sylpheed-Claws)"
-msgstr "Correu electrònic (Sylpheed-Claws)"
+#: ../src/plugins/sylpheed-claws.c:131
+msgid "Email (Claws Mail)"
+msgstr "Correu electrònic (Claws Mail)"
 
-#: ../src/plugins/thunderbird.c:101
+#: ../src/plugins/thunderbird.c:102
 msgid "Email (Thunderbird)"
 msgstr "Correu electrònic (Thunderbird)"
+
+#~ msgid "FOLDER"
+#~ msgstr "DIRECTORI"
+
+#~ msgid "Email (Sylpheed-Claws)"
+#~ msgstr "Correu electrònic (Sylpheed-Claws)"
 
 #~ msgid "*"
 #~ msgstr "*"
