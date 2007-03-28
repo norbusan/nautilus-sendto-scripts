@@ -270,6 +270,8 @@ remote_device_disappeared (DBusGProxy *object,
 static void
 start_device_scanning (GtkListStore *store)
 {
+	GError *e = NULL;
+
 	dbus_g_proxy_add_signal (object, "DiscoveryStarted", G_TYPE_INVALID);
 	dbus_g_proxy_connect_signal (object, "DiscoveryStarted",
 				     G_CALLBACK (discovery_started), NULL, NULL);
@@ -299,8 +301,13 @@ start_device_scanning (GtkListStore *store)
 	dbus_g_proxy_connect_signal (object, "DiscoveryCompleted",
 				     G_CALLBACK (discovery_completed), NULL, NULL);
 
-	dbus_g_proxy_call (object, "DiscoverDevices",
+	dbus_g_proxy_call (object, "DiscoverDevices", &e,
 			   G_TYPE_INVALID, G_TYPE_INVALID);
+	if (e != NULL) {
+		g_warning ("Couldn't start discovery: %s: %s",
+			   dbus_g_error_get_name (e), e->message);
+		g_error_free (e);
+	}
 }
 
 static GtkWidget*

@@ -1,3 +1,8 @@
+2007-03-28  Bastien Nocera  <hadess@hadess.net>
+
+	* src/plugins/bluetooth.c: (start_device_scanning):
+	Fix stupid typo, otherwise DiscoverDevices might not work
+
 2007-03-12  Bastien Nocera  <hadess@hadess.net>
 
 	* src/plugins/bluetooth-marshal.list: Add the missing
