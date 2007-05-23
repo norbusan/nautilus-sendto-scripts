@@ -211,23 +211,7 @@ remote_device_found (DBusGProxy *object,
 		     const char *address, guint class, int rssi,
 		     GtkListStore *store)
 {
-	GError *e = NULL;
-	const char *name;
-
-	dbus_g_proxy_call (object, "GetRemoteName", &e,
-			   G_TYPE_STRING, address, G_TYPE_INVALID,
-			   G_TYPE_STRING, &name, G_TYPE_INVALID);
-	if (e != NULL) {
-		const char *name;
-
-		name = dbus_g_error_get_name (e);
-		if (g_str_equal (name, "org.bluez.Error.RequestDeferred") != FALSE) {
-			add_phone_to_list (store, NULL, address);
-		}
-		g_error_free (e);
-	} else {
-		add_phone_to_list (store, name, address);
-	}
+	add_phone_to_list (store, NULL, address);
 }
 
 static void

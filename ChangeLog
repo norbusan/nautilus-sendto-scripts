@@ -1,3 +1,10 @@
+2007-05-23  Bastien Nocera  <hadess@hadess.net>
+
+	* src/plugins/bluetooth.c: (remote_device_found):
+	DiscoverDevices will resolve names for us, so no need
+	to call GetRemoteName, just listen to the RemoteNameUpdated
+	signal
+
 2007-03-28  Bastien Nocera  <hadess@hadess.net>
 
 	* src/plugins/bluetooth.c: (start_device_scanning):
