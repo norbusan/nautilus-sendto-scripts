@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nautilus-sendto.HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-03-09 03:57+0000\n"
-"PO-Revision-Date: 2007-03-13 00:14+0100\n"
+"POT-Creation-Date: 2007-03-12 03:48+0000\n"
+"PO-Revision-Date: 2007-05-24 17:18+0200\n"
 "Last-Translator: Gabor Kelemen <kelemeng@gnome.hu>\n"
 "Language-Team: Hungarian <gnome@gnome.hu>\n"
 "MIME-Version: 1.0\n"
@@ -138,7 +138,7 @@ msgstr "Küldés tömörítve"
 
 #: ../src/nautilus-sendto.glade.h:10
 msgid "Send to:"
-msgstr "Küldés :"
+msgstr "Küldés célja:"
 
 #: ../src/nautilus-sendto.glade.h:11
 msgid "_Send"
