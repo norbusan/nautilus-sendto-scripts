@@ -3,6 +3,7 @@ plugindir = $(libdir)/nautilus-sendto/plugins
 INCLUDES =                                      \
         -DDATADIR=\"$(datadir)\"                \
         -DICONDIR=\"$(icondir)\"                \
+	-DLOCALEDIR="\"$(datadir)/locale\""	\
         -I$(top_srcdir)                         \
         -I$(top_builddir)                       \
         -DGLADEDIR=\""$(gladedir)"\"            \

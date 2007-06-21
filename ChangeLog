@@ -1,3 +1,11 @@
+2007-06-21  Christian Persch  <chpe@gnome.org>
+
+	* configure.in:
+	* po/LINGUAS:
+	* src/Makefile.am:
+	* src/plugins/Makefile.am: Use po/LINGUAS, and don't define
+	directories in configure. Bug #428198.
+
 2007-05-23  Bastien Nocera  <hadess@hadess.net>
 
 	* src/plugins/bluetooth.c: (remote_device_found):

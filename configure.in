@@ -175,25 +175,13 @@ AM_CONDITIONAL(HAVE_GAJIM, test "x$enable_gajim" = "xyes")
 
 dnl -------------------------------------------------
 
-
-GNOME_COMPILE_WARNINGS
-
-GNOME_COMMON_INIT
-
-ALL_LINGUAS="ar be bg ca cs da de dz el en_CA en_GB es et eu fi fr gl he hu it ja ko lt mk nb ne nl or pa pl pt pt_BR ru rw sk sl sq sv th vi uk zh_CN zh_TW"
+IT_PROG_INTLTOOL([0.35.0])
 
 GETTEXT_PACKAGE=nautilus-sendto
 AC_SUBST(GETTEXT_PACKAGE)
 AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE, "$GETTEXT_PACKAGE", [GetText Package])
                                                                                
 AM_GLIB_GNU_GETTEXT
-AC_PROG_INTLTOOL
-
-if test "x${prefix}" = "xNONE"; then
-  AC_DEFINE_UNQUOTED(LOCALEDIR, "${ac_default_prefix}/${DATADIRNAME}/locale", [Locale dir])
-else
-  AC_DEFINE_UNQUOTED(LOCALEDIR, "${prefix}/${DATADIRNAME}/locale", [Locale dir])
-fi
 
 AC_PATH_PROG(GCONFTOOL, gconftool-2)
 AM_GCONF_SOURCE_2

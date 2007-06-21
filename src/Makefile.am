@@ -5,6 +5,7 @@ INCLUDES =					\
 	-I$(top_srcdir)				\
 	-I$(top_builddir)			\
 	-DGLADEDIR=\""$(gladedir)"\"		\
+	-DLOCALEDIR="\"$(datadir)/locale\""	\
 	$(NAUTILUS_SENDTO_CFLAGS)		\
 	$(NAUTILUS_EXT_SENDTO_CFLAGS)		\
 	$(WARN_CFLAGS)
