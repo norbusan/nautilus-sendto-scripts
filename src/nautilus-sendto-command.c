@@ -54,6 +54,7 @@ typedef struct _NS_ui NS_ui;
 struct _NS_ui {
 	GtkWidget *dialog;
 	GtkWidget *options_combobox;
+	GtkWidget *send_to_label;
 	GtkWidget *hbox_contacts_ws;
 	GtkWidget *cancel_button;
 	GtkWidget *send_button;
@@ -62,6 +63,7 @@ struct _NS_ui {
 	GtkWidget *pack_entry;
 	GList *contact_widgets;
 
+	GtkWidget *status_box;
 	GtkWidget *status_image;
 	GtkWidget *status_label;
 	guint status_timeoutid;
@@ -255,7 +257,7 @@ static gboolean
 status_label_clear (gpointer data)
 {
 	NS_ui *ui = (NS_ui *) data;
-	gtk_label_set_label (GTK_LABEL (ui->status_label), " ");
+	gtk_label_set_label (GTK_LABEL (ui->status_label), "");
 	gtk_widget_hide (ui->status_image);
 
 	return FALSE;
@@ -298,6 +300,7 @@ send_button_cb (GtkWidget *widget, gpointer data)
 							      status_label_clear,
 							      ui);
 			gtk_widget_show (ui->status_image);
+			gtk_widget_show (ui->status_box);
 			gtk_widget_set_sensitive (ui->dialog, TRUE);
 			return;
 		}
@@ -403,6 +406,7 @@ set_contact_widgets (NS_ui *ui){
 		if (GTK_IS_ENTRY (w)) {
 			g_signal_connect (G_OBJECT (w), "activate",
 					G_CALLBACK (send_if_no_pack_cb), ui);
+			gtk_label_set_mnemonic_widget (GTK_LABEL (ui->send_to_label), w);
 		}
 	}
 }
@@ -479,6 +483,7 @@ nautilus_sendto_create_ui (void)
 	ui = g_new0 (NS_ui, 1);
 
 	ui->hbox_contacts_ws = glade_xml_get_widget (app, "hbox_contacts_widgets");
+	ui->send_to_label = glade_xml_get_widget (app, "send_to_label");
 	ui->options_combobox = glade_xml_get_widget (app, "options_combobox");
 	ui->dialog = glade_xml_get_widget (app, "nautilus_sendto_dialog");
 	ui->cancel_button = glade_xml_get_widget (app, "cancel_button");
@@ -486,6 +491,7 @@ nautilus_sendto_create_ui (void)
 	ui->pack_combobox = glade_xml_get_widget (app, "pack_combobox");	
 	ui->pack_entry = glade_xml_get_widget (app, "pack_entry");
 	ui->pack_checkbutton = glade_xml_get_widget (app, "pack_checkbutton");
+	ui->status_box = glade_xml_get_widget (app, "status_box");
 	ui->status_label = glade_xml_get_widget (app, "status_label");
 	ui->status_image = glade_xml_get_widget (app, "status_image");
 

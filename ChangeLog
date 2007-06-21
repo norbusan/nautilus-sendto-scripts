@@ -1,5 +1,12 @@
 2007-06-21  Christian Persch  <chpe@gnome.org>
 
+	* src/nautilus-sendto-command.c: (status_label_clear),
+	(send_button_cb), (set_contact_widgets),
+	(nautilus_sendto_create_ui):
+	* src/nautilus-sendto.glade: HIG love. Bug #428195.
+
+2007-06-21  Christian Persch  <chpe@gnome.org>
+
 	* configure.in:
 	* po/LINGUAS:
 	* src/Makefile.am:
