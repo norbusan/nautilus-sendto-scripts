@@ -1,16 +1,18 @@
+# translation of nautilus-sendto.HEAD.es.po to Español
 # translation of nautilus-sendto to
 # This file is distributed under the same license as the PACKAGE package.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER, 2004.
 #
 # Jorge González <jorgegonz@svn.gnome.org>, 2007.
+# Jorge Gonzalez <jorgegonz@svn.gnome.org>, 2007.
 msgid ""
 msgstr ""
 "Project-Id-Version: nautilus-sendto.HEAD.es\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-03-09 03:57+0000\n"
-"PO-Revision-Date: 2007-05-06 17:43+0200\n"
-"Last-Translator: Jorge González <jorgegonz@svn.gnome.org>\n"
-"Language-Team: Spanish <traductores@es.gnome.org>\n"
+"POT-Creation-Date: 2007-06-22 04:56+0100\n"
+"PO-Revision-Date: 2007-06-28 11:47+0200\n"
+"Last-Translator: Jorge Gonzalez <jorgegonz@svn.gnome.org>\n"
+"Language-Team: Español <traductores@es.gnome.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -29,13 +31,17 @@ msgstr "El último tipo de archivo usado"
 msgid ""
 "Used to store which plugin was used the last time files were sent using "
 "nautilus-sendto."
-msgstr "Usado para almacenar qué complemento se usó la última vez que se enviaron archivos usando nautilus-sendto."
+msgstr ""
+"Usado para almacenar qué complemento se usó la última vez que se enviaron "
+"archivos usando nautilus-sendto."
 
 #: ../nst.schemas.in.h:4
 msgid ""
 "Used to store which type of archive was used the last time (0: zip, 1: tar."
 "gz, 2: tar.bz2)."
-msgstr "Usado para almacenar qué tipo de archivo se envió la última vez (0: zip, 1: tar.gz, 2: tar.bz2)."
+msgstr ""
+"Usado para almacenar qué tipo de archivo se envió la última vez (0: zip, 1: "
+"tar.gz, 2: tar.bz2)."
 
 #. type
 #. ui requirement
@@ -67,44 +73,40 @@ msgstr "Enviar un archivo por correo, por mensaje instantáneo..."
 msgid "Send files by mail, instant message..."
 msgstr "Enviar archivos por correo, por mensaje instantáneo..."
 
-#: ../src/nautilus-sendto-command.c:71
+#: ../src/nautilus-sendto-command.c:73
 msgid "Default folder to use"
 msgstr "Carpeta predeterminada a usar"
 
-#: ../src/nautilus-sendto-command.c:246
+#: ../src/nautilus-sendto-command.c:248
 msgid "You don't insert the package name"
 msgstr "No inserta el nombre del paquete"
 
-#: ../src/nautilus-sendto-command.c:502
+#: ../src/nautilus-sendto-command.c:508
 msgid "Files"
 msgstr "Archivos"
 
-#: ../src/nautilus-sendto-command.c:692
+#: ../src/nautilus-sendto-command.c:698
 msgid "Expects URIs or filenames to be passed as options\n"
 msgstr "Espera que se pasen como opciones URIs o nombres de archivo\n"
 
-#: ../src/nautilus-sendto-command.c:709
+#: ../src/nautilus-sendto-command.c:715
 msgid "Nautilus Sendto"
 msgstr "Nautilus Sendto"
 
-#: ../src/nautilus-sendto-command.c:713
+#: ../src/nautilus-sendto-command.c:719
 #, c-format
 msgid "Could not parse command-line options: %s\n"
 msgstr "No se pudieron analizar las opciones de la línea de comandos: %s\n"
 
-#: ../src/nautilus-sendto-command.c:728
+#: ../src/nautilus-sendto-command.c:734
 msgid "Could not load any plugins."
 msgstr "No se pudo cargar ningún complemento."
 
-#: ../src/nautilus-sendto-command.c:731
+#: ../src/nautilus-sendto-command.c:737
 msgid "Please verify your installation"
 msgstr "Por favor, compruebe su instalación"
 
 #: ../src/nautilus-sendto.glade.h:1
-msgid " "
-msgstr " "
-
-#: ../src/nautilus-sendto.glade.h:2
 msgid ""
 ".zip\n"
 ".tar.gz\n"
@@ -114,47 +116,47 @@ msgstr ""
 ".tar.gz\n"
 ".tar.bz2"
 
-#: ../src/nautilus-sendto.glade.h:5
+#: ../src/nautilus-sendto.glade.h:4
 msgid "<b>Compression</b>"
 msgstr "<b>Compresión</b>"
 
-#: ../src/nautilus-sendto.glade.h:6
+#: ../src/nautilus-sendto.glade.h:5
 msgid "<b>Destination</b>"
 msgstr "<b>Destino</b>"
 
-#: ../src/nautilus-sendto.glade.h:7
+#: ../src/nautilus-sendto.glade.h:6
 msgid "Send To..."
 msgstr "Enviar a..."
 
+#: ../src/nautilus-sendto.glade.h:7
+msgid "Send _as:"
+msgstr "Enviar _como:"
+
 #: ../src/nautilus-sendto.glade.h:8
-msgid "Send as:"
-msgstr "Enviar como:"
+msgid "Send t_o:"
+msgstr "Enviar _a:"
 
 #: ../src/nautilus-sendto.glade.h:9
-msgid "Send packed in"
-msgstr "Enviar empaquetado en"
-
-#: ../src/nautilus-sendto.glade.h:10
-msgid "Send to:"
-msgstr "Enviar a:"
-
-#: ../src/nautilus-sendto.glade.h:11
 msgid "_Send"
 msgstr "_Enviar"
+
+#: ../src/nautilus-sendto.glade.h:10
+msgid "_Send packed in:"
+msgstr "_Enviar empaquetado en"
 
 #: ../src/plugins/balsa.c:103
 msgid "Email (Balsa)"
 msgstr "Correo-e (Balsa)"
 
-#: ../src/plugins/bluetooth.c:426
+#: ../src/plugins/bluetooth.c:417
 msgid "Programming error, could not find the device in the list"
 msgstr "Error de programación, no se pudo encontrar el dispositivo en la lista"
 
-#: ../src/plugins/bluetooth.c:447
+#: ../src/plugins/bluetooth.c:438
 msgid "Device does not support Obex File Transfer"
 msgstr "El dispositivo no soporta la transferencia de archivos OBEX"
 
-#: ../src/plugins/bluetooth.c:462
+#: ../src/plugins/bluetooth.c:453
 msgid "Bluetooth (OBEX Push)"
 msgstr "Bluetooth (OBEX Push)"
 
