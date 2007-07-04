@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nautilus_sendto.head.pot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-03-09 03:57+0000\n"
-"PO-Revision-Date: 2007-03-25 21:42+0530\n"
-"Last-Translator: yangka <yanang_ka@hotmail.com>\n"
+"POT-Creation-Date: 2007-06-22 04:56+0100\n"
+"PO-Revision-Date: 2007-06-28 12:50+0530\n"
+"Last-Translator: yumkee lhamo <yumkeyl08@hotmail.com>\n"
 "Language-Team: Dzongkha <pgeyleg@dit.gov.bt>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -66,44 +66,40 @@ msgstr "ཡིག་སྣོད་འདི་ཡིག་འཕྲིན་ག
 msgid "Send files by mail, instant message..."
 msgstr "ཡིག་སྣོད་འདི་ཚུ་ཡིག་འཕྲིན་གྱི་ཐོག་ལས་གཏང་ནི་དང་ འཕྲིན་དོན་འདི་འཕྲལ་མྱུར་གཏང་..."
 
-#: ../src/nautilus-sendto-command.c:71
+#: ../src/nautilus-sendto-command.c:73
 msgid "Default folder to use"
 msgstr "ལག་ལེན་འཐབ་ནའི་དོན་ལུ་སྣོད་འཛིན་སྔོན་སྒྲིག་འབད།"
 
-#: ../src/nautilus-sendto-command.c:246
+#: ../src/nautilus-sendto-command.c:248
 msgid "You don't insert the package name"
 msgstr "ཐུམ་སྒྲིལ་གྱི་མིང་འདི་ ཁྱོད་ཀྱིས་མ་བཙུགས།"
 
-#: ../src/nautilus-sendto-command.c:502
+#: ../src/nautilus-sendto-command.c:508
 msgid "Files"
 msgstr "ཡིག་སྣོད།"
 
-#: ../src/nautilus-sendto-command.c:692
+#: ../src/nautilus-sendto-command.c:698
 msgid "Expects URIs or filenames to be passed as options\n"
 msgstr "ཡུ་ཨར་ཨེལསི་ཡང་ན་ཡིག་སྣོད་མིང་ཚུ་གདམ་ཁ་ཚུ་བཐུམ་སྦེ་རྩིས་སྤྲོད་ནི་ལུ་རེ་བ་བསྐྱེདཔ་ཨིན་མས།\n"
 
-#: ../src/nautilus-sendto-command.c:709
+#: ../src/nautilus-sendto-command.c:715
 msgid "Nautilus Sendto"
 msgstr "ནའུ་ཊི་ལཱསི་གི་གཏང་ཡུལ།"
 
-#: ../src/nautilus-sendto-command.c:713
+#: ../src/nautilus-sendto-command.c:719
 #, c-format
 msgid "Could not parse command-line options: %s\n"
 msgstr "་བརྡ་བཀོད་-གྱལ་གཏདམ་ཁ་ཚུ་མིང་དཔྱད་འབད་མ་ཚུགས། %s\n"
 
-#: ../src/nautilus-sendto-command.c:728
+#: ../src/nautilus-sendto-command.c:734
 msgid "Could not load any plugins."
 msgstr "པ་ལག་ཨིནསི་གང་རུང་ཚུ་མངོན་གསལ་འབད་མ་ཚུགས།"
 
-#: ../src/nautilus-sendto-command.c:731
+#: ../src/nautilus-sendto-command.c:737
 msgid "Please verify your installation"
 msgstr "ཁྱོད་རང་གི་གཞི་བཙུགས་བདེན་སྦྱོར་འབད་གནང་།"
 
 #: ../src/nautilus-sendto.glade.h:1
-msgid " "
-msgstr " "
-
-#: ../src/nautilus-sendto.glade.h:2
 msgid ""
 ".zip\n"
 ".tar.gz\n"
@@ -113,47 +109,47 @@ msgstr ""
 ".ཊརཝ.ཇི་ཟེཊི\n"
 ".ཊརཝ.བི་ཟེཊི2"
 
-#: ../src/nautilus-sendto.glade.h:5
+#: ../src/nautilus-sendto.glade.h:4
 msgid "<b>Compression</b>"
 msgstr "<b>ཨེབ་བཙུགས།</b>"
 
-#: ../src/nautilus-sendto.glade.h:6
+#: ../src/nautilus-sendto.glade.h:5
 msgid "<b>Destination</b>"
 msgstr "<b>འགྲོ་ཡུལ།</b>"
 
-#: ../src/nautilus-sendto.glade.h:7
+#: ../src/nautilus-sendto.glade.h:6
 msgid "Send To..."
 msgstr "གཏང་ཡུལ..."
 
+#: ../src/nautilus-sendto.glade.h:7
+msgid "Send _as:"
+msgstr "བཟུམ་སྦེ་གཏང་:(_a)"
+
 #: ../src/nautilus-sendto.glade.h:8
-msgid "Send as:"
-msgstr "བཟུམ་སྦེ་གཏང་:"
+msgid "Send t_o:"
+msgstr "གཏང་:(_o)"
 
 #: ../src/nautilus-sendto.glade.h:9
-msgid "Send packed in"
-msgstr "སྦུང་ཚན་ནང་འདི་གཏང་།"
-
-#: ../src/nautilus-sendto.glade.h:10
-msgid "Send to:"
-msgstr "གཏང་ཡུལ:"
-
-#: ../src/nautilus-sendto.glade.h:11
 msgid "_Send"
 msgstr "གཏང་།(_S)"
+
+#: ../src/nautilus-sendto.glade.h:10
+msgid "_Send packed in:"
+msgstr "སྦུང་ཚན་ནང་ན་གཏང་:(_S)"
 
 #: ../src/plugins/balsa.c:103
 msgid "Email (Balsa)"
 msgstr "གློག་འཕྲིན།(བཱལ་ས)"
 
-#: ../src/plugins/bluetooth.c:426
+#: ../src/plugins/bluetooth.c:417
 msgid "Programming error, could not find the device in the list"
 msgstr "ལས་རིམ་བཟོ་ནི་འཛོལ་བ་ ཐོ་ཡིག་ནང་ཐབས་འཕྲུལ་འཚོལ་མ་ཐོབ།"
 
-#: ../src/plugins/bluetooth.c:447
+#: ../src/plugins/bluetooth.c:438
 msgid "Device does not support Obex File Transfer"
 msgstr "ཐབས་འཕྲུལ་གྱིས་ཨོ་བི་ཨེགསི་ཡིག་སྣོད་གནས་སོར་རྒྱབ་སྐྱོར་འབད་མི་བཏུབ།"
 
-#: ../src/plugins/bluetooth.c:462
+#: ../src/plugins/bluetooth.c:453
 msgid "Bluetooth (OBEX Push)"
 msgstr "བུལུ་ཊུཊི།(ཨོ་བི་ཨེགས་འཕུལ)"
 
@@ -198,6 +194,8 @@ msgstr "གློག་འཕྲིན།(ཀལའུསི་ཡིག་འ�
 msgid "Email (Thunderbird)"
 msgstr "གློག་འཕྲིན(ཐཱན་ཌར་བཌི)"
 
+#~ msgid " "
+#~ msgstr " "
 #~ msgid "FOLDER"
 #~ msgstr "སྣོད་འཛིན།"
 #~ msgid "Email (Sylpheed-Claws)"
