@@ -1,5 +1,11 @@
 2007-08-13  Bastien Nocera  <hadess@hadess.net>
 
+	* src/plugins/thunderbird.c: (send_files): gtk_entry_get_text
+	might return NULL, so don't crash when the person didn't enter
+	any e-mail address (Closes: #384433)
+
+2007-08-13  Bastien Nocera  <hadess@hadess.net>
+
 	* nautilus-sendto.1: Fix application name, as spotted by
 	Oystein Gisnas (Closes: #348816)
 

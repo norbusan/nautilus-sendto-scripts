@@ -64,7 +64,7 @@ gboolean send_files (NstPlugin *plugin, GtkWidget *contact_widget,
 
 	send_to = (gchar *) gtk_entry_get_text (GTK_ENTRY(contact_widget));
 		
-	if (strlen (send_to) == 0)
+	if (send_to == NULL || strlen (send_to) == 0)
 	{
 		mailto = g_string_new("-compose ");
 	}
