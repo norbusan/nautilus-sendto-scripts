@@ -10,6 +10,7 @@ INCLUDES =                                      \
         $(NAUTILUS_SENDTO_CFLAGS)               \
 	$(NST_EBOOK_CFLAGS)			\
 	$(GAIM_CFLAGS)				\
+	$(PIDGIN_CFLAGS)			\
 	$(BLUETOOTH_CFLAGS)			\
 	$(DBUS_CFLAGS)				\
 	$(WARN_CFLAGS)
@@ -18,6 +19,12 @@ if HAVE_GAIM
 GAIM_PLUGIN = libnstgaim.la
 else
 GAIM_PLUGIN =
+endif
+
+if HAVE_PIDGIN
+PIDGIN_PLUGIN = libnstpidgin.la
+else
+PIDGIN_PLUGIN =
 endif
 
 if HAVE_BLUETOOTH
@@ -56,7 +63,7 @@ else
 GAJIM_PLUGIN = 
 endif
 
-plugin_LTLIBRARIES = $(EVOLUTION_PLUGIN) $(GAIM_PLUGIN) $(BLUETOOTH_PLUGIN) $(BALSA_PLUGIN) $(SYLPHEED_PLUGIN) $(THUNDERBIRD_PLUGIN) $(GAJIM_PLUGIN)
+plugin_LTLIBRARIES = $(EVOLUTION_PLUGIN) $(GAIM_PLUGIN) $(PIDGIN_PLUGIN) $(BLUETOOTH_PLUGIN) $(BALSA_PLUGIN) $(SYLPHEED_PLUGIN) $(THUNDERBIRD_PLUGIN) $(GAJIM_PLUGIN)
 
 libnstevolution_la_SOURCES = evolution.c
 libnstevolution_la_LDFLAGS = -module -avoid-version
@@ -65,6 +72,10 @@ libnstevolution_la_LIBADD = $(NST_EBOOK_LIBS)
 libnstgaim_la_SOURCES = gaim.c
 libnstgaim_la_LDFLAGS = -module -avoid-version
 libnstgaim_la_LIBADD = $(GAIM_LIBS)
+
+libnstpidgin_la_SOURCES = pidgin.c
+libnstpidgin_la_LDFLAGS = -module -avoid-version
+libnstpidgin_la_LIBADD = $(PIDGIN_LIBS)
 
 bluetooth-marshal.h: bluetooth-marshal.list
 	$(GLIB_GENMARSHAL) --prefix=nst_bluetooth_marshal $< --header > $@

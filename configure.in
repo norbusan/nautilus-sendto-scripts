@@ -29,6 +29,7 @@ BONOBO_ACTIVATION_REQUIRED=2.13.0
 BONOBO_REQUIRED=2.13.0
 GNOME_REQUIRED=2.13.0
 GAIM_REQUIRED=1.5.0
+PIDGIN_REQUIRED=2.0.0
 NAUTILUS_EXTENSION=2.13.3
 DBUS_REQUIRED=0.60
 
@@ -38,6 +39,7 @@ AC_SUBST(GLADE_REQUIRED)
 AC_SUBST(GNOME_REQUIRED)
 AC_SUBST(EBOOK_REQUIRED)
 AC_SUBST(GAIM_REQUIRED)
+AC_SUBST(PIDGIN_REQUIRED)
 AC_SUBST(BONOBO_ACTIVATION_REQUIRED)
 AC_SUBST(BONOBO_REQUIRED)
 AC_SUBST(NAUTILUS_EXTENSION)
@@ -97,6 +99,28 @@ PKG_CHECK_MODULES(GAIM, gaim >= $GAIM_REQUIRED,
 )
 
 AM_CONDITIONAL(HAVE_GAIM, test "x$enable_gaim" = "xyes")
+
+dnl Pidgin support if it's installed
+dnl ---------------------------------
+
+
+PKG_CHECK_MODULES(PIDGIN, pidgin >= $PIDGIN_REQUIRED purple >= $PIDGIN_REQUIRED,
+	[
+	AC_SUBST(PIDGIN_CFLAGS)
+	AC_SUBST(PIDGIN_LIBS)
+	PIDGIN_LIBDIR=`pkg-config --variable=libdir purple`
+	PIDGIN_DATADIR=`pkg-config --variable=datadir purple`
+	AC_SUBST(PIDGIN_LIBDIR)
+	AC_SUBST(PIDGIN_DATADIR)
+	enable_pidgin=yes
+	],
+	[
+	echo "Building without pidgin"
+	enable_pidgin=no
+	]
+)
+
+AM_CONDITIONAL(HAVE_PIDGIN, test "x$enable_pidgin" = "xyes")
 
 dnl Bluetooth support if it's installed
 dnl -----------------------------------
@@ -191,6 +215,7 @@ Makefile
 src/Makefile
 src/plugins/Makefile
 gaim_plugin/Makefile
+pidgin_plugin/Makefile
 po/Makefile.in
 ])
 
@@ -207,6 +232,12 @@ if test "x${enable_gaim}" = "xyes" ; then
    echo "     Enable gaim plugin : YES"
 else
    echo "     Enable gaim plugin : NO"
+fi
+
+if test "x${enable_pidgin}" = "xyes" ; then
+   echo "     Enable pidgin plugin : YES"
+else
+   echo "     Enable pidgin plugin : NO"
 fi
 
 if test "x${enable_bluetooth}" = "xyes" ; then

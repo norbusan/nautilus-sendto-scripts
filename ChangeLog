@@ -1,3 +1,14 @@
+2007-05-27  Oystein Gisnas  <oystein@gisnas.net>
+
+	* configure.in:
+	* src/plugins/Makefile.am:
+	* src/plugins/pidgin.c:
+	* pidgin_plugin/Makefile.am:
+	* pidgin_plugin/nautilus-sendto-plugin.c:
+	* Makefile.am:
+	Add support for Pidgin. Rename buddy list file to
+	pidgin_buddies_online to allow coexistence with Gaim.
+
 2007-06-21  Christian Persch  <chpe@gnome.org>
 
 	* src/nautilus-sendto-command.c: (status_label_clear),
