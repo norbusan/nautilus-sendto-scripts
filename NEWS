@@ -1,4 +1,15 @@
 =============
+Version 0.11
+=============
+
+Nautilus Sendto
+	* Some UI love to bring it closer to the HIG
+	* Add Pidgin/libpurple support
+	* Fix a typo that might make DiscoverDevices not work (Bluetooth)
+	* Don't resolve Bluetooth device names, DiscoverDevices already does
+	  that for us
+
+=============
 Version 0.10
 =============
 
