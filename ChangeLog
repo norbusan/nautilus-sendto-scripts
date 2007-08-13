@@ -1,5 +1,10 @@
 2007-08-13  Bastien Nocera  <hadess@hadess.net>
 
+	* nautilus-sendto.1: Fix application name, as spotted by
+	Oystein Gisnas (Closes: #348816)
+
+2007-08-13  Bastien Nocera  <hadess@hadess.net>
+
 	* src/plugins/bluetooth.c: (init): Patch from Matthias Clasen
 	<mclasen@redhat.com> to avoid crashing when DefaultAdapter()
 	fails (Closes: #437257)
