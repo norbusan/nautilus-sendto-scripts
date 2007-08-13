@@ -1,5 +1,11 @@
 2007-08-13  Bastien Nocera  <hadess@hadess.net>
 
+	* src/plugins/bluetooth.c: (init): Patch from Matthias Clasen
+	<mclasen@redhat.com> to avoid crashing when DefaultAdapter()
+	fails (Closes: #437257)
+
+2007-08-13  Bastien Nocera  <hadess@hadess.net>
+
 	* gaim_plugin/nautilus-sendto-plugin.c: (save_online_buddies):
 	Patch from Sebastien Bacher <seb128@debian.org> to avoid GAIM
 	not being able to startup on a read-only filesystem (Closes: #431158)

@@ -70,14 +70,18 @@ init (NstPlugin *plugin)
 	dbus_g_proxy_call (object, "DefaultAdapter", &e,
 			   G_TYPE_INVALID, G_TYPE_STRING, &adapter, G_TYPE_INVALID);
 	if (e != NULL) {
-		const char *name;
 
-		name = dbus_g_error_get_name (e);
+		if (e->domain == DBUS_GERROR &&
+                    e->code == DBUS_GERROR_REMOTE_EXCEPTION) {
+			const char *name;
 
-		/* No adapter */
-		if (g_str_equal (name, "org.bluez.Error.NoSuchAdapter") != FALSE) {
-			g_error_free (e);
-			return FALSE;
+			name = dbus_g_error_get_name (e);
+
+			/* No adapter */
+			if (g_str_equal (name, "org.bluez.Error.NoSuchAdapter") != FALSE) {
+				g_error_free (e);
+				return FALSE;
+			}
 		}
 
 		g_warning ("Couldn't get default bluetooth adapter: %s",
