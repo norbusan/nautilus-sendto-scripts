@@ -1,4 +1,14 @@
 =============
+Version 0.12
+=============
+
+Nautilus Sendto
+	* Fix a crash in the Thunderbird plugin when gtk_entry_get_text returns NULL
+	* Fix application name in the man page
+	* Fix possible crashes when no Bluetooth adapters are available
+	* Fix GAIM/Pidgin not starting up when the home directory is read-only
+
+=============
 Version 0.11
 =============
 
