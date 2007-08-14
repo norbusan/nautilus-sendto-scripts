@@ -90,8 +90,9 @@ add_evolution_contacts_to_model (GtkWidget *entry,
 
 	/* Collect address books marked for auto-complete */
 	if (!e_book_get_addressbooks (&all_abooks, &err)) {
+		g_warning ("Unable to get addressbooks: %s", err->message);
 		g_error_free (err);
-		g_error ("Unable to get addressbooks: %s", err->message);
+		return;
 	}
 	for (g = e_source_list_peek_groups (all_abooks); g; g = g_slist_next (g)) {
 		for (s = e_source_group_peek_sources ((ESourceGroup *) g->data); s; s = g_slist_next (s)) {
@@ -116,19 +117,20 @@ add_evolution_contacts_to_model (GtkWidget *entry,
 
 		if (!(book = e_book_new (source, &err))) {
 			g_warning ("Unable to create addressbook: %s", err->message);
-			g_error_free (err);
+			g_clear_error (&err);
 			continue;
 		}
 		if (!e_book_open (book, TRUE, &err)) {
 			g_warning ("Unable to open addressbook: %s", err->message);
-			g_error_free (err);
+			g_clear_error (&err);
 			g_object_unref (book);
 			continue;
 		}
 		query = e_book_query_field_exists (E_CONTACT_FULL_NAME);
 		if (!e_book_get_contacts (book, query, &contacts, &err)) {
 			g_warning ("Unable to get contacts: %s", err->message);
-			g_error_free (err);
+			g_clear_error (&err);
+			e_book_query_unref (query);
 			g_object_unref (book);
 			continue;
 		}

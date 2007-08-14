@@ -1,3 +1,10 @@
+2007-08-14  Bastien Nocera  <hadess@hadess.net>
+
+	* src/plugins/evolution.c: (add_evolution_contacts_to_model):
+	Patch from Oystein Gisnas <oystein@gisnas.net> to avoid
+	crashes when an addressbook sources isn't supported
+	(Closes: #433084)
+
 2007-08-13  Bastien Nocera  <hadess@hadess.net>
 
 	* NEWS: upd
