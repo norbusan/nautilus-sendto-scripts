@@ -2,6 +2,7 @@
 # Please keep this file sorted alphabetically.
 nst.schemas.in
 gaim_plugin/nautilus-sendto-plugin.c
+pidgin_plugin/nautilus-sendto-plugin.c
 src/nautilus-nste.c
 src/nautilus-nste.h
 src/nautilus-sendto-command.c
