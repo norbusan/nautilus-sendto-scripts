@@ -260,6 +260,8 @@ status_label_clear (gpointer data)
 	gtk_label_set_label (GTK_LABEL (ui->status_label), "");
 	gtk_widget_hide (ui->status_image);
 
+	ui->status_timeoutid = 0;
+
 	return FALSE;
 }
 
@@ -280,8 +282,7 @@ send_button_cb (GtkWidget *widget, gpointer data)
 
 	if (ui->status_timeoutid != 0) {
 		g_source_remove (ui->status_timeoutid);
-		ui->status_timeoutid = 0;
-		status_label_clear (ui->status_label);
+		status_label_clear (ui);
 	}
 
 	if (p == NULL)

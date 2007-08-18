@@ -1,3 +1,13 @@
+2007-08-18  Marco Barisione  <marco@barisione.org>
+
+	* src/nautilus-sendto-command.c: (send_button_cb): status_label_clear
+	was called passing the status label instead of the NS_ui causing a
+	segmentation fault (Closes: #467716)
+
+	* src/nautilus-sendto-command.c: (status_label_clear),
+	(send_button_cb): set the timeout ID to 0 in status_label_clear to
+	avoid useless duplicate calls
+
 2007-08-14  Bastien Nocera  <hadess@hadess.net>
 
 	* src/plugins/evolution.c: (add_evolution_contacts_to_model):
