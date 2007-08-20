@@ -1,11 +1,8 @@
-# French translation of nautilus-sendto
+# Occitan translation of nautilus-sendto
 # Copyright (C) 2004-2007 Free Software Foundation, Inc.
 # This file is distributed under the GNU General Public License Version 2.
 #
-# Jean-Michel Ardantz <jmardantz@ifrance.com>, 2004.
-# Christophe Bliard <christophe.bliard@trux.info>, 2006.
-# Jonathan Ernst <jonathan@ernstfamily.ch>, 2006-2007.
-# Claude Paroz <claude@2xlibre.net>, 2007.
+# Yannig MARCHEGAY (yannig@marchegay.org) - 2006-2007
 #
 msgid ""
 msgstr ""
@@ -13,11 +10,12 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-03-11 21:12+0100\n"
 "PO-Revision-Date: 2007-07-29 15:34+0200\n"
-"Last-Translator: Claude Paroz <claude@2xlibre.net>\n"
-"Language-Team: GNOME French Team <gnomefr@traduc.org>\n"
+"Last-Translator: Yannig MARCHEGAY (Kokoyaya) <yannig@marchegay.org>\n"
+"Language-Team: Occitan (post 1500) <ubuntu-l10n-oci@lists.ubuntu.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);"
 
 #: ../nst.schemas.in.h:1
 msgid "Last plugin used to send"
@@ -130,7 +128,7 @@ msgstr "Enviar a..."
 
 #: ../src/nautilus-sendto.glade.h:8
 msgid "Send as:"
-msgstr "Enviar coma[nbsp]:"
+msgstr "Enviar coma :"
 
 #: ../src/nautilus-sendto.glade.h:9
 msgid "Send packed in"
@@ -138,7 +136,7 @@ msgstr ""
 
 #: ../src/nautilus-sendto.glade.h:10
 msgid "Send to:"
-msgstr "Enviar a[nbsp]:"
+msgstr "Enviar a :"
 
 #: ../src/nautilus-sendto.glade.h:11
 msgid "_Send"
