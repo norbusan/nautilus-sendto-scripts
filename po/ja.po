@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nautilus-sendto trunk\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-03-24 16:26+0900\n"
-"PO-Revision-Date: 2007-03-24 16:26+0900\n"
+"POT-Creation-Date: 2007-08-23 01:19+0900\n"
+"PO-Revision-Date: 2007-08-23 01:13+0900\n"
 "Last-Translator: Takeshi AIHANA <takeshi.aihana@gmail.com>\n"
 "Language-Team: Japanese <gnome-translation@gnome.gr.jp>\n"
 "MIME-Version: 1.0\n"
@@ -45,15 +45,21 @@ msgstr ""
 #. dependencies
 #. priority
 #. id
-#: ../gaim_plugin/nautilus-sendto-plugin.c:303
+#: ../gaim_plugin/nautilus-sendto-plugin.c:308
+#: ../pidgin_plugin/nautilus-sendto-plugin.c:308
 msgid "Nautilus Integration"
 msgstr "Nautilus との連携"
 
 #. name
 #. version
 #. summary
-#: ../gaim_plugin/nautilus-sendto-plugin.c:305
-#: ../gaim_plugin/nautilus-sendto-plugin.c:306
+#. name
+#. version
+#. summary
+#: ../gaim_plugin/nautilus-sendto-plugin.c:310
+#: ../gaim_plugin/nautilus-sendto-plugin.c:311
+#: ../pidgin_plugin/nautilus-sendto-plugin.c:310
+#: ../pidgin_plugin/nautilus-sendto-plugin.c:311
 msgid "Provides integration with Nautilus"
 msgstr "GNOME Nautilus との連携機能を提供します。"
 
@@ -71,104 +77,92 @@ msgid "Send files by mail, instant message..."
 msgstr ""
 "ファイルをメールやインスタント・メッセンジャーなどを使って送信します..."
 
-#: ../src/nautilus-sendto-command.c:71
+#: ../src/nautilus-sendto-command.c:73
 msgid "Default folder to use"
 msgstr "使用するデフォルトのフォルダを指定する"
 
-#: ../src/nautilus-sendto-command.c:246
+#: ../src/nautilus-sendto-command.c:248
 msgid "You don't insert the package name"
 msgstr "パッケージ名を指定していません"
 
-#: ../src/nautilus-sendto-command.c:502
+#: ../src/nautilus-sendto-command.c:509
 msgid "Files"
 msgstr "ファイル"
 
-#: ../src/nautilus-sendto-command.c:692
+#: ../src/nautilus-sendto-command.c:699
+#, c-format
 msgid "Expects URIs or filenames to be passed as options\n"
 msgstr "オプションとして URI または ファイル名を指定して下さい\n"
 
-#: ../src/nautilus-sendto-command.c:709
+#: ../src/nautilus-sendto-command.c:716
 msgid "Nautilus Sendto"
 msgstr "Nautilus Sendto"
 
-#: ../src/nautilus-sendto-command.c:713
+#: ../src/nautilus-sendto-command.c:720
 #, c-format
 msgid "Could not parse command-line options: %s\n"
 msgstr "コマンドライン・オプションを解析できませんでした: %s\n"
 
-#: ../src/nautilus-sendto-command.c:728
+#: ../src/nautilus-sendto-command.c:735
 msgid "Could not load any plugins."
 msgstr "プラグインを読み込めませんでした"
 
-#: ../src/nautilus-sendto-command.c:731
+#: ../src/nautilus-sendto-command.c:738
 msgid "Please verify your installation"
 msgstr "インストールを確認して下さい"
 
 #: ../src/nautilus-sendto.glade.h:1
-msgid " "
-msgstr " "
-
-#: ../src/nautilus-sendto.glade.h:2
-msgid ""
-".zip\n"
-".tar.gz\n"
-".tar.bz2"
-msgstr ""
-".zip\n"
-".tar.gz\n"
-".tar.bz2"
-
-#: ../src/nautilus-sendto.glade.h:5
 msgid "<b>Compression</b>"
 msgstr "<b>圧縮</b>"
 
-#: ../src/nautilus-sendto.glade.h:6
+#: ../src/nautilus-sendto.glade.h:2
 msgid "<b>Destination</b>"
 msgstr "<b>送信先</b>"
 
-#: ../src/nautilus-sendto.glade.h:7
+#: ../src/nautilus-sendto.glade.h:3
 msgid "Send To..."
 msgstr "送る..."
 
-#: ../src/nautilus-sendto.glade.h:8
-msgid "Send as:"
-msgstr "使用するアプリ:"
+#: ../src/nautilus-sendto.glade.h:4
+msgid "Send _as:"
+msgstr "使用するアプリ(_A):"
 
-#: ../src/nautilus-sendto.glade.h:9
-msgid "Send packed in"
-msgstr "書庫にまとめる"
+#: ../src/nautilus-sendto.glade.h:5
+msgid "Send t_o:"
+msgstr "宛先(_O):"
 
-#: ../src/nautilus-sendto.glade.h:10
-msgid "Send to:"
-msgstr "送り先:"
-
-#: ../src/nautilus-sendto.glade.h:11
+#: ../src/nautilus-sendto.glade.h:6
 msgid "_Send"
-msgstr "送信(_S)..."
+msgstr "送信(_S)"
+
+#: ../src/nautilus-sendto.glade.h:7
+msgid "_Send packed in:"
+msgstr "書庫にして送信する(_S):"
 
 #: ../src/plugins/balsa.c:103
 msgid "Email (Balsa)"
 msgstr "メーラー (Balsa)"
 
-#: ../src/plugins/bluetooth.c:426
+#: ../src/plugins/bluetooth.c:421
 msgid "Programming error, could not find the device in the list"
 msgstr "プログラム・エラーです (Bluetooth のデバイスを検出できませんでした)"
 
-#: ../src/plugins/bluetooth.c:447
+#: ../src/plugins/bluetooth.c:442
+#, c-format
 msgid "Device does not support Obex File Transfer"
 msgstr "そのデバイスは Obex ファイル転送をサポートしていません"
 
-#: ../src/plugins/bluetooth.c:462
+#: ../src/plugins/bluetooth.c:457
 msgid "Bluetooth (OBEX Push)"
 msgstr "Bluetooth (OBEX プッシュ)"
 
-#: ../src/plugins/evolution.c:271
+#: ../src/plugins/evolution.c:273
 msgid "Email (Evolution)"
 msgstr "メーラー (Evolution)"
 
 #: ../src/plugins/gaim.c:228
 msgid "Instant Message (Gaim)"
-msgstr "インスタント・メッセンジャー (Gaim)"
+msgstr "インスタント・メッセンジャー"
 
 #: ../src/plugins/gajim.c:402
 msgid "Unable to send file"
