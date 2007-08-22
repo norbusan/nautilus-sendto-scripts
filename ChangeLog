@@ -1,3 +1,8 @@
+2007-08-22  Sebastien Bacher  <seb128@ubuntu.com>
+
+	* src/nautilus-sendto.glade: doesn't translate the formats list
+	(Closes: #441458)
+
 2007-08-18  Marco Barisione  <marco@barisione.org>
 
 	* src/nautilus-sendto-command.c: (send_button_cb): status_label_clear

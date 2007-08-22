@@ -404,7 +404,7 @@
 			      <child>
 				<widget class="GtkComboBox" id="pack_combobox">
 				  <property name="visible">True</property>
-				  <property name="items" translatable="yes">.zip
+				  <property name="items" translatable="no">.zip
 .tar.gz
 .tar.bz2</property>
 				  <property name="add_tearoffs">False</property>
