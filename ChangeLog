@@ -1,3 +1,8 @@
+2007-10-07  Bastien Nocera  <hadess@hadess.net>
+
+	* MAINTAINERS: upd
+	* src/plugins/pidgin.c: really add src/plugins/pidgin.c
+
 2007-08-22  Sebastien Bacher  <seb128@ubuntu.com>
 
 	* src/nautilus-sendto.glade: doesn't translate the formats list
