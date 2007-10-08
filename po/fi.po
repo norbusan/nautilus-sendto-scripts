@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nautilus-sendto\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-08-06 17:14+0300\n"
+"POT-Creation-Date: 2007-10-08 11:25+0300\n"
 "PO-Revision-Date: 2006-07-02 23:30+0300\n"
 "Last-Translator: Tommi Vainikainen <Tommi.Vainikainen@iki.fi>\n"
 "Language-Team: Finnish <gnome-fi-laatu@lists.sourceforge.net>\n"
@@ -46,15 +46,21 @@ msgstr ""
 #. dependencies
 #. priority
 #. id
-#: ../gaim_plugin/nautilus-sendto-plugin.c:303
+#: ../gaim_plugin/nautilus-sendto-plugin.c:308
+#: ../pidgin_plugin/nautilus-sendto-plugin.c:308
 msgid "Nautilus Integration"
 msgstr "Nautilus-integraatio"
 
 #. name
 #. version
 #. summary
-#: ../gaim_plugin/nautilus-sendto-plugin.c:305
-#: ../gaim_plugin/nautilus-sendto-plugin.c:306
+#. name
+#. version
+#. summary
+#: ../gaim_plugin/nautilus-sendto-plugin.c:310
+#: ../gaim_plugin/nautilus-sendto-plugin.c:311
+#: ../pidgin_plugin/nautilus-sendto-plugin.c:310
+#: ../pidgin_plugin/nautilus-sendto-plugin.c:311
 msgid "Provides integration with Nautilus"
 msgstr "Tarjoaa integraation Nautilukseen"
 
@@ -78,66 +84,57 @@ msgstr "Käytettävä oletuskansio"
 msgid "You don't insert the package name"
 msgstr "Et antanut paketin nimeä"
 
-#: ../src/nautilus-sendto-command.c:508
+#: ../src/nautilus-sendto-command.c:509
 msgid "Files"
 msgstr "Tiedostot"
 
-#: ../src/nautilus-sendto-command.c:698
+#: ../src/nautilus-sendto-command.c:699
+#, c-format
 msgid "Expects URIs or filenames to be passed as options\n"
 msgstr "Olettaa parametreina annettavan URI:ja tai tiedostonimiä\n"
 
-#: ../src/nautilus-sendto-command.c:715
+#: ../src/nautilus-sendto-command.c:716
 msgid "Nautilus Sendto"
 msgstr "Nautilus-lähetä"
 
-#: ../src/nautilus-sendto-command.c:719
+#: ../src/nautilus-sendto-command.c:720
 #, c-format
 msgid "Could not parse command-line options: %s\n"
 msgstr "Komentorivivalitsimia ei voitu tulkita: %s\n"
 
-#: ../src/nautilus-sendto-command.c:734
+#: ../src/nautilus-sendto-command.c:735
 msgid "Could not load any plugins."
 msgstr "Liitännäisiä ei voitu ladata."
 
-#: ../src/nautilus-sendto-command.c:737
+#: ../src/nautilus-sendto-command.c:738
 msgid "Please verify your installation"
 msgstr "Tarkista asennuksesi"
 
 #: ../src/nautilus-sendto.glade.h:1
-msgid ""
-".zip\n"
-".tar.gz\n"
-".tar.bz2"
-msgstr ""
-".zip\n"
-".tar.gz\n"
-".tar.bz2"
-
-#: ../src/nautilus-sendto.glade.h:4
 msgid "<b>Compression</b>"
 msgstr "<b>Pakkaus</b>"
 
-#: ../src/nautilus-sendto.glade.h:5
+#: ../src/nautilus-sendto.glade.h:2
 msgid "<b>Destination</b>"
 msgstr "<b>Kohde</b>"
 
-#: ../src/nautilus-sendto.glade.h:6
+#: ../src/nautilus-sendto.glade.h:3
 msgid "Send To..."
 msgstr "Lähetä..."
 
-#: ../src/nautilus-sendto.glade.h:7
+#: ../src/nautilus-sendto.glade.h:4
 msgid "Send _as:"
-msgstr "Lähetä _nimellä:"
+msgstr "Lähetä _käyttäen:"
 
-#: ../src/nautilus-sendto.glade.h:8
+#: ../src/nautilus-sendto.glade.h:5
 msgid "Send t_o:"
-msgstr "Lähetä _osoitteeseen:"
+msgstr "Vastaan_ottaja:"
 
-#: ../src/nautilus-sendto.glade.h:9
+#: ../src/nautilus-sendto.glade.h:6
 msgid "_Send"
 msgstr "_Lähetä"
 
-#: ../src/nautilus-sendto.glade.h:10
+#: ../src/nautilus-sendto.glade.h:7
 msgid "_Send packed in:"
 msgstr "Lähetä _paketoituna:"
 
@@ -145,19 +142,20 @@ msgstr "Lähetä _paketoituna:"
 msgid "Email (Balsa)"
 msgstr "Sähköposti (Balsa)"
 
-#: ../src/plugins/bluetooth.c:417
+#: ../src/plugins/bluetooth.c:421
 msgid "Programming error, could not find the device in the list"
 msgstr "Ohjelmointivirhe, laitetta ei löytynyt luettelosta"
 
-#: ../src/plugins/bluetooth.c:438
+#: ../src/plugins/bluetooth.c:442
+#, c-format
 msgid "Device does not support Obex File Transfer"
 msgstr "Laite ei tue Obex-tiedostonsiirtoa"
 
-#: ../src/plugins/bluetooth.c:453
+#: ../src/plugins/bluetooth.c:457
 msgid "Bluetooth (OBEX Push)"
 msgstr "Bluetooth (OBEX Push)"
 
-#: ../src/plugins/evolution.c:271
+#: ../src/plugins/evolution.c:273
 msgid "Email (Evolution)"
 msgstr "Sähköposti (Evolution)"
 
@@ -196,6 +194,15 @@ msgstr "Sähköposti (Claws Mail)"
 #: ../src/plugins/thunderbird.c:102
 msgid "Email (Thunderbird)"
 msgstr "Sähköposti (Thunderbird)"
+
+#~ msgid ""
+#~ ".zip\n"
+#~ ".tar.gz\n"
+#~ ".tar.bz2"
+#~ msgstr ""
+#~ ".zip\n"
+#~ ".tar.gz\n"
+#~ ".tar.bz2"
 
 #~ msgid "FOLDER"
 #~ msgstr "KANSIO"
