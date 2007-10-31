@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nautilus-sendto.HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-03-12 03:48+0000\n"
-"PO-Revision-Date: 2007-05-24 17:18+0200\n"
+"POT-Creation-Date: 2007-08-22 17:20+0100\n"
+"PO-Revision-Date: 2007-10-31 23:52+0100\n"
 "Last-Translator: Gabor Kelemen <kelemeng@gnome.hu>\n"
 "Language-Team: Hungarian <gnome@gnome.hu>\n"
 "MIME-Version: 1.0\n"
@@ -45,15 +45,21 @@ msgstr "Az utoljára használt archívum típusa (0: zip, 1: tar.gz, 2: tar.bz2)
 #. dependencies
 #. priority
 #. id
-#: ../gaim_plugin/nautilus-sendto-plugin.c:303
+#: ../gaim_plugin/nautilus-sendto-plugin.c:308
+#: ../pidgin_plugin/nautilus-sendto-plugin.c:308
 msgid "Nautilus Integration"
 msgstr "Nautilus-integráció"
 
 #. name
 #. version
 #. summary
-#: ../gaim_plugin/nautilus-sendto-plugin.c:305
-#: ../gaim_plugin/nautilus-sendto-plugin.c:306
+#. name
+#. version
+#. summary
+#: ../gaim_plugin/nautilus-sendto-plugin.c:310
+#: ../gaim_plugin/nautilus-sendto-plugin.c:311
+#: ../pidgin_plugin/nautilus-sendto-plugin.c:310
+#: ../pidgin_plugin/nautilus-sendto-plugin.c:311
 msgid "Provides integration with Nautilus"
 msgstr "Integráció biztosítása a Nautilusszal"
 
@@ -69,98 +75,84 @@ msgstr "Fájl küldése levélben, azonnali üzenetként..."
 msgid "Send files by mail, instant message..."
 msgstr "Fájlok küldése levélben, azonnali üzenetként..."
 
-#: ../src/nautilus-sendto-command.c:71
+#: ../src/nautilus-sendto-command.c:73
 msgid "Default folder to use"
 msgstr "Alapértelmezésként használandó mappa"
 
-#: ../src/nautilus-sendto-command.c:246
+#: ../src/nautilus-sendto-command.c:248
 msgid "You don't insert the package name"
 msgstr "Nem adott meg csomagnevet"
 
-#: ../src/nautilus-sendto-command.c:502
+#: ../src/nautilus-sendto-command.c:509
 msgid "Files"
 msgstr "Fájlok"
 
-#: ../src/nautilus-sendto-command.c:692
+#: ../src/nautilus-sendto-command.c:699
 msgid "Expects URIs or filenames to be passed as options\n"
 msgstr "URI címekre vagy fájlnevekre számít paraméterekként\n"
 
-#: ../src/nautilus-sendto-command.c:709
+#: ../src/nautilus-sendto-command.c:716
 msgid "Nautilus Sendto"
 msgstr "Nautilus küldés"
 
-#: ../src/nautilus-sendto-command.c:713
+#: ../src/nautilus-sendto-command.c:720
 #, c-format
 msgid "Could not parse command-line options: %s\n"
 msgstr "Nem dolgozhatók fel a parancssori kapcsolók: %s\n"
 
-#: ../src/nautilus-sendto-command.c:728
+#: ../src/nautilus-sendto-command.c:735
 msgid "Could not load any plugins."
 msgstr "Nem tölthetők be bővítmények."
 
-#: ../src/nautilus-sendto-command.c:731
+#: ../src/nautilus-sendto-command.c:738
 msgid "Please verify your installation"
 msgstr "Ellenőrizze a telepítést"
 
 #: ../src/nautilus-sendto.glade.h:1
-msgid " "
-msgstr " "
-
-#: ../src/nautilus-sendto.glade.h:2
-msgid ""
-".zip\n"
-".tar.gz\n"
-".tar.bz2"
-msgstr ""
-".zip\n"
-".tar.gz\n"
-".tar.bz2"
-
-#: ../src/nautilus-sendto.glade.h:5
 msgid "<b>Compression</b>"
 msgstr "<b>Tömörítés</b>"
 
-#: ../src/nautilus-sendto.glade.h:6
+#: ../src/nautilus-sendto.glade.h:2
 msgid "<b>Destination</b>"
 msgstr "<b>Cél</b>"
 
-#: ../src/nautilus-sendto.glade.h:7
+#: ../src/nautilus-sendto.glade.h:3
 msgid "Send To..."
 msgstr "Küldés..."
 
-#: ../src/nautilus-sendto.glade.h:8
-msgid "Send as:"
-msgstr "Küldés mint:"
+#: ../src/nautilus-sendto.glade.h:4
+msgid "Send _as:"
+msgstr "Küldés _mint:"
 
-#: ../src/nautilus-sendto.glade.h:9
-msgid "Send packed in"
-msgstr "Küldés tömörítve"
+#: ../src/nautilus-sendto.glade.h:5
+msgid "Send t_o:"
+msgstr "Küldés _célja:"
 
-#: ../src/nautilus-sendto.glade.h:10
-msgid "Send to:"
-msgstr "Küldés célja:"
-
-#: ../src/nautilus-sendto.glade.h:11
+#: ../src/nautilus-sendto.glade.h:6
 msgid "_Send"
 msgstr "_Küldés"
+
+#: ../src/nautilus-sendto.glade.h:7
+msgid "_Send packed in:"
+msgstr "Küldés _tömörítve:"
 
 #: ../src/plugins/balsa.c:103
 msgid "Email (Balsa)"
 msgstr "E-mail (Balsa)"
 
-#: ../src/plugins/bluetooth.c:426
+#: ../src/plugins/bluetooth.c:421
 msgid "Programming error, could not find the device in the list"
 msgstr "Programozási hiba, az eszköz nem található a listában"
 
-#: ../src/plugins/bluetooth.c:447
+#: ../src/plugins/bluetooth.c:442
 msgid "Device does not support Obex File Transfer"
 msgstr "Az eszköz nem támogatja az Obex fájlátvitelt"
 
-#: ../src/plugins/bluetooth.c:462
+#: ../src/plugins/bluetooth.c:457
 msgid "Bluetooth (OBEX Push)"
 msgstr "Bluetooth (OBEX küldés)"
 
-#: ../src/plugins/evolution.c:271
+#: ../src/plugins/evolution.c:273
 msgid "Email (Evolution)"
 msgstr "E-mail (Evolution)"
 
