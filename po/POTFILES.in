@@ -13,5 +13,6 @@ src/plugins/bluetooth.c
 src/plugins/evolution.c
 src/plugins/gaim.c
 src/plugins/gajim.c
+src/plugins/pidgin.c
 src/plugins/sylpheed-claws.c
 src/plugins/thunderbird.c

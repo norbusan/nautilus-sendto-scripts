@@ -4,14 +4,15 @@
 #
 # Ignacio Casal Quinteiro <nacho.resa@gmail.com>, 2005, 2006.
 # Ignacio Casal Quinteiro <icq@cvs.gnome.org>, 2007.
+# Ignacio Casal Quinteiro <icq@svn.gnome.org>, 2007.
 msgid ""
 msgstr ""
 "Project-Id-Version: gl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-03-26 13:17+0200\n"
-"PO-Revision-Date: 2007-03-26 13:20+0200\n"
-"Last-Translator: Ignacio Casal Quinteiro <icq@cvs.gnome.org>\n"
-"Language-Team: Galego <trasno@ceu.fi.udc.es>\n"
+"POT-Creation-Date: 2007-11-16 20:56+0100\n"
+"PO-Revision-Date: 2007-11-16 20:59+0100\n"
+"Last-Translator: Ignacio Casal Quinteiro <icq@svn.gnome.org>\n"
+"Language-Team: Galego <proxecto@trasno.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -23,19 +24,19 @@ msgstr "Último complemento empregado para enviar"
 
 #: ../nst.schemas.in.h:2
 msgid "Last type of archive used"
-msgstr ""
+msgstr "Último tipo de arquivo usado"
 
 #: ../nst.schemas.in.h:3
 msgid ""
 "Used to store which plugin was used the last time files were sent using "
 "nautilus-sendto."
-msgstr ""
+msgstr "Usado para almacenar que complemento usouse a última vez que se enviaron ficheiros usando nautilus-sento."
 
 #: ../nst.schemas.in.h:4
 msgid ""
 "Used to store which type of archive was used the last time (0: zip, 1: tar."
 "gz, 2: tar.bz2)."
-msgstr ""
+msgstr "Usado para almacenar que tipo de ficheiro foi usado a última vez (0: zip, 1: tar.gz, 2: tar.bz2)."
 
 #. type
 #. ui requirement
@@ -43,15 +44,21 @@ msgstr ""
 #. dependencies
 #. priority
 #. id
-#: ../gaim_plugin/nautilus-sendto-plugin.c:303
+#: ../gaim_plugin/nautilus-sendto-plugin.c:308
+#: ../pidgin_plugin/nautilus-sendto-plugin.c:308
 msgid "Nautilus Integration"
 msgstr "Integración con Nautilus"
 
 #. name
 #. version
 #. summary
-#: ../gaim_plugin/nautilus-sendto-plugin.c:305
-#: ../gaim_plugin/nautilus-sendto-plugin.c:306
+#. name
+#. version
+#. summary
+#: ../gaim_plugin/nautilus-sendto-plugin.c:310
+#: ../gaim_plugin/nautilus-sendto-plugin.c:311
+#: ../pidgin_plugin/nautilus-sendto-plugin.c:310
+#: ../pidgin_plugin/nautilus-sendto-plugin.c:311
 msgid "Provides integration with Nautilus"
 msgstr "Proporciona integración con Nautilus"
 
@@ -67,98 +74,86 @@ msgstr "Enviar un ficheiro por correo, por mensaxe instantánea..."
 msgid "Send files by mail, instant message..."
 msgstr "Enviar ficheiros por correo, por mensaxe instantánea..."
 
-#: ../src/nautilus-sendto-command.c:71
+#: ../src/nautilus-sendto-command.c:73
 msgid "Default folder to use"
 msgstr "Cartafol predeterminado a usar"
 
-#: ../src/nautilus-sendto-command.c:246
+#: ../src/nautilus-sendto-command.c:248
 msgid "You don't insert the package name"
 msgstr "Non insire o nome do paquete"
 
-#: ../src/nautilus-sendto-command.c:502
+#: ../src/nautilus-sendto-command.c:509
 msgid "Files"
 msgstr "Ficheiros"
 
-#: ../src/nautilus-sendto-command.c:692
+#: ../src/nautilus-sendto-command.c:699
+#, c-format
 msgid "Expects URIs or filenames to be passed as options\n"
-msgstr ""
+msgstr "Expera que se pasen como opcións URIs ou nomes de ficheiros\n"
 
-#: ../src/nautilus-sendto-command.c:709
+#: ../src/nautilus-sendto-command.c:716
 msgid "Nautilus Sendto"
 msgstr "Nautilus Sendto"
 
-#: ../src/nautilus-sendto-command.c:713
+#: ../src/nautilus-sendto-command.c:720
 #, c-format
 msgid "Could not parse command-line options: %s\n"
 msgstr "Non se puideron analizar as opcións da liña de comandos: %s\n"
 
-#: ../src/nautilus-sendto-command.c:728
+#: ../src/nautilus-sendto-command.c:735
 msgid "Could not load any plugins."
 msgstr "Non se puideron cargar algúns complementos."
 
-#: ../src/nautilus-sendto-command.c:731
+#: ../src/nautilus-sendto-command.c:738
 msgid "Please verify your installation"
 msgstr "Verifique a súa instalación."
 
 #: ../src/nautilus-sendto.glade.h:1
-msgid " "
-msgstr " "
-
-#: ../src/nautilus-sendto.glade.h:2
-msgid ""
-".zip\n"
-".tar.gz\n"
-".tar.bz2"
-msgstr ""
-".zip\n"
-".tar.gz\n"
-".tar.bz2"
-
-#: ../src/nautilus-sendto.glade.h:5
 msgid "<b>Compression</b>"
 msgstr "<b>Compresión</b>"
 
-#: ../src/nautilus-sendto.glade.h:6
+#: ../src/nautilus-sendto.glade.h:2
 msgid "<b>Destination</b>"
 msgstr "<b>Destino</b>"
 
-#: ../src/nautilus-sendto.glade.h:7
+#: ../src/nautilus-sendto.glade.h:3
 msgid "Send To..."
 msgstr "Enviar a...."
 
-#: ../src/nautilus-sendto.glade.h:8
-msgid "Send as:"
-msgstr "Enviar como:"
+#: ../src/nautilus-sendto.glade.h:4
+msgid "Send _as:"
+msgstr "Enviar _como:"
 
-#: ../src/nautilus-sendto.glade.h:9
-msgid "Send packed in"
-msgstr "Enviar empaquetado en"
+#: ../src/nautilus-sendto.glade.h:5
+msgid "Send t_o:"
+msgstr "Enviar _a:"
 
-#: ../src/nautilus-sendto.glade.h:10
-msgid "Send to:"
-msgstr "Enviar a:"
-
-#: ../src/nautilus-sendto.glade.h:11
+#: ../src/nautilus-sendto.glade.h:6
 msgid "_Send"
 msgstr "_Enviar"
+
+#: ../src/nautilus-sendto.glade.h:7
+msgid "_Send packed in:"
+msgstr "E_nviar empaquetado en"
 
 #: ../src/plugins/balsa.c:103
 msgid "Email (Balsa)"
 msgstr "Correo-e (Balsa)"
 
-#: ../src/plugins/bluetooth.c:426
+#: ../src/plugins/bluetooth.c:421
 msgid "Programming error, could not find the device in the list"
 msgstr "Erro de programación, non se puido atopar o dispositivo na lista"
 
-#: ../src/plugins/bluetooth.c:447
+#: ../src/plugins/bluetooth.c:442
+#, c-format
 msgid "Device does not support Obex File Transfer"
 msgstr "O dispositivo non soporta a transferencia de ficheiros Obex"
 
-#: ../src/plugins/bluetooth.c:462
+#: ../src/plugins/bluetooth.c:457
 msgid "Bluetooth (OBEX Push)"
 msgstr "Bluetooth (OBEX Push)"
 
-#: ../src/plugins/evolution.c:271
+#: ../src/plugins/evolution.c:273
 msgid "Email (Evolution)"
 msgstr "Correo-e (Evolution)"
 
@@ -190,10 +185,13 @@ msgstr "Destinatario descoñecido."
 msgid "Instant Message (Gajim)"
 msgstr "Mensaxe instantánea (Gajim)"
 
+#: ../src/plugins/pidgin.c:228
+msgid "Instant Message (Pidgin)"
+msgstr "Mensaxe instantánea (Pidgin)"
+
 #: ../src/plugins/sylpheed-claws.c:131
-#, fuzzy
 msgid "Email (Claws Mail)"
-msgstr "Correo-e (Balsa)"
+msgstr "Correo-e (Correo Claws)"
 
 #: ../src/plugins/thunderbird.c:102
 msgid "Email (Thunderbird)"
