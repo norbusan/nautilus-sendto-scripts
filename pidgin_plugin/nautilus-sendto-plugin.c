@@ -123,10 +123,10 @@ save_online_buddies (){
 	    fclose (fd);
 	    g_string_free (buddies_str, TRUE);
 	    buddies_str = str;
-	    gaim_debug_info ("nautilus", "save blist online\n");
+	    purple_debug_info ("nautilus", "save blist online\n");
 	}else{
 	    g_string_free (str, TRUE);
-	    gaim_debug_info ("nautilus", "don't save blist online. No change\n");
+	    purple_debug_info ("nautilus", "don't save blist online. No change\n");
 	}
 	g_free (fd_name);
     }else{

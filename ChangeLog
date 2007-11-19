@@ -1,3 +1,9 @@
+2007-11-19  Bastien Nocera  <hadess@hadess.net>
+
+	* pidgin_plugin/nautilus-sendto-plugin.c: (save_online_buddies):
+	Patch from Fred Hsueh <fred.hsueh@gmail.com> to fix loading the
+	Pidgin plugin (Closes: #466427)
+
 2007-10-07  Bastien Nocera  <hadess@hadess.net>
 
 	* MAINTAINERS: upd
