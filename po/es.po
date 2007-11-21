@@ -9,10 +9,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nautilus-sendto.HEAD.es\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-06-22 04:56+0100\n"
-"PO-Revision-Date: 2007-06-28 11:47+0200\n"
-"Last-Translator: Jorge Gonzalez <jorgegonz@svn.gnome.org>\n"
-"Language-Team: Español <traductores@es.gnome.org>\n"
+"POT-Creation-Date: 2007-11-16 20:04+0000\n"
+"PO-Revision-Date: 2007-11-21 15:01+0100\n"
+"Last-Translator: Jorge González <jorgegonz@svn.gnome.org>\n"
+"Language-Team: Spanish <traductores@es.gnome.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -49,15 +49,21 @@ msgstr ""
 #. dependencies
 #. priority
 #. id
-#: ../gaim_plugin/nautilus-sendto-plugin.c:303
+#: ../gaim_plugin/nautilus-sendto-plugin.c:308
+#: ../pidgin_plugin/nautilus-sendto-plugin.c:308
 msgid "Nautilus Integration"
 msgstr "Integración con Nautilus"
 
 #. name
 #. version
 #. summary
-#: ../gaim_plugin/nautilus-sendto-plugin.c:305
-#: ../gaim_plugin/nautilus-sendto-plugin.c:306
+#. name
+#. version
+#. summary
+#: ../gaim_plugin/nautilus-sendto-plugin.c:310
+#: ../gaim_plugin/nautilus-sendto-plugin.c:311
+#: ../pidgin_plugin/nautilus-sendto-plugin.c:310
+#: ../pidgin_plugin/nautilus-sendto-plugin.c:311
 msgid "Provides integration with Nautilus"
 msgstr "Proporcina integración con Nautilus"
 
@@ -81,66 +87,56 @@ msgstr "Carpeta predeterminada a usar"
 msgid "You don't insert the package name"
 msgstr "No inserta el nombre del paquete"
 
-#: ../src/nautilus-sendto-command.c:508
+#: ../src/nautilus-sendto-command.c:509
 msgid "Files"
 msgstr "Archivos"
 
-#: ../src/nautilus-sendto-command.c:698
+#: ../src/nautilus-sendto-command.c:699
 msgid "Expects URIs or filenames to be passed as options\n"
 msgstr "Espera que se pasen como opciones URIs o nombres de archivo\n"
 
-#: ../src/nautilus-sendto-command.c:715
+#: ../src/nautilus-sendto-command.c:716
 msgid "Nautilus Sendto"
 msgstr "Nautilus Sendto"
 
-#: ../src/nautilus-sendto-command.c:719
+#: ../src/nautilus-sendto-command.c:720
 #, c-format
 msgid "Could not parse command-line options: %s\n"
 msgstr "No se pudieron analizar las opciones de la línea de comandos: %s\n"
 
-#: ../src/nautilus-sendto-command.c:734
+#: ../src/nautilus-sendto-command.c:735
 msgid "Could not load any plugins."
 msgstr "No se pudo cargar ningún complemento."
 
-#: ../src/nautilus-sendto-command.c:737
+#: ../src/nautilus-sendto-command.c:738
 msgid "Please verify your installation"
 msgstr "Por favor, compruebe su instalación"
 
 #: ../src/nautilus-sendto.glade.h:1
-msgid ""
-".zip\n"
-".tar.gz\n"
-".tar.bz2"
-msgstr ""
-".zip\n"
-".tar.gz\n"
-".tar.bz2"
-
-#: ../src/nautilus-sendto.glade.h:4
 msgid "<b>Compression</b>"
 msgstr "<b>Compresión</b>"
 
-#: ../src/nautilus-sendto.glade.h:5
+#: ../src/nautilus-sendto.glade.h:2
 msgid "<b>Destination</b>"
 msgstr "<b>Destino</b>"
 
-#: ../src/nautilus-sendto.glade.h:6
+#: ../src/nautilus-sendto.glade.h:3
 msgid "Send To..."
 msgstr "Enviar a..."
 
-#: ../src/nautilus-sendto.glade.h:7
+#: ../src/nautilus-sendto.glade.h:4
 msgid "Send _as:"
 msgstr "Enviar _como:"
 
-#: ../src/nautilus-sendto.glade.h:8
+#: ../src/nautilus-sendto.glade.h:5
 msgid "Send t_o:"
 msgstr "Enviar _a:"
 
-#: ../src/nautilus-sendto.glade.h:9
+#: ../src/nautilus-sendto.glade.h:6
 msgid "_Send"
 msgstr "_Enviar"
 
-#: ../src/nautilus-sendto.glade.h:10
+#: ../src/nautilus-sendto.glade.h:7
 msgid "_Send packed in:"
 msgstr "_Enviar empaquetado en"
 
@@ -148,19 +144,19 @@ msgstr "_Enviar empaquetado en"
 msgid "Email (Balsa)"
 msgstr "Correo-e (Balsa)"
 
-#: ../src/plugins/bluetooth.c:417
+#: ../src/plugins/bluetooth.c:421
 msgid "Programming error, could not find the device in the list"
 msgstr "Error de programación, no se pudo encontrar el dispositivo en la lista"
 
-#: ../src/plugins/bluetooth.c:438
+#: ../src/plugins/bluetooth.c:442
 msgid "Device does not support Obex File Transfer"
 msgstr "El dispositivo no soporta la transferencia de archivos OBEX"
 
-#: ../src/plugins/bluetooth.c:453
+#: ../src/plugins/bluetooth.c:457
 msgid "Bluetooth (OBEX Push)"
 msgstr "Bluetooth (OBEX Push)"
 
-#: ../src/plugins/evolution.c:271
+#: ../src/plugins/evolution.c:273
 msgid "Email (Evolution)"
 msgstr "Correo-e (Evolution)"
 
@@ -191,6 +187,10 @@ msgstr "Destinatario desconocido."
 #: ../src/plugins/gajim.c:488
 msgid "Instant Message (Gajim)"
 msgstr "Mensaje instantáneo (Gajim)"
+
+#: ../src/plugins/pidgin.c:228
+msgid "Instant Message (Pidgin)"
+msgstr "Mensaje instantáneo (Pidgin)"
 
 #: ../src/plugins/sylpheed-claws.c:131
 msgid "Email (Claws Mail)"
