@@ -49,7 +49,7 @@ gboolean init (NstPlugin *plugin)
 static void
 add_pidgin_contacts_to_model (GtkListStore *store, GtkTreeIter *iter)
 {
-	GdkPixbuf *msn, *jabber, *yahoo, *aim;
+	GdkPixbuf *msn, *jabber, *yahoo, *aim, *icq;
 	GtkIconTheme *it;
 	GList *list = NULL;
 	GList *l;
@@ -91,7 +91,8 @@ add_pidgin_contacts_to_model (GtkListStore *store, GtkTreeIter *iter)
 					GTK_ICON_LOOKUP_USE_BUILTIN, NULL);
 	aim = gtk_icon_theme_load_icon (it, "im-aim", 16, 
 					GTK_ICON_LOOKUP_USE_BUILTIN, NULL);
-		
+	icq = gtk_icon_theme_load_icon (it, "im-icq", 16, 
+					GTK_ICON_LOOKUP_USE_BUILTIN, NULL);	
 	l = list;
 	while (l->next != NULL){
 		gchar *prt, *username, *cname, *alias;
@@ -122,7 +123,7 @@ add_pidgin_contacts_to_model (GtkListStore *store, GtkTreeIter *iter)
 					      jabber, 1, alias_e->str, -1);
 			  contact_list = g_list_append (contact_list, contact_info);
 		  }else
-		    if (strcmp(prt,"prpl-oscar")==0){
+		    if (strcmp(prt,"prpl-aim")==0){
 			    gtk_list_store_append (store, iter);
 			    gtk_list_store_set (store, iter, 0, 
 						aim, 1, alias_e->str, -1);
@@ -133,9 +134,16 @@ add_pidgin_contacts_to_model (GtkListStore *store, GtkTreeIter *iter)
 			      gtk_list_store_set (store, iter, 0, 
 						  yahoo, 1, alias_e->str, -1);
 			      contact_list = g_list_append (contact_list, contact_info);
-		      }else{
-			      g_free (contact_info);
-		      }
+		      }else
+			if(strcmp(prt,"prpl-icq")==0) {
+			    gtk_list_store_append (store, iter);
+			    gtk_list_store_set (store, iter, 0, 
+						icq, 1, alias_e->str, -1);
+			    contact_list = g_list_append (contact_list, contact_info);
+			}else {
+			    g_free (contact_info);
+			}
+			
 		g_string_free(alias_e, TRUE);
 	}
 	

@@ -1,5 +1,11 @@
 2007-12-29  Bastien Nocera  <hadess@hadess.net>
 
+	* src/plugins/pidgin.c: (add_pidgin_contacts_to_model):
+	Patch from drago01@gmail.com to find ICQ users in the
+	Pidgin plugin (Closes: #506176)
+
+2007-12-29  Bastien Nocera  <hadess@hadess.net>
+
 	* src/plugins/update-from-egg.sh:
 	* src/plugins/e-contact-entry.[ch]:
 	* src/plugins/econtactentry-marshal.list: Added files
