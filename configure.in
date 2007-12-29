@@ -78,6 +78,11 @@ PKG_CHECK_MODULES(NST_EBOOK, libebook-1.2 >= $EBOOK_REQUIRED,
 
 AM_CONDITIONAL(HAVE_EVOLUTION, test "x$enable_evolution" = "xyes")
 
+saved_CPPFLAGS="$CPPFLAGS"
+CPPFLAGS="$CPPFLAGS $NST_EBOOK_CFLAGS"
+AC_CHECK_TYPES([EContactPhotoType], , , [#include <libebook/e-contact.h>])
+CPPFLAGS="$saved_CPPFLAGS"
+
 dnl Gaim support if it's installed
 dnl ---------------------------------
 

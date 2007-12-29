@@ -63,9 +63,22 @@ else
 GAJIM_PLUGIN = 
 endif
 
+MARSHALFILES = econtactentry-marshal.c econtactentry-marshal.h
+BUILT_SOURCES = $(MARSHALFILES)
+
+econtactentry-marshal.c: econtactentry-marshal.h
+	( $(GLIB_GENMARSHAL) --prefix=econtactentry_marshal $(srcdir)/econtactentry-marshal.list --header --body > econtactentry-marshal.c )
+econtactentry-marshal.h: econtactentry-marshal.list
+	( $(GLIB_GENMARSHAL) --prefix=econtactentry_marshal $(srcdir)/econtactentry-marshal.list --header > econtactentry-marshal.h )
+
+CLA_FILES = e-contact-entry.h e-contact-entry.c econtactentry-marshal.list
+CLADIR = $(srcdir)/../../../contact-lookup-applet/src/
+regenerate-built-sources:
+	EGGFILES="$(CLA_FILES) econtactentry-marshal.list" EGGDIR="$(CLADIR)" $(srcdir)/update-from-egg.sh || true
+
 plugin_LTLIBRARIES = $(EVOLUTION_PLUGIN) $(GAIM_PLUGIN) $(PIDGIN_PLUGIN) $(BLUETOOTH_PLUGIN) $(BALSA_PLUGIN) $(SYLPHEED_PLUGIN) $(THUNDERBIRD_PLUGIN) $(GAJIM_PLUGIN)
 
-libnstevolution_la_SOURCES = evolution.c
+libnstevolution_la_SOURCES = evolution.c $(CLA_FILES) $(MARSHALFILES)
 libnstevolution_la_LDFLAGS = -module -avoid-version
 libnstevolution_la_LIBADD = $(NST_EBOOK_LIBS)
 
@@ -104,6 +117,6 @@ libnstgajim_la_SOURCES = gajim.c
 libnstgajim_la_LDFLAGS = -module -avoid-version
 libnstgajim_la_LIBADD = $(DBUS_LIBS)
 
-EXTRA_DIST = bluetooth-marshal.list
-CLEANFILES = bluetooth-marshal.h bluetooth-marshal.c
+EXTRA_DIST = bluetooth-marshal.list $(CLA_FILES)
+CLEANFILES = bluetooth-marshal.h bluetooth-marshal.c econtactentry-marshal.c econtactentry-marshal.h
 

@@ -1,3 +1,19 @@
+2007-12-29  Bastien Nocera  <hadess@hadess.net>
+
+	* src/plugins/update-from-egg.sh:
+	* src/plugins/e-contact-entry.[ch]:
+	* src/plugins/econtactentry-marshal.list: Added files
+	from contact-lookup-applet
+
+	* configure.in:
+	* src/plugins/Makefile.am:
+	* src/plugins/evolution.c: (init), (contacts_selected_cb),
+	(state_change_cb), (add_sources), (sources_changed_cb),
+	(setup_source_changes), (get_contacts_widget), (send_files),
+	(destroy): remove loads of Evolution code and use EContactEntry
+	from contact-lookup-applet instead, removing a lot of code from
+	our maintainership
+
 2007-11-19  Bastien Nocera  <hadess@hadess.net>
 
 	* pidgin_plugin/nautilus-sendto-plugin.c: (save_online_buddies):
