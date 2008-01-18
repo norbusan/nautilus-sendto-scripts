@@ -34,6 +34,7 @@
 static GtkTreeModel *model;
 static int discovered;
 static GtkWidget *combobox;
+static char *cmd = NULL;
 
 DBusGProxy *object;
 
@@ -51,11 +52,13 @@ init (NstPlugin *plugin)
 	DBusGConnection *conn;
 	const char *adapter;
 
-	/* Check whether gnome-obex-send is available */
-	cmd = g_find_program_in_path ("gnome-obex-send");
-	if (cmd == NULL)
-		return FALSE;
-	g_free (cmd);
+	/* Check whether bluetooth-sendto or gnome-obex-send are available */
+	cmd = g_find_program_in_path ("bluetooth-sendto");
+	if (cmd == NULL) {
+		cmd = g_find_program_in_path ("gnome-obex-send");
+		if (cmd == NULL)
+			return FALSE;
+	}
 
 	conn = dbus_g_bus_get (DBUS_BUS_SYSTEM, &e);
 	if (e != NULL) {
@@ -377,7 +380,7 @@ send_files (NstPlugin *plugin, GtkWidget *contact_widget,
 		return FALSE;
 
 	argv = g_ptr_array_new ();
-	g_ptr_array_add (argv, "gnome-obex-send");
+	g_ptr_array_add (argv, cmd);
 	g_ptr_array_add (argv, "--dest");
 	g_ptr_array_add (argv, bdaddr);
 

@@ -1,3 +1,8 @@
+2008-01-18  Bastien Nocera  <hadess@hadess.net>
+
+	* src/plugins/bluetooth.c: (init), (send_files):
+	Allow using bluetooth-sendto as well as gnome-obex-sendto
+
 2007-12-29  Bastien Nocera  <hadess@hadess.net>
 
 	* src/plugins/pidgin.c: (add_pidgin_contacts_to_model):
