@@ -1,5 +1,10 @@
 2008-01-20  Bastien Nocera  <hadess@hadess.net>
 
+	* NEWS: upd
+	* configure.in: release 0.13
+
+2008-01-20  Bastien Nocera  <hadess@hadess.net>
+
 	* src/nautilus-sendto-command.c: (nautilus_sendto_plugin_init):
 	Try loading files from the uninstalled path when running in the
 	source tree
@@ -17,12 +22,6 @@
 
 	* src/nautilus-sendto.glade: Fix conflicting mnemonics
 	(Closes: #500409)
-
-2008-01-20  Bastien Nocera  <hadess@hadess.net>
-
-	reviewed by: <delete if not using a buddy>
-
-	* src/nautilus-sendto.glade:
 
 2008-01-20  Bastien Nocera  <hadess@hadess.net>
 

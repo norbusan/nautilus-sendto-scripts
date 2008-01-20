@@ -1,4 +1,17 @@
 =============
+Version 0.13
+=============
+
+Nautilus Sendto
+	* Fix a crash in the main code when the status label was being cleared
+	* Fix loading the Pidgin plugin
+	* Show ICQ/AIM and Bonjour buddies in the Pidgin plugin
+	* Fix conflicting mnemonics in the main UI
+	* Fix installation with the new gio-based Nautilus
+	* Pass the full name of the contact to Evolution when it's available
+	* Allow running nautilus-sendto uninstalled
+
+=============
 Version 0.12
 =============
 
