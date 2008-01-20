@@ -1,5 +1,16 @@
 2008-01-20  Bastien Nocera  <hadess@hadess.net>
 
+	* src/nautilus-sendto.glade: Fix conflicting mnemonics
+	(Closes: #500409)
+
+2008-01-20  Bastien Nocera  <hadess@hadess.net>
+
+	reviewed by: <delete if not using a buddy>
+
+	* src/nautilus-sendto.glade:
+
+2008-01-20  Bastien Nocera  <hadess@hadess.net>
+
 	* configure.in:
 	* src/Makefile.am: Fix installation of the nautilus extension
 	in the right directory for the gio version (Closes: #509969)
