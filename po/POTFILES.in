@@ -11,6 +11,7 @@ src/nautilus-sendto.glade
 src/plugins/balsa.c
 src/plugins/bluetooth.c
 src/plugins/evolution.c
+src/plugins/e-contact-entry.c
 src/plugins/gaim.c
 src/plugins/gajim.c
 src/plugins/pidgin.c
