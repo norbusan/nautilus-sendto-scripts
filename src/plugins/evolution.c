@@ -35,6 +35,7 @@
 
 static char *evo_cmd = NULL;
 static char *email = NULL;
+static char *name = NULL;
 
 static 
 gboolean init (NstPlugin *plugin)
@@ -74,6 +75,7 @@ void contacts_selected_cb (GtkWidget *entry, EContact *contact, const char *iden
 	char *text;
 
 	email = e_contact_get (contact, E_CONTACT_EMAIL_1);
+	name = e_contact_get (contact, E_CONTACT_NAME_OR_ORG);
 
 	text = g_strdup_printf (CONTACT_FORMAT, (char*)e_contact_get_const (contact, E_CONTACT_NAME_OR_ORG), email);
 	gtk_entry_set_text (GTK_ENTRY (entry), text);
@@ -86,6 +88,8 @@ state_change_cb (GtkWidget *entry, gboolean state, gpointer data)
 	if (state == FALSE) {
 		g_free (email);
 		email = NULL;
+		g_free (name);
+		name = NULL;
 	}
 }
 
@@ -149,7 +153,10 @@ gboolean send_files (NstPlugin *plugin, GtkWidget *contact_widget,
 	mailto = g_string_new ("mailto:");
 
 	if (email != NULL) {
-		g_string_append_printf (mailto, "%s", email);
+		if (name != NULL)
+			g_string_append_printf (mailto, "\""CONTACT_FORMAT"\"", name, email);
+		else
+			g_string_append_printf (mailto, "%s", email);
 	}else{
 		const char *text;
 
@@ -175,6 +182,10 @@ static
 gboolean destroy (NstPlugin *plugin){
 	g_free (evo_cmd);
 	evo_cmd = NULL;
+	g_free (name);
+	name = NULL;
+	g_free (email);
+	email = NULL;
 	return TRUE;
 }
 

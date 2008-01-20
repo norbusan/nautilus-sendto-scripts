@@ -37,6 +37,8 @@
 #define NAUTILUS_SENDTO_LAST_COMPRESS	NAUTILUS_SENDTO_GCONF"/last_compress"
 #define NAUTILUS_SENDTO_STATUS_LABEL_TIMEOUT 10000
 
+#define UNINSTALLED_PLUGINDIR "plugins/.libs"
+
 /* Options */
 static gchar *default_url = NULL;
 static char **filenames = NULL;
@@ -564,8 +566,14 @@ nautilus_sendto_plugin_init (void)
 	NstPlugin *p = NULL;
 	gboolean (*nst_init_plugin)(NstPlugin *p);
 	GError *err = NULL;
+	const char *plugindir;
 
-	dir = g_dir_open (PLUGINDIR, 0, &err);
+	if (g_file_test (UNINSTALLED_PLUGINDIR, G_FILE_TEST_IS_DIR) != FALSE)
+		plugindir = UNINSTALLED_PLUGINDIR;
+	else
+		plugindir = PLUGINDIR;
+
+	dir = g_dir_open (plugindir, 0, &err);
 
 	if (dir == NULL) {
 		g_warning ("Can't open the plugins dir: %s", err ? err->message : "No reason");
@@ -578,7 +586,7 @@ nautilus_sendto_plugin_init (void)
 				char *module_path;
 
 				p = g_new0(NstPlugin, 1);
-				module_path = g_module_build_path (PLUGINDIR, item);
+				module_path = g_module_build_path (plugindir, item);
 				p->module = g_module_open (module_path, G_MODULE_BIND_LAZY);
 			        if (!p->module) {
                 			g_warning ("error opening %s: %s", module_path, g_module_error ());
