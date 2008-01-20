@@ -1,3 +1,9 @@
+2008-01-20  Bastien Nocera  <hadess@hadess.net>
+
+	* configure.in:
+	* src/Makefile.am: Fix installation of the nautilus extension
+	in the right directory for the gio version (Closes: #509969)
+
 2008-01-18  Bastien Nocera  <hadess@hadess.net>
 
 	* src/plugins/bluetooth.c: (init), (send_files):

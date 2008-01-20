@@ -21,7 +21,7 @@ nautilus_sendto_SOURCES =			\
 
 nautilus_sendto_LDADD = $(NAUTILUS_SENDTO_LIBS)
 
-nautilus_extensiondir=$(libdir)/nautilus/extensions-1.0
+nautilus_extensiondir=$(NAUTILUS_EXTENSION_DIR)
 nautilus_extension_LTLIBRARIES=libnautilus-sendto.la
 libnautilus_sendto_la_SOURCES =		\
 	nautilus-nste.c			\

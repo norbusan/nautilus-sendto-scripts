@@ -60,6 +60,11 @@ PKG_CHECK_MODULES(NAUTILUS_EXT_SENDTO,\
 AC_SUBST(NAUTILUS_EXT_SENDTO_CFLAGS)
 AC_SUBST(NAUTILUS_EXT_SENDTO_LIBS)
 
+dnl Get nautilus extensions directory
+dnl ---------------------------------
+NAUTILUS_EXTENSION_DIR=`$PKG_CONFIG --variable=extensiondir libnautilus-extension`
+AC_SUBST(NAUTILUS_EXTENSION_DIR)
+
 dnl Libebook support
 dnl ---------------------------------
 
