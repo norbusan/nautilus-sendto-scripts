@@ -1,3 +1,10 @@
+===============
+Version 0.13.1
+===============
+
+Nautilus Sendto
+	* Remove unused gnome-vfs includes, fixes build with newer nautilus
+
 =============
 Version 0.13
 =============
