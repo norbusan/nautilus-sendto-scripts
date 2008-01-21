@@ -1,3 +1,7 @@
+2008-01-21  Bastien Nocera  <hadess@hadess.net>
+
+	* src/nautilus-nste.c: Remove gnome-vfs headers, they're unused
+
 2008-01-20  Bastien Nocera  <hadess@hadess.net>
 
 	* NEWS: upd

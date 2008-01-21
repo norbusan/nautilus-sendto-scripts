@@ -24,9 +24,6 @@
 #include <config.h>
 #include <string.h>
 #include <glib/gi18n-lib.h>
-#include <libgnomevfs/gnome-vfs-utils.h>
-#include <libgnomevfs/gnome-vfs-file-info.h>
-#include <libgnomevfs/gnome-vfs-ops.h>
 #include <libnautilus-extension/nautilus-extension-types.h>
 #include <libnautilus-extension/nautilus-file-info.h>
 #include <libnautilus-extension/nautilus-menu-provider.h>
