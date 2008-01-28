@@ -1,3 +1,9 @@
+2008-01-28  Marco Barisione  <marco@barisione.org>
+
+	* src/nautilus-sendto.glade:
+	* src/nautilus-nste.c: (nautilus_nste_get_file_items): use the
+	document-send icon in the dialog and in the nautilus menu
+
 2008-01-21  Bastien Nocera  <hadess@hadess.net>
 
 	* NEWS: upd

@@ -91,12 +91,12 @@ nautilus_nste_get_file_items (NautilusMenuProvider *provider,
 		item = nautilus_menu_item_new ("NautilusNste::sendto",
 					       _("Send to..."),
 					       _("Send file by mail, instant message..."),
-					       NULL);
+					       "document-send");
 	} else {
 		item = nautilus_menu_item_new ("NautilusNste::sendto",
 					       _("Send to..."),
 					       _("Send files by mail, instant message..."),
-					       NULL);
+					       "document-send");
 	}
   g_signal_connect (item, 
       "activate",
