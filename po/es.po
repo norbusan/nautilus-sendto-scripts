@@ -1,16 +1,15 @@
 # translation of nautilus-sendto.HEAD.es.po to Español
-# translation of nautilus-sendto to
 # This file is distributed under the same license as the PACKAGE package.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER, 2004.
+# Copyright (C) 2008 THE PACKAGE'S COPYRIGHT HOLDER, 2004.
 #
-# Jorge González <jorgegonz@svn.gnome.org>, 2007.
-# Jorge Gonzalez <jorgegonz@svn.gnome.org>, 2007.
+# Jorge González <jorgegonz@svn.gnome.org>, 2007, 2008.
+# Jesse Aviles <jesseaviles@gmail.com>, 2008.
 msgid ""
 msgstr ""
 "Project-Id-Version: nautilus-sendto.HEAD.es\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-11-16 20:04+0000\n"
-"PO-Revision-Date: 2007-11-21 15:01+0100\n"
+"POT-Creation-Date: 2008-01-20 14:12+0000\n"
+"PO-Revision-Date: 2008-01-27 10:37-0400\n"
 "Last-Translator: Jorge González <jorgegonz@svn.gnome.org>\n"
 "Language-Team: Spanish <traductores@es.gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -79,36 +78,36 @@ msgstr "Enviar un archivo por correo, por mensaje instantáneo..."
 msgid "Send files by mail, instant message..."
 msgstr "Enviar archivos por correo, por mensaje instantáneo..."
 
-#: ../src/nautilus-sendto-command.c:73
+#: ../src/nautilus-sendto-command.c:75
 msgid "Default folder to use"
 msgstr "Carpeta predeterminada a usar"
 
-#: ../src/nautilus-sendto-command.c:248
+#: ../src/nautilus-sendto-command.c:250
 msgid "You don't insert the package name"
 msgstr "No inserta el nombre del paquete"
 
-#: ../src/nautilus-sendto-command.c:509
+#: ../src/nautilus-sendto-command.c:511
 msgid "Files"
 msgstr "Archivos"
 
-#: ../src/nautilus-sendto-command.c:699
+#: ../src/nautilus-sendto-command.c:707
 msgid "Expects URIs or filenames to be passed as options\n"
 msgstr "Espera que se pasen como opciones URIs o nombres de archivo\n"
 
-#: ../src/nautilus-sendto-command.c:716
+#: ../src/nautilus-sendto-command.c:724
 msgid "Nautilus Sendto"
 msgstr "Nautilus Sendto"
 
-#: ../src/nautilus-sendto-command.c:720
+#: ../src/nautilus-sendto-command.c:728
 #, c-format
 msgid "Could not parse command-line options: %s\n"
 msgstr "No se pudieron analizar las opciones de la línea de comandos: %s\n"
 
-#: ../src/nautilus-sendto-command.c:735
+#: ../src/nautilus-sendto-command.c:743
 msgid "Could not load any plugins."
 msgstr "No se pudo cargar ningún complemento."
 
-#: ../src/nautilus-sendto-command.c:738
+#: ../src/nautilus-sendto-command.c:746
 msgid "Please verify your installation"
 msgstr "Por favor, compruebe su instalación"
 
@@ -129,36 +128,132 @@ msgid "Send _as:"
 msgstr "Enviar _como:"
 
 #: ../src/nautilus-sendto.glade.h:5
+msgid "Send _packed in:"
+msgstr "Enviar em_paquetado en:"
+
+#: ../src/nautilus-sendto.glade.h:6
 msgid "Send t_o:"
 msgstr "Enviar _a:"
 
-#: ../src/nautilus-sendto.glade.h:6
+#: ../src/nautilus-sendto.glade.h:7
 msgid "_Send"
 msgstr "_Enviar"
-
-#: ../src/nautilus-sendto.glade.h:7
-msgid "_Send packed in:"
-msgstr "_Enviar empaquetado en"
 
 #: ../src/plugins/balsa.c:103
 msgid "Email (Balsa)"
 msgstr "Correo-e (Balsa)"
 
-#: ../src/plugins/bluetooth.c:421
+#: ../src/plugins/bluetooth.c:424
 msgid "Programming error, could not find the device in the list"
 msgstr "Error de programación, no se pudo encontrar el dispositivo en la lista"
 
-#: ../src/plugins/bluetooth.c:442
+#: ../src/plugins/bluetooth.c:445
 msgid "Device does not support Obex File Transfer"
 msgstr "El dispositivo no soporta la transferencia de archivos OBEX"
 
-#: ../src/plugins/bluetooth.c:457
+#: ../src/plugins/bluetooth.c:460
 msgid "Bluetooth (OBEX Push)"
 msgstr "Bluetooth (OBEX Push)"
 
-#: ../src/plugins/evolution.c:273
+#: ../src/plugins/evolution.c:196
 msgid "Email (Evolution)"
 msgstr "Correo-e (Evolution)"
+
+#: ../src/plugins/e-contact-entry.c:158
+#, c-format
+msgid "Cannot get contact: %s"
+msgstr "No se puede obtener el contacto: %s"
+
+#: ../src/plugins/e-contact-entry.c:191
+#, c-format
+msgid "Could not find contact: %s"
+msgstr "No se puede encontrar el contacto: %s"
+
+#: ../src/plugins/e-contact-entry.c:417
+msgid "Cannot create searchable view."
+msgstr "No se puede crear una vista buscable."
+
+#: ../src/plugins/e-contact-entry.c:890
+msgid "Success"
+msgstr "Éxito"
+
+#: ../src/plugins/e-contact-entry.c:892
+msgid "An argument was invalid."
+msgstr "Un argumento era inválido."
+
+#: ../src/plugins/e-contact-entry.c:894
+msgid "The address book is busy."
+msgstr "La libreta direcciones está ocupada."
+
+#: ../src/plugins/e-contact-entry.c:896
+msgid "The address book is offline."
+msgstr "La libreta de direcciones está desconectada."
+
+#: ../src/plugins/e-contact-entry.c:898
+msgid "The address book does not exist."
+msgstr "La libreta de direcciones no existe."
+
+#: ../src/plugins/e-contact-entry.c:900
+msgid "The \"Me\" contact does not exist."
+msgstr "El contacto «Yo» no existe."
+
+#: ../src/plugins/e-contact-entry.c:902
+msgid "The address book is not loaded."
+msgstr "La libreta de direcciones no está cargado."
+
+#: ../src/plugins/e-contact-entry.c:904
+msgid "The address book is already loaded."
+msgstr "La libreta de direcciones ya está cargado."
+
+#: ../src/plugins/e-contact-entry.c:906
+msgid "Permission was denied when accessing the address book."
+msgstr "Se denegó el permiso al acceder a la libreta de direcciones."
+
+#: ../src/plugins/e-contact-entry.c:908
+msgid "The contact was not found."
+msgstr "No se encontró el contacto."
+
+#: ../src/plugins/e-contact-entry.c:910
+msgid "This contact ID already exists."
+msgstr "Este ID de contacto ya existe."
+
+#: ../src/plugins/e-contact-entry.c:912
+msgid "The protocol is not supported."
+msgstr "El protocolo no está soportado."
+
+#: ../src/plugins/e-contact-entry.c:914
+msgid "The operation was cancelled."
+msgstr "La operación se canceló."
+
+#: ../src/plugins/e-contact-entry.c:916
+msgid "The operation could not be cancelled."
+msgstr "La operación no pudo cancelarse."
+
+#: ../src/plugins/e-contact-entry.c:918
+msgid "The address book authentication failed."
+msgstr "Falló la verificación de la autenticidad de la libreta de direcciones."
+
+#: ../src/plugins/e-contact-entry.c:920
+msgid ""
+"Authentication is required to access the address book and was not given."
+msgstr ""
+"Se requiere autenticación para acceder a la libreta de direcciones y no se proporcionó."
+
+#: ../src/plugins/e-contact-entry.c:922
+msgid "A secure connection is not available."
+msgstr "No está disponible una conexión segura."
+
+#: ../src/plugins/e-contact-entry.c:924
+msgid "A CORBA error occurred whilst accessing the address book."
+msgstr "Ocurrió un error CORBA al acceder a la libreta de direcciones."
+
+#: ../src/plugins/e-contact-entry.c:926
+msgid "The address book source does not exist."
+msgstr "La fuente de la libreta de drirecciones no existe."
+
+#: ../src/plugins/e-contact-entry.c:928 ../src/plugins/e-contact-entry.c:931
+msgid "An unknown error occurred."
+msgstr "Ocurrió un error desconocido."
 
 #: ../src/plugins/gaim.c:228
 msgid "Instant Message (Gaim)"
@@ -188,7 +283,7 @@ msgstr "Destinatario desconocido."
 msgid "Instant Message (Gajim)"
 msgstr "Mensaje instantáneo (Gajim)"
 
-#: ../src/plugins/pidgin.c:228
+#: ../src/plugins/pidgin.c:239
 msgid "Instant Message (Pidgin)"
 msgstr "Mensaje instantáneo (Pidgin)"
 
@@ -199,4 +294,3 @@ msgstr "Correo-e (correo Claws)"
 #: ../src/plugins/thunderbird.c:102
 msgid "Email (Thunderbird)"
 msgstr "Correo-e (Thunderbird)"
-
