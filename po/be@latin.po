@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nautilus-sendto\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-12-01 13:43+0200\n"
-"PO-Revision-Date: 2006-12-09 13:45+0300\n"
+"POT-Creation-Date: 2008-02-01 12:48+0200\n"
+"PO-Revision-Date: 2008-02-01 12:55+0200\n"
 "Last-Translator: Ihar Hrachyshka <ihar.hrachyshka@gmail.com>\n"
 "Language-Team: Belarusian Latin <i18n@mova.org>\n"
 "MIME-Version: 1.0\n"
@@ -65,49 +65,48 @@ msgstr "Intehracyja z Nautilusam"
 msgid "Provides integration with Nautilus"
 msgstr "Intehruje z Nautilusam"
 
-#: ../src/nautilus-nste.c:95 ../src/nautilus-nste.c:100
+#: ../src/nautilus-nste.c:92 ../src/nautilus-nste.c:97
 msgid "Send to..."
 msgstr "Dašli da..."
 
-#: ../src/nautilus-nste.c:96
+#: ../src/nautilus-nste.c:93
 msgid "Send file by mail, instant message..."
 msgstr "Dašli fajł poštaj, imhniennym paviedamlenniem..."
 
-#: ../src/nautilus-nste.c:101
+#: ../src/nautilus-nste.c:98
 msgid "Send files by mail, instant message..."
 msgstr "Dašli fajły poštaj, imhniennym paviedamlenniem..."
 
-#: ../src/nautilus-sendto-command.c:73
+#: ../src/nautilus-sendto-command.c:75
 msgid "Default folder to use"
 msgstr "Zmoŭčany kataloh"
 
-#: ../src/nautilus-sendto-command.c:248
+#: ../src/nautilus-sendto-command.c:250
 msgid "You don't insert the package name"
 msgstr "Ty nia ŭvioŭ nazvy pakunka"
 
-#: ../src/nautilus-sendto-command.c:509
+#: ../src/nautilus-sendto-command.c:511
 msgid "Files"
 msgstr "Fajły"
 
-#: ../src/nautilus-sendto-command.c:699
-#, c-format
+#: ../src/nautilus-sendto-command.c:707
 msgid "Expects URIs or filenames to be passed as options\n"
 msgstr "Čakaje adrasoŭ (URI) ci nazvaŭ fajłaŭ, padadzienych jak opcyi\n"
 
-#: ../src/nautilus-sendto-command.c:716
+#: ../src/nautilus-sendto-command.c:724
 msgid "Nautilus Sendto"
 msgstr "Dasyłańnie Nautilusam"
 
-#: ../src/nautilus-sendto-command.c:720
+#: ../src/nautilus-sendto-command.c:728
 #, c-format
 msgid "Could not parse command-line options: %s\n"
 msgstr "Niemahčyma razabrać opcyi zahadnaha radka: %s\n"
 
-#: ../src/nautilus-sendto-command.c:735
+#: ../src/nautilus-sendto-command.c:743
 msgid "Could not load any plugins."
 msgstr "Niemahčyma zahruzić nivodnaha plugina."
 
-#: ../src/nautilus-sendto-command.c:738
+#: ../src/nautilus-sendto-command.c:746
 msgid "Please verify your installation"
 msgstr "Pravier svaju instalacyju"
 
@@ -128,37 +127,133 @@ msgid "Send _as:"
 msgstr "Dašli _jak:"
 
 #: ../src/nautilus-sendto.glade.h:5
+msgid "Send _packed in:"
+msgstr "_Dašli zapakavanym:"
+
+#: ../src/nautilus-sendto.glade.h:6
 msgid "Send t_o:"
 msgstr "Dašli _da:"
 
-#: ../src/nautilus-sendto.glade.h:6
+#: ../src/nautilus-sendto.glade.h:7
 msgid "_Send"
 msgstr "_Dašli"
-
-#: ../src/nautilus-sendto.glade.h:7
-msgid "_Send packed in:"
-msgstr "_Dašli zapakavanym:"
 
 #: ../src/plugins/balsa.c:103
 msgid "Email (Balsa)"
 msgstr "Email (Balsa)"
 
-#: ../src/plugins/bluetooth.c:421
+#: ../src/plugins/bluetooth.c:423
 msgid "Programming error, could not find the device in the list"
 msgstr "Pamyłka prahrameraŭ, niemahčyma znajści pryładu ŭ śpisie"
 
-#: ../src/plugins/bluetooth.c:442
-#, c-format
+#: ../src/plugins/bluetooth.c:444
 msgid "Device does not support Obex File Transfer"
 msgstr "Pryłada nie padtrymvaje pieradačy fajłaŭ Obex"
 
-#: ../src/plugins/bluetooth.c:457
+#: ../src/plugins/bluetooth.c:459
 msgid "Bluetooth (OBEX Push)"
 msgstr "Bluetooth (OBEX Push)"
 
-#: ../src/plugins/evolution.c:273
+#: ../src/plugins/evolution.c:196
 msgid "Email (Evolution)"
 msgstr "Email (Evolution)"
+
+#: ../src/plugins/e-contact-entry.c:158
+#, c-format
+msgid "Cannot get contact: %s"
+msgstr "Niemahčyma atrymać kantakt: %s"
+
+#: ../src/plugins/e-contact-entry.c:191
+#, c-format
+msgid "Could not find contact: %s"
+msgstr "Niemahčyma znajści kantakt: %s"
+
+#: ../src/plugins/e-contact-entry.c:417
+msgid "Cannot create searchable view."
+msgstr "Niemahčyma stvaryć vyhlad z mahčymaściu pošuku."
+
+#: ../src/plugins/e-contact-entry.c:890
+msgid "Success"
+msgstr "Pośpiech"
+
+#: ../src/plugins/e-contact-entry.c:892
+msgid "An argument was invalid."
+msgstr "Byŭ padadzieny niapravilny arhument."
+
+#: ../src/plugins/e-contact-entry.c:894
+msgid "The address book is busy."
+msgstr "Adrasnaja kniha zaniataja."
+
+#: ../src/plugins/e-contact-entry.c:896
+msgid "The address book is offline."
+msgstr "Adrasnaja kniha nia ŭklučanaja ŭ sietku."
+
+#: ../src/plugins/e-contact-entry.c:898
+msgid "The address book does not exist."
+msgstr "Adrasnaja kniha nie isnuje."
+
+#: ../src/plugins/e-contact-entry.c:900
+msgid "The \"Me\" contact does not exist."
+msgstr "Kantakt \"Ja\" nie isnuje."
+
+#: ../src/plugins/e-contact-entry.c:902
+msgid "The address book is not loaded."
+msgstr "Adrasnaja kniha nie zahružanaja."
+
+#: ../src/plugins/e-contact-entry.c:904
+msgid "The address book is already loaded."
+msgstr "Adrasnaja kniha ŭžo zahružanaja."
+
+#: ../src/plugins/e-contact-entry.c:906
+msgid "Permission was denied when accessing the address book."
+msgstr "Dostup da adrasnaj knihi zabaronieny."
+
+#: ../src/plugins/e-contact-entry.c:908
+msgid "The contact was not found."
+msgstr "Kantakt nia znojdzieny."
+
+#: ../src/plugins/e-contact-entry.c:910
+msgid "This contact ID already exists."
+msgstr "Kantakt z takim ID užo isnuje."
+
+#: ../src/plugins/e-contact-entry.c:912
+msgid "The protocol is not supported."
+msgstr "Pratakoł nie padtrymlivajecca."
+
+#: ../src/plugins/e-contact-entry.c:914
+msgid "The operation was cancelled."
+msgstr "Aperacyja anulavanaja."
+
+#: ../src/plugins/e-contact-entry.c:916
+msgid "The operation could not be cancelled."
+msgstr "Niemahčyma anulavać hetuju aperacyju."
+
+#: ../src/plugins/e-contact-entry.c:918
+msgid "The address book authentication failed."
+msgstr "Niaŭdałaja aŭtaryzacyja dla dostupu da adrasnaj knihi."
+
+#: ../src/plugins/e-contact-entry.c:920
+msgid ""
+"Authentication is required to access the address book and was not given."
+msgstr ""
+"Kab atrymać dostup da adrasnaj knihi, treba aŭtarayzavacca, ale źviestak "
+"aŭtaryzacyi nie było padadziena."
+
+#: ../src/plugins/e-contact-entry.c:922
+msgid "A secure connection is not available."
+msgstr "Bieśpiečnaje spałučeńnie niedastupnaje."
+
+#: ../src/plugins/e-contact-entry.c:924
+msgid "A CORBA error occurred whilst accessing the address book."
+msgstr "Padčas dostupu da adrasnaj knihi ŭźnikła pamyłka CORBA."
+
+#: ../src/plugins/e-contact-entry.c:926
+msgid "The address book source does not exist."
+msgstr "Krynica adrasnaj knihi nie isnuje."
+
+#: ../src/plugins/e-contact-entry.c:928 ../src/plugins/e-contact-entry.c:931
+msgid "An unknown error occurred."
+msgstr "Uźnikła nieviadomaja pamyłka."
 
 #: ../src/plugins/gaim.c:228
 msgid "Instant Message (Gaim)"
@@ -188,7 +283,7 @@ msgstr "Nieviadomy atrymoŭca."
 msgid "Instant Message (Gajim)"
 msgstr "Imhniennaje paviedamleńnie (Gajim)"
 
-#: ../src/plugins/pidgin.c:228
+#: ../src/plugins/pidgin.c:239
 msgid "Instant Message (Pidgin)"
 msgstr "Imhniennaje paviedamleńnie (Pidgin)"
 
