@@ -48,7 +48,6 @@ static gboolean
 init (NstPlugin *plugin)
 {
 	GError *e = NULL;
-	char *cmd;
 	DBusGConnection *conn;
 	const char *adapter;
 

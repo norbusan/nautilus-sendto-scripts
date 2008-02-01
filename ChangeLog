@@ -1,3 +1,9 @@
+2008-02-01  Bastien Nocera  <hadess@hadess.net>
+
+	* src/plugins/bluetooth.c: (init): Fix crash when sending
+	files via Bluetooth due to a shadowing declaration,
+	spotted by Kjell Braden <fnord@pentabarf.de> (Closes: #512254)
+
 2008-01-28  Marco Barisione  <marco@barisione.org>
 
 	* src/nautilus-sendto.glade:
