@@ -1,16 +1,14 @@
 # Swedish messages for nautilus-sendto.
-# Copyright (C) 2005, 2006, 2007 Free Software Foundation, Inc.
-# Daniel Nylander <po@danielnylander.se>, 2006, 2007.
+# Copyright (C) 2005, 2006, 2007, 2008 Free Software Foundation, Inc.
+# Daniel Nylander <po@danielnylander.se>, 2006, 2007, 2008.
 # Christian Rose <menthos@menthos.com>, 2005.
-#
-# $Id: sv.po,v 1.6 2006/07/16 15:59:39 dnylande Exp $
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: nautilus-sendto\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-11-19 21:56+0100\n"
-"PO-Revision-Date: 2007-11-19 21:56+0100\n"
+"POT-Creation-Date: 2008-02-07 08:22+0100\n"
+"PO-Revision-Date: 2008-02-07 08:27+0100\n"
 "Last-Translator: Daniel Nylander <po@danielnylander.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "MIME-Version: 1.0\n"
@@ -58,52 +56,52 @@ msgstr "Nautilus-integration"
 msgid "Provides integration with Nautilus"
 msgstr "Tillhandahåller integration med Nautilus"
 
-#: ../src/nautilus-nste.c:95
-#: ../src/nautilus-nste.c:100
+#: ../src/nautilus-nste.c:92
+#: ../src/nautilus-nste.c:97
 msgid "Send to..."
 msgstr "Skicka till..."
 
-#: ../src/nautilus-nste.c:96
+#: ../src/nautilus-nste.c:93
 msgid "Send file by mail, instant message..."
 msgstr "Skicka filen med e-post, snabbmeddelandeprogram..."
 
-#: ../src/nautilus-nste.c:101
+#: ../src/nautilus-nste.c:98
 msgid "Send files by mail, instant message..."
 msgstr "Skicka filerna med e-post, snabbmeddelandeprogram..."
 
-#: ../src/nautilus-sendto-command.c:73
+#: ../src/nautilus-sendto-command.c:75
 msgid "Default folder to use"
 msgstr "Standardmapp att använda"
 
 # Konstigt originalmeddelande... borde nog buggrapporteras.
 #
-#: ../src/nautilus-sendto-command.c:248
+#: ../src/nautilus-sendto-command.c:250
 msgid "You don't insert the package name"
 msgstr "Du infogar inte paketnamnet"
 
-#: ../src/nautilus-sendto-command.c:509
+#: ../src/nautilus-sendto-command.c:511
 msgid "Files"
 msgstr "Filer"
 
-#: ../src/nautilus-sendto-command.c:699
+#: ../src/nautilus-sendto-command.c:707
 #, c-format
 msgid "Expects URIs or filenames to be passed as options\n"
 msgstr "Förväntar URI:er eller filnamn att skickas som flaggor\n"
 
-#: ../src/nautilus-sendto-command.c:716
+#: ../src/nautilus-sendto-command.c:724
 msgid "Nautilus Sendto"
 msgstr "Nautilus Skickatill"
 
-#: ../src/nautilus-sendto-command.c:720
+#: ../src/nautilus-sendto-command.c:728
 #, c-format
 msgid "Could not parse command-line options: %s\n"
 msgstr "Kunde inte tolka kommandoradsflaggor: %s\n"
 
-#: ../src/nautilus-sendto-command.c:735
+#: ../src/nautilus-sendto-command.c:743
 msgid "Could not load any plugins."
 msgstr "Kunde inte läsa in några insticksmoduler."
 
-#: ../src/nautilus-sendto-command.c:738
+#: ../src/nautilus-sendto-command.c:746
 msgid "Please verify your installation"
 msgstr "Kontrollera din installation"
 
@@ -124,39 +122,134 @@ msgid "Send _as:"
 msgstr "Skicka s_om:"
 
 #: ../src/nautilus-sendto.glade.h:5
+msgid "Send _packed in:"
+msgstr "Skicka _paketerat i:"
+
+#: ../src/nautilus-sendto.glade.h:6
 msgid "Send t_o:"
 msgstr "Skicka _till:"
 
-#: ../src/nautilus-sendto.glade.h:6
+#: ../src/nautilus-sendto.glade.h:7
 msgid "_Send"
 msgstr "_Skicka"
-
-#: ../src/nautilus-sendto.glade.h:7
-msgid "_Send packed in:"
-msgstr "S_kicka paketerat i:"
 
 # Tror inte det ska skrivas så i originalet... borde buggrapporteras.
 #: ../src/plugins/balsa.c:103
 msgid "Email (Balsa)"
 msgstr "E-post (Balsa)"
 
-#: ../src/plugins/bluetooth.c:421
+#: ../src/plugins/bluetooth.c:423
 msgid "Programming error, could not find the device in the list"
 msgstr "Programmeringsfel, kunde inte hitta enheten i listan"
 
-#: ../src/plugins/bluetooth.c:442
+#: ../src/plugins/bluetooth.c:444
 #, c-format
 msgid "Device does not support Obex File Transfer"
 msgstr "Enheten saknar stöd för Obex File Transfer"
 
-#: ../src/plugins/bluetooth.c:457
+#: ../src/plugins/bluetooth.c:459
 msgid "Bluetooth (OBEX Push)"
 msgstr "Blåtand (OBEX Push)"
 
 # Tror inte det ska skrivas så i originalet... borde buggrapporteras.
-#: ../src/plugins/evolution.c:273
+#: ../src/plugins/evolution.c:196
 msgid "Email (Evolution)"
 msgstr "E-post (Evolution)"
+
+#: ../src/plugins/e-contact-entry.c:158
+#, c-format
+msgid "Cannot get contact: %s"
+msgstr "Kan inte hämta kontakt: %s"
+
+#: ../src/plugins/e-contact-entry.c:191
+#, c-format
+msgid "Could not find contact: %s"
+msgstr "Kunde inte hitta kontakt: %s"
+
+#: ../src/plugins/e-contact-entry.c:417
+msgid "Cannot create searchable view."
+msgstr "Kan inte skapa sökbar vy."
+
+#: ../src/plugins/e-contact-entry.c:890
+msgid "Success"
+msgstr "Lyckades"
+
+#: ../src/plugins/e-contact-entry.c:892
+msgid "An argument was invalid."
+msgstr "Ett argument var ogiltigt."
+
+#: ../src/plugins/e-contact-entry.c:894
+msgid "The address book is busy."
+msgstr "Adressboken är upptagen."
+
+#: ../src/plugins/e-contact-entry.c:896
+msgid "The address book is offline."
+msgstr "Adressboken är frånkopplad."
+
+#: ../src/plugins/e-contact-entry.c:898
+msgid "The address book does not exist."
+msgstr "Adressboken finns inte."
+
+#: ../src/plugins/e-contact-entry.c:900
+msgid "The \"Me\" contact does not exist."
+msgstr "Kontakten \"Mig\" finns inte."
+
+#: ../src/plugins/e-contact-entry.c:902
+msgid "The address book is not loaded."
+msgstr "Adressboken är inte inläst."
+
+#: ../src/plugins/e-contact-entry.c:904
+msgid "The address book is already loaded."
+msgstr "Adressboken är redan inläst."
+
+#: ../src/plugins/e-contact-entry.c:906
+msgid "Permission was denied when accessing the address book."
+msgstr "Åtkomst nekades vid åtkomst till adressboken."
+
+#: ../src/plugins/e-contact-entry.c:908
+msgid "The contact was not found."
+msgstr "Kontakten hittades inte."
+
+#: ../src/plugins/e-contact-entry.c:910
+msgid "This contact ID already exists."
+msgstr "Detta kontakt-id finns redan."
+
+#: ../src/plugins/e-contact-entry.c:912
+msgid "The protocol is not supported."
+msgstr "Protokollet stöds inte."
+
+#: ../src/plugins/e-contact-entry.c:914
+msgid "The operation was cancelled."
+msgstr "Åtgärden avbröts."
+
+#: ../src/plugins/e-contact-entry.c:916
+msgid "The operation could not be cancelled."
+msgstr "Åtgärden kunde inte avbrytas."
+
+#: ../src/plugins/e-contact-entry.c:918
+msgid "The address book authentication failed."
+msgstr "Autentisering mot adressboken misslyckades."
+
+#: ../src/plugins/e-contact-entry.c:920
+msgid "Authentication is required to access the address book and was not given."
+msgstr "Autentisering krävs för att komma åt adressboken men ingenting angavs."
+
+#: ../src/plugins/e-contact-entry.c:922
+msgid "A secure connection is not available."
+msgstr "En säker anslutning är inte tillgänglig."
+
+#: ../src/plugins/e-contact-entry.c:924
+msgid "A CORBA error occurred whilst accessing the address book."
+msgstr "Ett CORBA-fel inträffade vid åtkomst till adressboken."
+
+#: ../src/plugins/e-contact-entry.c:926
+msgid "The address book source does not exist."
+msgstr "Adressbokskällan finns inte."
+
+#: ../src/plugins/e-contact-entry.c:928
+#: ../src/plugins/e-contact-entry.c:931
+msgid "An unknown error occurred."
+msgstr "Ett okänt fel inträffade."
 
 #: ../src/plugins/gaim.c:228
 msgid "Instant Message (Gaim)"
@@ -187,7 +280,7 @@ msgstr "Okänd mottagare."
 msgid "Instant Message (Gajim)"
 msgstr "Snabbmeddelande (Gajim)"
 
-#: ../src/plugins/pidgin.c:228
+#: ../src/plugins/pidgin.c:239
 msgid "Instant Message (Pidgin)"
 msgstr "Snabbmeddelande (Pidgin)"
 
