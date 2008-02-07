@@ -1,4 +1,12 @@
 ===============
+Version 0.13.2
+===============
+
+Nautilus Sendto
+	* Fix a crasher when launching bluetooth-sendto
+	* Add a nice icon to the UI
+
+===============
 Version 0.13.1
 ===============
 
