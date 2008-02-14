@@ -1,18 +1,18 @@
-# translation of eu.po to Basque
-# Copyright (C) 2004-2006, 2007 Free Software Foundation, Inc.
+# translation of nautilus-sendto.HEAD.po to Basque
+# Copyright (C) 2004-2006, 2007, 2008 Free Software Foundation, Inc.
 # This file is distributed under the same license as the nautilus-sendto package.
 #
 # Mikel Olasagasti <hey_neken@mundurat.net>, 2005.
 # IÃ±aki LarraÃ±aga Murgoitio <dooteo@euskalgnu.org>, 2005, 2006.
-# Iñaki Larrañaga Murgoitio <dooteo@euskalgnu.org>, 2006.
+# Iñaki Larrañaga Murgoitio <dooteo@euskalgnu.org>, 2006, 2008.
 # Iñaki Larrañaga Murgoitio <dooteo@zundan.com>, 2007.
 msgid ""
 msgstr ""
-"Project-Id-Version: eu\n"
+"Project-Id-Version: nautilus-sendto.HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-08-09 21:24+0200\n"
-"PO-Revision-Date: 2007-08-09 21:32+0200\n"
-"Last-Translator: Iñaki Larrañaga Murgoitio <dooteo@zundan.com>\n"
+"POT-Creation-Date: 2008-02-14 16:16+0100\n"
+"PO-Revision-Date: 2008-02-13 17:33+0100\n"
+"Last-Translator: Iñaki Larrañaga Murgoitio <dooteo@euskalgnu.org>\n"
 "Language-Team: Basque <itzulpena@euskalgnu.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -32,13 +32,17 @@ msgstr "Erabilitako azken artxibo mota"
 msgid ""
 "Used to store which plugin was used the last time files were sent using "
 "nautilus-sendto."
-msgstr "Nautilus-sendto erabiltzean azken aldiko fitxategiak bidaltzean erabili zen plugin-a gordetzeko erabilita."
+msgstr ""
+"Nautilus-sendto erabiltzean azken aldiko fitxategiak bidaltzean erabili zen "
+"plugin-a gordetzeko erabilita."
 
 #: ../nst.schemas.in.h:4
 msgid ""
 "Used to store which type of archive was used the last time (0: zip, 1: tar."
 "gz, 2: tar.bz2)."
-msgstr "Azken aldian erabilitako artxibo motak gordetzeko erabilita (0:zip, 1: tar.gz, 2: tar.bz2)."
+msgstr ""
+"Azken aldian erabilitako artxibo motak gordetzeko erabilita (0:zip, 1: tar."
+"gz, 2: tar.bz2)."
 
 #. type
 #. ui requirement
@@ -46,120 +50,211 @@ msgstr "Azken aldian erabilitako artxibo motak gordetzeko erabilita (0:zip, 1: t
 #. dependencies
 #. priority
 #. id
-#: ../gaim_plugin/nautilus-sendto-plugin.c:303
+#: ../gaim_plugin/nautilus-sendto-plugin.c:308
+#: ../pidgin_plugin/nautilus-sendto-plugin.c:308
 msgid "Nautilus Integration"
 msgstr "Nautilus-en integrazioa"
 
 #. name
 #. version
 #. summary
-#: ../gaim_plugin/nautilus-sendto-plugin.c:305
-#: ../gaim_plugin/nautilus-sendto-plugin.c:306
+#. name
+#. version
+#. summary
+#: ../gaim_plugin/nautilus-sendto-plugin.c:310
+#: ../gaim_plugin/nautilus-sendto-plugin.c:311
+#: ../pidgin_plugin/nautilus-sendto-plugin.c:310
+#: ../pidgin_plugin/nautilus-sendto-plugin.c:311
 msgid "Provides integration with Nautilus"
 msgstr "Nautilusekin integratzea eskaintzen du"
 
-#: ../src/nautilus-nste.c:95 ../src/nautilus-nste.c:100
+#: ../src/nautilus-nste.c:92 ../src/nautilus-nste.c:97
 msgid "Send to..."
 msgstr "Bidali honi..."
 
-#: ../src/nautilus-nste.c:96
+#: ../src/nautilus-nste.c:93
 msgid "Send file by mail, instant message..."
-msgstr "Bidali fitxategia posta elektrikoz, berehalako mezularitza..."
+msgstr "Bidali fitxategia posta elektrikoz, berehalako mezularitzaz..."
 
-#: ../src/nautilus-nste.c:101
+#: ../src/nautilus-nste.c:98
 msgid "Send files by mail, instant message..."
-msgstr "Bidali fitxategiak posta elektrikoz, berehalako mezularitza..."
+msgstr "Bidali fitxategiak posta elektrikoz, berehalako mezularitzaz..."
 
-#: ../src/nautilus-sendto-command.c:73
+#: ../src/nautilus-sendto-command.c:75
 msgid "Default folder to use"
 msgstr "Erabiliko den lehenetsitako karpeta"
 
-#: ../src/nautilus-sendto-command.c:248
+#: ../src/nautilus-sendto-command.c:250
 msgid "You don't insert the package name"
 msgstr "Ez duzu paketearen izena idatzi"
 
-#: ../src/nautilus-sendto-command.c:508
+#: ../src/nautilus-sendto-command.c:511
 msgid "Files"
 msgstr "Fitxategiak"
 
-#: ../src/nautilus-sendto-command.c:698
+#: ../src/nautilus-sendto-command.c:707
 msgid "Expects URIs or filenames to be passed as options\n"
-msgstr "URIak edo fitxategi-izenak aukera gisa pasatzea espero du\n"
+msgstr "URIak edo fitxategi-izenak aukera gisa pasatzea espero da\n"
 
-#: ../src/nautilus-sendto-command.c:715
+#: ../src/nautilus-sendto-command.c:724
 msgid "Nautilus Sendto"
 msgstr "Nautilus Sendto"
 
-#: ../src/nautilus-sendto-command.c:719
+#: ../src/nautilus-sendto-command.c:728
 #, c-format
 msgid "Could not parse command-line options: %s\n"
 msgstr "Ezin izan da komando-lerroko aukerak analizatu: %s\n"
 
-#: ../src/nautilus-sendto-command.c:734
+#: ../src/nautilus-sendto-command.c:743
 msgid "Could not load any plugins."
 msgstr "Ezin izan da plugin-ik kargatu."
 
-#: ../src/nautilus-sendto-command.c:737
+#: ../src/nautilus-sendto-command.c:746
 msgid "Please verify your installation"
 msgstr "Egiaztatu instalazioa."
 
 #: ../src/nautilus-sendto.glade.h:1
-msgid ""
-".zip\n"
-".tar.gz\n"
-".tar.bz2"
-msgstr ""
-".zip\n"
-".tar.gz\n"
-".tar.bz2"
-
-#: ../src/nautilus-sendto.glade.h:4
 msgid "<b>Compression</b>"
 msgstr "<b>Konpresioa</b>"
 
-#: ../src/nautilus-sendto.glade.h:5
+#: ../src/nautilus-sendto.glade.h:2
 msgid "<b>Destination</b>"
 msgstr "<b>Helburua</b>"
 
-#: ../src/nautilus-sendto.glade.h:6
+#: ../src/nautilus-sendto.glade.h:3
 msgid "Send To..."
 msgstr "Bidali honi..."
 
-#: ../src/nautilus-sendto.glade.h:7
+#: ../src/nautilus-sendto.glade.h:4
 msgid "Send _as:"
 msgstr "Bidali _honela:"
 
-#: ../src/nautilus-sendto.glade.h:8
+#: ../src/nautilus-sendto.glade.h:5
+msgid "Send _packed in:"
+msgstr "Bidali hemen _enpaketatua:"
+
+#: ../src/nautilus-sendto.glade.h:6
 msgid "Send t_o:"
 msgstr "Bidali h_oni:"
 
-#: ../src/nautilus-sendto.glade.h:9
+#: ../src/nautilus-sendto.glade.h:7
 msgid "_Send"
 msgstr "_Bidali"
-
-#: ../src/nautilus-sendto.glade.h:10
-msgid "_Send packed in:"
-msgstr "Bidali hemen _enpaketatua:"
 
 #: ../src/plugins/balsa.c:103
 msgid "Email (Balsa)"
 msgstr "Posta (Balsa)"
 
-#: ../src/plugins/bluetooth.c:417
+#: ../src/plugins/bluetooth.c:423
 msgid "Programming error, could not find the device in the list"
 msgstr "Programazioko errorea, ezin izan da gailua bilatu zerrendan"
 
-#: ../src/plugins/bluetooth.c:438
+#: ../src/plugins/bluetooth.c:444
 msgid "Device does not support Obex File Transfer"
 msgstr "Gailuak ez du Obex fitxategi-transferentzia onartzen"
 
-#: ../src/plugins/bluetooth.c:453
+#: ../src/plugins/bluetooth.c:459
 msgid "Bluetooth (OBEX Push)"
 msgstr "Bluetooth (OBEX Push)"
 
-#: ../src/plugins/evolution.c:271
+#: ../src/plugins/evolution.c:196
 msgid "Email (Evolution)"
 msgstr "Posta (Evolution)"
+
+#: ../src/plugins/e-contact-entry.c:158
+#, c-format
+msgid "Cannot get contact: %s"
+msgstr "Ezin da kontaktua lortu: %s"
+
+#: ../src/plugins/e-contact-entry.c:191
+#, c-format
+msgid "Could not find contact: %s"
+msgstr "Ezin izan da kontaktua aurkitu: %s"
+
+#: ../src/plugins/e-contact-entry.c:417
+msgid "Cannot create searchable view."
+msgstr "Ezin da ikuspegi bilagaia sortu."
+
+#: ../src/plugins/e-contact-entry.c:890
+msgid "Success"
+msgstr "Ongi burutu da"
+
+#: ../src/plugins/e-contact-entry.c:892
+msgid "An argument was invalid."
+msgstr "Argumentu bat baliogabea da."
+
+#: ../src/plugins/e-contact-entry.c:894
+msgid "The address book is busy."
+msgstr "Helbide-liburua lanpetuta dago."
+
+#: ../src/plugins/e-contact-entry.c:896
+msgid "The address book is offline."
+msgstr "Helbide-liburua lineaz kanpo dago."
+
+#: ../src/plugins/e-contact-entry.c:898
+msgid "The address book does not exist."
+msgstr "Helbide-liburua ez da existitzen."
+
+#: ../src/plugins/e-contact-entry.c:900
+msgid "The \"Me\" contact does not exist."
+msgstr "\"Ni\" kontaktua ez da existitzen."
+
+#: ../src/plugins/e-contact-entry.c:902
+msgid "The address book is not loaded."
+msgstr "Helbide-liburua ez da kargatu."
+
+#: ../src/plugins/e-contact-entry.c:904
+msgid "The address book is already loaded."
+msgstr "Helbide-liburua jadanik kargatuta dago."
+
+#: ../src/plugins/e-contact-entry.c:906
+msgid "Permission was denied when accessing the address book."
+msgstr "Baimena ukatu egin da helbide-liburua atzitzean."
+
+#: ../src/plugins/e-contact-entry.c:908
+msgid "The contact was not found."
+msgstr "Kontaktua ez da aurkitu."
+
+#: ../src/plugins/e-contact-entry.c:910
+msgid "This contact ID already exists."
+msgstr "Kontaktuaren ID hau badago lehendik ere."
+
+#: ../src/plugins/e-contact-entry.c:912
+msgid "The protocol is not supported."
+msgstr "Protokoloa ez dago onartuta."
+
+#: ../src/plugins/e-contact-entry.c:914
+msgid "The operation was cancelled."
+msgstr "Eragiketa bertan behera utzi da."
+
+#: ../src/plugins/e-contact-entry.c:916
+msgid "The operation could not be cancelled."
+msgstr "Eragiketa ezin izan da bertan behera utzi."
+
+#: ../src/plugins/e-contact-entry.c:918
+msgid "The address book authentication failed."
+msgstr "Helbide-liburuaren autentifikazioak huts egin du."
+
+#: ../src/plugins/e-contact-entry.c:920
+msgid ""
+"Authentication is required to access the address book and was not given."
+msgstr "Autentifikazioa behar da helbide-liburua atzitzeko, eta ez da eman."
+
+#: ../src/plugins/e-contact-entry.c:922
+msgid "A secure connection is not available."
+msgstr "Konexio segurua ez dago erabilgarri."
+
+#: ../src/plugins/e-contact-entry.c:924
+msgid "A CORBA error occurred whilst accessing the address book."
+msgstr "CORBAren errorea gertatu da helbide-liburua atzitzean."
+
+#: ../src/plugins/e-contact-entry.c:926
+msgid "The address book source does not exist."
+msgstr "Helbide-liburuaren iturburua ez da existitzen."
+
+#: ../src/plugins/e-contact-entry.c:928 ../src/plugins/e-contact-entry.c:931
+msgid "An unknown error occurred."
+msgstr "Errore ezezaguna gertatu da."
 
 #: ../src/plugins/gaim.c:228
 msgid "Instant Message (Gaim)"
@@ -189,6 +284,10 @@ msgstr "Hartzaile ezezaguna."
 msgid "Instant Message (Gajim)"
 msgstr "Berehalako mezularitza (Gajim)"
 
+#: ../src/plugins/pidgin.c:239
+msgid "Instant Message (Pidgin)"
+msgstr "Berehalako mezularitza (Pidgin)"
+
 #: ../src/plugins/sylpheed-claws.c:131
 msgid "Email (Claws Mail)"
 msgstr "Posta (Claws posta)"
@@ -196,4 +295,3 @@ msgstr "Posta (Claws posta)"
 #: ../src/plugins/thunderbird.c:102
 msgid "Email (Thunderbird)"
 msgstr "Posta (Thunderbird)"
-
