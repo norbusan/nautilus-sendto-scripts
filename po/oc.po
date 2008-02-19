@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: oc\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-02-02 21:54+0100\n"
+"POT-Creation-Date: 2008-02-19 20:26+0100\n"
 "PO-Revision-Date: 2007-12-27 17:38+0100\n"
 "Last-Translator: Yannig Marchegay (Kokoyaya) <yannig@marchegay.org>\n"
 "Language-Team: Occitan <ubuntu-l10n-oci@lists.ubuntu.com>\n"
@@ -124,9 +124,9 @@ msgid "Send _as:"
 msgstr "Enviar _coma :"
 
 #: ../src/nautilus-sendto.glade.h:5
-#, fuzzy
+#
 msgid "Send _packed in:"
-msgstr "Enviar _coma :"
+msgstr ""
 
 #: ../src/nautilus-sendto.glade.h:6
 msgid "Send t_o:"
