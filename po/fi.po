@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nautilus-sendto\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-10-08 11:25+0300\n"
+"POT-Creation-Date: 2008-02-19 10:08+0300\n"
 "PO-Revision-Date: 2006-07-02 23:30+0300\n"
 "Last-Translator: Tommi Vainikainen <Tommi.Vainikainen@iki.fi>\n"
 "Language-Team: Finnish <gnome-fi-laatu@lists.sourceforge.net>\n"
@@ -64,49 +64,49 @@ msgstr "Nautilus-integraatio"
 msgid "Provides integration with Nautilus"
 msgstr "Tarjoaa integraation Nautilukseen"
 
-#: ../src/nautilus-nste.c:95 ../src/nautilus-nste.c:100
+#: ../src/nautilus-nste.c:92 ../src/nautilus-nste.c:97
 msgid "Send to..."
 msgstr "Lähetä..."
 
-#: ../src/nautilus-nste.c:96
+#: ../src/nautilus-nste.c:93
 msgid "Send file by mail, instant message..."
 msgstr "Lähetä tiedosto sähköpostilla, pikaviestimellä..."
 
-#: ../src/nautilus-nste.c:101
+#: ../src/nautilus-nste.c:98
 msgid "Send files by mail, instant message..."
 msgstr "Lähetä tiedostoja sähköpostilla, pikaviestimellä..."
 
-#: ../src/nautilus-sendto-command.c:73
+#: ../src/nautilus-sendto-command.c:75
 msgid "Default folder to use"
 msgstr "Käytettävä oletuskansio"
 
-#: ../src/nautilus-sendto-command.c:248
+#: ../src/nautilus-sendto-command.c:250
 msgid "You don't insert the package name"
 msgstr "Et antanut paketin nimeä"
 
-#: ../src/nautilus-sendto-command.c:509
+#: ../src/nautilus-sendto-command.c:511
 msgid "Files"
 msgstr "Tiedostot"
 
-#: ../src/nautilus-sendto-command.c:699
+#: ../src/nautilus-sendto-command.c:707
 #, c-format
 msgid "Expects URIs or filenames to be passed as options\n"
 msgstr "Olettaa parametreina annettavan URI:ja tai tiedostonimiä\n"
 
-#: ../src/nautilus-sendto-command.c:716
+#: ../src/nautilus-sendto-command.c:724
 msgid "Nautilus Sendto"
 msgstr "Nautilus-lähetä"
 
-#: ../src/nautilus-sendto-command.c:720
+#: ../src/nautilus-sendto-command.c:728
 #, c-format
 msgid "Could not parse command-line options: %s\n"
 msgstr "Komentorivivalitsimia ei voitu tulkita: %s\n"
 
-#: ../src/nautilus-sendto-command.c:735
+#: ../src/nautilus-sendto-command.c:743
 msgid "Could not load any plugins."
 msgstr "Liitännäisiä ei voitu ladata."
 
-#: ../src/nautilus-sendto-command.c:738
+#: ../src/nautilus-sendto-command.c:746
 msgid "Please verify your installation"
 msgstr "Tarkista asennuksesi"
 
@@ -127,37 +127,133 @@ msgid "Send _as:"
 msgstr "Lähetä _käyttäen:"
 
 #: ../src/nautilus-sendto.glade.h:5
+msgid "Send _packed in:"
+msgstr "Lähetä _paketoituna muotoon:"
+
+#: ../src/nautilus-sendto.glade.h:6
 msgid "Send t_o:"
 msgstr "Vastaan_ottaja:"
 
-#: ../src/nautilus-sendto.glade.h:6
+#: ../src/nautilus-sendto.glade.h:7
 msgid "_Send"
 msgstr "_Lähetä"
-
-#: ../src/nautilus-sendto.glade.h:7
-msgid "_Send packed in:"
-msgstr "Lähetä _paketoituna:"
 
 #: ../src/plugins/balsa.c:103
 msgid "Email (Balsa)"
 msgstr "Sähköposti (Balsa)"
 
-#: ../src/plugins/bluetooth.c:421
+#: ../src/plugins/bluetooth.c:423
 msgid "Programming error, could not find the device in the list"
 msgstr "Ohjelmointivirhe, laitetta ei löytynyt luettelosta"
 
-#: ../src/plugins/bluetooth.c:442
+#: ../src/plugins/bluetooth.c:444
 #, c-format
 msgid "Device does not support Obex File Transfer"
 msgstr "Laite ei tue Obex-tiedostonsiirtoa"
 
-#: ../src/plugins/bluetooth.c:457
+#: ../src/plugins/bluetooth.c:459
 msgid "Bluetooth (OBEX Push)"
 msgstr "Bluetooth (OBEX Push)"
 
-#: ../src/plugins/evolution.c:273
+#: ../src/plugins/evolution.c:196
 msgid "Email (Evolution)"
 msgstr "Sähköposti (Evolution)"
+
+#: ../src/plugins/e-contact-entry.c:158
+#, c-format
+msgid "Cannot get contact: %s"
+msgstr "Yhteystietoa ei voi hakea: %s"
+
+#: ../src/plugins/e-contact-entry.c:191
+#, c-format
+msgid "Could not find contact: %s"
+msgstr "Yhteystietoa ei löydy: %s"
+
+#: ../src/plugins/e-contact-entry.c:417
+msgid "Cannot create searchable view."
+msgstr "Etsittävää näkymää ei voi luoda."
+
+#: ../src/plugins/e-contact-entry.c:890
+msgid "Success"
+msgstr "Onnistui"
+
+#: ../src/plugins/e-contact-entry.c:892
+msgid "An argument was invalid."
+msgstr "Valitsin oli virheellinen."
+
+#: ../src/plugins/e-contact-entry.c:894
+msgid "The address book is busy."
+msgstr "Osoitekirja on varattu."
+
+#: ../src/plugins/e-contact-entry.c:896
+msgid "The address book is offline."
+msgstr "Osoitekirja on yhteydettömässä tilassa."
+
+#: ../src/plugins/e-contact-entry.c:898
+msgid "The address book does not exist."
+msgstr "Osoitekirjaa ei ole olemassa."
+
+#: ../src/plugins/e-contact-entry.c:900
+msgid "The \"Me\" contact does not exist."
+msgstr "Yhteystietoa \"Minä\" ei ole olemassa."
+
+#: ../src/plugins/e-contact-entry.c:902
+msgid "The address book is not loaded."
+msgstr "Osoitekirjaa ei ole ladattu."
+
+#: ../src/plugins/e-contact-entry.c:904
+msgid "The address book is already loaded."
+msgstr "Osoitekirja on jo ladattu."
+
+#: ../src/plugins/e-contact-entry.c:906
+msgid "Permission was denied when accessing the address book."
+msgstr "Pääsy osoitekirjaan evättiin."
+
+#: ../src/plugins/e-contact-entry.c:908
+msgid "The contact was not found."
+msgstr "Yhteystietoa ei löytynyt."
+
+#: ../src/plugins/e-contact-entry.c:910
+msgid "This contact ID already exists."
+msgstr "Tämä yhteystiedon tunniste on jo olemassa."
+
+#: ../src/plugins/e-contact-entry.c:912
+msgid "The protocol is not supported."
+msgstr "Protokolla ei ole tuettu."
+
+#: ../src/plugins/e-contact-entry.c:914
+msgid "The operation was cancelled."
+msgstr "Toiminto peruttiin."
+
+#: ../src/plugins/e-contact-entry.c:916
+msgid "The operation could not be cancelled."
+msgstr "Toimintoa ei voitu perua."
+
+#: ../src/plugins/e-contact-entry.c:918
+msgid "The address book authentication failed."
+msgstr "osoitekirjan vaatima tunnistautuminen epäonnistui."
+
+#: ../src/plugins/e-contact-entry.c:920
+msgid ""
+"Authentication is required to access the address book and was not given."
+msgstr ""
+"Osoitekirjan käyttö vaatii tunnistautumisen, mutta tietoja ei annettu." 
+
+#: ../src/plugins/e-contact-entry.c:922
+msgid "A secure connection is not available."
+msgstr "Suojattu yhteys ei ole saatavilla."
+
+#: ../src/plugins/e-contact-entry.c:924
+msgid "A CORBA error occurred whilst accessing the address book."
+msgstr "Tapahtui CORBA-virhe käsiteltäessä osoitekirjaa."
+
+#: ../src/plugins/e-contact-entry.c:926
+msgid "The address book source does not exist."
+msgstr "Osoitekirjan lähdettä ei ole olemassa."
+
+#: ../src/plugins/e-contact-entry.c:928 ../src/plugins/e-contact-entry.c:931
+msgid "An unknown error occurred."
+msgstr "Tapahtui tuntematon virhe."
 
 #: ../src/plugins/gaim.c:228
 msgid "Instant Message (Gaim)"
@@ -186,6 +282,10 @@ msgstr "Tuntematon vastaanottaja."
 #: ../src/plugins/gajim.c:488
 msgid "Instant Message (Gajim)"
 msgstr "Pikaviesti (Gajim)"
+
+#: ../src/plugins/pidgin.c:239
+msgid "Instant Message (Pidgin)"
+msgstr "Pikaviesti (Pidgin)"
 
 #: ../src/plugins/sylpheed-claws.c:131
 msgid "Email (Claws Mail)"
