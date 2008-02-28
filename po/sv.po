@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nautilus-sendto\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-02-07 08:22+0100\n"
-"PO-Revision-Date: 2008-02-07 08:27+0100\n"
+"POT-Creation-Date: 2008-02-28 19:21+0100\n"
+"PO-Revision-Date: 2008-02-28 19:21+0100\n"
 "Last-Translator: Daniel Nylander <po@danielnylander.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "MIME-Version: 1.0\n"
@@ -149,7 +149,7 @@ msgstr "Enheten saknar stöd för Obex File Transfer"
 
 #: ../src/plugins/bluetooth.c:459
 msgid "Bluetooth (OBEX Push)"
-msgstr "Blåtand (OBEX Push)"
+msgstr "Bluetooth (OBEX Push)"
 
 # Tror inte det ska skrivas så i originalet... borde buggrapporteras.
 #: ../src/plugins/evolution.c:196
