@@ -454,7 +454,7 @@ destroy (NstPlugin *plugin){
 
 static
 NstPluginInfo plugin_info = {
-	"stock_bluetooth",
+	"bluetooth",
 	"bluetooth",
 	N_("Bluetooth (OBEX Push)"),
 	TRUE,

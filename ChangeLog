@@ -1,3 +1,15 @@
+2008-03-01  Bastien Nocera  <hadess@hadess.net>
+
+	* configure.in: Some cleanups
+
+	* src/plugins/balsa.c:
+	* src/plugins/bluetooth.c:
+	* src/plugins/evolution.c:
+	* src/plugins/sylpheed-claws.c:
+	* src/plugins/thunderbird.c: Change the stock mail
+	icon to be "emblem-mail", and the bluetooth one to
+	"bluetooth" (Closes: #519094)
+
 2008-02-07  Bastien Nocera  <hadess@hadess.net>
 
 	* NEWS: upd

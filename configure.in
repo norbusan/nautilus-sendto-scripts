@@ -6,7 +6,7 @@ AM_CONFIG_HEADER(config.h)
 AM_INIT_AUTOMAKE([1.9 dist-bzip2 no-dist-gzip check-news])
 
 AM_MAINTAINER_MODE
-                                                                                
+
 AM_DISABLE_STATIC
 AC_PROG_CC
 AM_PROG_LIBTOOL
@@ -25,9 +25,7 @@ GLIB_REQUIRED=2.6.0
 GTK_REQUIRED=2.4.0
 GLADE_REQUIRED=2.5.1
 EBOOK_REQUIRED=1.5.3
-BONOBO_ACTIVATION_REQUIRED=2.13.0
-BONOBO_REQUIRED=2.13.0
-GNOME_REQUIRED=2.13.0
+GCONF_REQUIRED=2.13.0
 GAIM_REQUIRED=1.5.0
 PIDGIN_REQUIRED=2.0.0
 NAUTILUS_EXTENSION=2.13.3
@@ -36,12 +34,10 @@ DBUS_REQUIRED=0.60
 AC_SUBST(GLIB_REQUIRED)
 AC_SUBST(GTK_REQUIRED)
 AC_SUBST(GLADE_REQUIRED)
-AC_SUBST(GNOME_REQUIRED)
+AC_SUBST(GCONF_REQUIRED)
 AC_SUBST(EBOOK_REQUIRED)
 AC_SUBST(GAIM_REQUIRED)
 AC_SUBST(PIDGIN_REQUIRED)
-AC_SUBST(BONOBO_ACTIVATION_REQUIRED)
-AC_SUBST(BONOBO_REQUIRED)
 AC_SUBST(NAUTILUS_EXTENSION)
 AC_SUBST(BLUETOOTH_REQUIRED)
 AC_SUBST(DBUS_REQUIRED)
@@ -51,7 +47,7 @@ PKG_CHECK_MODULES(NAUTILUS_SENDTO,\
 	 gmodule-2.0 >= $GLIB_REQUIRED		  \
 	 gtk+-2.0    >= $GTK_REQUIRED             \
 	 libglade-2.0 >= $GLADE_REQUIRED            \
-	 gconf-2.0 >= $GNOME_REQUIRED)
+	 gconf-2.0 >= $GCONF_REQUIRED)
 AC_SUBST(NAUTILUS_SENDTO_CFLAGS)
 AC_SUBST(NAUTILUS_SENDTO_LIBS)
 
@@ -233,51 +229,51 @@ echo "-------------------------------------------------------"
 echo "                                                       "
 
 if test "x${enable_evolution}" = "xyes" ; then
-   echo "     Enable evolution plugin : YES"
+   echo " **  Enable evolution plugin : YES"
 else
    echo "     Enable evolution plugin : NO"
 fi
 
 if test "x${enable_gaim}" = "xyes" ; then
-   echo "     Enable gaim plugin : YES"
+   echo " **  Enable gaim plugin : YES"
 else
    echo "     Enable gaim plugin : NO"
 fi
 
 if test "x${enable_pidgin}" = "xyes" ; then
-   echo "     Enable pidgin plugin : YES"
+   echo " **  Enable pidgin plugin : YES"
 else
    echo "     Enable pidgin plugin : NO"
 fi
 
 if test "x${enable_bluetooth}" = "xyes" ; then
-   echo "     Enable bluetooth plugin : YES"
+   echo " **  Enable bluetooth plugin : YES"
 else
    echo "     Enable bluetooth plugin : NO"
 fi
 
 if test "x${enable_balsa}" = "xyes" ; then
-   echo "     Enable balsa plugin : YES"
+   echo " **  Enable balsa plugin : YES"
 else
    echo "     Enable balsa plugin (under development, don't support attachments) : NO"
 fi
 
 if test "x${enable_sylpheed}" = "xyes" ; then
-   echo "     Enable sylpheed plugin : YES"
+   echo " **  Enable sylpheed plugin : YES"
 else
    echo "     Enable sylpheed plugin : NO"
 fi
 
 if test "x${enable_thunderbird}" = "xyes" ; then
-   echo "     Enable thunderbird plugin : YES"
+   echo " **  Enable thunderbird plugin : YES"
 else
    echo "     Enable thunderbird plugin (under development, don't support attachments) : NO"
 fi
 
 if test "x${enable_gajim}" = "xyes" ; then
-   echo "     Enable gajim plugin : YES"
+   echo " **  Enable gajim plugin : YES"
 else
-   echo "     Enable gajim plugin : NO"
+   echo " **  Enable gajim plugin : NO"
 fi
 
 echo "                                                       "

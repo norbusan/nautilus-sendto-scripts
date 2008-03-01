@@ -97,7 +97,7 @@ gboolean destroy (NstPlugin *plugin){
 
 static 
 NstPluginInfo plugin_info = {
-	"stock_mail",
+	"emblem-mail",
 	"thunderbird",
 	N_("Email (Thunderbird)"),
 	FALSE,
