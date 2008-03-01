@@ -1,5 +1,12 @@
 2008-03-01  Bastien Nocera  <hadess@hadess.net>
 
+	* src/nautilus-sendto.glade: Patch from
+	Michael Monreal <michael.monreal@gmx.net>
+	to fix the application icon not being set
+	(Closes: #519105)
+
+2008-03-01  Bastien Nocera  <hadess@hadess.net>
+
 	* configure.in: Some cleanups
 
 	* src/plugins/balsa.c:

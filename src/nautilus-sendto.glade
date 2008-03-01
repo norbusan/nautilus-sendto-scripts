@@ -77,7 +77,7 @@
 		      <child>
 			<widget class="GtkImage" id="image1">
 			  <property name="visible">True</property>
-			  <property name="stock">document-send</property>
+			  <property name="icon_name">document-send</property>
 			  <property name="icon_size">4</property>
 			  <property name="xalign">0.5</property>
 			  <property name="yalign">0.5</property>
