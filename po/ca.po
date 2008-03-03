@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nautilus-sendto\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-09-23 14:38+0200\n"
-"PO-Revision-Date: 2007-09-20 09:04+0100\n"
+"POT-Creation-Date: 2008-03-04 00:35+0100\n"
+"PO-Revision-Date: 2008-02-22 18:46+0100\n"
 "Last-Translator: Gil Forcada <gilforcada@guifi.net>\n"
 "Language-Team: Catalan <tradgnome@softcatala.org>\n"
 "MIME-Version: 1.0\n"
@@ -64,49 +64,49 @@ msgstr "Integració amb el Nautilus"
 msgid "Provides integration with Nautilus"
 msgstr "Proporciona integració amb el Nautilus"
 
-#: ../src/nautilus-nste.c:95 ../src/nautilus-nste.c:100
+#: ../src/nautilus-nste.c:92 ../src/nautilus-nste.c:97
 msgid "Send to..."
 msgstr "Envia a..."
 
-#: ../src/nautilus-nste.c:96
+#: ../src/nautilus-nste.c:93
 msgid "Send file by mail, instant message..."
 msgstr "Envia un fitxer per correu electrònic, missatgeria instantània..."
 
-#: ../src/nautilus-nste.c:101
+#: ../src/nautilus-nste.c:98
 msgid "Send files by mail, instant message..."
 msgstr "Envia els fitxers per correu electrònic, missatgeria instantània..."
 
-#: ../src/nautilus-sendto-command.c:73
+#: ../src/nautilus-sendto-command.c:75
 msgid "Default folder to use"
 msgstr "Directori per defecte a utilitzar"
 
-#: ../src/nautilus-sendto-command.c:248
+#: ../src/nautilus-sendto-command.c:250
 msgid "You don't insert the package name"
 msgstr "No heu entrat el nom del paquet"
 
-#: ../src/nautilus-sendto-command.c:509
+#: ../src/nautilus-sendto-command.c:511
 msgid "Files"
 msgstr "Fitxers"
 
-#: ../src/nautilus-sendto-command.c:699
+#: ../src/nautilus-sendto-command.c:707
 #, c-format
 msgid "Expects URIs or filenames to be passed as options\n"
 msgstr "Espera que es passin com a opcions els URI o noms de fitxers\n"
 
-#: ../src/nautilus-sendto-command.c:716
+#: ../src/nautilus-sendto-command.c:724
 msgid "Nautilus Sendto"
 msgstr "Enviador Nautilus"
 
-#: ../src/nautilus-sendto-command.c:720
+#: ../src/nautilus-sendto-command.c:728
 #, c-format
 msgid "Could not parse command-line options: %s\n"
 msgstr "No s'ha pogut analitzar les opcions de línia d'ordres: %s\n"
 
-#: ../src/nautilus-sendto-command.c:735
+#: ../src/nautilus-sendto-command.c:743
 msgid "Could not load any plugins."
 msgstr "No s'ha pogut carregar cap connector."
 
-#: ../src/nautilus-sendto-command.c:738
+#: ../src/nautilus-sendto-command.c:746
 msgid "Please verify your installation"
 msgstr "Comproveu la vostra instal·lació"
 
@@ -127,38 +127,136 @@ msgid "Send _as:"
 msgstr "Envia com _a:"
 
 #: ../src/nautilus-sendto.glade.h:5
+msgid "Send _packed in:"
+msgstr "Envia _empaquetat en:"
+
+#: ../src/nautilus-sendto.glade.h:6
 msgid "Send t_o:"
 msgstr "E_nvia a:"
 
-#: ../src/nautilus-sendto.glade.h:6
+#: ../src/nautilus-sendto.glade.h:7
 msgid "_Send"
 msgstr "En_via"
-
-#: ../src/nautilus-sendto.glade.h:7
-msgid "_Send packed in:"
-msgstr "Envia _empaquetat en:"
 
 #: ../src/plugins/balsa.c:103
 msgid "Email (Balsa)"
 msgstr "Correu electrònic (Balsa)"
 
-#: ../src/plugins/bluetooth.c:421
+#: ../src/plugins/bluetooth.c:423
 msgid "Programming error, could not find the device in the list"
 msgstr "Error de programació, no s'ha pogut trobar el dispositiu a la llista"
 
-#: ../src/plugins/bluetooth.c:442
+#: ../src/plugins/bluetooth.c:444
 #, c-format
 msgid "Device does not support Obex File Transfer"
-msgstr ""
-"El dispositiu no permet la transferència de fitxers per Obex"
+msgstr "El dispositiu no permet la transferència de fitxers per Obex"
 
-#: ../src/plugins/bluetooth.c:457
+#: ../src/plugins/bluetooth.c:459
 msgid "Bluetooth (OBEX Push)"
 msgstr "Bluetooth (OBEX Push)"
 
-#: ../src/plugins/evolution.c:273
+#: ../src/plugins/evolution.c:196
 msgid "Email (Evolution)"
 msgstr "Correu electrònic (Evolution)"
+
+#: ../src/plugins/e-contact-entry.c:158
+#, c-format
+msgid "Cannot get contact: %s"
+msgstr "No s'ha pogut obtenir el contacte: %s"
+
+#: ../src/plugins/e-contact-entry.c:191
+#, c-format
+msgid "Could not find contact: %s"
+msgstr "No s'ha trobat el contacte: %s"
+
+#: ../src/plugins/e-contact-entry.c:417
+msgid "Cannot create searchable view."
+msgstr "No s'ha pogut crear una visualització cercable."
+
+#: ../src/plugins/e-contact-entry.c:890
+msgid "Success"
+msgstr "Finalitzat"
+
+#: ../src/plugins/e-contact-entry.c:892
+msgid "An argument was invalid."
+msgstr "Un argument era no vàlid."
+
+#: ../src/plugins/e-contact-entry.c:894
+msgid "The address book is busy."
+msgstr "La llibreta d'adreces està ocupada."
+
+#: ../src/plugins/e-contact-entry.c:896
+msgid "The address book is offline."
+msgstr "La llibreta d'adreces està fora de línia."
+
+#: ../src/plugins/e-contact-entry.c:898
+msgid "The address book does not exist."
+msgstr "No existeix la llibreta d'adreces."
+
+# FIXME
+#: ../src/plugins/e-contact-entry.c:900
+msgid "The \"Me\" contact does not exist."
+msgstr "No existeix el contacte «Jo»."
+
+#: ../src/plugins/e-contact-entry.c:902
+msgid "The address book is not loaded."
+msgstr "No està carregada la llibreta d'adreces."
+
+#: ../src/plugins/e-contact-entry.c:904
+msgid "The address book is already loaded."
+msgstr "Ja està carregada la llibreta d'adreces."
+
+#: ../src/plugins/e-contact-entry.c:906
+msgid "Permission was denied when accessing the address book."
+msgstr "S'ha denegat el permís per a accedir a la llibreta d'adreces."
+
+#: ../src/plugins/e-contact-entry.c:908
+msgid "The contact was not found."
+msgstr "No s'ha trobat el contacte."
+
+#: ../src/plugins/e-contact-entry.c:910
+msgid "This contact ID already exists."
+msgstr "Ja existeix l'identificador del contacte."
+
+#: ../src/plugins/e-contact-entry.c:912
+msgid "The protocol is not supported."
+msgstr "El protocol no està implementat."
+
+#: ../src/plugins/e-contact-entry.c:914
+msgid "The operation was cancelled."
+msgstr "S'ha cancel·lat l'operació."
+
+#: ../src/plugins/e-contact-entry.c:916
+msgid "The operation could not be cancelled."
+msgstr "No s'ha pogut cancel·lar l'operació."
+
+#: ../src/plugins/e-contact-entry.c:918
+msgid "The address book authentication failed."
+msgstr "Ha fallat l'autenticació de la llibreta d'adreces."
+
+#: ../src/plugins/e-contact-entry.c:920
+msgid ""
+"Authentication is required to access the address book and was not given."
+msgstr ""
+"Es requereix autenticació per a accedir a la llibreta d'adreces i no s'ha "
+"proporcionat."
+
+#: ../src/plugins/e-contact-entry.c:922
+msgid "A secure connection is not available."
+msgstr "No està disponible una connexió segura."
+
+#: ../src/plugins/e-contact-entry.c:924
+msgid "A CORBA error occurred whilst accessing the address book."
+msgstr ""
+"S'ha produït un error de CORBA mentre s'accedia a la llibreta d'adreces."
+
+#: ../src/plugins/e-contact-entry.c:926
+msgid "The address book source does not exist."
+msgstr "No existeix la font de la llibreta d'adreces."
+
+#: ../src/plugins/e-contact-entry.c:928 ../src/plugins/e-contact-entry.c:931
+msgid "An unknown error occurred."
+msgstr "S'ha produït un error desconegut."
 
 #: ../src/plugins/gaim.c:228
 msgid "Instant Message (Gaim)"
@@ -187,6 +285,10 @@ msgstr "Destinatari desconegut."
 #: ../src/plugins/gajim.c:488
 msgid "Instant Message (Gajim)"
 msgstr "Missatgeria instantània (Gajim)"
+
+#: ../src/plugins/pidgin.c:239
+msgid "Instant Message (Pidgin)"
+msgstr "Missatgeria instantània (Pidgin)"
 
 #: ../src/plugins/sylpheed-claws.c:131
 msgid "Email (Claws Mail)"
