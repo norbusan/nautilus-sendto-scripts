@@ -34,8 +34,8 @@ msgid ""
 "Used to store which plugin was used the last time files were sent using "
 "nautilus-sendto."
 msgstr ""
-"Čia saugoma, koks įskiepis buvo naudotas, kai paskutinį kartą buvo "
-"siunčiamos rinkmenos naudojant nautilus-sendto."
+"Čia saugoma, koks įskiepis buvo naudotas, kai paskutinį kartą buvo siunčiami "
+"failai naudojant nautilus-sendto."
 
 #: ../nst.schemas.in.h:4
 msgid ""
@@ -75,11 +75,11 @@ msgstr "Siųsti į..."
 
 #: ../src/nautilus-nste.c:93
 msgid "Send file by mail, instant message..."
-msgstr "Siųsti rinkmeną paštu, skubia žinute..."
+msgstr "Siųsti failą paštu, skubia žinute..."
 
 #: ../src/nautilus-nste.c:98
 msgid "Send files by mail, instant message..."
-msgstr "Siųsti rinkmenas paštu, skubia žinute..."
+msgstr "Siųsti failus paštu, skubia žinute..."
 
 #: ../src/nautilus-sendto-command.c:75
 msgid "Default folder to use"
@@ -91,12 +91,12 @@ msgstr "Jūs nenurodėte paketo pavadinimo"
 
 #: ../src/nautilus-sendto-command.c:511
 msgid "Files"
-msgstr "Rinkmenos"
+msgstr "Failai"
 
 #: ../src/nautilus-sendto-command.c:707
 #, c-format
 msgid "Expects URIs or filenames to be passed as options\n"
-msgstr "Tikimasi URI arba rinkmenų pavadinimų nurodytų kaip parinktys\n"
+msgstr "Tikimasi URI arba failų pavadinimų nurodytų kaip parinktys\n"
 
 #: ../src/nautilus-sendto-command.c:724
 msgid "Nautilus Sendto"
@@ -155,7 +155,7 @@ msgstr "Programavimo klaida, nepavyko rasti sąraše esančio įrenginio"
 #: ../src/plugins/bluetooth.c:444
 #, c-format
 msgid "Device does not support Obex File Transfer"
-msgstr "Įrenginys nepalaiko Obex Rinkmenų Persiuntimo"
+msgstr "Įrenginys nepalaiko Obex failų persiuntimo"
 
 #: ../src/plugins/bluetooth.c:459
 msgid "Bluetooth (OBEX Push)"
@@ -266,7 +266,7 @@ msgstr "Skubia žinute (Gaim)"
 
 #: ../src/plugins/gajim.c:402
 msgid "Unable to send file"
-msgstr "Nepavyko išsiųsti rinkmenos"
+msgstr "Nepavyko išsiųsti failo"
 
 #: ../src/plugins/gajim.c:403
 msgid "There is no connection to gajim remote service."
@@ -274,7 +274,7 @@ msgstr "Nėra ryšio su gajim nutolusia paslauga."
 
 #: ../src/plugins/gajim.c:427 ../src/plugins/gajim.c:466
 msgid "Sending file failed"
-msgstr "Išsiųsti rinkmenos nepavyko"
+msgstr "Išsiųsti failo nepavyko"
 
 #: ../src/plugins/gajim.c:428
 msgid "Recipient is missing."
