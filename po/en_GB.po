@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nautilus-sendto\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-03-11 23:29+0000\n"
-"PO-Revision-Date: 2007-03-11 23:29-0000\n"
+"POT-Creation-Date: 2008-03-09 19:00+0000\n"
+"PO-Revision-Date: 2008-03-09 19:00+0000\n"
 "Last-Translator: David Lodge <dave@cirt.net>\n"
 "Language-Team: English (British) <en@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -24,12 +24,20 @@ msgid "Last type of archive used"
 msgstr "Last type of archive used"
 
 #: ../nst.schemas.in.h:3
-msgid "Used to store which plugin was used the last time files were sent using nautilus-sendto."
-msgstr "Used to store which plugin was used the last time files were sent using nautilus-sendto."
+msgid ""
+"Used to store which plugin was used the last time files were sent using "
+"nautilus-sendto."
+msgstr ""
+"Used to store which plugin was used the last time files were sent using "
+"nautilus-sendto."
 
 #: ../nst.schemas.in.h:4
-msgid "Used to store which type of archive was used the last time (0: zip, 1: tar.gz, 2: tar.bz2)."
-msgstr "Used to store which type of archive was used the last time (0: zip, 1: tar.gz, 2: tar.bz2)."
+msgid ""
+"Used to store which type of archive was used the last time (0: zip, 1: tar."
+"gz, 2: tar.bz2)."
+msgstr ""
+"Used to store which type of archive was used the last time (0: zip, 1: tar."
+"gz, 2: tar.bz2)."
 
 #. type
 #. ui requirement
@@ -37,103 +45,95 @@ msgstr "Used to store which type of archive was used the last time (0: zip, 1: t
 #. dependencies
 #. priority
 #. id
-#: ../gaim_plugin/nautilus-sendto-plugin.c:303
+#: ../gaim_plugin/nautilus-sendto-plugin.c:308
+#: ../pidgin_plugin/nautilus-sendto-plugin.c:308
 msgid "Nautilus Integration"
 msgstr "Nautilus Integration"
 
 #. name
 #. version
 #. summary
-#: ../gaim_plugin/nautilus-sendto-plugin.c:305
-#: ../gaim_plugin/nautilus-sendto-plugin.c:306
+#. name
+#. version
+#. summary
+#: ../gaim_plugin/nautilus-sendto-plugin.c:310
+#: ../gaim_plugin/nautilus-sendto-plugin.c:311
+#: ../pidgin_plugin/nautilus-sendto-plugin.c:310
+#: ../pidgin_plugin/nautilus-sendto-plugin.c:311
 msgid "Provides integration with Nautilus"
 msgstr "Provides integration with Nautilus"
 
-#: ../src/nautilus-nste.c:95
-#: ../src/nautilus-nste.c:100
+#: ../src/nautilus-nste.c:92 ../src/nautilus-nste.c:97
 msgid "Send to..."
 msgstr "Send to..."
 
-#: ../src/nautilus-nste.c:96
+#: ../src/nautilus-nste.c:93
 msgid "Send file by mail, instant message..."
 msgstr "Send file by mail, instant message..."
 
-#: ../src/nautilus-nste.c:101
+#: ../src/nautilus-nste.c:98
 msgid "Send files by mail, instant message..."
 msgstr "Send files by mail, instant message..."
 
-#: ../src/nautilus-sendto-command.c:71
+#: ../src/nautilus-sendto-command.c:75
 msgid "Default folder to use"
 msgstr "Default folder to use"
 
-#: ../src/nautilus-sendto-command.c:246
+#: ../src/nautilus-sendto-command.c:250
 msgid "You don't insert the package name"
 msgstr "You don't insert the package name"
 
-#: ../src/nautilus-sendto-command.c:502
+#: ../src/nautilus-sendto-command.c:511
 msgid "Files"
 msgstr "Files"
 
-#: ../src/nautilus-sendto-command.c:692
+#: ../src/nautilus-sendto-command.c:707
+#, c-format
 msgid "Expects URIs or filenames to be passed as options\n"
 msgstr "Expects URIs or filenames to be passed as options\n"
 
-#: ../src/nautilus-sendto-command.c:709
+#: ../src/nautilus-sendto-command.c:724
 msgid "Nautilus Sendto"
 msgstr "Nautilus Sendto"
 
-#: ../src/nautilus-sendto-command.c:713
+#: ../src/nautilus-sendto-command.c:728
 #, c-format
 msgid "Could not parse command-line options: %s\n"
 msgstr "Could not parse command-line options: %s\n"
 
-#: ../src/nautilus-sendto-command.c:728
+#: ../src/nautilus-sendto-command.c:743
 msgid "Could not load any plugins."
 msgstr "Could not load any plugins."
 
-#: ../src/nautilus-sendto-command.c:731
+#: ../src/nautilus-sendto-command.c:746
 msgid "Please verify your installation"
 msgstr "Please verify your installation"
 
 #: ../src/nautilus-sendto.glade.h:1
-msgid " "
-msgstr " "
-
-#: ../src/nautilus-sendto.glade.h:2
-msgid ""
-".zip\n"
-".tar.gz\n"
-".tar.bz2"
-msgstr ""
-".zip\n"
-".tar.gz\n"
-".tar.bz2"
-
-#: ../src/nautilus-sendto.glade.h:5
 msgid "<b>Compression</b>"
 msgstr "<b>Compression</b>"
 
-#: ../src/nautilus-sendto.glade.h:6
+#: ../src/nautilus-sendto.glade.h:2
 msgid "<b>Destination</b>"
 msgstr "<b>Destination</b>"
 
-#: ../src/nautilus-sendto.glade.h:7
+#: ../src/nautilus-sendto.glade.h:3
 msgid "Send To..."
 msgstr "Send To..."
 
-#: ../src/nautilus-sendto.glade.h:8
-msgid "Send as:"
-msgstr "Send as:"
+#: ../src/nautilus-sendto.glade.h:4
+msgid "Send _as:"
+msgstr "Send _as:"
 
-#: ../src/nautilus-sendto.glade.h:9
-msgid "Send packed in"
-msgstr "Send packed in"
+#: ../src/nautilus-sendto.glade.h:5
+msgid "Send _packed in:"
+msgstr "Send _packed in:"
 
-#: ../src/nautilus-sendto.glade.h:10
-msgid "Send to:"
-msgstr "Send to:"
+#: ../src/nautilus-sendto.glade.h:6
+msgid "Send t_o:"
+msgstr "Send t_o:"
 
-#: ../src/nautilus-sendto.glade.h:11
+#: ../src/nautilus-sendto.glade.h:7
 msgid "_Send"
 msgstr "_Send"
 
@@ -141,21 +141,118 @@ msgstr "_Send"
 msgid "Email (Balsa)"
 msgstr "Email (Balsa)"
 
-#: ../src/plugins/bluetooth.c:426
+#: ../src/plugins/bluetooth.c:423
 msgid "Programming error, could not find the device in the list"
 msgstr "Programming error, could not find the device in the list"
 
-#: ../src/plugins/bluetooth.c:447
+#: ../src/plugins/bluetooth.c:444
+#, c-format
 msgid "Device does not support Obex File Transfer"
 msgstr "Device does not support Obex File Transfer"
 
-#: ../src/plugins/bluetooth.c:462
+#: ../src/plugins/bluetooth.c:459
 msgid "Bluetooth (OBEX Push)"
 msgstr "Bluetooth (OBEX Push)"
 
-#: ../src/plugins/evolution.c:271
+#: ../src/plugins/evolution.c:196
 msgid "Email (Evolution)"
 msgstr "Email (Evolution)"
+
+#: ../src/plugins/e-contact-entry.c:158
+#, c-format
+msgid "Cannot get contact: %s"
+msgstr "Cannot get contact: %s"
+
+#: ../src/plugins/e-contact-entry.c:191
+#, c-format
+msgid "Could not find contact: %s"
+msgstr "Could not find contact: %s"
+
+#: ../src/plugins/e-contact-entry.c:417
+msgid "Cannot create searchable view."
+msgstr "Cannot create searchable view."
+
+#: ../src/plugins/e-contact-entry.c:890
+msgid "Success"
+msgstr "Success"
+
+#: ../src/plugins/e-contact-entry.c:892
+msgid "An argument was invalid."
+msgstr "An argument was invalid."
+
+#: ../src/plugins/e-contact-entry.c:894
+msgid "The address book is busy."
+msgstr "The address book is busy."
+
+#: ../src/plugins/e-contact-entry.c:896
+msgid "The address book is offline."
+msgstr "The address book is offline."
+
+#: ../src/plugins/e-contact-entry.c:898
+msgid "The address book does not exist."
+msgstr "The address book does not exist."
+
+#: ../src/plugins/e-contact-entry.c:900
+msgid "The \"Me\" contact does not exist."
+msgstr "The \"Me\" contact does not exist."
+
+#: ../src/plugins/e-contact-entry.c:902
+msgid "The address book is not loaded."
+msgstr "The address book is not loaded."
+
+#: ../src/plugins/e-contact-entry.c:904
+msgid "The address book is already loaded."
+msgstr "The address book is already loaded."
+
+#: ../src/plugins/e-contact-entry.c:906
+msgid "Permission was denied when accessing the address book."
+msgstr "Permission was denied when accessing the address book."
+
+#: ../src/plugins/e-contact-entry.c:908
+msgid "The contact was not found."
+msgstr "The contact was not found."
+
+#: ../src/plugins/e-contact-entry.c:910
+msgid "This contact ID already exists."
+msgstr "This contact ID already exists."
+
+#: ../src/plugins/e-contact-entry.c:912
+msgid "The protocol is not supported."
+msgstr "The protocol is not supported."
+
+#: ../src/plugins/e-contact-entry.c:914
+msgid "The operation was cancelled."
+msgstr "The operation was cancelled."
+
+#: ../src/plugins/e-contact-entry.c:916
+msgid "The operation could not be cancelled."
+msgstr "The operation could not be cancelled."
+
+#: ../src/plugins/e-contact-entry.c:918
+msgid "The address book authentication failed."
+msgstr "The address book authentication failed."
+
+#: ../src/plugins/e-contact-entry.c:920
+msgid ""
+"Authentication is required to access the address book and was not given."
+msgstr ""
+"Authentication is required to access the address book and was not given."
+
+#: ../src/plugins/e-contact-entry.c:922
+msgid "A secure connection is not available."
+msgstr "A secure connection is not available."
+
+#: ../src/plugins/e-contact-entry.c:924
+msgid "A CORBA error occurred whilst accessing the address book."
+msgstr "A CORBA error occurred whilst accessing the address book."
+
+#: ../src/plugins/e-contact-entry.c:926
+msgid "The address book source does not exist."
+msgstr "The address book source does not exist."
+
+#: ../src/plugins/e-contact-entry.c:928 ../src/plugins/e-contact-entry.c:931
+msgid "An unknown error occurred."
+msgstr "An unknown error occurred."
 
 #: ../src/plugins/gaim.c:228
 msgid "Instant Message (Gaim)"
@@ -169,8 +266,7 @@ msgstr "Unable to send file"
 msgid "There is no connection to gajim remote service."
 msgstr "There is no connection to gajim remote service."
 
-#: ../src/plugins/gajim.c:427
-#: ../src/plugins/gajim.c:466
+#: ../src/plugins/gajim.c:427 ../src/plugins/gajim.c:466
 msgid "Sending file failed"
 msgstr "Sending file failed"
 
@@ -186,6 +282,10 @@ msgstr "Unknown recipient."
 msgid "Instant Message (Gajim)"
 msgstr "Instant Message (Gajim)"
 
+#: ../src/plugins/pidgin.c:239
+msgid "Instant Message (Pidgin)"
+msgstr "Instant Message (Pidgin)"
+
 #: ../src/plugins/sylpheed-claws.c:131
 msgid "Email (Claws Mail)"
 msgstr "Email (Claws Mail)"
@@ -194,10 +294,23 @@ msgstr "Email (Claws Mail)"
 msgid "Email (Thunderbird)"
 msgstr "Email (Thunderbird)"
 
+#~ msgid " "
+#~ msgstr " "
+
+#~ msgid ""
+#~ ".zip\n"
+#~ ".tar.gz\n"
+#~ ".tar.bz2"
+#~ msgstr ""
+#~ ".zip\n"
+#~ ".tar.gz\n"
+#~ ".tar.bz2"
+
 #~ msgid "FOLDER"
 #~ msgstr "FOLDER"
+
 #~ msgid "Email (Sylpheed-Claws)"
 #~ msgstr "Email (Sylpheed-Claws)"
+
 #~ msgid "*"
 #~ msgstr "*"
-
