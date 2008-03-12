@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nautilus-sendto\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-03-04 00:35+0100\n"
-"PO-Revision-Date: 2008-02-22 18:46+0100\n"
+"POT-Creation-Date: 2008-03-12 16:25+0100\n"
+"PO-Revision-Date: 2008-03-12 20:46+0100\n"
 "Last-Translator: Gil Forcada <gilforcada@guifi.net>\n"
 "Language-Team: Catalan <tradgnome@softcatala.org>\n"
 "MIME-Version: 1.0\n"
@@ -82,7 +82,7 @@ msgstr "Directori per defecte a utilitzar"
 
 #: ../src/nautilus-sendto-command.c:250
 msgid "You don't insert the package name"
-msgstr "No heu entrat el nom del paquet"
+msgstr "No heu introduït el nom del paquet"
 
 #: ../src/nautilus-sendto-command.c:511
 msgid "Files"
@@ -95,7 +95,7 @@ msgstr "Espera que es passin com a opcions els URI o noms de fitxers\n"
 
 #: ../src/nautilus-sendto-command.c:724
 msgid "Nautilus Sendto"
-msgstr "Enviador Nautilus"
+msgstr "Enviador del Nautilus"
 
 #: ../src/nautilus-sendto-command.c:728
 #, c-format
