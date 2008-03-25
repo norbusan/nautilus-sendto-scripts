@@ -1,18 +1,16 @@
-# translation of sk.po to Slovak
+# translation of nautilus-sendto.HEAD.po to
 # Slovak translations for nautilus-sendto package.
-# Copyright (C) 2004, 2005, 2007 Free Software Foundation, Inc.
+# Copyright (C) 2004, 2005, 2007, 2008 Free Software Foundation, Inc.
 # This file is distributed under the same license as the nautilus-sendto package.
-#
-# $Id: sk.po,v 1.5 2006/04/07 13:53:03 hadess Exp $
 #
 # Marcel Telka <marcel@telka.sk>, 2004, 2005.
 # Peter Tuharsky <tuharsky@misbb.sk>, 2007.
 msgid ""
 msgstr ""
-"Project-Id-Version: sk\n"
+"Project-Id-Version: nautilus-sendto.HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-09-16 01:20+0200\n"
-"PO-Revision-Date: 2007-09-14 10:34+0100\n"
+"POT-Creation-Date: 2008-03-25 17:20+0100\n"
+"PO-Revision-Date: 2008-03-20 22:09+0100\n"
 "Last-Translator: Peter Tuhársky <tuharsky@misbb.sk>\n"
 "Language-Team: Slovak <sk-i18n@lists.linux.sk>\n"
 "MIME-Version: 1.0\n"
@@ -71,48 +69,49 @@ msgstr "Nautilus integrácia"
 msgid "Provides integration with Nautilus"
 msgstr "Poskytuje integráciu s programom Nautilus"
 
-#: ../src/nautilus-nste.c:95 ../src/nautilus-nste.c:100
+#: ../src/nautilus-nste.c:92 ../src/nautilus-nste.c:97
 msgid "Send to..."
 msgstr "Odoslať do..."
 
-#: ../src/nautilus-nste.c:96
+#: ../src/nautilus-nste.c:93
 msgid "Send file by mail, instant message..."
 msgstr "Odoslať súbor poštou, rýchlou správou..."
 
-#: ../src/nautilus-nste.c:101
+#: ../src/nautilus-nste.c:98
 msgid "Send files by mail, instant message..."
 msgstr "Odoslať súbory poštou, rýchlou správou..."
 
-#: ../src/nautilus-sendto-command.c:73
+#: ../src/nautilus-sendto-command.c:75
 msgid "Default folder to use"
 msgstr "Predvolený priečinok, ktorý sa použije"
 
-#: ../src/nautilus-sendto-command.c:248
+#: ../src/nautilus-sendto-command.c:250
 msgid "You don't insert the package name"
 msgstr "Nezadali ste názov balíka"
 
-#: ../src/nautilus-sendto-command.c:509
+#: ../src/nautilus-sendto-command.c:511
 msgid "Files"
 msgstr "Súbory"
 
-#: ../src/nautilus-sendto-command.c:699
+#: ../src/nautilus-sendto-command.c:707
+#, c-format
 msgid "Expects URIs or filenames to be passed as options\n"
 msgstr "Očakáva, že URI alebo názvy súborov budú zadané ako voľby\n"
 
-#: ../src/nautilus-sendto-command.c:716
+#: ../src/nautilus-sendto-command.c:724
 msgid "Nautilus Sendto"
 msgstr "Odosielanie Nautilus"
 
-#: ../src/nautilus-sendto-command.c:720
+#: ../src/nautilus-sendto-command.c:728
 #, c-format
 msgid "Could not parse command-line options: %s\n"
 msgstr "Nepodarilo sa spracovať voľby príkazového riadku: %s\n"
 
-#: ../src/nautilus-sendto-command.c:735
+#: ../src/nautilus-sendto-command.c:743
 msgid "Could not load any plugins."
 msgstr "Nepodarilo sa načítať žiadne zásuvné moduly."
 
-#: ../src/nautilus-sendto-command.c:738
+#: ../src/nautilus-sendto-command.c:746
 msgid "Please verify your installation"
 msgstr "Prosím skontrolujte svoju inštaláciu"
 
@@ -133,36 +132,134 @@ msgid "Send _as:"
 msgstr "Odoslať _ako:"
 
 #: ../src/nautilus-sendto.glade.h:5
+msgid "Send _packed in:"
+msgstr "Odoslať _zabalené v:"
+
+#: ../src/nautilus-sendto.glade.h:6
 msgid "Send t_o:"
 msgstr "Odoslať d_o:"
 
-#: ../src/nautilus-sendto.glade.h:6
+#: ../src/nautilus-sendto.glade.h:7
 msgid "_Send"
 msgstr "_Odoslať"
-
-#: ../src/nautilus-sendto.glade.h:7
-msgid "_Send packed in:"
-msgstr "Odo_slať zabalené v:"
 
 #: ../src/plugins/balsa.c:103
 msgid "Email (Balsa)"
 msgstr "E-mail (Balsa)"
 
-#: ../src/plugins/bluetooth.c:421
+#: ../src/plugins/bluetooth.c:423
 msgid "Programming error, could not find the device in the list"
 msgstr "Chyba programu, nepodarilo sa nájsť zariadenie v zozname"
 
-#: ../src/plugins/bluetooth.c:442
+#: ../src/plugins/bluetooth.c:444
+#, c-format
 msgid "Device does not support Obex File Transfer"
 msgstr "Zariadenie nepodporuje prenos súborov Obex"
 
-#: ../src/plugins/bluetooth.c:457
+#: ../src/plugins/bluetooth.c:459
 msgid "Bluetooth (OBEX Push)"
 msgstr "Bluetooth (OBEX Push)"
 
-#: ../src/plugins/evolution.c:273
+#: ../src/plugins/evolution.c:196
 msgid "Email (Evolution)"
 msgstr "E-mail (Evolution)"
+
+#: ../src/plugins/e-contact-entry.c:158
+#, c-format
+msgid "Cannot get contact: %s"
+msgstr "Neviem získať kontakt: %s"
+
+#: ../src/plugins/e-contact-entry.c:191
+#, c-format
+msgid "Could not find contact: %s"
+msgstr "Nepodarilo sa nájsť kontakt: %s"
+
+#: ../src/plugins/e-contact-entry.c:417
+msgid "Cannot create searchable view."
+msgstr "Nemôžem vytvoriť vyhľadateľné zobrazenie."
+
+#: ../src/plugins/e-contact-entry.c:890
+msgid "Success"
+msgstr "Úspech"
+
+#: ../src/plugins/e-contact-entry.c:892
+msgid "An argument was invalid."
+msgstr "Neplatný parameter."
+
+#: ../src/plugins/e-contact-entry.c:894
+msgid "The address book is busy."
+msgstr "Adresár je zaneprázdnený."
+
+#: ../src/plugins/e-contact-entry.c:896
+msgid "The address book is offline."
+msgstr "Adresár je offline."
+
+#: ../src/plugins/e-contact-entry.c:898
+msgid "The address book does not exist."
+msgstr "Adresár neexistuje."
+
+#: ../src/plugins/e-contact-entry.c:900
+msgid "The \"Me\" contact does not exist."
+msgstr "Kontakt \"Ja\" neexistuje."
+
+#: ../src/plugins/e-contact-entry.c:902
+msgid "The address book is not loaded."
+msgstr "Adresár nie je načítaný."
+
+#: ../src/plugins/e-contact-entry.c:904
+msgid "The address book is already loaded."
+msgstr "Adresár je už načítaný."
+
+#: ../src/plugins/e-contact-entry.c:906
+msgid "Permission was denied when accessing the address book."
+msgstr "Prístup k adresáru bol odmietnutý."
+
+#: ../src/plugins/e-contact-entry.c:908
+msgid "The contact was not found."
+msgstr "Kontakt sa nenašiel."
+
+#: ../src/plugins/e-contact-entry.c:910
+msgid "This contact ID already exists."
+msgstr "Takéto ID kontaktu už existuje."
+
+#: ../src/plugins/e-contact-entry.c:912
+msgid "The protocol is not supported."
+msgstr "Protokol nie je podporovaný."
+
+#: ../src/plugins/e-contact-entry.c:914
+msgid "The operation was cancelled."
+msgstr "Operácia bola zrušená."
+
+#: ../src/plugins/e-contact-entry.c:916
+msgid "The operation could not be cancelled."
+msgstr "Operáciu sa nepodarilo zrušiť."
+
+#: ../src/plugins/e-contact-entry.c:918
+msgid "The address book authentication failed."
+msgstr "Overenie k adresáru zlyhalo."
+
+#: ../src/plugins/e-contact-entry.c:920
+msgid ""
+"Authentication is required to access the address book and was not given."
+msgstr ""
+"Pre prístup ku adresáru je nutné overenie používateľa, ale žiadne nebolo "
+"zadané."
+
+#: ../src/plugins/e-contact-entry.c:922
+msgid "A secure connection is not available."
+msgstr "Bezpečné spojenie nie je dostupné."
+
+#: ../src/plugins/e-contact-entry.c:924
+msgid "A CORBA error occurred whilst accessing the address book."
+msgstr "Počas prístupu ku adresáru nastala chyba CORBA."
+
+#: ../src/plugins/e-contact-entry.c:926
+msgid "The address book source does not exist."
+msgstr "Zdroj adresára neexistuje."
+
+#: ../src/plugins/e-contact-entry.c:928 ../src/plugins/e-contact-entry.c:931
+msgid "An unknown error occurred."
+msgstr "Nastala neznáma chyba."
 
 #: ../src/plugins/gaim.c:228
 msgid "Instant Message (Gaim)"
@@ -192,6 +289,10 @@ msgstr "Neznámy adresát."
 msgid "Instant Message (Gajim)"
 msgstr "Rýchla správa (Gajim)"
 
+#: ../src/plugins/pidgin.c:239
+msgid "Instant Message (Pidgin)"
+msgstr "Rýchla správa (Pidgin)"
+
 #: ../src/plugins/sylpheed-claws.c:131
 msgid "Email (Claws Mail)"
 msgstr "E-mail (ClawsMail)"
@@ -199,12 +300,3 @@ msgstr "E-mail (ClawsMail)"
 #: ../src/plugins/thunderbird.c:102
 msgid "Email (Thunderbird)"
 msgstr "E-mail (Thunderbird)"
-
-#~ msgid ""
-#~ ".zip\n"
-#~ ".tar.gz\n"
-#~ ".tar.bz2"
-#~ msgstr ""
-#~ ".zip\n"
-#~ ".tar.gz\n"
-#~ ".tar.bz2"
