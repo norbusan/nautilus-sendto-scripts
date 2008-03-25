@@ -1,10 +1,14 @@
+2008-03-25  Wouter Bolsterlee  <wbolster@svn.gnome.org>
+
+	* nl.po: Updated Dutch translation by Wouter Bolsterlee.
+
 2008-03-25  Gil Forcada  <gforcada@gnome.org>
 
 	* ca.po: Small fix thanks to Sílvia Miranda.
 
 2008-03-24  Jovan Naumovski  <jovan@lugola.net>
- 
- 	* mk.po: Updated Macedonian translation.
+
+	* mk.po: Updated Macedonian translation.
 
 2008-03-16  Gabor Kelemen  <kelemeng@gnome.hu>
 
@@ -100,7 +104,7 @@
 
 2007-11-21  Jorge Gonzalez  <jorgegonz@svn.gnome.org>
 
-        * es.po: Updated Spanish translation
+	* es.po: Updated Spanish translation
 
 2007-11-20  Kostas Papadimas <pkst@gnome.org>
 
@@ -138,13 +142,13 @@
 2007-09-15  Andre Klapper  <a9016009@gmx.de>
 
 	* sk.po: Updated Slovak translation on behalf of Peter Tuharsky
-        <tuharsky@misbb.sk>.
+	<tuharsky@misbb.sk>.
 
 2007-09-13  Mugurel Tudor  <mugurelu@gnome.ro>
 
 	* LINGUAS: added ro
 	* ro.po: Added Romanian translation
-        by Alexandru Szasz <alexxed@gmail.com>
+	by Alexandru Szasz <alexxed@gmail.com>
 
 2007-09-07  Jonh Wendell  <jwendell@gnome.org>
 
@@ -177,7 +181,7 @@
 
 2007-06-28  Jorge Gonzalez <jorgegonz@svn.gnome.org>
 
-        * es.po: Updated Spanish translation
+	* es.po: Updated Spanish translation
 
 2007-06-27  Artur Flinta  <aflinta@svn.gnome.org>
 
@@ -193,13 +197,13 @@
 
 2007-05-06  Jorge Gonzalez <jorgegonz@svn.gnome.org>
 
-        * es.po: Updated Spanish translation
+	* es.po: Updated Spanish translation
 
-2007-05-2  Djihed Afifi <djihed@gmail.com> 
+2007-05-2  Djihed Afifi <djihed@gmail.com>
 
 	* ar.po: Updated Arabic Translation by Khaled Hosny.
 
-2007-04-14  Djihed Afifi <djihed@gmail.com> 
+2007-04-14  Djihed Afifi <djihed@gmail.com>
 
 	* ar.po: Updated Arabic Translation by Khaled Hosny.
 
@@ -246,7 +250,7 @@
 	* POTFILES.in: update for added/removed files, add
 	nst.schemas.in (Closes: #375982)
 
-2007-03-5  Djihed Afifi <djihed@gmail.com> 
+2007-03-5  Djihed Afifi <djihed@gmail.com>
 
 	* ar.po: Updated Arabic Translation by Djihed Afifi.
 
@@ -284,18 +288,18 @@
 
 	* gl.po: Updated Galician Translation.
 
-2006-11-25  Djihed Afifi" <djihed@gmail.com> 
+2006-11-25  Djihed Afifi" <djihed@gmail.com>
 
 	* ar.po: Updated Arabic Translation.
 
-2006-11-18  Djihed Afifi <djihed@gmail.com> 
+2006-11-18  Djihed Afifi <djihed@gmail.com>
 
 	* ar.po: Added Arabic Translation.
 	* LINGUAS: Added ar.
 
 2006-11-6  Vladimer Sichinava  <vsichi@gnome.org>
 
-        * ka.po: Updated Georgian translation
+	* ka.po: Updated Georgian translation
 
 2006-10-31  Pema Geyleg  <pgeyleg@gmail.com>
 
@@ -656,7 +660,7 @@
 
 2004-12-10  Alexander Shopov  <ash@contact.bg>
 
-	* bg.po: Fixed a stupid typo 
+	* bg.po: Fixed a stupid typo
 
 2004-12-10  Alexander Shopov  <ash@contact.bg>
 
