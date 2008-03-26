@@ -162,7 +162,7 @@ gboolean send_files (NstPlugin *plugin, GtkWidget *contact_widget,
 
 		text = gtk_entry_get_text (GTK_ENTRY (contact_widget));
 		if (text != NULL && *text != '\0')
-			g_string_append_printf (mailto, "%s", text);
+			g_string_append_printf (mailto, "\"%s\"", text);
 		else
 			g_string_append (mailto, "\"\"");
 	}

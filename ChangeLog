@@ -1,3 +1,13 @@
+2008-03-26  Bastien Nocera  <hadess@hadess.net>
+
+	* src/plugins/e-contact-entry.c: Update from SVN and
+	fix a warning
+	* src/plugins/evolution.c (send_files):
+	Quote the e-mail address we pass to evolution, as some
+	people might use "Surname, Name <address>" instead of
+	just "address"
+	(Closes: https://bugzilla.redhat.com/show_bug.cgi?id=438695)
+
 2008-03-01  Bastien Nocera  <hadess@hadess.net>
 
 	* src/nautilus-sendto.glade: Patch from

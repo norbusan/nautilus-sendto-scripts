@@ -501,7 +501,6 @@ e_contact_entry_set_source_list (EContactEntry *entry,
     sources = e_source_group_peek_sources (group);
     for (m = sources; m != NULL; m = m->next) {
       ESource *source = m->data;
-      const char *p;
       ESource *s = e_source_copy (source);
       EntryLookup *lookup;
       char *uri;
