@@ -1,5 +1,10 @@
 2008-03-27  Bastien Nocera  <hadess@hadess.net>
 
+	* NEWS: upd
+	* configure.in: 0.14.0
+
+2008-03-27  Bastien Nocera  <hadess@hadess.net>
+
 	* configure.in: Allow distributors to override the
 	default thunderbird binary name with
 	--with-thunderbird-name=XXX, enable the thunderbird

@@ -1,4 +1,15 @@
 ===============
+Version 0.14.0
+===============
+
+Nautilus Sendto
+	* Nicer icons all around
+	* Fix sending e-mails with Evolution when entering
+	"Surname, Name <address>" manually
+	* Enable the Thunderbird plugin by default, and
+	fix sending attachments
+
+===============
 Version 0.13.2
 ===============
 
