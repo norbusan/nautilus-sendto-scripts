@@ -341,6 +341,7 @@ send_button_cb (GtkWidget *widget, gpointer data)
 			}
 		}else{
 			if (!p->info->send_files (p, w, file_list)) {
+				g_list_foreach (file_list, (GFunc) g_free, NULL);
 				g_list_free (file_list);
 				file_list = NULL;
 				return;

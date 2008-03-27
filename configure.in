@@ -29,7 +29,8 @@ GCONF_REQUIRED=2.13.0
 GAIM_REQUIRED=1.5.0
 PIDGIN_REQUIRED=2.0.0
 NAUTILUS_EXTENSION=2.13.3
-DBUS_REQUIRED=0.60
+DBUS_REQUIRED=1.0
+DBUS_GLIB_REQUIRED=0.60
 
 AC_SUBST(GLIB_REQUIRED)
 AC_SUBST(GTK_REQUIRED)
@@ -131,7 +132,7 @@ AM_CONDITIONAL(HAVE_PIDGIN, test "x$enable_pidgin" = "xyes")
 dnl Bluetooth support if it's installed
 dnl -----------------------------------
 
-PKG_CHECK_MODULES(BLUETOOTH, dbus-glib-1 >= $DBUS_REQUIRED,
+PKG_CHECK_MODULES(BLUETOOTH, dbus-glib-1 >= $DBUS_GLIB_REQUIRED,
 	[
 	AC_SUBST(BLUETOOTH_CFLAGS)
 	AC_SUBST(BLUETOOTH_LIBS)
@@ -169,8 +170,21 @@ dnl -------------------------------------------------
 dnl Thunderbird support
 dnl -------------------------------------------------
 
-enable_thunderbird=no
+AC_ARG_WITH([thunderbird-name],
+	    [AS_HELP_STRING([--with-thunderbird-name],[Binary name for Thunderbird (default: thunderbird)])],
+	    [with_thunderbird_name=$withval])
+if test "x$with_thunderbird_name" = "x" ; then
+	with_thunderbird_name=thunderbird
+fi
+
+THUNDERBIRD_NAME=$with_thunderbird_name
+AC_SUBST(THUNDERBIRD_NAME)
+
+AC_DEFINE_UNQUOTED(THUNDERBIRD_NAME, "$THUNDERBIRD_NAME", [name of the Thunderbird binary])
+
+enable_thunderbird=yes
 AM_CONDITIONAL(HAVE_THUNDERBIRD, test "x$enable_thunderbird" = "xyes")
+
 dnl -------------------------------------------------
 
 dnl Gajim support
@@ -182,7 +196,7 @@ AC_ARG_WITH(gajim,
 
 GAJIM_SHARE_DIR="$GAJIM_PATH"/share/gajim
 
-PKG_CHECK_MODULES(DBUS, dbus-1 >= $DBUS_REQUIRED dbus-glib-1 >= $DBUS_REQUIRED,
+PKG_CHECK_MODULES(DBUS, dbus-1 >= $DBUS_REQUIRED dbus-glib-1 >= $DBUS_GLIB_REQUIRED,
         [
         AC_SUBST(DBUS_CFLAGS)
         AC_SUBST(DBUS_LIBS)
@@ -265,15 +279,15 @@ else
 fi
 
 if test "x${enable_thunderbird}" = "xyes" ; then
-   echo " **  Enable thunderbird plugin : YES"
+   echo " **  Enable thunderbird plugin : YES (binary name: $THUNDERBIRD_NAME)"
 else
-   echo "     Enable thunderbird plugin (under development, don't support attachments) : NO"
+   echo "     Enable thunderbird plugin : NO"
 fi
 
 if test "x${enable_gajim}" = "xyes" ; then
    echo " **  Enable gajim plugin : YES"
 else
-   echo " **  Enable gajim plugin : NO"
+   echo "     Enable gajim plugin : NO"
 fi
 
 echo "                                                       "

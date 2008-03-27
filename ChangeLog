@@ -1,3 +1,19 @@
+2008-03-27  Bastien Nocera  <hadess@hadess.net>
+
+	* configure.in: Allow distributors to override the
+	default thunderbird binary name with
+	--with-thunderbird-name=XXX, enable the thunderbird
+	plugin by default
+
+	* src/nautilus-sendto-command.c (send_button_cb):
+	Fix a memory leak
+
+	* src/plugins/thunderbird.c (init), (send_files):
+	Attachments are passed as URIs, so quote them as
+	expected
+
+	(Closes: #356258)
+
 2008-03-26  Bastien Nocera  <hadess@hadess.net>
 
 	* src/plugins/e-contact-entry.c: Update from SVN and

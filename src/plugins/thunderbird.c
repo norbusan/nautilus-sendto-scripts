@@ -37,9 +37,11 @@ gboolean init (NstPlugin *plugin)
 	printf ("Init thunderbird plugin\n");
 	hash = g_hash_table_new (g_str_hash, g_str_equal);
 
-	t_cmd = g_find_program_in_path ("mozilla-thunderbird");
+	t_cmd = g_find_program_in_path (THUNDERBIRD_NAME);
 	if (t_cmd == NULL)
 		return FALSE;
+	g_free (t_cmd);
+
 	return TRUE;
 }
 
@@ -74,14 +76,15 @@ gboolean send_files (NstPlugin *plugin, GtkWidget *contact_widget,
 		g_string_append_printf (mailto, "to=%s,", send_to);		
 	}
 	
-	t_cmd = g_find_program_in_path ("mozilla-thunderbird");
+	t_cmd = g_find_program_in_path (THUNDERBIRD_NAME);
 	if (t_cmd == NULL)
 		return FALSE;
 	
-	g_string_append_printf (mailto," attachment='\"%s\"'",file_list->data);
+	g_string_append_printf (mailto,"attachment='%s", (char *) file_list->data);
 	for (l = file_list->next ; l; l=l->next){				
-		g_string_append_printf (mailto,",'\"%s\"'",l->data);
+		g_string_append_printf (mailto,",%s", (char *) l->data);
 	}
+	g_string_append_c (mailto, '\'');
 	cmd = g_strdup_printf ("%s %s", t_cmd, mailto->str);
 	g_spawn_command_line_async (cmd, NULL);
 	g_free (cmd);
