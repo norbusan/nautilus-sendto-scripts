@@ -1,3 +1,9 @@
+2008-04-08  Bastien Nocera  <hadess@hadess.net>
+
+	* src/nautilus-sendto-command.c (option_changed),
+	(set_contact_widgets): Fix the mnemonic for "Send to"
+	not working (Closes: #526258)
+
 2008-03-27  Bastien Nocera  <hadess@hadess.net>
 
 	* NEWS: upd

@@ -391,6 +391,8 @@ option_changed (GtkComboBox *cb, gpointer data){
 	gtk_widget_hide ((GtkWidget *) aux->data);
 	aux = g_list_nth (ui->contact_widgets, option);
 	gtk_widget_show ((GtkWidget *) aux->data);
+
+	gtk_label_set_mnemonic_widget (GTK_LABEL (ui->send_to_label), aux->data);
 }
 
 static void
@@ -410,7 +412,6 @@ set_contact_widgets (NS_ui *ui){
 		if (GTK_IS_ENTRY (w)) {
 			g_signal_connect (G_OBJECT (w), "activate",
 					G_CALLBACK (send_if_no_pack_cb), ui);
-			gtk_label_set_mnemonic_widget (GTK_LABEL (ui->send_to_label), w);
 		}
 	}
 }
