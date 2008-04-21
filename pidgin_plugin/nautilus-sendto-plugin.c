@@ -57,12 +57,11 @@
 #define SAVE_TIMEOUT 5000
 
 
-static 
-guint save_blist_timeout_handler, take_spool_files_handler;
-gboolean taking_files;
-GString *buddies_str;
+static guint take_spool_files_handler;
+static gboolean taking_files;
+static GString *buddies_str;
 
-void
+static void
 get_online_buddies (PurpleBlistNode *node, GString *str){
 
     PurpleBlistNode *aux;
@@ -101,8 +100,8 @@ get_online_buddies (PurpleBlistNode *node, GString *str){
 
 }
 
-gint
-save_online_buddies (){
+static void
+save_online_buddies (PurpleBuddy *buddy, gpointer data){
     PurpleBuddyList *blist;
     GString *str;
     gchar *fd_name;
@@ -117,27 +116,25 @@ save_online_buddies (){
     str = g_string_append (str, "---\n");
 
     if (!g_string_equal (buddies_str, str)){
-	fd = fopen (fd_name, "w");
-	if (fd){
-	    fwrite (str->str, 1, str->len, fd);
-	    fclose (fd);
-	    g_string_free (buddies_str, TRUE);
-	    buddies_str = str;
-	    purple_debug_info ("nautilus", "save blist online\n");
-	}else{
-	    g_string_free (str, TRUE);
-	    purple_debug_info ("nautilus", "don't save blist online. No change\n");
-	}
-	g_free (fd_name);
+    	    GError *err = NULL;
+	    if (g_file_set_contents (fd_name, str->str, str->len, &err) == FALSE) {
+	    	    purple_debug_info ("nautilus", "couldn't save '%s': %s\n", fd_name, err->message);
+	    	    g_error_free (err);
+	    	    g_string_free (buddies_str, TRUE);
+	    } else {
+	    	    purple_debug_info ("nautilus", "saved blist online\n");
+		    g_string_free (buddies_str, TRUE);
+		    buddies_str = str;
+	    }
     }else{
 	g_string_free (str, TRUE);
 	purple_debug_info ("nautilus", "don't save blist online. No change\n");
     }
-    
-    return TRUE;
+    g_free (fd_name);
+
 }
 
-void
+static void
 init_plugin_stuff (){
     gchar *plugin_home;
     gchar *spool;
@@ -164,7 +161,7 @@ init_plugin_stuff (){
     g_free (spool_tmp);
 }
 
-void
+static void
 send_file (GString *username, GString *cname,
 	   GString *protocol, GString *file){
 
@@ -178,7 +175,7 @@ send_file (GString *username, GString *cname,
     serv_send_file (account->gc, cname->str, file->str);
 }
 
-void
+static void
 process_file (gchar *file){
     GIOChannel *io;
     GString *username;
@@ -258,18 +255,29 @@ take_spool_files(){
 }
 
 static gboolean
-plugin_load(PurplePlugin *plugin) {
-	
+plugin_load(PurplePlugin *plugin)
+{
+	void *blist_handle;
 	
 	init_plugin_stuff ();
 	buddies_str = g_string_new ("");
-	save_blist_timeout_handler = purple_timeout_add (5000,
-						       save_online_buddies,
-						       NULL);
+
+	blist_handle = purple_blist_get_handle();
+
+	purple_signal_connect (blist_handle, "buddy-signed-on",
+			       plugin, (PurpleCallback) save_online_buddies,
+			       NULL);
+	purple_signal_connect (blist_handle, "buddy-signed-off",
+			       plugin, (PurpleCallback) save_online_buddies,
+			       NULL);
 	taking_files = FALSE;
 	take_spool_files_handler = purple_timeout_add (3000,
 						     take_spool_files,
 						     NULL);
+
+	/* And save a list already */
+	save_online_buddies (NULL, NULL);
+
 	return TRUE;
 }
 
@@ -279,7 +287,6 @@ plugin_unload() {
 
     fd_name = g_build_path ("/", g_get_home_dir(), PLUGIN_HOME, 
 			    B_ONLINE, NULL);    
-    purple_timeout_remove (save_blist_timeout_handler);
     purple_timeout_remove (take_spool_files_handler);
     remove (fd_name);
     g_free(fd_name);

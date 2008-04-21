@@ -1,3 +1,9 @@
+2008-04-21  Bastien Nocera  <hadess@hadess.net>
+
+	* pidgin_plugin/nautilus-sendto-plugin.c (save_online_buddies),
+	(plugin_load), (plugin_unload): Register to the changes in the
+	buddy list instead of loading it every 5 seconds (Closes: #490551)
+
 2008-04-08  Bastien Nocera  <hadess@hadess.net>
 
 	* src/nautilus-sendto-command.c (option_changed),
