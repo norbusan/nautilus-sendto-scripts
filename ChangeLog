@@ -1,5 +1,12 @@
 2008-04-21  Bastien Nocera  <hadess@hadess.net>
 
+	* pidgin_plugin/nautilus-sendto-plugin.c (plugin_unload):
+	Make the plugin invisible, so that it's loaded automatically on
+	startup, and users don't need to enable it by hand
+	https://bugzilla.redhat.com/show_bug.cgi?id=242289
+
+2008-04-21  Bastien Nocera  <hadess@hadess.net>
+
 	* pidgin_plugin/nautilus-sendto-plugin.c (save_online_buddies),
 	(plugin_load), (plugin_unload): Register to the changes in the
 	buddy list instead of loading it every 5 seconds (Closes: #490551)

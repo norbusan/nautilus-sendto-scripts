@@ -288,7 +288,7 @@ plugin_unload() {
     fd_name = g_build_path ("/", g_get_home_dir(), PLUGIN_HOME, 
 			    B_ONLINE, NULL);    
     purple_timeout_remove (take_spool_files_handler);
-    remove (fd_name);
+    g_unlink (fd_name);
     g_free(fd_name);
     g_string_free (buddies_str, TRUE);
     purple_debug_info ("nautilus", "Stop nautilus plugin\n");
@@ -302,24 +302,24 @@ init_plugin(PurplePlugin *plugin) {
 }
 
 static PurplePluginInfo info = {
-    PURPLE_PLUGIN_MAGIC,			/* api version */
+    PURPLE_PLUGIN_MAGIC,		/* api version */
     PURPLE_MAJOR_VERSION,
     PURPLE_MINOR_VERSION,
     PURPLE_PLUGIN_STANDARD,		/* type */
-    PIDGIN_PLUGIN_TYPE,		/* ui requirement */
-    0,					/* flags */
+    PIDGIN_PLUGIN_TYPE,			/* ui requirement */
+    PURPLE_PLUGIN_FLAG_INVISIBLE,	/* flags */
     NULL,				/* dependencies */
     PURPLE_PRIORITY_DEFAULT,		/* priority */
-    
-    "gtk-nautilus",					/* id */
-    N_("Nautilus Integration"),				/* name */
-    "0.8",						/* version */
+
+    "gtk-nautilus",			/* id */
+    N_("Nautilus Integration"),		/* name */
+    "0.8",				/* version */
     N_("Provides integration with Nautilus"),		/* summary */ 
     N_("Provides integration with Nautilus"),		/* description */
-    
+
     "Roberto Majadas <roberto.majadas@openshine.com>",	/* author */
     "www.gnome.org",                    /* homepage */
-    
+
     plugin_load,			/* load */
     plugin_unload,			/* unload */
     NULL,				/* destroy */
