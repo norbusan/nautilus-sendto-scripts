@@ -89,12 +89,12 @@ nautilus_nste_get_file_items (NautilusMenuProvider *provider,
 	if (one_item && 
 	    !nautilus_file_info_is_directory ((NautilusFileInfo *)files->data)) {
 		item = nautilus_menu_item_new ("NautilusNste::sendto",
-					       _("Send to..."),
+					       _("Send To..."),
 					       _("Send file by mail, instant message..."),
 					       "document-send");
 	} else {
 		item = nautilus_menu_item_new ("NautilusNste::sendto",
-					       _("Send to..."),
+					       _("Send To..."),
 					       _("Send files by mail, instant message..."),
 					       "document-send");
 	}

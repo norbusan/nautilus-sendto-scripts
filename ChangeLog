@@ -1,3 +1,10 @@
+2008-04-23  Bastien Nocera  <hadess@hadess.net>
+
+	* src/nautilus-nste.c (nautilus_nste_get_file_items):
+	s/Send to.../Send To.../ (Closes: #529281)
+	Note that this doesn't require new translations, as there's already a
+	"Send To..." translated
+
 2008-04-21  Bastien Nocera  <hadess@hadess.net>
 
 	* pidgin_plugin/nautilus-sendto-plugin.c (plugin_unload):
