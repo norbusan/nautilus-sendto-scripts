@@ -1,5 +1,13 @@
 2008-04-23  Bastien Nocera  <hadess@hadess.net>
 
+	* src/nautilus-sendto-command.c (pack_files), (send_button_cb),
+	(toggle_pack_check), (pack_entry_changed_cb),
+	(nautilus_sendto_create_ui): Make the send button unsensitive when
+	packing in a file is enabled and there's no filename for the archive,
+	remove a really crappy string and a useful dialogue (Closes: #521999)
+
+2008-04-23  Bastien Nocera  <hadess@hadess.net>
+
 	* src/nautilus-nste.c (nautilus_nste_get_file_items):
 	s/Send to.../Send To.../ (Closes: #529281)
 	Note that this doesn't require new translations, as there's already a

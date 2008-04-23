@@ -177,82 +177,71 @@ static char *
 pack_files (NS_ui *ui)
 {
 	char *file_roller_cmd;
-	GtkWidget *error_dialog;
+	const char *filename;
+	GList *l;
+	GString *cmd, *tmp;
+	char *pack_type, *tmp_dir, *tmp_work_dir, *packed_file;
 
 	file_roller_cmd = g_find_program_in_path ("file-roller");
-	
-	if (strlen (gtk_entry_get_text(GTK_ENTRY(ui->pack_entry))) != 0)
-	{
-		GList *l;
-		GString *cmd, *tmp;
-		char *pack_type, *tmp_dir, *tmp_work_dir, *packed_file;
+	filename = gtk_entry_get_text(GTK_ENTRY(ui->pack_entry));
 
-		tmp_dir = g_strdup_printf ("%s/nautilus-sendto-%s", 
+	g_assert (filename != NULL && *filename != '\0');
+	
+	tmp_dir = g_strdup_printf ("%s/nautilus-sendto-%s", 
 				   g_get_tmp_dir(), g_get_user_name());	
-		g_mkdir (tmp_dir, 0700);
-		tmp_work_dir = g_strdup_printf ("%s/nautilus-sendto-%s/%li",
-						g_get_tmp_dir(), g_get_user_name(),
-						time(NULL));
-		g_mkdir (tmp_work_dir, 0700);
-		g_free (tmp_dir);
+	g_mkdir (tmp_dir, 0700);
+	tmp_work_dir = g_strdup_printf ("%s/nautilus-sendto-%s/%li",
+					g_get_tmp_dir(), g_get_user_name(),
+					time(NULL));
+	g_mkdir (tmp_work_dir, 0700);
+	g_free (tmp_dir);
 
-		switch (gtk_combo_box_get_active (GTK_COMBO_BOX(ui->pack_combobox)))
-		{
-		case 0:
-			pack_type = g_strdup (".zip");
-			break;
-		case 1:
-			pack_type = g_strdup (".tar.gz");
-			break;
-		case 2: 
-			pack_type = g_strdup (".tar.bz2");
-			break;
-		default:
-			pack_type = NULL;
-			g_assert_not_reached ();
-		}
-
-		gconf_client_set_int(gconf_client, 
-				NAUTILUS_SENDTO_LAST_COMPRESS, 
-				gtk_combo_box_get_active(GTK_COMBO_BOX(ui->pack_combobox)), 
-				NULL);
-
-		cmd = g_string_new ("");
-		g_string_printf (cmd, "%s --add-to=\"%s/%s%s\"",
-				 file_roller_cmd, tmp_work_dir,
-				 gtk_entry_get_text (GTK_ENTRY(ui->pack_entry)),
-				 pack_type);
-
-		/* file-roller doesn't understand URIs */
-		for (l = file_list ; l; l=l->next){
-			char *file;
-
-			file = g_filename_from_uri (l->data, NULL, NULL);
-			g_string_append_printf (cmd," \"%s\"", file);
-			g_free (file);
-		}
-
-		g_spawn_command_line_sync (cmd->str, NULL, NULL, NULL, NULL);
-		g_string_free (cmd, TRUE);
-		tmp = g_string_new("");
-		g_string_printf (tmp,"%s/%s%s", tmp_work_dir,
- 				 gtk_entry_get_text (GTK_ENTRY(ui->pack_entry)),
-				 pack_type);
-		g_free (tmp_work_dir);
-		packed_file = g_filename_to_uri (tmp->str, NULL, NULL);
-		g_string_free(tmp, TRUE);
-		return packed_file;
-	}else{
-		error_dialog = gtk_message_dialog_new (GTK_WINDOW(ui->dialog),
-						       GTK_DIALOG_MODAL,
-						       GTK_MESSAGE_ERROR,
-						       GTK_BUTTONS_CLOSE,
-						       _("You don't insert the package name"));
-		gtk_dialog_run (GTK_DIALOG (error_dialog));
-		gtk_widget_destroy (error_dialog);
-		return NULL;
+	switch (gtk_combo_box_get_active (GTK_COMBO_BOX(ui->pack_combobox)))
+	{
+	case 0:
+		pack_type = g_strdup (".zip");
+		break;
+	case 1:
+		pack_type = g_strdup (".tar.gz");
+		break;
+	case 2: 
+		pack_type = g_strdup (".tar.bz2");
+		break;
+	default:
+		pack_type = NULL;
+		g_assert_not_reached ();
 	}
-	
+
+	gconf_client_set_int(gconf_client, 
+			     NAUTILUS_SENDTO_LAST_COMPRESS, 
+			     gtk_combo_box_get_active(GTK_COMBO_BOX(ui->pack_combobox)), 
+			     NULL);
+
+	cmd = g_string_new ("");
+	g_string_printf (cmd, "%s --add-to=\"%s/%s%s\"",
+			 file_roller_cmd, tmp_work_dir,
+			 filename,
+			 pack_type);
+
+	/* file-roller doesn't understand URIs */
+	for (l = file_list ; l; l=l->next){
+		char *file;
+
+		file = g_filename_from_uri (l->data, NULL, NULL);
+		g_string_append_printf (cmd," \"%s\"", file);
+		g_free (file);
+	}
+
+	g_spawn_command_line_sync (cmd->str, NULL, NULL, NULL, NULL);
+	g_string_free (cmd, TRUE);
+	tmp = g_string_new("");
+	g_string_printf (tmp,"%s/%s%s", tmp_work_dir,
+			 filename,
+			 pack_type);
+	g_free (tmp_work_dir);
+	packed_file = g_filename_to_uri (tmp->str, NULL, NULL);
+	g_string_free(tmp, TRUE);
+	return packed_file;
 }
 
 static gboolean
@@ -276,8 +265,6 @@ send_button_cb (GtkWidget *widget, gpointer data)
 	GtkWidget *w;
 
 	gtk_widget_set_sensitive (ui->dialog, FALSE);
-	while (gtk_events_pending ())
-		gtk_main_iteration ();
 
 	p = (NstPlugin *) g_list_nth_data (plugin_list, option);
 	w = (GtkWidget *) g_list_nth_data (ui->contact_widgets, option);
@@ -314,7 +301,7 @@ send_button_cb (GtkWidget *widget, gpointer data)
 
 	if (force_user_to_compress){
 		f = pack_files (ui);
-		if (f != NULL){
+		if (f != NULL) {
 			GList *packed_file = NULL;		
 			packed_file = g_list_append (packed_file, f);
 			if (!p->info->send_files (p, w, packed_file)) {
@@ -322,13 +309,14 @@ send_button_cb (GtkWidget *widget, gpointer data)
 				return;
 			}
 			g_list_free (packed_file);
-		}else{
+		} else {
+			gtk_widget_set_sensitive (ui->dialog, TRUE);
 			return;
 		}
 	}else{
 		if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(ui->pack_checkbutton))){
 			f = pack_files (ui);
-			if (f != NULL){
+			if (f != NULL) {
 				GList *packed_file = NULL;
 				packed_file = g_list_append (packed_file, f);
 				if (!p->info->send_files (p, w, packed_file)) {
@@ -336,10 +324,11 @@ send_button_cb (GtkWidget *widget, gpointer data)
 					return;
 				}
 				g_list_free (packed_file);
-			}else{
+			} else {
+				gtk_widget_set_sensitive (ui->dialog, TRUE);
 				return;
 			}
-		}else{
+		} else {
 			if (!p->info->send_files (p, w, file_list)) {
 				g_list_foreach (file_list, (GFunc) g_free, NULL);
 				g_list_free (file_list);
@@ -370,15 +359,26 @@ send_if_no_pack_cb (GtkWidget *widget, gpointer data)
 }
 
 static void
-toggle_pack_check (GtkWidget *widget, gpointer data )
+toggle_pack_check (GtkWidget *widget, NS_ui *ui)
 {
 	GtkToggleButton *t = GTK_TOGGLE_BUTTON (widget);
-	NS_ui *ui_x = (NS_ui *) data ;
-	gint toogle ;
+	gboolean enabled, send_enabled;
 
-	toogle = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (t));
-	gtk_widget_set_sensitive (ui_x->pack_combobox, toogle);
-	gtk_widget_set_sensitive (ui_x->pack_entry, toogle);
+	enabled = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (t));
+	gtk_widget_set_sensitive (ui->pack_combobox, enabled);
+	gtk_widget_set_sensitive (ui->pack_entry, enabled);
+
+	send_enabled = TRUE;
+
+	if (enabled) {
+		const char *filename;
+
+		filename = gtk_entry_get_text(GTK_ENTRY(ui->pack_entry));
+		if (filename == NULL || *filename == '\0')
+			send_enabled = FALSE;
+	}
+
+	gtk_widget_set_sensitive (ui->send_button, send_enabled);
 }
 
 static void
@@ -476,6 +476,26 @@ set_model_for_options_combobox (NS_ui *ui){
 }
 
 static void
+pack_entry_changed_cb (GObject *object,
+		       GParamSpec *spec,
+		       NS_ui *ui)
+{
+	gboolean send_enabled;
+
+	send_enabled = TRUE;
+
+	if (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (ui->pack_checkbutton))) {
+		const char *filename;
+
+		filename = gtk_entry_get_text(GTK_ENTRY(ui->pack_entry));
+		if (filename == NULL || *filename == '\0')
+			send_enabled = FALSE;
+	}
+
+	gtk_widget_set_sensitive (ui->send_button, send_enabled);
+}
+
+static void
 nautilus_sendto_create_ui (void)
 {
 	GladeXML *app;	
@@ -544,6 +564,8 @@ nautilus_sendto_create_ui (void)
 			  G_CALLBACK (send_button_cb), ui);
 	g_signal_connect (G_OBJECT (ui->pack_entry), "activate",
 			  G_CALLBACK (send_button_cb), ui);
+	g_signal_connect (G_OBJECT (ui->pack_entry), "notify::text",
+			  G_CALLBACK (pack_entry_changed_cb), ui);
 
 	if (force_user_to_compress == FALSE){
 		toggle = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (ui->pack_checkbutton));
