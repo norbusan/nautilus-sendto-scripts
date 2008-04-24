@@ -1,3 +1,20 @@
+2008-04-24  Bastien Nocera  <hadess@hadess.net>
+
+	* gaim_plugin/nautilus-sendto-plugin.c:
+	* pidgin_plugin/nautilus-sendto-plugin.c:
+	* src/nautilus-sendto-command.c:
+	* src/nautilus-sendto-plugin.h:
+	* src/plugins/balsa.c:
+	* src/plugins/bluetooth.c:
+	* src/plugins/e-contact-entry.c:
+	* src/plugins/e-contact-entry.h:
+	* src/plugins/evolution.c:
+	* src/plugins/gaim.c:
+	* src/plugins/gajim.c:
+	* src/plugins/pidgin.c:
+	* src/plugins/sylpheed-claws.c:
+	* src/plugins/thunderbird.c: Update FSF address
+
 2008-04-23  Bastien Nocera  <hadess@hadess.net>
 
 	* src/nautilus-sendto-command.c (pack_files), (send_button_cb),
