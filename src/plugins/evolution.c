@@ -94,6 +94,12 @@ state_change_cb (GtkWidget *entry, gboolean state, gpointer data)
 }
 
 static void
+error_cb (EContactEntry *entry_widget, const char *error, NstPlugin *plugin)
+{
+	g_warning ("An error occurred: %s", error);
+}
+
+static void
 add_sources (EContactEntry *entry)
 {
 	ESourceList *source_list;
@@ -135,6 +141,8 @@ GtkWidget* get_contacts_widget (NstPlugin *plugin)
 			  G_CALLBACK (contacts_selected_cb), plugin);
 	g_signal_connect (G_OBJECT (entry), "state-change",
 			  G_CALLBACK (state_change_cb), NULL);
+	g_signal_connect (G_OBJECT (entry), "error",
+			  G_CALLBACK (error_cb), plugin);
 
 	add_sources (E_CONTACT_ENTRY (entry));
 	setup_source_changes (E_CONTACT_ENTRY (entry));

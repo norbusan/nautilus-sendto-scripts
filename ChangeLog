@@ -1,5 +1,11 @@
 2008-05-27  Bastien Nocera  <hadess@hadess.net>
 
+	* src/plugins/evolution.c (error_cb), (get_contacts_widget):
+	A bit of debugging, print any errors we might get from the
+	contact entry
+
+2008-05-27  Bastien Nocera  <hadess@hadess.net>
+
 	* pidgin_plugin/nautilus-sendto-plugin.c: Revert making the plugin
 	invisible, it apparently makes it impossible to disable/enable the 
 	plugin, even though it should be enabled by default...
