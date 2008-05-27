@@ -1,3 +1,10 @@
+2008-05-27  Bastien Nocera  <hadess@hadess.net>
+
+	* pidgin_plugin/nautilus-sendto-plugin.c: Revert making the plugin
+	invisible, it apparently makes it impossible to disable/enable the 
+	plugin, even though it should be enabled by default...
+	https://bugzilla.redhat.com/show_bug.cgi?id=242289#c7
+
 2008-04-24  Bastien Nocera  <hadess@hadess.net>
 
 	* gaim_plugin/nautilus-sendto-plugin.c:
