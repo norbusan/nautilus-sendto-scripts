@@ -296,9 +296,25 @@ plugin_unload() {
     return TRUE;
 }
 
+static gboolean
+force_load_once (gpointer data)
+{
+    PurplePlugin *plugin = (PurplePlugin *)data;
+    if (!purple_prefs_get_bool ("/plugins/gtk/nautilus/auto_loaded")) {
+	    purple_debug_info ("nautilus", "Force loading nautilus plugin\n");
+	    purple_plugin_load (plugin);
+		purple_plugins_save_loaded (PIDGIN_PREFS_ROOT "/plugins/loaded");
+	    purple_prefs_set_bool ("/plugins/gtk/nautilus/auto_loaded", TRUE);
+    }
+
+    return FALSE;
+}
+
 static void 
 init_plugin(PurplePlugin *plugin) {
-	
+    purple_prefs_add_none ("/plugins/gtk/nautilus");
+    purple_prefs_add_bool ("/plugins/gtk/nautilus/auto_loaded", FALSE);
+	g_idle_add(force_load_once, plugin);
 }
 
 static PurplePluginInfo info = {

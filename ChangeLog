@@ -1,3 +1,10 @@
+2008-05-28  Bastien Nocera  <hadess@hadess.net>
+
+	* pidgin_plugin/nautilus-sendto-plugin.c (force_load_once),
+	(init_plugin): Patch from Stu Tomlinson <stu@nosnilmot.com> to force
+	load the Pidgin plugin on startup (see:
+	https://bugzilla.redhat.com/show_bug.cgi?id=242289)
+
 2008-05-27  Bastien Nocera  <hadess@hadess.net>
 
 	* src/plugins/evolution.c (error_cb), (get_contacts_widget):
