@@ -1,3 +1,11 @@
+2008-05-29  Bastien Nocera  <hadess@hadess.net>
+
+	* src/plugins/evolution.c (contacts_selected_cb): When a contact is
+	selected, try getting the name from different fields, and don't use
+	E_CONTACT_NAME_OR_ORG, as it could add a comma in the name, causing
+	problems when sending e-mails. Should fix:
+	https://bugzilla.redhat.com/show_bug.cgi?id=448880
+
 2008-05-28  Bastien Nocera  <hadess@hadess.net>
 
 	* pidgin_plugin/nautilus-sendto-plugin.c (force_load_once),
