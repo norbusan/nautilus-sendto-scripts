@@ -1,3 +1,18 @@
+=============
+Version 1.0.0
+=============
+
+Nautilus Sendto
+	* Fix sending e-mails using evolution after having auto-
+	completed the user address
+	* Get buddy list changes instantly in the Pidgin plugin
+	* Force loading the Pidgin plugin on startup
+	* Fix the mnemonic for "Send to" not working
+	* Make it impossible to send files packed in an archive
+	if the archive has no names
+	* Fix "Send to..." label
+
+
 ===============
 Version 0.14.0
 ===============

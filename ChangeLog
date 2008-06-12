@@ -1,3 +1,8 @@
+2008-06-12  Bastien Nocera  <hadess@hadess.net>
+
+	* NEWS: upd
+	* configure.in: 1.0.0
+
 2008-05-29  Bastien Nocera  <hadess@hadess.net>
 
 	* src/plugins/evolution.c (contacts_selected_cb): When a contact is
