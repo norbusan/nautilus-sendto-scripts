@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: oc\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-03-07 10:23+0100\n"
+"POT-Creation-Date: 2008-06-09 15:21+0200\n"
 "PO-Revision-Date: 2007-12-27 17:38+0100\n"
 "Last-Translator: Yannig Marchegay (Kokoyaya) <yannig@marchegay.org>\n"
 "Language-Team: Occitan <ubuntu-l10n-oci@lists.ubuntu.com>\n"
@@ -44,7 +44,7 @@ msgstr ""
 #. priority
 #. id
 #: ../gaim_plugin/nautilus-sendto-plugin.c:308
-#: ../pidgin_plugin/nautilus-sendto-plugin.c:308
+#: ../pidgin_plugin/nautilus-sendto-plugin.c:331
 msgid "Nautilus Integration"
 msgstr "Integracion a Nautilus"
 
@@ -56,13 +56,14 @@ msgstr "Integracion a Nautilus"
 #. summary
 #: ../gaim_plugin/nautilus-sendto-plugin.c:310
 #: ../gaim_plugin/nautilus-sendto-plugin.c:311
-#: ../pidgin_plugin/nautilus-sendto-plugin.c:310
-#: ../pidgin_plugin/nautilus-sendto-plugin.c:311
+#: ../pidgin_plugin/nautilus-sendto-plugin.c:333
+#: ../pidgin_plugin/nautilus-sendto-plugin.c:334
 msgid "Provides integration with Nautilus"
 msgstr "Provesís una integracion amb Nautilus"
 
 #: ../src/nautilus-nste.c:92 ../src/nautilus-nste.c:97
-msgid "Send to..."
+#: ../src/nautilus-sendto.glade.h:3
+msgid "Send To..."
 msgstr "Enviar a..."
 
 #: ../src/nautilus-nste.c:93
@@ -77,33 +78,29 @@ msgstr "Enviar los fichièrs per corriel, messatge instantanèu..."
 msgid "Default folder to use"
 msgstr "Repertòri d'utilizar per defaut"
 
-#: ../src/nautilus-sendto-command.c:250
-msgid "You don't insert the package name"
-msgstr "Inserissètz pas lo nom del paquetatge"
-
-#: ../src/nautilus-sendto-command.c:511
+#: ../src/nautilus-sendto-command.c:533
 msgid "Files"
 msgstr "Fichièrs"
 
-#: ../src/nautilus-sendto-command.c:707
+#: ../src/nautilus-sendto-command.c:731
 #, c-format
 msgid "Expects URIs or filenames to be passed as options\n"
 msgstr ""
 
-#: ../src/nautilus-sendto-command.c:724
+#: ../src/nautilus-sendto-command.c:748
 msgid "Nautilus Sendto"
 msgstr "Nautilus Sendto"
 
-#: ../src/nautilus-sendto-command.c:728
+#: ../src/nautilus-sendto-command.c:752
 #, c-format
 msgid "Could not parse command-line options: %s\n"
 msgstr ""
 
-#: ../src/nautilus-sendto-command.c:743
+#: ../src/nautilus-sendto-command.c:767
 msgid "Could not load any plugins."
 msgstr "Impossible de cargar d'ajuston."
 
-#: ../src/nautilus-sendto-command.c:746
+#: ../src/nautilus-sendto-command.c:770
 msgid "Please verify your installation"
 msgstr "Verificatz vòstra installacion"
 
@@ -114,10 +111,6 @@ msgstr "<b>Compression</b>"
 #: ../src/nautilus-sendto.glade.h:2
 msgid "<b>Destination</b>"
 msgstr "<b>Cibla</b>"
-
-#: ../src/nautilus-sendto.glade.h:3
-msgid "Send To..."
-msgstr "Enviar a..."
 
 #: ../src/nautilus-sendto.glade.h:4
 msgid "Send _as:"
@@ -153,7 +146,7 @@ msgstr ""
 msgid "Bluetooth (OBEX Push)"
 msgstr ""
 
-#: ../src/plugins/evolution.c:196
+#: ../src/plugins/evolution.c:210
 msgid "Email (Evolution)"
 msgstr "Corrièl (Evolution)"
 
@@ -171,84 +164,84 @@ msgstr ""
 msgid "Cannot create searchable view."
 msgstr ""
 
-#: ../src/plugins/e-contact-entry.c:890
+#: ../src/plugins/e-contact-entry.c:889
 msgid "Success"
 msgstr ""
 
-#: ../src/plugins/e-contact-entry.c:892
+#: ../src/plugins/e-contact-entry.c:891
 msgid "An argument was invalid."
 msgstr ""
 
-#: ../src/plugins/e-contact-entry.c:894
+#: ../src/plugins/e-contact-entry.c:893
 msgid "The address book is busy."
 msgstr ""
 
-#: ../src/plugins/e-contact-entry.c:896
+#: ../src/plugins/e-contact-entry.c:895
 msgid "The address book is offline."
 msgstr ""
 
-#: ../src/plugins/e-contact-entry.c:898
+#: ../src/plugins/e-contact-entry.c:897
 msgid "The address book does not exist."
 msgstr ""
 
-#: ../src/plugins/e-contact-entry.c:900
+#: ../src/plugins/e-contact-entry.c:899
 msgid "The \"Me\" contact does not exist."
 msgstr ""
 
-#: ../src/plugins/e-contact-entry.c:902
+#: ../src/plugins/e-contact-entry.c:901
 msgid "The address book is not loaded."
 msgstr ""
 
-#: ../src/plugins/e-contact-entry.c:904
+#: ../src/plugins/e-contact-entry.c:903
 msgid "The address book is already loaded."
 msgstr ""
 
-#: ../src/plugins/e-contact-entry.c:906
+#: ../src/plugins/e-contact-entry.c:905
 msgid "Permission was denied when accessing the address book."
 msgstr ""
 
-#: ../src/plugins/e-contact-entry.c:908
+#: ../src/plugins/e-contact-entry.c:907
 msgid "The contact was not found."
 msgstr ""
 
-#: ../src/plugins/e-contact-entry.c:910
+#: ../src/plugins/e-contact-entry.c:909
 msgid "This contact ID already exists."
 msgstr ""
 
-#: ../src/plugins/e-contact-entry.c:912
+#: ../src/plugins/e-contact-entry.c:911
 msgid "The protocol is not supported."
 msgstr ""
 
-#: ../src/plugins/e-contact-entry.c:914
+#: ../src/plugins/e-contact-entry.c:913
 msgid "The operation was cancelled."
 msgstr ""
 
-#: ../src/plugins/e-contact-entry.c:916
+#: ../src/plugins/e-contact-entry.c:915
 msgid "The operation could not be cancelled."
 msgstr ""
 
-#: ../src/plugins/e-contact-entry.c:918
+#: ../src/plugins/e-contact-entry.c:917
 msgid "The address book authentication failed."
 msgstr ""
 
-#: ../src/plugins/e-contact-entry.c:920
+#: ../src/plugins/e-contact-entry.c:919
 msgid ""
 "Authentication is required to access the address book and was not given."
 msgstr ""
 
-#: ../src/plugins/e-contact-entry.c:922
+#: ../src/plugins/e-contact-entry.c:921
 msgid "A secure connection is not available."
 msgstr ""
 
-#: ../src/plugins/e-contact-entry.c:924
+#: ../src/plugins/e-contact-entry.c:923
 msgid "A CORBA error occurred whilst accessing the address book."
 msgstr ""
 
-#: ../src/plugins/e-contact-entry.c:926
+#: ../src/plugins/e-contact-entry.c:925
 msgid "The address book source does not exist."
 msgstr ""
 
-#: ../src/plugins/e-contact-entry.c:928 ../src/plugins/e-contact-entry.c:931
+#: ../src/plugins/e-contact-entry.c:927 ../src/plugins/e-contact-entry.c:930
 msgid "An unknown error occurred."
 msgstr ""
 
@@ -288,6 +281,12 @@ msgstr "Messatge instantanèu (Pidgin)"
 msgid "Email (Claws Mail)"
 msgstr "Corrièl (Claws Mail)"
 
-#: ../src/plugins/thunderbird.c:102
+#: ../src/plugins/thunderbird.c:105
 msgid "Email (Thunderbird)"
 msgstr "Corrièl (Thunderbird)"
+
+#~ msgid "Send to..."
+#~ msgstr "Enviar a..."
+
+#~ msgid "You don't insert the package name"
+#~ msgstr "Inserissètz pas lo nom del paquetatge"
