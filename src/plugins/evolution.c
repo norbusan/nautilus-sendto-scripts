@@ -74,7 +74,16 @@ void contacts_selected_cb (GtkWidget *entry, EContact *contact, const char *iden
 {
 	char *text;
 
-	email = e_contact_get (contact, E_CONTACT_EMAIL_1);
+	g_free (email);
+	email = NULL;
+
+	if (identifier != NULL)
+		email = g_strdup (identifier);
+	else
+		email = e_contact_get (contact, E_CONTACT_EMAIL_1);
+
+	g_free (name);
+	name = NULL;
 
 	name = e_contact_get (contact, E_CONTACT_FULL_NAME);
 	if (name == NULL) {
