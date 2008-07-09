@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nautilus-sendto HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-03-08 20:22+0200\n"
-"PO-Revision-Date: 2008-03-08 20:21+0200\n"
+"POT-Creation-Date: 2008-07-09 20:03+0300\n"
+"PO-Revision-Date: 2008-07-09 20:03+0300\n"
 "Last-Translator: Žygimantas Beručka <zygis@gnome.org>\n"
 "Language-Team: Lithuanian <gnome-lt@lists.akl.lt>\n"
 "MIME-Version: 1.0\n"
@@ -52,7 +52,7 @@ msgstr ""
 #. priority
 #. id
 #: ../gaim_plugin/nautilus-sendto-plugin.c:308
-#: ../pidgin_plugin/nautilus-sendto-plugin.c:308
+#: ../pidgin_plugin/nautilus-sendto-plugin.c:331
 msgid "Nautilus Integration"
 msgstr "Nautilus integracija"
 
@@ -64,13 +64,14 @@ msgstr "Nautilus integracija"
 #. summary
 #: ../gaim_plugin/nautilus-sendto-plugin.c:310
 #: ../gaim_plugin/nautilus-sendto-plugin.c:311
-#: ../pidgin_plugin/nautilus-sendto-plugin.c:310
-#: ../pidgin_plugin/nautilus-sendto-plugin.c:311
+#: ../pidgin_plugin/nautilus-sendto-plugin.c:333
+#: ../pidgin_plugin/nautilus-sendto-plugin.c:334
 msgid "Provides integration with Nautilus"
 msgstr "Suteikia Nautilus integraciją"
 
 #: ../src/nautilus-nste.c:92 ../src/nautilus-nste.c:97
-msgid "Send to..."
+#: ../src/nautilus-sendto.glade.h:3
+msgid "Send To..."
 msgstr "Siųsti į..."
 
 #: ../src/nautilus-nste.c:93
@@ -85,33 +86,29 @@ msgstr "Siųsti failus paštu, skubia žinute..."
 msgid "Default folder to use"
 msgstr "Numatytasis naudotinas aplankas"
 
-#: ../src/nautilus-sendto-command.c:250
-msgid "You don't insert the package name"
-msgstr "Jūs nenurodėte paketo pavadinimo"
-
-#: ../src/nautilus-sendto-command.c:511
+#: ../src/nautilus-sendto-command.c:533
 msgid "Files"
 msgstr "Failai"
 
-#: ../src/nautilus-sendto-command.c:707
+#: ../src/nautilus-sendto-command.c:731
 #, c-format
 msgid "Expects URIs or filenames to be passed as options\n"
 msgstr "Tikimasi URI arba failų pavadinimų nurodytų kaip parinktys\n"
 
-#: ../src/nautilus-sendto-command.c:724
+#: ../src/nautilus-sendto-command.c:748
 msgid "Nautilus Sendto"
 msgstr "Nautilus sendto"
 
-#: ../src/nautilus-sendto-command.c:728
+#: ../src/nautilus-sendto-command.c:752
 #, c-format
 msgid "Could not parse command-line options: %s\n"
 msgstr "Nepavyko apdoroti komandų eilutės parinkčių: %s\n"
 
-#: ../src/nautilus-sendto-command.c:743
+#: ../src/nautilus-sendto-command.c:767
 msgid "Could not load any plugins."
 msgstr "Nepavyko įkelti jokių įskiepių."
 
-#: ../src/nautilus-sendto-command.c:746
+#: ../src/nautilus-sendto-command.c:770
 msgid "Please verify your installation"
 msgstr "Patikrinkite, ar programa gerai įdiegta."
 
@@ -122,10 +119,6 @@ msgstr "<b>Glaudinimas</b>"
 #: ../src/nautilus-sendto.glade.h:2
 msgid "<b>Destination</b>"
 msgstr "<b>Paskirtis</b>"
-
-#: ../src/nautilus-sendto.glade.h:3
-msgid "Send To..."
-msgstr "Siųsti į..."
 
 #: ../src/nautilus-sendto.glade.h:4
 msgid "Send _as:"
@@ -161,102 +154,102 @@ msgstr "Įrenginys nepalaiko Obex failų persiuntimo"
 msgid "Bluetooth (OBEX Push)"
 msgstr "Bluetooth (OBEX Push)"
 
-#: ../src/plugins/evolution.c:196
+#: ../src/plugins/evolution.c:219
 msgid "Email (Evolution)"
 msgstr "El. paštu (Evolution)"
 
 #: ../src/plugins/e-contact-entry.c:158
 #, c-format
 msgid "Cannot get contact: %s"
-msgstr ""
+msgstr "Nepavyko gauti kontakto: %s"
 
 #: ../src/plugins/e-contact-entry.c:191
 #, c-format
 msgid "Could not find contact: %s"
-msgstr ""
+msgstr "Nepavyko surasti kontakto: %s"
 
 #: ../src/plugins/e-contact-entry.c:417
 msgid "Cannot create searchable view."
 msgstr ""
 
-#: ../src/plugins/e-contact-entry.c:890
+#: ../src/plugins/e-contact-entry.c:889
 msgid "Success"
 msgstr "Baigtis sėkminga"
 
-#: ../src/plugins/e-contact-entry.c:892
+#: ../src/plugins/e-contact-entry.c:891
 msgid "An argument was invalid."
-msgstr ""
+msgstr "Argumentas netaisyklingas."
 
-#: ../src/plugins/e-contact-entry.c:894
+#: ../src/plugins/e-contact-entry.c:893
 msgid "The address book is busy."
 msgstr "Adresų knygutė užimta."
 
-#: ../src/plugins/e-contact-entry.c:896
+#: ../src/plugins/e-contact-entry.c:895
 msgid "The address book is offline."
 msgstr ""
 
-#: ../src/plugins/e-contact-entry.c:898
+#: ../src/plugins/e-contact-entry.c:897
 msgid "The address book does not exist."
 msgstr "Adresų knyga neegzistuoja."
 
-#: ../src/plugins/e-contact-entry.c:900
+#: ../src/plugins/e-contact-entry.c:899
 msgid "The \"Me\" contact does not exist."
 msgstr ""
 
-#: ../src/plugins/e-contact-entry.c:902
+#: ../src/plugins/e-contact-entry.c:901
 msgid "The address book is not loaded."
-msgstr ""
+msgstr "Adresų knygutė neįkelta."
 
-#: ../src/plugins/e-contact-entry.c:904
+#: ../src/plugins/e-contact-entry.c:903
 msgid "The address book is already loaded."
-msgstr ""
+msgstr "Adresų knygutė jau įkelta."
 
-#: ../src/plugins/e-contact-entry.c:906
+#: ../src/plugins/e-contact-entry.c:905
 msgid "Permission was denied when accessing the address book."
 msgstr ""
 
-#: ../src/plugins/e-contact-entry.c:908
+#: ../src/plugins/e-contact-entry.c:907
 msgid "The contact was not found."
 msgstr "Kontaktas nerastas."
 
-#: ../src/plugins/e-contact-entry.c:910
+#: ../src/plugins/e-contact-entry.c:909
 msgid "This contact ID already exists."
 msgstr ""
 
-#: ../src/plugins/e-contact-entry.c:912
+#: ../src/plugins/e-contact-entry.c:911
 msgid "The protocol is not supported."
-msgstr ""
+msgstr "Protokolas nepalaikomas"
 
-#: ../src/plugins/e-contact-entry.c:914
+#: ../src/plugins/e-contact-entry.c:913
 msgid "The operation was cancelled."
-msgstr ""
+msgstr "Operacija buvo nutraukta"
 
-#: ../src/plugins/e-contact-entry.c:916
+#: ../src/plugins/e-contact-entry.c:915
 msgid "The operation could not be cancelled."
 msgstr ""
 
-#: ../src/plugins/e-contact-entry.c:918
+#: ../src/plugins/e-contact-entry.c:917
 msgid "The address book authentication failed."
 msgstr ""
 
-#: ../src/plugins/e-contact-entry.c:920
+#: ../src/plugins/e-contact-entry.c:919
 msgid ""
 "Authentication is required to access the address book and was not given."
 msgstr ""
 
-#: ../src/plugins/e-contact-entry.c:922
+#: ../src/plugins/e-contact-entry.c:921
 msgid "A secure connection is not available."
 msgstr ""
 
-#: ../src/plugins/e-contact-entry.c:924
+#: ../src/plugins/e-contact-entry.c:923
 msgid "A CORBA error occurred whilst accessing the address book."
 msgstr ""
 
-#: ../src/plugins/e-contact-entry.c:926
+#: ../src/plugins/e-contact-entry.c:925
 msgid "The address book source does not exist."
 msgstr ""
 
-#: ../src/plugins/e-contact-entry.c:928 ../src/plugins/e-contact-entry.c:931
+#: ../src/plugins/e-contact-entry.c:927 ../src/plugins/e-contact-entry.c:930
 msgid "An unknown error occurred."
 msgstr "Įvyko nežinoma klaida."
 
@@ -296,6 +289,12 @@ msgstr "Skubia žinute (Pidgin)"
 msgid "Email (Claws Mail)"
 msgstr "El. paštu (Claws Mail)"
 
-#: ../src/plugins/thunderbird.c:102
+#: ../src/plugins/thunderbird.c:105
 msgid "Email (Thunderbird)"
 msgstr "El. paštu (Thunderbird)"
+
+#~ msgid "Send to..."
+#~ msgstr "Siųsti į..."
+
+#~ msgid "You don't insert the package name"
+#~ msgstr "Jūs nenurodėte paketo pavadinimo"
