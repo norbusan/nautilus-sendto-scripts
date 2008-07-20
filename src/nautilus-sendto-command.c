@@ -693,8 +693,15 @@ nautilus_sendto_init (void)
 		filename = filenames[i];
  
  		if (g_str_has_prefix (filename, "file://")) {
- 			file_list = g_list_prepend (file_list,
- 					g_strdup (filename));
+ 			char *escaped;
+
+			/* Make sure URIs don't contain ampersands */
+ 			escaped = escape_ampersands (filename);
+ 			if (escaped == NULL)
+				file_list = g_list_prepend (file_list,
+							    g_strdup (filename));
+			else
+				file_list = g_list_prepend (file_list, escaped);
  			path = g_filename_from_uri (filename, NULL, NULL);
  			if (path != NULL
  			    && g_file_test (path, G_FILE_TEST_IS_DIR)) {

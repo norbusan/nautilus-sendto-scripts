@@ -1,3 +1,9 @@
+2008-07-20  Bastien Nocera  <hadess@hadess.net>
+
+	* src/nautilus-sendto-command.c (nautilus_sendto_init):
+	Make sure ampersands are escaped even if we're passed a URI
+	(Closes: #543327)
+
 2008-07-03  Bastien Nocera  <hadess@hadess.net>
 
 	* src/plugins/evolution.c (contacts_selected_cb):
