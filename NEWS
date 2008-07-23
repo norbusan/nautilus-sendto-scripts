@@ -1,4 +1,14 @@
 =============
+Version 1.0.1
+=============
+
+Nautilus Sendto
+	* Fix e-mail selection in the Evolution plugin when a
+	single contact has multiple addresses
+	* Fix sending from nautilus when the path contains an
+	ampersand
+
+=============
 Version 1.0.0
 =============
 
