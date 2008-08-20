@@ -412,14 +412,12 @@ validate_destination (NstPlugin *plugin,
 		      char **error)
 {
 	GError *e = NULL;
-	char *bdaddr, *name, **array;
+	char *bdaddr, **array, **a;
 	gboolean found = TRUE;
 
 	g_return_val_if_fail (error != NULL, FALSE);
 
-	//FIXME shouldn't error if there's no selected device
-
-	if (get_select_device (&name, &bdaddr) == FALSE) {
+	if (get_select_device (NULL, &bdaddr) == FALSE) {
 		*error = g_strdup (_("Programming error, could not find the device in the list"));
 		return FALSE;
 	}
@@ -429,26 +427,32 @@ validate_destination (NstPlugin *plugin,
 			   G_TYPE_STRV, &array, G_TYPE_INVALID);
 	if (e == NULL) {
 		found = FALSE;
-		while (*array) {
-			if (g_str_equal (*array, OBEX_SERVICE_CLASS_NAME) != FALSE) {
+		a = array;
+		while (*a) {
+			if (g_str_equal (*a, OBEX_SERVICE_CLASS_NAME) != FALSE) {
 				found = TRUE;
 				break;
 			}
-			array++;
+			a++;
 		}
 	} else {
 		g_error_free (e);
 	}
 
+	g_strfreev (array);
+	g_free (bdaddr);
+
 	if (found == FALSE)
-		*error = g_strdup_printf (_("Device does not support Obex File Transfer"));
+		*error = g_strdup_printf (_("Device does not support Obex Push file transfer"));
 
 	return found;
 }
 
 static gboolean
 destroy (NstPlugin *plugin){
-	//FIXME
+	g_object_unref (model);
+	gtk_widget_destroy (combobox);
+	g_free (cmd);
 	return TRUE;
 }
 
