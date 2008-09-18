@@ -1,6 +1,7 @@
 # Finnish translation to nautilus-sendto
-# Copyright (C) 2004-2005 Free Software Foundation, Inc.
+# Copyright (C) 2004-2008 Free Software Foundation, Inc.
 # This file is distributed under the same license as the nautilus-sendto package.
+# Ilkka Tuohela <hile@iki.fi>, 2008.
 # Tommi Vainikainen <Tommi.Vainikainen@iki.fi>, 2004-2005.
 # Timo Jyrinki <timo.jyrinki@iki.fi>, 2008.
 #
@@ -8,9 +9,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nautilus-sendto\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-02-19 10:08+0300\n"
-"PO-Revision-Date: 2008-02-29 12:20+0200\n"
-"Last-Translator: Timo Jyrinki <timo.jyrinki@iki.fi>\n"
+"POT-Creation-Date: 2008-09-18 14:30+0300\n"
+"PO-Revision-Date: 2008-09-18 14:00+0300\n"
+"Last-Translator: Ilkka Tuohela <hile@iki.fi>\n"
 "Language-Team: Finnish <gnome-fi-laatu@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -48,7 +49,7 @@ msgstr ""
 #. priority
 #. id
 #: ../gaim_plugin/nautilus-sendto-plugin.c:308
-#: ../pidgin_plugin/nautilus-sendto-plugin.c:308
+#: ../pidgin_plugin/nautilus-sendto-plugin.c:331
 msgid "Nautilus Integration"
 msgstr "Nautilus-integraatio"
 
@@ -60,13 +61,14 @@ msgstr "Nautilus-integraatio"
 #. summary
 #: ../gaim_plugin/nautilus-sendto-plugin.c:310
 #: ../gaim_plugin/nautilus-sendto-plugin.c:311
-#: ../pidgin_plugin/nautilus-sendto-plugin.c:310
-#: ../pidgin_plugin/nautilus-sendto-plugin.c:311
+#: ../pidgin_plugin/nautilus-sendto-plugin.c:333
+#: ../pidgin_plugin/nautilus-sendto-plugin.c:334
 msgid "Provides integration with Nautilus"
 msgstr "Tarjoaa integraation Nautilukseen"
 
 #: ../src/nautilus-nste.c:92 ../src/nautilus-nste.c:97
-msgid "Send to..."
+#: ../src/nautilus-sendto.glade.h:3
+msgid "Send To..."
 msgstr "Lähetä..."
 
 #: ../src/nautilus-nste.c:93
@@ -81,33 +83,29 @@ msgstr "Lähetä tiedostoja sähköpostilla, pikaviestimellä..."
 msgid "Default folder to use"
 msgstr "Käytettävä oletuskansio"
 
-#: ../src/nautilus-sendto-command.c:250
-msgid "You don't insert the package name"
-msgstr "Et antanut paketin nimeä"
-
-#: ../src/nautilus-sendto-command.c:511
+#: ../src/nautilus-sendto-command.c:533
 msgid "Files"
 msgstr "Tiedostot"
 
-#: ../src/nautilus-sendto-command.c:707
+#: ../src/nautilus-sendto-command.c:738
 #, c-format
 msgid "Expects URIs or filenames to be passed as options\n"
 msgstr "Olettaa parametreina annettavan URI:t tai tiedostonimiä\n"
 
-#: ../src/nautilus-sendto-command.c:724
+#: ../src/nautilus-sendto-command.c:755
 msgid "Nautilus Sendto"
 msgstr "Nautilus-lähetä"
 
-#: ../src/nautilus-sendto-command.c:728
+#: ../src/nautilus-sendto-command.c:759
 #, c-format
 msgid "Could not parse command-line options: %s\n"
 msgstr "Komentorivivalitsimia ei voi tulkita: %s\n"
 
-#: ../src/nautilus-sendto-command.c:743
+#: ../src/nautilus-sendto-command.c:774
 msgid "Could not load any plugins."
 msgstr "Liitännäisiä ei voi ladata."
 
-#: ../src/nautilus-sendto-command.c:746
+#: ../src/nautilus-sendto-command.c:777
 msgid "Please verify your installation"
 msgstr "Tarkista asennuksesi"
 
@@ -118,10 +116,6 @@ msgstr "<b>Pakkaus</b>"
 #: ../src/nautilus-sendto.glade.h:2
 msgid "<b>Destination</b>"
 msgstr "<b>Kohde</b>"
-
-#: ../src/nautilus-sendto.glade.h:3
-msgid "Send To..."
-msgstr "Lähetä..."
 
 #: ../src/nautilus-sendto.glade.h:4
 msgid "Send _as:"
@@ -143,20 +137,20 @@ msgstr "_Lähetä"
 msgid "Email (Balsa)"
 msgstr "Sähköposti (Balsa)"
 
-#: ../src/plugins/bluetooth.c:423
+#: ../src/plugins/bluetooth.c:421
 msgid "Programming error, could not find the device in the list"
 msgstr "Ohjelmointivirhe, laitetta ei löytynyt luettelosta"
 
-#: ../src/plugins/bluetooth.c:444
+#: ../src/plugins/bluetooth.c:446
 #, c-format
-msgid "Device does not support Obex File Transfer"
-msgstr "Laite ei tue Obex-tiedostonsiirtoa"
+msgid "Device does not support Obex Push file transfer"
+msgstr "Laite ei tue Obex Push -tiedostonsiirtoa"
 
-#: ../src/plugins/bluetooth.c:459
+#: ../src/plugins/bluetooth.c:463
 msgid "Bluetooth (OBEX Push)"
 msgstr "Bluetooth (OBEX Push)"
 
-#: ../src/plugins/evolution.c:196
+#: ../src/plugins/evolution.c:219
 msgid "Email (Evolution)"
 msgstr "Sähköposti (Evolution)"
 
@@ -174,85 +168,84 @@ msgstr "Yhteystietoa ei löydy: %s"
 msgid "Cannot create searchable view."
 msgstr "Etsittävää näkymää ei voi luoda."
 
-#: ../src/plugins/e-contact-entry.c:890
+#: ../src/plugins/e-contact-entry.c:889
 msgid "Success"
 msgstr "Onnistui"
 
-#: ../src/plugins/e-contact-entry.c:892
+#: ../src/plugins/e-contact-entry.c:891
 msgid "An argument was invalid."
 msgstr "Valitsin oli virheellinen."
 
-#: ../src/plugins/e-contact-entry.c:894
+#: ../src/plugins/e-contact-entry.c:893
 msgid "The address book is busy."
 msgstr "Osoitekirja on varattu."
 
-#: ../src/plugins/e-contact-entry.c:896
+#: ../src/plugins/e-contact-entry.c:895
 msgid "The address book is offline."
 msgstr "Osoitekirja on yhteydettömässä tilassa."
 
-#: ../src/plugins/e-contact-entry.c:898
+#: ../src/plugins/e-contact-entry.c:897
 msgid "The address book does not exist."
 msgstr "Osoitekirjaa ei ole olemassa."
 
-#: ../src/plugins/e-contact-entry.c:900
+#: ../src/plugins/e-contact-entry.c:899
 msgid "The \"Me\" contact does not exist."
 msgstr "Yhteystietoa \"Minä\" ei ole olemassa."
 
-#: ../src/plugins/e-contact-entry.c:902
+#: ../src/plugins/e-contact-entry.c:901
 msgid "The address book is not loaded."
 msgstr "Osoitekirjaa ei ole ladattu."
 
-#: ../src/plugins/e-contact-entry.c:904
+#: ../src/plugins/e-contact-entry.c:903
 msgid "The address book is already loaded."
 msgstr "Osoitekirja on jo ladattu."
 
-#: ../src/plugins/e-contact-entry.c:906
+#: ../src/plugins/e-contact-entry.c:905
 msgid "Permission was denied when accessing the address book."
 msgstr "Pääsy osoitekirjaan evättiin."
 
-#: ../src/plugins/e-contact-entry.c:908
+#: ../src/plugins/e-contact-entry.c:907
 msgid "The contact was not found."
 msgstr "Yhteystietoa ei löytynyt."
 
-#: ../src/plugins/e-contact-entry.c:910
+#: ../src/plugins/e-contact-entry.c:909
 msgid "This contact ID already exists."
 msgstr "Tämä yhteystiedon tunniste on jo olemassa."
 
-#: ../src/plugins/e-contact-entry.c:912
+#: ../src/plugins/e-contact-entry.c:911
 msgid "The protocol is not supported."
 msgstr "Yhteyskäytäntö ei ole tuettu."
 
-#: ../src/plugins/e-contact-entry.c:914
+#: ../src/plugins/e-contact-entry.c:913
 msgid "The operation was cancelled."
 msgstr "Toiminto peruttiin."
 
-#: ../src/plugins/e-contact-entry.c:916
+#: ../src/plugins/e-contact-entry.c:915
 msgid "The operation could not be cancelled."
 msgstr "Toimintoa ei voi perua."
 
-#: ../src/plugins/e-contact-entry.c:918
+#: ../src/plugins/e-contact-entry.c:917
 msgid "The address book authentication failed."
 msgstr "Osoitekirjan vaatima tunnistautuminen epäonnistui."
 
-#: ../src/plugins/e-contact-entry.c:920
+#: ../src/plugins/e-contact-entry.c:919
 msgid ""
 "Authentication is required to access the address book and was not given."
-msgstr ""
-"Osoitekirjan käyttö vaatii tunnistautumisen, mutta tietoja ei annettu." 
+msgstr "Osoitekirjan käyttö vaatii tunnistautumisen, mutta tietoja ei annettu."
 
-#: ../src/plugins/e-contact-entry.c:922
+#: ../src/plugins/e-contact-entry.c:921
 msgid "A secure connection is not available."
 msgstr "Suojattu yhteys ei ole saatavilla."
 
-#: ../src/plugins/e-contact-entry.c:924
+#: ../src/plugins/e-contact-entry.c:923
 msgid "A CORBA error occurred whilst accessing the address book."
 msgstr "Tapahtui CORBA-virhe käsiteltäessä osoitekirjaa."
 
-#: ../src/plugins/e-contact-entry.c:926
+#: ../src/plugins/e-contact-entry.c:925
 msgid "The address book source does not exist."
 msgstr "Osoitekirjan lähdettä ei ole olemassa."
 
-#: ../src/plugins/e-contact-entry.c:928 ../src/plugins/e-contact-entry.c:931
+#: ../src/plugins/e-contact-entry.c:927 ../src/plugins/e-contact-entry.c:930
 msgid "An unknown error occurred."
 msgstr "Tapahtui tuntematon virhe."
 
@@ -292,9 +285,15 @@ msgstr "Pikaviesti (Pidgin)"
 msgid "Email (Claws Mail)"
 msgstr "Sähköposti (Claws Mail)"
 
-#: ../src/plugins/thunderbird.c:102
+#: ../src/plugins/thunderbird.c:105
 msgid "Email (Thunderbird)"
 msgstr "Sähköposti (Thunderbird)"
+
+#~ msgid "Send to..."
+#~ msgstr "Lähetä..."
+
+#~ msgid "You don't insert the package name"
+#~ msgstr "Et antanut paketin nimeä"
 
 #~ msgid ""
 #~ ".zip\n"
