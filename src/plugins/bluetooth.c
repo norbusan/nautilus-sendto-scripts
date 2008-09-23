@@ -29,13 +29,14 @@
 #include <glib/gi18n-lib.h>
 #include "../nautilus-sendto-plugin.h"
 
-#define OBEX_SERVICE_CLASS_NAME "object transfer"
+#define OBEX_FILETRANS_SVCLASS_ID_STR "0x1106"
 
 static GtkTreeModel *model;
 static int discovered;
 static GtkWidget *combobox;
 static char *cmd = NULL;
 
+DBusGConnection *conn;
 DBusGProxy *object;
 
 enum {
@@ -48,7 +49,7 @@ static gboolean
 init (NstPlugin *plugin)
 {
 	GError *e = NULL;
-	DBusGConnection *conn;
+	DBusGProxy *manager;
 	const char *adapter;
 
 	/* Check whether bluetooth-sendto or gnome-obex-send are available */
@@ -67,14 +68,13 @@ init (NstPlugin *plugin)
 		return FALSE;
 	}
 
-	object = dbus_g_proxy_new_for_name (conn, "org.bluez",
-					    "/org/bluez", "org.bluez.Manager");
-	dbus_g_proxy_call (object, "DefaultAdapter", &e,
-			   G_TYPE_INVALID, G_TYPE_STRING, &adapter, G_TYPE_INVALID);
-	if (e != NULL) {
-
+	manager = dbus_g_proxy_new_for_name (conn, "org.bluez",
+					    "/", "org.bluez.Manager");
+	if (dbus_g_proxy_call (manager, "DefaultAdapter", &e,
+			   G_TYPE_INVALID, DBUS_TYPE_G_OBJECT_PATH, &adapter, G_TYPE_INVALID) == FALSE) {
+		g_object_unref (manager);
 		if (e->domain == DBUS_GERROR &&
-                    e->code == DBUS_GERROR_REMOTE_EXCEPTION) {
+		    e->code == DBUS_GERROR_REMOTE_EXCEPTION) {
 			const char *name;
 
 			name = dbus_g_error_get_name (e);
@@ -92,6 +92,7 @@ init (NstPlugin *plugin)
 		return FALSE;
 	}
 
+	g_object_unref (manager);
 	object = dbus_g_proxy_new_for_name (conn, "org.bluez",
 					    adapter, "org.bluez.Adapter");
 
@@ -157,104 +158,57 @@ add_phone_to_list (GtkListStore *store, const char *name, const char *bdaddr)
 }
 
 static void
-add_devices_to_list (GtkListStore *store, const char **array)
+add_device_to_list (GtkListStore *store, const char *device_path)
 {
-	GError *e = NULL;
-	while (*array) {
-		const char *name;
-		dbus_g_proxy_call (object, "GetRemoteName", &e,
-				   G_TYPE_STRING, *array, G_TYPE_INVALID,
-				   G_TYPE_STRING, &name, G_TYPE_INVALID);
-		if (e == NULL) {
-			add_phone_to_list (store, name, *array);
-		} else {
-			g_error_free (e);
-			e = NULL;
-		}
-		array++;
+	DBusGProxy *device;
+	GHashTable *props;
+
+	device = dbus_g_proxy_new_for_name (conn, "org.bluez",
+					    device_path, "org.bluez.Device");
+	if (dbus_g_proxy_call (device, "GetProperties", NULL,
+			       G_TYPE_INVALID, dbus_g_type_get_map ("GHashTable", G_TYPE_STRING, G_TYPE_VALUE),
+			       &props, G_TYPE_INVALID) != FALSE) {
+		GValue *value;
+		const char *name, *address;
+
+		value = g_hash_table_lookup (props, "Address");
+		address = g_value_get_string (value);
+		value = g_hash_table_lookup (props, "Name");
+		name = g_value_get_string (value);
+
+		//FIXME double check the obexftp support?
+		add_phone_to_list (store, name, address);
 	}
+	g_object_unref (device);
 }
 
 static void
 add_known_devices_to_list (GtkListStore *store)
 {
 	GError *e = NULL;
-	const char **array;
+	GPtrArray *array;
 
-	dbus_g_proxy_call (object, "ListRemoteDevices", &e,
-			   G_TYPE_INVALID, G_TYPE_STRV, &array, G_TYPE_INVALID);
-	if (e == NULL) {
-		add_devices_to_list (store, array);
-	} else {
-		/* Most likely bluez-utils < 3.8, so no ListRemoteDevices */
-		const char *name;
-
-		name = dbus_g_error_get_name (e);
-		if (g_str_equal (name, "org.bluez.Error.UnknownMethod") != FALSE) {
-			g_error_free (e);
-			e = NULL;
-			dbus_g_proxy_call (object, "ListBondings", &e,
-					   G_TYPE_INVALID, G_TYPE_STRV, &array, G_TYPE_INVALID);
-			if (e == NULL) {
-				add_devices_to_list (store, array);
-			} else {
-				g_error_free (e);
-			}
-		} else {
-			g_error_free (e);
-		}
+	if (dbus_g_proxy_call (object, "ListDevices", &e,
+			       G_TYPE_INVALID, dbus_g_type_get_collection ("GPtrArray", DBUS_TYPE_G_OBJECT_PATH), &array, G_TYPE_INVALID) != FALSE) {
+		guint i;
+		for (i = 0; i < array->len ; i++)
+			add_device_to_list (store, g_ptr_array_index (array, i));
+		g_ptr_array_free (array, TRUE);
 	}
 }
 
 static void
-discovery_started (DBusGProxy *object, gpointer user_data)
+device_found (DBusGProxy *object,
+	      const char *address, GHashTable *props,
+	      GtkListStore *store)
 {
-	/* Discovery started! */
-}
+	GValue *value;
+	const char *name;
 
-static void
-remote_device_found (DBusGProxy *object,
-		     const char *address, guint class, int rssi,
-		     GtkListStore *store)
-{
-	add_phone_to_list (store, NULL, address);
-}
+	value = g_hash_table_lookup (props, "Name");
+	name = value ? g_value_get_string (value) : NULL;
 
-static void
-remote_name_updated (DBusGProxy *object,
-		     const char *address, const char *name,
-		     GtkListStore *store)
-{
 	add_phone_to_list (store, name, address);
-}
-
-static void
-discovery_completed (DBusGProxy *object, gpointer user_data)
-{
-	GError *e = NULL;
-
-	/* Discovery finished, launch a periodic discovery */
-
-	dbus_g_proxy_call (object, "StartPeriodicDiscovery", &e,
-			   G_TYPE_INVALID, G_TYPE_INVALID);
-	if (e != NULL) {
-		g_warning ("Couldn't start periodic discovery: %s",
-			   e->message);
-		g_error_free (e);
-	}
-}
-
-static void
-remote_device_disappeared (DBusGProxy *object,
-			   const char *address,
-			   gpointer user_data)
-{
-	GtkListStore *store = (GtkListStore *) user_data;
-	GtkTreeIter iter;
-
-	if (find_iter_for_address (store, address, &iter) == FALSE)
-		return;
-	gtk_list_store_remove (store, &iter);
 }
 
 static void
@@ -262,36 +216,15 @@ start_device_scanning (GtkListStore *store)
 {
 	GError *e = NULL;
 
-	dbus_g_proxy_add_signal (object, "DiscoveryStarted", G_TYPE_INVALID);
-	dbus_g_proxy_connect_signal (object, "DiscoveryStarted",
-				     G_CALLBACK (discovery_started), NULL, NULL);
+	dbus_g_object_register_marshaller (nst_bluetooth_marshal_VOID__STRING_BOXED,
+					   G_TYPE_NONE, G_TYPE_STRING,
+					   G_TYPE_VALUE, G_TYPE_INVALID);
+	dbus_g_proxy_add_signal (object, "DeviceFound",
+				 G_TYPE_STRING, dbus_g_type_get_map("GHashTable", G_TYPE_STRING, G_TYPE_VALUE), G_TYPE_INVALID);
+	dbus_g_proxy_connect_signal (object, "DeviceFound",
+				     G_CALLBACK (device_found), store, NULL);
 
-	dbus_g_object_register_marshaller(nst_bluetooth_marshal_VOID__STRING_UINT_INT,
-					  G_TYPE_NONE, G_TYPE_STRING, G_TYPE_UINT,
-					  G_TYPE_INT, G_TYPE_INVALID);
-	dbus_g_proxy_add_signal (object, "RemoteDeviceFound",
-				 G_TYPE_STRING, G_TYPE_UINT, G_TYPE_INT, G_TYPE_INVALID);
-	dbus_g_proxy_connect_signal (object, "RemoteDeviceFound",
-				     G_CALLBACK (remote_device_found), store, NULL);
-
-	dbus_g_object_register_marshaller(nst_bluetooth_marshal_VOID__STRING_STRING,
-					  G_TYPE_NONE, G_TYPE_STRING,
-					  G_TYPE_STRING, G_TYPE_INVALID);
-	dbus_g_proxy_add_signal (object, "RemoteNameUpdated",
-				 G_TYPE_STRING, G_TYPE_STRING, G_TYPE_INVALID);
-	dbus_g_proxy_connect_signal (object, "RemoteNameUpdated",
-				     G_CALLBACK (remote_name_updated), store, NULL);
-
-	dbus_g_proxy_add_signal (object, "RemoteDeviceDisappeared",
-				 G_TYPE_STRING, G_TYPE_INVALID);
-	dbus_g_proxy_connect_signal (object, "RemoteDeviceDisappeared",
-				     G_CALLBACK (remote_device_disappeared), store, NULL);
-
-	dbus_g_proxy_add_signal (object, "DiscoveryCompleted", G_TYPE_INVALID);
-	dbus_g_proxy_connect_signal (object, "DiscoveryCompleted",
-				     G_CALLBACK (discovery_completed), NULL, NULL);
-
-	dbus_g_proxy_call (object, "DiscoverDevices", &e,
+	dbus_g_proxy_call (object, "StartDiscovery", &e,
 			   G_TYPE_INVALID, G_TYPE_INVALID);
 	if (e != NULL) {
 		g_warning ("Couldn't start discovery: %s: %s",
@@ -412,8 +345,10 @@ validate_destination (NstPlugin *plugin,
 		      char **error)
 {
 	GError *e = NULL;
-	char *bdaddr, **array, **a;
-	gboolean found = TRUE;
+	char *bdaddr, *device_path;
+	DBusGProxy *device;
+	GHashTable *props;
+	gboolean found = FALSE;
 
 	g_return_val_if_fail (error != NULL, FALSE);
 
@@ -422,34 +357,73 @@ validate_destination (NstPlugin *plugin,
 		return FALSE;
 	}
 
-	dbus_g_proxy_call (object, "GetRemoteServiceClasses", &e,
-			   G_TYPE_STRING, bdaddr, G_TYPE_INVALID,
-			   G_TYPE_STRV, &array, G_TYPE_INVALID);
-	if (e == NULL) {
-		found = FALSE;
-		a = array;
-		while (*a) {
-			if (g_str_equal (*a, OBEX_SERVICE_CLASS_NAME) != FALSE) {
-				found = TRUE;
-				break;
-			}
-			a++;
-		}
-	} else {
-		g_error_free (e);
+	if (dbus_g_proxy_call (object, "FindDevice", &e,
+			       G_TYPE_STRING, bdaddr, G_TYPE_INVALID,
+			       DBUS_TYPE_G_OBJECT_PATH, &device_path, G_TYPE_INVALID) == FALSE) {
+		g_free (bdaddr);
+		*error = g_strdup (_("Programming error, could not find the device in the list"));
+		return FALSE;
 	}
 
-	g_strfreev (array);
-	g_free (bdaddr);
+	device = dbus_g_proxy_new_for_name (conn, "org.bluez",
+					    device_path, "org.bluez.Device");
+
+	if (dbus_g_proxy_call (device, "GetProperties", NULL,
+			       G_TYPE_INVALID, dbus_g_type_get_map ("GHashTable", G_TYPE_STRING, G_TYPE_VALUE),
+			       &props, G_TYPE_INVALID) != FALSE) {
+		GValue *value;
+		char **array;
+
+		value = g_hash_table_lookup (props, "UUIDs");
+		array = g_value_get_boxed (value);
+		if (array != NULL) {
+			char *uuid;
+			guint i;
+
+			for (i = 0; array[i] != NULL; i++) {
+				if (g_str_has_suffix (array[i], "-0000-1000-8000-00805f9b34fb") != FALSE) {
+					if (g_str_has_prefix (array[i], "0000") != FALSE) {
+						char *tmp;
+						tmp = g_strndup (array[i] + 4, 4);
+						uuid = g_strdup_printf ("0x%s", tmp);
+						g_free (tmp);
+					} else {
+						char *tmp;
+						tmp = g_strndup (array[i], 8);
+						uuid = g_strdup_printf ("0x%s", tmp);
+					}
+				} else {
+					uuid = g_strdup (array[i]);
+				}
+
+				if (strcmp (uuid, OBEX_FILETRANS_SVCLASS_ID_STR) == 0) {
+					found = TRUE;
+					g_free (uuid);
+					break;
+				}
+
+				g_free (uuid);
+			}
+		}
+		g_hash_table_destroy (props);
+	}
+	g_object_unref (device);
 
 	if (found == FALSE)
-		*error = g_strdup_printf (_("Device does not support Obex Push file transfer"));
+		*error = g_strdup_printf (_("Obex Push file transfer unsupported"));
 
 	return found;
 }
 
 static gboolean
-destroy (NstPlugin *plugin){
+destroy (NstPlugin *plugin)
+{
+	if (object != NULL) {
+		dbus_g_proxy_call (object, "StopDiscovery", NULL,
+				   G_TYPE_INVALID, G_TYPE_INVALID);
+		g_object_unref (object);
+	}
+	g_object_unref (conn);
 	g_object_unref (model);
 	gtk_widget_destroy (combobox);
 	g_free (cmd);
