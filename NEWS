@@ -1,4 +1,11 @@
 =============
+Version 1.1.0
+=============
+
+Nautilus Sendto
+	* Port to Bluetooth plugin to BlueZ 4.x API
+
+=============
 Version 1.0.1
 =============
 
