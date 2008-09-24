@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nautilus-sendto\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-25 19:53+0200\n"
-"PO-Revision-Date: 2008-08-25 19:54+0100\n"
+"POT-Creation-Date: 2008-09-24 19:09+0200\n"
+"PO-Revision-Date: 2008-09-24 19:10+0100\n"
 "Last-Translator: Daniel Nylander <po@danielnylander.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "MIME-Version: 1.0\n"
@@ -129,16 +129,17 @@ msgstr "_Skicka"
 msgid "Email (Balsa)"
 msgstr "E-post (Balsa)"
 
-#: ../src/plugins/bluetooth.c:421
+#: ../src/plugins/bluetooth.c:356
+#: ../src/plugins/bluetooth.c:364
 msgid "Programming error, could not find the device in the list"
 msgstr "Programmeringsfel, kunde inte hitta enheten i listan"
 
-#: ../src/plugins/bluetooth.c:446
+#: ../src/plugins/bluetooth.c:413
 #, c-format
-msgid "Device does not support Obex Push file transfer"
-msgstr "Enheten saknar stöd för Obex Push-filöverföring"
+msgid "Obex Push file transfer unsupported"
+msgstr "Inget stöd för Obex Push-filöverföring"
 
-#: ../src/plugins/bluetooth.c:463
+#: ../src/plugins/bluetooth.c:437
 msgid "Bluetooth (OBEX Push)"
 msgstr "Bluetooth (OBEX Push)"
 
@@ -284,6 +285,8 @@ msgstr "E-post (Claws Mail)"
 msgid "Email (Thunderbird)"
 msgstr "E-post (Thunderbird)"
 
+#~ msgid "Device does not support Obex Push file transfer"
+#~ msgstr "Enheten saknar stöd för Obex Push-filöverföring"
 #~ msgid "Send to..."
 #~ msgstr "Skicka till..."
 
