@@ -1,3 +1,9 @@
+2008-09-24  Bastien Nocera  <hadess@hadess.net>
+
+	* src/plugins/evolution.c (contacts_selected_cb):
+	Fix (null) print when selecting a contact without
+	a full name, or any other information
+
 ========= nautilus-sendto 1.1.0 =========
 
 2008-09-23  Bastien Nocera  <hadess@hadess.net>

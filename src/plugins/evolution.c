@@ -91,10 +91,12 @@ void contacts_selected_cb (GtkWidget *entry, EContact *contact, const char *iden
 		if (name == NULL)
 			name = e_contact_get (contact, E_CONTACT_ORG);
 	}
-
-	text = g_strdup_printf (CONTACT_FORMAT, (char*) name, email);
-	gtk_entry_set_text (GTK_ENTRY (entry), text);
-	g_free (text);
+	if (name != NULL) {
+		text = g_strdup_printf (CONTACT_FORMAT, (char*) name, email);
+		gtk_entry_set_text (GTK_ENTRY (entry), text);
+		g_free (text);
+	} else
+		gtk_entry_set_text (GTK_ENTRY (entry), email);
 }
 
 static void
