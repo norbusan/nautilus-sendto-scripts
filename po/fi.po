@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nautilus-sendto\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-09-18 14:30+0300\n"
-"PO-Revision-Date: 2008-09-18 14:00+0300\n"
+"POT-Creation-Date: 2008-09-25 06:13+0300\n"
+"PO-Revision-Date: 2008-09-25 06-10+0300\n"
 "Last-Translator: Ilkka Tuohela <hile@iki.fi>\n"
 "Language-Team: Finnish <gnome-fi-laatu@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -137,20 +137,20 @@ msgstr "_Lähetä"
 msgid "Email (Balsa)"
 msgstr "Sähköposti (Balsa)"
 
-#: ../src/plugins/bluetooth.c:421
+#: ../src/plugins/bluetooth.c:356 ../src/plugins/bluetooth.c:364
 msgid "Programming error, could not find the device in the list"
 msgstr "Ohjelmointivirhe, laitetta ei löytynyt luettelosta"
 
-#: ../src/plugins/bluetooth.c:446
+#: ../src/plugins/bluetooth.c:413
 #, c-format
-msgid "Device does not support Obex Push file transfer"
-msgstr "Laite ei tue Obex Push -tiedostonsiirtoa"
+msgid "Obex Push file transfer unsupported"
+msgstr "Obex Push -tiedostosiirto ei ole tuettu"
 
-#: ../src/plugins/bluetooth.c:463
+#: ../src/plugins/bluetooth.c:437
 msgid "Bluetooth (OBEX Push)"
 msgstr "Bluetooth (OBEX Push)"
 
-#: ../src/plugins/evolution.c:219
+#: ../src/plugins/evolution.c:221
 msgid "Email (Evolution)"
 msgstr "Sähköposti (Evolution)"
 
@@ -288,6 +288,9 @@ msgstr "Sähköposti (Claws Mail)"
 #: ../src/plugins/thunderbird.c:105
 msgid "Email (Thunderbird)"
 msgstr "Sähköposti (Thunderbird)"
+
+#~ msgid "Device does not support Obex Push file transfer"
+#~ msgstr "Laite ei tue Obex Push -tiedostonsiirtoa"
 
 #~ msgid "Send to..."
 #~ msgstr "Lähetä..."
