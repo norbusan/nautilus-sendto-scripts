@@ -8,12 +8,12 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nautilus-sendto.HEAD.es\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-20 15:27+0000\n"
-"PO-Revision-Date: 2008-08-22 10:14+0200\n"
+"POT-Creation-Date: 2008-09-23 19:58+0000\n"
+"PO-Revision-Date: 2008-09-28 11:07+0200\n"
 "Last-Translator: Jorge González <jorgegonz@svn.gnome.org>\n"
-"Language-Team: Spanish <traductores@es.gnome.org>\n"
+"Language-Team: Español <gnome-es-list@gnome.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type:  text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.11.4\n"
 "Plural-Forms:  nplurals=2; plural=(n != 1);\n"
@@ -137,16 +137,16 @@ msgstr "_Enviar"
 msgid "Email (Balsa)"
 msgstr "Correo-e (Balsa)"
 
-#: ../src/plugins/bluetooth.c:421
+#: ../src/plugins/bluetooth.c:356 ../src/plugins/bluetooth.c:364
 msgid "Programming error, could not find the device in the list"
 msgstr "Error de programación, no se pudo encontrar el dispositivo en la lista"
 
-#: ../src/plugins/bluetooth.c:446
+#: ../src/plugins/bluetooth.c:413
 #, c-format
-msgid "Device does not support Obex Push file transfer"
-msgstr "El dispositivo no soporta la transferencia de archivos OBEX Push"
+msgid "Obex Push file transfer unsupported"
+msgstr "La transferencia de archivos Obex Push no está soportada"
 
-#: ../src/plugins/bluetooth.c:463
+#: ../src/plugins/bluetooth.c:437
 msgid "Bluetooth (OBEX Push)"
 msgstr "Bluetooth (OBEX Push)"
 
@@ -290,6 +290,9 @@ msgstr "Correo-e (correo Claws)"
 #: ../src/plugins/thunderbird.c:105
 msgid "Email (Thunderbird)"
 msgstr "Correo-e (Thunderbird)"
+
+#~ msgid "Device does not support Obex Push file transfer"
+#~ msgstr "El dispositivo no soporta la transferencia de archivos OBEX Push"
 
 #~ msgid "Send to..."
 #~ msgstr "Enviar a..."
