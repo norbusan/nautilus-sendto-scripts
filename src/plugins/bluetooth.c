@@ -136,13 +136,7 @@ add_phone_to_list (GtkListStore *store, const char *name, const char *bdaddr)
 	found = find_iter_for_address (store, bdaddr, &iter);
 	if (found == FALSE) {
 		gtk_list_store_append (store, &iter);
-	} else {
-		if (name == NULL)
-			return;
 	}
-
-	if (name == NULL)
-		name = bdaddr;
 
 	gtk_list_store_set (store, &iter,
 			NAME_COL, name,
@@ -173,7 +167,7 @@ add_device_to_list (GtkListStore *store, const char *device_path)
 
 		value = g_hash_table_lookup (props, "Address");
 		address = g_value_get_string (value);
-		value = g_hash_table_lookup (props, "Name");
+		value = g_hash_table_lookup (props, "Alias");
 		name = g_value_get_string (value);
 
 		//FIXME double check the obexftp support?
@@ -205,7 +199,7 @@ device_found (DBusGProxy *object,
 	GValue *value;
 	const char *name;
 
-	value = g_hash_table_lookup (props, "Name");
+	value = g_hash_table_lookup (props, "Alias");
 	name = value ? g_value_get_string (value) : NULL;
 
 	add_phone_to_list (store, name, address);

@@ -1,4 +1,11 @@
-2008-09-24  Bastien Nocera  <hadess@hadess.net>
+2008-09-29  Bastien Nocera  <hadess@hadess.net>
+
+	* src/plugins/bluetooth.c (add_phone_to_list),
+	(add_device_to_list), (device_found):
+	Use the Alias property instead of the "Name", as it stops
+	bluetooth addresses from showing up unmodified in the UI
+
+008-09-24  Bastien Nocera  <hadess@hadess.net>
 
 	* src/plugins/evolution.c (contacts_selected_cb):
 	Fix (null) print when selecting a contact without
