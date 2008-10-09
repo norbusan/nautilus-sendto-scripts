@@ -1,17 +1,18 @@
 # Brazilian Portuguese translation of nautilus-sendto.
 # Copyright (C) 2004-2007 Free Software Foundation, Inc.
 # This file is distributed under the same license as the nautilus-sendto package.
-# Raphael Higino <phhigino@gmail.com>, 2004-2005.
+# Raphael Higino <In Memoriam>, 2004-2005.
 # Luiz Armesto <luiz.armesto@gmail.com>, 2007.
 # Henrique P. Machado <zehrique@gmail.com>, 2008.
+# Fábio Nogueira <deb-user-ba@ubuntu.com>, 2008.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: nautilus-sendto\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-09-15 21:03-0400\n"
-"PO-Revision-Date: 2008-01-20 15:35-0300\n"
-"Last-Translator: Henrique P. Machado <zehrique@gmail.com>\n"
+"POT-Creation-Date: 2008-10-09 10:23-0300\n"
+"PO-Revision-Date: 2008-10-06 16:23-0300\n"
+"Last-Translator: Fábio Nogueira <deb-user-ba@ubuntu.com>\n"
 "Language-Team: Brazilian Portuguese <gnome-l10n-br@listas.cipsga.org.br>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -25,23 +26,23 @@ msgstr "Último plug-in usado para enviar"
 
 #: ../nst.schemas.in.h:2
 msgid "Last type of archive used"
-msgstr "Último tipo de arquivo compactado usado"
+msgstr "Último tipo de pacote usado"
 
 #: ../nst.schemas.in.h:3
 msgid ""
 "Used to store which plugin was used the last time files were sent using "
 "nautilus-sendto."
 msgstr ""
-"Usado para armazenar qual plug-in foi usado na última vez que arquivos foram "
-"enviados usando o nautilus-sendto."
+"Usado para armazenar o plug-in que foi usado pela última vez que arquivos "
+"foram enviados usando o nautilus-sendto."
 
 #: ../nst.schemas.in.h:4
 msgid ""
 "Used to store which type of archive was used the last time (0: zip, 1: tar."
 "gz, 2: tar.bz2)."
 msgstr ""
-"Usado para armazenar qual tipo de arquivo compactado foi usado na última vez "
-"(0: zip, 1: tar.gz, 2: tar.bz2)."
+"Usado para armazenar qual tipo de pacote foi usado na última vez (0: zip, 1: "
+"tar.gz, 2: tar.bz2)."
 
 #. type
 #. ui requirement
@@ -104,7 +105,7 @@ msgstr "Não foi possível analisar as opções da linha de comando: %s\n"
 
 #: ../src/nautilus-sendto-command.c:774
 msgid "Could not load any plugins."
-msgstr "Não foi possível carregar qualquer plug-in."
+msgstr "Não foi possível carregar qualquer plug-ins."
 
 #: ../src/nautilus-sendto-command.c:777
 msgid "Please verify your installation"
@@ -138,20 +139,20 @@ msgstr "_Enviar"
 msgid "Email (Balsa)"
 msgstr "E-mail (Balsa)"
 
-#: ../src/plugins/bluetooth.c:421
+#: ../src/plugins/bluetooth.c:350 ../src/plugins/bluetooth.c:358
 msgid "Programming error, could not find the device in the list"
 msgstr "Erro de programação, não foi possível localizar o dispositivo na lista"
 
-#: ../src/plugins/bluetooth.c:446
+#: ../src/plugins/bluetooth.c:407
 #, c-format
-msgid "Device does not support Obex Push file transfer"
-msgstr "O dispositivo não tem suporte para transferência de arquivos Obex Push"
+msgid "Obex Push file transfer unsupported"
+msgstr "Não há suporte à transferência de arquivos Obex Push"
 
-#: ../src/plugins/bluetooth.c:463
+#: ../src/plugins/bluetooth.c:431
 msgid "Bluetooth (OBEX Push)"
 msgstr "Bluetooth (OBEX Push)"
 
-#: ../src/plugins/evolution.c:219
+#: ../src/plugins/evolution.c:221
 msgid "Email (Evolution)"
 msgstr "E-mail (Evolution)"
 
@@ -291,6 +292,10 @@ msgstr "E-mail (Claws Mail)"
 #: ../src/plugins/thunderbird.c:105
 msgid "Email (Thunderbird)"
 msgstr "E-mail (Thunderbird)"
+
+#~ msgid "Device does not support Obex Push file transfer"
+#~ msgstr ""
+#~ "O dispositivo não tem suporte para transferência de arquivos Obex Push"
 
 #~ msgid "Send to..."
 #~ msgstr "Enviar para..."
