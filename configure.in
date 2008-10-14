@@ -31,6 +31,7 @@ PIDGIN_REQUIRED=2.0.0
 NAUTILUS_EXTENSION=2.13.3
 DBUS_REQUIRED=1.0
 DBUS_GLIB_REQUIRED=0.60
+GUPNP_AV_REQUIRED=0.2.1
 
 AC_SUBST(GLIB_REQUIRED)
 AC_SUBST(GTK_REQUIRED)
@@ -42,6 +43,7 @@ AC_SUBST(PIDGIN_REQUIRED)
 AC_SUBST(NAUTILUS_EXTENSION)
 AC_SUBST(BLUETOOTH_REQUIRED)
 AC_SUBST(DBUS_REQUIRED)
+AC_SUBST(GUPNP_AV_REQUIRED)
 
 PKG_CHECK_MODULES(NAUTILUS_SENDTO,\
 	 glib-2.0 >= $GLIB_REQUIRED                \
@@ -145,6 +147,23 @@ PKG_CHECK_MODULES(BLUETOOTH, dbus-glib-1 >= $DBUS_GLIB_REQUIRED,
 )
 
 AM_CONDITIONAL(HAVE_BLUETOOTH, test "x$enable_bluetooth" = "xyes")
+
+PKG_CHECK_MODULES(UPNP, gupnp-av-1.0 >= $GUPNP_AV_REQUIRED,
+	[
+	AC_SUBST(UPNP_CFLAGS)
+	AC_SUBST(UPNP_LIBS)
+	enable_upnp=yes
+	],
+	[
+	echo "Building without UPnP"
+	enable_upnp=no
+	]
+)
+
+dnl GUPnP AV if it's installed
+dnl -----------------------------------
+
+AM_CONDITIONAL(HAVE_UPNP, test "x$enable_upnp" = "xyes")
 
 GLIB_GENMARSHAL=`$PKG_CONFIG --variable=glib_genmarshal glib-2.0`
 AC_SUBST(GLIB_GENMARSHAL)
@@ -264,6 +283,12 @@ if test "x${enable_bluetooth}" = "xyes" ; then
    echo " **  Enable bluetooth plugin : YES"
 else
    echo "     Enable bluetooth plugin : NO"
+fi
+
+if test "x${enable_upnp}" = "xyes" ; then
+   echo " **  Enable UPnP plugin : YES"
+else
+   echo "     Enable UPnP plugin : NO"
 fi
 
 if test "x${enable_balsa}" = "xyes" ; then

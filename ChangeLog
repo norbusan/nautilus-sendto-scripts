@@ -1,3 +1,12 @@
+2008-10-14  Zeeshan Ali (Khattak)  <zeeshanak@gnome.org>
+
+	* configure.in:
+	* src/plugins/Makefile.am:
+	* src/plugins/upnp.c:
+	Add a plugin based on GUPnP that upload files to UPnP Media Servers. It
+	launches 'gupnp-upload' for the actual file transfer, which is a part of
+	gupnp-tools package. (Closes: #553661)
+
 2008-09-29  Bastien Nocera  <hadess@hadess.net>
 
 	* src/plugins/bluetooth.c (add_phone_to_list),
