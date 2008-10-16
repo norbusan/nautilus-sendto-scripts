@@ -1,3 +1,7 @@
+2008-10-16  Christian Persch  <chpe@gnome.org>
+
+	* src/plugins/e-contact-entry.c: Use printf safely. Bug #556617.
+
 2008-10-16  Bastien Nocera  <hadess@hadess.net>
 
 	* src/nautilus-sendto-command.c (nautilus_sendto_plugin_init):
