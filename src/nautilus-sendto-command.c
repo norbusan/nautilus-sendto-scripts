@@ -38,6 +38,7 @@
 #define NAUTILUS_SENDTO_STATUS_LABEL_TIMEOUT 10000
 
 #define UNINSTALLED_PLUGINDIR "plugins/.libs"
+#define UNINSTALLED_SOURCE "nautilus-sendto-command.c"
 
 /* Options */
 static gchar *default_url = NULL;
@@ -592,7 +593,8 @@ nautilus_sendto_plugin_init (void)
 	GError *err = NULL;
 	const char *plugindir;
 
-	if (g_file_test (UNINSTALLED_PLUGINDIR, G_FILE_TEST_IS_DIR) != FALSE)
+	if (g_file_test (UNINSTALLED_SOURCE, G_FILE_TEST_EXISTS) != FALSE &&
+	    g_file_test (UNINSTALLED_PLUGINDIR, G_FILE_TEST_IS_DIR) != FALSE)
 		plugindir = UNINSTALLED_PLUGINDIR;
 	else
 		plugindir = PLUGINDIR;

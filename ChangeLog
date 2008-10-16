@@ -1,3 +1,10 @@
+2008-10-16  Bastien Nocera  <hadess@hadess.net>
+
+	* src/nautilus-sendto-command.c (nautilus_sendto_plugin_init):
+	Check whether nautilus-sendto-command.c exists to check whether we're
+	in the sources, otherwise it whinges when run from any sources that
+	have a "plugins" subdir
+
 2008-10-14  Zeeshan Ali (Khattak)  <zeeshanak@gnome.org>
 
 	* configure.in:
