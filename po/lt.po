@@ -10,14 +10,13 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nautilus-sendto HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-07-09 20:03+0300\n"
-"PO-Revision-Date: 2008-07-09 20:03+0300\n"
+"POT-Creation-Date: 2008-10-31 10:46+0200\n"
+"PO-Revision-Date: 2008-10-31 10:52+0200\n"
 "Last-Translator: Žygimantas Beručka <zygis@gnome.org>\n"
 "Language-Team: Lithuanian <gnome-lt@lists.akl.lt>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.11.4\n"
 "Plural-Forms:  nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n%"
 "100<10 || n%100>=20) ? 1 : 2);\n"
 
@@ -72,7 +71,7 @@ msgstr "Suteikia Nautilus integraciją"
 #: ../src/nautilus-nste.c:92 ../src/nautilus-nste.c:97
 #: ../src/nautilus-sendto.glade.h:3
 msgid "Send To..."
-msgstr "Siųsti į..."
+msgstr "Siųsti..."
 
 #: ../src/nautilus-nste.c:93
 msgid "Send file by mail, instant message..."
@@ -82,33 +81,33 @@ msgstr "Siųsti failą paštu, skubia žinute..."
 msgid "Send files by mail, instant message..."
 msgstr "Siųsti failus paštu, skubia žinute..."
 
-#: ../src/nautilus-sendto-command.c:75
+#: ../src/nautilus-sendto-command.c:76
 msgid "Default folder to use"
 msgstr "Numatytasis naudotinas aplankas"
 
-#: ../src/nautilus-sendto-command.c:533
+#: ../src/nautilus-sendto-command.c:534
 msgid "Files"
 msgstr "Failai"
 
-#: ../src/nautilus-sendto-command.c:731
+#: ../src/nautilus-sendto-command.c:740
 #, c-format
 msgid "Expects URIs or filenames to be passed as options\n"
 msgstr "Tikimasi URI arba failų pavadinimų nurodytų kaip parinktys\n"
 
-#: ../src/nautilus-sendto-command.c:748
+#: ../src/nautilus-sendto-command.c:757
 msgid "Nautilus Sendto"
 msgstr "Nautilus sendto"
 
-#: ../src/nautilus-sendto-command.c:752
+#: ../src/nautilus-sendto-command.c:761
 #, c-format
 msgid "Could not parse command-line options: %s\n"
 msgstr "Nepavyko apdoroti komandų eilutės parinkčių: %s\n"
 
-#: ../src/nautilus-sendto-command.c:767
+#: ../src/nautilus-sendto-command.c:776
 msgid "Could not load any plugins."
 msgstr "Nepavyko įkelti jokių įskiepių."
 
-#: ../src/nautilus-sendto-command.c:770
+#: ../src/nautilus-sendto-command.c:779
 msgid "Please verify your installation"
 msgstr "Patikrinkite, ar programa gerai įdiegta."
 
@@ -125,13 +124,12 @@ msgid "Send _as:"
 msgstr "Siųsti _kaip:"
 
 #: ../src/nautilus-sendto.glade.h:5
-#, fuzzy
 msgid "Send _packed in:"
-msgstr "_Siųsti supakuotą:"
+msgstr "Siųsti su_pakuotą:"
 
 #: ../src/nautilus-sendto.glade.h:6
 msgid "Send t_o:"
-msgstr "Siųsti ka_m:"
+msgstr "_Gavėjas:"
 
 #: ../src/nautilus-sendto.glade.h:7
 msgid "_Send"
@@ -141,20 +139,20 @@ msgstr "_Siųsti"
 msgid "Email (Balsa)"
 msgstr "El. paštu (Balsa)"
 
-#: ../src/plugins/bluetooth.c:423
+#: ../src/plugins/bluetooth.c:350 ../src/plugins/bluetooth.c:358
 msgid "Programming error, could not find the device in the list"
 msgstr "Programavimo klaida, nepavyko rasti sąraše esančio įrenginio"
 
-#: ../src/plugins/bluetooth.c:444
+#: ../src/plugins/bluetooth.c:407
 #, c-format
-msgid "Device does not support Obex File Transfer"
-msgstr "Įrenginys nepalaiko Obex failų persiuntimo"
+msgid "Obex Push file transfer unsupported"
+msgstr "Obex Push failų siuntimas nepalaikomas"
 
-#: ../src/plugins/bluetooth.c:459
+#: ../src/plugins/bluetooth.c:431
 msgid "Bluetooth (OBEX Push)"
 msgstr "Bluetooth (OBEX Push)"
 
-#: ../src/plugins/evolution.c:219
+#: ../src/plugins/evolution.c:221
 msgid "Email (Evolution)"
 msgstr "El. paštu (Evolution)"
 
@@ -170,7 +168,7 @@ msgstr "Nepavyko surasti kontakto: %s"
 
 #: ../src/plugins/e-contact-entry.c:417
 msgid "Cannot create searchable view."
-msgstr ""
+msgstr "Nepavyko sukurti ieškotino rodinio."
 
 #: ../src/plugins/e-contact-entry.c:889
 msgid "Success"
@@ -186,7 +184,7 @@ msgstr "Adresų knygutė užimta."
 
 #: ../src/plugins/e-contact-entry.c:895
 msgid "The address book is offline."
-msgstr ""
+msgstr "Adresų knyga atsijungimo veiksenoje."
 
 #: ../src/plugins/e-contact-entry.c:897
 msgid "The address book does not exist."
@@ -194,7 +192,7 @@ msgstr "Adresų knyga neegzistuoja."
 
 #: ../src/plugins/e-contact-entry.c:899
 msgid "The \"Me\" contact does not exist."
-msgstr ""
+msgstr "Kontaktas „Aš“ neegzistuoja."
 
 #: ../src/plugins/e-contact-entry.c:901
 msgid "The address book is not loaded."
@@ -206,7 +204,7 @@ msgstr "Adresų knygutė jau įkelta."
 
 #: ../src/plugins/e-contact-entry.c:905
 msgid "Permission was denied when accessing the address book."
-msgstr ""
+msgstr "Prieigos prie adresų knygos teisės buvo neduotos."
 
 #: ../src/plugins/e-contact-entry.c:907
 msgid "The contact was not found."
@@ -214,7 +212,7 @@ msgstr "Kontaktas nerastas."
 
 #: ../src/plugins/e-contact-entry.c:909
 msgid "This contact ID already exists."
-msgstr ""
+msgstr "Toks kontakto ID jau yra."
 
 #: ../src/plugins/e-contact-entry.c:911
 msgid "The protocol is not supported."
@@ -226,28 +224,30 @@ msgstr "Operacija buvo nutraukta"
 
 #: ../src/plugins/e-contact-entry.c:915
 msgid "The operation could not be cancelled."
-msgstr ""
+msgstr "Šios operacijos nepavyko atšaukti."
 
 #: ../src/plugins/e-contact-entry.c:917
 msgid "The address book authentication failed."
-msgstr ""
+msgstr "Nepavyko nustatyti tapatybės."
 
 #: ../src/plugins/e-contact-entry.c:919
 msgid ""
 "Authentication is required to access the address book and was not given."
 msgstr ""
+"Norint gauti prieigą prie adresų knygos, reikia nurodyti tapatybę, tačiau ji "
+"nenurodyta."
 
 #: ../src/plugins/e-contact-entry.c:921
 msgid "A secure connection is not available."
-msgstr ""
+msgstr "Saugus ryšys neprieinamas."
 
 #: ../src/plugins/e-contact-entry.c:923
 msgid "A CORBA error occurred whilst accessing the address book."
-msgstr ""
+msgstr "CORBA klaida bandant gauti prieigą prie adresų knygos."
 
 #: ../src/plugins/e-contact-entry.c:925
 msgid "The address book source does not exist."
-msgstr ""
+msgstr "Adresų knygos šaltinis neegzistuoja."
 
 #: ../src/plugins/e-contact-entry.c:927 ../src/plugins/e-contact-entry.c:930
 msgid "An unknown error occurred."
@@ -292,9 +292,3 @@ msgstr "El. paštu (Claws Mail)"
 #: ../src/plugins/thunderbird.c:105
 msgid "Email (Thunderbird)"
 msgstr "El. paštu (Thunderbird)"
-
-#~ msgid "Send to..."
-#~ msgstr "Siųsti į..."
-
-#~ msgid "You don't insert the package name"
-#~ msgstr "Jūs nenurodėte paketo pavadinimo"
