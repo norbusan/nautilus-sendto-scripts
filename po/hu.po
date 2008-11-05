@@ -11,10 +11,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nautilus-sendto.HEAD.hu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-09-23 19:58+0000\n"
-"PO-Revision-Date: 2008-11-04 16:49+0100\n"
-"Last-Translator: Kalman Kemenczy <kkemenczy@novell.com>\n"
-"Language-Team: Hungarian <hu@li.org>\n"
+"POT-Creation-Date: 2008-11-06 00:14+0100\n"
+"PO-Revision-Date: 2008-11-06 00:14+0100\n"
+"Last-Translator: Gabor Kelemen <kelemeng@gnome.hu>\n"
+"Language-Team: Hungarian <gnome@fsf.hu>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -78,33 +78,33 @@ msgstr "Fájl küldése levélben, azonnali üzenetként..."
 msgid "Send files by mail, instant message..."
 msgstr "Fájlok küldése levélben, azonnali üzenetként..."
 
-#: ../src/nautilus-sendto-command.c:75
+#: ../src/nautilus-sendto-command.c:76
 msgid "Default folder to use"
 msgstr "Alapértelmezésként használandó mappa"
 
-#: ../src/nautilus-sendto-command.c:533
+#: ../src/nautilus-sendto-command.c:534
 msgid "Files"
 msgstr "Fájlok"
 
-#: ../src/nautilus-sendto-command.c:738
+#: ../src/nautilus-sendto-command.c:740
 #, c-format
 msgid "Expects URIs or filenames to be passed as options\n"
 msgstr "URI címekre vagy fájlnevekre számít paraméterekként\n"
 
-#: ../src/nautilus-sendto-command.c:755
+#: ../src/nautilus-sendto-command.c:757
 msgid "Nautilus Sendto"
 msgstr "Nautilus küldés"
 
-#: ../src/nautilus-sendto-command.c:759
+#: ../src/nautilus-sendto-command.c:761
 #, c-format
 msgid "Could not parse command-line options: %s\n"
 msgstr "Nem dolgozhatók fel a parancssori kapcsolók: %s\n"
 
-#: ../src/nautilus-sendto-command.c:774
+#: ../src/nautilus-sendto-command.c:776
 msgid "Could not load any plugins."
 msgstr "Nem tölthetők be bővítmények."
 
-#: ../src/nautilus-sendto-command.c:777
+#: ../src/nautilus-sendto-command.c:779
 msgid "Please verify your installation"
 msgstr "Ellenőrizze a telepítést"
 
@@ -136,20 +136,20 @@ msgstr "_Küldés"
 msgid "Email (Balsa)"
 msgstr "E-mail (Balsa)"
 
-#: ../src/plugins/bluetooth.c:356 ../src/plugins/bluetooth.c:364
+#: ../src/plugins/bluetooth.c:350 ../src/plugins/bluetooth.c:358
 msgid "Programming error, could not find the device in the list"
 msgstr "Programozási hiba, az eszköz nem található a listában"
 
-#: ../src/plugins/bluetooth.c:413
+#: ../src/plugins/bluetooth.c:407
 #, c-format
 msgid "Obex Push file transfer unsupported"
 msgstr "Az Obex Push fájlátvitel nem támogatott"
 
-#: ../src/plugins/bluetooth.c:437
+#: ../src/plugins/bluetooth.c:431
 msgid "Bluetooth (OBEX Push)"
 msgstr "Bluetooth (OBEX küldés)"
 
-#: ../src/plugins/evolution.c:219
+#: ../src/plugins/evolution.c:221
 msgid "Email (Evolution)"
 msgstr "E-mail (Evolution)"
 
@@ -286,4 +286,8 @@ msgstr "E-mail (Claws levelező)"
 #: ../src/plugins/thunderbird.c:105
 msgid "Email (Thunderbird)"
 msgstr "E-mail (Thunderbird)"
+
+#: ../src/plugins/upnp.c:298
+msgid "UPnP Media Server"
+msgstr "UPnP médiakiszolgáló"
 
