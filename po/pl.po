@@ -12,15 +12,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nautilus-sendto\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-09-21 20:47+0200\n"
-"PO-Revision-Date: 2008-02-06 18:51+0100\n"
+"POT-Creation-Date: 2008-11-20 21:12+0100\n"
+"PO-Revision-Date: 2008-11-20 21:13+0100\n"
 "Last-Translator: Tomasz Dominikowski <dominikowski@gmail.com>\n"
 "Language-Team: Tomasz Dominikowski (Aviary.pl) <dominikowski@gmail.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
-"|| n%100>=20) ? 1 : 2;\n"
+"Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Poedit-Language: Polish\n"
 "X-Poedit-Country: Poland\n"
 
@@ -33,20 +32,12 @@ msgid "Last type of archive used"
 msgstr "Ostatni użyty rodzaj archiwum"
 
 #: ../nst.schemas.in.h:3
-msgid ""
-"Used to store which plugin was used the last time files were sent using "
-"nautilus-sendto."
-msgstr ""
-"Używany do przechowywania informacji która wtyczka została ostatnio użyta "
-"przez nautilus-sendto."
+msgid "Used to store which plugin was used the last time files were sent using nautilus-sendto."
+msgstr "Używany do przechowywania informacji która wtyczka została ostatnio użyta przez nautilus-sendto."
 
 #: ../nst.schemas.in.h:4
-msgid ""
-"Used to store which type of archive was used the last time (0: zip, 1: tar."
-"gz, 2: tar.bz2)."
-msgstr ""
-"Używany do przechowywania informacji na temat ostatnio użytego rodzaju "
-"archiwum (0: zip, 1: tar.gz, 2: tar.bz2)."
+msgid "Used to store which type of archive was used the last time (0: zip, 1: tar.gz, 2: tar.bz2)."
+msgstr "Używany do przechowywania informacji na temat ostatnio użytego rodzaju archiwum (0: zip, 1: tar.gz, 2: tar.bz2)."
 
 #. type
 #. ui requirement
@@ -72,7 +63,8 @@ msgstr "Integracja z Nautilusem"
 msgid "Provides integration with Nautilus"
 msgstr "Udostępnia integrację z Nautilusem"
 
-#: ../src/nautilus-nste.c:92 ../src/nautilus-nste.c:97
+#: ../src/nautilus-nste.c:92
+#: ../src/nautilus-nste.c:97
 #: ../src/nautilus-sendto.glade.h:3
 msgid "Send To..."
 msgstr "Wyślij do..."
@@ -85,33 +77,33 @@ msgstr "Wysyła plik poprzez e-mail, komunikator..."
 msgid "Send files by mail, instant message..."
 msgstr "Wysyła plik poprzez e-mail, komunikator..."
 
-#: ../src/nautilus-sendto-command.c:75
+#: ../src/nautilus-sendto-command.c:76
 msgid "Default folder to use"
 msgstr "Domyślny folder"
 
-#: ../src/nautilus-sendto-command.c:533
+#: ../src/nautilus-sendto-command.c:534
 msgid "Files"
 msgstr "Pliki"
 
-#: ../src/nautilus-sendto-command.c:738
+#: ../src/nautilus-sendto-command.c:740
 #, c-format
 msgid "Expects URIs or filenames to be passed as options\n"
 msgstr "Oczekuje adresów URI lub nazw plików wywoływanych jako opcje\n"
 
-#: ../src/nautilus-sendto-command.c:755
+#: ../src/nautilus-sendto-command.c:757
 msgid "Nautilus Sendto"
-msgstr "Nautilus WyślijDo"
+msgstr "Nautilus Sendto"
 
-#: ../src/nautilus-sendto-command.c:759
+#: ../src/nautilus-sendto-command.c:761
 #, c-format
 msgid "Could not parse command-line options: %s\n"
 msgstr "Nie można przetworzyć opcji z wiersza poleceń: %s\n"
 
-#: ../src/nautilus-sendto-command.c:774
+#: ../src/nautilus-sendto-command.c:776
 msgid "Could not load any plugins."
 msgstr "Nie można wczytać żadnych wtyczek."
 
-#: ../src/nautilus-sendto-command.c:777
+#: ../src/nautilus-sendto-command.c:779
 msgid "Please verify your installation"
 msgstr "Proszę sprawdzić poprawność instalacji"
 
@@ -143,20 +135,21 @@ msgstr "_Wyślij"
 msgid "Email (Balsa)"
 msgstr "E-mail (Balsa)"
 
-#: ../src/plugins/bluetooth.c:421
+#: ../src/plugins/bluetooth.c:350
+#: ../src/plugins/bluetooth.c:358
 msgid "Programming error, could not find the device in the list"
 msgstr "Błąd programowy, nie można odnaleźć urządzenia na liście"
 
-#: ../src/plugins/bluetooth.c:446
+#: ../src/plugins/bluetooth.c:407
 #, c-format
-msgid "Device does not support Obex Push file transfer"
-msgstr "Urządzenie nie obsługuje przesyłu plików Obex"
+msgid "Obex Push file transfer unsupported"
+msgstr "Brak obsługi przesyłu plików metodą OBEX Push"
 
-#: ../src/plugins/bluetooth.c:463
+#: ../src/plugins/bluetooth.c:431
 msgid "Bluetooth (OBEX Push)"
 msgstr "Bluetooth (OBEX Push)"
 
-#: ../src/plugins/evolution.c:219
+#: ../src/plugins/evolution.c:221
 msgid "Email (Evolution)"
 msgstr "E-mail (Evolution)"
 
@@ -235,10 +228,8 @@ msgid "The address book authentication failed."
 msgstr "Uwierzytelnienie książki adresowej nieudane."
 
 #: ../src/plugins/e-contact-entry.c:919
-msgid ""
-"Authentication is required to access the address book and was not given."
-msgstr ""
-"Uwierzytelnienie jest wymagane do uzyskania dostępu do książki adresowej."
+msgid "Authentication is required to access the address book and was not given."
+msgstr "Uwierzytelnienie jest wymagane do uzyskania dostępu do książki adresowej."
 
 #: ../src/plugins/e-contact-entry.c:921
 msgid "A secure connection is not available."
@@ -252,7 +243,8 @@ msgstr "Wystąpił błąd CORBA podczas uzyskiwania dostępu do książki adreso
 msgid "The address book source does not exist."
 msgstr "Źródło książki adresowej nie istnieje."
 
-#: ../src/plugins/e-contact-entry.c:927 ../src/plugins/e-contact-entry.c:930
+#: ../src/plugins/e-contact-entry.c:927
+#: ../src/plugins/e-contact-entry.c:930
 msgid "An unknown error occurred."
 msgstr "Wystąpił nieznany błąd."
 
@@ -268,7 +260,8 @@ msgstr "Nie można wysłać pliku"
 msgid "There is no connection to gajim remote service."
 msgstr "Brak połączenia ze zdalną usługą Gajim."
 
-#: ../src/plugins/gajim.c:427 ../src/plugins/gajim.c:466
+#: ../src/plugins/gajim.c:427
+#: ../src/plugins/gajim.c:466
 msgid "Sending file failed"
 msgstr "Wysyłanie pliku nie powiodło się"
 
@@ -296,12 +289,12 @@ msgstr "E-mail (Claws Mail)"
 msgid "Email (Thunderbird)"
 msgstr "E-mail (Thunderbird)"
 
+#~ msgid "Device does not support Obex Push file transfer"
+#~ msgstr "Urządzenie nie obsługuje przesyłu plików Obex"
 #~ msgid "Send to..."
 #~ msgstr "Wysyłanie..."
-
 #~ msgid "You don't insert the package name"
 #~ msgstr "Nie wprowadzono nazwy archiwum"
-
 #~ msgid ""
 #~ ".zip\n"
 #~ ".tar.gz\n"
@@ -310,9 +303,8 @@ msgstr "E-mail (Thunderbird)"
 #~ ".zip\n"
 #~ ".tar.gz\n"
 #~ ".tar.bz2"
-
 #~ msgid "FOLDER"
 #~ msgstr "FOLDER"
-
 #~ msgid "*"
 #~ msgstr "*"
+
