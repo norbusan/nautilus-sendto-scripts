@@ -2,15 +2,16 @@
 # Copyright (C) 2004 Roberto Majadas <roberto.majadas@hispalinux.es>
 # This file is distributed under the same license as the Nautilus Sendto package.
 # Frank Arnold <frank@scirocco-5v-turbo.de>, 2004-2008.
-# Gerhard Stein <gerstrong@gmail.com>, 2008
-# 
+# Gerhard Stein <gerstrong@gmail.com>, 2008.
+# Mario Blättermann <mariobl@gnome.org>, 2008.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: nautilus-sendto HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-15 19:29+0200\n"
-"PO-Revision-Date: 2008-06-29 07:21+0100\n"
-"Last-Translator: Gerhard Stein <gerstrong@gmail.com>\n"
+"POT-Creation-Date: 2008-11-29 12:50+0100\n"
+"PO-Revision-Date: 2008-11-29 12:56+0100\n"
+"Last-Translator: Mario Blättermann <mariobl@gnome.org>\n"
 "Language-Team: German <gnome-de@gnome.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,7 +23,7 @@ msgstr "Zuletzt verwendetes Sende-Plugin"
 
 #: ../nst.schemas.in.h:2
 msgid "Last type of archive used"
-msgstr "Letzter Archivtyp"
+msgstr "Zuletzt verwendeter Archivtyp"
 
 #: ../nst.schemas.in.h:3
 msgid ""
@@ -37,8 +38,8 @@ msgid ""
 "Used to store which type of archive was used the last time (0: zip, 1: tar."
 "gz, 2: tar.bz2)."
 msgstr ""
-"Wird verwendet um zu speichern, welcher Archivtyp zuletzt verwendet wurde "
-"(0: zip, 1: tar.gz, 2: tar.bz2)."
+"Wird verwendet um zu speichern, welcher Archivtyp zuletzt verwendet wurde (0: "
+"zip, 1: tar.gz, 2: tar.bz2)."
 
 #. type
 #. ui requirement
@@ -62,7 +63,7 @@ msgstr "Nautilus-Einbindung"
 #: ../pidgin_plugin/nautilus-sendto-plugin.c:333
 #: ../pidgin_plugin/nautilus-sendto-plugin.c:334
 msgid "Provides integration with Nautilus"
-msgstr "Ermöglicht Einbindung ins Nautilus"
+msgstr "Ermöglicht Einbindung in Nautilus"
 
 #: ../src/nautilus-nste.c:92 ../src/nautilus-nste.c:97
 #: ../src/nautilus-sendto.glade.h:3
@@ -75,35 +76,35 @@ msgstr "Sende Datei per E-Mail, Sofortnachricht..."
 
 #: ../src/nautilus-nste.c:98
 msgid "Send files by mail, instant message..."
-msgstr "Sende Dateien per E-Mail, Sofortnachricht..."
+msgstr "Sende Dateien per E-Mail, Sofortnachricht "
 
-#: ../src/nautilus-sendto-command.c:75
+#: ../src/nautilus-sendto-command.c:76
 msgid "Default folder to use"
 msgstr "Vorgabe-Ordner"
 
-#: ../src/nautilus-sendto-command.c:533
+#: ../src/nautilus-sendto-command.c:534
 msgid "Files"
 msgstr "Dateien"
 
-#: ../src/nautilus-sendto-command.c:738
+#: ../src/nautilus-sendto-command.c:740
 #, c-format
 msgid "Expects URIs or filenames to be passed as options\n"
 msgstr "URLs oder Dateinamen sollten als Optionen gesetzt werden\n"
 
-#: ../src/nautilus-sendto-command.c:755
+#: ../src/nautilus-sendto-command.c:757
 msgid "Nautilus Sendto"
 msgstr "Nautilus Sendto"
 
-#: ../src/nautilus-sendto-command.c:759
+#: ../src/nautilus-sendto-command.c:761
 #, c-format
 msgid "Could not parse command-line options: %s\n"
-msgstr "Konnte nicht die Eingabe-Optionen einlesen: %s\n"
+msgstr "Eingabe-Optionen konnten nicht eingelesen werden: %s\n"
 
-#: ../src/nautilus-sendto-command.c:774
+#: ../src/nautilus-sendto-command.c:776
 msgid "Could not load any plugins."
 msgstr "Kein Plugin konnte geladen werden."
 
-#: ../src/nautilus-sendto-command.c:777
+#: ../src/nautilus-sendto-command.c:779
 msgid "Please verify your installation"
 msgstr "Bitte überprüfen Sie Ihre Installation"
 
@@ -125,7 +126,7 @@ msgstr "Ge_packt senden in:"
 
 #: ../src/nautilus-sendto.glade.h:6
 msgid "Send t_o:"
-msgstr "Senden nach (_ort):"
+msgstr "Senden _nach:"
 
 #: ../src/nautilus-sendto.glade.h:7
 msgid "_Send"
@@ -135,20 +136,20 @@ msgstr "_Senden"
 msgid "Email (Balsa)"
 msgstr "E-Mail (Balsa)"
 
-#: ../src/plugins/bluetooth.c:423
+#: ../src/plugins/bluetooth.c:350 ../src/plugins/bluetooth.c:358
 msgid "Programming error, could not find the device in the list"
 msgstr "Programmierfehler, Gerät konnte nicht in der Liste gefunden werden"
 
-#: ../src/plugins/bluetooth.c:444
+#: ../src/plugins/bluetooth.c:407
 #, c-format
-msgid "Device does not support Obex File Transfer"
-msgstr "Gerät unterstützt keine Obex-Datei-Übertragung"
+msgid "Obex Push file transfer unsupported"
+msgstr "Dateiübertragung mittels Obex-Push wird nicht unterstützt"
 
-#: ../src/plugins/bluetooth.c:459
+#: ../src/plugins/bluetooth.c:431
 msgid "Bluetooth (OBEX Push)"
 msgstr "Bluetooth (OBEX Push)"
 
-#: ../src/plugins/evolution.c:219
+#: ../src/plugins/evolution.c:221
 msgid "Email (Evolution)"
 msgstr "E-Mail (Evolution)"
 
@@ -188,7 +189,7 @@ msgstr "Das Addressbuch existiert nicht."
 
 #: ../src/plugins/e-contact-entry.c:899
 msgid "The \"Me\" contact does not exist."
-msgstr "Den \"Ich\"-Kontakt gibt es nicht"
+msgstr "Den »Ich«-Kontakt gibt es nicht"
 
 #: ../src/plugins/e-contact-entry.c:901
 msgid "The address book is not loaded."
@@ -208,7 +209,7 @@ msgstr "Kontakt wurde nicht gefunden"
 
 #: ../src/plugins/e-contact-entry.c:909
 msgid "This contact ID already exists."
-msgstr "Kontakt-ID exisitert bereits."
+msgstr "Kontakt-Kennung exisitert bereits."
 
 #: ../src/plugins/e-contact-entry.c:911
 msgid "The protocol is not supported."
@@ -224,14 +225,13 @@ msgstr "Der Prozess konnte nicht abgebrochen werden."
 
 #: ../src/plugins/e-contact-entry.c:917
 msgid "The address book authentication failed."
-msgstr "Authentifizierung für das Addressbuch ist fehlgeschlagen."
+msgstr "Legitimierung für das Addressbuch ist fehlgeschlagen."
 
 #: ../src/plugins/e-contact-entry.c:919
-msgid ""
-"Authentication is required to access the address book and was not given."
+msgid "Authentication is required to access the address book and was not given."
 msgstr ""
-"Authentifizierung wird benötigt, um auf das Adressbuch Zugriff zu erlangen "
-"und wurde nicht gegeben."
+"Legitimierung wird benötigt, um auf das Adressbuch Zugriff zu erlangen und "
+"wurde nicht gegeben."
 
 #: ../src/plugins/e-contact-entry.c:921
 msgid "A secure connection is not available."
@@ -240,12 +240,12 @@ msgstr "Eine sichere Verbindung ist nicht verfügbar."
 #: ../src/plugins/e-contact-entry.c:923
 msgid "A CORBA error occurred whilst accessing the address book."
 msgstr ""
-"Ein CORBA Fehler wurde ausgelöst beim Versuch auf das Adressbuch Zugriff zu "
+"Ein CORBA-Fehler wurde beim Versuch ausgelöst, auf das Adressbuch Zugriff zu "
 "erlangen."
 
 #: ../src/plugins/e-contact-entry.c:925
 msgid "The address book source does not exist."
-msgstr "Das Adressbuch gibt es nicht."
+msgstr "Das Adressbuch existiert nicht."
 
 #: ../src/plugins/e-contact-entry.c:927 ../src/plugins/e-contact-entry.c:930
 msgid "An unknown error occurred."
@@ -290,6 +290,9 @@ msgstr "E-Mail (Claws)"
 #: ../src/plugins/thunderbird.c:105
 msgid "Email (Thunderbird)"
 msgstr "E-Mail (Thunderbird)"
+
+#~ msgid "Device does not support Obex File Transfer"
+#~ msgstr "Gerät unterstützt keine Obex-Datei-Übertragung"
 
 #~ msgid "FOLDER"
 #~ msgstr "Verzeichnis"
