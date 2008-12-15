@@ -26,7 +26,7 @@
 #include <libedataserver/e-source-group.h>
 #include <libedataserver/e-source-list.h>
 #include <libebook/e-contact.h>
-#include <gtk/gtkentry.h>
+#include <gtk/gtk.h>
 
 G_BEGIN_DECLS
 

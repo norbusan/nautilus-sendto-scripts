@@ -1,3 +1,14 @@
+2008-12-15  Bastien Nocera  <hadess@hadess.net>
+
+	* src/plugins/e-contact-entry.c:
+	* src/plugins/e-contact-entry.h: Update from SVN
+
+2008-12-05  Jonny Lamb  <jonny.lamb@collabora.co.uk>
+
+	* configure.in:
+	* src/plugins/Makefile.am:
+	* src/plugins/empathy.c: Added empathy plugin.
+
 2008-10-16  Christian Persch  <chpe@gnome.org>
 
 	* src/plugins/e-contact-entry.c: Use printf safely. Bug #556617.

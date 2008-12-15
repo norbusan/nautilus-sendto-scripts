@@ -38,12 +38,6 @@
 #include <glib.h>
 #include <glib/gi18n.h>
 
-#include <gtk/gtkentry.h>
-#include <gtk/gtkentrycompletion.h>
-#include <gtk/gtkcelllayout.h>
-#include <gtk/gtkcellrenderertext.h>
-#include <gtk/gtkcellrendererpixbuf.h>
-
 #include <libedataserver/e-source.h>
 #include <libebook/e-book.h>
 #include <libebook/e-book-view.h>
