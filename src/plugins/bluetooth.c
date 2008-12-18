@@ -27,9 +27,12 @@
 #include <bluetooth-marshal.h>
 #include <dbus/dbus-glib.h>
 #include <glib/gi18n-lib.h>
+#include <gconf/gconf-client.h>
+
 #include "../nautilus-sendto-plugin.h"
 
 #define OBEX_FILETRANS_SVCLASS_ID_STR "0x1106"
+#define LAST_OBEX_DEVICE "/desktop/gnome/nautilus-sendto/last_obex_device"
 
 static GtkTreeModel *model;
 static int discovered;
@@ -127,6 +130,38 @@ find_iter_for_address (GtkListStore *store, const char *bdaddr, GtkTreeIter *ite
 	return found;
 }
 
+static char *
+get_device_name_from_address (char *bdaddr)
+{
+	const char *device_path;
+	DBusGProxy *device;
+	GHashTable *props;
+
+	if (dbus_g_proxy_call (object, "FindDevice", NULL,
+			       G_TYPE_STRING, bdaddr, G_TYPE_INVALID,
+			       DBUS_TYPE_G_OBJECT_PATH, &device_path, G_TYPE_INVALID) == FALSE) {
+		return bdaddr;
+	}
+	    
+	device = dbus_g_proxy_new_for_name (conn, "org.bluez",
+					    device_path, "org.bluez.Device");
+
+	if (dbus_g_proxy_call (device, "GetProperties", NULL,
+						   G_TYPE_INVALID, dbus_g_type_get_map ("GHashTable", G_TYPE_STRING, G_TYPE_VALUE),
+						   &props, G_TYPE_INVALID) != FALSE) {
+
+		GValue *value;
+		char *name;
+
+		value = g_hash_table_lookup (props, "Alias");
+		name = value ? g_value_get_string (value) : bdaddr;
+
+		return name;
+	} else {
+		return bdaddr;
+	}
+}
+
 static void
 add_phone_to_list (GtkListStore *store, const char *name, const char *bdaddr)
 {
@@ -174,6 +209,24 @@ add_device_to_list (GtkListStore *store, const char *device_path)
 		add_phone_to_list (store, name, address);
 	}
 	g_object_unref (device);
+}
+
+static void
+add_last_used_device_to_list (GtkListStore *store)
+{
+	char *bdaddr, *name;
+	GConfClient *gconfclient;
+
+	gconfclient = gconf_client_get_default ();
+	bdaddr = gconf_client_get_string (gconfclient, LAST_OBEX_DEVICE, NULL);
+	g_object_unref (gconfclient);
+
+	if (bdaddr != NULL && *bdaddr != '\0') {
+		name = get_device_name_from_address (bdaddr);
+		add_phone_to_list (store, name, bdaddr);
+	}
+
+	g_free (bdaddr);
 }
 
 static void
@@ -250,6 +303,7 @@ get_contacts_widget (NstPlugin *plugin)
 	gtk_combo_box_set_active (GTK_COMBO_BOX (combobox), 0);
 	gtk_widget_set_sensitive (combobox, FALSE);
 
+	add_last_used_device_to_list (store);
 	add_known_devices_to_list (store);
 	start_device_scanning (store);
 
@@ -292,6 +346,21 @@ get_select_device (char **name, char **bdaddr)
 	return ret;
 }
 
+static void
+save_last_used_obex_device (const char *bdaddr)
+{
+	GConfClient *gconfclient;
+
+	gconfclient = gconf_client_get_default ();
+	gconf_client_set_string (gconfclient,
+				 LAST_OBEX_DEVICE,
+				 bdaddr,
+				 NULL);
+
+	g_object_unref(gconfclient);
+}
+
+
 static gboolean
 send_files (NstPlugin *plugin, GtkWidget *contact_widget,
 		GList *file_list)
@@ -329,6 +398,8 @@ send_files (NstPlugin *plugin, GtkWidget *contact_widget,
 	if (ret == FALSE) {
 		g_warning ("Couldn't send files via bluetooth: %s", err->message);
 		g_error_free (err);
+	} else {
+		save_last_used_obex_device (bdaddr);
 	}
 	return ret;
 }
