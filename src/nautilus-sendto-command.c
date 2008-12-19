@@ -35,7 +35,7 @@
 #define NAUTILUS_SENDTO_GCONF		"/desktop/gnome/nautilus-sendto"
 #define NAUTILUS_SENDTO_LAST_MEDIUM	NAUTILUS_SENDTO_GCONF"/last_medium"
 #define NAUTILUS_SENDTO_LAST_COMPRESS	NAUTILUS_SENDTO_GCONF"/last_compress"
-#define NAUTILUS_SENDTO_STATUS_LABEL_TIMEOUT 10000
+#define NAUTILUS_SENDTO_STATUS_LABEL_TIMEOUT_SECONDS 10
 
 #define UNINSTALLED_PLUGINDIR "plugins/.libs"
 #define UNINSTALLED_SOURCE "nautilus-sendto-command.c"
@@ -287,9 +287,9 @@ send_button_cb (GtkWidget *widget, gpointer data)
 			g_free (error);
 			gtk_label_set_markup (GTK_LABEL (ui->status_label), message);
 			g_free (message);
-			ui->status_timeoutid = g_timeout_add (NAUTILUS_SENDTO_STATUS_LABEL_TIMEOUT,
-							      status_label_clear,
-							      ui);
+			ui->status_timeoutid = g_timeout_add_seconds (NAUTILUS_SENDTO_STATUS_LABEL_TIMEOUT_SECONDS,
+								      status_label_clear,
+								      ui);
 			gtk_widget_show (ui->status_image);
 			gtk_widget_show (ui->status_box);
 			gtk_widget_set_sensitive (ui->dialog, TRUE);

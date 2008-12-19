@@ -1,3 +1,10 @@
+2008-12-19  Baptiste Mille-Mathias  <baptiste.millemathias@gmail.com>
+
+	* src/nautilus-sendto-command.c (send_button_cb):
+	Replace g_timeout_add with g_timeout_add_seconds which uses less
+	energy.
+	(Closes: #565085)
+
 2008-12-19  Bastien Nocera  <hadess@hadess.net>
 
 	* src/nautilus-sendto-command.c (set_contact_widgets):
@@ -5,7 +12,7 @@
 	on occasions, as they were racing with the "activate" handler
 	(Closes: #561487)
 
-2008-12-15  Baptiste Mille-Mathias  <baptiste.millemathias@gmail.com>
+2008-12-18  Baptiste Mille-Mathias  <baptiste.millemathias@gmail.com>
 
 	* src/plugins/bluetooth.c: Propose last used bluetooth device as
 	default device. Bug #546571.
