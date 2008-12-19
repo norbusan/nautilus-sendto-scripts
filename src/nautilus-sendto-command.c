@@ -411,8 +411,8 @@ set_contact_widgets (NS_ui *ui){
 		gtk_widget_hide (GTK_WIDGET(w));
 		ui->contact_widgets = g_list_append (ui->contact_widgets, w);
 		if (GTK_IS_ENTRY (w)) {
-			g_signal_connect (G_OBJECT (w), "activate",
-					G_CALLBACK (send_if_no_pack_cb), ui);
+			g_signal_connect_after (G_OBJECT (w), "activate",
+						G_CALLBACK (send_if_no_pack_cb), ui);
 		}
 	}
 }
