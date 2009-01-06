@@ -14,7 +14,8 @@ INCLUDES =                                      \
 	$(BLUETOOTH_CFLAGS)			\
 	$(UPNP_CFLAGS)				\
 	$(DBUS_CFLAGS)				\
-	$(WARN_CFLAGS)
+	$(WARN_CFLAGS)				\
+	$(EMPATHY_CFLAGS)
 
 if HAVE_GAIM
 GAIM_PLUGIN = libnstgaim.la
@@ -70,6 +71,12 @@ else
 GAJIM_PLUGIN = 
 endif
 
+if HAVE_EMPATHY
+EMPATHY_PLUGIN = libnstempathy.la
+else
+EMPATHY_PLUGIN  =
+endif
+
 MARSHALFILES = econtactentry-marshal.c econtactentry-marshal.h
 BUILT_SOURCES = $(MARSHALFILES)
 
@@ -83,7 +90,7 @@ CLADIR = $(srcdir)/../../../contact-lookup-applet/src/
 regenerate-built-sources:
 	EGGFILES="$(CLA_FILES) econtactentry-marshal.list" EGGDIR="$(CLADIR)" $(srcdir)/update-from-egg.sh || true
 
-plugin_LTLIBRARIES = $(EVOLUTION_PLUGIN) $(GAIM_PLUGIN) $(PIDGIN_PLUGIN) $(BLUETOOTH_PLUGIN) $(UPNP_PLUGIN) $(BALSA_PLUGIN) $(SYLPHEED_PLUGIN) $(THUNDERBIRD_PLUGIN) $(GAJIM_PLUGIN)
+plugin_LTLIBRARIES = $(EVOLUTION_PLUGIN) $(GAIM_PLUGIN) $(PIDGIN_PLUGIN) $(BLUETOOTH_PLUGIN) $(UPNP_PLUGIN) $(BALSA_PLUGIN) $(SYLPHEED_PLUGIN) $(THUNDERBIRD_PLUGIN) $(GAJIM_PLUGIN) $(EMPATHY_PLUGIN)
 
 libnstevolution_la_SOURCES = evolution.c $(CLA_FILES) $(MARSHALFILES)
 libnstevolution_la_LDFLAGS = -module -avoid-version
@@ -127,6 +134,10 @@ libnstthunderbird_la_LDFLAGS = -module -avoid-version
 libnstgajim_la_SOURCES = gajim.c
 libnstgajim_la_LDFLAGS = -module -avoid-version
 libnstgajim_la_LIBADD = $(DBUS_LIBS)
+
+libnstempathy_la_SOURCES = empathy.c
+libnstempathy_la_LDFLAGS = -module -avoid-version
+libnstempathy_la_LIBADD = $(EMPATHY_LIBS)
 
 EXTRA_DIST = bluetooth-marshal.list $(CLA_FILES)
 CLEANFILES = bluetooth-marshal.h bluetooth-marshal.c econtactentry-marshal.c econtactentry-marshal.h

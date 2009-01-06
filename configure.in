@@ -19,6 +19,8 @@ GNOME_COMPILE_WARNINGS([maximum])
 GNOME_CXX_WARNINGS
 GNOME_MAINTAINER_MODE_DEFINES
 
+ERROR_CFLAGS="-Wall -Wextra -Werror -Wno_missing_field_initializers -Wno_unused_parameter"
+
 dnl --------------------------------------------------
 
 GLIB_REQUIRED=2.6.0
@@ -32,6 +34,8 @@ NAUTILUS_EXTENSION=2.13.3
 DBUS_REQUIRED=1.0
 DBUS_GLIB_REQUIRED=0.60
 GUPNP_AV_REQUIRED=0.2.1
+EMPATHY_REQUIRED=2.23.91
+EMPATHY_GTK_REQUIRED=2.23.91
 
 AC_SUBST(GLIB_REQUIRED)
 AC_SUBST(GTK_REQUIRED)
@@ -44,6 +48,8 @@ AC_SUBST(NAUTILUS_EXTENSION)
 AC_SUBST(BLUETOOTH_REQUIRED)
 AC_SUBST(DBUS_REQUIRED)
 AC_SUBST(GUPNP_AV_REQUIRED)
+AC_SUBST(EMPATHY_REQUIRED)
+AC_SUBST(EMPATHY_GTK_REQUIRED)
 
 PKG_CHECK_MODULES(NAUTILUS_SENDTO,\
 	 glib-2.0 >= $GLIB_REQUIRED                \
@@ -238,6 +244,25 @@ AM_CONDITIONAL(HAVE_GAJIM, test "x$enable_gajim" = "xyes")
 
 dnl -------------------------------------------------
 
+dnl Empathy support
+dnl -------------------------------------------------
+
+PKG_CHECK_MODULES(EMPATHY, libempathy >= $EMPATHY_REQUIRED libempathy-gtk >= $EMPATHY_GTK_REQUIRED gio-2.0,
+       [
+       AC_SUBST(EMPATHY_CFLAGS)
+       AC_SUBST(EMPATHY_LIBS)
+       enable_empathy=yes
+       ],
+       [
+       echo "Building without empathy"
+       enable_empathy=no
+       ]
+)
+
+AM_CONDITIONAL(HAVE_EMPATHY, test "x$enable_empathy" = "xyes")
+
+dnl -------------------------------------------------
+
 IT_PROG_INTLTOOL([0.35.0])
 
 GETTEXT_PACKAGE=nautilus-sendto
@@ -313,6 +338,12 @@ if test "x${enable_gajim}" = "xyes" ; then
    echo " **  Enable gajim plugin : YES"
 else
    echo "     Enable gajim plugin : NO"
+fi
+
+if test "x${enable_empathy}" = "xyes" ; then
+   echo " **  Enable empathy plugin : YES"
+else
+   echo "     Enable empathy plugin : NO"
 fi
 
 echo "                                                       "
