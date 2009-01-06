@@ -1,3 +1,8 @@
+2009-01-06  Bastien Nocera  <hadess@hadess.net>
+
+	* configure.in: Update minimum reqs so we can not compile
+	the empathy plugin with older versions of empathy
+
 2008-12-29  Jonny Lamb  <jonny.lamb@collabora.co.uk>
 
 	* configure.in:

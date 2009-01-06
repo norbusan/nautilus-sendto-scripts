@@ -35,7 +35,7 @@ DBUS_REQUIRED=1.0
 DBUS_GLIB_REQUIRED=0.60
 GUPNP_AV_REQUIRED=0.2.1
 EMPATHY_REQUIRED=2.23.91
-EMPATHY_GTK_REQUIRED=2.23.91
+EMPATHY_GTK_REQUIRED=2.25.2
 
 AC_SUBST(GLIB_REQUIRED)
 AC_SUBST(GTK_REQUIRED)
@@ -247,7 +247,7 @@ dnl -------------------------------------------------
 dnl Empathy support
 dnl -------------------------------------------------
 
-PKG_CHECK_MODULES(EMPATHY, libempathy >= $EMPATHY_REQUIRED libempathy-gtk >= $EMPATHY_GTK_REQUIRED gio-2.0,
+PKG_CHECK_MODULES(EMPATHY, libempathy >= $EMPATHY_REQUIRED libempathy-gtk >= $EMPATHY_GTK_REQUIRED gio-2.0 telepathy-glib,
        [
        AC_SUBST(EMPATHY_CFLAGS)
        AC_SUBST(EMPATHY_LIBS)
