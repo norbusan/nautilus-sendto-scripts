@@ -1,5 +1,14 @@
 2009-01-06  Bastien Nocera  <hadess@hadess.net>
 
+	* configure.in:
+	* src/plugins/Makefile.am:
+	* src/plugins/nautilus-burn.c (init), (get_contacts_widget),
+	(send_files), (destroy): Add a nautilus-cd-burner plugin,
+	to send files to burn:///, patch from
+	Jader Henrique da Silva <vovozito@gmail.com>
+
+2009-01-06  Bastien Nocera  <hadess@hadess.net>
+
 	* configure.in: Update minimum reqs so we can not compile
 	the empathy plugin with older versions of empathy
 
