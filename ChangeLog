@@ -1,5 +1,13 @@
 2009-01-07  Bastien Nocera  <hadess@hadess.net>
 
+	* src/plugins/bluetooth/bluetooth.c (add_phone_to_list),
+	(add_device_to_list), (add_last_used_device_to_list),
+	(device_found), (get_contacts_widget): Use the Icon device
+	property to show a nice icon when sending to Bluetooth devices
+	(Closes: #553497)
+
+2009-01-07  Bastien Nocera  <hadess@hadess.net>
+
 	* configure.in: Add comment about why the burn
 	plugin is disabled
 

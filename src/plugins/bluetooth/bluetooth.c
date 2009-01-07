@@ -43,6 +43,7 @@ DBusGConnection *conn;
 DBusGProxy *object;
 
 enum {
+	ICON_COL,
 	NAME_COL,
 	BDADDR_COL,
 	NUM_COLS
@@ -163,7 +164,10 @@ get_device_name_from_address (char *bdaddr)
 }
 
 static void
-add_phone_to_list (GtkListStore *store, const char *name, const char *bdaddr)
+add_phone_to_list (GtkListStore *store,
+		   const char *name,
+		   const char *bdaddr,
+		   const char *icon)
 {
 	GtkTreeIter iter;
 	gboolean found = FALSE;
@@ -174,9 +178,10 @@ add_phone_to_list (GtkListStore *store, const char *name, const char *bdaddr)
 	}
 
 	gtk_list_store_set (store, &iter,
-			NAME_COL, name,
-			BDADDR_COL, bdaddr,
-			-1);
+			    ICON_COL, icon,
+			    NAME_COL, name,
+			    BDADDR_COL, bdaddr,
+			    -1);
 
 	if (discovered == 0) {
 		gtk_combo_box_set_active (GTK_COMBO_BOX (combobox), 0);
@@ -198,15 +203,17 @@ add_device_to_list (GtkListStore *store, const char *device_path)
 			       G_TYPE_INVALID, dbus_g_type_get_map ("GHashTable", G_TYPE_STRING, G_TYPE_VALUE),
 			       &props, G_TYPE_INVALID) != FALSE) {
 		GValue *value;
-		const char *name, *address;
+		const char *name, *address, *icon;
 
 		value = g_hash_table_lookup (props, "Address");
 		address = g_value_get_string (value);
 		value = g_hash_table_lookup (props, "Alias");
 		name = g_value_get_string (value);
+		value = g_hash_table_lookup (props, "Icon");
+		icon = value ? g_value_get_string (value) : NULL;
 
 		//FIXME double check the obexftp support?
-		add_phone_to_list (store, name, address);
+		add_phone_to_list (store, name, address, icon);
 	}
 	g_object_unref (device);
 }
@@ -223,7 +230,7 @@ add_last_used_device_to_list (GtkListStore *store)
 
 	if (bdaddr != NULL && *bdaddr != '\0') {
 		name = get_device_name_from_address (bdaddr);
-		add_phone_to_list (store, name, bdaddr);
+		add_phone_to_list (store, name, bdaddr, NULL);
 	}
 
 	g_free (bdaddr);
@@ -250,12 +257,14 @@ device_found (DBusGProxy *object,
 	      GtkListStore *store)
 {
 	GValue *value;
-	const char *name;
+	const char *name, *icon;
 
 	value = g_hash_table_lookup (props, "Alias");
 	name = value ? g_value_get_string (value) : NULL;
+	value = g_hash_table_lookup (props, "Icon");
+	icon = value ? g_value_get_string (value) : NULL;
 
-	add_phone_to_list (store, name, address);
+	add_phone_to_list (store, name, address, icon);
 }
 
 static void
@@ -287,19 +296,27 @@ get_contacts_widget (NstPlugin *plugin)
 	GtkListStore *store;
 
 	/* The model */
-	store = gtk_list_store_new (NUM_COLS, G_TYPE_STRING, G_TYPE_STRING);
+	store = gtk_list_store_new (NUM_COLS, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING);
 	model = GTK_TREE_MODEL (store);
 
 	/* The widget itself */
 	combobox = gtk_combo_box_new_with_model (model);
+	renderer = gtk_cell_renderer_pixbuf_new ();
+	gtk_cell_layout_pack_start (GTK_CELL_LAYOUT (combobox),
+				    renderer,
+				    FALSE);
+	gtk_cell_layout_set_attributes (GTK_CELL_LAYOUT (combobox), 
+					renderer,
+					"icon-name", ICON_COL,
+					NULL);
 	renderer = gtk_cell_renderer_text_new ();
 	gtk_cell_layout_pack_start (GTK_CELL_LAYOUT (combobox),
-			renderer,
-			TRUE);
+				    renderer,
+				    TRUE);
 	gtk_cell_layout_set_attributes (GTK_CELL_LAYOUT (combobox), 
-			renderer,
-			"text", NAME_COL,
-			NULL);
+					renderer,
+					"text", NAME_COL,
+					NULL);
 	gtk_combo_box_set_active (GTK_COMBO_BOX (combobox), 0);
 	gtk_widget_set_sensitive (combobox, FALSE);
 
