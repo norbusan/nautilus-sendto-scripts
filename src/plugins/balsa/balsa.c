@@ -23,45 +23,23 @@
  */
 
 #include "config.h"
+
 #include <glib/gi18n-lib.h>
-#include <string.h>
-#include "../nautilus-sendto-plugin.h"
+#include "nautilus-sendto-plugin.h"
 
 static GHashTable *hash = NULL;
-
-static const gchar const *possible_binaries[] = 
-{	"claws-mail",
-	"sylpheed-claws-gtk2",
-	"sylpheed-claws",
-	"sylpheed"
-};
-
-static gchar *get_claws_command(void)
-{
-	gchar *cmd = NULL;
-	gint i;
-
-	for (i = 0; cmd == NULL && i < G_N_ELEMENTS(possible_binaries); i++) {
-		cmd = g_find_program_in_path (possible_binaries[i]);
-	}
-
-	return cmd;
-}
 
 static 
 gboolean init (NstPlugin *plugin)
 {
-	gchar *sc_cmd;
-	
-	printf ("Init sylpheed-claws plugin\n");
+	gchar *b_cmd;
+
+	printf ("Init balsa plugin\n");
 	hash = g_hash_table_new (g_str_hash, g_str_equal);
 
-	sc_cmd = get_claws_command();
-
-	if(sc_cmd == NULL)
-		return FALSE;
-
-	g_free(sc_cmd);
+        b_cmd = g_find_program_in_path ("balsa");
+        if (b_cmd == NULL)
+                return FALSE;
 
 	return TRUE;
 }
@@ -80,42 +58,36 @@ static
 gboolean send_files (NstPlugin *plugin, GtkWidget *contact_widget,
 			GList *file_list)
 {
-	gchar *sc_cmd, *cmd, *send_to;
+	gchar *b_cmd, *cmd, *send_to, *send_to_info ;
 	GList *l;
 	GString *mailto;
-	gchar *tmp_str;
-
+	GtkWidget *error_dialog;
+	
 	send_to = (gchar *) gtk_entry_get_text (GTK_ENTRY(contact_widget));
 		
 	if (strlen (send_to) == 0)
 	{
-		mailto = g_string_new("--compose \"\"");
+		mailto = g_string_new("--compose=\"\"");
 	}
 	else
 	{
-		mailto = g_string_new("--compose ");
+		mailto = g_string_new("--compose=");
 		g_string_append_printf (mailto, "%s", send_to);		
 	}
 	
-	sc_cmd = get_claws_command();
-	
-	if(sc_cmd == NULL)
+	b_cmd = g_find_program_in_path ("balsa");
+	if (b_cmd == NULL)
 		return FALSE;
-	/* tmp_str is used for delete file:/// at the start of the filename path */
-	tmp_str = g_filename_from_uri(file_list->data, NULL, NULL);
-	g_string_append_printf (mailto," --attach \"%s\"",tmp_str);
-	g_free(tmp_str);
 	
-	for (l = file_list->next ; l; l=l->next){
-		tmp_str = g_filename_from_uri(l->data, NULL, NULL);
-		g_string_append_printf (mailto," \"%s\"",tmp_str);
-		g_free(tmp_str);
+	g_string_append_printf (mailto," attach=\"%s\"",file_list->data);
+	for (l = file_list->next ; l; l=l->next){				
+		g_string_append_printf (mailto," \"%s\"",l->data);
 	}
-	cmd = g_strdup_printf ("%s %s", sc_cmd, mailto->str);
+	cmd = g_strdup_printf ("%s %s", b_cmd, mailto->str);
 	g_spawn_command_line_async (cmd, NULL);
 	g_free (cmd);
 	g_string_free (mailto, TRUE);
-	g_free (sc_cmd);
+	g_free (b_cmd);
 	return TRUE;
 }
 
@@ -127,8 +99,8 @@ gboolean destroy (NstPlugin *plugin){
 static 
 NstPluginInfo plugin_info = {
 	"emblem-mail",
-	"sylpheed-claws",
-	N_("Email (Claws Mail)"),
+	"balsa",
+	N_("Email (Balsa)"),
 	FALSE,
 	init,
 	get_contacts_widget,

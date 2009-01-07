@@ -37,7 +37,7 @@
 #define NAUTILUS_SENDTO_LAST_COMPRESS	NAUTILUS_SENDTO_GCONF"/last_compress"
 #define NAUTILUS_SENDTO_STATUS_LABEL_TIMEOUT_SECONDS 10
 
-#define UNINSTALLED_PLUGINDIR "plugins/.libs"
+#define UNINSTALLED_PLUGINDIR "plugins/sylpheed-claws"
 #define UNINSTALLED_SOURCE "nautilus-sendto-command.c"
 
 /* Options */
@@ -583,21 +583,14 @@ nautilus_sendto_create_ui (void)
 
 }
 
-static gboolean
-nautilus_sendto_plugin_init (void)
+static void
+nautilus_sendto_plugin_dir_process (const char *plugindir)
 {
 	GDir *dir;
 	const char *item;
 	NstPlugin *p = NULL;
 	gboolean (*nst_init_plugin)(NstPlugin *p);
 	GError *err = NULL;
-	const char *plugindir;
-
-	if (g_file_test (UNINSTALLED_SOURCE, G_FILE_TEST_EXISTS) != FALSE &&
-	    g_file_test (UNINSTALLED_PLUGINDIR, G_FILE_TEST_IS_DIR) != FALSE)
-		plugindir = UNINSTALLED_PLUGINDIR;
-	else
-		plugindir = PLUGINDIR;
 
 	dir = g_dir_open (plugindir, 0, &err);
 
@@ -605,7 +598,6 @@ nautilus_sendto_plugin_init (void)
 		g_warning ("Can't open the plugins dir: %s", err ? err->message : "No reason");
 		if (err)
 			g_error_free (err);
-		return FALSE;
 	} else {
 		while ((item = g_dir_read_name(dir))) {
 			if (g_str_has_suffix (item, SOEXT)) {
@@ -639,6 +631,38 @@ nautilus_sendto_plugin_init (void)
 		}
 		g_dir_close (dir);
 	}
+}
+
+static gboolean
+nautilus_sendto_plugin_init (void)
+{
+	if (g_file_test (UNINSTALLED_PLUGINDIR, G_FILE_TEST_IS_DIR) != FALSE) {
+		/* Try to load the local plugins */
+		GError *err = NULL;
+		GDir *dir;
+		const char *item;
+
+		dir = g_dir_open ("plugins/", 0, &err);
+		if (dir == NULL) {
+			g_warning ("Can't open the plugins dir: %s", err ? err->message : "No reason");
+			if (err)
+				g_error_free (err);
+			return FALSE;
+		}
+		while ((item = g_dir_read_name(dir))) {
+			char *plugindir;
+
+			plugindir = g_strdup_printf ("plugins/%s/.libs/", item);
+			if (g_file_test (plugindir, G_FILE_TEST_IS_DIR) != FALSE)
+				nautilus_sendto_plugin_dir_process (plugindir);
+			g_free (plugindir);
+		}
+		g_dir_close (dir);
+	}
+
+	if (g_list_length (plugin_list) == 0)
+		nautilus_sendto_plugin_dir_process (PLUGINDIR);
+
 	return g_list_length (plugin_list) != 0;
 }
 

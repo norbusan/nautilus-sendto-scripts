@@ -24,7 +24,7 @@
 #include "config.h"
 #include <string.h>
 #include <glib/gi18n-lib.h>
-#include "../nautilus-sendto-plugin.h"
+#include "nautilus-sendto-plugin.h"
 
 static GList *contact_list;
 static gchar *blist_online;
@@ -32,11 +32,11 @@ static gchar *blist_online;
 static 
 gboolean init (NstPlugin *plugin)
 {
-	g_print ("Init pidgin plugin\n");
+	g_print ("Init gaim plugin\n");
 	contact_list = NULL;
 
 	blist_online = g_build_path ("/", g_get_home_dir(),
-				     ".gnome2/nautilus-sendto/pidgin_buddies_online",
+				     ".gnome2/nautilus-sendto/buddies_online",
 				     NULL);
 	if (!g_file_test (blist_online, G_FILE_TEST_EXISTS)) {
 		g_free (blist_online);
@@ -47,9 +47,9 @@ gboolean init (NstPlugin *plugin)
 }
 
 static void
-add_pidgin_contacts_to_model (GtkListStore *store, GtkTreeIter *iter)
+add_gaim_contacts_to_model (GtkListStore *store, GtkTreeIter *iter)
 {
-	GdkPixbuf *msn, *jabber, *yahoo, *aim, *icq, *bonjour;
+	GdkPixbuf *msn, *jabber, *yahoo, *aim;
 	GtkIconTheme *it;
 	GList *list = NULL;
 	GList *l;
@@ -91,10 +91,7 @@ add_pidgin_contacts_to_model (GtkListStore *store, GtkTreeIter *iter)
 					GTK_ICON_LOOKUP_USE_BUILTIN, NULL);
 	aim = gtk_icon_theme_load_icon (it, "im-aim", 16, 
 					GTK_ICON_LOOKUP_USE_BUILTIN, NULL);
-	icq = gtk_icon_theme_load_icon (it, "im-icq", 16, 
-					GTK_ICON_LOOKUP_USE_BUILTIN, NULL);
-	bonjour = gtk_icon_theme_load_icon (it, "network-wired", 16,
-					    GTK_ICON_LOOKUP_USE_BUILTIN, NULL);
+		
 	l = list;
 	while (l->next != NULL){
 		gchar *prt, *username, *cname, *alias;
@@ -118,35 +115,27 @@ add_pidgin_contacts_to_model (GtkListStore *store, GtkTreeIter *iter)
 			gtk_list_store_set (store, iter, 0, 
 					    msn, 1, alias_e->str, -1);
 			contact_list = g_list_append (contact_list, contact_info);
-		}else if (strcmp(prt,"prpl-jabber")==0){
-			gtk_list_store_append (store, iter);
-			gtk_list_store_set (store, iter, 0, 
-					    jabber, 1, alias_e->str, -1);
-			contact_list = g_list_append (contact_list, contact_info);
-		}else if (strcmp(prt,"prpl-aim")==0){
-			gtk_list_store_append (store, iter);
-			gtk_list_store_set (store, iter, 0, 
-					    aim, 1, alias_e->str, -1);
-			contact_list = g_list_append (contact_list, contact_info);
-		}else if (strcmp(prt,"prpl-yahoo")==0){
-			gtk_list_store_append (store, iter);
-			gtk_list_store_set (store, iter, 0, 
-					    yahoo, 1, alias_e->str, -1);
-			contact_list = g_list_append (contact_list, contact_info);
-		}else if(strcmp(prt,"prpl-icq")==0) {
-			gtk_list_store_append (store, iter);
-			gtk_list_store_set (store, iter, 0, 
-					    icq, 1, alias_e->str, -1);
-			contact_list = g_list_append (contact_list, contact_info);
-		} else if(strcmp(prt,"prpl-bonjour")==0) {
-			gtk_list_store_append (store, iter);
-			gtk_list_store_set (store, iter, 0,
-					    bonjour, 1, alias_e->str, -1);
-			contact_list = g_list_append (contact_list, contact_info);
-		}else {
-			g_free (contact_info);
-		}
-
+		}else
+		  if (strcmp(prt,"prpl-jabber")==0){
+			  gtk_list_store_append (store, iter);
+			  gtk_list_store_set (store, iter, 0, 
+					      jabber, 1, alias_e->str, -1);
+			  contact_list = g_list_append (contact_list, contact_info);
+		  }else
+		    if (strcmp(prt,"prpl-oscar")==0){
+			    gtk_list_store_append (store, iter);
+			    gtk_list_store_set (store, iter, 0, 
+						aim, 1, alias_e->str, -1);
+			    contact_list = g_list_append (contact_list, contact_info);
+		    }else
+		      if (strcmp(prt,"prpl-yahoo")==0){
+			      gtk_list_store_append (store, iter);
+			      gtk_list_store_set (store, iter, 0, 
+						  yahoo, 1, alias_e->str, -1);
+			      contact_list = g_list_append (contact_list, contact_info);
+		      }else{
+			      g_free (contact_info);
+		      }
 		g_string_free(alias_e, TRUE);
 	}
 	
@@ -165,7 +154,7 @@ GtkWidget* get_contacts_widget (NstPlugin *plugin)
 
 	iter = g_malloc (sizeof(GtkTreeIter));
 	store = gtk_list_store_new (2, GDK_TYPE_PIXBUF, G_TYPE_STRING);
-	add_pidgin_contacts_to_model (store, iter);
+	add_gaim_contacts_to_model (store, iter);
 	g_free (iter);	
 	model = GTK_TREE_MODEL (store);
 	cb = gtk_combo_box_new_with_model (model);
@@ -193,7 +182,7 @@ static
 gboolean send_files (NstPlugin *plugin, GtkWidget *contact_widget,
 			 GList *file_list)
 {
-	GString *pidginto;	
+	GString *gaimto;	
 	GList *l;
 	gchar *spool_file, *spool_file_send, *contact_info;
 	FILE *fd;
@@ -201,23 +190,23 @@ gboolean send_files (NstPlugin *plugin, GtkWidget *contact_widget,
 
 	option = gtk_combo_box_get_active (GTK_COMBO_BOX(contact_widget));
 	contact_info = (gchar *) g_list_nth_data (contact_list, option);
-	pidginto = g_string_new (contact_info);
+	gaimto = g_string_new (contact_info);
 	
 	for (l = file_list ; l; l=l->next){
 		char *path;
 
 		path = g_filename_from_uri (l->data, NULL, NULL);
-		g_string_append_printf (pidginto,"%s\n", path);
+		g_string_append_printf (gaimto,"%s\n", path);
 		g_free (path);
 	}
-	g_string_append_printf (pidginto,"\n");
+	g_string_append_printf (gaimto,"\n");
 	t = time (NULL);
 	spool_file = g_strdup_printf ("%s/.gnome2/nautilus-sendto/spool/tmp/%i.send",
 				     g_get_home_dir(), t);
 	spool_file_send = g_strdup_printf ("%s/.gnome2/nautilus-sendto/spool/%i.send",
 					   g_get_home_dir(), t);
 	fd = fopen (spool_file,"w");
-	fwrite (pidginto->str, 1, pidginto->len, fd);
+	fwrite (gaimto->str, 1, gaimto->len, fd);
 	fclose (fd);
 	rename (spool_file, spool_file_send);
 	g_free (spool_file);
@@ -235,8 +224,8 @@ gboolean destroy (NstPlugin *plugin){
 static 
 NstPluginInfo plugin_info = {
 	"im",
-	"pidgin",
-	N_("Instant Message (Pidgin)"),
+	"gaim",
+	N_("Instant Message (Gaim)"),
 	FALSE,
 	init,
 	get_contacts_widget,

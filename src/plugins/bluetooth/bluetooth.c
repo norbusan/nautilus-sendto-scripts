@@ -29,7 +29,7 @@
 #include <glib/gi18n-lib.h>
 #include <gconf/gconf-client.h>
 
-#include "../nautilus-sendto-plugin.h"
+#include "nautilus-sendto-plugin.h"
 
 #define OBEX_FILETRANS_SVCLASS_ID_STR "0x1106"
 #define LAST_OBEX_DEVICE "/desktop/gnome/nautilus-sendto/last_obex_device"

@@ -33,7 +33,7 @@
 
 #include <libempathy-gtk/empathy-contact-list-store.h>
 
-#include "../nautilus-sendto-plugin.h"
+#include "nautilus-sendto-plugin.h"
 
 static EmpathyContactManager *manager = NULL;
 static MissionControl *mc = NULL;

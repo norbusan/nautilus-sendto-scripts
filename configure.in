@@ -70,225 +70,221 @@ dnl ---------------------------------
 NAUTILUS_EXTENSION_DIR=`$PKG_CONFIG --variable=extensiondir libnautilus-extension`
 AC_SUBST(NAUTILUS_EXTENSION_DIR)
 
-dnl Libebook support
-dnl ---------------------------------
+# The full list of plugins
+allowed_plugins="balsa bluetooth empathy evolution gaim gajim nautilus-burn pidgin sylpheed-claws thunderbird upnp"
 
-PKG_CHECK_MODULES(NST_EBOOK, libebook-1.2 >= $EBOOK_REQUIRED,
-	[
-	AC_SUBST(NST_EBOOK_CFLAGS)
-	AC_SUBST(NST_EBOOK_LIBS)
-	echo "Using libebook-1.2 !"
-	enable_evolution=yes
-	],
-	[
-        echo "Building without evolution"
-	enable_evolution=no
-	]
-)
+plugin_error_or_ignore()
+{
+	if test "${error_on_bad_plugin}" = "1" ; then
+		AC_MSG_ERROR([$1])
+	else
+		AC_MSG_WARN([$1 (disabling plugin)])
+	fi
+}
 
-AM_CONDITIONAL(HAVE_EVOLUTION, test "x$enable_evolution" = "xyes")
+AC_ARG_WITH([plugins],
+	[AS_HELP_STRING([--with-plugins],[Which nautilus-sendto plugins to compile (default: auto; "all", "autodetect" are valid)])],
+	[], [with_plugins=autodetect])
 
-saved_CPPFLAGS="$CPPFLAGS"
-CPPFLAGS="$CPPFLAGS $NST_EBOOK_CFLAGS"
-AC_CHECK_TYPES([EContactPhotoType], , , [#include <libebook/e-contact.h>])
-CPPFLAGS="$saved_CPPFLAGS"
+used_plugins=""
+used_plugins2=""
 
-dnl Gaim support if it's installed
-dnl ---------------------------------
+if test "x${with_plugins}" = "xautodetect" ; then
+	# Default to all plugins and just ignore them if they won't compile
+	with_plugins="all"
+	error_on_bad_plugin="0"
+else
+	# Clean up the plugin list and error if a plugin won't compile
+	with_plugins=`echo ,"${with_plugins}", | sed -e 's/[[	,]][[	,]]*/ /g' -e 's/,$//'`
+	error_on_bad_plugin="1"
+fi
 
+# Iterate through the wanted plugins and weed out bad ones (or error)
+for wanted_plugin in ${with_plugins}; do
+	for allowed_plugin in ${allowed_plugins}; do
+		case ${wanted_plugin} in
+			all)
+				# List all plugins as being used
+				used_plugins=${allowed_plugins}
+			;;
+			autodetect)
+				# List all plugins as being used
+				used_plugins=${allowed_plugins}
+			;;
+			${allowed_plugin}) used_plugins="${used_plugins} ${wanted_plugin}";; # List the plugin
+			*) ;;
+		esac
+	done
+done
 
-PKG_CHECK_MODULES(GAIM, gaim >= $GAIM_REQUIRED,
-	[
-	AC_SUBST(GAIM_CFLAGS)
-	AC_SUBST(GAIM_LIBS)
-	GAIM_LIBDIR=`pkg-config --variable=libdir gaim`
-	GAIM_DATADIR=`pkg-config --variable=datadir gaim`
-	AC_SUBST(GAIM_LIBDIR)
-	AC_SUBST(GAIM_DATADIR)
-	enable_gaim=yes
-	],
-	[
-	echo "Building without gaim"
-	enable_gaim=no
-	]
-)
+# Check for plugin-specific requirements and error if necessary
+for plugin in ${used_plugins}; do
+	add_plugin="1"
 
+	case ${plugin} in
+		balsa)
+			add_plugin="1"
+		;;
+		bluetooth)
+			PKG_CHECK_MODULES(BLUETOOTH, dbus-glib-1 >= $DBUS_GLIB_REQUIRED,
+					  enable_bluetooth=yes, enable_bluetooth=no)
+			if test "${enable_bluetooth}" != "yes" ; then
+				plugin_error_or_ignore "you need dbus-glib to build the Bluetooth plugin"
+				add_plugin="0"
+			fi
+		;;
+		empathy)
+			PKG_CHECK_MODULES(EMPATHY, libempathy >= $EMPATHY_REQUIRED libempathy-gtk >= $EMPATHY_GTK_REQUIRED gio-2.0 telepathy-glib,
+					  enable_empathy=yes, enable_empathy=no)
+			if test "${enable_empathy}" != "yes" ; then
+				plugin_error_or_ignore "you need libempathy and libempathy-gtk to build the Empathy plugin"
+				add_plugin="0"
+			fi
+		;;
+		evolution)
+			PKG_CHECK_MODULES(NST_EBOOK, libebook-1.2 >= $EBOOK_REQUIRED,
+					   enable_evolution=yes, enable_evolution=no)
+			if test "${enable_evolution}" != "yes" ; then
+				plugin_error_or_ignore "you need libebook from evolution-data-server to build the Evolution plugin"
+				add_plugin="0"
+			else
+				saved_CPPFLAGS="$CPPFLAGS"
+				CPPFLAGS="$CPPFLAGS $NST_EBOOK_CFLAGS"
+				AC_CHECK_TYPES([EContactPhotoType], , , [#include <libebook/e-contact.h>])
+				CPPFLAGS="$saved_CPPFLAGS"
+			fi
+		;;
+		gaim)
+			PKG_CHECK_MODULES(GAIM, gaim >= $GAIM_REQUIRED,
+					  [
+					   GAIM_LIBDIR=`pkg-config --variable=libdir gaim`
+					   GAIM_DATADIR=`pkg-config --variable=datadir gaim`
+					   AC_SUBST(GAIM_LIBDIR)
+					   AC_SUBST(GAIM_DATADIR)
+					   enable_gaim=yes
+					   ],
+					   [
+					    enable_gaim=no
+					    ]
+					   )
+			if test "${enable_gaim}" != "yes" ; then
+				plugin_error_or_ignore "you need gaim to build the gaim plugin"
+				add_plugin="0"
+			fi
+		;;
+		gajim)
+			AC_ARG_WITH(gajim,
+				    [AS_HELP_STRING(--with-gajim,[Path to Gajim install prefix])],
+				    [GAJIM_PATH="$withval"],[GAJIM_PATH="$prefix"])
+
+			GAJIM_SHARE_DIR="$GAJIM_PATH"/share/gajim
+
+			PKG_CHECK_MODULES(DBUS, dbus-1 >= $DBUS_REQUIRED dbus-glib-1 >= $DBUS_GLIB_REQUIRED,
+					  [
+					   AC_SUBST(DBUS_CFLAGS)
+					   AC_SUBST(DBUS_LIBS)
+					   if test -f "$GAJIM_SHARE_DIR"/data/pixmaps/gajim.png ; then
+						   enable_gajim=yes
+						   AC_DEFINE_UNQUOTED(GAJIM_SHARE_DIR, "$GAJIM_SHARE_DIR", [path to gajim share dir])
+					   else
+						   enable_gajim=no
+					   fi
+					   ],
+					   [
+					    enable_gajim=no
+					    ]
+					   )
+			if test "${enable_gajim}" != "yes" ; then
+				plugin_error_or_ignore "you need gajim and dbus-glib installed for the gajim plugin"
+				add_plugin="0"
+			fi
+		;;
+		nautilus-burn)
+			PKG_CHECK_MODULES(GIO, gio-2.0,
+					  enable_burn=no, enable_burn=no)
+			if test "${enable_burn}" != "yes" ; then
+				plugin_error_or_ignore "you need gio installed for the nautilus-burn plugin"
+				add_plugin="0"
+			fi
+		;;
+		pidgin)
+			PKG_CHECK_MODULES(PIDGIN, pidgin >= $PIDGIN_REQUIRED purple >= $PIDGIN_REQUIRED,
+					  [
+					   PIDGIN_LIBDIR=`pkg-config --variable=libdir purple`
+					   PIDGIN_DATADIR=`pkg-config --variable=datadir purple`
+					   AC_SUBST(PIDGIN_LIBDIR)
+					   AC_SUBST(PIDGIN_DATADIR)
+					   enable_pidgin=yes
+					   ],
+					   [
+					    enable_pidgin=no
+					    ]
+					   )
+			if test "${enable_pidgin}" != "yes" ; then
+				plugin_error_or_ignore "you need pidgin and libpurple installed for the pidgin plugin"
+				add_plugin="0"
+			fi
+		;;
+		sylpheed-claws)
+			add_plugin="1"
+		;;
+		thunderbird)
+			AC_ARG_WITH([thunderbird-name],
+				    [AS_HELP_STRING([--with-thunderbird-name],[Binary name for Thunderbird (default: thunderbird)])],
+				    [with_thunderbird_name=$withval])
+			if test "x$with_thunderbird_name" = "x" ; then
+				with_thunderbird_name=thunderbird
+			fi
+			THUNDERBIRD_NAME=$with_thunderbird_name
+			AC_SUBST(THUNDERBIRD_NAME)
+
+			AC_DEFINE_UNQUOTED(THUNDERBIRD_NAME, "$THUNDERBIRD_NAME", [name of the Thunderbird binary])
+
+			add_plugin="1"
+		;;
+		upnp)
+			PKG_CHECK_MODULES(UPNP, gupnp-av-1.0 >= $GUPNP_AV_REQUIRED,
+					  enable_upnp=yes, enable_upnp=no)
+			if test "${enable_upnp}" != "yes" ; then
+				plugin_error_or_ignore "you need gupnp-av installed for the upnp plugin"
+				add_plugin="0"
+			fi
+		;;
+	esac
+
+	# Add the specified plugin
+	if test "${add_plugin}" = "1" ; then
+		used_plugins2="${used_plugins2} ${plugin}"
+	fi
+done
+
+ALL_PLUGINS=$allowed_plugins
+PLUGINS=$used_plugins2
+
+dnl Error out if no plugins will be built
+if test -z "${PLUGINS}" ; then
+	AC_MSG_ERROR([No plugins will be built, and nautilus-sendto requires at least one])
+fi
+
+AC_MSG_CHECKING([which plugins to compile])
+AC_MSG_RESULT([$PLUGINS])
+
+AC_SUBST([ALL_PLUGINS])
+AC_SUBST([PLUGINS])
+
+dnl For the gaim and pidgin plugins
 AM_CONDITIONAL(HAVE_GAIM, test "x$enable_gaim" = "xyes")
-
-dnl Pidgin support if it's installed
-dnl ---------------------------------
-
-
-PKG_CHECK_MODULES(PIDGIN, pidgin >= $PIDGIN_REQUIRED purple >= $PIDGIN_REQUIRED,
-	[
-	AC_SUBST(PIDGIN_CFLAGS)
-	AC_SUBST(PIDGIN_LIBS)
-	PIDGIN_LIBDIR=`pkg-config --variable=libdir purple`
-	PIDGIN_DATADIR=`pkg-config --variable=datadir purple`
-	AC_SUBST(PIDGIN_LIBDIR)
-	AC_SUBST(PIDGIN_DATADIR)
-	enable_pidgin=yes
-	],
-	[
-	echo "Building without pidgin"
-	enable_pidgin=no
-	]
-)
-
 AM_CONDITIONAL(HAVE_PIDGIN, test "x$enable_pidgin" = "xyes")
-
-dnl Bluetooth support if it's installed
-dnl -----------------------------------
-
-PKG_CHECK_MODULES(BLUETOOTH, dbus-glib-1 >= $DBUS_GLIB_REQUIRED,
-	[
-	AC_SUBST(BLUETOOTH_CFLAGS)
-	AC_SUBST(BLUETOOTH_LIBS)
-	enable_bluetooth=yes
-	],
-	[
-	echo "Building without Bluetooth"
-	enable_bluetooth=no
-	]
-)
-
-AM_CONDITIONAL(HAVE_BLUETOOTH, test "x$enable_bluetooth" = "xyes")
-
-PKG_CHECK_MODULES(UPNP, gupnp-av-1.0 >= $GUPNP_AV_REQUIRED,
-	[
-	AC_SUBST(UPNP_CFLAGS)
-	AC_SUBST(UPNP_LIBS)
-	enable_upnp=yes
-	],
-	[
-	echo "Building without UPnP"
-	enable_upnp=no
-	]
-)
-
-dnl GUPnP AV if it's installed
-dnl -----------------------------------
-
-AM_CONDITIONAL(HAVE_UPNP, test "x$enable_upnp" = "xyes")
 
 GLIB_GENMARSHAL=`$PKG_CONFIG --variable=glib_genmarshal glib-2.0`
 AC_SUBST(GLIB_GENMARSHAL)
-
-dnl Nautilus burn support if it's installed
-dnl -----------------------------------
-
-# FIXME enable_burn should yes at the top,
-# when we know how to copy directories
-
-PKG_CHECK_MODULES(GIO, gio-2.0,
-	[
-	AC_SUBST(GIO_CFLAGS)
-	AC_SUBST(GIO_LIBS)
-	enable_burn=no
-	],
-	[
-	echo "Building without Nautilus-cd-burner support"
-	enable_burn=no
-	]
-)
-
-AM_CONDITIONAL(HAVE_BURN, test "x$enable_burn" = "xyes")
-
-dnl --------------------------------------------------
-
-dnl Balsa support
-dnl -------------------------------------------------
-
-enable_balsa=no
-AM_CONDITIONAL(HAVE_BALSA, test "x$enable_balsa" = "xyes")
-dnl -------------------------------------------------
-
-
-dnl Sylpheed support
-dnl -------------------------------------------------
-
-enable_sylpheed=yes
-AM_CONDITIONAL(HAVE_SYLPHEED, test "x$enable_sylpheed" = "xyes")
-dnl -------------------------------------------------
-
-
-dnl Thunderbird support
-dnl -------------------------------------------------
-
-AC_ARG_WITH([thunderbird-name],
-	    [AS_HELP_STRING([--with-thunderbird-name],[Binary name for Thunderbird (default: thunderbird)])],
-	    [with_thunderbird_name=$withval])
-if test "x$with_thunderbird_name" = "x" ; then
-	with_thunderbird_name=thunderbird
-fi
-
-THUNDERBIRD_NAME=$with_thunderbird_name
-AC_SUBST(THUNDERBIRD_NAME)
-
-AC_DEFINE_UNQUOTED(THUNDERBIRD_NAME, "$THUNDERBIRD_NAME", [name of the Thunderbird binary])
-
-enable_thunderbird=yes
-AM_CONDITIONAL(HAVE_THUNDERBIRD, test "x$enable_thunderbird" = "xyes")
-
-dnl -------------------------------------------------
-
-dnl Gajim support
-dnl -------------------------------------------------
-
-AC_ARG_WITH(gajim,
-        [AS_HELP_STRING(--with-gajim,[Path to Gajim install prefix])],
-        [GAJIM_PATH="$withval"],[GAJIM_PATH="$prefix"])
-
-GAJIM_SHARE_DIR="$GAJIM_PATH"/share/gajim
-
-PKG_CHECK_MODULES(DBUS, dbus-1 >= $DBUS_REQUIRED dbus-glib-1 >= $DBUS_GLIB_REQUIRED,
-        [
-        AC_SUBST(DBUS_CFLAGS)
-        AC_SUBST(DBUS_LIBS)
-	if test -f "$GAJIM_SHARE_DIR"/data/pixmaps/gajim.png ;
-	then
-		enable_gajim=yes
-		AC_DEFINE_UNQUOTED(GAJIM_SHARE_DIR, "$GAJIM_SHARE_DIR", [path to gajim share dir])
-	else
-		echo "Building without Gajim support"
-		enable_gajim=no
-	fi
-        ],
-        [
-        echo "Building without Gajim support"
-        enable_gajim=no
-        ]
-)
-
-AM_CONDITIONAL(HAVE_GAJIM, test "x$enable_gajim" = "xyes")
-
-dnl -------------------------------------------------
-
-dnl Empathy support
-dnl -------------------------------------------------
-
-PKG_CHECK_MODULES(EMPATHY, libempathy >= $EMPATHY_REQUIRED libempathy-gtk >= $EMPATHY_GTK_REQUIRED gio-2.0 telepathy-glib,
-       [
-       AC_SUBST(EMPATHY_CFLAGS)
-       AC_SUBST(EMPATHY_LIBS)
-       enable_empathy=yes
-       ],
-       [
-       echo "Building without empathy"
-       enable_empathy=no
-       ]
-)
-
-AM_CONDITIONAL(HAVE_EMPATHY, test "x$enable_empathy" = "xyes")
-
-dnl -------------------------------------------------
 
 IT_PROG_INTLTOOL([0.35.0])
 
 GETTEXT_PACKAGE=nautilus-sendto
 AC_SUBST(GETTEXT_PACKAGE)
 AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE, "$GETTEXT_PACKAGE", [GetText Package])
-                                                                               
+
 AM_GLIB_GNU_GETTEXT
 
 AC_PATH_PROG(GCONFTOOL, gconftool-2)
@@ -298,6 +294,17 @@ AC_OUTPUT([
 Makefile
 src/Makefile
 src/plugins/Makefile
+src/plugins/balsa/Makefile
+src/plugins/bluetooth/Makefile
+src/plugins/empathy/Makefile
+src/plugins/evolution/Makefile
+src/plugins/gaim/Makefile
+src/plugins/gajim/Makefile
+src/plugins/nautilus-burn/Makefile
+src/plugins/pidgin/Makefile
+src/plugins/sylpheed-claws/Makefile
+src/plugins/thunderbird/Makefile
+src/plugins/upnp/Makefile
 gaim_plugin/Makefile
 pidgin_plugin/Makefile
 po/Makefile.in
@@ -306,70 +313,21 @@ po/Makefile.in
 echo "-------------------------------------------------------"
 echo "                                                       "
 
-if test "x${enable_evolution}" = "xyes" ; then
-   echo " **  Enable evolution plugin : YES"
+if test "x${PLUGINS}" != "x" ; then
+	for allowed_plugin in ${ALL_PLUGINS}; do
+		for plugin in ${PLUGINS}; do
+			case ${allowed_plugin} in
+				${plugin})
+					AC_MSG_NOTICE([** ${allowed_plugin} plugin enabled])
+					continue 2
+				;;
+				*);;
+			esac
+		done
+		AC_MSG_NOTICE([   ${allowed_plugin} plugin disabled])
+	done
 else
-   echo "     Enable evolution plugin : NO"
-fi
-
-if test "x${enable_gaim}" = "xyes" ; then
-   echo " **  Enable gaim plugin : YES"
-else
-   echo "     Enable gaim plugin : NO"
-fi
-
-if test "x${enable_pidgin}" = "xyes" ; then
-   echo " **  Enable pidgin plugin : YES"
-else
-   echo "     Enable pidgin plugin : NO"
-fi
-
-if test "x${enable_bluetooth}" = "xyes" ; then
-   echo " **  Enable bluetooth plugin : YES"
-else
-   echo "     Enable bluetooth plugin : NO"
-fi
-
-if test "x${enable_burn}" = "xyes" ; then
-   echo " **  Enable nautilus-cd-burner plugin : YES"
-else
-   echo "     Enable nautilus-cd-burner plugin : NO"
-fi
-
-if test "x${enable_upnp}" = "xyes" ; then
-   echo " **  Enable UPnP plugin : YES"
-else
-   echo "     Enable UPnP plugin : NO"
-fi
-
-if test "x${enable_balsa}" = "xyes" ; then
-   echo " **  Enable balsa plugin : YES"
-else
-   echo "     Enable balsa plugin (under development, don't support attachments) : NO"
-fi
-
-if test "x${enable_sylpheed}" = "xyes" ; then
-   echo " **  Enable sylpheed plugin : YES"
-else
-   echo "     Enable sylpheed plugin : NO"
-fi
-
-if test "x${enable_thunderbird}" = "xyes" ; then
-   echo " **  Enable thunderbird plugin : YES (binary name: $THUNDERBIRD_NAME)"
-else
-   echo "     Enable thunderbird plugin : NO"
-fi
-
-if test "x${enable_gajim}" = "xyes" ; then
-   echo " **  Enable gajim plugin : YES"
-else
-   echo "     Enable gajim plugin : NO"
-fi
-
-if test "x${enable_empathy}" = "xyes" ; then
-   echo " **  Enable empathy plugin : YES"
-else
-   echo "     Enable empathy plugin : NO"
+	AC_MSG_NOTICE([   No Totem plugins enabled])
 fi
 
 echo "                                                       "

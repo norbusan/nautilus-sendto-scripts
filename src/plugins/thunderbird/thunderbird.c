@@ -23,23 +23,24 @@
  */
 
 #include "config.h"
-
+#include "nautilus-sendto-plugin.h"
+#include <string.h>
 #include <glib/gi18n-lib.h>
-#include "../nautilus-sendto-plugin.h"
 
 static GHashTable *hash = NULL;
 
 static 
 gboolean init (NstPlugin *plugin)
 {
-	gchar *b_cmd;
+	gchar *t_cmd;
 
-	printf ("Init balsa plugin\n");
+	printf ("Init thunderbird plugin\n");
 	hash = g_hash_table_new (g_str_hash, g_str_equal);
 
-        b_cmd = g_find_program_in_path ("balsa");
-        if (b_cmd == NULL)
-                return FALSE;
+	t_cmd = g_find_program_in_path (THUNDERBIRD_NAME);
+	if (t_cmd == NULL)
+		return FALSE;
+	g_free (t_cmd);
 
 	return TRUE;
 }
@@ -47,6 +48,7 @@ gboolean init (NstPlugin *plugin)
 static
 GtkWidget* get_contacts_widget (NstPlugin *plugin)
 {
+		
 	GtkWidget *entry;
 	
 	entry = gtk_entry_new ();
@@ -58,36 +60,36 @@ static
 gboolean send_files (NstPlugin *plugin, GtkWidget *contact_widget,
 			GList *file_list)
 {
-	gchar *b_cmd, *cmd, *send_to, *send_to_info ;
+	gchar *t_cmd, *cmd, *send_to;
 	GList *l;
 	GString *mailto;
-	GtkWidget *error_dialog;
-	
+
 	send_to = (gchar *) gtk_entry_get_text (GTK_ENTRY(contact_widget));
 		
-	if (strlen (send_to) == 0)
+	if (send_to == NULL || strlen (send_to) == 0)
 	{
-		mailto = g_string_new("--compose=\"\"");
+		mailto = g_string_new("-compose ");
 	}
 	else
 	{
-		mailto = g_string_new("--compose=");
-		g_string_append_printf (mailto, "%s", send_to);		
+		mailto = g_string_new("-compose ");
+		g_string_append_printf (mailto, "to=%s,", send_to);		
 	}
 	
-	b_cmd = g_find_program_in_path ("balsa");
-	if (b_cmd == NULL)
+	t_cmd = g_find_program_in_path (THUNDERBIRD_NAME);
+	if (t_cmd == NULL)
 		return FALSE;
 	
-	g_string_append_printf (mailto," attach=\"%s\"",file_list->data);
+	g_string_append_printf (mailto,"attachment='%s", (char *) file_list->data);
 	for (l = file_list->next ; l; l=l->next){				
-		g_string_append_printf (mailto," \"%s\"",l->data);
+		g_string_append_printf (mailto,",%s", (char *) l->data);
 	}
-	cmd = g_strdup_printf ("%s %s", b_cmd, mailto->str);
+	g_string_append_c (mailto, '\'');
+	cmd = g_strdup_printf ("%s %s", t_cmd, mailto->str);
 	g_spawn_command_line_async (cmd, NULL);
 	g_free (cmd);
 	g_string_free (mailto, TRUE);
-	g_free (b_cmd);
+	g_free (t_cmd);
 	return TRUE;
 }
 
@@ -99,8 +101,8 @@ gboolean destroy (NstPlugin *plugin){
 static 
 NstPluginInfo plugin_info = {
 	"emblem-mail",
-	"balsa",
-	N_("Email (Balsa)"),
+	"thunderbird",
+	N_("Email (Thunderbird)"),
 	FALSE,
 	init,
 	get_contacts_widget,

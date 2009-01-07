@@ -1,3 +1,50 @@
+2009-01-07  Bastien Nocera  <hadess@hadess.net>
+
+	* configure.in:
+	* src/nautilus-sendto-command.c
+	(nautilus_sendto_plugin_dir_process),
+	(nautilus_sendto_plugin_init):
+	* src/plugins/Makefile.am:
+	* src/plugins/balsa.c:
+	* src/plugins/balsa/Makefile.am:
+	* src/plugins/balsa/balsa.c:
+	* src/plugins/bluetooth-marshal.list:
+	* src/plugins/bluetooth.c:
+	* src/plugins/bluetooth/Makefile.am:
+	* src/plugins/bluetooth/bluetooth.c:
+	* src/plugins/e-contact-entry.c:
+	* src/plugins/e-contact-entry.h:
+	* src/plugins/econtactentry-marshal.list:
+	* src/plugins/empathy.c:
+	* src/plugins/empathy/Makefile.am:
+	* src/plugins/empathy/empathy.c:
+	* src/plugins/evolution.c:
+	* src/plugins/evolution/Makefile.am:
+	* src/plugins/evolution/evolution.c:
+	* src/plugins/gaim.c:
+	* src/plugins/gaim/Makefile.am:
+	* src/plugins/gaim/gaim.c:
+	* src/plugins/gajim.c:
+	* src/plugins/gajim/Makefile.am:
+	* src/plugins/gajim/gajim.c:
+	* src/plugins/nautilus-burn.c:
+	* src/plugins/nautilus-burn/Makefile.am:
+	* src/plugins/nautilus-burn/nautilus-burn.c:
+	* src/plugins/pidgin.c:
+	* src/plugins/pidgin/Makefile.am:
+	* src/plugins/pidgin/pidgin.c:
+	* src/plugins/sylpheed-claws.c:
+	* src/plugins/sylpheed-claws/Makefile.am:
+	* src/plugins/sylpheed-claws/sylpheed-claws.c:
+	* src/plugins/thunderbird.c:
+	* src/plugins/thunderbird/Makefile.am:
+	* src/plugins/thunderbird/thunderbird.c:
+	* src/plugins/update-from-egg.sh:
+	* src/plugins/upnp.c:
+	* src/plugins/upnp/Makefile.am:
+	* src/plugins/upnp/upnp.c: Add a better way to enable/disable
+	plugins in nautilus-sendto, ripped from Totem (Closes: #525020)
+
 2009-01-06  Bastien Nocera  <hadess@hadess.net>
 
 	* configure.in:

@@ -29,7 +29,7 @@
 
 #include <glib/gi18n-lib.h>
 #include <libgupnp-av/gupnp-av.h>
-#include "../nautilus-sendto-plugin.h"
+#include "nautilus-sendto-plugin.h"
 
 #define MEDIA_SERVER "urn:schemas-upnp-org:device:MediaServer:*"
 #define CDS "urn:schemas-upnp-org:service:ContentDirectory"

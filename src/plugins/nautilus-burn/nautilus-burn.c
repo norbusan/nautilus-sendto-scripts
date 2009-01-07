@@ -24,7 +24,7 @@
 #include "config.h"
 #include <string.h>
 #include <glib/gi18n-lib.h>
-#include "../nautilus-sendto-plugin.h"
+#include "nautilus-sendto-plugin.h"
 
 #define COMBOBOX_OPTION_EXISTING_DVD 0
 #define COMBOBOX_OPTION_NEW_DVD 1

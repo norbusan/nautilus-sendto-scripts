@@ -26,7 +26,7 @@
 #include <e-contact-entry.h>
 #include <glib/gi18n-lib.h>
 #include <string.h>
-#include "../nautilus-sendto-plugin.h"
+#include "nautilus-sendto-plugin.h"
 
 #define GCONF_COMPLETION "/apps/evolution/addressbook"
 #define GCONF_COMPLETION_SOURCES GCONF_COMPLETION "/sources"

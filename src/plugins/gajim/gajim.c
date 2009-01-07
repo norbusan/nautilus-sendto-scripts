@@ -26,7 +26,7 @@
 #include <glib/gi18n-lib.h>
 #include <dbus/dbus.h>
 #include <dbus/dbus-glib.h>
-#include "../nautilus-sendto-plugin.h"
+#include "nautilus-sendto-plugin.h"
 
 #define OBJ_PATH "/org/gajim/dbus/RemoteObject"
 #define INTERFACE "org.gajim.dbus.RemoteInterface"
