@@ -1,5 +1,13 @@
 2009-01-07  Bastien Nocera  <hadess@hadess.net>
 
+	* src/plugins/pidgin/pidgin.c (init),
+	(add_pidgin_contacts_to_model), (customize), (get_contacts_widget),
+	(send_files), (free_contact), (destroy): Patch from
+	Roman Ovseytsev <romovs@gmail.com> to sort the contact
+	list alphabetically (Closes: #514709)
+
+2009-01-07  Bastien Nocera  <hadess@hadess.net>
+
 	* configure.in:
 	* src/nautilus-sendto-command.c
 	(nautilus_sendto_plugin_dir_process),

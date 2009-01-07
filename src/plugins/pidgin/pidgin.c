@@ -26,14 +26,20 @@
 #include <glib/gi18n-lib.h>
 #include "nautilus-sendto-plugin.h"
 
-static GList *contact_list;
-static gchar *blist_online;
+static GHashTable *contact_hash = NULL;
+static gchar *blist_online = NULL;
 
-static 
-gboolean init (NstPlugin *plugin)
+typedef struct _ContactData {
+	char *username;
+	char *cname;
+	char *alias;
+	char *prt;
+} ContactData;
+
+static gboolean
+init (NstPlugin *plugin)
 {
 	g_print ("Init pidgin plugin\n");
-	contact_list = NULL;
 
 	blist_online = g_build_path ("/", g_get_home_dir(),
 				     ".gnome2/nautilus-sendto/pidgin_buddies_online",
@@ -47,41 +53,62 @@ gboolean init (NstPlugin *plugin)
 }
 
 static void
-add_pidgin_contacts_to_model (GtkListStore *store, GtkTreeIter *iter)
+add_pidgin_contacts_to_model (GtkTreeStore *store,
+			      GtkTreeIter *iter,
+			      GtkTreeIter *parent)
 {
 	GdkPixbuf *msn, *jabber, *yahoo, *aim, *icq, *bonjour;
+	GdkPixbuf *icon;
 	GtkIconTheme *it;
-	GList *list = NULL;
-	GList *l;
-	gchar *contact_info;
-	GIOChannel *io;	
+	GIOChannel *io;
+	gsize terminator_pos;
+	GHashTableIter hiter;
+	GPtrArray *contacts_group;
+	ContactData *dat;
+	GValue val = {0,};
 
 	io = g_io_channel_new_file (blist_online, "r", NULL);
-
-	if (io != NULL){
-		GString *str;
-		str = g_string_new ("");
-		g_io_channel_read_line_string (io, str, NULL, NULL);
-		g_string_free (str, TRUE);
-		str = g_string_new ("");
-		while (G_IO_STATUS_EOF != g_io_channel_read_line_string (io, str, 
-								  NULL, NULL))
-		{
-			str = g_string_truncate (str, str->len - 1);
-			list = g_list_prepend (list, str->str);
-			g_string_free (str, FALSE);
-			str = g_string_new ("");
-		}
-		g_string_free(str,TRUE);
-		g_io_channel_shutdown (io, TRUE, NULL);		
-		if (list != NULL)
-			list = g_list_reverse(list);
-		else
-			return;
-		
-	}else
+	if (io == NULL)
 		return;
-	
+
+	contact_hash = g_hash_table_new (g_str_hash, g_str_equal);
+
+	gchar *tmp;
+	g_io_channel_read_line (io, &tmp, NULL, NULL, NULL);
+	g_free(tmp);
+
+	while (1){
+		dat = g_new0 (ContactData, 1);
+
+		if (g_io_channel_read_line (io, &dat->username, NULL, &terminator_pos,
+						NULL) == G_IO_STATUS_EOF)
+			 break;
+		dat->username[terminator_pos] = '\0';
+		if (g_io_channel_read_line (io, &dat->cname, NULL, &terminator_pos,
+						NULL) == G_IO_STATUS_EOF)
+			 break;
+		dat->cname[terminator_pos] = '\0';
+		if (g_io_channel_read_line (io, &dat->alias, NULL, &terminator_pos,
+						NULL) == G_IO_STATUS_EOF)
+			break;
+		dat->alias[terminator_pos] = '\0';
+		if (g_io_channel_read_line (io, &dat->prt, NULL, &terminator_pos,
+						NULL) == G_IO_STATUS_EOF)
+			break;
+		dat->prt[terminator_pos] = '\0';
+
+		contacts_group = g_hash_table_lookup (contact_hash, dat->alias);
+		if (contacts_group == NULL){
+			GPtrArray *new_group = g_ptr_array_new ();
+			g_ptr_array_add (new_group, dat);
+			g_hash_table_insert (contact_hash, dat->alias, new_group);
+		} else {
+			g_ptr_array_add (contacts_group, dat);
+		}
+	}
+
+	g_io_channel_shutdown (io, TRUE, NULL);
+
 	it = gtk_icon_theme_get_default ();
 	msn = gtk_icon_theme_load_icon (it, "im-msn", 16, 
 					GTK_ICON_LOOKUP_USE_BUILTIN, NULL);
@@ -95,115 +122,170 @@ add_pidgin_contacts_to_model (GtkListStore *store, GtkTreeIter *iter)
 					GTK_ICON_LOOKUP_USE_BUILTIN, NULL);
 	bonjour = gtk_icon_theme_load_icon (it, "network-wired", 16,
 					    GTK_ICON_LOOKUP_USE_BUILTIN, NULL);
-	l = list;
-	while (l->next != NULL){
-		gchar *prt, *username, *cname, *alias;
+
+	g_hash_table_iter_init (&hiter, contact_hash);
+	while (g_hash_table_iter_next (&hiter, NULL, (gpointer)&contacts_group)) {
 		GString *alias_e;
-		
-		username = (gchar *) l->data; l = l->next;
-		cname = (gchar *) l->data; l = l->next;
-		alias = (gchar *) l->data; l = l->next;
-		prt = (gchar *) l->data; l = l->next;
-		
-		alias_e = g_string_new (alias);
+		gint accounts;
+
+		dat = g_ptr_array_index (contacts_group, 0);
+
+		alias_e = g_string_new (dat->alias);
 		if (alias_e->len > 30){
 			alias_e = g_string_truncate (alias_e, 30);
 			alias_e = g_string_append (alias_e, "...");
 		}
-		
-		contact_info = g_strdup_printf ("%s\n%s\n%s\n",
-					      username, cname, prt);
-		if (strcmp(prt ,"prpl-msn")==0){
-			gtk_list_store_append (store, iter);
-			gtk_list_store_set (store, iter, 0, 
-					    msn, 1, alias_e->str, -1);
-			contact_list = g_list_append (contact_list, contact_info);
-		}else if (strcmp(prt,"prpl-jabber")==0){
-			gtk_list_store_append (store, iter);
-			gtk_list_store_set (store, iter, 0, 
-					    jabber, 1, alias_e->str, -1);
-			contact_list = g_list_append (contact_list, contact_info);
-		}else if (strcmp(prt,"prpl-aim")==0){
-			gtk_list_store_append (store, iter);
-			gtk_list_store_set (store, iter, 0, 
-					    aim, 1, alias_e->str, -1);
-			contact_list = g_list_append (contact_list, contact_info);
-		}else if (strcmp(prt,"prpl-yahoo")==0){
-			gtk_list_store_append (store, iter);
-			gtk_list_store_set (store, iter, 0, 
-					    yahoo, 1, alias_e->str, -1);
-			contact_list = g_list_append (contact_list, contact_info);
-		}else if(strcmp(prt,"prpl-icq")==0) {
-			gtk_list_store_append (store, iter);
-			gtk_list_store_set (store, iter, 0, 
-					    icq, 1, alias_e->str, -1);
-			contact_list = g_list_append (contact_list, contact_info);
-		} else if(strcmp(prt,"prpl-bonjour")==0) {
-			gtk_list_store_append (store, iter);
-			gtk_list_store_set (store, iter, 0,
-					    bonjour, 1, alias_e->str, -1);
-			contact_list = g_list_append (contact_list, contact_info);
-		}else {
-			g_free (contact_info);
-		}
 
+		accounts = contacts_group->len;
+
+		gtk_tree_store_append (store, parent, NULL);
+		gtk_tree_store_set (store, parent, 0, NULL, 1, alias_e->str, -1);
+
+		gint i;
+		for (i = 0; i < accounts; ++i) {
+			dat = g_ptr_array_index (contacts_group, i);
+
+			if (strcmp(dat->prt, "prpl-msn")==0)
+				icon = msn;
+			else if (strcmp(dat->prt,"prpl-jabber")==0)
+				icon = jabber;
+			else if (strcmp(dat->prt,"prpl-aim")==0)
+				icon = aim;
+			else if (strcmp(dat->prt,"prpl-yahoo")==0)
+				icon = yahoo;
+			else if (strcmp(dat->prt, "prpl-icq")==0)
+				icon = icq;
+			else if (strcmp(dat->prt, "prpl-bonjour")==0)
+				icon = bonjour;
+			else
+				icon = NULL;
+
+			if (accounts == 1) {
+				g_value_init(&val, GDK_TYPE_PIXBUF);
+				g_value_set_object (&val, (gpointer)icon);
+				gtk_tree_store_set_value (store, parent, 0, &val);
+				g_value_unset (&val);
+				break;
+			}
+			gtk_tree_store_append (store, iter, parent);
+			gtk_tree_store_set (store, iter, 0, icon, 1,
+					    alias_e->str, -1);
+		}
 		g_string_free(alias_e, TRUE);
 	}
-	
-	g_list_foreach (list, (GFunc)g_free, NULL);
-	g_list_free (list);
 }
 
-static
-GtkWidget* get_contacts_widget (NstPlugin *plugin)
+static void
+customize (GtkCellLayout *cell_layout,
+	   GtkCellRenderer *cell,
+	   GtkTreeModel *tree_model,
+	   GtkTreeIter *iter,
+	   gpointer text)
+{
+	gboolean has_child;
+	has_child = gtk_tree_model_iter_has_child (tree_model, iter);
+	if (text) {
+		if (has_child)
+			g_object_set (G_OBJECT(cell), "xpad", 18, NULL);
+		else
+			g_object_set (G_OBJECT(cell), "xpad", 2, NULL);
+	}
+	g_object_set (G_OBJECT(cell), "sensitive", !has_child, NULL);
+}
+
+static GtkWidget *
+get_contacts_widget (NstPlugin *plugin)
 {
 	GtkWidget *cb;
 	GtkCellRenderer *renderer;
-	GtkListStore *store;
+	GtkTreeStore *store;
 	GtkTreeModel *model;
-	GtkTreeIter *iter;
+	GtkTreeIter *iter, *iter2;
 
 	iter = g_malloc (sizeof(GtkTreeIter));
-	store = gtk_list_store_new (2, GDK_TYPE_PIXBUF, G_TYPE_STRING);
-	add_pidgin_contacts_to_model (store, iter);
-	g_free (iter);	
-	model = GTK_TREE_MODEL (store);
+	iter2 = g_malloc (sizeof(GtkTreeIter));
+	store = gtk_tree_store_new (2, GDK_TYPE_PIXBUF, G_TYPE_STRING);
+	add_pidgin_contacts_to_model (store, iter, iter2);
+	model = gtk_tree_model_sort_new_with_model (GTK_TREE_MODEL (store));
+	gtk_tree_sortable_set_sort_column_id (GTK_TREE_SORTABLE (model), 1,
+						GTK_SORT_ASCENDING);
 	cb = gtk_combo_box_new_with_model (model);
+
 	renderer = gtk_cell_renderer_pixbuf_new ();
-        gtk_cell_layout_pack_start (GTK_CELL_LAYOUT (cb),
-                                    renderer,
-                                    FALSE);
-        gtk_cell_layout_set_attributes (GTK_CELL_LAYOUT (cb), 
+	gtk_cell_layout_pack_start (GTK_CELL_LAYOUT (cb),
+				    renderer,
+				    FALSE);
+	gtk_cell_layout_set_attributes (GTK_CELL_LAYOUT (cb), 
 					renderer,
-                                        "pixbuf", 0,
-                                        NULL);		
-        renderer = gtk_cell_renderer_text_new ();
-        gtk_cell_layout_pack_start (GTK_CELL_LAYOUT (cb),
-                                    renderer,
-                                    TRUE);
-        gtk_cell_layout_set_attributes (GTK_CELL_LAYOUT (cb), 
+					"pixbuf", 0,
+					NULL); 
+	gtk_cell_layout_set_cell_data_func (GTK_CELL_LAYOUT (cb), renderer,
+					    customize,
+					    (gboolean *)FALSE, NULL);
+	renderer = gtk_cell_renderer_text_new ();
+	gtk_cell_layout_pack_start (GTK_CELL_LAYOUT (cb),
+				    renderer,
+				    TRUE);
+	gtk_cell_layout_set_attributes (GTK_CELL_LAYOUT (cb), 
 					renderer,
-                                        "text", 1,
-                                        NULL);
+					"text", 1,
+					NULL);
+	gtk_cell_layout_set_cell_data_func (GTK_CELL_LAYOUT (cb), renderer,
+					    customize,
+					    (gboolean *)TRUE, NULL);
+
 	gtk_combo_box_set_active (GTK_COMBO_BOX (cb), 0);
+	gtk_combo_box_get_active_iter (GTK_COMBO_BOX(cb), iter);
+	if (gtk_tree_model_iter_has_child (model, iter)) {
+		GtkTreePath *path = gtk_tree_path_new_from_indices (0, 0, -1);
+		gtk_tree_model_get_iter (model, iter2, path);
+		gtk_tree_path_free (path);
+		gtk_combo_box_set_active_iter (GTK_COMBO_BOX (cb), iter2);
+	}
+
+	g_free (iter);
+	g_free (iter2);
 	return cb;
 }
 
-static
-gboolean send_files (NstPlugin *plugin, GtkWidget *contact_widget,
-			 GList *file_list)
+static gboolean
+send_files (NstPlugin *plugin,
+	    GtkWidget *contact_widget,
+	    GList *file_list)
 {
-	GString *pidginto;	
+	GString *pidginto;
 	GList *l;
 	gchar *spool_file, *spool_file_send, *contact_info;
 	FILE *fd;
-	gint t, option;
+	gint t, depth;
+	GtkTreeIter iter;
+	GtkTreePath *path;
+	gint *indices;
+	const gchar *alias;
+	GPtrArray *contacts_group;
+	ContactData *dat;
+	GValue val = {0,};
 
-	option = gtk_combo_box_get_active (GTK_COMBO_BOX(contact_widget));
-	contact_info = (gchar *) g_list_nth_data (contact_list, option);
+	gtk_combo_box_get_active_iter (GTK_COMBO_BOX (contact_widget), &iter);
+	path = gtk_tree_model_get_path (GTK_TREE_MODEL (
+					gtk_combo_box_get_model (GTK_COMBO_BOX(
+					contact_widget))), &iter);
+	depth = gtk_tree_path_get_depth(path);
+	indices = gtk_tree_path_get_indices(path);
+	gtk_tree_path_free (path);
+	gtk_tree_model_get_value (GTK_TREE_MODEL (gtk_combo_box_get_model (
+					GTK_COMBO_BOX(contact_widget))), 
+					&iter, 1, &val);
+	alias = g_value_get_string (&val);
+	contacts_group = g_hash_table_lookup (contact_hash, alias);
+	g_value_unset (&val);
+	dat = g_ptr_array_index (contacts_group, (depth == 2)?indices[1]:0);
+	contact_info = g_strdup_printf ("%s\n%s\n%s\n",	dat->username, 
+					dat->cname, dat->prt);
 	pidginto = g_string_new (contact_info);
-	
-	for (l = file_list ; l; l=l->next){
+	g_free (contact_info);
+
+	for (l = file_list ; l; l=l->next) {
 		char *path;
 
 		path = g_filename_from_uri (l->data, NULL, NULL);
@@ -213,7 +295,7 @@ gboolean send_files (NstPlugin *plugin, GtkWidget *contact_widget,
 	g_string_append_printf (pidginto,"\n");
 	t = time (NULL);
 	spool_file = g_strdup_printf ("%s/.gnome2/nautilus-sendto/spool/tmp/%i.send",
-				     g_get_home_dir(), t);
+				      g_get_home_dir(), t);
 	spool_file_send = g_strdup_printf ("%s/.gnome2/nautilus-sendto/spool/%i.send",
 					   g_get_home_dir(), t);
 	fd = fopen (spool_file,"w");
@@ -222,13 +304,42 @@ gboolean send_files (NstPlugin *plugin, GtkWidget *contact_widget,
 	rename (spool_file, spool_file_send);
 	g_free (spool_file);
 	g_free (spool_file_send);
+	g_string_free (pidginto, TRUE);
 	return TRUE;
 }
 
-static 
-gboolean destroy (NstPlugin *plugin){
+static void
+free_contact (ContactData *dat)
+{
+	g_free(dat->username);
+	g_free(dat->cname);
+	g_free(dat->alias);
+	g_free(dat->prt);
+	g_free(dat);
+}
+
+static gboolean
+destroy (NstPlugin *plugin)
+{
+	GHashTableIter iter;
+	GPtrArray *contacts_group;
+	ContactData *dat;
+
 	g_free (blist_online);
-	g_list_foreach (contact_list, (GFunc)g_free, NULL);
+
+	g_hash_table_iter_init (&iter, contact_hash);
+	while (g_hash_table_iter_next (&iter, NULL, (gpointer)&contacts_group)) {
+		gint accounts;
+		accounts = contacts_group->len;
+
+		gint i;
+		for (i = 0; i < accounts; ++i) {
+			dat = g_ptr_array_index (contacts_group, i);
+			free_contact (dat);
+		}
+		g_ptr_array_free (contacts_group, TRUE);
+	}
+	g_hash_table_destroy (contact_hash);
 	return TRUE;
 }
 
@@ -243,8 +354,7 @@ NstPluginInfo plugin_info = {
 	NULL,
 	send_files,
 	destroy
-}; 
+};
 
 NST_INIT_PLUGIN (plugin_info)
-
 
