@@ -713,51 +713,28 @@ nautilus_sendto_init (void)
 	}
 
 	for (i = 0; filenames != NULL && filenames[i] != NULL; i++) {
-		const char *filename;
- 		char *path;
+		GFile *file;
+		char *filename, *escaped, *uri;
 
-		filename = filenames[i];
- 
- 		if (g_str_has_prefix (filename, "file://")) {
- 			char *escaped;
+		file = g_file_new_for_commandline_arg (filenames[i]);
+		filename = g_file_get_path (file);
+		if (filename == NULL)
+			continue;
 
-			/* Make sure URIs don't contain ampersands */
- 			escaped = escape_ampersands (filename);
- 			if (escaped == NULL)
-				file_list = g_list_prepend (file_list,
-							    g_strdup (filename));
-			else
-				file_list = g_list_prepend (file_list, escaped);
- 			path = g_filename_from_uri (filename, NULL, NULL);
- 			if (path != NULL
- 			    && g_file_test (path, G_FILE_TEST_IS_DIR)) {
- 				force_user_to_compress = TRUE;
- 			}
- 			g_free (path);
- 		} else {
- 			char *uri, *escaped;
+		if (g_file_test (filename, G_FILE_TEST_IS_DIR) != FALSE)
+			force_user_to_compress = TRUE;
 
- 			if (filename[0] != G_DIR_SEPARATOR) {
- 				path = g_build_filename (default_url,
-						filename, NULL);
-			} else {
-				path = g_strdup (filename);
-			}
- 
- 			uri = g_filename_to_uri (path, NULL, NULL);
-			escaped = escape_ampersands (uri);
-			if (escaped) {
-				file_list = g_list_prepend (file_list, escaped);
-				g_free (uri);
-			} else {
-				file_list = g_list_prepend (file_list, uri);
-			}
- 
- 			if (g_file_test (path, G_FILE_TEST_IS_DIR))
- 				force_user_to_compress = TRUE;
- 
- 			g_free (path);
- 		}
+		uri = g_filename_to_uri (filename, NULL, NULL);
+		escaped = escape_ampersands (uri);
+		g_free (uri);
+
+		if (escaped == NULL)
+			file_list = g_list_prepend (file_list, filename);
+		else {
+			g_free (filename);
+			file_list = g_list_prepend (file_list, escaped);
+		}
+
 	}
 
 	if (file_list == NULL) {

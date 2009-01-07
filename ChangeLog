@@ -1,5 +1,12 @@
 2009-01-07  Bastien Nocera  <hadess@hadess.net>
 
+	* src/nautilus-sendto-command.c (nautilus_sendto_init):
+	When going through the filenames from the command-line,
+	get FUSE filenames for the files when possible, so
+	we can send files from remote locations (Closes: #543965)
+
+2009-01-07  Bastien Nocera  <hadess@hadess.net>
+
 	* src/plugins/bluetooth/bluetooth.c (add_phone_to_list),
 	(add_device_to_list), (add_last_used_device_to_list),
 	(device_found), (get_contacts_widget): Use the Icon device
