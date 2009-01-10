@@ -1,4 +1,23 @@
 =============
+Version 1.1.1
+=============
+
+Nautilus Sendto
+	* Add plugin to allow sending files to UPNP Media Servers
+	* Add plugin to allow sending files through Empathy
+	* Add plugin to send files to be burnt through nautilus-cd-burner
+	  (currently disabled by default)
+	* Allow sending remote files when GVFS FUSE is available
+	* Stop (null) showing up in the contact entry (Evolution)
+	* Try to avoid the wrong contact being selected when using
+	  Enter to validate the selection (Evolution)
+	* Use "Alias" instead of "Name" so Bluetooth addresses only
+	  show up when the Name isn't available (Bluetooth)
+	* Show an icon for Bluetooth devices (Bluetooth)
+	* Remember last used Bluetooth device (Bluetooth)
+	* Sort the contacts alphabetically (Pidgin)
+
+=============
 Version 1.1.0
 =============
 

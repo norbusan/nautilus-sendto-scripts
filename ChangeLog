@@ -1,3 +1,10 @@
+========= nautilus-sendto 1.1.1 =========
+
+2009-01-10  Bastien Nocera  <hadess@hadess.net>
+
+	* NEWS: upd
+	* configure.in: 1.1.1
+
 2009-01-07  Bastien Nocera  <hadess@hadess.net>
 
 	* src/nautilus-sendto-command.c (nautilus_sendto_init):
