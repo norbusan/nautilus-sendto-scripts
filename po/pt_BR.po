@@ -3,17 +3,17 @@
 # This file is distributed under the same license as the nautilus-sendto package.
 # Raphael Higino <In Memoriam>, 2004-2005.
 # Luiz Armesto <luiz.armesto@gmail.com>, 2007.
-# Henrique P. Machado <zehrique@gmail.com>, 2008.
-# Fábio Nogueira <deb-user-ba@ubuntu.com>, 2008.
+# Henrique P. Machado <zehrique@gmail.com>, 2008-2009.
+# Fábio Nogueira <deb-user-ba@ubuntu.com>, 2008-2009
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: nautilus-sendto\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-10-09 10:23-0300\n"
-"PO-Revision-Date: 2008-10-06 16:23-0300\n"
+"POT-Creation-Date: 2009-01-14 16:59-0500\n"
+"PO-Revision-Date: 2009-01-11 01:12-0200\n"
 "Last-Translator: Fábio Nogueira <deb-user-ba@ubuntu.com>\n"
-"Language-Team: Brazilian Portuguese <gnome-l10n-br@listas.cipsga.org.br>\n"
+"Language-Team: Brazilian Portuguese <gnome-pt_br-list@gnome.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -81,33 +81,33 @@ msgstr "Envia o arquivo por e-mail, mensagem instantânea..."
 msgid "Send files by mail, instant message..."
 msgstr "Envia os arquivos por e-mail, mensagem instantânea..."
 
-#: ../src/nautilus-sendto-command.c:75
+#: ../src/nautilus-sendto-command.c:76
 msgid "Default folder to use"
 msgstr "Pasta padrão para usar"
 
-#: ../src/nautilus-sendto-command.c:533
+#: ../src/nautilus-sendto-command.c:534
 msgid "Files"
 msgstr "Arquivos"
 
-#: ../src/nautilus-sendto-command.c:738
+#: ../src/nautilus-sendto-command.c:741
 #, c-format
 msgid "Expects URIs or filenames to be passed as options\n"
 msgstr "Esperar que os URIs ou nomes de arquivo sejam passados como opções\n"
 
-#: ../src/nautilus-sendto-command.c:755
+#: ../src/nautilus-sendto-command.c:758
 msgid "Nautilus Sendto"
 msgstr "Nautilus Sendto"
 
-#: ../src/nautilus-sendto-command.c:759
+#: ../src/nautilus-sendto-command.c:762
 #, c-format
 msgid "Could not parse command-line options: %s\n"
 msgstr "Não foi possível analisar as opções da linha de comando: %s\n"
 
-#: ../src/nautilus-sendto-command.c:774
-msgid "Could not load any plugins."
-msgstr "Não foi possível carregar qualquer plug-ins."
-
 #: ../src/nautilus-sendto-command.c:777
+msgid "Could not load any plugins."
+msgstr "Não foi possível carregar quaisquer plug-ins."
+
+#: ../src/nautilus-sendto-command.c:780
 msgid "Please verify your installation"
 msgstr "Por favor, verifique a sua instalação"
 
@@ -135,163 +135,194 @@ msgstr "Enviar _para:"
 msgid "_Send"
 msgstr "_Enviar"
 
-#: ../src/plugins/balsa.c:103
+#: ../src/plugins/balsa/balsa.c:103
 msgid "Email (Balsa)"
 msgstr "E-mail (Balsa)"
 
-#: ../src/plugins/bluetooth.c:350 ../src/plugins/bluetooth.c:358
+#: ../src/plugins/bluetooth/bluetooth.c:438
+#: ../src/plugins/bluetooth/bluetooth.c:446
 msgid "Programming error, could not find the device in the list"
 msgstr "Erro de programação, não foi possível localizar o dispositivo na lista"
 
-#: ../src/plugins/bluetooth.c:407
+#: ../src/plugins/bluetooth/bluetooth.c:495
 #, c-format
 msgid "Obex Push file transfer unsupported"
 msgstr "Não há suporte à transferência de arquivos Obex Push"
 
-#: ../src/plugins/bluetooth.c:431
+#: ../src/plugins/bluetooth/bluetooth.c:519
 msgid "Bluetooth (OBEX Push)"
 msgstr "Bluetooth (OBEX Push)"
 
-#: ../src/plugins/evolution.c:221
+#: ../src/plugins/empathy/empathy.c:128
+msgid "The contact selected cannot receive files."
+msgstr "O contato selecionado não pode receber arquivos."
+
+#: ../src/plugins/empathy/empathy.c:134
+msgid "The contact selected is offline."
+msgstr "O contato selecionado está desconectado."
+
+#: ../src/plugins/empathy/empathy.c:187
+msgid "Instant Message (Empathy)"
+msgstr "Mensagem instantânea (Empathy)"
+
+#: ../src/plugins/evolution/evolution.c:221
 msgid "Email (Evolution)"
 msgstr "E-mail (Evolution)"
 
-#: ../src/plugins/e-contact-entry.c:158
+#: ../src/plugins/evolution/e-contact-entry.c:152
 #, c-format
 msgid "Cannot get contact: %s"
 msgstr "Não foi possível obter o contato: %s"
 
-#: ../src/plugins/e-contact-entry.c:191
+#: ../src/plugins/evolution/e-contact-entry.c:185
 #, c-format
 msgid "Could not find contact: %s"
 msgstr "Não foi possível localizar o contato: %s"
 
-#: ../src/plugins/e-contact-entry.c:417
+#: ../src/plugins/evolution/e-contact-entry.c:411
 msgid "Cannot create searchable view."
 msgstr "Não foi possível criar visão pesquisável."
 
-#: ../src/plugins/e-contact-entry.c:889
+#: ../src/plugins/evolution/e-contact-entry.c:883
 msgid "Success"
 msgstr "Sucesso"
 
-#: ../src/plugins/e-contact-entry.c:891
+#: ../src/plugins/evolution/e-contact-entry.c:885
 msgid "An argument was invalid."
 msgstr "Um argumento foi inválido."
 
-#: ../src/plugins/e-contact-entry.c:893
+#: ../src/plugins/evolution/e-contact-entry.c:887
 msgid "The address book is busy."
 msgstr "O catálogo de endereços está ocupado."
 
-#: ../src/plugins/e-contact-entry.c:895
+#: ../src/plugins/evolution/e-contact-entry.c:889
 msgid "The address book is offline."
 msgstr "O catálogo de endereços está desconectado."
 
-#: ../src/plugins/e-contact-entry.c:897
+#: ../src/plugins/evolution/e-contact-entry.c:891
 msgid "The address book does not exist."
 msgstr "O catálogo de endereços não existe."
 
-#: ../src/plugins/e-contact-entry.c:899
+#: ../src/plugins/evolution/e-contact-entry.c:893
 msgid "The \"Me\" contact does not exist."
 msgstr "O contato \"Eu\" não existe."
 
-#: ../src/plugins/e-contact-entry.c:901
+#: ../src/plugins/evolution/e-contact-entry.c:895
 msgid "The address book is not loaded."
 msgstr "O catálogo de endereços não está carregado."
 
-#: ../src/plugins/e-contact-entry.c:903
+#: ../src/plugins/evolution/e-contact-entry.c:897
 msgid "The address book is already loaded."
 msgstr "O catálogo de endereços já está carregado."
 
-#: ../src/plugins/e-contact-entry.c:905
+#: ../src/plugins/evolution/e-contact-entry.c:899
 msgid "Permission was denied when accessing the address book."
 msgstr "Permissão negada ao acessar o catálogo de endereços."
 
-#: ../src/plugins/e-contact-entry.c:907
+#: ../src/plugins/evolution/e-contact-entry.c:901
 msgid "The contact was not found."
 msgstr "O contato não foi localizado."
 
-#: ../src/plugins/e-contact-entry.c:909
+#: ../src/plugins/evolution/e-contact-entry.c:903
 msgid "This contact ID already exists."
 msgstr "Este ID de contato já existe."
 
-#: ../src/plugins/e-contact-entry.c:911
+#: ../src/plugins/evolution/e-contact-entry.c:905
 msgid "The protocol is not supported."
 msgstr "Não há suporte ao protocolo."
 
-#: ../src/plugins/e-contact-entry.c:913
+#: ../src/plugins/evolution/e-contact-entry.c:907
 msgid "The operation was cancelled."
 msgstr "A operação foi cancelada."
 
-#: ../src/plugins/e-contact-entry.c:915
+#: ../src/plugins/evolution/e-contact-entry.c:909
 msgid "The operation could not be cancelled."
 msgstr "A operação não pôde ser cancelada."
 
-#: ../src/plugins/e-contact-entry.c:917
+#: ../src/plugins/evolution/e-contact-entry.c:911
 msgid "The address book authentication failed."
 msgstr "Falha ao autenticar do catálogo de endereços."
 
-#: ../src/plugins/e-contact-entry.c:919
+#: ../src/plugins/evolution/e-contact-entry.c:913
 msgid ""
 "Authentication is required to access the address book and was not given."
 msgstr ""
 "É necessária autenticação para acessar o catálogo de endereços, mas não foi "
 "fornecida."
 
-#: ../src/plugins/e-contact-entry.c:921
+#: ../src/plugins/evolution/e-contact-entry.c:915
 msgid "A secure connection is not available."
 msgstr "Não está disponível uma conexão segura."
 
-#: ../src/plugins/e-contact-entry.c:923
+#: ../src/plugins/evolution/e-contact-entry.c:917
 msgid "A CORBA error occurred whilst accessing the address book."
 msgstr "Ocorreu um erro CORBA enquanto acessava o catálogo de endereços."
 
-#: ../src/plugins/e-contact-entry.c:925
+#: ../src/plugins/evolution/e-contact-entry.c:919
 msgid "The address book source does not exist."
 msgstr "A origem do catálogo de endereços não existe."
 
-#: ../src/plugins/e-contact-entry.c:927 ../src/plugins/e-contact-entry.c:930
+#: ../src/plugins/evolution/e-contact-entry.c:921
+#: ../src/plugins/evolution/e-contact-entry.c:924
 msgid "An unknown error occurred."
 msgstr "Ocorreu um erro desconhecido."
 
-#: ../src/plugins/gaim.c:228
+#: ../src/plugins/gaim/gaim.c:228
 msgid "Instant Message (Gaim)"
 msgstr "Mensagem instantânea (Gaim)"
 
-#: ../src/plugins/gajim.c:402
+#: ../src/plugins/gajim/gajim.c:402
 msgid "Unable to send file"
 msgstr "Não foi possível enviar o arquivo"
 
-#: ../src/plugins/gajim.c:403
+#: ../src/plugins/gajim/gajim.c:403
 msgid "There is no connection to gajim remote service."
 msgstr "Não há conexão para o serviço remoto gajim."
 
-#: ../src/plugins/gajim.c:427 ../src/plugins/gajim.c:466
+#: ../src/plugins/gajim/gajim.c:427 ../src/plugins/gajim/gajim.c:466
 msgid "Sending file failed"
 msgstr "Falha ao enviar o arquivo"
 
-#: ../src/plugins/gajim.c:428
+#: ../src/plugins/gajim/gajim.c:428
 msgid "Recipient is missing."
 msgstr "Faltando destinatário."
 
-#: ../src/plugins/gajim.c:466
+#: ../src/plugins/gajim/gajim.c:466
 msgid "Unknown recipient."
 msgstr "Destinatário desconhecido."
 
-#: ../src/plugins/gajim.c:488
+#: ../src/plugins/gajim/gajim.c:488
 msgid "Instant Message (Gajim)"
 msgstr "Mensagem instantânea (Gajim)"
 
-#: ../src/plugins/pidgin.c:239
+#: ../src/plugins/nautilus-burn/nautilus-burn.c:69
+#: ../src/plugins/nautilus-burn/nautilus-burn.c:84
+msgid "New CD/DVD"
+msgstr "Novo CD/DVD"
+
+#: ../src/plugins/nautilus-burn/nautilus-burn.c:82
+msgid "Existing CD/DVD"
+msgstr "CD/DVD existente"
+
+#: ../src/plugins/nautilus-burn/nautilus-burn.c:183
+msgid "CD/DVD Creator"
+msgstr "Criador de CD/DVD"
+
+#: ../src/plugins/pidgin/pidgin.c:350
 msgid "Instant Message (Pidgin)"
 msgstr "Mensagem instantânea (Pidgin)"
 
-#: ../src/plugins/sylpheed-claws.c:131
+#: ../src/plugins/sylpheed-claws/sylpheed-claws.c:131
 msgid "Email (Claws Mail)"
 msgstr "E-mail (Claws Mail)"
 
-#: ../src/plugins/thunderbird.c:105
+#: ../src/plugins/thunderbird/thunderbird.c:105
 msgid "Email (Thunderbird)"
 msgstr "E-mail (Thunderbird)"
+
+#: ../src/plugins/upnp/upnp.c:298
+msgid "UPnP Media Server"
+msgstr "Servidor de mídia uPnP"
 
 #~ msgid "Device does not support Obex Push file transfer"
 #~ msgstr ""
