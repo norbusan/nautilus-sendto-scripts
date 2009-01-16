@@ -725,16 +725,15 @@ nautilus_sendto_init (void)
 			force_user_to_compress = TRUE;
 
 		uri = g_filename_to_uri (filename, NULL, NULL);
+		g_free (filename);
 		escaped = escape_ampersands (uri);
-		g_free (uri);
 
-		if (escaped == NULL)
-			file_list = g_list_prepend (file_list, filename);
-		else {
-			g_free (filename);
+		if (escaped == NULL) {
+			file_list = g_list_prepend (file_list, uri);
+		} else {
 			file_list = g_list_prepend (file_list, escaped);
+			g_free (uri);
 		}
-
 	}
 
 	if (file_list == NULL) {

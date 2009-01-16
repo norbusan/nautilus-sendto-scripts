@@ -1,3 +1,9 @@
+2009-01-16  Bastien Nocera  <hadess@hadess.net>
+
+	* src/nautilus-sendto-command.c (nautilus_sendto_init):
+	Fix filenames and URIs being mixed in the filelist, spotted
+	by Andrew Prunicki <prunand@iit.edu>
+
 ========= nautilus-sendto 1.1.1 =========
 
 2009-01-10  Bastien Nocera  <hadess@hadess.net>
