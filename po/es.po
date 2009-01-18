@@ -2,14 +2,15 @@
 # This file is distributed under the same license as the PACKAGE package.
 # Copyright (C) 2008 THE PACKAGE'S COPYRIGHT HOLDER, 2004.
 #
-# Jorge González <jorgegonz@svn.gnome.org>, 2007, 2008.
 # Jesse Aviles <jesseaviles@gmail.com>, 2008.
+# Jorge González <jorgegonz@svn.gnome.org>, 2007, 200, 2009.
 msgid ""
 msgstr ""
 "Project-Id-Version: nautilus-sendto.HEAD.es\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-09-23 19:58+0000\n"
-"PO-Revision-Date: 2008-09-28 11:07+0200\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
+"product=nautilus-sendto&component=general\n"
+"POT-Creation-Date: 2009-01-07 21:28+0000\n"
+"PO-Revision-Date: 2009-01-18 19:02+0100\n"
 "Last-Translator: Jorge González <jorgegonz@svn.gnome.org>\n"
 "Language-Team: Español <gnome-es-list@gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -79,33 +80,33 @@ msgstr "Enviar un archivo por correo, por mensaje instantáneo..."
 msgid "Send files by mail, instant message..."
 msgstr "Enviar archivos por correo, por mensaje instantáneo..."
 
-#: ../src/nautilus-sendto-command.c:75
+#: ../src/nautilus-sendto-command.c:76
 msgid "Default folder to use"
 msgstr "Carpeta predeterminada a usar"
 
-#: ../src/nautilus-sendto-command.c:533
+#: ../src/nautilus-sendto-command.c:534
 msgid "Files"
 msgstr "Archivos"
 
-#: ../src/nautilus-sendto-command.c:738
+#: ../src/nautilus-sendto-command.c:741
 #, c-format
 msgid "Expects URIs or filenames to be passed as options\n"
 msgstr "Espera que se pasen como opciones URIs o nombres de archivo\n"
 
-#: ../src/nautilus-sendto-command.c:755
+#: ../src/nautilus-sendto-command.c:758
 msgid "Nautilus Sendto"
 msgstr "Nautilus Sendto"
 
-#: ../src/nautilus-sendto-command.c:759
+#: ../src/nautilus-sendto-command.c:762
 #, c-format
 msgid "Could not parse command-line options: %s\n"
 msgstr "No se pudieron analizar las opciones de la línea de comandos: %s\n"
 
-#: ../src/nautilus-sendto-command.c:774
+#: ../src/nautilus-sendto-command.c:777
 msgid "Could not load any plugins."
 msgstr "No se pudo cargar ningún complemento."
 
-#: ../src/nautilus-sendto-command.c:777
+#: ../src/nautilus-sendto-command.c:780
 msgid "Please verify your installation"
 msgstr "Por favor, compruebe su instalación"
 
@@ -133,163 +134,194 @@ msgstr "Enviar _a:"
 msgid "_Send"
 msgstr "_Enviar"
 
-#: ../src/plugins/balsa.c:103
+#: ../src/plugins/balsa/balsa.c:103
 msgid "Email (Balsa)"
 msgstr "Correo-e (Balsa)"
 
-#: ../src/plugins/bluetooth.c:356 ../src/plugins/bluetooth.c:364
+#: ../src/plugins/bluetooth/bluetooth.c:438
+#: ../src/plugins/bluetooth/bluetooth.c:446
 msgid "Programming error, could not find the device in the list"
 msgstr "Error de programación, no se pudo encontrar el dispositivo en la lista"
 
-#: ../src/plugins/bluetooth.c:413
+#: ../src/plugins/bluetooth/bluetooth.c:495
 #, c-format
 msgid "Obex Push file transfer unsupported"
 msgstr "La transferencia de archivos Obex Push no está soportada"
 
-#: ../src/plugins/bluetooth.c:437
+#: ../src/plugins/bluetooth/bluetooth.c:519
 msgid "Bluetooth (OBEX Push)"
 msgstr "Bluetooth (OBEX Push)"
 
-#: ../src/plugins/evolution.c:219
+#: ../src/plugins/empathy/empathy.c:128
+msgid "The contact selected cannot receive files."
+msgstr "El contacto seleccionado no puede recibir archivos."
+
+#: ../src/plugins/empathy/empathy.c:134
+msgid "The contact selected is offline."
+msgstr "El contacto seleccionado está desconectado."
+
+#: ../src/plugins/empathy/empathy.c:187
+msgid "Instant Message (Empathy)"
+msgstr "Mensaje instantáneo (Empathy)"
+
+#: ../src/plugins/evolution/evolution.c:221
 msgid "Email (Evolution)"
 msgstr "Correo-e (Evolution)"
 
-#: ../src/plugins/e-contact-entry.c:158
+#: ../src/plugins/evolution/e-contact-entry.c:152
 #, c-format
 msgid "Cannot get contact: %s"
 msgstr "No se puede obtener el contacto: %s"
 
-#: ../src/plugins/e-contact-entry.c:191
+#: ../src/plugins/evolution/e-contact-entry.c:185
 #, c-format
 msgid "Could not find contact: %s"
 msgstr "No se puede encontrar el contacto: %s"
 
-#: ../src/plugins/e-contact-entry.c:417
+#: ../src/plugins/evolution/e-contact-entry.c:411
 msgid "Cannot create searchable view."
 msgstr "No se puede crear una vista buscable."
 
-#: ../src/plugins/e-contact-entry.c:889
+#: ../src/plugins/evolution/e-contact-entry.c:883
 msgid "Success"
 msgstr "Éxito"
 
-#: ../src/plugins/e-contact-entry.c:891
+#: ../src/plugins/evolution/e-contact-entry.c:885
 msgid "An argument was invalid."
 msgstr "Un argumento era inválido."
 
-#: ../src/plugins/e-contact-entry.c:893
+#: ../src/plugins/evolution/e-contact-entry.c:887
 msgid "The address book is busy."
 msgstr "La libreta direcciones está ocupada."
 
-#: ../src/plugins/e-contact-entry.c:895
+#: ../src/plugins/evolution/e-contact-entry.c:889
 msgid "The address book is offline."
 msgstr "La libreta de direcciones está desconectada."
 
-#: ../src/plugins/e-contact-entry.c:897
+#: ../src/plugins/evolution/e-contact-entry.c:891
 msgid "The address book does not exist."
 msgstr "La libreta de direcciones no existe."
 
-#: ../src/plugins/e-contact-entry.c:899
+#: ../src/plugins/evolution/e-contact-entry.c:893
 msgid "The \"Me\" contact does not exist."
 msgstr "El contacto «Yo» no existe."
 
-#: ../src/plugins/e-contact-entry.c:901
+#: ../src/plugins/evolution/e-contact-entry.c:895
 msgid "The address book is not loaded."
 msgstr "La libreta de direcciones no está cargado."
 
-#: ../src/plugins/e-contact-entry.c:903
+#: ../src/plugins/evolution/e-contact-entry.c:897
 msgid "The address book is already loaded."
 msgstr "La libreta de direcciones ya está cargado."
 
-#: ../src/plugins/e-contact-entry.c:905
+#: ../src/plugins/evolution/e-contact-entry.c:899
 msgid "Permission was denied when accessing the address book."
 msgstr "Se denegó el permiso al acceder a la libreta de direcciones."
 
-#: ../src/plugins/e-contact-entry.c:907
+#: ../src/plugins/evolution/e-contact-entry.c:901
 msgid "The contact was not found."
 msgstr "No se encontró el contacto."
 
-#: ../src/plugins/e-contact-entry.c:909
+#: ../src/plugins/evolution/e-contact-entry.c:903
 msgid "This contact ID already exists."
 msgstr "Este ID de contacto ya existe."
 
-#: ../src/plugins/e-contact-entry.c:911
+#: ../src/plugins/evolution/e-contact-entry.c:905
 msgid "The protocol is not supported."
 msgstr "El protocolo no está soportado."
 
-#: ../src/plugins/e-contact-entry.c:913
+#: ../src/plugins/evolution/e-contact-entry.c:907
 msgid "The operation was cancelled."
 msgstr "La operación se canceló."
 
-#: ../src/plugins/e-contact-entry.c:915
+#: ../src/plugins/evolution/e-contact-entry.c:909
 msgid "The operation could not be cancelled."
 msgstr "La operación no pudo cancelarse."
 
-#: ../src/plugins/e-contact-entry.c:917
+#: ../src/plugins/evolution/e-contact-entry.c:911
 msgid "The address book authentication failed."
 msgstr "Falló la verificación de la autenticidad de la libreta de direcciones."
 
-#: ../src/plugins/e-contact-entry.c:919
+#: ../src/plugins/evolution/e-contact-entry.c:913
 msgid ""
 "Authentication is required to access the address book and was not given."
 msgstr ""
 "Se requiere autenticación para acceder a la libreta de direcciones y no se "
 "proporcionó."
 
-#: ../src/plugins/e-contact-entry.c:921
+#: ../src/plugins/evolution/e-contact-entry.c:915
 msgid "A secure connection is not available."
 msgstr "No está disponible una conexión segura."
 
-#: ../src/plugins/e-contact-entry.c:923
+#: ../src/plugins/evolution/e-contact-entry.c:917
 msgid "A CORBA error occurred whilst accessing the address book."
 msgstr "Ocurrió un error CORBA al acceder a la libreta de direcciones."
 
-#: ../src/plugins/e-contact-entry.c:925
+#: ../src/plugins/evolution/e-contact-entry.c:919
 msgid "The address book source does not exist."
 msgstr "La fuente de la libreta de drirecciones no existe."
 
-#: ../src/plugins/e-contact-entry.c:927 ../src/plugins/e-contact-entry.c:930
+#: ../src/plugins/evolution/e-contact-entry.c:921
+#: ../src/plugins/evolution/e-contact-entry.c:924
 msgid "An unknown error occurred."
 msgstr "Ocurrió un error desconocido."
 
-#: ../src/plugins/gaim.c:228
+#: ../src/plugins/gaim/gaim.c:228
 msgid "Instant Message (Gaim)"
 msgstr "Mensaje instantáneo (Gaim)"
 
-#: ../src/plugins/gajim.c:402
+#: ../src/plugins/gajim/gajim.c:402
 msgid "Unable to send file"
 msgstr "No es posible enviar el archivo"
 
-#: ../src/plugins/gajim.c:403
+#: ../src/plugins/gajim/gajim.c:403
 msgid "There is no connection to gajim remote service."
 msgstr "No hay ninguna conexión con el servicio remoto de gajim."
 
-#: ../src/plugins/gajim.c:427 ../src/plugins/gajim.c:466
+#: ../src/plugins/gajim/gajim.c:427 ../src/plugins/gajim/gajim.c:466
 msgid "Sending file failed"
 msgstr "Ha fallado el envío del archivo"
 
-#: ../src/plugins/gajim.c:428
+#: ../src/plugins/gajim/gajim.c:428
 msgid "Recipient is missing."
 msgstr "Falta el destinatario."
 
-#: ../src/plugins/gajim.c:466
+#: ../src/plugins/gajim/gajim.c:466
 msgid "Unknown recipient."
 msgstr "Destinatario desconocido."
 
-#: ../src/plugins/gajim.c:488
+#: ../src/plugins/gajim/gajim.c:488
 msgid "Instant Message (Gajim)"
 msgstr "Mensaje instantáneo (Gajim)"
 
-#: ../src/plugins/pidgin.c:239
+#: ../src/plugins/nautilus-burn/nautilus-burn.c:69
+#: ../src/plugins/nautilus-burn/nautilus-burn.c:84
+msgid "New CD/DVD"
+msgstr "CD/DVD nuevo"
+
+#: ../src/plugins/nautilus-burn/nautilus-burn.c:82
+msgid "Existing CD/DVD"
+msgstr "CD/DVD existente"
+
+#: ../src/plugins/nautilus-burn/nautilus-burn.c:183
+msgid "CD/DVD Creator"
+msgstr "Creador de CD/DVD"
+
+#: ../src/plugins/pidgin/pidgin.c:350
 msgid "Instant Message (Pidgin)"
 msgstr "Mensaje instantáneo (Pidgin)"
 
-#: ../src/plugins/sylpheed-claws.c:131
+#: ../src/plugins/sylpheed-claws/sylpheed-claws.c:131
 msgid "Email (Claws Mail)"
 msgstr "Correo-e (correo Claws)"
 
-#: ../src/plugins/thunderbird.c:105
+#: ../src/plugins/thunderbird/thunderbird.c:105
 msgid "Email (Thunderbird)"
 msgstr "Correo-e (Thunderbird)"
+
+#: ../src/plugins/upnp/upnp.c:298
+msgid "UPnP Media Server"
+msgstr "Servidor multimedia UPnP"
 
 #~ msgid "Device does not support Obex Push file transfer"
 #~ msgstr "El dispositivo no soporta la transferencia de archivos OBEX Push"
