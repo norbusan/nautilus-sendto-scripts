@@ -230,6 +230,7 @@ take_spool_files(){
 	    taking_files = TRUE;
 	    plugin_spool = g_build_path ("/", g_get_home_dir(),PLUGIN_HOME,"spool", NULL);
 	    dir = opendir (plugin_spool);
+	    g_free (plugin_spool);
 	    if (dir == NULL){
 		    purple_debug_info ("nautilus","Can't open the spool dir\n");
 	    }else{

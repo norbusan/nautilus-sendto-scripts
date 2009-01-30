@@ -1,3 +1,10 @@
+2009-01-30  Bastien Nocera  <hadess@hadess.net>
+
+	* gaim_plugin/nautilus-sendto-plugin.c (take_spool_files):
+	* pidgin_plugin/nautilus-sendto-plugin.c (take_spool_files):
+	Fix plugin_spool memleaks, spotted by Daniel Atallah
+	(Closes: #569417)
+
 2009-01-16  Bastien Nocera  <hadess@hadess.net>
 
 	* src/nautilus-sendto-command.c (nautilus_sendto_init):
