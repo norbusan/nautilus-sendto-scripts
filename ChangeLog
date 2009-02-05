@@ -1,3 +1,14 @@
+2009-02-05  Bastien Nocera  <hadess@hadess.net>
+
+	* src/plugins/bluetooth/bluetooth.c (get_device_name_from_address),
+	(add_last_used_device_to_list), (validate_destination):
+	Fix possible memory leak when getting a device's name,
+	Be more lax when checking whether the target device supports
+	Obex Push, say that it does support Obex Push when:
+	- it can't be found in the known devices list
+	- the device has no UUIDs exported
+	(Closes: #567485)
+
 2009-01-30  Bastien Nocera  <hadess@hadess.net>
 
 	* gaim_plugin/nautilus-sendto-plugin.c (take_spool_files):

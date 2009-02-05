@@ -132,7 +132,7 @@ find_iter_for_address (GtkListStore *store, const char *bdaddr, GtkTreeIter *ite
 }
 
 static char *
-get_device_name_from_address (char *bdaddr)
+get_device_name_from_address (const char *bdaddr)
 {
 	const char *device_path;
 	DBusGProxy *device;
@@ -141,9 +141,9 @@ get_device_name_from_address (char *bdaddr)
 	if (dbus_g_proxy_call (object, "FindDevice", NULL,
 			       G_TYPE_STRING, bdaddr, G_TYPE_INVALID,
 			       DBUS_TYPE_G_OBJECT_PATH, &device_path, G_TYPE_INVALID) == FALSE) {
-		return bdaddr;
+		return g_strdup (bdaddr);
 	}
-	    
+
 	device = dbus_g_proxy_new_for_name (conn, "org.bluez",
 					    device_path, "org.bluez.Device");
 
@@ -155,11 +155,13 @@ get_device_name_from_address (char *bdaddr)
 		char *name;
 
 		value = g_hash_table_lookup (props, "Alias");
-		name = value ? g_value_get_string (value) : bdaddr;
+		name = value ? g_value_dup_string (value) : g_strdup (bdaddr);
+
+		g_hash_table_destroy (props);
 
 		return name;
 	} else {
-		return bdaddr;
+		return g_strdup (bdaddr);
 	}
 }
 
@@ -231,6 +233,7 @@ add_last_used_device_to_list (GtkListStore *store)
 	if (bdaddr != NULL && *bdaddr != '\0') {
 		name = get_device_name_from_address (bdaddr);
 		add_phone_to_list (store, name, bdaddr, NULL);
+		g_free (name);
 	}
 
 	g_free (bdaddr);
@@ -443,8 +446,7 @@ validate_destination (NstPlugin *plugin,
 			       G_TYPE_STRING, bdaddr, G_TYPE_INVALID,
 			       DBUS_TYPE_G_OBJECT_PATH, &device_path, G_TYPE_INVALID) == FALSE) {
 		g_free (bdaddr);
-		*error = g_strdup (_("Programming error, could not find the device in the list"));
-		return FALSE;
+		return TRUE;
 	}
 
 	device = dbus_g_proxy_new_for_name (conn, "org.bluez",
@@ -486,6 +488,9 @@ validate_destination (NstPlugin *plugin,
 
 				g_free (uuid);
 			}
+		} else {
+			/* No array, can't really check now, can we */
+			found = TRUE;
 		}
 		g_hash_table_destroy (props);
 	}
