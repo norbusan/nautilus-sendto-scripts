@@ -23,6 +23,7 @@
 #include <string.h>
 #include <glib/gi18n-lib.h>
 #include <gio/gio.h>
+#include "nst-common.h"
 #include "nautilus-sendto-plugin.h"
 
 enum {
@@ -180,92 +181,24 @@ get_contacts_widget (NstPlugin *plugin)
 }
 
 static gboolean
-copy_fobject (GFile* source, GFile* dst)
-{
-	GFileEnumerator* en;
-	GFileInfo* info;
-	GError *err = NULL;
-	char *file_name;
-	GFile *dest;
-
-	file_name = g_file_get_basename (source);
-	dest = g_file_get_child (dst, file_name);
-	g_free (file_name);
-
-	if (g_file_query_file_type (source, G_FILE_QUERY_INFO_NONE, NULL) != G_FILE_TYPE_DIRECTORY) {
-		gboolean ret;
-		ret = g_file_copy (source, dest, G_FILE_COPY_NONE, NULL, NULL, NULL, NULL);
-
-		g_object_unref (dest);
-
-		return ret;
-	}
-
-	en = g_file_enumerate_children (source, "*", G_FILE_QUERY_INFO_NONE, NULL, NULL);
-	if (!g_file_make_directory (dest, NULL, NULL)) {
-		g_object_unref (en);
-		g_object_unref (dest);
-		return FALSE;
-	}
-
-	while ((info = g_file_enumerator_next_file (en, NULL, &err)) != NULL) {
-		const char *name;
-
-		name = g_file_info_get_name (G_FILE_INFO (info));
-
-		if (name != NULL) {
-			GFile *child;
-
-			child = g_file_get_child (source, name);
-
-			if (!copy_fobject (child, dest)) {
-				g_object_unref (en);
-				g_object_unref (dest);
-				g_object_unref (child);
-
-				return FALSE;
-			}
-			g_object_unref (child);
-		}
-
-		g_object_unref (info);
-	}
-	g_object_unref (en);
-	g_object_unref (dest);
-
-	if (err != NULL)
-		return FALSE;
-	return TRUE;
-}
-
-static gboolean
 send_files (NstPlugin *plugin, GtkWidget *contact_widget,
 	    GList *file_list)
 {
 	GtkListStore *store;
 	GtkTreeIter iter;
 	GMount *dest_mount;
-	GFile *vol_root;
-	GList *l;
+	GFile *mount_root;
 
 	if (gtk_combo_box_get_active_iter (GTK_COMBO_BOX (contact_widget), &iter) == FALSE)
 		return TRUE;
 
 	store = GTK_LIST_STORE (gtk_combo_box_get_model (GTK_COMBO_BOX (cb)));
 	gtk_tree_model_get (GTK_TREE_MODEL (store), &iter, MOUNT_COL, &dest_mount, -1);
-	vol_root = g_mount_get_root (dest_mount);
+	mount_root = g_mount_get_root (dest_mount);
 
-	for (l = file_list; l != NULL; l = l->next) {
-		GFile *source;
+	copy_files_to (file_list, mount_root);
 
-		source = g_file_new_for_commandline_arg (l->data);
-
-		copy_fobject (source, vol_root);
-
-		g_object_unref (source);
-	}
-
-	g_object_unref (vol_root);
+	g_object_unref (mount_root);
 
 	return TRUE;
 }

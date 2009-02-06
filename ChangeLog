@@ -1,5 +1,27 @@
 2009-02-06  Bastien Nocera  <hadess@hadess.net>
 
+	* src/plugins/nst-common.c (copy_fobject), (copy_files_to):
+	* src/plugins/nst-common.h: Add helper functions to copy
+	files (or directories) recursively to a destination
+
+	* configure.in: Changes for the above, and do enable the
+	burn plugin when dependencies are available
+
+	* src/plugins/Makefile.am: Changes for the above
+
+	* src/plugins/removable-devices/Makefile.am:
+	* src/plugins/removable-devices/removable-devices.c (send_files):
+	Use the helper function
+
+	* src/plugins/nautilus-burn/Makefile.am:
+	* src/plugins/nautilus-burn/nautilus-burn.c (send_files):
+	Use the helper function, and launch nautilus to show burn:///
+	after copying the files
+
+	(Closes: #556774)
+
+2009-02-06  Bastien Nocera  <hadess@hadess.net>
+
 	* configure.in:
 	* src/plugins/removable-devices/Makefile.am:
 	* src/plugins/removable-devices/removable-devices.c

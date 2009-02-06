@@ -6,6 +6,7 @@ INCLUDES =                                      \
 	-DLOCALEDIR="\"$(datadir)/locale\""	\
         -I$(top_srcdir)/src                     \
         -I$(top_builddir)                       \
+        -I$(srcdir)/../				\
         -DGLADEDIR=\""$(gladedir)"\"            \
         $(NAUTILUS_SENDTO_CFLAGS)               \
 	$(WARN_CFLAGS)
@@ -14,5 +15,5 @@ plugin_LTLIBRARIES = libnstremovable_devices.la
 
 libnstremovable_devices_la_SOURCES = removable-devices.c
 libnstremovable_devices_la_LDFLAGS = -module -avoid-version
-libnstremovable_devices_la_LIBADD = $(DBUS_LIBS)
+libnstremovable_devices_la_LIBADD = $(GIO_LIBS) $(builddir)/../libnstcommon.la
 

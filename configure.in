@@ -202,7 +202,7 @@ for plugin in ${used_plugins}; do
 		nautilus-burn)
 			# Disabled by default, see bug #556774
 			PKG_CHECK_MODULES(GIO, gio-2.0,
-					  enable_burn=no, enable_burn=no)
+					  enable_burn=yes, enable_burn=no)
 			if test "${enable_burn}" != "yes" ; then
 				plugin_error_or_ignore "you need gio installed for the nautilus-burn plugin"
 				add_plugin="0"
@@ -284,6 +284,13 @@ AC_SUBST([PLUGINS])
 dnl For the gaim and pidgin plugins
 AM_CONDITIONAL(HAVE_GAIM, test "x$enable_gaim" = "xyes")
 AM_CONDITIONAL(HAVE_PIDGIN, test "x$enable_pidgin" = "xyes")
+
+dnl For the GIO based plugins
+enable_nst_common=no
+if test "x$enable_burn" = "xyes" -o "x$enable_removable" = "xyes"; then
+	enable_nst_common=yes
+fi
+AM_CONDITIONAL(HAVE_GIO, test "x$enable_nst_common" = "xyes")
 
 GLIB_GENMARSHAL=`$PKG_CONFIG --variable=glib_genmarshal glib-2.0`
 AC_SUBST(GLIB_GENMARSHAL)

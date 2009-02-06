@@ -24,6 +24,7 @@
 #include "config.h"
 #include <string.h>
 #include <glib/gi18n-lib.h>
+#include "nst-common.h"
 #include "nautilus-sendto-plugin.h"
 
 #define COMBOBOX_OPTION_EXISTING_DVD 0
@@ -116,8 +117,7 @@ gboolean send_files (NstPlugin *plugin,
 {
 	GFileEnumerator *fenum;
 	GFileInfo *file_info;
-	GFile *child, *destination;
-	GList *l;
+	GFile *child;
 
 	if (GTK_IS_COMBO_BOX (burntype_widget) &&
 	    gtk_combo_box_get_active (GTK_COMBO_BOX (burntype_widget)) == COMBOBOX_OPTION_NEW_DVD) {
@@ -140,30 +140,9 @@ gboolean send_files (NstPlugin *plugin,
 		}
 	}
 
-	for (l = file_list ; l; l=l->next) {
-		child = g_file_new_for_uri ((const char *)l->data);
-		file_info = g_file_query_info (child,
-					       G_FILE_ATTRIBUTE_STANDARD_NAME,
-					       G_FILE_QUERY_INFO_NONE,
-					       NULL,
-					       NULL);
+	copy_files_to (file_list, burn);
 
-		if (file_info != NULL) {
-			destination = g_file_get_child(burn, 
-						       g_file_info_get_name(file_info));
-			g_object_unref(file_info);
-
-			g_file_copy (child,
-				     destination,
-				     G_FILE_COPY_OVERWRITE,
-				     NULL,
-				     NULL,
-				     NULL,
-				     NULL);
-			g_object_unref (destination);
-		}
-		g_object_unref (child);
-	}
+	gtk_show_uri (NULL, "burn:///", GDK_CURRENT_TIME, NULL);
 
 	return TRUE;
 }
