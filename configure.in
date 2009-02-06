@@ -71,7 +71,7 @@ NAUTILUS_EXTENSION_DIR=`$PKG_CONFIG --variable=extensiondir libnautilus-extensio
 AC_SUBST(NAUTILUS_EXTENSION_DIR)
 
 # The full list of plugins
-allowed_plugins="balsa bluetooth empathy evolution gaim gajim nautilus-burn pidgin sylpheed-claws thunderbird upnp"
+allowed_plugins="balsa bluetooth empathy evolution gaim gajim nautilus-burn pidgin removable-devices sylpheed-claws thunderbird upnp"
 
 plugin_error_or_ignore()
 {
@@ -226,6 +226,14 @@ for plugin in ${used_plugins}; do
 				add_plugin="0"
 			fi
 		;;
+		removable-devices)
+			PKG_CHECK_MODULES(GIO, gio-2.0,
+					  enable_removable=yes, enable_removable=no)
+			if test "${enable_removable}" != "yes" ; then
+				plugin_error_or_ignore "you need gio-2.0 to build the removable-devices plugin"
+				add_plugin="0"
+			fi
+		;;
 		sylpheed-claws)
 			add_plugin="1"
 		;;
@@ -303,6 +311,7 @@ src/plugins/gaim/Makefile
 src/plugins/gajim/Makefile
 src/plugins/nautilus-burn/Makefile
 src/plugins/pidgin/Makefile
+src/plugins/removable-devices/Makefile
 src/plugins/sylpheed-claws/Makefile
 src/plugins/thunderbird/Makefile
 src/plugins/upnp/Makefile

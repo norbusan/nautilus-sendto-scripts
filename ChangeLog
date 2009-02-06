@@ -1,5 +1,15 @@
 2009-02-06  Bastien Nocera  <hadess@hadess.net>
 
+	* configure.in:
+	* src/plugins/removable-devices/Makefile.am:
+	* src/plugins/removable-devices/removable-devices.c
+	(cb_mount_removed), (cb_mount_changed), (cb_mount_added), (init),
+	(get_contacts_widget), (copy_fobject), (send_files), (destroy):
+	Patch from Maxim Ermilov <zaspire@rambler.ru> adding a "Removable
+	Devices" plugin (Closes: #453758)
+
+2009-02-06  Bastien Nocera  <hadess@hadess.net>
+
 	* src/nautilus-sendto-plugin.h: Make it possible
 	for plugins to tell us whether they support sending
 	directories
