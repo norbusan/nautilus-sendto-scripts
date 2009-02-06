@@ -227,6 +227,7 @@ NstPluginInfo plugin_info = {
 	"gaim",
 	N_("Instant Message (Gaim)"),
 	FALSE,
+	FALSE,
 	init,
 	get_contacts_widget,
 	NULL,

@@ -58,10 +58,9 @@ static
 gboolean send_files (NstPlugin *plugin, GtkWidget *contact_widget,
 			GList *file_list)
 {
-	gchar *b_cmd, *cmd, *send_to, *send_to_info ;
+	gchar *b_cmd, *cmd, *send_to;
 	GList *l;
 	GString *mailto;
-	GtkWidget *error_dialog;
 	
 	send_to = (gchar *) gtk_entry_get_text (GTK_ENTRY(contact_widget));
 		
@@ -79,9 +78,9 @@ gboolean send_files (NstPlugin *plugin, GtkWidget *contact_widget,
 	if (b_cmd == NULL)
 		return FALSE;
 	
-	g_string_append_printf (mailto," attach=\"%s\"",file_list->data);
+	g_string_append_printf (mailto," attach=\"%s\"", (char *) file_list->data);
 	for (l = file_list->next ; l; l=l->next){				
-		g_string_append_printf (mailto," \"%s\"",l->data);
+		g_string_append_printf (mailto," \"%s\"", (char *) l->data);
 	}
 	cmd = g_strdup_printf ("%s %s", b_cmd, mailto->str);
 	g_spawn_command_line_async (cmd, NULL);
@@ -101,6 +100,7 @@ NstPluginInfo plugin_info = {
 	"emblem-mail",
 	"balsa",
 	N_("Email (Balsa)"),
+	FALSE,
 	FALSE,
 	init,
 	get_contacts_widget,

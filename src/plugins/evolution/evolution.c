@@ -220,6 +220,7 @@ NstPluginInfo plugin_info = {
 	"evolution",
 	N_("Email (Evolution)"),
 	FALSE,
+	FALSE,
 	init,
 	get_contacts_widget,
 	NULL,

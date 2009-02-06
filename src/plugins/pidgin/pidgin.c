@@ -349,6 +349,7 @@ NstPluginInfo plugin_info = {
 	"pidgin",
 	N_("Instant Message (Pidgin)"),
 	FALSE,
+	FALSE,
 	init,
 	get_contacts_widget,
 	NULL,

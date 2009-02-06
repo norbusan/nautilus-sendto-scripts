@@ -104,6 +104,7 @@ NstPluginInfo plugin_info = {
 	"thunderbird",
 	N_("Email (Thunderbird)"),
 	FALSE,
+	FALSE,
 	init,
 	get_contacts_widget,
 	NULL,

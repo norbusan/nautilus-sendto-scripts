@@ -186,6 +186,7 @@ NstPluginInfo plugin_info = {
   "empathy",
   N_("Instant Message (Empathy)"),
   TRUE,
+  FALSE,
   init,
   get_contacts_widget,
   validate_destination,

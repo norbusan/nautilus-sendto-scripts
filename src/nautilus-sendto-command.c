@@ -22,13 +22,12 @@
  */
 
 #include "config.h"
-#include <sys/types.h>
-#include <dirent.h>
 #include <string.h>
 #include <stdlib.h>
 #include <glib/gi18n.h>
 #include <glib/gstdio.h>
 #include <glade/glade.h>
+#include <gtk/gtk.h>
 #include <gconf/gconf-client.h>
 #include "nautilus-sendto-plugin.h"
 
@@ -41,11 +40,10 @@
 #define UNINSTALLED_SOURCE "nautilus-sendto-command.c"
 
 /* Options */
-static gchar *default_url = NULL;
 static char **filenames = NULL;
 
-gboolean force_user_to_compress = FALSE;
 GList *file_list = NULL;
+gboolean has_dirs = FALSE;
 GList *plugin_list = NULL;
 GHashTable *hash ;
 guint option = 0;
@@ -73,7 +71,6 @@ struct _NS_ui {
 };
 
 static const GOptionEntry entries[] = {
-	{ "default-dir", 'd', 0, G_OPTION_ARG_FILENAME, &default_url, N_("Default folder to use"), NULL },
 	{ G_OPTION_REMAINING, '\0', 0, G_OPTION_ARG_FILENAME_ARRAY, &filenames, "Movies to index", NULL },
 	{ NULL }
 };
@@ -258,10 +255,9 @@ status_label_clear (gpointer data)
 }
 
 static void
-send_button_cb (GtkWidget *widget, gpointer data)
+send_button_cb (GtkWidget *widget, NS_ui *ui)
 {
-	NS_ui *ui = (NS_ui *) data;
-	gchar *f, *error;
+	char *f, *error;
 	NstPlugin *p;
 	GtkWidget *w;
 
@@ -300,7 +296,7 @@ send_button_cb (GtkWidget *widget, gpointer data)
 	gconf_client_set_string (gconf_client, 
 				NAUTILUS_SENDTO_LAST_MEDIUM, p->info->id, NULL);
 
-	if (force_user_to_compress){
+	if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(ui->pack_checkbutton))){
 		f = pack_files (ui);
 		if (f != NULL) {
 			GList *packed_file = NULL;		
@@ -314,48 +310,30 @@ send_button_cb (GtkWidget *widget, gpointer data)
 			gtk_widget_set_sensitive (ui->dialog, TRUE);
 			return;
 		}
-	}else{
-		if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(ui->pack_checkbutton))){
-			f = pack_files (ui);
-			if (f != NULL) {
-				GList *packed_file = NULL;
-				packed_file = g_list_append (packed_file, f);
-				if (!p->info->send_files (p, w, packed_file)) {
-					g_list_free (packed_file);
-					return;
-				}
-				g_list_free (packed_file);
-			} else {
-				gtk_widget_set_sensitive (ui->dialog, TRUE);
-				return;
-			}
-		} else {
-			if (!p->info->send_files (p, w, file_list)) {
-				g_list_foreach (file_list, (GFunc) g_free, NULL);
-				g_list_free (file_list);
-				file_list = NULL;
-				return;
-			}
+	} else {
+		if (!p->info->send_files (p, w, file_list)) {
+			g_list_foreach (file_list, (GFunc) g_free, NULL);
 			g_list_free (file_list);
 			file_list = NULL;
+			return;
 		}
+		g_list_free (file_list);
+		file_list = NULL;
 	}
 	destroy_dialog (NULL,NULL);
 }
 
 static void
-send_if_no_pack_cb (GtkWidget *widget, gpointer data)
+send_if_no_pack_cb (GtkWidget *widget, NS_ui *ui)
 {
-	NS_ui *ui = (NS_ui *) data;
-
-	if (force_user_to_compress || gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (ui->pack_checkbutton))) {
-		if (force_user_to_compress) {
+	if (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (ui->pack_checkbutton))) {
+		if (GTK_WIDGET_IS_SENSITIVE (ui->pack_entry)) {
 			gtk_widget_grab_focus (ui->pack_entry);
 		} else {
 			gtk_widget_grab_focus (ui->pack_checkbutton);
 		}
 	} else {
-		send_button_cb (widget, data);
+		send_button_cb (widget, ui);
 	}
 }
 
@@ -383,9 +361,11 @@ toggle_pack_check (GtkWidget *widget, NS_ui *ui)
 }
 
 static void
-option_changed (GtkComboBox *cb, gpointer data){
-	NS_ui *ui = (NS_ui *) data ;
-	GList *aux;	
+option_changed (GtkComboBox *cb, NS_ui *ui)
+{
+	GList *aux;
+	NstPlugin *p;
+	gboolean supports_dirs = FALSE;
 
 	aux = g_list_nth (ui->contact_widgets, option);
 	option = gtk_combo_box_get_active (GTK_COMBO_BOX(cb));
@@ -394,10 +374,26 @@ option_changed (GtkComboBox *cb, gpointer data){
 	gtk_widget_show ((GtkWidget *) aux->data);
 
 	gtk_label_set_mnemonic_widget (GTK_LABEL (ui->send_to_label), aux->data);
+
+	p = (NstPlugin *) g_list_nth_data (plugin_list, option);
+	supports_dirs = p->info->can_send_directories;
+
+	if (has_dirs == FALSE || supports_dirs != FALSE) {
+		gboolean toggle;
+
+		toggle = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (ui->pack_checkbutton));
+		gtk_widget_set_sensitive (ui->pack_combobox, toggle);
+		gtk_widget_set_sensitive (ui->pack_entry, toggle);
+		gtk_widget_set_sensitive (ui->pack_checkbutton, TRUE);
+	} else {
+		gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (ui->pack_checkbutton), TRUE);
+		gtk_widget_set_sensitive (ui->pack_checkbutton, FALSE);
+	}
 }
 
 static void
-set_contact_widgets (NS_ui *ui){
+set_contact_widgets (NS_ui *ui)
+{
 	GList *aux ;
 	GtkWidget *w;
 	NstPlugin *p;
@@ -417,8 +413,9 @@ set_contact_widgets (NS_ui *ui){
 	}
 }
 
-static void
-set_model_for_options_combobox (NS_ui *ui){
+static gboolean
+set_model_for_options_combobox (NS_ui *ui)
+{
 	GdkPixbuf *pixbuf;
         GtkTreeIter iter;
         GtkTreeStore *model;
@@ -426,8 +423,9 @@ set_model_for_options_combobox (NS_ui *ui){
 	GtkCellRenderer *renderer;
 	GList *aux;
 	NstPlugin *p;
-	gchar *last_used = NULL;
+	char *last_used = NULL;
 	int i = 0;
+	gboolean last_used_support_dirs = FALSE;
 
 	it = gtk_icon_theme_get_default ();
 
@@ -436,7 +434,7 @@ set_model_for_options_combobox (NS_ui *ui){
 	last_used = gconf_client_get_string (gconf_client,
 			NAUTILUS_SENDTO_LAST_MEDIUM, NULL);
 
-	for (aux = plugin_list; aux; aux = aux->next){
+	for (aux = plugin_list; aux; aux = aux->next) {
 		p = (NstPlugin *) aux->data;
 		pixbuf = gtk_icon_theme_load_icon (it, p->info->icon, 16, 
 						   GTK_ICON_LOOKUP_USE_BUILTIN, NULL);
@@ -445,8 +443,10 @@ set_model_for_options_combobox (NS_ui *ui){
 					0, pixbuf,
 					1, p->info->description,
 					-1);
-		if (last_used != NULL && !strcmp(last_used, p->info->id))
+		if (last_used != NULL && !strcmp(last_used, p->info->id)) {
 			option = i;
+			last_used_support_dirs = p->info->can_send_directories;
+		}
 		i++;
 	}
 	g_free(last_used);
@@ -474,12 +474,12 @@ set_model_for_options_combobox (NS_ui *ui){
 			  G_CALLBACK (option_changed), ui);
 
 	gtk_combo_box_set_active (GTK_COMBO_BOX (ui->options_combobox), option);
+
+	return last_used_support_dirs;
 }
 
 static void
-pack_entry_changed_cb (GObject *object,
-		       GParamSpec *spec,
-		       NS_ui *ui)
+pack_entry_changed_cb (GObject *object, GParamSpec *spec, NS_ui *ui)
 {
 	gboolean send_enabled;
 
@@ -500,9 +500,9 @@ static void
 nautilus_sendto_create_ui (void)
 {
 	GladeXML *app;	
-	gint toggle;
 	NS_ui *ui;
 	gboolean one_file = FALSE;
+	gboolean supports_dirs;
 
 	app = glade_xml_new (GLADEDIR "/" "nautilus-sendto.glade", NULL, NULL);
 
@@ -524,7 +524,6 @@ nautilus_sendto_create_ui (void)
  	gtk_combo_box_set_active (GTK_COMBO_BOX(ui->pack_combobox), 
  		gconf_client_get_int(gconf_client, 
  				NAUTILUS_SENDTO_LAST_COMPRESS, NULL));
- 
 
 	if (file_list != NULL && file_list->next != NULL)
 		one_file = FALSE;
@@ -536,7 +535,7 @@ nautilus_sendto_create_ui (void)
 	if (one_file) {
 		char *filepath = NULL, *filename = NULL;
 
-		filepath = g_filename_from_uri ((gchar *)file_list->data,
+		filepath = g_filename_from_uri ((char *)file_list->data,
 				NULL, NULL);
 
 		if (filepath != NULL)
@@ -556,7 +555,7 @@ nautilus_sendto_create_ui (void)
 	}
 
 	set_contact_widgets (ui);
-	set_model_for_options_combobox (ui);
+	supports_dirs = set_model_for_options_combobox (ui);
 	g_signal_connect (G_OBJECT (ui->dialog), "destroy",
                           G_CALLBACK (destroy_dialog), NULL);
 	g_signal_connect (G_OBJECT (ui->cancel_button), "clicked",
@@ -567,13 +566,15 @@ nautilus_sendto_create_ui (void)
 			  G_CALLBACK (send_button_cb), ui);
 	g_signal_connect (G_OBJECT (ui->pack_entry), "notify::text",
 			  G_CALLBACK (pack_entry_changed_cb), ui);
+	g_signal_connect (G_OBJECT (ui->pack_checkbutton), "toggled",
+			  G_CALLBACK (toggle_pack_check), ui);
 
-	if (force_user_to_compress == FALSE){
+	if (has_dirs == FALSE || supports_dirs != FALSE) {
+		gboolean toggle;
+
 		toggle = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (ui->pack_checkbutton));
 		gtk_widget_set_sensitive (ui->pack_combobox, toggle);
 		gtk_widget_set_sensitive (ui->pack_entry, toggle);
-		g_signal_connect (G_OBJECT (ui->pack_checkbutton), "toggled",
-				  G_CALLBACK (toggle_pack_check), ui);
 	} else {
 		gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (ui->pack_checkbutton), TRUE);
 		gtk_widget_set_sensitive (ui->pack_checkbutton, FALSE);
@@ -708,10 +709,6 @@ nautilus_sendto_init (void)
 	if (g_module_supported() == FALSE)
 		g_error ("Could not initialize gmodule support");
 
-	if (default_url == NULL) {
-		default_url = g_get_current_dir ();
-	}
-
 	for (i = 0; filenames != NULL && filenames[i] != NULL; i++) {
 		GFile *file;
 		char *filename, *escaped, *uri;
@@ -722,7 +719,7 @@ nautilus_sendto_init (void)
 			continue;
 
 		if (g_file_test (filename, G_FILE_TEST_IS_DIR) != FALSE)
-			force_user_to_compress = TRUE;
+			has_dirs = TRUE;
 
 		uri = g_filename_to_uri (filename, NULL, NULL);
 		g_free (filename);

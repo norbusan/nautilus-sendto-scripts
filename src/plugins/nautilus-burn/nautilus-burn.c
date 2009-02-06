@@ -182,6 +182,7 @@ NstPluginInfo plugin_info = {
 	"nautilus-burn",
 	N_("CD/DVD Creator"),
 	FALSE,
+	TRUE,
 	init,
 	get_contacts_widget,
 	NULL,

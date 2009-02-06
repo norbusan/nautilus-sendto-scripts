@@ -1,3 +1,33 @@
+2009-02-06  Bastien Nocera  <hadess@hadess.net>
+
+	* src/nautilus-sendto-plugin.h: Make it possible
+	for plugins to tell us whether they support sending
+	directories
+
+	* src/plugins/balsa/balsa.c (send_files):
+	* src/plugins/bluetooth/bluetooth.c:
+	* src/plugins/empathy/empathy.c:
+	* src/plugins/evolution/evolution.c:
+	* src/plugins/gaim/gaim.c:
+	* src/plugins/gajim/gajim.c:
+	* src/plugins/nautilus-burn/nautilus-burn.c:
+	* src/plugins/pidgin/pidgin.c:
+	* src/plugins/sylpheed-claws/sylpheed-claws.c:
+	* src/plugins/thunderbird/thunderbird.c:
+	* src/plugins/upnp/upnp.c: Update for the above
+
+	* src/nautilus-sendto-command.c (send_button_cb),
+	(send_if_no_pack_cb), (option_changed), (set_contact_widgets),
+	(set_model_for_options_combobox), (pack_entry_changed_cb),
+	(nautilus_sendto_create_ui), (nautilus_sendto_init):
+	Don't automatically force packing directories into archives,
+	as some plugins support being given directories
+	(Closes: #568423)
+
+	Also fix a few warnings in the balsa plugin, don't make the
+	bluetooth plugin unloadable anymore, kill useless --default-dir
+	command-line option
+
 2009-02-05  Bastien Nocera  <hadess@hadess.net>
 
 	* src/plugins/bluetooth/bluetooth.c (get_device_name_from_address),

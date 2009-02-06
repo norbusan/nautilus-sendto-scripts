@@ -130,6 +130,7 @@ NstPluginInfo plugin_info = {
 	"sylpheed-claws",
 	N_("Email (Claws Mail)"),
 	FALSE,
+	FALSE,
 	init,
 	get_contacts_widget,
 	NULL,
