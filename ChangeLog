@@ -1,3 +1,22 @@
+2009-02-09  Bastien Nocera  <hadess@hadess.net>
+
+	* configure.in:
+	* src/plugins/balsa/*:
+	* src/plugins/sylpheed-claws/*:
+	* src/plugins/thunderbird/*: Remove the separate mailer
+	plugins, and only use the evolution one instead
+
+	* src/plugins/evolution/evolution.c (get_evo_cmd), (init),
+	(get_evo_mailto), (get_balsa_mailto), (get_thunderbird_mailto),
+	(get_sylpheed_mailto), (send_files), (destroy):
+	Try to guess the default mailer from the GNOME default mailto:
+	handler. When the mailer can't be guessed, fallback to using
+	evolution instead.
+	When the mailer is known, use its specific function to
+	create the arugments that will allow sending files.
+
+	(Closes: #318052)
+
 2009-02-06  Bastien Nocera  <hadess@hadess.net>
 
 	* src/plugins/nst-common.c (copy_fobject), (copy_files_to):

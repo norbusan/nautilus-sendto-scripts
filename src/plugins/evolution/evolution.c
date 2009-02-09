@@ -30,41 +30,84 @@
 
 #define GCONF_COMPLETION "/apps/evolution/addressbook"
 #define GCONF_COMPLETION_SOURCES GCONF_COMPLETION "/sources"
+#define DEFAULT_MAILTO "/desktop/gnome/url-handlers/mailto/command"
 
 #define CONTACT_FORMAT "%s <%s>"
 
-static char *evo_cmd = NULL;
+typedef enum {
+	MAILER_UNKNOWN,
+	MAILER_EVO,
+	MAILER_BALSA,
+	MAILER_SYLPHEED,
+	MAILER_THUNDERBIRD,
+} MailerType;
+
+static char *mail_cmd = NULL;
+static MailerType type = MAILER_UNKNOWN;
 static char *email = NULL;
 static char *name = NULL;
 
-static 
-gboolean init (NstPlugin *plugin)
+static char *
+get_evo_cmd (void)
 {
-	gchar *tmp = NULL;
-	gchar *cmds[] = {"evolution",
-			 "evolution-2.0",
-			 "evolution-2.2",
-			 "evolution-2.4",
-			 "evolution-2.6",
-			 "evolution-2.8", /* for the future */
-			 "evolution-3.0", /* but how far to go ? */
-			 NULL};
+	char *tmp = NULL;
+	char *retval;
+	char *cmds[] = {"evolution",
+		"evolution-2.0",
+		"evolution-2.2",
+		"evolution-2.4",
+		"evolution-2.6",
+		"evolution-2.8", /* for the future */
+		"evolution-3.0", /* but how far to go ? */
+		NULL};
 	guint i;
 
-	g_print ("Init evolution plugin\n");
-	
-	bindtextdomain (GETTEXT_PACKAGE, LOCALEDIR);
-        bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
-        textdomain (GETTEXT_PACKAGE);
 	
 	for (i = 0; cmds[i] != NULL; i++) {
 		tmp = g_find_program_in_path (cmds[i]);
 		if (tmp != NULL)
 			break;
 	}
+
 	if (tmp == NULL)
+		return NULL;
+
+	retval = g_strdup_printf ("%s --component=mail %%s", tmp);
+	g_free (tmp);
+	return retval;
+}
+
+static gboolean
+init (NstPlugin *plugin)
+{
+	GConfClient *client;
+
+	g_print ("Init evolution plugin\n");
+	
+	bindtextdomain (GETTEXT_PACKAGE, LOCALEDIR);
+        bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
+        textdomain (GETTEXT_PACKAGE);
+
+	client = gconf_client_get_default ();
+	mail_cmd = gconf_client_get_string (client, DEFAULT_MAILTO, NULL);
+	g_object_unref (client);
+
+	if (mail_cmd == NULL || *mail_cmd == '\0') {
+		g_free (mail_cmd);
+		mail_cmd = get_evo_cmd ();
+		type = MAILER_EVO;
+	} else {
+		/* Find what the default mailer is */
+		if (strstr (mail_cmd, "balsa"))
+			type = MAILER_BALSA;
+		else if (strstr (mail_cmd, "thunder"))
+			type = MAILER_THUNDERBIRD;
+		else if (strstr (mail_cmd, "sylpheed"))
+			type = MAILER_SYLPHEED;
+	}
+
+	if (mail_cmd == NULL)
 		return FALSE;
-	evo_cmd = tmp;
 
 	return TRUE;
 }
@@ -167,22 +210,18 @@ GtkWidget* get_contacts_widget (NstPlugin *plugin)
 	return entry;
 }
 
-static
-gboolean send_files (NstPlugin *plugin, GtkWidget *contact_widget,
-			GList *file_list)
+static void
+get_evo_mailto (GtkWidget *contact_widget, GString *mailto, GList *file_list)
 {
-	gchar *cmd;
-	GString *mailto;
 	GList *l;
 
-	mailto = g_string_new ("mailto:");
-
+	g_string_append (mailto, "mailto:");
 	if (email != NULL) {
 		if (name != NULL)
 			g_string_append_printf (mailto, "\""CONTACT_FORMAT"\"", name, email);
 		else
 			g_string_append_printf (mailto, "%s", email);
-	}else{
+	} else {
 		const char *text;
 
 		text = gtk_entry_get_text (GTK_ENTRY (contact_widget));
@@ -195,18 +234,125 @@ gboolean send_files (NstPlugin *plugin, GtkWidget *contact_widget,
 	for (l = file_list->next ; l; l=l->next){
 		g_string_append_printf (mailto,"&attach=\"%s\"", (char *)l->data);
 	}
-	cmd = g_strdup_printf ("%s %s", evo_cmd, mailto->str);
+}
+
+static void
+get_balsa_mailto (GtkWidget *contact_widget, GString *mailto, GList *file_list)
+{
+	GList *l;
+
+	g_string_append (mailto, "--compose=");
+	if (email != NULL) {
+		if (name != NULL)
+			g_string_append_printf (mailto, "\""CONTACT_FORMAT"\"", name, email);
+		else
+			g_string_append_printf (mailto, "%s", email);
+	} else {
+		const char *text;
+
+		text = gtk_entry_get_text (GTK_ENTRY (contact_widget));
+		if (text != NULL && *text != '\0')
+			g_string_append_printf (mailto, "\"%s\"", text);
+		else
+			g_string_append (mailto, "\"\"");
+	}
+	g_string_append_printf (mailto," attach=\"%s\"", (char *)file_list->data);
+	for (l = file_list->next ; l; l=l->next){
+		g_string_append_printf (mailto," attach=\"%s\"", (char *)l->data);
+	}
+}
+
+static void
+get_thunderbird_mailto (GtkWidget *contact_widget, GString *mailto, GList *file_list)
+{
+	GList *l;
+
+	g_string_append (mailto, "-compose ");
+	if (email != NULL) {
+		if (name != NULL)
+			g_string_append_printf (mailto, "to=\""CONTACT_FORMAT"\",", name, email);
+		else
+			g_string_append_printf (mailto, "to=%s,", email);
+	} else {
+		const char *text;
+
+		text = gtk_entry_get_text (GTK_ENTRY (contact_widget));
+		if (text != NULL && *text != '\0')
+			g_string_append_printf (mailto, "to=\"%s\",", text);
+	}
+	g_string_append_printf (mailto,"attachment='%s", (char *)file_list->data);
+	for (l = file_list->next ; l; l=l->next){
+		g_string_append_printf (mailto,",%s", (char *)l->data);
+	}
+	g_string_append_c (mailto, '\'');
+}
+
+static void
+get_sylpheed_mailto (GtkWidget *contact_widget, GString *mailto, GList *file_list)
+{
+	GList *l;
+
+	g_string_append (mailto, "--compose ");
+	if (email != NULL) {
+		if (name != NULL)
+			g_string_append_printf (mailto, "\""CONTACT_FORMAT"\",", name, email);
+		else
+			g_string_append_printf (mailto, "%s,", email);
+	} else {
+		const char *text;
+
+		text = gtk_entry_get_text (GTK_ENTRY (contact_widget));
+		if (text != NULL && *text != '\0')
+			g_string_append_printf (mailto, "\"%s\",", text);
+		else
+			g_string_append (mailto, " \"\"");
+	}
+	g_string_append_printf (mailto,"--attach \"%s\"", (char *)file_list->data);
+	for (l = file_list->next ; l; l=l->next){
+		g_string_append_printf (mailto," \"%s\"", (char *)l->data);
+	}
+}
+
+static gboolean
+send_files (NstPlugin *plugin,
+	    GtkWidget *contact_widget,
+	    GList *file_list)
+{
+	gchar *cmd;
+	GString *mailto;
+
+	mailto = g_string_new ("");
+	switch (type) {
+	case MAILER_BALSA:
+		get_balsa_mailto (contact_widget, mailto, file_list);
+		break;
+	case MAILER_SYLPHEED:
+		get_sylpheed_mailto (contact_widget, mailto, file_list);
+		break;
+	case MAILER_THUNDERBIRD:
+		get_thunderbird_mailto (contact_widget, mailto, file_list);
+		break;
+	case MAILER_EVO:
+	default:
+		get_evo_mailto (contact_widget, mailto, file_list);
+	}
+
+	cmd = g_strdup_printf (mail_cmd, mailto->str);
+	g_string_free (mailto, TRUE);
+
+	g_message ("Mailer type: %d", type);
+	g_message ("Command: %s", cmd);
+
 	g_spawn_command_line_async (cmd, NULL);
 	g_free (cmd);
-	g_string_free (mailto, TRUE);
-	g_free (evo_cmd);
+
 	return TRUE;
 }
 
 static 
 gboolean destroy (NstPlugin *plugin){
-	g_free (evo_cmd);
-	evo_cmd = NULL;
+	g_free (mail_cmd);
+	mail_cmd = NULL;
 	g_free (name);
 	name = NULL;
 	g_free (email);

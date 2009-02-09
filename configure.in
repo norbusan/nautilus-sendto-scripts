@@ -71,7 +71,7 @@ NAUTILUS_EXTENSION_DIR=`$PKG_CONFIG --variable=extensiondir libnautilus-extensio
 AC_SUBST(NAUTILUS_EXTENSION_DIR)
 
 # The full list of plugins
-allowed_plugins="balsa bluetooth empathy evolution gaim gajim nautilus-burn pidgin removable-devices sylpheed-claws thunderbird upnp"
+allowed_plugins="bluetooth empathy evolution gaim gajim nautilus-burn pidgin removable-devices upnp"
 
 plugin_error_or_ignore()
 {
@@ -122,9 +122,6 @@ for plugin in ${used_plugins}; do
 	add_plugin="1"
 
 	case ${plugin} in
-		balsa)
-			add_plugin="1"
-		;;
 		bluetooth)
 			PKG_CHECK_MODULES(BLUETOOTH, dbus-glib-1 >= $DBUS_GLIB_REQUIRED,
 					  enable_bluetooth=yes, enable_bluetooth=no)
@@ -234,23 +231,6 @@ for plugin in ${used_plugins}; do
 				add_plugin="0"
 			fi
 		;;
-		sylpheed-claws)
-			add_plugin="1"
-		;;
-		thunderbird)
-			AC_ARG_WITH([thunderbird-name],
-				    [AS_HELP_STRING([--with-thunderbird-name],[Binary name for Thunderbird (default: thunderbird)])],
-				    [with_thunderbird_name=$withval])
-			if test "x$with_thunderbird_name" = "x" ; then
-				with_thunderbird_name=thunderbird
-			fi
-			THUNDERBIRD_NAME=$with_thunderbird_name
-			AC_SUBST(THUNDERBIRD_NAME)
-
-			AC_DEFINE_UNQUOTED(THUNDERBIRD_NAME, "$THUNDERBIRD_NAME", [name of the Thunderbird binary])
-
-			add_plugin="1"
-		;;
 		upnp)
 			PKG_CHECK_MODULES(UPNP, gupnp-av-1.0 >= $GUPNP_AV_REQUIRED,
 					  enable_upnp=yes, enable_upnp=no)
@@ -310,7 +290,6 @@ AC_OUTPUT([
 Makefile
 src/Makefile
 src/plugins/Makefile
-src/plugins/balsa/Makefile
 src/plugins/bluetooth/Makefile
 src/plugins/empathy/Makefile
 src/plugins/evolution/Makefile
@@ -319,8 +298,6 @@ src/plugins/gajim/Makefile
 src/plugins/nautilus-burn/Makefile
 src/plugins/pidgin/Makefile
 src/plugins/removable-devices/Makefile
-src/plugins/sylpheed-claws/Makefile
-src/plugins/thunderbird/Makefile
 src/plugins/upnp/Makefile
 gaim_plugin/Makefile
 pidgin_plugin/Makefile
