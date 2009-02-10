@@ -1,3 +1,10 @@
+2009-02-10  Bastien Nocera  <hadess@hadess.net>
+
+	* src/plugins/bluetooth/bluetooth.c (validate_destination):
+	Also look for 0x1105 in the UUIDs, patch from
+	Mario Limonciello <mario_limonciello@dell.com>
+	(Closes: #567485)
+
 2009-02-09  Bastien Nocera  <hadess@hadess.net>
 
 	* configure.in:

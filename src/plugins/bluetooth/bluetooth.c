@@ -31,6 +31,7 @@
 
 #include "nautilus-sendto-plugin.h"
 
+#define OBEX_PUSH_SVCLASS_ID_STR "0x1105"
 #define OBEX_FILETRANS_SVCLASS_ID_STR "0x1106"
 #define LAST_OBEX_DEVICE "/desktop/gnome/nautilus-sendto/last_obex_device"
 
@@ -480,7 +481,8 @@ validate_destination (NstPlugin *plugin,
 					uuid = g_strdup (array[i]);
 				}
 
-				if (strcmp (uuid, OBEX_FILETRANS_SVCLASS_ID_STR) == 0) {
+				if (strcmp (uuid, OBEX_FILETRANS_SVCLASS_ID_STR) == 0 ||
+				    strcmp (uuid, OBEX_PUSH_SVCLASS_ID_STR) == 0      ){
 					found = TRUE;
 					g_free (uuid);
 					break;
