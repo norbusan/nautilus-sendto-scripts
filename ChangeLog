@@ -1,3 +1,16 @@
+2009-02-18  Bastien Nocera  <hadess@hadess.net>
+
+	* Makefile.am:
+	* configure.in:
+	* evolution/Makefile.am:
+	* evolution/nautilus-sendto.c (popup_free),
+	(org_gnome_evolution_send_file_attachments),
+	(org_gnome_evolution_send_file_part), (send_file):
+	* evolution/org-gnome-evolution-send-attachments-to.eplug.xml:
+	* evolution/plugin.mk: If evolution-plugin is available, compile
+	a plugin for Evolution to allow sending arbitrary attachments through
+	nautilus-sendto (Closes: #511685)
+
 2009-02-10  Bastien Nocera  <hadess@hadess.net>
 
 	* src/plugins/bluetooth/bluetooth.c (validate_destination):

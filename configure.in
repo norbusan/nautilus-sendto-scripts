@@ -70,6 +70,21 @@ dnl ---------------------------------
 NAUTILUS_EXTENSION_DIR=`$PKG_CONFIG --variable=extensiondir libnautilus-extension`
 AC_SUBST(NAUTILUS_EXTENSION_DIR)
 
+dnl Get details about evolution
+
+PKG_CHECK_MODULES(EVOLUTION, evolution-plugin libglade-2.0,
+		  enable_evo=yes, enable_evo=no)
+AM_CONDITIONAL(HAVE_EVOLUTION, test "x$enable_evo" = "xyes")
+
+SOEXT=".so"
+AC_SUBST(SOEXT)
+
+plugindir=`$PKG_CONFIG --variable=plugindir evolution-plugin`
+AC_SUBST(plugindir)
+
+EVO_PLUGIN_RULE=$srcdir/evolution/plugin.mk
+AC_SUBST_FILE(EVO_PLUGIN_RULE)
+
 # The full list of plugins
 allowed_plugins="bluetooth empathy evolution gaim gajim nautilus-burn pidgin removable-devices upnp"
 
@@ -299,6 +314,7 @@ src/plugins/nautilus-burn/Makefile
 src/plugins/pidgin/Makefile
 src/plugins/removable-devices/Makefile
 src/plugins/upnp/Makefile
+evolution/Makefile
 gaim_plugin/Makefile
 pidgin_plugin/Makefile
 po/Makefile.in
@@ -321,7 +337,13 @@ if test "x${PLUGINS}" != "x" ; then
 		AC_MSG_NOTICE([   ${allowed_plugin} plugin disabled])
 	done
 else
-	AC_MSG_NOTICE([   No Totem plugins enabled])
+	AC_MSG_NOTICE([   No nautilus-sendto plugins enabled])
+fi
+
+if test "x$enable_evo" = "xyes"; then
+	AC_MSG_NOTICE([** Evolution send-to plugin enabled])
+else
+	AC_MSG_NOTICE([   Evolution send-to plugin disabled])
 fi
 
 echo "                                                       "
