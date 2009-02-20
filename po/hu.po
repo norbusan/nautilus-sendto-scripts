@@ -1,18 +1,18 @@
 # translation of nautilus-sendto.HEAD.hu.po to Hungarian
 # translation of nautilus-sendto to Hungarian
 # Hungarian translation of nautilus-sendto.
-# Copyright (C) 2004, 2005, 2006, 2007, 2008 Free Software Foundation, Inc.
+# Copyright (C) 2004, 2005, 2006, 2007, 2008, 2009 Free Software Foundation, Inc.
 # This file is distributed under the same license as the nautilus-sendto package.
 #
-# Gabor Kelemen <kelemeng@gnome.hu>, 2004, 2005, 2006, 2007, 2008.
+# Gabor Kelemen <kelemeng@gnome.hu>, 2004, 2005, 2006, 2007, 2008, 2009.
 # Szabolcs Varga <shirokuma@shirokuma.hu>, 2005.
 # Kalman Kemenczy <kkemenczy@novell.com>, 2008.
 msgid ""
 msgstr ""
 "Project-Id-Version: nautilus-sendto.HEAD.hu\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-11-06 00:14+0100\n"
-"PO-Revision-Date: 2008-11-06 00:14+0100\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=nautilus-sendto&component=general\n"
+"POT-Creation-Date: 2009-02-18 14:48+0000\n"
+"PO-Revision-Date: 2009-02-20 02:57+0100\n"
 "Last-Translator: Gabor Kelemen <kelemeng@gnome.hu>\n"
 "Language-Team: Hungarian <gnome@fsf.hu>\n"
 "MIME-Version: 1.0\n"
@@ -41,14 +41,29 @@ msgid ""
 "gz, 2: tar.bz2)."
 msgstr "Az utoljára használt archívum típusa (0: zip, 1: tar.gz, 2: tar.bz2)."
 
+#: ../evolution/nautilus-sendto.c:47
+#| msgid "Send To..."
+msgid "_Send to..."
+msgstr "_Küldés…"
+
+#: ../evolution/org-gnome-evolution-send-attachments-to.eplug.xml.h:1
+msgid "Send files to remote devices, or people"
+msgstr "Fájlok küldése távoli eszközöknek vagy személyeknek"
+
+#. the path to the shared library
+#: ../evolution/org-gnome-evolution-send-attachments-to.eplug.xml.h:3
+#| msgid "Send To..."
+msgid "Send to..."
+msgstr "Küldés…"
+
 #. type
 #. ui requirement
 #. flags
 #. dependencies
 #. priority
 #. id
-#: ../gaim_plugin/nautilus-sendto-plugin.c:308
-#: ../pidgin_plugin/nautilus-sendto-plugin.c:331
+#: ../gaim_plugin/nautilus-sendto-plugin.c:309
+#: ../pidgin_plugin/nautilus-sendto-plugin.c:332
 msgid "Nautilus Integration"
 msgstr "Nautilus-integráció"
 
@@ -58,53 +73,49 @@ msgstr "Nautilus-integráció"
 #. name
 #. version
 #. summary
-#: ../gaim_plugin/nautilus-sendto-plugin.c:310
 #: ../gaim_plugin/nautilus-sendto-plugin.c:311
-#: ../pidgin_plugin/nautilus-sendto-plugin.c:333
+#: ../gaim_plugin/nautilus-sendto-plugin.c:312
 #: ../pidgin_plugin/nautilus-sendto-plugin.c:334
+#: ../pidgin_plugin/nautilus-sendto-plugin.c:335
 msgid "Provides integration with Nautilus"
 msgstr "Integráció biztosítása a Nautilusszal"
 
 #: ../src/nautilus-nste.c:92 ../src/nautilus-nste.c:97
 #: ../src/nautilus-sendto.glade.h:3
 msgid "Send To..."
-msgstr "Küldés..."
+msgstr "Küldés…"
 
 #: ../src/nautilus-nste.c:93
 msgid "Send file by mail, instant message..."
-msgstr "Fájl küldése levélben, azonnali üzenetként..."
+msgstr "Fájl küldése levélben, azonnali üzenetként…"
 
 #: ../src/nautilus-nste.c:98
 msgid "Send files by mail, instant message..."
-msgstr "Fájlok küldése levélben, azonnali üzenetként..."
+msgstr "Fájlok küldése levélben, azonnali üzenetként…"
 
-#: ../src/nautilus-sendto-command.c:76
-msgid "Default folder to use"
-msgstr "Alapértelmezésként használandó mappa"
-
-#: ../src/nautilus-sendto-command.c:534
+#: ../src/nautilus-sendto-command.c:533
 msgid "Files"
 msgstr "Fájlok"
 
-#: ../src/nautilus-sendto-command.c:740
+#: ../src/nautilus-sendto-command.c:737
 #, c-format
 msgid "Expects URIs or filenames to be passed as options\n"
 msgstr "URI címekre vagy fájlnevekre számít paraméterekként\n"
 
-#: ../src/nautilus-sendto-command.c:757
+#: ../src/nautilus-sendto-command.c:754
 msgid "Nautilus Sendto"
 msgstr "Nautilus küldés"
 
-#: ../src/nautilus-sendto-command.c:761
+#: ../src/nautilus-sendto-command.c:758
 #, c-format
 msgid "Could not parse command-line options: %s\n"
 msgstr "Nem dolgozhatók fel a parancssori kapcsolók: %s\n"
 
-#: ../src/nautilus-sendto-command.c:776
+#: ../src/nautilus-sendto-command.c:773
 msgid "Could not load any plugins."
 msgstr "Nem tölthetők be bővítmények."
 
-#: ../src/nautilus-sendto-command.c:779
+#: ../src/nautilus-sendto-command.c:776
 msgid "Please verify your installation"
 msgstr "Ellenőrizze a telepítést"
 
@@ -132,162 +143,182 @@ msgstr "Küldés _célja:"
 msgid "_Send"
 msgstr "_Küldés"
 
-#: ../src/plugins/balsa.c:103
-msgid "Email (Balsa)"
-msgstr "E-mail (Balsa)"
-
-#: ../src/plugins/bluetooth.c:350 ../src/plugins/bluetooth.c:358
+#: ../src/plugins/bluetooth/bluetooth.c:442
 msgid "Programming error, could not find the device in the list"
 msgstr "Programozási hiba, az eszköz nem található a listában"
 
-#: ../src/plugins/bluetooth.c:407
+#: ../src/plugins/bluetooth/bluetooth.c:502
 #, c-format
 msgid "Obex Push file transfer unsupported"
 msgstr "Az Obex Push fájlátvitel nem támogatott"
 
-#: ../src/plugins/bluetooth.c:431
+#: ../src/plugins/bluetooth/bluetooth.c:526
 msgid "Bluetooth (OBEX Push)"
 msgstr "Bluetooth (OBEX küldés)"
 
-#: ../src/plugins/evolution.c:221
+#: ../src/plugins/empathy/empathy.c:128
+msgid "The contact selected cannot receive files."
+msgstr "A kiválasztott partner nem tud fájlokat fogadni."
+
+#: ../src/plugins/empathy/empathy.c:134
+#| msgid "The contact was not found."
+msgid "The contact selected is offline."
+msgstr "A kiválasztott partner nem érhető el."
+
+#: ../src/plugins/empathy/empathy.c:187
+#| msgid "Instant Message (Gaim)"
+msgid "Instant Message (Empathy)"
+msgstr "Azonnali üzenet (Empathy)"
+
+#: ../src/plugins/evolution/evolution.c:367
 msgid "Email (Evolution)"
 msgstr "E-mail (Evolution)"
 
-#: ../src/plugins/e-contact-entry.c:158
+#: ../src/plugins/evolution/e-contact-entry.c:152
 #, c-format
 msgid "Cannot get contact: %s"
 msgstr "A névjegy nem kérhető le: %s"
 
-#: ../src/plugins/e-contact-entry.c:191
+#: ../src/plugins/evolution/e-contact-entry.c:185
 #, c-format
 msgid "Could not find contact: %s"
 msgstr "A névjegy nem található: %s"
 
-#: ../src/plugins/e-contact-entry.c:417
+#: ../src/plugins/evolution/e-contact-entry.c:411
 msgid "Cannot create searchable view."
 msgstr "A kereshető nézet nem hozható létre."
 
-#: ../src/plugins/e-contact-entry.c:889
+#: ../src/plugins/evolution/e-contact-entry.c:883
 msgid "Success"
 msgstr "Sikerült"
 
-#: ../src/plugins/e-contact-entry.c:891
+#: ../src/plugins/evolution/e-contact-entry.c:885
 msgid "An argument was invalid."
 msgstr "Egy argumentum érvénytelen."
 
-#: ../src/plugins/e-contact-entry.c:893
+#: ../src/plugins/evolution/e-contact-entry.c:887
 msgid "The address book is busy."
 msgstr "A címjegyzék foglalt."
 
-#: ../src/plugins/e-contact-entry.c:895
+#: ../src/plugins/evolution/e-contact-entry.c:889
 msgid "The address book is offline."
 msgstr "A címjegyzék nem érhető el."
 
-#: ../src/plugins/e-contact-entry.c:897
+#: ../src/plugins/evolution/e-contact-entry.c:891
 msgid "The address book does not exist."
 msgstr "A címjegyzék nem létezik."
 
-#: ../src/plugins/e-contact-entry.c:899
+#: ../src/plugins/evolution/e-contact-entry.c:893
 msgid "The \"Me\" contact does not exist."
 msgstr "Az „Én” névjegy nem létezik."
 
-#: ../src/plugins/e-contact-entry.c:901
+#: ../src/plugins/evolution/e-contact-entry.c:895
 msgid "The address book is not loaded."
 msgstr "A címjegyzék nincs betöltve."
 
-#: ../src/plugins/e-contact-entry.c:903
+#: ../src/plugins/evolution/e-contact-entry.c:897
 msgid "The address book is already loaded."
 msgstr "A címjegyzék már be van töltve."
 
-#: ../src/plugins/e-contact-entry.c:905
+#: ../src/plugins/evolution/e-contact-entry.c:899
 msgid "Permission was denied when accessing the address book."
 msgstr "A hozzáférés megtagadva a címjegyzék elérése közben."
 
-#: ../src/plugins/e-contact-entry.c:907
+#: ../src/plugins/evolution/e-contact-entry.c:901
 msgid "The contact was not found."
 msgstr "A névjegy nem található."
 
-#: ../src/plugins/e-contact-entry.c:909
+#: ../src/plugins/evolution/e-contact-entry.c:903
 msgid "This contact ID already exists."
 msgstr "Ez a névjegy-azonosító már létezik."
 
-#: ../src/plugins/e-contact-entry.c:911
+#: ../src/plugins/evolution/e-contact-entry.c:905
 msgid "The protocol is not supported."
 msgstr "A protokoll nem támogatott."
 
-#: ../src/plugins/e-contact-entry.c:913
+#: ../src/plugins/evolution/e-contact-entry.c:907
 msgid "The operation was cancelled."
 msgstr "A művelet megszakítva."
 
-#: ../src/plugins/e-contact-entry.c:915
+#: ../src/plugins/evolution/e-contact-entry.c:909
 msgid "The operation could not be cancelled."
 msgstr "A művelet nem szakítható meg."
 
-#: ../src/plugins/e-contact-entry.c:917
+#: ../src/plugins/evolution/e-contact-entry.c:911
 msgid "The address book authentication failed."
 msgstr "A címjegyzék hitelesítése meghiúsult."
 
-#: ../src/plugins/e-contact-entry.c:919
+#: ../src/plugins/evolution/e-contact-entry.c:913
 msgid "Authentication is required to access the address book and was not given."
 msgstr "A címjegyzék eléréséhez hitelesítés szükséges, ami nem került megadásra."
 
-#: ../src/plugins/e-contact-entry.c:921
+#: ../src/plugins/evolution/e-contact-entry.c:915
 msgid "A secure connection is not available."
 msgstr "Nem áll rendelkezésre biztonságos kapcsolat."
 
-#: ../src/plugins/e-contact-entry.c:923
+#: ../src/plugins/evolution/e-contact-entry.c:917
 msgid "A CORBA error occurred whilst accessing the address book."
 msgstr "CORBA hiba történt a címjegyzék elérésekor."
 
-#: ../src/plugins/e-contact-entry.c:925
+#: ../src/plugins/evolution/e-contact-entry.c:919
 msgid "The address book source does not exist."
 msgstr "A címjegyzékforrás nem létezik."
 
-#: ../src/plugins/e-contact-entry.c:927 ../src/plugins/e-contact-entry.c:930
+#: ../src/plugins/evolution/e-contact-entry.c:921
+#: ../src/plugins/evolution/e-contact-entry.c:924
 msgid "An unknown error occurred."
 msgstr "Ismeretlen hiba történt."
 
-#: ../src/plugins/gaim.c:228
+#: ../src/plugins/gaim/gaim.c:228
 msgid "Instant Message (Gaim)"
 msgstr "Azonnali üzenet (Gaim)"
 
-#: ../src/plugins/gajim.c:402
+#: ../src/plugins/gajim/gajim.c:402
 msgid "Unable to send file"
 msgstr "Nem küldhető el a fájl"
 
-#: ../src/plugins/gajim.c:403
+#: ../src/plugins/gajim/gajim.c:403
 msgid "There is no connection to gajim remote service."
 msgstr "Nincs kapcsolat a gajim távoli szolgáltatáshoz."
 
-#: ../src/plugins/gajim.c:427 ../src/plugins/gajim.c:466
+#: ../src/plugins/gajim/gajim.c:427 ../src/plugins/gajim/gajim.c:466
 msgid "Sending file failed"
 msgstr "A fájl küldése meghiúsult"
 
-#: ../src/plugins/gajim.c:428
+#: ../src/plugins/gajim/gajim.c:428
 msgid "Recipient is missing."
 msgstr "A címzett hiányzik."
 
-#: ../src/plugins/gajim.c:466
+#: ../src/plugins/gajim/gajim.c:466
 msgid "Unknown recipient."
 msgstr "Ismeretlen címzett."
 
-#: ../src/plugins/gajim.c:488
+#: ../src/plugins/gajim/gajim.c:488
 msgid "Instant Message (Gajim)"
 msgstr "Azonnali üzenet (Gajim)"
 
-#: ../src/plugins/pidgin.c:239
+#: ../src/plugins/nautilus-burn/nautilus-burn.c:70
+#: ../src/plugins/nautilus-burn/nautilus-burn.c:85
+msgid "New CD/DVD"
+msgstr "Új CD/DVD"
+
+#: ../src/plugins/nautilus-burn/nautilus-burn.c:83
+msgid "Existing CD/DVD"
+msgstr "Meglévő CD/DVD"
+
+#: ../src/plugins/nautilus-burn/nautilus-burn.c:162
+msgid "CD/DVD Creator"
+msgstr "CD/DVD-készítő"
+
+#: ../src/plugins/pidgin/pidgin.c:350
 msgid "Instant Message (Pidgin)"
 msgstr "Azonnali üzenet (Pidgin)"
 
-#: ../src/plugins/sylpheed-claws.c:131
-msgid "Email (Claws Mail)"
-msgstr "E-mail (Claws levelező)"
+#: ../src/plugins/removable-devices/removable-devices.c:219
+msgid "Removable disks and shares"
+msgstr "Cserélhető lemezek és megosztások"
 
-#: ../src/plugins/thunderbird.c:105
-msgid "Email (Thunderbird)"
-msgstr "E-mail (Thunderbird)"
-
-#: ../src/plugins/upnp.c:298
+#: ../src/plugins/upnp/upnp.c:298
 msgid "UPnP Media Server"
 msgstr "UPnP médiakiszolgáló"
 
