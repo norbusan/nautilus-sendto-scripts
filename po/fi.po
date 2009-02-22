@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nautilus-sendto\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-09-25 06:13+0300\n"
-"PO-Revision-Date: 2008-09-25 06-10+0300\n"
+"POT-Creation-Date: 2009-02-22 12:41+0200\n"
+"PO-Revision-Date: 2009-02-22 12:41+0200\n"
 "Last-Translator: Ilkka Tuohela <hile@iki.fi>\n"
 "Language-Team: Finnish <gnome-fi-laatu@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -42,14 +42,27 @@ msgstr ""
 "Käytetään tallentamaan, mitä pakkaustapaa käytettiin viimeksi (0: zip, 1: "
 "tar.gz, 2: tar.bz2)"
 
+#: ../evolution/nautilus-sendto.c:47
+msgid "_Send to..."
+msgstr "_Lähetä..."
+
+#: ../evolution/org-gnome-evolution-send-attachments-to.eplug.xml.h:1
+msgid "Send files to remote devices, or people"
+msgstr "Lähetä tiedostoja etälaitteille tai ihmisille"
+
+#. the path to the shared library
+#: ../evolution/org-gnome-evolution-send-attachments-to.eplug.xml.h:3
+msgid "Send to..."
+msgstr "Lähetä..."
+
 #. type
 #. ui requirement
 #. flags
 #. dependencies
 #. priority
 #. id
-#: ../gaim_plugin/nautilus-sendto-plugin.c:308
-#: ../pidgin_plugin/nautilus-sendto-plugin.c:331
+#: ../gaim_plugin/nautilus-sendto-plugin.c:309
+#: ../pidgin_plugin/nautilus-sendto-plugin.c:332
 msgid "Nautilus Integration"
 msgstr "Nautilus-integraatio"
 
@@ -59,10 +72,10 @@ msgstr "Nautilus-integraatio"
 #. name
 #. version
 #. summary
-#: ../gaim_plugin/nautilus-sendto-plugin.c:310
 #: ../gaim_plugin/nautilus-sendto-plugin.c:311
-#: ../pidgin_plugin/nautilus-sendto-plugin.c:333
+#: ../gaim_plugin/nautilus-sendto-plugin.c:312
 #: ../pidgin_plugin/nautilus-sendto-plugin.c:334
+#: ../pidgin_plugin/nautilus-sendto-plugin.c:335
 msgid "Provides integration with Nautilus"
 msgstr "Tarjoaa integraation Nautilukseen"
 
@@ -79,33 +92,29 @@ msgstr "Lähetä tiedosto sähköpostilla, pikaviestimellä..."
 msgid "Send files by mail, instant message..."
 msgstr "Lähetä tiedostoja sähköpostilla, pikaviestimellä..."
 
-#: ../src/nautilus-sendto-command.c:75
-msgid "Default folder to use"
-msgstr "Käytettävä oletuskansio"
-
 #: ../src/nautilus-sendto-command.c:533
 msgid "Files"
 msgstr "Tiedostot"
 
-#: ../src/nautilus-sendto-command.c:738
+#: ../src/nautilus-sendto-command.c:737
 #, c-format
 msgid "Expects URIs or filenames to be passed as options\n"
 msgstr "Olettaa parametreina annettavan URI:t tai tiedostonimiä\n"
 
-#: ../src/nautilus-sendto-command.c:755
+#: ../src/nautilus-sendto-command.c:754
 msgid "Nautilus Sendto"
 msgstr "Nautilus-lähetä"
 
-#: ../src/nautilus-sendto-command.c:759
+#: ../src/nautilus-sendto-command.c:758
 #, c-format
 msgid "Could not parse command-line options: %s\n"
 msgstr "Komentorivivalitsimia ei voi tulkita: %s\n"
 
-#: ../src/nautilus-sendto-command.c:774
+#: ../src/nautilus-sendto-command.c:773
 msgid "Could not load any plugins."
 msgstr "Liitännäisiä ei voi ladata."
 
-#: ../src/nautilus-sendto-command.c:777
+#: ../src/nautilus-sendto-command.c:776
 msgid "Please verify your installation"
 msgstr "Tarkista asennuksesi"
 
@@ -133,167 +142,198 @@ msgstr "Vastaan_ottaja:"
 msgid "_Send"
 msgstr "_Lähetä"
 
-#: ../src/plugins/balsa.c:103
-msgid "Email (Balsa)"
-msgstr "Sähköposti (Balsa)"
-
-#: ../src/plugins/bluetooth.c:356 ../src/plugins/bluetooth.c:364
+#: ../src/plugins/bluetooth/bluetooth.c:442
 msgid "Programming error, could not find the device in the list"
 msgstr "Ohjelmointivirhe, laitetta ei löytynyt luettelosta"
 
-#: ../src/plugins/bluetooth.c:413
+#: ../src/plugins/bluetooth/bluetooth.c:502
 #, c-format
 msgid "Obex Push file transfer unsupported"
 msgstr "Obex Push -tiedostosiirto ei ole tuettu"
 
-#: ../src/plugins/bluetooth.c:437
+#: ../src/plugins/bluetooth/bluetooth.c:526
 msgid "Bluetooth (OBEX Push)"
 msgstr "Bluetooth (OBEX Push)"
 
-#: ../src/plugins/evolution.c:221
+#: ../src/plugins/empathy/empathy.c:128
+msgid "The contact selected cannot receive files."
+msgstr "Valittu yhteystieto ei voi vastaanottaa tiedostoja."
+
+#: ../src/plugins/empathy/empathy.c:134
+msgid "The contact selected is offline."
+msgstr "Valittu yhteystieto ei ole tavoitettavissa."
+
+#: ../src/plugins/empathy/empathy.c:187
+msgid "Instant Message (Empathy)"
+msgstr "Pikaviesti (Empathy)"
+
+#: ../src/plugins/evolution/evolution.c:367
 msgid "Email (Evolution)"
 msgstr "Sähköposti (Evolution)"
 
-#: ../src/plugins/e-contact-entry.c:158
+#: ../src/plugins/evolution/e-contact-entry.c:152
 #, c-format
 msgid "Cannot get contact: %s"
 msgstr "Yhteystietoa ei voi hakea: %s"
 
-#: ../src/plugins/e-contact-entry.c:191
+#: ../src/plugins/evolution/e-contact-entry.c:185
 #, c-format
 msgid "Could not find contact: %s"
 msgstr "Yhteystietoa ei löydy: %s"
 
-#: ../src/plugins/e-contact-entry.c:417
+#: ../src/plugins/evolution/e-contact-entry.c:411
 msgid "Cannot create searchable view."
 msgstr "Etsittävää näkymää ei voi luoda."
 
-#: ../src/plugins/e-contact-entry.c:889
+#: ../src/plugins/evolution/e-contact-entry.c:883
 msgid "Success"
 msgstr "Onnistui"
 
-#: ../src/plugins/e-contact-entry.c:891
+#: ../src/plugins/evolution/e-contact-entry.c:885
 msgid "An argument was invalid."
 msgstr "Valitsin oli virheellinen."
 
-#: ../src/plugins/e-contact-entry.c:893
+#: ../src/plugins/evolution/e-contact-entry.c:887
 msgid "The address book is busy."
 msgstr "Osoitekirja on varattu."
 
-#: ../src/plugins/e-contact-entry.c:895
+#: ../src/plugins/evolution/e-contact-entry.c:889
 msgid "The address book is offline."
 msgstr "Osoitekirja on yhteydettömässä tilassa."
 
-#: ../src/plugins/e-contact-entry.c:897
+#: ../src/plugins/evolution/e-contact-entry.c:891
 msgid "The address book does not exist."
 msgstr "Osoitekirjaa ei ole olemassa."
 
-#: ../src/plugins/e-contact-entry.c:899
+#: ../src/plugins/evolution/e-contact-entry.c:893
 msgid "The \"Me\" contact does not exist."
 msgstr "Yhteystietoa \"Minä\" ei ole olemassa."
 
-#: ../src/plugins/e-contact-entry.c:901
+#: ../src/plugins/evolution/e-contact-entry.c:895
 msgid "The address book is not loaded."
 msgstr "Osoitekirjaa ei ole ladattu."
 
-#: ../src/plugins/e-contact-entry.c:903
+#: ../src/plugins/evolution/e-contact-entry.c:897
 msgid "The address book is already loaded."
 msgstr "Osoitekirja on jo ladattu."
 
-#: ../src/plugins/e-contact-entry.c:905
+#: ../src/plugins/evolution/e-contact-entry.c:899
 msgid "Permission was denied when accessing the address book."
 msgstr "Pääsy osoitekirjaan evättiin."
 
-#: ../src/plugins/e-contact-entry.c:907
+#: ../src/plugins/evolution/e-contact-entry.c:901
 msgid "The contact was not found."
 msgstr "Yhteystietoa ei löytynyt."
 
-#: ../src/plugins/e-contact-entry.c:909
+#: ../src/plugins/evolution/e-contact-entry.c:903
 msgid "This contact ID already exists."
 msgstr "Tämä yhteystiedon tunniste on jo olemassa."
 
-#: ../src/plugins/e-contact-entry.c:911
+#: ../src/plugins/evolution/e-contact-entry.c:905
 msgid "The protocol is not supported."
 msgstr "Yhteyskäytäntö ei ole tuettu."
 
-#: ../src/plugins/e-contact-entry.c:913
+#: ../src/plugins/evolution/e-contact-entry.c:907
 msgid "The operation was cancelled."
 msgstr "Toiminto peruttiin."
 
-#: ../src/plugins/e-contact-entry.c:915
+#: ../src/plugins/evolution/e-contact-entry.c:909
 msgid "The operation could not be cancelled."
 msgstr "Toimintoa ei voi perua."
 
-#: ../src/plugins/e-contact-entry.c:917
+#: ../src/plugins/evolution/e-contact-entry.c:911
 msgid "The address book authentication failed."
 msgstr "Osoitekirjan vaatima tunnistautuminen epäonnistui."
 
-#: ../src/plugins/e-contact-entry.c:919
+#: ../src/plugins/evolution/e-contact-entry.c:913
 msgid ""
 "Authentication is required to access the address book and was not given."
 msgstr "Osoitekirjan käyttö vaatii tunnistautumisen, mutta tietoja ei annettu."
 
-#: ../src/plugins/e-contact-entry.c:921
+#: ../src/plugins/evolution/e-contact-entry.c:915
 msgid "A secure connection is not available."
 msgstr "Suojattu yhteys ei ole saatavilla."
 
-#: ../src/plugins/e-contact-entry.c:923
+#: ../src/plugins/evolution/e-contact-entry.c:917
 msgid "A CORBA error occurred whilst accessing the address book."
 msgstr "Tapahtui CORBA-virhe käsiteltäessä osoitekirjaa."
 
-#: ../src/plugins/e-contact-entry.c:925
+#: ../src/plugins/evolution/e-contact-entry.c:919
 msgid "The address book source does not exist."
 msgstr "Osoitekirjan lähdettä ei ole olemassa."
 
-#: ../src/plugins/e-contact-entry.c:927 ../src/plugins/e-contact-entry.c:930
+#: ../src/plugins/evolution/e-contact-entry.c:921
+#: ../src/plugins/evolution/e-contact-entry.c:924
 msgid "An unknown error occurred."
 msgstr "Tapahtui tuntematon virhe."
 
-#: ../src/plugins/gaim.c:228
+#: ../src/plugins/gaim/gaim.c:228
 msgid "Instant Message (Gaim)"
 msgstr "Pikaviesti (Gaim)"
 
-#: ../src/plugins/gajim.c:402
+#: ../src/plugins/gajim/gajim.c:402
 msgid "Unable to send file"
 msgstr "Tiedostoa ei voi lähettää"
 
-#: ../src/plugins/gajim.c:403
+#: ../src/plugins/gajim/gajim.c:403
 msgid "There is no connection to gajim remote service."
 msgstr "Gajim-etäpalvelimiin ei ole yhteyttä."
 
-#: ../src/plugins/gajim.c:427 ../src/plugins/gajim.c:466
+#: ../src/plugins/gajim/gajim.c:427 ../src/plugins/gajim/gajim.c:466
 msgid "Sending file failed"
 msgstr "Tiedoston lähetys epäonnistui"
 
-#: ../src/plugins/gajim.c:428
+#: ../src/plugins/gajim/gajim.c:428
 msgid "Recipient is missing."
 msgstr "Vastaanottaja puuttuu."
 
-#: ../src/plugins/gajim.c:466
+#: ../src/plugins/gajim/gajim.c:466
 msgid "Unknown recipient."
 msgstr "Tuntematon vastaanottaja."
 
-#: ../src/plugins/gajim.c:488
+#: ../src/plugins/gajim/gajim.c:488
 msgid "Instant Message (Gajim)"
 msgstr "Pikaviesti (Gajim)"
 
-#: ../src/plugins/pidgin.c:239
+#: ../src/plugins/nautilus-burn/nautilus-burn.c:70
+#: ../src/plugins/nautilus-burn/nautilus-burn.c:85
+msgid "New CD/DVD"
+msgstr "Uusi CD/DVD"
+
+#: ../src/plugins/nautilus-burn/nautilus-burn.c:83
+msgid "Existing CD/DVD"
+msgstr "Olemassa oleve CD/DVD"
+
+#: ../src/plugins/nautilus-burn/nautilus-burn.c:162
+msgid "CD/DVD Creator"
+msgstr "CD/DVD-luonti"
+
+#: ../src/plugins/pidgin/pidgin.c:350
 msgid "Instant Message (Pidgin)"
 msgstr "Pikaviesti (Pidgin)"
 
-#: ../src/plugins/sylpheed-claws.c:131
-msgid "Email (Claws Mail)"
-msgstr "Sähköposti (Claws Mail)"
+#: ../src/plugins/removable-devices/removable-devices.c:219
+msgid "Removable disks and shares"
+msgstr "Irrotettavat levyt ja levyjaot"
 
-#: ../src/plugins/thunderbird.c:105
-msgid "Email (Thunderbird)"
-msgstr "Sähköposti (Thunderbird)"
+#: ../src/plugins/upnp/upnp.c:298
+msgid "UPnP Media Server"
+msgstr "UPnP-mediapalvelin"
+
+#~ msgid "Default folder to use"
+#~ msgstr "Käytettävä oletuskansio"
+
+#~ msgid "Email (Balsa)"
+#~ msgstr "Sähköposti (Balsa)"
+
+#~ msgid "Email (Claws Mail)"
+#~ msgstr "Sähköposti (Claws Mail)"
+
+#~ msgid "Email (Thunderbird)"
+#~ msgstr "Sähköposti (Thunderbird)"
 
 #~ msgid "Device does not support Obex Push file transfer"
 #~ msgstr "Laite ei tue Obex Push -tiedostonsiirtoa"
-
-#~ msgid "Send to..."
-#~ msgstr "Lähetä..."
 
 #~ msgid "You don't insert the package name"
 #~ msgstr "Et antanut paketin nimeä"
