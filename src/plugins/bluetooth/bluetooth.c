@@ -370,15 +370,15 @@ get_select_device (char **name, char **bdaddr)
 static void
 save_last_used_obex_device (const char *bdaddr)
 {
-	GConfClient *gconfclient;
+	GConfClient *client;
 
-	gconfclient = gconf_client_get_default ();
-	gconf_client_set_string (gconfclient,
+	client = gconf_client_get_default ();
+	gconf_client_set_string (client,
 				 LAST_OBEX_DEVICE,
 				 bdaddr,
 				 NULL);
 
-	g_object_unref(gconfclient);
+	g_object_unref (client);
 }
 
 
@@ -434,7 +434,10 @@ validate_destination (NstPlugin *plugin,
 	char *bdaddr, *device_path;
 	DBusGProxy *device;
 	GHashTable *props;
+	GValue *value;
 	gboolean found = FALSE;
+	char **array;
+	gboolean first_time = TRUE;
 
 	g_return_val_if_fail (error != NULL, FALSE);
 
@@ -443,7 +446,7 @@ validate_destination (NstPlugin *plugin,
 		return FALSE;
 	}
 
-	if (dbus_g_proxy_call (object, "FindDevice", &e,
+	if (dbus_g_proxy_call (object, "FindDevice", NULL,
 			       G_TYPE_STRING, bdaddr, G_TYPE_INVALID,
 			       DBUS_TYPE_G_OBJECT_PATH, &device_path, G_TYPE_INVALID) == FALSE) {
 		g_free (bdaddr);
@@ -453,49 +456,64 @@ validate_destination (NstPlugin *plugin,
 	device = dbus_g_proxy_new_for_name (conn, "org.bluez",
 					    device_path, "org.bluez.Device");
 
+again:
 	if (dbus_g_proxy_call (device, "GetProperties", NULL,
 			       G_TYPE_INVALID, dbus_g_type_get_map ("GHashTable", G_TYPE_STRING, G_TYPE_VALUE),
-			       &props, G_TYPE_INVALID) != FALSE) {
-		GValue *value;
-		char **array;
-
-		value = g_hash_table_lookup (props, "UUIDs");
-		array = g_value_get_boxed (value);
-		if (array != NULL) {
-			char *uuid;
-			guint i;
-
-			for (i = 0; array[i] != NULL; i++) {
-				if (g_str_has_suffix (array[i], "-0000-1000-8000-00805f9b34fb") != FALSE) {
-					if (g_str_has_prefix (array[i], "0000") != FALSE) {
-						char *tmp;
-						tmp = g_strndup (array[i] + 4, 4);
-						uuid = g_strdup_printf ("0x%s", tmp);
-						g_free (tmp);
-					} else {
-						char *tmp;
-						tmp = g_strndup (array[i], 8);
-						uuid = g_strdup_printf ("0x%s", tmp);
-					}
-				} else {
-					uuid = g_strdup (array[i]);
-				}
-
-				if (strcmp (uuid, OBEX_FILETRANS_SVCLASS_ID_STR) == 0 ||
-				    strcmp (uuid, OBEX_PUSH_SVCLASS_ID_STR) == 0      ){
-					found = TRUE;
-					g_free (uuid);
-					break;
-				}
-
-				g_free (uuid);
-			}
-		} else {
-			/* No array, can't really check now, can we */
-			found = TRUE;
-		}
-		g_hash_table_destroy (props);
+			       &props, G_TYPE_INVALID) == FALSE) {
+		goto bail;
 	}
+
+	value = g_hash_table_lookup (props, "UUIDs");
+	array = g_value_get_boxed (value);
+	if (array != NULL) {
+		char *uuid;
+		guint i;
+
+		for (i = 0; array[i] != NULL; i++) {
+			if (g_str_has_suffix (array[i], "-0000-1000-8000-00805f9b34fb") != FALSE) {
+				if (g_str_has_prefix (array[i], "0000") != FALSE) {
+					char *tmp;
+					tmp = g_strndup (array[i] + 4, 4);
+					uuid = g_strdup_printf ("0x%s", tmp);
+					g_free (tmp);
+				} else {
+					char *tmp;
+					tmp = g_strndup (array[i], 8);
+					uuid = g_strdup_printf ("0x%s", tmp);
+				}
+			} else {
+				uuid = g_strdup (array[i]);
+			}
+
+			if (strcmp (uuid, OBEX_FILETRANS_SVCLASS_ID_STR) == 0 ||
+			    strcmp (uuid, OBEX_PUSH_SVCLASS_ID_STR) == 0      ){
+				found = TRUE;
+				g_free (uuid);
+				break;
+			}
+
+			g_free (uuid);
+		}
+	} else {
+		/* No array, can't really check now, can we */
+		found = TRUE;
+	}
+
+	g_hash_table_destroy (props);
+	if (found == TRUE || first_time == FALSE)
+		goto bail;
+
+	first_time = FALSE;
+
+	/* If no valid service found the first time around, then request services refresh */
+	if (! dbus_g_proxy_call (device, "DiscoverServices", &e, G_TYPE_STRING, NULL,
+				 G_TYPE_INVALID, dbus_g_type_get_map("GHashTable", G_TYPE_UINT, G_TYPE_STRING),
+				 &props, G_TYPE_INVALID)) {
+		goto bail;
+	}
+	goto again;
+
+bail:
 	g_object_unref (device);
 
 	if (found == FALSE)

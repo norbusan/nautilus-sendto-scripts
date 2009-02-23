@@ -1,5 +1,13 @@
 2009-02-23  Bastien Nocera  <hadess@hadess.net>
 
+	* src/plugins/bluetooth/bluetooth.c (save_last_used_obex_device),
+	(validate_destination): When the device UUIDs are available and
+	don't match on first look, call DiscoverServices() to see if
+	different ones are available, original patch from Mario Limonciello
+	<mario_limonciello@dell.com> (Closes: #571367)
+
+2009-02-23  Bastien Nocera  <hadess@hadess.net>
+
 	* src/plugins/pidgin/pidgin.c (add_pidgin_contacts_to_model):
 	Patch from Serkan Kaba <serkan@gentoo.org> to add support
 	for the "Pecan" Pidgin MSN plugin (Closes: #572760)
