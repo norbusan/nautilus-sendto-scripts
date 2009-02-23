@@ -1,4 +1,27 @@
 =============
+Version 1.1.2
+=============
+
+Nautilus Sendto
+
+New features:
+	* Add an evolution plugin to allow sending arbitrary attachments
+	  through nautilus-sendto
+	* Add a "Removable devices" plugin
+	* Enable the "burn" plugin by default
+
+Bug fixes:
+	* Remove the separate mailer plugins, and use the default
+	GNOME mailer instead
+	* Fix no plugins being able to send files (oops)
+	* Be more lax when checking whether a device supports ObexFTP,
+	  also check for the File Transfer profile, and update the profiles
+	  if a supported on doesn't appear
+	* Make it possible for plugins to support sending directories
+	* Support the "Pecan" Pidgin MSN plugin
+	* Fix a few memory leaks
+
+=============
 Version 1.1.1
 =============
 

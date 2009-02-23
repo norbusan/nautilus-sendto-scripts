@@ -1,3 +1,11 @@
+========= nautilus-sendto 1.1.2 =========
+
+2009-02-23  Bastien Nocera  <hadess@hadess.net>
+
+	* NEWS: upd
+	* configure.in: 1.1.2
+	* evolution/Makefile.am: Fix distcheck
+
 2009-02-23  Bastien Nocera  <hadess@hadess.net>
 
 	* src/plugins/bluetooth/bluetooth.c (save_last_used_obex_device),
