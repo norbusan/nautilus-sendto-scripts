@@ -1,3 +1,9 @@
+2009-02-23  Bastien Nocera  <hadess@hadess.net>
+
+	* src/plugins/pidgin/pidgin.c (add_pidgin_contacts_to_model):
+	Patch from Serkan Kaba <serkan@gentoo.org> to add support
+	for the "Pecan" Pidgin MSN plugin (Closes: #572760)
+
 2009-02-18  Bastien Nocera  <hadess@hadess.net>
 
 	* Makefile.am:

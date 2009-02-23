@@ -145,7 +145,7 @@ add_pidgin_contacts_to_model (GtkTreeStore *store,
 		for (i = 0; i < accounts; ++i) {
 			dat = g_ptr_array_index (contacts_group, i);
 
-			if (strcmp(dat->prt, "prpl-msn")==0)
+			if (strcmp(dat->prt, "prpl-msn")==0 || strcmp(dat->prt, "prpl-msn-pecan")==0)
 				icon = msn;
 			else if (strcmp(dat->prt,"prpl-jabber")==0)
 				icon = jabber;
