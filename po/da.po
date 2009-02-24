@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nautilus-sendto\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-02-08 11:14+0100\n"
-"PO-Revision-Date: 2009-02-07 17:42+0100\n"
+"POT-Creation-Date: 2009-02-24 23:41+0100\n"
+"PO-Revision-Date: 2009-02-24 14:21+0100\n"
 "Last-Translator: Mads Lundby <lundbymads@gmail.com>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
 "MIME-Version: 1.0\n"
@@ -41,6 +41,19 @@ msgid ""
 msgstr ""
 "Anvendes til at gemme hvilke arkivtyper, der blev brugt sidste gang (0: zip, "
 "1: tar.gz, 2: tar.bz2)."
+
+#: ../evolution/nautilus-sendto.c:47
+msgid "_Send to..."
+msgstr "_Send til..."
+
+#: ../evolution/org-gnome-evolution-send-attachments-to.eplug.xml.h:1
+msgid "Send files to remote devices, or people"
+msgstr "Send filer til fjernenheder eller personer"
+
+#. the path to the shared library
+#: ../evolution/org-gnome-evolution-send-attachments-to.eplug.xml.h:3
+msgid "Send to..."
+msgstr "Send til..."
 
 #. type
 #. ui requirement
@@ -129,20 +142,16 @@ msgstr "Send t_il:"
 msgid "_Send"
 msgstr "_Send"
 
-#: ../src/plugins/balsa/balsa.c:102
-msgid "Email (Balsa)"
-msgstr "E-post (Balsa)"
-
-#: ../src/plugins/bluetooth/bluetooth.c:441
+#: ../src/plugins/bluetooth/bluetooth.c:445
 msgid "Programming error, could not find the device in the list"
 msgstr "Programmeringsfejl, kunne ikke finde enheden i listen"
 
-#: ../src/plugins/bluetooth/bluetooth.c:500
+#: ../src/plugins/bluetooth/bluetooth.c:520
 #, c-format
 msgid "Obex Push file transfer unsupported"
 msgstr "Obex Push-filoverførsel ikke understøttet"
 
-#: ../src/plugins/bluetooth/bluetooth.c:524
+#: ../src/plugins/bluetooth/bluetooth.c:544
 msgid "Bluetooth (OBEX Push)"
 msgstr "Bluetooth (OBEX Push)"
 
@@ -158,7 +167,7 @@ msgstr "Den udvalgte kontakt er afkoblet."
 msgid "Instant Message (Empathy)"
 msgstr "Kvikbesked (Empathy)"
 
-#: ../src/plugins/evolution/evolution.c:221
+#: ../src/plugins/evolution/evolution.c:367
 msgid "Email (Evolution)"
 msgstr "E-post (Evolution)"
 
@@ -304,20 +313,22 @@ msgstr "Cd/dvd-opretter"
 msgid "Instant Message (Pidgin)"
 msgstr "Kvikbesked (Pidgin)"
 
-#: ../src/plugins/sylpheed-claws/sylpheed-claws.c:131
-msgid "Email (Claws Mail)"
-msgstr "E-post (Claws Mail)"
-
-#: ../src/plugins/thunderbird/thunderbird.c:105
-msgid "Email (Thunderbird)"
-msgstr "E-Post (Thunderbird)"
+#: ../src/plugins/removable-devices/removable-devices.c:219
+msgid "Removable disks and shares"
+msgstr "Flytbare diske og delinger"
 
 #: ../src/plugins/upnp/upnp.c:298
 msgid "UPnP Media Server"
 msgstr "UPnP-medieserver"
 
-#~ msgid "Send to..."
-#~ msgstr "Send til..."
+#~ msgid "Email (Balsa)"
+#~ msgstr "E-post (Balsa)"
+
+#~ msgid "Email (Claws Mail)"
+#~ msgstr "E-post (Claws Mail)"
+
+#~ msgid "Email (Thunderbird)"
+#~ msgstr "E-Post (Thunderbird)"
 
 #~ msgid "Default folder to use"
 #~ msgstr "Standardmappe til brug"
