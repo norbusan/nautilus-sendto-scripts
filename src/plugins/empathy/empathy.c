@@ -30,13 +30,17 @@
 #include <libempathy/empathy-contact-manager.h>
 #include <libempathy/empathy-dispatcher.h>
 #include <libempathy/empathy-utils.h>
+#include <libempathy/empathy-tp-file.h>
 
 #include <libempathy-gtk/empathy-contact-list-store.h>
+#include <libempathy-gtk/empathy-ui-utils.h>
 
 #include "nautilus-sendto-plugin.h"
 
 static EmpathyContactManager *manager = NULL;
 static MissionControl *mc = NULL;
+static EmpathyDispatcher *dispatcher = NULL;
+static guint transfers = 0;
 
 static gboolean destroy (NstPlugin *plugin);
 
@@ -48,9 +52,9 @@ init (NstPlugin *plugin)
 
   g_print ("Init %s plugin\n", plugin->info->id);
 
-  empathy_debug_set_flags (g_getenv ("EMPATHY_DEBUG"));
+  empathy_gtk_init ();
 
-  mc = empathy_mission_control_new ();
+  mc = empathy_mission_control_dup_singleton ();
   accounts = mission_control_get_online_connections (mc, FALSE);
 
   if (g_slist_length (accounts) == 0)
@@ -76,7 +80,7 @@ get_contacts_widget (NstPlugin *plugin)
 
   /* TODO: Replace all this with EmpathyContactSelector once it's fixed up and
    * merged into libempathy-gtk. */
-  manager = empathy_contact_manager_new ();
+  manager = empathy_contact_manager_dup_singleton ();
   store = empathy_contact_list_store_new (EMPATHY_CONTACT_LIST (manager));
 
   empathy_contact_list_store_set_is_compact (store, TRUE);
@@ -90,27 +94,26 @@ get_contacts_widget (NstPlugin *plugin)
   gtk_cell_layout_add_attribute (GTK_CELL_LAYOUT (combo),
       renderer, "text", EMPATHY_CONTACT_LIST_STORE_COL_NAME);
 
+  g_object_unref (store);
+
   return combo;
 }
 
-static gboolean
-get_selected_contact (GtkWidget *contact_widget,
-                      EmpathyContact **contact)
+static EmpathyContact *
+get_selected_contact (GtkWidget *contact_widget)
 {
+  EmpathyContact *contact;
   GtkTreeModel *model;
   GtkTreeIter iter;
 
   if (!gtk_combo_box_get_active_iter (GTK_COMBO_BOX (contact_widget), &iter))
-    return FALSE;
+    return NULL;
 
   model = gtk_combo_box_get_model (GTK_COMBO_BOX (contact_widget));
   gtk_tree_model_get (model, &iter,
-      EMPATHY_CONTACT_LIST_STORE_COL_CONTACT, contact, -1);
+      EMPATHY_CONTACT_LIST_STORE_COL_CONTACT, &contact, -1);
 
-  if (*contact == NULL)
-    return FALSE;
-
-  return TRUE;
+  return contact;
 }
 
 static gboolean
@@ -119,25 +122,96 @@ validate_destination (NstPlugin *plugin,
                       gchar **error)
 {
   EmpathyContact *contact = NULL;
+  gboolean ret = TRUE;
 
-  if (!get_selected_contact (contact_widget, &contact))
+  contact = get_selected_contact (contact_widget);
+
+  if (!contact)
     return FALSE;
 
   if (!empathy_contact_can_send_files (contact))
     {
       *error = g_strdup (_("The contact selected cannot receive files."));
-      return FALSE;
+      ret = FALSE;
     }
 
-  if (!empathy_contact_is_online (contact))
+  if (ret && !empathy_contact_is_online (contact))
     {
       *error = g_strdup (_("The contact selected is offline."));
-      return FALSE;
+      ret = FALSE;
     }
 
   g_object_unref (contact);
 
-  return TRUE;
+  return ret;
+}
+
+static void
+quit (void)
+{
+  if (--transfers > 0)
+    return;
+
+  destroy (NULL);
+  gtk_main_quit ();
+}
+
+static void
+state_changed_cb (EmpathyTpFile *tp_file,
+                  GParamSpec *arg,
+                  gpointer user_data)
+{
+  guint state, reason;
+
+  state = empathy_tp_file_get_state (tp_file, &reason);
+
+  /* If the transfer is completed or cancelled (use constants from tp-glib
+   * when the FT spec is undrafted). */
+  if (state == 4 || state == 5)
+    quit ();
+}
+
+static void
+error_dialog_cb (GtkDialog *dialog,
+                 gint arg,
+                 gpointer user_data)
+{
+  gtk_widget_destroy (GTK_WIDGET (dialog));
+  quit ();
+}
+
+static void
+send_file_cb (EmpathyDispatchOperation *dispatch,
+              const GError *error,
+              gpointer user_data)
+{
+  GFile *file = (GFile *) user_data;
+
+  if (error)
+    {
+      GtkWidget *dialog;
+      dialog = gtk_message_dialog_new (NULL, 0, GTK_MESSAGE_ERROR,
+          GTK_BUTTONS_CLOSE,
+          error->message ? error->message : _("No error message"));
+
+      g_signal_connect (dialog, "response", G_CALLBACK (error_dialog_cb), NULL);
+      gtk_widget_show (dialog);
+    }
+  else
+    {
+      EmpathyTpFile *tp_file;
+
+      tp_file = EMPATHY_TP_FILE (
+          empathy_dispatch_operation_get_channel_wrapper (dispatch));
+
+      g_signal_connect (tp_file, "notify::state",
+          G_CALLBACK (state_changed_cb), NULL);
+
+      empathy_tp_file_offer (tp_file, file, NULL);
+    }
+
+  g_object_unref (file);
+
 }
 
 static gboolean
@@ -145,27 +219,72 @@ send_files (NstPlugin *plugin,
             GtkWidget *contact_widget,
             GList *file_list)
 {
-  EmpathyContact *contact = NULL;
+  EmpathyContact *contact;
   GList *l;
 
-  if (!get_selected_contact (contact_widget, &contact))
+  contact = get_selected_contact (contact_widget);
+
+  dispatcher = empathy_dispatcher_dup_singleton ();
+
+  if (!contact)
     return FALSE;
 
   for (l = file_list; l; l = l->next)
     {
       gchar *path = l->data;
       GFile *file;
+      GFileInfo *info;
+      GError *error = NULL;
+      GTimeVal mod_timeval;
 
       file = g_file_new_for_uri (path);
-      empathy_dispatcher_send_file (contact, file);
 
-      g_object_unref (file);
-      g_free (path);
+      info = g_file_query_info (file,
+          G_FILE_ATTRIBUTE_STANDARD_SIZE ","
+          G_FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE ","
+          G_FILE_ATTRIBUTE_TIME_MODIFIED ","
+          G_FILE_ATTRIBUTE_STANDARD_NAME,
+          0, NULL, &error);
+
+      if (error)
+        {
+          GtkWidget *dialog;
+          dialog = gtk_message_dialog_new (NULL, 0, GTK_MESSAGE_ERROR,
+              GTK_BUTTONS_CLOSE, "Failed to get information for %s",
+              path);
+          gtk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG (dialog),
+              error->message ? error->message : _("No error message"));
+          gtk_dialog_run (GTK_DIALOG (dialog));
+          gtk_widget_destroy (dialog);
+
+          g_object_unref (file);
+          g_object_unref (contact);
+          continue;
+        }
+
+      g_file_info_get_modification_time (info, &mod_timeval);
+
+      empathy_dispatcher_send_file_to_contact (contact,
+          g_file_info_get_name (info),
+          g_file_info_get_size (info),
+          mod_timeval.tv_sec,
+          g_file_info_get_content_type (info),
+          send_file_cb, file);
+
+      transfers++;
+
+      g_object_unref (info);
     }
 
   g_object_unref (contact);
 
-  return TRUE;
+  if (transfers == 0)
+    {
+      destroy (NULL);
+      return TRUE;
+    }
+
+  return FALSE;
 }
 
 static gboolean
@@ -176,6 +295,9 @@ destroy (NstPlugin *plugin)
 
   if (mc)
     g_object_unref (mc);
+
+  if (dispatcher)
+    g_object_unref (dispatcher);
 
   return TRUE;
 }
