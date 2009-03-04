@@ -1,3 +1,8 @@
+2009-02-28  Jonny Lamb  <jonny.lamb@collabora.co.uk>
+
+	* src/plugins/empathy/empathy.c: Use tp-glib enums instead of hardcoded
+	values. (Closes: #573545)
+
 2009-02-27  Jonny Lamb  <jonny.lamb@collabora.co.uk>
 
 	* configure.in: Bumped dependency on libempathy.

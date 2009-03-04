@@ -26,6 +26,8 @@
 #include <gtk/gtk.h>
 #include <gio/gio.h>
 
+#include <telepathy-glib/enums.h>
+
 #include <libempathy/empathy-debug.h>
 #include <libempathy/empathy-contact-manager.h>
 #include <libempathy/empathy-dispatcher.h>
@@ -161,13 +163,11 @@ state_changed_cb (EmpathyTpFile *tp_file,
                   GParamSpec *arg,
                   gpointer user_data)
 {
-  guint state, reason;
+  TpFileTransferState state;
 
-  state = empathy_tp_file_get_state (tp_file, &reason);
+  state = empathy_tp_file_get_state (tp_file, NULL);
 
-  /* If the transfer is completed or cancelled (use constants from tp-glib
-   * when the FT spec is undrafted). */
-  if (state == 4 || state == 5)
+  if (state == TP_FILE_TRANSFER_STATE_COMPLETED || state == TP_FILE_TRANSFER_STATE_CANCELLED)
     quit ();
 }
 
