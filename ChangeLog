@@ -1,3 +1,8 @@
+2009-03-05  Bastien Nocera  <hadess@hadess.net>
+
+	* pidgin_plugin/nautilus-sendto-plugin.c (save_online_buddies),
+	(send_file), (take_spool_files): Fix a few warnings
+
 2009-02-28  Jonny Lamb  <jonny.lamb@collabora.co.uk>
 
 	* src/plugins/empathy/empathy.c: Use tp-glib enums instead of hardcoded

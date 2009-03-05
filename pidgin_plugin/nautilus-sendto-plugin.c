@@ -31,6 +31,7 @@
 #endif
 
 #include <glib.h>
+#include <glib/gstdio.h>
 #include <glib/gi18n.h>
 #include <sys/stat.h>
 #include <sys/types.h>
@@ -105,7 +106,6 @@ save_online_buddies (PurpleBuddy *buddy, gpointer data){
     PurpleBuddyList *blist;
     GString *str;
     gchar *fd_name;
-    FILE *fd;
 
     fd_name = g_build_path ("/", g_get_home_dir(), PLUGIN_HOME, 
 			    B_ONLINE, NULL);
@@ -166,7 +166,6 @@ send_file (GString *username, GString *cname,
 	   GString *protocol, GString *file){
 
     PurpleAccount *account;
-    PurpleXfer *xfer;
 
     account = purple_accounts_find (username->str, protocol->str);
     if (account == NULL)
@@ -234,7 +233,7 @@ take_spool_files(){
 	    if (dir == NULL){
 		    purple_debug_info ("nautilus","Can't open the spool dir\n");
 	    }else{
-		    while (ep = readdir(dir)){
+		    while ((ep = readdir(dir)) > 0){
 			    gchar *file;
 
 			    if ((strcmp (ep->d_name,".")==0)   || 
