@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: nautilus-sendto.HEAD.es\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=nautilus-sendto&component=general\n"
-"POT-Creation-Date: 2009-01-07 21:28+0000\n"
-"PO-Revision-Date: 2009-01-18 19:02+0100\n"
+"POT-Creation-Date: 2009-02-28 00:15+0000\n"
+"PO-Revision-Date: 2009-03-08 16:34+0100\n"
 "Last-Translator: Jorge González <jorgegonz@svn.gnome.org>\n"
 "Language-Team: Español <gnome-es-list@gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -43,14 +43,28 @@ msgstr ""
 "Usado para almacenar qué tipo de archivo se envió la última vez (0: zip, 1: "
 "tar.gz, 2: tar.bz2)."
 
+#: ../evolution/nautilus-sendto.c:47
+#| msgid "Send to..."
+msgid "_Send to..."
+msgstr "_Enviar a..."
+
+#: ../evolution/org-gnome-evolution-send-attachments-to.eplug.xml.h:1
+msgid "Send files to remote devices, or people"
+msgstr "Enviar archivos a dispositivos remotos o personas"
+
+#. the path to the shared library
+#: ../evolution/org-gnome-evolution-send-attachments-to.eplug.xml.h:3
+msgid "Send to..."
+msgstr "Enviar a..."
+
 #. type
 #. ui requirement
 #. flags
 #. dependencies
 #. priority
 #. id
-#: ../gaim_plugin/nautilus-sendto-plugin.c:308
-#: ../pidgin_plugin/nautilus-sendto-plugin.c:331
+#: ../gaim_plugin/nautilus-sendto-plugin.c:309
+#: ../pidgin_plugin/nautilus-sendto-plugin.c:332
 msgid "Nautilus Integration"
 msgstr "Integración con Nautilus"
 
@@ -60,12 +74,12 @@ msgstr "Integración con Nautilus"
 #. name
 #. version
 #. summary
-#: ../gaim_plugin/nautilus-sendto-plugin.c:310
 #: ../gaim_plugin/nautilus-sendto-plugin.c:311
-#: ../pidgin_plugin/nautilus-sendto-plugin.c:333
+#: ../gaim_plugin/nautilus-sendto-plugin.c:312
 #: ../pidgin_plugin/nautilus-sendto-plugin.c:334
+#: ../pidgin_plugin/nautilus-sendto-plugin.c:335
 msgid "Provides integration with Nautilus"
-msgstr "Proporcina integración con Nautilus"
+msgstr "Proporciona integración con Nautilus"
 
 #: ../src/nautilus-nste.c:92 ../src/nautilus-nste.c:97
 #: ../src/nautilus-sendto.glade.h:3
@@ -80,35 +94,31 @@ msgstr "Enviar un archivo por correo, por mensaje instantáneo..."
 msgid "Send files by mail, instant message..."
 msgstr "Enviar archivos por correo, por mensaje instantáneo..."
 
-#: ../src/nautilus-sendto-command.c:76
-msgid "Default folder to use"
-msgstr "Carpeta predeterminada a usar"
-
-#: ../src/nautilus-sendto-command.c:534
+#: ../src/nautilus-sendto-command.c:533
 msgid "Files"
 msgstr "Archivos"
 
-#: ../src/nautilus-sendto-command.c:741
+#: ../src/nautilus-sendto-command.c:737
 #, c-format
 msgid "Expects URIs or filenames to be passed as options\n"
-msgstr "Espera que se pasen como opciones URIs o nombres de archivo\n"
+msgstr "Espera que se pasen como opciones URI o nombres de archivo\n"
 
-#: ../src/nautilus-sendto-command.c:758
+#: ../src/nautilus-sendto-command.c:754
 msgid "Nautilus Sendto"
 msgstr "Nautilus Sendto"
 
-#: ../src/nautilus-sendto-command.c:762
+#: ../src/nautilus-sendto-command.c:758
 #, c-format
 msgid "Could not parse command-line options: %s\n"
 msgstr "No se pudieron analizar las opciones de la línea de comandos: %s\n"
 
-#: ../src/nautilus-sendto-command.c:777
+#: ../src/nautilus-sendto-command.c:773
 msgid "Could not load any plugins."
 msgstr "No se pudo cargar ningún complemento."
 
-#: ../src/nautilus-sendto-command.c:780
+#: ../src/nautilus-sendto-command.c:776
 msgid "Please verify your installation"
-msgstr "Por favor, compruebe su instalación"
+msgstr "Compruebe su instalación"
 
 #: ../src/nautilus-sendto.glade.h:1
 msgid "<b>Compression</b>"
@@ -134,37 +144,36 @@ msgstr "Enviar _a:"
 msgid "_Send"
 msgstr "_Enviar"
 
-#: ../src/plugins/balsa/balsa.c:103
-msgid "Email (Balsa)"
-msgstr "Correo-e (Balsa)"
-
-#: ../src/plugins/bluetooth/bluetooth.c:438
-#: ../src/plugins/bluetooth/bluetooth.c:446
+#: ../src/plugins/bluetooth/bluetooth.c:445
 msgid "Programming error, could not find the device in the list"
 msgstr "Error de programación, no se pudo encontrar el dispositivo en la lista"
 
-#: ../src/plugins/bluetooth/bluetooth.c:495
+#: ../src/plugins/bluetooth/bluetooth.c:520
 #, c-format
 msgid "Obex Push file transfer unsupported"
 msgstr "La transferencia de archivos Obex Push no está soportada"
 
-#: ../src/plugins/bluetooth/bluetooth.c:519
+#: ../src/plugins/bluetooth/bluetooth.c:544
 msgid "Bluetooth (OBEX Push)"
 msgstr "Bluetooth (OBEX Push)"
 
-#: ../src/plugins/empathy/empathy.c:128
+#: ../src/plugins/empathy/empathy.c:134
 msgid "The contact selected cannot receive files."
 msgstr "El contacto seleccionado no puede recibir archivos."
 
-#: ../src/plugins/empathy/empathy.c:134
+#: ../src/plugins/empathy/empathy.c:140
 msgid "The contact selected is offline."
 msgstr "El contacto seleccionado está desconectado."
 
-#: ../src/plugins/empathy/empathy.c:187
+#: ../src/plugins/empathy/empathy.c:195 ../src/plugins/empathy/empathy.c:256
+msgid "No error message"
+msgstr "Sin mensaje de error"
+
+#: ../src/plugins/empathy/empathy.c:309
 msgid "Instant Message (Empathy)"
 msgstr "Mensaje instantáneo (Empathy)"
 
-#: ../src/plugins/evolution/evolution.c:221
+#: ../src/plugins/evolution/evolution.c:367
 msgid "Email (Evolution)"
 msgstr "Correo-e (Evolution)"
 
@@ -294,16 +303,16 @@ msgstr "Destinatario desconocido."
 msgid "Instant Message (Gajim)"
 msgstr "Mensaje instantáneo (Gajim)"
 
-#: ../src/plugins/nautilus-burn/nautilus-burn.c:69
-#: ../src/plugins/nautilus-burn/nautilus-burn.c:84
+#: ../src/plugins/nautilus-burn/nautilus-burn.c:70
+#: ../src/plugins/nautilus-burn/nautilus-burn.c:85
 msgid "New CD/DVD"
 msgstr "CD/DVD nuevo"
 
-#: ../src/plugins/nautilus-burn/nautilus-burn.c:82
+#: ../src/plugins/nautilus-burn/nautilus-burn.c:83
 msgid "Existing CD/DVD"
 msgstr "CD/DVD existente"
 
-#: ../src/plugins/nautilus-burn/nautilus-burn.c:183
+#: ../src/plugins/nautilus-burn/nautilus-burn.c:162
 msgid "CD/DVD Creator"
 msgstr "Creador de CD/DVD"
 
@@ -311,23 +320,28 @@ msgstr "Creador de CD/DVD"
 msgid "Instant Message (Pidgin)"
 msgstr "Mensaje instantáneo (Pidgin)"
 
-#: ../src/plugins/sylpheed-claws/sylpheed-claws.c:131
-msgid "Email (Claws Mail)"
-msgstr "Correo-e (correo Claws)"
-
-#: ../src/plugins/thunderbird/thunderbird.c:105
-msgid "Email (Thunderbird)"
-msgstr "Correo-e (Thunderbird)"
+#: ../src/plugins/removable-devices/removable-devices.c:219
+msgid "Removable disks and shares"
+msgstr "Soportes extraíbles y comparticiones"
 
 #: ../src/plugins/upnp/upnp.c:298
 msgid "UPnP Media Server"
 msgstr "Servidor multimedia UPnP"
 
+#~ msgid "Default folder to use"
+#~ msgstr "Carpeta predeterminada a usar"
+
+#~ msgid "Email (Balsa)"
+#~ msgstr "Correo-e (Balsa)"
+
+#~ msgid "Email (Claws Mail)"
+#~ msgstr "Correo-e (correo Claws)"
+
+#~ msgid "Email (Thunderbird)"
+#~ msgstr "Correo-e (Thunderbird)"
+
 #~ msgid "Device does not support Obex Push file transfer"
 #~ msgstr "El dispositivo no soporta la transferencia de archivos OBEX Push"
-
-#~ msgid "Send to..."
-#~ msgstr "Enviar a..."
 
 #~ msgid "You don't insert the package name"
 #~ msgstr "No inserta el nombre del paquete"
