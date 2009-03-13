@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nautilus-sendto\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-02-24 23:41+0100\n"
-"PO-Revision-Date: 2009-02-24 14:21+0100\n"
+"POT-Creation-Date: 2009-03-13 21:50+0100\n"
+"PO-Revision-Date: 2009-03-11 12:39+0100\n"
 "Last-Translator: Mads Lundby <lundbymads@gmail.com>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
 "MIME-Version: 1.0\n"
@@ -62,7 +62,7 @@ msgstr "Send til..."
 #. priority
 #. id
 #: ../gaim_plugin/nautilus-sendto-plugin.c:309
-#: ../pidgin_plugin/nautilus-sendto-plugin.c:332
+#: ../pidgin_plugin/nautilus-sendto-plugin.c:331
 msgid "Nautilus Integration"
 msgstr "Nautilus-integration"
 
@@ -74,8 +74,8 @@ msgstr "Nautilus-integration"
 #. summary
 #: ../gaim_plugin/nautilus-sendto-plugin.c:311
 #: ../gaim_plugin/nautilus-sendto-plugin.c:312
+#: ../pidgin_plugin/nautilus-sendto-plugin.c:333
 #: ../pidgin_plugin/nautilus-sendto-plugin.c:334
-#: ../pidgin_plugin/nautilus-sendto-plugin.c:335
 msgid "Provides integration with Nautilus"
 msgstr "Tilbyder integration med Nautilus"
 
@@ -155,15 +155,19 @@ msgstr "Obex Push-filoverførsel ikke understøttet"
 msgid "Bluetooth (OBEX Push)"
 msgstr "Bluetooth (OBEX Push)"
 
-#: ../src/plugins/empathy/empathy.c:128
+#: ../src/plugins/empathy/empathy.c:136
 msgid "The contact selected cannot receive files."
 msgstr "Den valgte kontakt kan ikke modtage filer."
 
-#: ../src/plugins/empathy/empathy.c:134
+#: ../src/plugins/empathy/empathy.c:142
 msgid "The contact selected is offline."
 msgstr "Den udvalgte kontakt er afkoblet."
 
-#: ../src/plugins/empathy/empathy.c:187
+#: ../src/plugins/empathy/empathy.c:195 ../src/plugins/empathy/empathy.c:256
+msgid "No error message"
+msgstr "Ingen fejlbesked"
+
+#: ../src/plugins/empathy/empathy.c:309
 msgid "Instant Message (Empathy)"
 msgstr "Kvikbesked (Empathy)"
 
@@ -307,7 +311,7 @@ msgstr "Eksisterende cd/dvd"
 
 #: ../src/plugins/nautilus-burn/nautilus-burn.c:162
 msgid "CD/DVD Creator"
-msgstr "Cd/dvd-opretter"
+msgstr "Cd/dvd-brænder"
 
 #: ../src/plugins/pidgin/pidgin.c:350
 msgid "Instant Message (Pidgin)"
