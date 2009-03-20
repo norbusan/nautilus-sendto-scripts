@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nautilus-sendto\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-03-03 09:11+0100\n"
-"PO-Revision-Date: 2009-03-03 09:11+0100\n"
+"POT-Creation-Date: 2009-03-20 22:40+0100\n"
+"PO-Revision-Date: 2009-03-20 22:40+0100\n"
 "Last-Translator: Daniel Nylander <po@danielnylander.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "MIME-Version: 1.0\n"
@@ -34,7 +34,7 @@ msgstr "Används för att lagra vilken arkivtyp som senast användes (0: zip, 1:
 
 #: ../evolution/nautilus-sendto.c:47
 msgid "_Send to..."
-msgstr "_Skicka till..."
+msgstr "S_kicka till..."
 
 #: ../evolution/org-gnome-evolution-send-attachments-to.eplug.xml.h:1
 msgid "Send files to remote devices, or people"
@@ -52,7 +52,7 @@ msgstr "Skicka till..."
 #. priority
 #. id
 #: ../gaim_plugin/nautilus-sendto-plugin.c:309
-#: ../pidgin_plugin/nautilus-sendto-plugin.c:332
+#: ../pidgin_plugin/nautilus-sendto-plugin.c:331
 msgid "Nautilus Integration"
 msgstr "Nautilus-integration"
 
@@ -64,8 +64,8 @@ msgstr "Nautilus-integration"
 #. summary
 #: ../gaim_plugin/nautilus-sendto-plugin.c:311
 #: ../gaim_plugin/nautilus-sendto-plugin.c:312
+#: ../pidgin_plugin/nautilus-sendto-plugin.c:333
 #: ../pidgin_plugin/nautilus-sendto-plugin.c:334
-#: ../pidgin_plugin/nautilus-sendto-plugin.c:335
 msgid "Provides integration with Nautilus"
 msgstr "Tillhandahåller integration med Nautilus"
 
@@ -146,11 +146,11 @@ msgstr "Inget stöd för Obex Push-filöverföring"
 msgid "Bluetooth (OBEX Push)"
 msgstr "Bluetooth (OBEX Push)"
 
-#: ../src/plugins/empathy/empathy.c:134
+#: ../src/plugins/empathy/empathy.c:136
 msgid "The contact selected cannot receive files."
 msgstr "Vald kontakt kan inte ta emot filer."
 
-#: ../src/plugins/empathy/empathy.c:140
+#: ../src/plugins/empathy/empathy.c:142
 msgid "The contact selected is offline."
 msgstr "Vald kontakt är frånkopplad."
 
