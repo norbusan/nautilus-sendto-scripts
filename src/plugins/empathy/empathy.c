@@ -34,12 +34,11 @@
 #include <libempathy/empathy-utils.h>
 #include <libempathy/empathy-tp-file.h>
 
-#include <libempathy-gtk/empathy-contact-list-store.h>
+#include <libempathy-gtk/empathy-contact-selector.h>
 #include <libempathy-gtk/empathy-ui-utils.h>
 
 #include "nautilus-sendto-plugin.h"
 
-static EmpathyContactManager *manager = NULL;
 static MissionControl *mc = NULL;
 static EmpathyDispatcher *dispatcher = NULL;
 static guint transfers = 0;
@@ -76,29 +75,15 @@ init (NstPlugin *plugin)
 static GtkWidget *
 get_contacts_widget (NstPlugin *plugin)
 {
-  EmpathyContactListStore *store;
-  GtkWidget *combo;
-  GtkCellRenderer *renderer;
+  EmpathyContactManager *manager;
+  GtkWidget *selector;
 
-  /* TODO: Replace all this with EmpathyContactSelector once it's fixed up and
-   * merged into libempathy-gtk. */
   manager = empathy_contact_manager_dup_singleton ();
-  store = empathy_contact_list_store_new (EMPATHY_CONTACT_LIST (manager));
+  selector = empathy_contact_selector_new (EMPATHY_CONTACT_LIST (manager));
 
-  empathy_contact_list_store_set_is_compact (store, TRUE);
-  empathy_contact_list_store_set_show_groups (store, FALSE);
+  g_object_unref (manager);
 
-  combo = gtk_combo_box_new_with_model (GTK_TREE_MODEL (store));
-
-  renderer = gtk_cell_renderer_text_new ();
-
-  gtk_cell_layout_pack_start (GTK_CELL_LAYOUT (combo), renderer, TRUE);
-  gtk_cell_layout_add_attribute (GTK_CELL_LAYOUT (combo),
-      renderer, "text", EMPATHY_CONTACT_LIST_STORE_COL_NAME);
-
-  g_object_unref (store);
-
-  return combo;
+  return selector;
 }
 
 static EmpathyContact *
@@ -191,7 +176,7 @@ send_file_cb (EmpathyDispatchOperation *dispatch,
     {
       GtkWidget *dialog;
       dialog = gtk_message_dialog_new (NULL, 0, GTK_MESSAGE_ERROR,
-          GTK_BUTTONS_CLOSE,
+          GTK_BUTTONS_CLOSE, "%s",
           error->message ? error->message : _("No error message"));
 
       g_signal_connect (dialog, "response", G_CALLBACK (error_dialog_cb), NULL);
@@ -253,7 +238,7 @@ send_files (NstPlugin *plugin,
               GTK_BUTTONS_CLOSE, "Failed to get information for %s",
               path);
           gtk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG (dialog),
-              error->message ? error->message : _("No error message"));
+              "%s", error->message ? error->message : _("No error message"));
           gtk_dialog_run (GTK_DIALOG (dialog));
           gtk_widget_destroy (dialog);
 
@@ -290,9 +275,6 @@ send_files (NstPlugin *plugin,
 static gboolean
 destroy (NstPlugin *plugin)
 {
-  if (manager)
-    g_object_unref (manager);
-
   if (mc)
     g_object_unref (mc);
 

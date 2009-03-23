@@ -1,3 +1,8 @@
+2009-03-18  Jonny Lamb  <jonny.lamb@collabora.co.uk>
+
+	* src/plugins/empathy/empathy.c: Fix a couple of warnings and use
+	EmpathyContactSelector. (Closes: #567065)
+
 2009-03-05  Bastien Nocera  <hadess@hadess.net>
 
 	* pidgin_plugin/nautilus-sendto-plugin.c (save_online_buddies),
