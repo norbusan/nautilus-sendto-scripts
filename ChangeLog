@@ -1,3 +1,10 @@
+========= nautilus-sendto 1.1.3 =========
+
+2009-04-03  Bastien Nocera  <hadess@hadess.net>
+
+	* NEWS: upd
+	* configure.in: 1.1.3
+
 2009-03-18  Jonny Lamb  <jonny.lamb@collabora.co.uk>
 
 	* src/plugins/empathy/empathy.c: Fix a couple of warnings and use
