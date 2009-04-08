@@ -3,7 +3,6 @@
 nst.schemas.in
 evolution/nautilus-sendto.c
 evolution/org-gnome-evolution-send-attachments-to.eplug.xml
-gaim_plugin/nautilus-sendto-plugin.c
 pidgin_plugin/nautilus-sendto-plugin.c
 src/nautilus-nste.c
 src/nautilus-nste.h
@@ -14,7 +13,6 @@ src/plugins/bluetooth/bluetooth.c
 src/plugins/empathy/empathy.c
 src/plugins/evolution/evolution.c
 src/plugins/evolution/e-contact-entry.c
-src/plugins/gaim/gaim.c
 src/plugins/gajim/gajim.c
 src/plugins/nautilus-burn/nautilus-burn.c
 src/plugins/pidgin/pidgin.c

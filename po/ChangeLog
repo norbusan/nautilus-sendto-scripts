@@ -1,3 +1,7 @@
+2009-04-08  Bastien Nocera  <hadess@hadess.net>
+
+	* POTFILES.in: Remove gaim plugin(s)
+
 2009-03-31  Petr Kovar  <pknbe@volny.cz>
 
 	* cs.po: Updated Czech translation by Kamil Paral.
