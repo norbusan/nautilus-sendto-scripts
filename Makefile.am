@@ -1,7 +1,3 @@
-if HAVE_GAIM
-GAIM_PLUGIN_DIR=gaim_plugin
-endif
-
 if HAVE_PIDGIN
 PIDGIN_PLUGIN_DIR=pidgin_plugin
 endif
@@ -12,7 +8,7 @@ endif
 
 SUBDIRS = src $(GAIM_PLUGIN_DIR) $(PIDGIN_PLUGIN_DIR) $(EVOLUTION_PLUGIN_DIR) po
 
-DIST_SUBDIRS = gaim_plugin pidgin_plugin evolution src po
+DIST_SUBDIRS = pidgin_plugin evolution src po
 
 man_MANS = nautilus-sendto.1
 

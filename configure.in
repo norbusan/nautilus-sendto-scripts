@@ -86,7 +86,7 @@ EVO_PLUGIN_RULE=$srcdir/evolution/plugin.mk
 AC_SUBST_FILE(EVO_PLUGIN_RULE)
 
 # The full list of plugins
-allowed_plugins="bluetooth empathy evolution gaim gajim nautilus-burn pidgin removable-devices upnp"
+allowed_plugins="bluetooth empathy evolution gajim nautilus-burn pidgin removable-devices upnp"
 
 plugin_error_or_ignore()
 {
@@ -164,24 +164,6 @@ for plugin in ${used_plugins}; do
 				CPPFLAGS="$CPPFLAGS $NST_EBOOK_CFLAGS"
 				AC_CHECK_TYPES([EContactPhotoType], , , [#include <libebook/e-contact.h>])
 				CPPFLAGS="$saved_CPPFLAGS"
-			fi
-		;;
-		gaim)
-			PKG_CHECK_MODULES(GAIM, gaim >= $GAIM_REQUIRED,
-					  [
-					   GAIM_LIBDIR=`pkg-config --variable=libdir gaim`
-					   GAIM_DATADIR=`pkg-config --variable=datadir gaim`
-					   AC_SUBST(GAIM_LIBDIR)
-					   AC_SUBST(GAIM_DATADIR)
-					   enable_gaim=yes
-					   ],
-					   [
-					    enable_gaim=no
-					    ]
-					   )
-			if test "${enable_gaim}" != "yes" ; then
-				plugin_error_or_ignore "you need gaim to build the gaim plugin"
-				add_plugin="0"
 			fi
 		;;
 		gajim)
@@ -276,8 +258,7 @@ AC_MSG_RESULT([$PLUGINS])
 AC_SUBST([ALL_PLUGINS])
 AC_SUBST([PLUGINS])
 
-dnl For the gaim and pidgin plugins
-AM_CONDITIONAL(HAVE_GAIM, test "x$enable_gaim" = "xyes")
+dnl For the pidgin plugin
 AM_CONDITIONAL(HAVE_PIDGIN, test "x$enable_pidgin" = "xyes")
 
 dnl For the GIO based plugins
@@ -308,14 +289,12 @@ src/plugins/Makefile
 src/plugins/bluetooth/Makefile
 src/plugins/empathy/Makefile
 src/plugins/evolution/Makefile
-src/plugins/gaim/Makefile
 src/plugins/gajim/Makefile
 src/plugins/nautilus-burn/Makefile
 src/plugins/pidgin/Makefile
 src/plugins/removable-devices/Makefile
 src/plugins/upnp/Makefile
 evolution/Makefile
-gaim_plugin/Makefile
 pidgin_plugin/Makefile
 po/Makefile.in
 ])

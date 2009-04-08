@@ -1,5 +1,16 @@
 2009-04-08  Bastien Nocera  <hadess@hadess.net>
 
+	* Makefile.am:
+	* configure.in:
+	* gaim_plugin/.cvsignore:
+	* gaim_plugin/Makefile.am:
+	* gaim_plugin/nautilus-sendto-plugin.c:
+	* src/plugins/gaim/Makefile.am:
+	* src/plugins/gaim/gaim.c: 2 years after the rename, removing
+	the GAIM plugin(s), nobody should be using them anymore
+
+2009-04-08  Bastien Nocera  <hadess@hadess.net>
+
 	* pidgin_plugin/nautilus-sendto-plugin.c (get_buddies_path),
 	(get_online_buddies), (save_online_buddies), (init_plugin_stuff),
 	(send_file), (process_file), (take_spool_files), (plugin_load),
