@@ -1,5 +1,13 @@
 2009-04-08  Bastien Nocera  <hadess@hadess.net>
 
+	* pidgin_plugin/nautilus-sendto-plugin.c (get_buddies_path),
+	(get_online_buddies), (save_online_buddies), (init_plugin_stuff),
+	(send_file), (process_file), (take_spool_files), (plugin_load),
+	(plugin_unload), (force_load_once), (init_plugin): Loads of
+	cleanups, and use GLib functions when possible
+
+2009-04-08  Bastien Nocera  <hadess@hadess.net>
+
 	* pidgin_plugin/Makefile.am: Fix linkage, and add
 	more warnings to the build
 
