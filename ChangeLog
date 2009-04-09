@@ -1,3 +1,10 @@
+2009-04-09  Bastien Nocera  <hadess@hadess.net>
+
+	* pidgin_plugin/nautilus-sendto-plugin.c (save_online_buddies):
+	Don't crash when writing the buddies list fails (eg. full filesystem),
+	spotted by Stu Tomlinson <stu@nosnilmot.com>
+	See: https://bugzilla.redhat.com/show_bug.cgi?id=491458
+
 2009-04-08  Bastien Nocera  <hadess@hadess.net>
 
 	* Makefile.am:

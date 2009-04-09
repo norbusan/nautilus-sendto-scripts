@@ -122,7 +122,7 @@ save_online_buddies (PurpleBuddy *buddy, gpointer data)
 		if (g_file_set_contents (fd_name, str->str, str->len, &err) == FALSE) {
 			purple_debug_info ("nautilus", "couldn't save '%s': %s\n", fd_name, err->message);
 			g_error_free (err);
-			g_string_free (buddies_str, TRUE);
+			g_string_free (str, TRUE);
 		} else {
 			purple_debug_info ("nautilus", "saved blist online\n");
 			g_string_free (buddies_str, TRUE);
