@@ -1,3 +1,10 @@
+========= nautilus-sendto 1.1.4 =========
+
+2009-04-17  Bastien Nocera  <hadess@hadess.net>
+
+	* NEWS: upd
+	* configure.in: 1.1.4
+
 2009-04-09  Bastien Nocera  <hadess@hadess.net>
 
 	* pidgin_plugin/nautilus-sendto-plugin.c (save_online_buddies):

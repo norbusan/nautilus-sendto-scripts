@@ -1,4 +1,17 @@
 =============
+Version 1.1.4
+=============
+
+Nautilus Sendto
+
+Bug fixes:
+	- Fix crash in the Pidgin plugin when the file system is full
+	- Pidgin plugin cleanups
+
+Other changes:
+	- Remove Gaim plugin
+
+=============
 Version 1.1.3
 =============
 
