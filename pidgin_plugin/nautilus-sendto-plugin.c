@@ -141,7 +141,7 @@ init_plugin_stuff (void)
 	char *spool_tmp;
 	gboolean retval;
 
-	spool_tmp = g_build_path ("/", g_get_home_dir(), PLUGIN_HOME, "spool", "tmp", NULL);
+	spool_tmp = g_build_filename (g_get_home_dir(), PLUGIN_HOME, "spool", "tmp", NULL);
 	if (g_mkdir_with_parents (spool_tmp, 0755) < 0) {
 		int error = errno;
 		g_warning ("Failed to create '%s': %s", spool_tmp, g_strerror (error));
@@ -222,7 +222,7 @@ take_spool_files (gpointer user_data)
 		GError *err = NULL;
 
 		taking_files = TRUE;
-		plugin_spool = g_build_path ("/", g_get_home_dir(), PLUGIN_HOME, "spool", NULL);
+		plugin_spool = g_build_filename (g_get_home_dir(), PLUGIN_HOME, "spool", NULL);
 		dir = g_dir_open (plugin_spool, 0, &err);
 		g_free (plugin_spool);
 		if (dir == NULL) {
@@ -235,8 +235,10 @@ take_spool_files (gpointer user_data)
 			while (filename) {
 				char *file;
 
-				if (g_str_equal (filename, "tmp"))
+				if (g_str_equal (filename, "tmp")) {
+					filename = g_dir_read_name (dir);
 					continue;
+				}
 
 				file = g_build_filename (g_get_home_dir(),
 							 PLUGIN_HOME, "spool",
