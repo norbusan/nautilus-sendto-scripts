@@ -1,3 +1,12 @@
+===============
+Version 1.1.4.1
+===============
+
+Nautilus Sendto
+
+Bug fixes:
+	- Fix infinite loop in the Pidgin plugin
+
 =============
 Version 1.1.4
 =============

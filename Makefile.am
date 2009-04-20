@@ -16,6 +16,8 @@ EXTRA_DIST =                    \
         AUTHORS                 \
 	NEWS                    \
 	README                  \
+	ChangeLog		\
+	ChangeLog.pre-1.1.4.1	\
 	intltool-merge.in       \
 	intltool-update.in      \
 	intltool-extract.in	\
@@ -35,6 +37,12 @@ schema_in_files = nst.schemas.in
 schemadir = $(sysconfdir)/gconf/schemas
 schema_DATA = $(schema_in_files:.schemas.in=.schemas)
 @INTLTOOL_SCHEMAS_RULE@
+
+# Build ChangeLog from GIT history
+ChangeLog:
+	@if test -f $(top_srcdir)/.git/HEAD; then \
+		git log --stat --after="Fri Apr 17 16:36:52 2009" > $@; \
+	fi
 
 install-data-local:
 	-GCONF_CONFIG_SOURCE=$(GCONF_SCHEMA_CONFIG_SOURCE) $(GCONFTOOL) --makefile-install-rule $(srcdir)/$(schema_DATA)
