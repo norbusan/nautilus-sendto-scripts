@@ -178,7 +178,6 @@ init (NstPlugin *plugin)
 
 	bindtextdomain (GETTEXT_PACKAGE, LOCALEDIR);
 	bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
-	textdomain (GETTEXT_PACKAGE);
 
 	upload_cmd = g_find_program_in_path ("gupnp-upload");
 	if (upload_cmd == NULL)

@@ -255,7 +255,6 @@ gboolean init (NstPlugin *plugin)
 
 	bindtextdomain (GETTEXT_PACKAGE, LOCALEDIR);
 	bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
-	textdomain (GETTEXT_PACKAGE);
 	
 	/* connect to gajim dbus service */
 	jid_table = g_hash_table_new (g_str_hash, g_str_equal);

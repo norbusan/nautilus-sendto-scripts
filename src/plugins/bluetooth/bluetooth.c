@@ -58,8 +58,7 @@ init (NstPlugin *plugin)
 	const char *adapter;
 
 	bindtextdomain (GETTEXT_PACKAGE, LOCALEDIR);
-        bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
-        textdomain (GETTEXT_PACKAGE);
+	bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
 
 	/* Check whether bluetooth-sendto or gnome-obex-send are available */
 	cmd = g_find_program_in_path ("bluetooth-sendto");
