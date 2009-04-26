@@ -53,6 +53,10 @@ init (NstPlugin *plugin)
 
   g_print ("Init %s plugin\n", plugin->info->id);
 
+  bindtextdomain (GETTEXT_PACKAGE, LOCALEDIR);
+  bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
+  textdomain (GETTEXT_PACKAGE);
+
   empathy_gtk_init ();
 
   mc = empathy_mission_control_dup_singleton ();

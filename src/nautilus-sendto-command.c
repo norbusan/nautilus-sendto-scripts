@@ -441,7 +441,7 @@ set_model_for_options_combobox (NS_ui *ui)
 		gtk_tree_store_append (model, &iter, NULL);
 		gtk_tree_store_set (model, &iter,
 					0, pixbuf,
-					1, p->info->description,
+					1, _(p->info->description),
 					-1);
 		if (last_used != NULL && !strcmp(last_used, p->info->id)) {
 			option = i;

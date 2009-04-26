@@ -251,9 +251,11 @@ gboolean _get_contacts() {
 static
 gboolean init (NstPlugin *plugin)
 {
-		
 	g_print ("Init gajim plugin\n");
-	g_type_init();
+
+	bindtextdomain (GETTEXT_PACKAGE, LOCALEDIR);
+	bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
+	textdomain (GETTEXT_PACKAGE);
 	
 	/* connect to gajim dbus service */
 	jid_table = g_hash_table_new (g_str_hash, g_str_equal);

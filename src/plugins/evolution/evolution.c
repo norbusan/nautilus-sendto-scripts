@@ -85,8 +85,8 @@ init (NstPlugin *plugin)
 	g_print ("Init evolution plugin\n");
 	
 	bindtextdomain (GETTEXT_PACKAGE, LOCALEDIR);
-        bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
-        textdomain (GETTEXT_PACKAGE);
+	bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
+	textdomain (GETTEXT_PACKAGE);
 
 	client = gconf_client_get_default ();
 	mail_cmd = gconf_client_get_string (client, DEFAULT_MAILTO, NULL);

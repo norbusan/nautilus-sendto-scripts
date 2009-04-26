@@ -37,6 +37,10 @@ gboolean init (NstPlugin *plugin)
 {
 	g_print ("Init nautilus burn plugin\n");
 
+	bindtextdomain (GETTEXT_PACKAGE, LOCALEDIR);
+	bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
+	textdomain (GETTEXT_PACKAGE);
+
 	burn = g_file_new_for_uri ("burn:/");
 
 	return TRUE;

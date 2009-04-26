@@ -127,8 +127,14 @@ static gboolean
 init (NstPlugin *plugin)
 {
 	g_print ("Init removable-devices plugin\n");
+
+	bindtextdomain (GETTEXT_PACKAGE, LOCALEDIR);
+	bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
+	textdomain (GETTEXT_PACKAGE);
+
 	vol_monitor = g_volume_monitor_get ();
 	cb = gtk_combo_box_new ();
+
 	return TRUE;
 }
 

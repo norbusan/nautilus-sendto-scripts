@@ -41,6 +41,10 @@ init (NstPlugin *plugin)
 {
 	g_print ("Init pidgin plugin\n");
 
+	bindtextdomain (GETTEXT_PACKAGE, LOCALEDIR);
+	bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
+	textdomain (GETTEXT_PACKAGE);
+
 	blist_online = g_build_path ("/", g_get_home_dir(),
 				     ".gnome2/nautilus-sendto/pidgin_buddies_online",
 				     NULL);
