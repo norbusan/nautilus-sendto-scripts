@@ -154,8 +154,8 @@ msgid "Bluetooth (OBEX Push)"
 msgstr "བུལུ་ཊུཊི།(ཨོ་བི་ཨེགས་འཕུལ)"
 
 #: ../src/plugins/evolution.c:271
-msgid "Email (Evolution)"
-msgstr "གློག་འཕྲིན།(ཨི་བོ་ལུ་ཤཱན།)"
+msgid "Email"
+msgstr "གློག་འཕྲིན།"
 
 #: ../src/plugins/gaim.c:228
 msgid "Instant Message (Gaim)"

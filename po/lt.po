@@ -174,8 +174,8 @@ msgid "Instant Message (Empathy)"
 msgstr "Žinute (Empathy)"
 
 #: ../src/plugins/evolution/evolution.c:367
-msgid "Email (Evolution)"
-msgstr "El. paštu (Evolution)"
+msgid "Email"
+msgstr "El. paštu"
 
 #: ../src/plugins/evolution/e-contact-entry.c:152
 #, c-format

@@ -174,8 +174,8 @@ msgid "Instant Message (Empathy)"
 msgstr "Mensaje instantáneo (Empathy)"
 
 #: ../src/plugins/evolution/evolution.c:367
-msgid "Email (Evolution)"
-msgstr "Correo-e (Evolution)"
+msgid "Email"
+msgstr "Correo-e"
 
 #: ../src/plugins/evolution/e-contact-entry.c:152
 #, c-format

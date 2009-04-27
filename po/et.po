@@ -153,8 +153,8 @@ msgid "Instant Message (Empathy)"
 msgstr "Välksõnum (Empathy)"
 
 #: ../src/plugins/evolution/evolution.c:221
-msgid "Email (Evolution)"
-msgstr "E-post (Evolution)"
+msgid "Email"
+msgstr "E-post"
 
 #: ../src/plugins/evolution/e-contact-entry.c:152
 #, c-format

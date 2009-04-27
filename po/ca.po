@@ -156,8 +156,8 @@ msgid "Bluetooth (OBEX Push)"
 msgstr "Bluetooth (OBEX Push)"
 
 #: ../src/plugins/evolution.c:196
-msgid "Email (Evolution)"
-msgstr "Correu electrònic (Evolution)"
+msgid "Email"
+msgstr "Correu electrònic"
 
 #: ../src/plugins/e-contact-entry.c:158
 #, c-format

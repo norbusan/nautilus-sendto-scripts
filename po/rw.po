@@ -129,7 +129,7 @@ msgid "Send files by mail, instant message..."
 msgstr "Idosiye ku Ubutumwa By'ako kanya Ubutumwa"
 
 #: src/plugins/evolution.c:229
-msgid "Email (Evolution)"
+msgid "Email"
 msgstr ""
 
 #: src/plugins/gaim.c:219

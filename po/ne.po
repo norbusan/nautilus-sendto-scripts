@@ -160,8 +160,8 @@ msgid "Bluetooth (OBEX Push)"
 msgstr "ब्लुटुथ् (OBEX पुस)"
 
 #: ../src/plugins/evolution.c:273
-msgid "Email (Evolution)"
-msgstr "इमेल (इभोल्युसन)"
+msgid "Email"
+msgstr "इमेल"
 
 #: ../src/plugins/gaim.c:228
 msgid "Instant Message (Gaim)"

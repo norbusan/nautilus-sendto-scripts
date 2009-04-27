@@ -120,8 +120,8 @@ msgid "Bluetooth (OBEX)"
 msgstr "Bluetooth (OBEX)"
 
 #: ../src/plugins/evolution.c:249
-msgid "Email (Evolution)"
-msgstr "Thư điện tử (Evolution)"
+msgid "Email"
+msgstr "Thư điện tử"
 
 #: ../src/plugins/gaim.c:224
 msgid "Instant Message (Gaim)"

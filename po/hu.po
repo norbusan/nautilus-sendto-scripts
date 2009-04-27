@@ -171,8 +171,8 @@ msgid "Instant Message (Empathy)"
 msgstr "Azonnali üzenet (Empathy)"
 
 #: ../src/plugins/evolution/evolution.c:367
-msgid "Email (Evolution)"
-msgstr "E-mail (Evolution)"
+msgid "Email"
+msgstr "E-mail"
 
 #: ../src/plugins/evolution/e-contact-entry.c:152
 #, c-format

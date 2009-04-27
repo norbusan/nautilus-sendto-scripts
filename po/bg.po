@@ -107,8 +107,8 @@ msgid "Bluetooth (OBEX)"
 msgstr "Bluetooth (OBEX)"
 
 #: ../src/plugins/evolution.c:268
-msgid "Email (Evolution)"
-msgstr "Е-писмо (Evolution)"
+msgid "Email"
+msgstr "Е-писмо"
 
 #: ../src/plugins/gaim.c:224
 msgid "Instant Message (Gaim)"

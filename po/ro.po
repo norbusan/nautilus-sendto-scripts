@@ -163,8 +163,8 @@ msgid "Bluetooth (OBEX Push)"
 msgstr "Bluetooth (OBEX Push)"
 
 #: ../src/plugins/evolution.c:271
-msgid "Email (Evolution)"
-msgstr "Poştă electronică (Evolution)"
+msgid "Email"
+msgstr "Poştă electronică"
 
 #: ../src/plugins/gaim.c:228
 msgid "Instant Message (Gaim)"

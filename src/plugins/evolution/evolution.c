@@ -363,7 +363,7 @@ static
 NstPluginInfo plugin_info = {
 	"emblem-mail",
 	"evolution",
-	N_("Email (Evolution)"),
+	N_("Email"),
 	FALSE,
 	FALSE,
 	init,

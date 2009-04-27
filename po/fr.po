@@ -170,8 +170,8 @@ msgid "Instant Message (Empathy)"
 msgstr "Messagerie instantanée (Empathy)"
 
 #: ../src/plugins/evolution/evolution.c:367
-msgid "Email (Evolution)"
-msgstr "Courrier électronique (Evolution)"
+msgid "Email"
+msgstr "Courrier électronique"
 
 #: ../src/plugins/evolution/e-contact-entry.c:152
 #, c-format

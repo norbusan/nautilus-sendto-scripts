@@ -108,8 +108,8 @@ msgid "Bluetooth (OBEX)"
 msgstr "ਬਲਿਊ-ਟੁੱਥ (OBEX)"
 
 #: ../src/plugins/evolution.c:268
-msgid "Email (Evolution)"
-msgstr "ਈ-ਮੇਲ (ਈਵੇਲੂਸ਼ਨ)"
+msgid "Email"
+msgstr "ਈ-ਮੇਲ"
 
 #: ../src/plugins/gaim.c:224
 msgid "Instant Message (Gaim)"

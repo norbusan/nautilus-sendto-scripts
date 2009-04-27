@@ -169,8 +169,8 @@ msgid "Instant Message (Empathy)"
 msgstr "ताबडतोब संदेश (Empathy)"
 
 #: ../src/plugins/evolution/evolution.c:367
-msgid "Email (Evolution)"
-msgstr "ईमेल (Evolution)"
+msgid "Email"
+msgstr "ईमेल"
 
 #: ../src/plugins/evolution/e-contact-entry.c:152
 #, c-format

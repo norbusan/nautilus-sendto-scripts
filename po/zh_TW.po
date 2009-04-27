@@ -101,8 +101,8 @@ msgid "Send files by mail, instant message..."
 msgstr "經電子郵件、即時訊息等等途徑傳送檔案"
 
 #: ../src/plugins/evolution.c:229
-msgid "Email (Evolution)"
-msgstr "電子郵件 (Evolution)"
+msgid "Email"
+msgstr "電子郵件"
 
 #: ../src/plugins/gaim.c:219
 msgid "Instant Message (Gaim)"

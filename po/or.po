@@ -180,8 +180,8 @@ msgid "Instant Message (Empathy)"
 msgstr "ତୁରନ୍ତ ସନ୍ଦେଶ (Empathy)"
 
 #: ../src/plugins/evolution/evolution.c:367
-msgid "Email (Evolution)"
-msgstr "ଇ-ଡାକ (ଇଭଲ୍ଯୁଶନ)"
+msgid "Email"
+msgstr "ଇ-ଡାକ"
 
 #: ../src/plugins/evolution/e-contact-entry.c:152
 #, c-format
