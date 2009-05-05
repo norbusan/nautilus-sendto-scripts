@@ -1,3 +1,13 @@
+=============
+Version 1.1.5
+=============
+
+Nautilus Sendto
+
+Bug fixes:
+	- Fix the plugins not getting translated properly
+	- Remove mention of "Evolution" in the mail plugin
+
 ===============
 Version 1.1.4.1
 ===============
