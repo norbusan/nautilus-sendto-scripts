@@ -72,7 +72,7 @@ AC_SUBST(NAUTILUS_EXTENSION_DIR)
 
 dnl Get details about evolution
 
-PKG_CHECK_MODULES(EVOLUTION, evolution-plugin libglade-2.0,
+PKG_CHECK_MODULES(EVOLUTION, evolution-plugin < 2.27.1 libglade-2.0,
 		  enable_evo=yes, enable_evo=no)
 AM_CONDITIONAL(HAVE_EVOLUTION, test "x$enable_evo" = "xyes")
 
@@ -320,9 +320,9 @@ else
 fi
 
 if test "x$enable_evo" = "xyes"; then
-	AC_MSG_NOTICE([** Evolution send-to plugin enabled])
+	AC_MSG_NOTICE([** Evolution send-to plugin ( < 2.27.1) enabled])
 else
-	AC_MSG_NOTICE([   Evolution send-to plugin disabled])
+	AC_MSG_NOTICE([   Evolution send-to plugin ( < 2.27.1) disabled])
 fi
 
 echo "                                                       "
