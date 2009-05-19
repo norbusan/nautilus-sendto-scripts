@@ -36,8 +36,14 @@
 #define NAUTILUS_SENDTO_LAST_COMPRESS	NAUTILUS_SENDTO_GCONF"/last_compress"
 #define NAUTILUS_SENDTO_STATUS_LABEL_TIMEOUT_SECONDS 10
 
-#define UNINSTALLED_PLUGINDIR "plugins/sylpheed-claws"
+#define UNINSTALLED_PLUGINDIR "plugins/removable-devices"
 #define UNINSTALLED_SOURCE "nautilus-sendto-command.c"
+
+enum {
+	COLUMN_ICON,
+	COLUMN_DESCRIPTION,
+	NUM_COLUMNS,
+};
 
 /* Options */
 static char **filenames = NULL;
@@ -418,7 +424,7 @@ set_model_for_options_combobox (NS_ui *ui)
 {
 	GdkPixbuf *pixbuf;
         GtkTreeIter iter;
-        GtkTreeStore *model;
+        GtkListStore *model;
 	GtkIconTheme *it;
 	GtkCellRenderer *renderer;
 	GList *aux;
@@ -429,7 +435,7 @@ set_model_for_options_combobox (NS_ui *ui)
 
 	it = gtk_icon_theme_get_default ();
 
-	model = gtk_tree_store_new (2, GDK_TYPE_PIXBUF, G_TYPE_STRING);
+	model = gtk_list_store_new (NUM_COLUMNS, GDK_TYPE_PIXBUF, G_TYPE_STRING);
 
 	last_used = gconf_client_get_string (gconf_client,
 			NAUTILUS_SENDTO_LAST_MEDIUM, NULL);
@@ -438,10 +444,10 @@ set_model_for_options_combobox (NS_ui *ui)
 		p = (NstPlugin *) aux->data;
 		pixbuf = gtk_icon_theme_load_icon (it, p->info->icon, 16, 
 						   GTK_ICON_LOOKUP_USE_BUILTIN, NULL);
-		gtk_tree_store_append (model, &iter, NULL);
-		gtk_tree_store_set (model, &iter,
-					0, pixbuf,
-					1, _(p->info->description),
+		gtk_list_store_append (model, &iter);
+		gtk_list_store_set (model, &iter,
+					COLUMN_ICON, pixbuf,
+					COLUMN_DESCRIPTION, _(p->info->description),
 					-1);
 		if (last_used != NULL && !strcmp(last_used, p->info->id)) {
 			option = i;
@@ -459,15 +465,16 @@ set_model_for_options_combobox (NS_ui *ui)
                                     FALSE);
         gtk_cell_layout_set_attributes (GTK_CELL_LAYOUT (ui->options_combobox), 
 					renderer,
-                                        "pixbuf", 0,
+                                        "pixbuf", COLUMN_ICON,
                                         NULL);		
         renderer = gtk_cell_renderer_text_new ();
+        g_object_set (G_OBJECT (renderer), "ellipsize", PANGO_ELLIPSIZE_END, NULL);
         gtk_cell_layout_pack_start (GTK_CELL_LAYOUT (ui->options_combobox),
                                     renderer,
                                     TRUE);
         gtk_cell_layout_set_attributes (GTK_CELL_LAYOUT (ui->options_combobox), 
 					renderer,
-                                        "text", 1,
+                                        "text", COLUMN_DESCRIPTION,
                                         NULL);
 
 	g_signal_connect (G_OBJECT (ui->options_combobox), "changed",
