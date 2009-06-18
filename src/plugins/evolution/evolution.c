@@ -101,7 +101,7 @@ init (NstPlugin *plugin)
 			type = MAILER_BALSA;
 		else if (strstr (mail_cmd, "thunder"))
 			type = MAILER_THUNDERBIRD;
-		else if (strstr (mail_cmd, "sylpheed"))
+		else if (strstr (mail_cmd, "sylpheed") || strstr (mail_cmd, "claws"))
 			type = MAILER_SYLPHEED;
 	}
 
