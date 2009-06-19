@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2008 Collabora Ltd.
+ * Copyright (C) 2008, 2009 Collabora Ltd.
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License as
@@ -16,7 +16,8 @@
  * Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
  * Boston, MA 02110-1301  USA.
  *
- * Author: Jonny Lamb <jonny.lamb@collabora.co.uk>
+ * Authors: Jonny Lamb <jonny.lamb@collabora.co.uk>
+ *          Cosimo Cecchi <cosimo.cecchi@collabora.co.uk>
  */
 
 #include "config.h"
@@ -30,9 +31,10 @@
 
 #include <libempathy/empathy-debug.h>
 #include <libempathy/empathy-contact-manager.h>
-#include <libempathy/empathy-dispatcher.h>
-#include <libempathy/empathy-utils.h>
+#include <libempathy/empathy-ft-factory.h>
+#include <libempathy/empathy-ft-handler.h>
 #include <libempathy/empathy-tp-file.h>
+#include <libempathy/empathy-utils.h>
 
 #include <libempathy-gtk/empathy-contact-selector.h>
 #include <libempathy-gtk/empathy-ui-utils.h>
@@ -40,7 +42,7 @@
 #include "nautilus-sendto-plugin.h"
 
 static MissionControl *mc = NULL;
-static EmpathyDispatcher *dispatcher = NULL;
+static EmpathyFTFactory *factory = NULL;
 static guint transfers = 0;
 
 static gboolean destroy (NstPlugin *plugin);
@@ -147,16 +149,19 @@ quit (void)
 }
 
 static void
-state_changed_cb (EmpathyTpFile *tp_file,
-                  GParamSpec *arg,
-                  gpointer user_data)
+transfer_done_cb (EmpathyFTHandler *handler,
+                  EmpathyTpFile *tp_file,
+                  NstPlugin *plugin)
 {
-  TpFileTransferState state;
+  quit ();  
+}
 
-  state = empathy_tp_file_get_state (tp_file, NULL);
-
-  if (state == TP_FILE_TRANSFER_STATE_COMPLETED || state == TP_FILE_TRANSFER_STATE_CANCELLED)
-    quit ();
+static void
+transfer_error_cb (EmpathyFTHandler *handler,
+                   GError *error,
+                   NstPlugin *plugin)
+{
+  quit ();
 }
 
 static void
@@ -169,13 +174,14 @@ error_dialog_cb (GtkDialog *dialog,
 }
 
 static void
-send_file_cb (EmpathyDispatchOperation *dispatch,
-              const GError *error,
-              gpointer user_data)
+handler_ready_cb (EmpathyFTFactory *factory,
+                  EmpathyFTHandler *handler,
+                  GError *error,
+                  NstPlugin *plugin)
 {
-  GFile *file = (GFile *) user_data;
+  g_print ("handler ready!, error %p", error);
 
-  if (error)
+  if (error != NULL)
     {
       GtkWidget *dialog;
       dialog = gtk_message_dialog_new (NULL, 0, GTK_MESSAGE_ERROR,
@@ -187,19 +193,13 @@ send_file_cb (EmpathyDispatchOperation *dispatch,
     }
   else
     {
-      EmpathyTpFile *tp_file;
+      g_signal_connect (handler, "transfer-done",
+          G_CALLBACK (transfer_done_cb), plugin);
+      g_signal_connect (handler, "transfer-error",
+          G_CALLBACK (transfer_error_cb), plugin);
 
-      tp_file = EMPATHY_TP_FILE (
-          empathy_dispatch_operation_get_channel_wrapper (dispatch));
-
-      g_signal_connect (tp_file, "notify::state",
-          G_CALLBACK (state_changed_cb), NULL);
-
-      empathy_tp_file_offer (tp_file, file, NULL);
+      empathy_ft_handler_start_transfer (handler);
     }
-
-  g_object_unref (file);
-
 }
 
 static gboolean
@@ -212,56 +212,27 @@ send_files (NstPlugin *plugin,
 
   contact = get_selected_contact (contact_widget);
 
-  dispatcher = empathy_dispatcher_dup_singleton ();
-
   if (!contact)
     return FALSE;
+
+  factory = empathy_ft_factory_dup_singleton ();
+
+  g_signal_connect (factory, "new-ft-handler",
+      G_CALLBACK (handler_ready_cb), plugin);
 
   for (l = file_list; l; l = l->next)
     {
       gchar *path = l->data;
       GFile *file;
-      GFileInfo *info;
-      GError *error = NULL;
-      GTimeVal mod_timeval;
 
       file = g_file_new_for_uri (path);
 
-      info = g_file_query_info (file,
-          G_FILE_ATTRIBUTE_STANDARD_SIZE ","
-          G_FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE ","
-          G_FILE_ATTRIBUTE_TIME_MODIFIED ","
-          G_FILE_ATTRIBUTE_STANDARD_NAME,
-          0, NULL, &error);
+      ++transfers;
 
-      if (error)
-        {
-          GtkWidget *dialog;
-          dialog = gtk_message_dialog_new (NULL, 0, GTK_MESSAGE_ERROR,
-              GTK_BUTTONS_CLOSE, "Failed to get information for %s",
-              path);
-          gtk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG (dialog),
-              "%s", error->message ? error->message : _("No error message"));
-          gtk_dialog_run (GTK_DIALOG (dialog));
-          gtk_widget_destroy (dialog);
+      empathy_ft_factory_new_transfer_outgoing (factory,
+          contact, file);
 
-          g_object_unref (file);
-          g_object_unref (contact);
-          continue;
-        }
-
-      g_file_info_get_modification_time (info, &mod_timeval);
-
-      empathy_dispatcher_send_file_to_contact (contact,
-          g_file_info_get_name (info),
-          g_file_info_get_size (info),
-          mod_timeval.tv_sec,
-          g_file_info_get_content_type (info),
-          send_file_cb, file);
-
-      transfers++;
-
-      g_object_unref (info);
+      g_object_unref (file);
     }
 
   g_object_unref (contact);
@@ -281,8 +252,8 @@ destroy (NstPlugin *plugin)
   if (mc)
     g_object_unref (mc);
 
-  if (dispatcher)
-    g_object_unref (dispatcher);
+  if (factory)
+    g_object_unref (factory);
 
   return TRUE;
 }
