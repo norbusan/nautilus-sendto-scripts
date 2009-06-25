@@ -10,6 +10,7 @@ INCLUDES =                                      \
         $(NAUTILUS_SENDTO_CFLAGS)               \
 	$(BLUETOOTH_CFLAGS)			\
 	$(DBUS_CFLAGS)				\
+	$(DISABLE_DEPRECATED)			\
 	$(WARN_CFLAGS)
 
 plugin_LTLIBRARIES = libnstbluetooth.la

@@ -8,6 +8,7 @@ INCLUDES =					\
 	-DLOCALEDIR="\"$(datadir)/locale\""	\
 	$(NAUTILUS_SENDTO_CFLAGS)		\
 	$(NAUTILUS_EXT_SENDTO_CFLAGS)		\
+	$(DISABLE_DEPRECATED)			\
 	$(WARN_CFLAGS)
 
 glade_DATA = nautilus-sendto.glade

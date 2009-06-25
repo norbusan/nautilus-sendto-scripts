@@ -10,6 +10,7 @@ INCLUDES =                                      \
         -DGLADEDIR=\""$(gladedir)"\"            \
         $(NAUTILUS_SENDTO_CFLAGS)               \
 	$(WARN_CFLAGS)				\
+	$(DISABLE_DEPRECATED)			\
 	$(GIO_CFLAGS)
 
 plugin_LTLIBRARIES = libnstburn.la

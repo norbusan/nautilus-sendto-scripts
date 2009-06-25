@@ -10,6 +10,7 @@ INCLUDES =                                      \
         $(NAUTILUS_SENDTO_CFLAGS)               \
 	$(NST_EBOOK_CFLAGS)			\
 	$(PIDGIN_CFLAGS)			\
+	$(DISABLE_DEPRECATED)			\
 	$(WARN_CFLAGS)
 
 plugin_LTLIBRARIES = libnstpidgin.la

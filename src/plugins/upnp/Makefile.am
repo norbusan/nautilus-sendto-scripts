@@ -9,6 +9,7 @@ INCLUDES =                                      \
         -DGLADEDIR=\""$(gladedir)"\"            \
         $(NAUTILUS_SENDTO_CFLAGS)               \
 	$(UPNP_CFLAGS)				\
+	$(DISABLE_DEPRECATED)			\
 	$(WARN_CFLAGS)
 
 plugin_LTLIBRARIES = libnstupnp.la

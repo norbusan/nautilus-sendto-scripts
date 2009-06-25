@@ -8,6 +8,7 @@ INCLUDES =                                      \
         -I$(top_builddir)                       \
         -DGLADEDIR=\""$(gladedir)"\"            \
         $(NAUTILUS_SENDTO_CFLAGS)               \
+        $(DISABLE_DEPRECATED)			\
 	$(WARN_CFLAGS)
 
 plugin_LTLIBRARIES = libnstgajim.la

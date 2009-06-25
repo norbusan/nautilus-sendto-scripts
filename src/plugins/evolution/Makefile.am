@@ -9,6 +9,7 @@ INCLUDES =                                      \
         -DGLADEDIR=\""$(gladedir)"\"            \
         $(NAUTILUS_SENDTO_CFLAGS)               \
 	$(NST_EBOOK_CFLAGS)			\
+	$(DISABLE_DEPRECATED)			\
 	$(WARN_CFLAGS)
 
 MARSHALFILES = econtactentry-marshal.c econtactentry-marshal.h

@@ -9,6 +9,7 @@ INCLUDES =                                      \
         -DGLADEDIR=\""$(gladedir)"\"            \
         $(NAUTILUS_SENDTO_CFLAGS)               \
 	$(WARN_CFLAGS)				\
+	$(DISABLE_DEPRECATED)			\
 	$(EMPATHY_CFLAGS)
 
 plugin_LTLIBRARIES = libnstempathy.la
