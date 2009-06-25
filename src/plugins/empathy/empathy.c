@@ -29,6 +29,7 @@
 
 #include <telepathy-glib/enums.h>
 
+#include <libempathy/empathy-contact.h>
 #include <libempathy/empathy-debug.h>
 #include <libempathy/empathy-contact-manager.h>
 #include <libempathy/empathy-ft-factory.h>
@@ -85,6 +86,9 @@ get_contacts_widget (NstPlugin *plugin)
 
   manager = empathy_contact_manager_dup_singleton ();
   selector = empathy_contact_selector_new (EMPATHY_CONTACT_LIST (manager));
+
+  empathy_contact_selector_set_visible (EMPATHY_CONTACT_SELECTOR (selector),
+      (EmpathyContactSelectorFilterFunc) empathy_contact_can_send_files, NULL);
 
   g_object_unref (manager);
 
