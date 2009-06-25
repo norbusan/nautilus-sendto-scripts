@@ -409,7 +409,7 @@ set_contact_widgets (NS_ui *ui)
 	for (aux = plugin_list; aux; aux = aux->next){
 		p = (NstPlugin *) aux->data;
 		w = p->info->get_contacts_widget(p);
-		gtk_box_pack_end_defaults (GTK_BOX(ui->hbox_contacts_ws),w);
+		gtk_box_pack_end (GTK_BOX(ui->hbox_contacts_ws),w, TRUE, TRUE, 0);
 		gtk_widget_hide (GTK_WIDGET(w));
 		ui->contact_widgets = g_list_append (ui->contact_widgets, w);
 		if (GTK_IS_ENTRY (w)) {

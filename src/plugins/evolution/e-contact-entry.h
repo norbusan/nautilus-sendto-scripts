@@ -30,12 +30,17 @@
 
 G_BEGIN_DECLS
 
-#define E_TYPE_CONTACT_ENTRY (e_contact_entry_get_type ())
-#define E_CONTACT_ENTRY(obj) (GTK_CHECK_CAST ((obj), e_contact_entry_get_type (), EContactEntry))
-#define E_CONTACT_ENTRY_CLASS(klass) (GTK_CHECK_CLASS_CAST ((klass), e_contact_entry_get_type (), EContactEntryClass))
-#define E_IS_CONTACT_ENTRY(obj) (GTK_CHECK_TYPE (obj, e_contact_entry_get_type ()))
-#define E_IS_CONTACT_ENTRY_CLASS(klass) (GTK_CHECK_CLASS_TYPE ((klass), e_contact_entry_get_type ()))
-#define E_CONTACT_ENTRY_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), E_CONTACT_ENTRY_TYPE, EContactEntryClass))
+#define E_TYPE_CONTACT_ENTRY (e_contact_entry_get_type())
+#define E_CONTACT_ENTRY(obj) (G_TYPE_CHECK_INSTANCE_CAST((obj), \
+				E_TYPE_CONTACT_ENTRY, EContactEntry))
+#define E_CONTACT_ENTRY_CLASS(klass) (G_TYPE_CHECK_CLASS_CAST((klass), \
+				E_TYPE_CONTACT_ENTRY, EContactEntryClass))
+#define E_IS_CONTACT_ENTRY(obj) (G_TYPE_CHECK_INSTANCE_TYPE((obj), \
+						E_TYPE_CONTACT_ENTRY))
+#define E_IS_CONTACT_ENTRY_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass), \
+						E_TYPE_CONTACT_ENTRY))
+#define E_GET_CONTACT_ENTRY_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS((obj), \
+				E_TYPE_CONTACT_ENTRY, EContactEntryClass))
 
 typedef struct EContactEntryPriv EContactEntryPriv;
 
