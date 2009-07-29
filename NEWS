@@ -1,4 +1,22 @@
 =============
+Version 1.1.6
+=============
+
+Nautilus Sendto
+
+Bug fixes:
+	- Fix problems with long plugin descriptions
+	- Add "claws" as a Sylpheed variant
+	- Update for new Empathy file transfer API
+	- Only display users that can receive files in the
+	  Empathy plugin
+
+Other changes:
+	- Port to GtkBuilder
+	- Disable the evolution plugin for newers versions
+	  of Evolution, it's builtin
+
+=============
 Version 1.1.5
 =============
 
