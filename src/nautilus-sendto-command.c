@@ -513,7 +513,7 @@ nautilus_sendto_create_ui (void)
 
 	app = gtk_builder_new ();
 	if (!gtk_builder_add_from_file (app, UIDIR "/" "nautilus-sendto.ui", &error))	{
-		g_warning ("Couldn't load builder file:", error->message);
+		g_warning ("Couldn't load builder file: %s", error->message);
 		g_error_free (error);
 	}
 
