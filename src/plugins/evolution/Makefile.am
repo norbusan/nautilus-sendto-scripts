@@ -6,7 +6,6 @@ INCLUDES =                                      \
 	-DLOCALEDIR="\"$(datadir)/locale\""	\
         -I$(top_srcdir)/src                     \
         -I$(top_builddir)                       \
-        -DGLADEDIR=\""$(gladedir)"\"            \
         $(NAUTILUS_SENDTO_CFLAGS)               \
 	$(NST_EBOOK_CFLAGS)			\
 	$(DISABLE_DEPRECATED)			\

@@ -8,7 +8,7 @@ src/nautilus-nste.c
 src/nautilus-nste.h
 src/nautilus-sendto-command.c
 src/nautilus-sendto-module.c
-src/nautilus-sendto.glade
+[type: gettext/glade]src/nautilus-sendto.ui
 src/plugins/bluetooth/bluetooth.c
 src/plugins/empathy/empathy.c
 src/plugins/evolution/evolution.c

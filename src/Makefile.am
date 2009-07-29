@@ -4,15 +4,15 @@ INCLUDES =					\
 	-DPLUGINDIR=\"$(libdir)/nautilus-sendto/plugins\"	\
 	-I$(top_srcdir)				\
 	-I$(top_builddir)			\
-	-DGLADEDIR=\""$(gladedir)"\"		\
+	-DUIDIR=\""$(uidir)"\"		\
 	-DLOCALEDIR="\"$(datadir)/locale\""	\
 	$(NAUTILUS_SENDTO_CFLAGS)		\
 	$(NAUTILUS_EXT_SENDTO_CFLAGS)		\
 	$(DISABLE_DEPRECATED)			\
 	$(WARN_CFLAGS)
 
-glade_DATA = nautilus-sendto.glade
-gladedir = $(datadir)/nautilus-sendto/glade
+ui_DATA = nautilus-sendto.ui
+uidir = $(datadir)/nautilus-sendto/ui
 
 bin_PROGRAMS = nautilus-sendto
 
@@ -32,4 +32,4 @@ libnautilus_sendto_la_SOURCES =		\
 libnautilus_sendto_la_LDFLAGS = -module -avoid-version -no-undefined
 libnautilus_sendto_la_LIBADD  = $(NAUTILUS_EXT_SENDTO_LIBS)
 
-EXTRA_DIST = $(glade_DATA)
+EXTRA_DIST = $(ui_DATA)

@@ -26,7 +26,6 @@
 #include <stdlib.h>
 #include <glib/gi18n.h>
 #include <glib/gstdio.h>
-#include <glade/glade.h>
 #include <gtk/gtk.h>
 #include <gconf/gconf-client.h>
 #include "nautilus-sendto-plugin.h"
@@ -506,27 +505,32 @@ pack_entry_changed_cb (GObject *object, GParamSpec *spec, NS_ui *ui)
 static void
 nautilus_sendto_create_ui (void)
 {
-	GladeXML *app;	
+	GtkBuilder *app;	
+	GError* error = NULL;
 	NS_ui *ui;
 	gboolean one_file = FALSE;
 	gboolean supports_dirs;
 
-	app = glade_xml_new (GLADEDIR "/" "nautilus-sendto.glade", NULL, NULL);
+	app = gtk_builder_new ();
+	if (!gtk_builder_add_from_file (app, UIDIR "/" "nautilus-sendto.ui", &error))	{
+		g_warning ("Couldn't load builder file:", error->message);
+		g_error_free (error);
+	}
 
 	ui = g_new0 (NS_ui, 1);
 
-	ui->hbox_contacts_ws = glade_xml_get_widget (app, "hbox_contacts_widgets");
-	ui->send_to_label = glade_xml_get_widget (app, "send_to_label");
-	ui->options_combobox = glade_xml_get_widget (app, "options_combobox");
-	ui->dialog = glade_xml_get_widget (app, "nautilus_sendto_dialog");
-	ui->cancel_button = glade_xml_get_widget (app, "cancel_button");
-	ui->send_button = glade_xml_get_widget (app, "send_button");
-	ui->pack_combobox = glade_xml_get_widget (app, "pack_combobox");	
-	ui->pack_entry = glade_xml_get_widget (app, "pack_entry");
-	ui->pack_checkbutton = glade_xml_get_widget (app, "pack_checkbutton");
-	ui->status_box = glade_xml_get_widget (app, "status_box");
-	ui->status_label = glade_xml_get_widget (app, "status_label");
-	ui->status_image = glade_xml_get_widget (app, "status_image");
+	ui->hbox_contacts_ws = GTK_WIDGET (gtk_builder_get_object (app, "hbox_contacts_widgets"));
+	ui->send_to_label = GTK_WIDGET (gtk_builder_get_object (app, "send_to_label"));
+	ui->options_combobox = GTK_WIDGET (gtk_builder_get_object (app, "options_combobox"));
+	ui->dialog = GTK_WIDGET (gtk_builder_get_object (app, "nautilus_sendto_dialog"));
+	ui->cancel_button = GTK_WIDGET (gtk_builder_get_object (app, "cancel_button"));
+	ui->send_button = GTK_WIDGET (gtk_builder_get_object (app, "send_button"));
+	ui->pack_combobox = GTK_WIDGET (gtk_builder_get_object (app, "pack_combobox"));	
+	ui->pack_entry = GTK_WIDGET (gtk_builder_get_object (app, "pack_entry"));
+	ui->pack_checkbutton = GTK_WIDGET (gtk_builder_get_object (app, "pack_checkbutton"));
+	ui->status_box = GTK_WIDGET (gtk_builder_get_object (app, "status_box"));
+	ui->status_label = GTK_WIDGET (gtk_builder_get_object (app, "status_label"));
+	ui->status_image = GTK_WIDGET (gtk_builder_get_object (app, "status_image"));
 
  	gtk_combo_box_set_active (GTK_COMBO_BOX(ui->pack_combobox), 
  		gconf_client_get_int(gconf_client, 

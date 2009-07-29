@@ -24,8 +24,7 @@ ERROR_CFLAGS="-Wall -Wextra -Werror -Wno_missing_field_initializers -Wno_unused_
 dnl --------------------------------------------------
 
 GLIB_REQUIRED=2.6.0
-GTK_REQUIRED=2.4.0
-GLADE_REQUIRED=2.5.1
+GTK_REQUIRED=2.12
 EBOOK_REQUIRED=1.5.3
 GCONF_REQUIRED=2.13.0
 GAIM_REQUIRED=1.5.0
@@ -39,7 +38,6 @@ EMPATHY_GTK_REQUIRED=2.27.3
 
 AC_SUBST(GLIB_REQUIRED)
 AC_SUBST(GTK_REQUIRED)
-AC_SUBST(GLADE_REQUIRED)
 AC_SUBST(GCONF_REQUIRED)
 AC_SUBST(EBOOK_REQUIRED)
 AC_SUBST(GAIM_REQUIRED)
@@ -55,7 +53,6 @@ PKG_CHECK_MODULES(NAUTILUS_SENDTO,\
 	 glib-2.0 >= $GLIB_REQUIRED                \
 	 gmodule-2.0 >= $GLIB_REQUIRED		  \
 	 gtk+-2.0    >= $GTK_REQUIRED             \
-	 libglade-2.0 >= $GLADE_REQUIRED            \
 	 gconf-2.0 >= $GCONF_REQUIRED)
 AC_SUBST(NAUTILUS_SENDTO_CFLAGS)
 AC_SUBST(NAUTILUS_SENDTO_LIBS)
@@ -72,7 +69,7 @@ AC_SUBST(NAUTILUS_EXTENSION_DIR)
 
 dnl Get details about evolution
 
-PKG_CHECK_MODULES(EVOLUTION, evolution-plugin < 2.27.1 libglade-2.0,
+PKG_CHECK_MODULES(EVOLUTION, evolution-plugin < 2.27.1,
 		  enable_evo=yes, enable_evo=no)
 AM_CONDITIONAL(HAVE_EVOLUTION, test "x$enable_evo" = "xyes")
 
