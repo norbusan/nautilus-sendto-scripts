@@ -191,7 +191,6 @@ for plugin in ${used_plugins}; do
 			fi
 		;;
 		nautilus-burn)
-			# Disabled by default, see bug #556774
 			PKG_CHECK_MODULES(GIO, gio-2.0,
 					  enable_burn=yes, enable_burn=no)
 			if test "${enable_burn}" != "yes" ; then
