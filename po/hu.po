@@ -7,14 +7,15 @@
 # Gabor Kelemen <kelemeng@gnome.hu>, 2004, 2005, 2006, 2007, 2008, 2009.
 # Szabolcs Varga <shirokuma@shirokuma.hu>, 2005.
 # Kalman Kemenczy <kkemenczy@novell.com>, 2008.
+# Gabor Kelemen <kelemeng at gnome dot hu>, 2009.
 msgid ""
 msgstr ""
 "Project-Id-Version: nautilus-sendto.HEAD.hu\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=nautilus-sendto&component=general\n"
-"POT-Creation-Date: 2009-02-18 14:48+0000\n"
-"PO-Revision-Date: 2009-02-20 02:57+0100\n"
-"Last-Translator: Gabor Kelemen <kelemeng@gnome.hu>\n"
-"Language-Team: Hungarian <gnome@fsf.hu>\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-08-15 02:07+0200\n"
+"PO-Revision-Date: 2009-08-15 02:08+0200\n"
+"Last-Translator: Gabor Kelemen <kelemeng at gnome dot hu>\n"
+"Language-Team: Hungarian <gnome at fsf dot hu>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -42,7 +43,6 @@ msgid ""
 msgstr "Az utoljára használt archívum típusa (0: zip, 1: tar.gz, 2: tar.bz2)."
 
 #: ../evolution/nautilus-sendto.c:47
-#| msgid "Send To..."
 msgid "_Send to..."
 msgstr "_Küldés…"
 
@@ -52,7 +52,6 @@ msgstr "Fájlok küldése távoli eszközöknek vagy személyeknek"
 
 #. the path to the shared library
 #: ../evolution/org-gnome-evolution-send-attachments-to.eplug.xml.h:3
-#| msgid "Send To..."
 msgid "Send to..."
 msgstr "Küldés…"
 
@@ -62,26 +61,20 @@ msgstr "Küldés…"
 #. dependencies
 #. priority
 #. id
-#: ../gaim_plugin/nautilus-sendto-plugin.c:309
-#: ../pidgin_plugin/nautilus-sendto-plugin.c:332
+#: ../pidgin_plugin/nautilus-sendto-plugin.c:342
 msgid "Nautilus Integration"
 msgstr "Nautilus-integráció"
 
 #. name
 #. version
 #. summary
-#. name
-#. version
-#. summary
-#: ../gaim_plugin/nautilus-sendto-plugin.c:311
-#: ../gaim_plugin/nautilus-sendto-plugin.c:312
-#: ../pidgin_plugin/nautilus-sendto-plugin.c:334
-#: ../pidgin_plugin/nautilus-sendto-plugin.c:335
+#: ../pidgin_plugin/nautilus-sendto-plugin.c:344
+#: ../pidgin_plugin/nautilus-sendto-plugin.c:345
 msgid "Provides integration with Nautilus"
 msgstr "Integráció biztosítása a Nautilusszal"
 
 #: ../src/nautilus-nste.c:92 ../src/nautilus-nste.c:97
-#: ../src/nautilus-sendto.glade.h:3
+#: ../src/nautilus-sendto.ui.h:3
 msgid "Send To..."
 msgstr "Küldés…"
 
@@ -93,84 +86,86 @@ msgstr "Fájl küldése levélben, azonnali üzenetként…"
 msgid "Send files by mail, instant message..."
 msgstr "Fájlok küldése levélben, azonnali üzenetként…"
 
-#: ../src/nautilus-sendto-command.c:533
+#: ../src/nautilus-sendto-command.c:544
 msgid "Files"
 msgstr "Fájlok"
 
-#: ../src/nautilus-sendto-command.c:737
+#: ../src/nautilus-sendto-command.c:748
 #, c-format
 msgid "Expects URIs or filenames to be passed as options\n"
 msgstr "URI címekre vagy fájlnevekre számít paraméterekként\n"
 
-#: ../src/nautilus-sendto-command.c:754
+#: ../src/nautilus-sendto-command.c:765
 msgid "Nautilus Sendto"
 msgstr "Nautilus küldés"
 
-#: ../src/nautilus-sendto-command.c:758
+#: ../src/nautilus-sendto-command.c:769
 #, c-format
 msgid "Could not parse command-line options: %s\n"
 msgstr "Nem dolgozhatók fel a parancssori kapcsolók: %s\n"
 
-#: ../src/nautilus-sendto-command.c:773
+#: ../src/nautilus-sendto-command.c:784
 msgid "Could not load any plugins."
 msgstr "Nem tölthetők be bővítmények."
 
-#: ../src/nautilus-sendto-command.c:776
+#: ../src/nautilus-sendto-command.c:787
 msgid "Please verify your installation"
 msgstr "Ellenőrizze a telepítést"
 
-#: ../src/nautilus-sendto.glade.h:1
+#: ../src/nautilus-sendto.ui.h:1
 msgid "<b>Compression</b>"
 msgstr "<b>Tömörítés</b>"
 
-#: ../src/nautilus-sendto.glade.h:2
+#: ../src/nautilus-sendto.ui.h:2
 msgid "<b>Destination</b>"
 msgstr "<b>Cél</b>"
 
-#: ../src/nautilus-sendto.glade.h:4
+#: ../src/nautilus-sendto.ui.h:4
 msgid "Send _as:"
 msgstr "Küldés _mint:"
 
-#: ../src/nautilus-sendto.glade.h:5
+#: ../src/nautilus-sendto.ui.h:5
 msgid "Send _packed in:"
 msgstr "Küldés _tömörítve:"
 
-#: ../src/nautilus-sendto.glade.h:6
+#: ../src/nautilus-sendto.ui.h:6
 msgid "Send t_o:"
 msgstr "Küldés _célja:"
 
-#: ../src/nautilus-sendto.glade.h:7
+#: ../src/nautilus-sendto.ui.h:7
 msgid "_Send"
 msgstr "_Küldés"
 
-#: ../src/plugins/bluetooth/bluetooth.c:442
+#: ../src/plugins/bluetooth/bluetooth.c:448
 msgid "Programming error, could not find the device in the list"
 msgstr "Programozási hiba, az eszköz nem található a listában"
 
-#: ../src/plugins/bluetooth/bluetooth.c:502
+#: ../src/plugins/bluetooth/bluetooth.c:523
 #, c-format
 msgid "Obex Push file transfer unsupported"
 msgstr "Az Obex Push fájlátvitel nem támogatott"
 
-#: ../src/plugins/bluetooth/bluetooth.c:526
+#: ../src/plugins/bluetooth/bluetooth.c:547
 msgid "Bluetooth (OBEX Push)"
 msgstr "Bluetooth (OBEX küldés)"
 
-#: ../src/plugins/empathy/empathy.c:128
+#: ../src/plugins/empathy/empathy.c:130
 msgid "The contact selected cannot receive files."
 msgstr "A kiválasztott partner nem tud fájlokat fogadni."
 
-#: ../src/plugins/empathy/empathy.c:134
-#| msgid "The contact was not found."
+#: ../src/plugins/empathy/empathy.c:136
 msgid "The contact selected is offline."
 msgstr "A kiválasztott partner nem érhető el."
 
-#: ../src/plugins/empathy/empathy.c:187
-#| msgid "Instant Message (Gaim)"
+#: ../src/plugins/empathy/empathy.c:193
+msgid "No error message"
+msgstr "Nincs hibaüzenet"
+
+#: ../src/plugins/empathy/empathy.c:269
 msgid "Instant Message (Empathy)"
 msgstr "Azonnali üzenet (Empathy)"
 
-#: ../src/plugins/evolution/evolution.c:367
+#: ../src/plugins/evolution/evolution.c:366
 msgid "Email"
 msgstr "E-mail"
 
@@ -269,56 +264,52 @@ msgstr "A címjegyzékforrás nem létezik."
 msgid "An unknown error occurred."
 msgstr "Ismeretlen hiba történt."
 
-#: ../src/plugins/gaim/gaim.c:228
-msgid "Instant Message (Gaim)"
-msgstr "Azonnali üzenet (Gaim)"
-
-#: ../src/plugins/gajim/gajim.c:402
+#: ../src/plugins/gajim/gajim.c:403
 msgid "Unable to send file"
 msgstr "Nem küldhető el a fájl"
 
-#: ../src/plugins/gajim/gajim.c:403
+#: ../src/plugins/gajim/gajim.c:404
 msgid "There is no connection to gajim remote service."
 msgstr "Nincs kapcsolat a gajim távoli szolgáltatáshoz."
 
-#: ../src/plugins/gajim/gajim.c:427 ../src/plugins/gajim/gajim.c:466
+#: ../src/plugins/gajim/gajim.c:428 ../src/plugins/gajim/gajim.c:467
 msgid "Sending file failed"
 msgstr "A fájl küldése meghiúsult"
 
-#: ../src/plugins/gajim/gajim.c:428
+#: ../src/plugins/gajim/gajim.c:429
 msgid "Recipient is missing."
 msgstr "A címzett hiányzik."
 
-#: ../src/plugins/gajim/gajim.c:466
+#: ../src/plugins/gajim/gajim.c:467
 msgid "Unknown recipient."
 msgstr "Ismeretlen címzett."
 
-#: ../src/plugins/gajim/gajim.c:488
+#: ../src/plugins/gajim/gajim.c:489
 msgid "Instant Message (Gajim)"
 msgstr "Azonnali üzenet (Gajim)"
 
-#: ../src/plugins/nautilus-burn/nautilus-burn.c:70
-#: ../src/plugins/nautilus-burn/nautilus-burn.c:85
+#: ../src/plugins/nautilus-burn/nautilus-burn.c:73
+#: ../src/plugins/nautilus-burn/nautilus-burn.c:88
 msgid "New CD/DVD"
 msgstr "Új CD/DVD"
 
-#: ../src/plugins/nautilus-burn/nautilus-burn.c:83
+#: ../src/plugins/nautilus-burn/nautilus-burn.c:86
 msgid "Existing CD/DVD"
 msgstr "Meglévő CD/DVD"
 
-#: ../src/plugins/nautilus-burn/nautilus-burn.c:162
+#: ../src/plugins/nautilus-burn/nautilus-burn.c:165
 msgid "CD/DVD Creator"
 msgstr "CD/DVD-készítő"
 
-#: ../src/plugins/pidgin/pidgin.c:350
+#: ../src/plugins/pidgin/pidgin.c:353
 msgid "Instant Message (Pidgin)"
 msgstr "Azonnali üzenet (Pidgin)"
 
-#: ../src/plugins/removable-devices/removable-devices.c:219
+#: ../src/plugins/removable-devices/removable-devices.c:224
 msgid "Removable disks and shares"
 msgstr "Cserélhető lemezek és megosztások"
 
-#: ../src/plugins/upnp/upnp.c:298
+#: ../src/plugins/upnp/upnp.c:301
 msgid "UPnP Media Server"
 msgstr "UPnP médiakiszolgáló"
 
