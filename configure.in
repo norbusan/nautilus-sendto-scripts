@@ -34,7 +34,7 @@ PIDGIN_REQUIRED=2.0.0
 NAUTILUS_EXTENSION=2.13.3
 DBUS_REQUIRED=1.0
 DBUS_GLIB_REQUIRED=0.60
-GUPNP_AV_REQUIRED=0.2.1
+GUPNP_REQUIRED=0.13
 EMPATHY_REQUIRED=2.27.91
 EMPATHY_GTK_REQUIRED=2.27.91
 
@@ -46,7 +46,7 @@ AC_SUBST(PIDGIN_REQUIRED)
 AC_SUBST(NAUTILUS_EXTENSION)
 AC_SUBST(BLUETOOTH_REQUIRED)
 AC_SUBST(DBUS_REQUIRED)
-AC_SUBST(GUPNP_AV_REQUIRED)
+AC_SUBST(GUPNP_REQUIRED)
 AC_SUBST(EMPATHY_REQUIRED)
 AC_SUBST(EMPATHY_GTK_REQUIRED)
 
@@ -226,10 +226,10 @@ for plugin in ${used_plugins}; do
 			fi
 		;;
 		upnp)
-			PKG_CHECK_MODULES(UPNP, gupnp-av-1.0 >= $GUPNP_AV_REQUIRED,
+			PKG_CHECK_MODULES(UPNP, gupnp-1.0 >= $GUPNP_REQUIRED,
 					  enable_upnp=yes, enable_upnp=no)
 			if test "${enable_upnp}" != "yes" ; then
-				plugin_error_or_ignore "you need gupnp-av installed for the upnp plugin"
+				plugin_error_or_ignore "you need gupnp installed for the upnp plugin"
 				add_plugin="0"
 			fi
 		;;
