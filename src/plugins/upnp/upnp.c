@@ -31,7 +31,7 @@
 #include <libgupnp-av/gupnp-av.h>
 #include "nautilus-sendto-plugin.h"
 
-#define MEDIA_SERVER "urn:schemas-upnp-org:device:MediaServer:*"
+#define MEDIA_SERVER "urn:schemas-upnp-org:device:MediaServer:1"
 #define CDS "urn:schemas-upnp-org:service:ContentDirectory"
 
 enum {
@@ -141,12 +141,6 @@ device_proxy_available_cb (GUPnPControlPoint *cp,
 	GUPnPServiceInfo *info;
 	const gchar *type;
 
-	type = gupnp_device_info_get_device_type (GUPNP_DEVICE_INFO (proxy));
-	if (!g_pattern_match_simple (MEDIA_SERVER, type)) {
-		/* We are only interested in MediaServer */
-		return;
-	}
-
 	info = gupnp_device_info_get_service (GUPNP_DEVICE_INFO (proxy), CDS);
 	if (G_UNLIKELY (info == NULL)) {
 		/* No ContentDirectory implemented? Not interesting. */
@@ -199,7 +193,7 @@ init (NstPlugin *plugin)
 		return FALSE;
 	}
 
-	cp = gupnp_control_point_new (context, "ssdp:all");
+	cp = gupnp_control_point_new (context, MEDIA_SERVER);
 
 	g_signal_connect (cp,
 			  "device-proxy-available",
