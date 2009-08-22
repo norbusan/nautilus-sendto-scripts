@@ -37,6 +37,7 @@
 enum {
 	UDN_COL,
 	NAME_COL,
+	INTERFACE_COL,
 	NUM_COLS
 };
 
@@ -90,8 +91,9 @@ get_introspection_cb (GUPnPServiceInfo *service_info,
 {
 	GUPnPDeviceInfo *device_info;
 	gchar *name;
-	const gchar *udn;
+	const gchar *udn, *interface;
 	GtkTreeIter iter;
+	GUPnPContext *context;
 
 	device_info = GUPNP_DEVICE_INFO (user_data);
 
@@ -115,9 +117,13 @@ get_introspection_cb (GUPnPServiceInfo *service_info,
 	if (name == NULL)
 		name = g_strdup (udn);
 
+	context = gupnp_device_info_get_context (device_info);
+	interface = gssdp_client_get_interface (GSSDP_CLIENT (context));
+
 	gtk_list_store_insert_with_values (GTK_LIST_STORE (model), NULL, -1,
 					   UDN_COL, udn,
 					   NAME_COL, name,
+					   INTERFACE_COL, interface,
 					   -1);
 
 	g_free (name);
@@ -210,7 +216,8 @@ init (NstPlugin *plugin)
 
 	store = gtk_list_store_new (NUM_COLS,
 				    G_TYPE_STRING,   /* UDN  */
-				    G_TYPE_STRING);  /* Name */
+				    G_TYPE_STRING,   /* Name */
+				    G_TYPE_STRING);  /* Network Interface */
 	model = GTK_TREE_MODEL (store);
 	gtk_combo_box_set_model (GTK_COMBO_BOX (combobox), model);
 
@@ -237,7 +244,7 @@ send_files (NstPlugin *plugin,
 	    GtkWidget *contact_widget,
 	    GList *file_list)
 {
-	gchar *upload_cmd, *udn;
+	gchar *upload_cmd, *udn, *interface;
 	GPtrArray *argv;
 	gboolean ret;
 	GList *l;
@@ -247,7 +254,8 @@ send_files (NstPlugin *plugin,
 	if (!gtk_combo_box_get_active_iter (GTK_COMBO_BOX (combobox), &iter))
 		return FALSE;
 
-	gtk_tree_model_get (model, &iter, UDN_COL, &udn, -1);
+	gtk_tree_model_get (model, &iter, UDN_COL, &udn, INTERFACE_COL,
+			    &interface, -1);
 
 	upload_cmd = g_find_program_in_path ("gupnp-upload");
 	if (upload_cmd == NULL)
@@ -257,6 +265,8 @@ send_files (NstPlugin *plugin,
 	g_ptr_array_add (argv, upload_cmd);
 	g_ptr_array_add (argv, "-t");
 	g_ptr_array_add (argv, "15"); /* discovery timeout (seconds) */
+	g_ptr_array_add (argv, "-e");
+	g_ptr_array_add (argv, interface);
 	g_ptr_array_add (argv, udn);
 	for (l = file_list ; l; l=l->next) {
 		gchar *file_path;
