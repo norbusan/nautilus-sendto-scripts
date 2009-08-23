@@ -43,8 +43,7 @@ enum {
 
 static GtkWidget *combobox;
 static GtkTreeModel *model;
-static GUPnPContext *context;
-static GUPnPControlPoint *cp;
+static GUPnPContextManager *context_manager;
 
 static gboolean
 find_device (const gchar *udn,
@@ -168,30 +167,12 @@ device_proxy_unavailable_cb (GUPnPControlPoint *cp,
 		gtk_list_store_remove (GTK_LIST_STORE (model), &iter);
 }
 
-static gboolean
-init (NstPlugin *plugin)
+static void
+on_context_available (GUPnPContextManager *context_manager,
+                      GUPnPContext        *context,
+                      gpointer             user_data)
 {
-	GtkListStore *store;
-	GtkCellRenderer *renderer;
-	GError *error;
-	char *upload_cmd;
-
-	bindtextdomain (GETTEXT_PACKAGE, LOCALEDIR);
-	bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
-
-	upload_cmd = g_find_program_in_path ("gupnp-upload");
-	if (upload_cmd == NULL)
-		return FALSE;
-	g_free (upload_cmd);
-
-	error = NULL;
-	context = gupnp_context_new (NULL, NULL, 0, &error);
-	if (error != NULL) {
-		g_error (error->message);
-		g_error_free (error);
-
-		return FALSE;
-	}
+	GUPnPControlPoint *cp;
 
 	cp = gupnp_control_point_new (context, MEDIA_SERVER);
 
@@ -205,6 +186,31 @@ init (NstPlugin *plugin)
 			  NULL);
 
 	gssdp_resource_browser_set_active (GSSDP_RESOURCE_BROWSER (cp), TRUE);
+
+	/* Let context manager take care of the control point life cycle */
+	gupnp_context_manager_manage_control_point (context_manager, cp);
+	g_object_unref (cp);
+}
+
+static gboolean
+init (NstPlugin *plugin)
+{
+	GtkListStore *store;
+	GtkCellRenderer *renderer;
+	char *upload_cmd;
+
+	bindtextdomain (GETTEXT_PACKAGE, LOCALEDIR);
+	bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
+
+	upload_cmd = g_find_program_in_path ("gupnp-upload");
+	if (upload_cmd == NULL)
+		return FALSE;
+	g_free (upload_cmd);
+
+	context_manager = gupnp_context_manager_new (NULL, 0);
+	g_assert (context_manager != NULL);
+	g_signal_connect (context_manager, "context-available",
+			  G_CALLBACK (on_context_available), NULL);
 
 	combobox = gtk_combo_box_new ();
 
@@ -292,8 +298,7 @@ destroy (NstPlugin *plugin)
 	gtk_widget_destroy (combobox);
 	g_object_unref (model);
 
-	g_object_unref (cp);
-	g_object_unref (context);
+	g_object_unref (context_manager);
 
 	return TRUE;
 }
