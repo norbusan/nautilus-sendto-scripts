@@ -1,4 +1,14 @@
 =============
+Version 1.1.7
+=============
+
+Nautilus Sendto
+
+Bug fixes:
+	- Port to newer Empathy API
+	- Enable nautilus-burn plugin by default
+
+=============
 Version 1.1.6
 =============
 
