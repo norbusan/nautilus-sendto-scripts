@@ -15,9 +15,9 @@ MARSHALFILES = econtactentry-marshal.c econtactentry-marshal.h
 BUILT_SOURCES = $(MARSHALFILES)
 
 econtactentry-marshal.c: econtactentry-marshal.h
-	( $(GLIB_GENMARSHAL) --prefix=econtactentry_marshal $(srcdir)/econtactentry-marshal.list --header --body > econtactentry-marshal.c )
+	$(AM_V_GEN) ( $(GLIB_GENMARSHAL) --prefix=econtactentry_marshal $(srcdir)/econtactentry-marshal.list --header --body > econtactentry-marshal.c )
 econtactentry-marshal.h: econtactentry-marshal.list
-	( $(GLIB_GENMARSHAL) --prefix=econtactentry_marshal $(srcdir)/econtactentry-marshal.list --header > econtactentry-marshal.h )
+	$(AM_V_GEN) ( $(GLIB_GENMARSHAL) --prefix=econtactentry_marshal $(srcdir)/econtactentry-marshal.list --header > econtactentry-marshal.h )
 
 CLA_FILES = e-contact-entry.h e-contact-entry.c econtactentry-marshal.list
 CLADIR = $(srcdir)/../../../../contact-lookup-applet/src/

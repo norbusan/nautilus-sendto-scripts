@@ -15,10 +15,10 @@ INCLUDES =                                      \
 plugin_LTLIBRARIES = libnstbluetooth.la
 
 bluetooth-marshal.h: bluetooth-marshal.list
-	$(GLIB_GENMARSHAL) --prefix=nst_bluetooth_marshal $< --header > $@
+	$(AM_V_GEN) $(GLIB_GENMARSHAL) --prefix=nst_bluetooth_marshal $< --header > $@
 
 bluetooth-marshal.c: bluetooth-marshal.list
-	$(GLIB_GENMARSHAL) --prefix=nst_bluetooth_marshal $< --body > $@
+	$(AM_V_GEN) $(GLIB_GENMARSHAL) --prefix=nst_bluetooth_marshal $< --body > $@
 bluetooth.c: bluetooth-marshal.c bluetooth-marshal.h
 
 libnstbluetooth_la_SOURCES = bluetooth.c bluetooth-marshal.h bluetooth-marshal.c
