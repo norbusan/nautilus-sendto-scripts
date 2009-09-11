@@ -294,17 +294,17 @@ get_sylpheed_mailto (GtkWidget *contact_widget, GString *mailto, GList *file_lis
 	g_string_append (mailto, "--compose ");
 	if (email != NULL) {
 		if (name != NULL)
-			g_string_append_printf (mailto, "\""CONTACT_FORMAT"\",", name, email);
+			g_string_append_printf (mailto, "\""CONTACT_FORMAT"\" ", name, email);
 		else
-			g_string_append_printf (mailto, "%s,", email);
+			g_string_append_printf (mailto, "%s ", email);
 	} else {
 		const char *text;
 
 		text = gtk_entry_get_text (GTK_ENTRY (contact_widget));
 		if (text != NULL && *text != '\0')
-			g_string_append_printf (mailto, "\"%s\",", text);
+			g_string_append_printf (mailto, "\"%s\" ", text);
 		else
-			g_string_append (mailto, " \"\"");
+			g_string_append (mailto, "\"\"");
 	}
 	g_string_append_printf (mailto,"--attach \"%s\"", (char *)file_list->data);
 	for (l = file_list->next ; l; l=l->next){
