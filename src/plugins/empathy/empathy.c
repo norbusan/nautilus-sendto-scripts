@@ -280,7 +280,7 @@ NstPluginInfo plugin_info = {
   "empathy",
   N_("Instant Message (Empathy)"),
   TRUE,
-  FALSE,
+  NAUTILUS_CAPS_NONE,
   init,
   get_contacts_widget,
   validate_destination,

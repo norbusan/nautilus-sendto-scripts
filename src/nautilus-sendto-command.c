@@ -381,7 +381,7 @@ option_changed (GtkComboBox *cb, NS_ui *ui)
 	gtk_label_set_mnemonic_widget (GTK_LABEL (ui->send_to_label), aux->data);
 
 	p = (NstPlugin *) g_list_nth_data (plugin_list, option);
-	supports_dirs = p->info->can_send_directories;
+	supports_dirs = (p->info->capabilities & NAUTILUS_CAPS_SEND_DIRECTORIES);
 
 	if (has_dirs == FALSE || supports_dirs != FALSE) {
 		gboolean toggle;
@@ -450,7 +450,7 @@ set_model_for_options_combobox (NS_ui *ui)
 					-1);
 		if (last_used != NULL && !strcmp(last_used, p->info->id)) {
 			option = i;
-			last_used_support_dirs = p->info->can_send_directories;
+			last_used_support_dirs = (p->info->capabilities & NAUTILUS_CAPS_SEND_DIRECTORIES);
 		}
 		i++;
 	}

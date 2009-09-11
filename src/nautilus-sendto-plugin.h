@@ -30,19 +30,26 @@
 typedef struct _NstPluginInfo NstPluginInfo;
 typedef struct _NstPlugin NstPlugin;
 
+typedef enum {
+	NAUTILUS_CAPS_NONE = 0,
+	NAUTILUS_CAPS_SEND_DIRECTORIES = 1 << 0,
+	NAUTILUS_CAPS_SEND_IMAGES = 1 << 1,
+} NstPluginCapabilities;
+
 struct _NstPluginInfo 
 {
 	gchar *icon;
 	gchar *id;
 	gchar *description;
 	gboolean never_unload;
-	gboolean can_send_directories;
-	gboolean (*init)(NstPlugin *plugin);
-	GtkWidget* (*get_contacts_widget)(NstPlugin *plugin);
-	gboolean (*validate_destination)(NstPlugin *plugin, GtkWidget *contact_widget, char **error);
-	gboolean (*send_files)(NstPlugin *plugin, GtkWidget *contact_widget,
+	NstPluginCapabilities capabilities;
+	gboolean (*init) (NstPlugin *plugin);
+	GtkWidget* (*get_contacts_widget) (NstPlugin *plugin);
+	gboolean (*validate_destination) (NstPlugin *plugin, GtkWidget *contact_widget, char **error);
+	gboolean (*send_files) (NstPlugin *plugin,
+				GtkWidget *contact_widget,
 				GList *file_list);
-    	gboolean (*destroy)(NstPlugin *plugin) ;
+	gboolean (*destroy) (NstPlugin *plugin) ;
 };
 
 struct _NstPlugin
@@ -51,11 +58,11 @@ struct _NstPlugin
 	NstPluginInfo *info;
 };
 
-# define NST_INIT_PLUGIN(plugininfo) \
-	gboolean nst_init_plugin(NstPlugin *plugin); \
-        G_MODULE_EXPORT gboolean nst_init_plugin(NstPlugin *plugin) { \
-		plugin->info = &(plugininfo);\
-                return TRUE;\
+# define NST_INIT_PLUGIN(plugininfo)					\
+	gboolean nst_init_plugin(NstPlugin *plugin);			\
+        G_MODULE_EXPORT gboolean nst_init_plugin(NstPlugin *plugin) {	\
+		plugin->info = &(plugininfo);				\
+                return TRUE;						\
         }	
 
 #define SOEXT           ("." G_MODULE_SUFFIX)
@@ -63,5 +70,4 @@ struct _NstPlugin
 
 
 #endif /* _NAUTILUS_SENDTO_PLUGIN_H_ */
-
 
