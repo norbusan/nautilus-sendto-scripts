@@ -27,18 +27,35 @@
 #include "nst-common.h"
 #include "nautilus-sendto-plugin.h"
 
-#define COMBOBOX_OPTION_EXISTING_DVD 0
-#define COMBOBOX_OPTION_NEW_DVD 1
+enum {
+	COL_PIXBUF,
+	COL_LABEL,
+	NUM_COLS,
+};
+
+#define COMBOBOX_OPTION_NEW_DVD 0
+#define COMBOBOX_OPTION_EXISTING_DVD 1
 
 static GFile *burn = NULL;
 
 static
 gboolean init (NstPlugin *plugin)
 {
+	GtkIconTheme *it;
+	char *cmd;
+
 	g_print ("Init nautilus burn plugin\n");
 
 	bindtextdomain (GETTEXT_PACKAGE, LOCALEDIR);
 	bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
+
+	it = gtk_icon_theme_get_default ();
+	gtk_icon_theme_append_search_path (it, DATADIR "/brasero/icons");
+
+	cmd = g_find_program_in_path ("brasero");
+	if (cmd == NULL)
+		return FALSE;
+	g_free (cmd);
 
 	burn = g_file_new_for_uri ("burn:/");
 
@@ -52,11 +69,9 @@ GtkWidget* get_contacts_widget (NstPlugin *plugin)
 	GtkCellRenderer *renderer;
 	GtkListStore *store;
 	GtkTreeModel *model;
-	GdkPixbuf *icon;
-	GtkIconTheme *it;
 	GFileEnumerator *fenum;
 	GFileInfo *file_info = NULL;
-
+	int selection = COMBOBOX_OPTION_NEW_DVD;
 
 	fenum = g_file_enumerate_children (burn,
 					   G_FILE_ATTRIBUTE_STANDARD_NAME,
@@ -69,46 +84,44 @@ GtkWidget* get_contacts_widget (NstPlugin *plugin)
 		g_object_unref (fenum);
 	}
 
-	if (file_info == NULL) {
-		widget = gtk_label_new(_("New CD/DVD"));
-	} else {
-		GtkTreeIter iter;
+	store = gtk_list_store_new (NUM_COLS, G_TYPE_STRING, G_TYPE_STRING);
 
-		it = gtk_icon_theme_get_default ();
-		icon = gtk_icon_theme_load_icon (it,
-						 "nautilus-cd-burner",
-						 16,
-						 GTK_ICON_LOOKUP_USE_BUILTIN,
-						 NULL);
+	gtk_list_store_insert_with_values (store, NULL,
+					   INT_MAX,
+					   COL_PIXBUF, "media-optical-blank",
+					   COL_LABEL, _("New CD/DVD"),
+					   -1);
 
-		store = gtk_list_store_new (2, GDK_TYPE_PIXBUF, G_TYPE_STRING);
-		gtk_list_store_append (store, &iter);
-		gtk_list_store_set (store, &iter, 0, icon, 1, _("Existing CD/DVD"), -1);
-		gtk_list_store_append (store, &iter);
-		gtk_list_store_set (store, &iter, 0, icon, 1, _("New CD/DVD"), -1);
-
-		model = GTK_TREE_MODEL (store);
-		widget = gtk_combo_box_new_with_model (model);
-		renderer = gtk_cell_renderer_pixbuf_new ();
-		gtk_cell_layout_pack_start (GTK_CELL_LAYOUT (widget),
-					    renderer,
-					    FALSE);
-		gtk_cell_layout_set_attributes (GTK_CELL_LAYOUT (widget), 
-						renderer,
-						"pixbuf", 0,
-						NULL);		
-		renderer = gtk_cell_renderer_text_new ();
-		gtk_cell_layout_pack_start (GTK_CELL_LAYOUT (widget),
-					    renderer,
-					    TRUE);
-		gtk_cell_layout_set_attributes (GTK_CELL_LAYOUT (widget), 
-						renderer,
-						"text", 1,
-						NULL);
-
-		gtk_combo_box_set_active (GTK_COMBO_BOX (widget), 0);
+	if (file_info != NULL) {
+		gtk_list_store_insert_with_values (store, NULL,
+						   INT_MAX,
+						   COL_PIXBUF, "media-optical-data-new",
+						   COL_LABEL, _("Existing CD/DVD"),
+						   -1);
 		g_object_unref (file_info);
+		selection = COMBOBOX_OPTION_EXISTING_DVD;
 	}
+
+	model = GTK_TREE_MODEL (store);
+	widget = gtk_combo_box_new_with_model (model);
+	renderer = gtk_cell_renderer_pixbuf_new ();
+	gtk_cell_layout_pack_start (GTK_CELL_LAYOUT (widget),
+				    renderer,
+				    FALSE);
+	gtk_cell_layout_set_attributes (GTK_CELL_LAYOUT (widget), 
+					renderer,
+					"icon-name", COL_PIXBUF,
+					NULL);
+	renderer = gtk_cell_renderer_text_new ();
+	gtk_cell_layout_pack_start (GTK_CELL_LAYOUT (widget),
+				    renderer,
+				    TRUE);
+	gtk_cell_layout_set_attributes (GTK_CELL_LAYOUT (widget), 
+					renderer,
+					"text", COL_LABEL,
+					NULL);
+
+	gtk_combo_box_set_active (GTK_COMBO_BOX (widget), selection);
 
 	return widget;
 }
@@ -122,8 +135,7 @@ gboolean send_files (NstPlugin *plugin,
 	GFileInfo *file_info;
 	GFile *child;
 
-	if (GTK_IS_COMBO_BOX (burntype_widget) &&
-	    gtk_combo_box_get_active (GTK_COMBO_BOX (burntype_widget)) == COMBOBOX_OPTION_NEW_DVD) {
+	if (gtk_combo_box_get_active (GTK_COMBO_BOX (burntype_widget)) == COMBOBOX_OPTION_NEW_DVD) {
 		fenum = g_file_enumerate_children (burn,
 						   G_FILE_ATTRIBUTE_STANDARD_NAME,
 						   G_FILE_QUERY_INFO_NONE,
@@ -154,13 +166,14 @@ static
 gboolean destroy (NstPlugin *plugin){
 
 	g_object_unref (burn);
+	burn = NULL;
 	return TRUE;
 
 }
 
 static 
 NstPluginInfo plugin_info = {
-	"nautilus-cd-burner",
+	"brasero",
 	"nautilus-burn",
 	N_("CD/DVD Creator"),
 	FALSE,
