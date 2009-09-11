@@ -266,24 +266,24 @@ get_thunderbird_mailto (GtkWidget *contact_widget, GString *mailto, GList *file_
 {
 	GList *l;
 
-	g_string_append (mailto, "-compose ");
+	g_string_append (mailto, "-compose \"");
 	if (email != NULL) {
 		if (name != NULL)
-			g_string_append_printf (mailto, "to=\""CONTACT_FORMAT"\",", name, email);
+			g_string_append_printf (mailto, "to='"CONTACT_FORMAT"',", name, email);
 		else
-			g_string_append_printf (mailto, "to=%s,", email);
+			g_string_append_printf (mailto, "to='%s',", email);
 	} else {
 		const char *text;
 
 		text = gtk_entry_get_text (GTK_ENTRY (contact_widget));
 		if (text != NULL && *text != '\0')
-			g_string_append_printf (mailto, "to=\"%s\",", text);
+			g_string_append_printf (mailto, "to='%s',", text);
 	}
 	g_string_append_printf (mailto,"attachment='%s", (char *)file_list->data);
 	for (l = file_list->next ; l; l=l->next){
 		g_string_append_printf (mailto,",%s", (char *)l->data);
 	}
-	g_string_append_c (mailto, '\'');
+	g_string_append (mailto, "'\"");
 }
 
 static void
