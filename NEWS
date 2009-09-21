@@ -1,3 +1,15 @@
+==============
+Version 2.28.0
+==============
+
+Nautilus Sendto
+
+Bug fixes:
+	- Fix command-line for Claws and Sylpheed
+	- Fix icons for the nautilus-burn plugin
+	- Fix Thunderbird's command-line arguments
+	- Update UPNP plugin for gupnp 0.13
+
 =============
 Version 1.1.7
 =============
