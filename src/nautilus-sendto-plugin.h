@@ -2,6 +2,7 @@
 
 /* 
  * Copyright (C) 2004 Roberto Majadas
+ * Copyright (C) 2009 Bastien Nocera <hadess@hadess.net>
  * 
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License as
@@ -18,8 +19,8 @@
  * Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
  * Boston, MA 02110-1301  USA.
  *
- * Author:  Roberto Majadas <roberto.majadas@openshine.com>
- *          Bastien Nocera <hadess@hadess.net>
+ * Authors:  Roberto Majadas <roberto.majadas@openshine.com>
+ *           Bastien Nocera <hadess@hadess.net>
  */
 
 #ifndef _NAUTILUS_SENDTO_PLUGIN_H_
