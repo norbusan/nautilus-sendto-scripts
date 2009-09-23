@@ -176,6 +176,7 @@ NstPluginInfo plugin_info = {
 	"brasero",
 	"nautilus-burn",
 	N_("CD/DVD Creator"),
+	NULL,
 	FALSE,
 	NAUTILUS_CAPS_SEND_DIRECTORIES,
 	init,

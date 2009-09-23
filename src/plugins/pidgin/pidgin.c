@@ -351,6 +351,7 @@ NstPluginInfo plugin_info = {
 	"im",
 	"pidgin",
 	N_("Instant Message (Pidgin)"),
+	NULL,
 	FALSE,
 	NAUTILUS_CAPS_NONE,
 	init,

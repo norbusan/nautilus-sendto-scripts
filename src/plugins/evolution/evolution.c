@@ -364,6 +364,7 @@ NstPluginInfo plugin_info = {
 	"emblem-mail",
 	"evolution",
 	N_("Email"),
+	NULL,
 	FALSE,
 	NAUTILUS_CAPS_NONE,
 	init,

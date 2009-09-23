@@ -279,6 +279,7 @@ NstPluginInfo plugin_info = {
   "im",
   "empathy",
   N_("Instant Message (Empathy)"),
+  NULL,
   TRUE,
   NAUTILUS_CAPS_NONE,
   init,

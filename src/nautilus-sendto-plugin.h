@@ -51,6 +51,7 @@ typedef enum {
  * @icon: The icon name for the plugin selection drop-down
  * @id: A unique ID representing the plugin
  * @description: The label used in the plugin selection drop-down
+ * @gettext_package: The domain to use to translate the description, %NULL if the plugin is part of nautilus-sendto
  * @never_unload: Whether to unload the plugin on exit. Enable this if your plugin registers a new #GType
  * @capabilities: a bitmask of #NstPluginCapabilities
  * @init: Check for dependencies, and return %FALSE if dependencies such as programs are missing.
@@ -66,6 +67,7 @@ struct _NstPluginInfo
 	gchar                             *icon;
 	gchar                             *id;
 	gchar                             *description;
+	gchar                             *gettext_package;
 	gboolean                           never_unload;
 	NstPluginCapabilities              capabilities;
 	gboolean (*init)                  (NstPlugin *plugin);

@@ -307,6 +307,7 @@ NstPluginInfo plugin_info = {
 	"folder-remote",
 	"upnp",
 	N_("UPnP Media Server"),
+	NULL,
 	FALSE,
 	NAUTILUS_CAPS_NONE,
 	init,

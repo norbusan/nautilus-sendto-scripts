@@ -449,7 +449,7 @@ set_model_for_options_combobox (NS_ui *ui)
 		gtk_list_store_append (model, &iter);
 		gtk_list_store_set (model, &iter,
 					COLUMN_ICON, pixbuf,
-					COLUMN_DESCRIPTION, _(p->info->description),
+					COLUMN_DESCRIPTION, dgettext(p->info->gettext_package, p->info->description),
 					-1);
 		if (last_used != NULL && !strcmp(last_used, p->info->id)) {
 			option = i;

@@ -222,6 +222,7 @@ NstPluginInfo plugin_info = {
 	"folder-remote",
 	"folder-remote",
 	N_("Removable disks and shares"),
+	NULL,
 	FALSE,
 	NAUTILUS_CAPS_SEND_DIRECTORIES,
 	init,
