@@ -282,6 +282,7 @@ AM_GCONF_SOURCE_2
 AC_OUTPUT([
 Makefile
 src/Makefile
+src/nautilus-sendto.pc
 src/plugins/Makefile
 src/plugins/bluetooth/Makefile
 src/plugins/empathy/Makefile

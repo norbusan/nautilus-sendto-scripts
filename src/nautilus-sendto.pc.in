@@ -1,0 +1,10 @@
+prefix=@prefix@
+exec_prefix=@exec_prefix@
+includedir=@includedir@
+pluginsdir=@libdir@/nautilus-sendto/plugins
+
+Name: nautilus-sendto
+Description: Extend nautilus-sendto through plugins
+Version: @VERSION@
+Requires: glib-2.0 gmodule-2.0 libgnomeui-2.0
+Cflags: -I${includedir}/nautilus-sendto

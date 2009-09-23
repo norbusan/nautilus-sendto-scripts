@@ -11,6 +11,12 @@ INCLUDES =					\
 	$(DISABLE_DEPRECATED)			\
 	$(WARN_CFLAGS)
 
+nautilus_sendto_includedir = $(includedir)/nautilus-sendto/
+nautilus_sendto_include_HEADERS = nautilus-sendto-plugin.h
+
+pkgconfigdir = $(libdir)/pkgconfig
+pkgconfig_DATA = nautilus-sendto.pc
+
 ui_DATA = nautilus-sendto.ui
 uidir = $(datadir)/nautilus-sendto/ui
 
@@ -61,5 +67,5 @@ nst-enum-types.c: $(nst_headers_to_scan_for_enums) Makefile nst-enum-types.h
 			--vtail "      { 0, NULL, NULL }\n    };\n    etype = g_@type@_register_static (\"@EnumName@\", values);\n  }\n  return etype;\n}\n" \
 		$(nst_headers_to_scan_for_enums)) > $@
 
-EXTRA_DIST = $(ui_DATA)
+EXTRA_DIST = $(ui_DATA) nautilus-sendto.pc.in
 CLEANFILES = $(nst_built_headers) $(nst_built_cfiles)
