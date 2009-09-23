@@ -14,11 +14,11 @@ INCLUDES =                                      \
 
 plugin_LTLIBRARIES = libnstbluetooth.la
 
-bluetooth-marshal.h: bluetooth-marshal.list
+bluetooth-marshal.h: bluetooth-marshal.list Makefile
 	$(AM_V_GEN) $(GLIB_GENMARSHAL) --prefix=nst_bluetooth_marshal $< --header > $@
 
-bluetooth-marshal.c: bluetooth-marshal.list
-	$(AM_V_GEN) $(GLIB_GENMARSHAL) --prefix=nst_bluetooth_marshal $< --body > $@
+bluetooth-marshal.c: bluetooth-marshal.list Makefile
+	$(AM_V_GEN) $(GLIB_GENMARSHAL) --prefix=nst_bluetooth_marshal $< --header --body > $@
 bluetooth.c: bluetooth-marshal.c bluetooth-marshal.h
 
 libnstbluetooth_la_SOURCES = bluetooth.c bluetooth-marshal.h bluetooth-marshal.c

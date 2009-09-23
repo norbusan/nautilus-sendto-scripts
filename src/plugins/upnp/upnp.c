@@ -138,7 +138,6 @@ device_proxy_available_cb (GUPnPControlPoint *cp,
 			   GUPnPDeviceProxy  *proxy)
 {
 	GUPnPServiceInfo *info;
-	const gchar *type;
 
 	info = gupnp_device_info_get_service (GUPNP_DEVICE_INFO (proxy), CDS);
 	if (G_UNLIKELY (info == NULL)) {
