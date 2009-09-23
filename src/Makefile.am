@@ -14,18 +14,20 @@ INCLUDES =					\
 ui_DATA = nautilus-sendto.ui
 uidir = $(datadir)/nautilus-sendto/ui
 
-bin_PROGRAMS = nautilus-sendto
-
-nautilus_sendto_SOURCES =			\
-	nautilus-sendto-command.c		\
+noinst_LTLIBRARIES = libnstplugin.la
+libnstplugin_la_SOURCES =			\
 	nautilus-sendto-plugin.h		\
 	nst-enum-types.c			\
 	nst-enum-types.h
+libnstplugin_la_LIBADD = $(NAUTILUS_SENDTO_LIBS)
 
-nautilus_sendto_LDADD = $(NAUTILUS_SENDTO_LIBS)
+bin_PROGRAMS = nautilus-sendto
 
-nautilus_extensiondir=$(NAUTILUS_EXTENSION_DIR)
-nautilus_extension_LTLIBRARIES=libnautilus-sendto.la
+nautilus_sendto_SOURCES = nautilus-sendto-command.c
+nautilus_sendto_LDADD = $(NAUTILUS_SENDTO_LIBS) libnstplugin.la
+
+nautilus_extensiondir = $(NAUTILUS_EXTENSION_DIR)
+nautilus_extension_LTLIBRARIES = libnautilus-sendto.la
 libnautilus_sendto_la_SOURCES =		\
 	nautilus-nste.c			\
 	nautilus-nste.h			\

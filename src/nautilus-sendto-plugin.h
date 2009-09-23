@@ -65,9 +65,5 @@ struct _NstPlugin
                 return TRUE;						\
         }	
 
-#define SOEXT           ("." G_MODULE_SUFFIX)
-#define SOEXT_LEN       (strlen (SOEXT))
-
-
 #endif /* _NAUTILUS_SENDTO_PLUGIN_H_ */
 

@@ -16,6 +16,9 @@ AM_PROG_LIBTOOL
 AC_PROG_INSTALL
 AC_PROG_MAKE_SET
 
+dnl gtk-doc checks
+GTK_DOC_CHECK(1.9)
+
 GNOME_COMMON_INIT
 GNOME_DEBUG_CHECK
 GNOME_COMPILE_WARNINGS([maximum])
@@ -73,9 +76,6 @@ dnl Get details about evolution
 PKG_CHECK_MODULES(EVOLUTION, evolution-plugin < 2.27.1,
 		  enable_evo=yes, enable_evo=no)
 AM_CONDITIONAL(HAVE_EVOLUTION, test "x$enable_evo" = "xyes")
-
-SOEXT=".so"
-AC_SUBST(SOEXT)
 
 plugindir=`$PKG_CONFIG --variable=plugindir evolution-plugin`
 AC_SUBST(plugindir)
@@ -291,6 +291,9 @@ src/plugins/nautilus-burn/Makefile
 src/plugins/pidgin/Makefile
 src/plugins/removable-devices/Makefile
 src/plugins/upnp/Makefile
+docs/Makefile
+docs/nautilus-sendto/Makefile
+docs/nautilus-sendto/version.xml
 evolution/Makefile
 pidgin_plugin/Makefile
 po/Makefile.in

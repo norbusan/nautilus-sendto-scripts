@@ -38,6 +38,9 @@
 #define UNINSTALLED_PLUGINDIR "plugins/removable-devices"
 #define UNINSTALLED_SOURCE "nautilus-sendto-command.c"
 
+#define SOEXT           ("." G_MODULE_SUFFIX)
+#define SOEXT_LEN       (strlen (SOEXT))
+
 enum {
 	COLUMN_ICON,
 	COLUMN_DESCRIPTION,
