@@ -144,7 +144,7 @@ for plugin in ${used_plugins}; do
 			fi
 		;;
 		empathy)
-			PKG_CHECK_MODULES(EMPATHY, libempathy >= $EMPATHY_REQUIRED libempathy-gtk >= $EMPATHY_GTK_REQUIRED gio-2.0 telepathy-glib,
+			PKG_CHECK_MODULES(EMPATHY, libempathy >= $EMPATHY_REQUIRED libempathy-gtk >= $EMPATHY_GTK_REQUIRED libempathy-gtk <= 2.29.1 gio-2.0 telepathy-glib,
 					  enable_empathy=yes, enable_empathy=no)
 			if test "${enable_empathy}" != "yes" ; then
 				plugin_error_or_ignore "you need libempathy and libempathy-gtk to build the Empathy plugin"
