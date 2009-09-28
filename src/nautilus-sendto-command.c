@@ -620,7 +620,7 @@ nautilus_sendto_plugin_dir_process (const char *plugindir)
 
 				p = g_new0(NstPlugin, 1);
 				module_path = g_module_build_path (plugindir, item);
-				p->module = g_module_open (module_path, G_MODULE_BIND_LAZY);
+				p->module = g_module_open (module_path, 0);
 			        if (!p->module) {
                 			g_warning ("error opening %s: %s", module_path, g_module_error ());
 					g_free (module_path);
