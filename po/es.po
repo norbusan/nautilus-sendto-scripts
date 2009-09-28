@@ -9,13 +9,13 @@ msgstr ""
 "Project-Id-Version: nautilus-sendto.HEAD.es\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=nautilus-sendto&component=general\n"
-"POT-Creation-Date: 2009-02-28 00:15+0000\n"
-"PO-Revision-Date: 2009-03-08 16:34+0100\n"
+"POT-Creation-Date: 2009-04-27 13:10+0000\n"
+"PO-Revision-Date: 2009-09-28 21:56+0200\n"
 "Last-Translator: Jorge González <jorgegonz@svn.gnome.org>\n"
 "Language-Team: Español <gnome-es-list@gnome.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
+"Content-Transfer-Encoding: UTF-8\n"
 "X-Generator: KBabel 1.11.4\n"
 "Plural-Forms:  nplurals=2; plural=(n != 1);\n"
 
@@ -44,7 +44,6 @@ msgstr ""
 "tar.gz, 2: tar.bz2)."
 
 #: ../evolution/nautilus-sendto.c:47
-#| msgid "Send to..."
 msgid "_Send to..."
 msgstr "_Enviar a..."
 
@@ -63,21 +62,15 @@ msgstr "Enviar a..."
 #. dependencies
 #. priority
 #. id
-#: ../gaim_plugin/nautilus-sendto-plugin.c:309
-#: ../pidgin_plugin/nautilus-sendto-plugin.c:332
+#: ../pidgin_plugin/nautilus-sendto-plugin.c:342
 msgid "Nautilus Integration"
 msgstr "Integración con Nautilus"
 
 #. name
 #. version
 #. summary
-#. name
-#. version
-#. summary
-#: ../gaim_plugin/nautilus-sendto-plugin.c:311
-#: ../gaim_plugin/nautilus-sendto-plugin.c:312
-#: ../pidgin_plugin/nautilus-sendto-plugin.c:334
-#: ../pidgin_plugin/nautilus-sendto-plugin.c:335
+#: ../pidgin_plugin/nautilus-sendto-plugin.c:344
+#: ../pidgin_plugin/nautilus-sendto-plugin.c:345
 msgid "Provides integration with Nautilus"
 msgstr "Proporciona integración con Nautilus"
 
@@ -130,7 +123,7 @@ msgstr "<b>Destino</b>"
 
 #: ../src/nautilus-sendto.glade.h:4
 msgid "Send _as:"
-msgstr "Enviar _como:"
+msgstr "Enviar co_mo:"
 
 #: ../src/nautilus-sendto.glade.h:5
 msgid "Send _packed in:"
@@ -144,36 +137,36 @@ msgstr "Enviar _a:"
 msgid "_Send"
 msgstr "_Enviar"
 
-#: ../src/plugins/bluetooth/bluetooth.c:445
+#: ../src/plugins/bluetooth/bluetooth.c:448
 msgid "Programming error, could not find the device in the list"
 msgstr "Error de programación, no se pudo encontrar el dispositivo en la lista"
 
-#: ../src/plugins/bluetooth/bluetooth.c:520
+#: ../src/plugins/bluetooth/bluetooth.c:523
 #, c-format
 msgid "Obex Push file transfer unsupported"
 msgstr "La transferencia de archivos Obex Push no está soportada"
 
-#: ../src/plugins/bluetooth/bluetooth.c:544
+#: ../src/plugins/bluetooth/bluetooth.c:547
 msgid "Bluetooth (OBEX Push)"
 msgstr "Bluetooth (OBEX Push)"
 
-#: ../src/plugins/empathy/empathy.c:134
+#: ../src/plugins/empathy/empathy.c:124
 msgid "The contact selected cannot receive files."
 msgstr "El contacto seleccionado no puede recibir archivos."
 
-#: ../src/plugins/empathy/empathy.c:140
+#: ../src/plugins/empathy/empathy.c:130
 msgid "The contact selected is offline."
 msgstr "El contacto seleccionado está desconectado."
 
-#: ../src/plugins/empathy/empathy.c:195 ../src/plugins/empathy/empathy.c:256
+#: ../src/plugins/empathy/empathy.c:183 ../src/plugins/empathy/empathy.c:244
 msgid "No error message"
 msgstr "Sin mensaje de error"
 
-#: ../src/plugins/empathy/empathy.c:309
+#: ../src/plugins/empathy/empathy.c:294
 msgid "Instant Message (Empathy)"
 msgstr "Mensaje instantáneo (Empathy)"
 
-#: ../src/plugins/evolution/evolution.c:367
+#: ../src/plugins/evolution/evolution.c:366
 msgid "Email"
 msgstr "Correo-e"
 
@@ -275,58 +268,57 @@ msgstr "La fuente de la libreta de drirecciones no existe."
 msgid "An unknown error occurred."
 msgstr "Ocurrió un error desconocido."
 
-#: ../src/plugins/gaim/gaim.c:228
-msgid "Instant Message (Gaim)"
-msgstr "Mensaje instantáneo (Gaim)"
-
-#: ../src/plugins/gajim/gajim.c:402
+#: ../src/plugins/gajim/gajim.c:403
 msgid "Unable to send file"
 msgstr "No es posible enviar el archivo"
 
-#: ../src/plugins/gajim/gajim.c:403
+#: ../src/plugins/gajim/gajim.c:404
 msgid "There is no connection to gajim remote service."
 msgstr "No hay ninguna conexión con el servicio remoto de gajim."
 
-#: ../src/plugins/gajim/gajim.c:427 ../src/plugins/gajim/gajim.c:466
+#: ../src/plugins/gajim/gajim.c:428 ../src/plugins/gajim/gajim.c:467
 msgid "Sending file failed"
 msgstr "Ha fallado el envío del archivo"
 
-#: ../src/plugins/gajim/gajim.c:428
+#: ../src/plugins/gajim/gajim.c:429
 msgid "Recipient is missing."
 msgstr "Falta el destinatario."
 
-#: ../src/plugins/gajim/gajim.c:466
+#: ../src/plugins/gajim/gajim.c:467
 msgid "Unknown recipient."
 msgstr "Destinatario desconocido."
 
-#: ../src/plugins/gajim/gajim.c:488
+#: ../src/plugins/gajim/gajim.c:489
 msgid "Instant Message (Gajim)"
 msgstr "Mensaje instantáneo (Gajim)"
 
-#: ../src/plugins/nautilus-burn/nautilus-burn.c:70
-#: ../src/plugins/nautilus-burn/nautilus-burn.c:85
+#: ../src/plugins/nautilus-burn/nautilus-burn.c:73
+#: ../src/plugins/nautilus-burn/nautilus-burn.c:88
 msgid "New CD/DVD"
 msgstr "CD/DVD nuevo"
 
-#: ../src/plugins/nautilus-burn/nautilus-burn.c:83
+#: ../src/plugins/nautilus-burn/nautilus-burn.c:86
 msgid "Existing CD/DVD"
 msgstr "CD/DVD existente"
 
-#: ../src/plugins/nautilus-burn/nautilus-burn.c:162
+#: ../src/plugins/nautilus-burn/nautilus-burn.c:165
 msgid "CD/DVD Creator"
 msgstr "Creador de CD/DVD"
 
-#: ../src/plugins/pidgin/pidgin.c:350
+#: ../src/plugins/pidgin/pidgin.c:353
 msgid "Instant Message (Pidgin)"
 msgstr "Mensaje instantáneo (Pidgin)"
 
-#: ../src/plugins/removable-devices/removable-devices.c:219
+#: ../src/plugins/removable-devices/removable-devices.c:224
 msgid "Removable disks and shares"
 msgstr "Soportes extraíbles y comparticiones"
 
-#: ../src/plugins/upnp/upnp.c:298
+#: ../src/plugins/upnp/upnp.c:301
 msgid "UPnP Media Server"
 msgstr "Servidor multimedia UPnP"
+
+#~ msgid "Instant Message (Gaim)"
+#~ msgstr "Mensaje instantáneo (Gaim)"
 
 #~ msgid "Default folder to use"
 #~ msgstr "Carpeta predeterminada a usar"
