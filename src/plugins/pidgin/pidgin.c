@@ -1,12 +1,12 @@
 /* -*- Mode: C; tab-width: 8; indent-tabs-mode: t; c-basic-offset: 8 -*- */
 
 /*
- * pidgin.c 
+ * pidgin.c
  *       pidgin plugin for nautilus-sendto
  *
  * Copyright (C) 2004 Roberto Majadas
  * Copyright (C) 2009 Pascal Terjan
- * 
+ *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License as
  * published by the Free Software Foundation; either version 2 of the
@@ -46,9 +46,9 @@ typedef struct _ContactData {
 } ContactData;
 
 enum {
-   COL_ICON,
-   COL_ALIAS,
-   NUM_COLS
+	COL_ICON,
+	COL_ALIAS,
+	NUM_COLS
 };
 
 /*
@@ -89,7 +89,7 @@ init (NstPlugin *plugin)
 		g_error_free(error);
 		return FALSE;
 	}
-	
+
 	proxy = dbus_g_proxy_new_for_name(connection,
 					  SERVICE,
 					  OBJ_PATH,
@@ -97,7 +97,7 @@ init (NstPlugin *plugin)
 	dbus_g_connection_unref(connection);
 	if (proxy == NULL)
 		return FALSE;
-	
+
 	error = NULL;
 	if (!dbus_g_proxy_call (proxy, "PurpleAccountsGetAllActive", &error, G_TYPE_INVALID,
 				DBUS_TYPE_G_INT_ARRAY, &accounts, G_TYPE_INVALID)) {
@@ -113,32 +113,31 @@ init (NstPlugin *plugin)
 static GdkPixbuf *
 get_buddy_icon(int id)
 {
-    GError *error;
-    GdkPixbuf *pixbuf = NULL;
-    gchar *path = NULL;
-    int icon;
-    
-    error=NULL;
-    if (!dbus_g_proxy_call (proxy, "PurpleBuddyGetIcon", &error, 
-                            G_TYPE_INT, id,
-                            G_TYPE_INVALID,
-                            G_TYPE_INT, &icon, G_TYPE_INVALID)) {
-        handle_dbus_exception(error);
-    }
-    if (icon) {
-        if (!dbus_g_proxy_call (proxy, "PurpleBuddyIconGetFullPath", &error, 
-                                G_TYPE_INT, icon,
-                                G_TYPE_INVALID,
-                                G_TYPE_STRING, &path, G_TYPE_INVALID)) {
-            handle_dbus_exception(error);
-        }
-        //FIXME Get the size from somewhere
-        pixbuf = gdk_pixbuf_new_from_file_at_scale(path, 24, 24, TRUE, NULL);
-    }
+	GError *error;
+	GdkPixbuf *pixbuf = NULL;
+	gchar *path = NULL;
+	int icon;
 
-    return pixbuf;
+	error=NULL;
+	if (!dbus_g_proxy_call (proxy, "PurpleBuddyGetIcon", &error,
+				G_TYPE_INT, id,
+				G_TYPE_INVALID,
+				G_TYPE_INT, &icon, G_TYPE_INVALID)) {
+		handle_dbus_exception(error);
+	}
+	if (icon) {
+		if (!dbus_g_proxy_call (proxy, "PurpleBuddyIconGetFullPath", &error,
+					G_TYPE_INT, icon,
+					G_TYPE_INVALID,
+					G_TYPE_STRING, &path, G_TYPE_INVALID)) {
+			handle_dbus_exception(error);
+		}
+		//FIXME Get the size from somewhere
+		pixbuf = gdk_pixbuf_new_from_file_at_scale(path, 24, 24, TRUE, NULL);
+	}
+
+	return pixbuf;
 }
-
 
 static void
 add_pidgin_contacts_to_model (GtkTreeStore *store,
@@ -149,7 +148,7 @@ add_pidgin_contacts_to_model (GtkTreeStore *store,
 	GArray *contacts_list;
 	GArray *accounts;
 	int i, j;
-    
+
 	GdkPixbuf *icon;
 	GHashTableIter hiter;
 	GPtrArray *contacts_group;
@@ -172,7 +171,7 @@ add_pidgin_contacts_to_model (GtkTreeStore *store,
 	for(i = 0; i < accounts->len; i++) {
 		int account = g_array_index(accounts, int, i);
 		error = NULL;
-		if (!dbus_g_proxy_call (proxy, "PurpleFindBuddies", &error, 
+		if (!dbus_g_proxy_call (proxy, "PurpleFindBuddies", &error,
 					G_TYPE_INT, account,
 					G_TYPE_STRING, NULL,
 					G_TYPE_INVALID,
@@ -185,7 +184,7 @@ add_pidgin_contacts_to_model (GtkTreeStore *store,
 			int online;
 
 			error = NULL;
-			if (!dbus_g_proxy_call (proxy, "PurpleBuddyIsOnline", &error, 
+			if (!dbus_g_proxy_call (proxy, "PurpleBuddyIsOnline", &error,
 						G_TYPE_INT, id,
 						G_TYPE_INVALID,
 						G_TYPE_INT, &online, G_TYPE_INVALID)) {
@@ -201,7 +200,7 @@ add_pidgin_contacts_to_model (GtkTreeStore *store,
 			dat->id = id;
 
 			error = NULL;
-			if (!dbus_g_proxy_call (proxy, "PurpleBuddyGetName", &error, 
+			if (!dbus_g_proxy_call (proxy, "PurpleBuddyGetName", &error,
 						G_TYPE_INT, id,
 						G_TYPE_INVALID,
 						G_TYPE_STRING, &dat->name, G_TYPE_INVALID)) {
@@ -209,7 +208,7 @@ add_pidgin_contacts_to_model (GtkTreeStore *store,
 				g_free(dat);
 				continue;
 			}
-			if (!dbus_g_proxy_call (proxy, "PurpleBuddyGetAlias", &error, 
+			if (!dbus_g_proxy_call (proxy, "PurpleBuddyGetAlias", &error,
 						G_TYPE_INT, id,
 						G_TYPE_INVALID,
 						G_TYPE_STRING, &dat->alias, G_TYPE_INVALID)) {
@@ -232,18 +231,18 @@ add_pidgin_contacts_to_model (GtkTreeStore *store,
 	g_hash_table_iter_init (&hiter, contact_hash);
 	while (g_hash_table_iter_next (&hiter, NULL, (gpointer)&contacts_group)) {
 		gint accounts;
-		
+
 		dat = g_ptr_array_index (contacts_group, 0);
-		
+
 		accounts = contacts_group->len;
-		
+
 		gtk_tree_store_append (store, parent, NULL);
 		gtk_tree_store_set (store, parent, COL_ICON, NULL, COL_ALIAS, dat->alias, -1);
-		
+
 		gint i;
 		for (i = 0; i < accounts; ++i) {
 			dat = g_ptr_array_index (contacts_group, i);
-			
+
 			icon = get_buddy_icon(dat->id);
 
 			if (accounts == 1) {
@@ -256,7 +255,7 @@ add_pidgin_contacts_to_model (GtkTreeStore *store,
 			gtk_tree_store_append (store, iter, parent);
 			gtk_tree_store_set (store, iter,
 					    COL_ICON, icon,
-					    COL_ALIAS, dat->alias, 
+					    COL_ALIAS, dat->alias,
 					    -1);
 		}
 	}
@@ -295,17 +294,17 @@ get_contacts_widget (NstPlugin *plugin)
 	add_pidgin_contacts_to_model (store, iter, iter2);
 	model = gtk_tree_model_sort_new_with_model (GTK_TREE_MODEL (store));
 	gtk_tree_sortable_set_sort_column_id (GTK_TREE_SORTABLE (model), COL_ALIAS,
-						GTK_SORT_ASCENDING);
+					      GTK_SORT_ASCENDING);
 	cb = gtk_combo_box_new_with_model (model);
 
 	renderer = gtk_cell_renderer_pixbuf_new ();
 	gtk_cell_layout_pack_start (GTK_CELL_LAYOUT (cb),
 				    renderer,
 				    FALSE);
-	gtk_cell_layout_set_attributes (GTK_CELL_LAYOUT (cb), 
+	gtk_cell_layout_set_attributes (GTK_CELL_LAYOUT (cb),
 					renderer,
 					"pixbuf", COL_ICON,
-					NULL); 
+					NULL);
 	gtk_cell_layout_set_cell_data_func (GTK_CELL_LAYOUT (cb), renderer,
 					    customize,
 					    (gboolean *)FALSE, NULL);
@@ -313,7 +312,7 @@ get_contacts_widget (NstPlugin *plugin)
 	gtk_cell_layout_pack_start (GTK_CELL_LAYOUT (cb),
 				    renderer,
 				    TRUE);
-	gtk_cell_layout_set_attributes (GTK_CELL_LAYOUT (cb), 
+	gtk_cell_layout_set_attributes (GTK_CELL_LAYOUT (cb),
 					renderer,
 					"text", COL_ALIAS,
 					NULL);
@@ -339,45 +338,45 @@ get_contacts_widget (NstPlugin *plugin)
 static
 gboolean send_file(int account, const char *who, const char *filename)
 {
-    GError *error;
-    int connection;
+	GError *error;
+	int connection;
 
-    error = NULL;
-    if (!dbus_g_proxy_call(proxy, "PurpleAccountGetConnection", &error,
-                           G_TYPE_INT, account,
-                           G_TYPE_INVALID,
-                           G_TYPE_INT, &connection, G_TYPE_INVALID)) {
-        handle_dbus_exception(error);
-        return FALSE;
-    }
-    
-    if (!connection) {
-        g_warning("[Pidgin] account is not connected");
-        return FALSE;
-    }
-    
-    error = NULL;
-    if (!dbus_g_proxy_call(proxy, "ServSendFile", &error,
-                           G_TYPE_INT, connection,
-                           G_TYPE_STRING, who,
-                           G_TYPE_STRING, filename,
-                           G_TYPE_INVALID, G_TYPE_INVALID)) {
-        handle_dbus_exception(error);
-        return FALSE;
-    }
-    return TRUE;
+	error = NULL;
+	if (!dbus_g_proxy_call(proxy, "PurpleAccountGetConnection", &error,
+			       G_TYPE_INT, account,
+			       G_TYPE_INVALID,
+			       G_TYPE_INT, &connection, G_TYPE_INVALID)) {
+		handle_dbus_exception(error);
+		return FALSE;
+	}
+
+	if (!connection) {
+		g_warning("[Pidgin] account is not connected");
+		return FALSE;
+	}
+
+	error = NULL;
+	if (!dbus_g_proxy_call(proxy, "ServSendFile", &error,
+			       G_TYPE_INT, connection,
+			       G_TYPE_STRING, who,
+			       G_TYPE_STRING, filename,
+			       G_TYPE_INVALID, G_TYPE_INVALID)) {
+		handle_dbus_exception(error);
+		return FALSE;
+	}
+	return TRUE;
 }
 
 static
 gboolean send_files (NstPlugin *plugin, GtkWidget *contact_widget,
-                     GList *file_list)
+		     GList *file_list)
 {
 	GError *error;
 	GList *file_iter;
-	
+
 	GFile *file;
 	gchar *file_path;
-	
+
 	gint depth;
 	GtkTreeIter iter;
 	GtkTreePath *path;
@@ -386,27 +385,27 @@ gboolean send_files (NstPlugin *plugin, GtkWidget *contact_widget,
 	GPtrArray *contacts_group;
 	ContactData *dat;
 	GValue val = {0,};
-	
-	
+
+
 	if(proxy == NULL)
 		return FALSE;
-	
+
 	gtk_combo_box_get_active_iter (GTK_COMBO_BOX (contact_widget), &iter);
 	path = gtk_tree_model_get_path (GTK_TREE_MODEL (
-					gtk_combo_box_get_model (GTK_COMBO_BOX(
-					contact_widget))), &iter);
+		gtk_combo_box_get_model (GTK_COMBO_BOX(
+			contact_widget))), &iter);
 	depth = gtk_tree_path_get_depth(path);
 	indices = gtk_tree_path_get_indices(path);
 	gtk_tree_path_free (path);
 	gtk_tree_model_get_value (GTK_TREE_MODEL (gtk_combo_box_get_model (
-					GTK_COMBO_BOX(contact_widget))), 
-					&iter, COL_ALIAS, &val);
+		    GTK_COMBO_BOX(contact_widget))),
+	    &iter, COL_ALIAS, &val);
 	alias = g_value_get_string (&val);
 	contacts_group = g_hash_table_lookup (contact_hash, alias);
 	g_value_unset (&val);
 	dat = g_ptr_array_index (contacts_group, (depth == 2)?indices[1]:0);
 
-	for(file_iter = file_list; file_iter != NULL; 
+	for(file_iter = file_list; file_iter != NULL;
 	    file_iter = g_list_next(file_iter)) {
 		error= NULL;
 
@@ -420,7 +419,7 @@ gboolean send_files (NstPlugin *plugin, GtkWidget *contact_widget,
 			g_error_free(error);
 			continue;
 		}
-		
+
 		if(!send_file(dat->account, dat->name, file_path))
 			g_warning("[Pidgin] Failed to send %s file to %s", file_path, dat->name);
 	}
@@ -458,7 +457,7 @@ destroy (NstPlugin *plugin)
 	return TRUE;
 }
 
-static 
+static
 NstPluginInfo plugin_info = {
 	"im",
 	"pidgin",
