@@ -79,7 +79,7 @@ struct _NS_ui {
 };
 
 static const GOptionEntry entries[] = {
-	{ G_OPTION_REMAINING, '\0', 0, G_OPTION_ARG_FILENAME_ARRAY, &filenames, "Movies to index", NULL },
+	{ G_OPTION_REMAINING, '\0', 0, G_OPTION_ARG_FILENAME_ARRAY, &filenames, "Files to send", "[FILES...]" },
 	{ NULL }
 };
 
