@@ -173,12 +173,8 @@ for plugin in ${used_plugins}; do
 					  [
 					   AC_SUBST(DBUS_CFLAGS)
 					   AC_SUBST(DBUS_LIBS)
-					   if test -f "$GAJIM_SHARE_DIR"/data/pixmaps/gajim.png ; then
-						   enable_gajim=yes
-						   AC_DEFINE_UNQUOTED(GAJIM_SHARE_DIR, "$GAJIM_SHARE_DIR", [path to gajim share dir])
-					   else
-						   enable_gajim=no
-					   fi
+					   enable_gajim=yes
+					   AC_DEFINE_UNQUOTED(GAJIM_SHARE_DIR, "$GAJIM_SHARE_DIR", [path to gajim share dir])
 					   ],
 					   [
 					    enable_gajim=no
