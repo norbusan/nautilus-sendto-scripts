@@ -99,7 +99,7 @@ init (NstPlugin *plugin)
 		/* Find what the default mailer is */
 		if (strstr (mail_cmd, "balsa"))
 			type = MAILER_BALSA;
-		else if (strstr (mail_cmd, "thunder"))
+		else if (strstr (mail_cmd, "thunder") || strstr (mail_cmd, "seamonkey"))
 			type = MAILER_THUNDERBIRD;
 		else if (strstr (mail_cmd, "sylpheed") || strstr (mail_cmd, "claws"))
 			type = MAILER_SYLPHEED;
