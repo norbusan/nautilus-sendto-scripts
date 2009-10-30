@@ -682,20 +682,25 @@ nautilus_sendto_plugin_init (void)
 }
 
 static char *
-escape_ampersands (const char *url)
+escape_ampersands_and_commas (const char *url)
 {
 	int i;
 	char *str, *ptr;
 
-	/* Count the number of ampersands */
+	/* Count the number of ampersands & commas */
 	i = 0;
 	ptr = (char *) url;
 	while ((ptr = strchr (ptr, '&')) != NULL) {
 		i++;
 		ptr++;
 	}
+	ptr = (char *) url;
+	while ((ptr = strchr (ptr, ',')) != NULL) {
+		i++;
+		ptr++;
+	}
 
-	/* No ampersands ? */
+	/* No ampersands or commas ? */
 	if (i == 0)
 		return NULL;
 
@@ -703,12 +708,16 @@ escape_ampersands (const char *url)
 	str = g_malloc0 (strlen (url) - i + 3 * i + 1);
 	ptr = str;
 	for (i = 0; url[i] != '\0'; i++) {
-		if (url[i] != '&') {
-			*ptr++ = url[i];
-		} else {
+		if (url[i] == '&') {
 			*ptr++ = '%';
 			*ptr++ = '2';
 			*ptr++ = '6';
+		} else if (url[i] == ',') {
+			*ptr++ = '%';
+			*ptr++ = '2';
+			*ptr++ = 'C';
+		} else {
+			*ptr++ = url[i];
 		}
 	}
 
@@ -737,7 +746,7 @@ nautilus_sendto_init (void)
 
 		uri = g_filename_to_uri (filename, NULL, NULL);
 		g_free (filename);
-		escaped = escape_ampersands (uri);
+		escaped = escape_ampersands_and_commas (uri);
 
 		if (escaped == NULL) {
 			file_list = g_list_prepend (file_list, uri);
