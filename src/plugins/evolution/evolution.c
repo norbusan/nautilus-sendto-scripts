@@ -242,7 +242,8 @@ get_balsa_mailto (GtkWidget *contact_widget, GString *mailto, GList *file_list)
 {
 	GList *l;
 
-	g_string_append (mailto, "--compose=");
+	if (strstr (mail_cmd, " -m ") == NULL && strstr (mail_cmd, " --compose=") == NULL)
+		g_string_append (mailto, " --compose=");
 	if (email != NULL) {
 		if (name != NULL)
 			g_string_append_printf (mailto, "\""CONTACT_FORMAT"\"", name, email);
@@ -257,9 +258,9 @@ get_balsa_mailto (GtkWidget *contact_widget, GString *mailto, GList *file_list)
 		else
 			g_string_append (mailto, "\"\"");
 	}
-	g_string_append_printf (mailto," attach=\"%s\"", (char *)file_list->data);
+	g_string_append_printf (mailto," --attach=\"%s\"", (char *)file_list->data);
 	for (l = file_list->next ; l; l=l->next){
-		g_string_append_printf (mailto," attach=\"%s\"", (char *)l->data);
+		g_string_append_printf (mailto," --attach=\"%s\"", (char *)l->data);
 	}
 }
 
