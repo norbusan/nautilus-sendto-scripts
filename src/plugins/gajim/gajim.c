@@ -1,7 +1,7 @@
-/* 
- * gajim.c 
+/*
+ * gajim.c
  *       gajim plugin for nautilus-sendto
- * 
+ *
  * Copyright (C) 2006 Dimitur Kirov
  *               2006 Roberto Majadas <telemaco@openshine.com>
  *
@@ -44,7 +44,8 @@ DBusGProxy *proxy = NULL;
  * contact cb, gets property from contact dict
  * and put online contacts to jid_table
  */
-static void _foreach_contact(gpointer contact, gpointer user_data) 
+static void
+_foreach_contact(gpointer contact, gpointer user_data)
 {
 	const gchar *show;
 	
@@ -98,20 +99,20 @@ static void _foreach_contact(gpointer contact, gpointer user_data)
 			/* add existing contact as nick (account) */
 			contact_str = g_string_new(jid);
 			g_string_append(contact_str, " (");
-			g_string_append(contact_str, 
+			g_string_append(contact_str,
 				g_hash_table_lookup(existing_contact, "account"));
 			g_string_append(contact_str, ")");
-			g_hash_table_insert(jid_table, contact_str->str, 
+			g_hash_table_insert(jid_table, contact_str->str,
 													existing_contact);
 			g_string_free(contact_str, FALSE);
 			
 			/* add current contact as nick (account) */
 			contact_str = g_string_new(jid);
 			g_string_append(contact_str, " (");
-			g_string_append(contact_str, 
+			g_string_append(contact_str,
 				g_hash_table_lookup(contact_table, "account"));
 			g_string_append(contact_str, ")");
-			g_hash_table_insert(jid_table, contact_str->str, 
+			g_hash_table_insert(jid_table, contact_str->str,
 													contact_table);
 			g_string_free(contact_str, FALSE);
 		}
@@ -123,9 +124,10 @@ static void _foreach_contact(gpointer contact, gpointer user_data)
 }
 
 /*
- * connect to session bus, onsuccess return TRUE 
+ * connect to session bus, onsuccess return TRUE
  */
-gboolean init_dbus ()
+static gboolean
+init_dbus (void)
 {
 	DBusGConnection *connection;
 	GError *error;
@@ -163,7 +165,9 @@ gboolean init_dbus ()
  * Print appropriate warnings when dbus raised error
  * on queries
  */
-void _handle_dbus_exception(GError *error, gboolean empty_list_messages) {
+static void
+_handle_dbus_exception (GError *error, gboolean empty_list_messages)
+{
 	if (error == NULL) {
 		g_warning("[Gajim] unable to parse result");
 		return;
@@ -175,7 +179,7 @@ void _handle_dbus_exception(GError *error, gboolean empty_list_messages) {
 	}
 	else if(empty_list_messages) {
 		/* empty list and error goes here */
-		g_warning ("[Gajim] empty result set: %d %d %s\n", error->domain, 
+		g_warning ("[Gajim] empty result set: %d %d %s\n", error->domain,
 			   error->code, error->message);
 	}
 	g_error_free (error);
@@ -185,7 +189,9 @@ void _handle_dbus_exception(GError *error, gboolean empty_list_messages) {
  * query object, about the contact list for each account
  * and fill all available contacts in the contacts table
  */
-gboolean _get_contacts() {
+static gboolean
+_get_contacts (void)
+{
 	GError *error;
 	GSList *contacts_list;
 	GHashTable *prefs_map;
@@ -200,8 +206,8 @@ gboolean _get_contacts() {
 		return FALSE;
 	}
 	/* get gajim prefs and lookup for iconset */
-	if (!dbus_g_proxy_call(proxy, "prefs_list", &error, G_TYPE_INVALID, 
-			dbus_g_type_get_map ("GHashTable", G_TYPE_STRING, G_TYPE_STRING), 
+	if (!dbus_g_proxy_call(proxy, "prefs_list", &error, G_TYPE_INVALID,
+			dbus_g_type_get_map ("GHashTable", G_TYPE_STRING, G_TYPE_STRING),
 			&prefs_map, G_TYPE_INVALID))
 	{
 		_handle_dbus_exception(error, TRUE);
@@ -216,7 +222,7 @@ gboolean _get_contacts() {
 	}
 	g_hash_table_destroy(prefs_map);
 	/* END get gajim prefs */
-	error= NULL; 
+	error= NULL;
 	if (!dbus_g_proxy_call (proxy, "list_accounts", &error, G_TYPE_INVALID,
 			G_TYPE_STRV,
 			&accounts, G_TYPE_INVALID))
@@ -228,13 +234,13 @@ gboolean _get_contacts() {
 		account = g_strdup(*account_iter);
 		error = NULL;	
 		/* query gajim remote object and put results in 'contacts_list' */
-		if (!dbus_g_proxy_call (proxy, "list_contacts", &error, 
+		if (!dbus_g_proxy_call (proxy, "list_contacts", &error,
 				G_TYPE_STRING, account, /* call arguments */
 				G_TYPE_INVALID, /* delimiter */
 				/* return value is collection of maps */
-				dbus_g_type_get_collection ("GSList", 
-					dbus_g_type_get_map ("GHashTable", 
-						G_TYPE_STRING, G_TYPE_VALUE)), 
+				dbus_g_type_get_collection ("GSList",
+					dbus_g_type_get_map ("GHashTable",
+						G_TYPE_STRING, G_TYPE_VALUE)),
 				&contacts_list, G_TYPE_INVALID))
 		{
 			_handle_dbus_exception(error, FALSE);
@@ -248,8 +254,8 @@ gboolean _get_contacts() {
 	return TRUE;
 }
 
-static
-gboolean init (NstPlugin *plugin)
+static gboolean
+init (NstPlugin *plugin)
 {
 	g_print ("Init gajim plugin\n");
 
@@ -265,7 +271,9 @@ gboolean init (NstPlugin *plugin)
 }
 
 
-void _set_pixbuf_from_status(const gchar *show, GdkPixbuf **pixbuf) {
+static void
+_set_pixbuf_from_status (const gchar *show, GdkPixbuf **pixbuf)
+{
 	GString *pixbuf_path;
 	GError *error;
 	
@@ -281,17 +289,20 @@ void _set_pixbuf_from_status(const gchar *show, GdkPixbuf **pixbuf) {
 	g_string_append_c(pixbuf_path, '/');
 	g_string_append(pixbuf_path, show);
 	g_string_append(pixbuf_path, ".png");
-	if(g_file_test(pixbuf_path->str, G_FILE_TEST_EXISTS) && 
+	if(g_file_test(pixbuf_path->str, G_FILE_TEST_EXISTS) &&
 		g_file_test(pixbuf_path->str, G_FILE_TEST_IS_REGULAR)) {
 		error = NULL;
 		*pixbuf = gdk_pixbuf_new_from_file(pixbuf_path->str, &error);
 		if(error != NULL) {
 			g_error_free(error);
 		}
-	} 
+	}
 	g_string_free(pixbuf_path, FALSE);
 }
-void _add_contact_to_model(gpointer key, gpointer value, gpointer user_data) {
+
+static void
+_add_contact_to_model(gpointer key, gpointer value, gpointer user_data)
+{
 	GtkTreeIter *iter;
 	GtkListStore *store;
 	GdkPixbuf *pixbuf;
@@ -318,10 +329,10 @@ void _add_contact_to_model(gpointer key, gpointer value, gpointer user_data) {
 }
 
 /*
- * put gajim contacts to jid_list 
+ * put gajim contacts to jid_list
  * filtering only these which are connected
  */
-gboolean
+static gboolean
 add_gajim_contacts_to_model (GtkListStore *store)
 {
 	if(!_get_contacts()) {
@@ -338,8 +349,8 @@ add_gajim_contacts_to_model (GtkListStore *store)
  * fill completion model for the entry, using list of
  * available gajim contacts
  */
-static
-GtkWidget* get_contacts_widget (NstPlugin *plugin)
+static GtkWidget *
+get_contacts_widget (NstPlugin *plugin)
 {
 	GtkWidget *entry;
 	GtkEntryCompletion *completion;
@@ -371,7 +382,9 @@ GtkWidget* get_contacts_widget (NstPlugin *plugin)
 	return entry;
 }
 
-void show_error(const gchar *title, const gchar *message) {
+static void
+show_error (const gchar *title, const gchar *message)
+{
 	GtkWidget *dialog;
 	
 	dialog = gtk_message_dialog_new_with_markup(NULL,
@@ -385,9 +398,10 @@ void show_error(const gchar *title, const gchar *message) {
 	
 }
 
-static
-gboolean send_files (NstPlugin *plugin, GtkWidget *contact_widget,
-			GList *file_list)
+static gboolean
+send_files (NstPlugin *plugin,
+	    GtkWidget *contact_widget,
+	    GList *file_list)
 {
 	GError *error;
 	GValue *value;
@@ -400,7 +414,7 @@ gboolean send_files (NstPlugin *plugin, GtkWidget *contact_widget,
 	gchar *file_path;
 
 	if(proxy == NULL) {
-		show_error(_("Unable to send file"), 
+		show_error(_("Unable to send file"),
 			   _("There is no connection to gajim remote service."));
 		return FALSE;
 	}
@@ -425,36 +439,37 @@ gboolean send_files (NstPlugin *plugin, GtkWidget *contact_widget,
 	}
 	else {
 		g_warning("[Gajim] missing recipient");
-		show_error(_("Sending file failed"), 
+		show_error(_("Sending file failed"),
 						_("Recipient is missing."));
 		return FALSE;
 	}
 	
-	error= NULL; 
-	for(file_iter = file_list; file_iter != NULL; 
-					file_iter = g_list_next(file_iter)) {
-		g_debug("[Gajim] file: %s", file_iter->data);
+	error= NULL;
+	for(file_iter = file_list; file_iter != NULL; file_iter = file_iter->next) {
+		char *uri = file_iter->data;
+
+		g_debug("[Gajim] file: %s", uri);
 		error= NULL;
-		file_path = g_filename_from_uri(file_iter->data, NULL, &error);
+		file_path = g_filename_from_uri(uri, NULL, &error);
 		if(error != NULL) {
 			g_warning("%d Unable to convert URI `%s' to absolute file path",
-				error->code, file_iter->data);
+				error->code, uri);
 			g_error_free(error);
 			continue;
 		}
 
 		g_debug("[Gajim] file: %s", file_path);
 		if(account) {
-			dbus_g_proxy_call (proxy, "send_file", &error, 
+			dbus_g_proxy_call (proxy, "send_file", &error,
 					   G_TYPE_STRING, file_path,
-					   G_TYPE_STRING, jid, 
-					   G_TYPE_STRING, account, 
+					   G_TYPE_STRING, jid,
+					   G_TYPE_STRING, account,
 					   G_TYPE_INVALID,
 					   G_TYPE_INVALID);
 		} else {
-			dbus_g_proxy_call (proxy, "send_file", &error, 
-					   G_TYPE_STRING, file_path, 
-					   G_TYPE_STRING, jid, 
+			dbus_g_proxy_call (proxy, "send_file", &error,
+					   G_TYPE_STRING, file_path,
+					   G_TYPE_STRING, jid,
 					   G_TYPE_INVALID,
 					   G_TYPE_INVALID);
 		}
@@ -462,7 +477,7 @@ gboolean send_files (NstPlugin *plugin, GtkWidget *contact_widget,
 		if(error != NULL)
 		{
 			if(error->domain != DBUS_GERROR || error->code != DBUS_GERROR_INVALID_ARGS) {
-				g_warning("[Gajim] sending file %s to %s failed:", file_iter->data, send_to);
+				g_warning("[Gajim] sending file %s to %s failed:", uri, send_to);
 				g_error_free(error);
 				show_error(_("Sending file failed"), _("Unknown recipient."));
 				return FALSE;
@@ -473,18 +488,19 @@ gboolean send_files (NstPlugin *plugin, GtkWidget *contact_widget,
 	return TRUE;
 }
 
-static
-gboolean destroy (NstPlugin *plugin){
-      	if (proxy != NULL) {
+static gboolean
+destroy (NstPlugin *plugin)
+{
+	if (proxy != NULL) {
 		g_object_unref(proxy);
 	}
-	g_hash_table_destroy(jid_table); 
+	g_hash_table_destroy(jid_table);
 	return TRUE;
 }
 
 static
 NstPluginInfo plugin_info = {
-	"im-jabber", 
+	"im-jabber",
 	"gajim",
 	N_("Instant Message (Gajim)"),
 	NULL,
