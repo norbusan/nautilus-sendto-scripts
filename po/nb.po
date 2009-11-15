@@ -1,15 +1,15 @@
 # Norwegian bokmål translation of nautilus-sendto.
 # Copyright (C) 2006 Free Software Foundation
 # This file is distributed under the same license as the nautilus-sendto package
-# Kjartan Maraas <kmaraas@gnome.org>, 2005-2008.
+# Kjartan Maraas <kmaraas@gnome.org>, 2005-2009.
 # Øivind Hoel <ohoel@cvs.gnome.org>, 2006.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: nautilus-sendto 0.12\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-06-07 18:02+0200\n"
-"PO-Revision-Date: 2008-06-07 18:04+0200\n"
+"Project-Id-Version: nautilus-sendto 2.28.x\n"
+"Report-Msgid-Bugs-To:\n"
+"POT-Creation-Date: 2009-11-15 14:45+0100\n"
+"PO-Revision-Date: 2009-11-15 14:51+0100\n"
 "Last-Translator: Kjartan Maraas <kmaraas@gnome.org>\n"
 "Language-Team: Norwegian Bokmål <i18n-nb@lister.ping.uio.no>\n"
 "MIME-Version: 1.0\n"
@@ -28,40 +28,29 @@ msgstr "Siste type arkiv som ble brukt"
 msgid ""
 "Used to store which plugin was used the last time files were sent using "
 "nautilus-sendto."
-msgstr ""
+msgstr "Brukes til å lagre hvilket tillegg som ble brukt sist gang filer ble sendt med nautilus-sendto."
 
 #: ../nst.schemas.in.h:4
 msgid ""
 "Used to store which type of archive was used the last time (0: zip, 1: tar."
 "gz, 2: tar.bz2)."
-msgstr ""
+msgstr "Brukes til å lagre hvilken type arkiv som ble brukt sist gang (0: zip, 1: tar.gz, 2: tar.bz2)."
 
-#. type
-#. ui requirement
-#. flags
-#. dependencies
-#. priority
-#. id
-#: ../gaim_plugin/nautilus-sendto-plugin.c:308
-#: ../pidgin_plugin/nautilus-sendto-plugin.c:331
-msgid "Nautilus Integration"
-msgstr "Integrasjon mot Nautilus"
+#: ../evolution/nautilus-sendto.c:47
+msgid "_Send to..."
+msgstr "_Send til..."
 
-#. name
-#. version
-#. summary
-#. name
-#. version
-#. summary
-#: ../gaim_plugin/nautilus-sendto-plugin.c:310
-#: ../gaim_plugin/nautilus-sendto-plugin.c:311
-#: ../pidgin_plugin/nautilus-sendto-plugin.c:333
-#: ../pidgin_plugin/nautilus-sendto-plugin.c:334
-msgid "Provides integration with Nautilus"
-msgstr "Gir integrasjon mot Nautilus"
+#: ../evolution/org-gnome-evolution-send-attachments-to.eplug.xml.h:1
+msgid "Send files to remote devices, or people"
+msgstr "Send filer til eksterne enheter, eller personer"
+
+#. the path to the shared library
+#: ../evolution/org-gnome-evolution-send-attachments-to.eplug.xml.h:3
+msgid "Send to..."
+msgstr "Send til..."
 
 #: ../src/nautilus-nste.c:92 ../src/nautilus-nste.c:97
-#: ../src/nautilus-sendto.glade.h:3
+#: ../src/nautilus-sendto.ui.h:3
 msgid "Send To..."
 msgstr "Send til..."
 
@@ -73,212 +62,229 @@ msgstr "Send fil via e-post, lynmelding, etc."
 msgid "Send files by mail, instant message..."
 msgstr "Send filer via e-post, lynmelding, etc..."
 
-#: ../src/nautilus-sendto-command.c:75
-msgid "Default folder to use"
-msgstr "Forvalgt mappe som skal brukes"
-
-#: ../src/nautilus-sendto-command.c:533
+#: ../src/nautilus-sendto-command.c:547
 msgid "Files"
 msgstr "Filer"
 
-#: ../src/nautilus-sendto-command.c:731
+#: ../src/nautilus-sendto-command.c:760
 #, c-format
 msgid "Expects URIs or filenames to be passed as options\n"
 msgstr "Forventer URIer eller filnavn som alternativer\n"
 
-#: ../src/nautilus-sendto-command.c:748
+#: ../src/nautilus-sendto-command.c:777
 msgid "Nautilus Sendto"
 msgstr "Send filer"
 
-#: ../src/nautilus-sendto-command.c:752
+#: ../src/nautilus-sendto-command.c:781
 #, c-format
 msgid "Could not parse command-line options: %s\n"
 msgstr "Kunne ikke lese kommandolinjeflagg: %s\n"
 
-#: ../src/nautilus-sendto-command.c:767
+#: ../src/nautilus-sendto-command.c:796
 msgid "Could not load any plugins."
 msgstr "Kunne ikke laste tillegg."
 
-#: ../src/nautilus-sendto-command.c:770
+#: ../src/nautilus-sendto-command.c:799
 msgid "Please verify your installation"
 msgstr "Sjekk installasjonen"
 
-#: ../src/nautilus-sendto.glade.h:1
+#: ../src/nautilus-sendto.ui.h:1
 msgid "<b>Compression</b>"
 msgstr "<b>Komprimering</b>"
 
-#: ../src/nautilus-sendto.glade.h:2
+#: ../src/nautilus-sendto.ui.h:2
 msgid "<b>Destination</b>"
 msgstr "<b>Mål</b>"
 
-#: ../src/nautilus-sendto.glade.h:4
+#: ../src/nautilus-sendto.ui.h:4
 msgid "Send _as:"
 msgstr "Send s_om:"
 
-#: ../src/nautilus-sendto.glade.h:5
+#: ../src/nautilus-sendto.ui.h:5
 msgid "Send _packed in:"
 msgstr "Send _pakket i:"
 
-#: ../src/nautilus-sendto.glade.h:6
+#: ../src/nautilus-sendto.ui.h:6
 msgid "Send t_o:"
 msgstr "Send t_il:"
 
-#: ../src/nautilus-sendto.glade.h:7
+#: ../src/nautilus-sendto.ui.h:7
 msgid "_Send"
 msgstr "_Send"
 
-#: ../src/plugins/balsa.c:103
-msgid "Email (Balsa)"
-msgstr "E-post (Balsa)"
-
-#: ../src/plugins/bluetooth.c:423
+#: ../src/plugins/bluetooth/bluetooth.c:448
 msgid "Programming error, could not find the device in the list"
 msgstr "Programmeringsfeil. Kunne ikke finne enheten i listen"
 
-#: ../src/plugins/bluetooth.c:444
+#: ../src/plugins/bluetooth/bluetooth.c:523
 #, c-format
-msgid "Device does not support Obex File Transfer"
-msgstr "Enheten støtter ikke filoverføring med Obex"
+msgid "Obex Push file transfer unsupported"
+msgstr "Filoverføring med Obex Push er ikke støttet"
 
-#: ../src/plugins/bluetooth.c:459
+#: ../src/plugins/bluetooth/bluetooth.c:547
 msgid "Bluetooth (OBEX Push)"
 msgstr "Blåtann (OBEX Push)"
 
-#: ../src/plugins/evolution.c:210
+#: ../src/plugins/empathy/empathy.c:144
+msgid "The contact selected cannot receive files."
+msgstr "Kontakten som er valgt kan ikke motta filer."
+
+#: ../src/plugins/empathy/empathy.c:150
+msgid "The contact selected is offline."
+msgstr "Kontakten som er valgt er frakoblet."
+
+#: ../src/plugins/empathy/empathy.c:205
+msgid "No error message"
+msgstr "Ingen feilmelding"
+
+#: ../src/plugins/empathy/empathy.c:281
+msgid "Instant Message (Empathy)"
+msgstr "Lynmelding (Empathy)"
+
+#: ../src/plugins/evolution/evolution.c:369
 msgid "Email"
 msgstr "E-post"
 
-#: ../src/plugins/e-contact-entry.c:158
+#: ../src/plugins/evolution/e-contact-entry.c:152
 #, c-format
 msgid "Cannot get contact: %s"
 msgstr "Kan ikke finne kontakt: %s"
 
-#: ../src/plugins/e-contact-entry.c:191
+#: ../src/plugins/evolution/e-contact-entry.c:185
 #, c-format
 msgid "Could not find contact: %s"
 msgstr "Fant ikke kontakt: %s"
 
-#: ../src/plugins/e-contact-entry.c:417
+#: ../src/plugins/evolution/e-contact-entry.c:411
 msgid "Cannot create searchable view."
 msgstr "Kan ikke lage søkbar visning."
 
-#: ../src/plugins/e-contact-entry.c:889
+#: ../src/plugins/evolution/e-contact-entry.c:883
 msgid "Success"
 msgstr "Suksess"
 
-#: ../src/plugins/e-contact-entry.c:891
+#: ../src/plugins/evolution/e-contact-entry.c:885
 msgid "An argument was invalid."
 msgstr "Et argument var ugyldig."
 
-#: ../src/plugins/e-contact-entry.c:893
+#: ../src/plugins/evolution/e-contact-entry.c:887
 msgid "The address book is busy."
-msgstr ""
+msgstr "Adresseboken er opptatt."
 
-#: ../src/plugins/e-contact-entry.c:895
+#: ../src/plugins/evolution/e-contact-entry.c:889
 msgid "The address book is offline."
-msgstr ""
+msgstr "Adresseboken er frakoblet."
 
-#: ../src/plugins/e-contact-entry.c:897
+#: ../src/plugins/evolution/e-contact-entry.c:891
 msgid "The address book does not exist."
-msgstr ""
+msgstr "Adresseboken eksisterer ikke."
 
-#: ../src/plugins/e-contact-entry.c:899
+#: ../src/plugins/evolution/e-contact-entry.c:893
 msgid "The \"Me\" contact does not exist."
-msgstr ""
+msgstr "Kontakten «Meg» eksisterer ikke."
 
-#: ../src/plugins/e-contact-entry.c:901
+#: ../src/plugins/evolution/e-contact-entry.c:895
 msgid "The address book is not loaded."
-msgstr ""
+msgstr "Adresseboken er ikke lastet."
 
-#: ../src/plugins/e-contact-entry.c:903
+#: ../src/plugins/evolution/e-contact-entry.c:897
 msgid "The address book is already loaded."
-msgstr ""
+msgstr "Adresseboken er allerede lastet."
 
-#: ../src/plugins/e-contact-entry.c:905
+#: ../src/plugins/evolution/e-contact-entry.c:899
 msgid "Permission was denied when accessing the address book."
-msgstr ""
+msgstr "Tilgang ble nektet ved forsøk på å aksessere adresseboken."
 
-#: ../src/plugins/e-contact-entry.c:907
+#: ../src/plugins/evolution/e-contact-entry.c:901
 msgid "The contact was not found."
-msgstr ""
+msgstr "Kontakten ble ikke funnet."
 
-#: ../src/plugins/e-contact-entry.c:909
+#: ../src/plugins/evolution/e-contact-entry.c:903
 msgid "This contact ID already exists."
-msgstr ""
+msgstr "Denne kontakt-IDen eksisterer allerede."
 
-#: ../src/plugins/e-contact-entry.c:911
+#: ../src/plugins/evolution/e-contact-entry.c:905
 msgid "The protocol is not supported."
-msgstr ""
+msgstr "Protokollen er ikke støttet."
 
-#: ../src/plugins/e-contact-entry.c:913
+#: ../src/plugins/evolution/e-contact-entry.c:907
 msgid "The operation was cancelled."
-msgstr ""
+msgstr "Operasjonen ble avbrutt."
 
-#: ../src/plugins/e-contact-entry.c:915
+#: ../src/plugins/evolution/e-contact-entry.c:909
 msgid "The operation could not be cancelled."
-msgstr ""
+msgstr "Operasjonen kunne ikke avbrytes."
 
-#: ../src/plugins/e-contact-entry.c:917
+#: ../src/plugins/evolution/e-contact-entry.c:911
 msgid "The address book authentication failed."
-msgstr ""
+msgstr "Autentisering mot adresseboken feilet."
 
-#: ../src/plugins/e-contact-entry.c:919
+#: ../src/plugins/evolution/e-contact-entry.c:913
 msgid ""
 "Authentication is required to access the address book and was not given."
-msgstr ""
+msgstr "Autentisering kreves for å aksessere adresseboken og ble ikke oppgitt."
 
-#: ../src/plugins/e-contact-entry.c:921
+#: ../src/plugins/evolution/e-contact-entry.c:915
 msgid "A secure connection is not available."
-msgstr ""
+msgstr "En sikker tilkobling er ikke tilgjengelig."
 
-#: ../src/plugins/e-contact-entry.c:923
+#: ../src/plugins/evolution/e-contact-entry.c:917
 msgid "A CORBA error occurred whilst accessing the address book."
-msgstr ""
+msgstr "En CORBA-feil oppsto under forsøk på å aksessere adresseboken."
 
-#: ../src/plugins/e-contact-entry.c:925
+#: ../src/plugins/evolution/e-contact-entry.c:919
 msgid "The address book source does not exist."
-msgstr ""
+msgstr "Adressebokkilden eksisterer ikke."
 
-#: ../src/plugins/e-contact-entry.c:927 ../src/plugins/e-contact-entry.c:930
+#: ../src/plugins/evolution/e-contact-entry.c:921
+#: ../src/plugins/evolution/e-contact-entry.c:924
 msgid "An unknown error occurred."
-msgstr ""
+msgstr "En ukjent feil oppsto."
 
-#: ../src/plugins/gaim.c:228
-msgid "Instant Message (Gaim)"
-msgstr "Lynmelding (Gaim)"
-
-#: ../src/plugins/gajim.c:402
+#: ../src/plugins/gajim/gajim.c:417
 msgid "Unable to send file"
 msgstr "Kunne ikke sende fil"
 
-#: ../src/plugins/gajim.c:403
+#: ../src/plugins/gajim/gajim.c:418
 msgid "There is no connection to gajim remote service."
 msgstr "Ingen tilkobling til gajim-tjenesten finnes."
 
-#: ../src/plugins/gajim.c:427 ../src/plugins/gajim.c:466
+#: ../src/plugins/gajim/gajim.c:442 ../src/plugins/gajim/gajim.c:482
 msgid "Sending file failed"
 msgstr "Sending av fil mislyktes"
 
-#: ../src/plugins/gajim.c:428
+#: ../src/plugins/gajim/gajim.c:443
 msgid "Recipient is missing."
 msgstr "Mottager mangler."
 
-#: ../src/plugins/gajim.c:466
+#: ../src/plugins/gajim/gajim.c:482
 msgid "Unknown recipient."
 msgstr "Ukjent mottager."
 
-#: ../src/plugins/gajim.c:488
+#: ../src/plugins/gajim/gajim.c:505
 msgid "Instant Message (Gajim)"
 msgstr "Lynmelding (Gajim)"
 
-#: ../src/plugins/pidgin.c:239
+#: ../src/plugins/nautilus-burn/nautilus-burn.c:92
+msgid "New CD/DVD"
+msgstr "Ny CD/DVD"
+
+#: ../src/plugins/nautilus-burn/nautilus-burn.c:99
+msgid "Existing CD/DVD"
+msgstr "Eksisterende CD/DVD"
+
+#: ../src/plugins/nautilus-burn/nautilus-burn.c:178
+msgid "CD/DVD Creator"
+msgstr "CD/DVD-skriving"
+
+#: ../src/plugins/pidgin/pidgin.c:464
 msgid "Instant Message (Pidgin)"
 msgstr "Lynmelding (Pidgin)"
 
-#: ../src/plugins/sylpheed-claws.c:131
-msgid "Email (Claws Mail)"
-msgstr "E-post (Claws)"
+#: ../src/plugins/removable-devices/removable-devices.c:224
+msgid "Removable disks and shares"
+msgstr "Eksterne disker og delte ressurser"
 
-#: ../src/plugins/thunderbird.c:105
-msgid "Email (Thunderbird)"
-msgstr "E-post (Thunderbird)"
+#: ../src/plugins/upnp/upnp.c:309
+msgid "UPnP Media Server"
+msgstr "UPnP medietjener"
