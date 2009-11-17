@@ -1,4 +1,13 @@
 ==============
+Version 2.28.2
+==============
+
+Nautilus Sendto
+
+Bug fixes:
+	- Fix build and distcheck problems
+
+==============
 Version 2.28.1
 ==============
 
