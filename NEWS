@@ -1,4 +1,22 @@
 ==============
+Version 2.28.1
+==============
+
+Nautilus Sendto
+
+General:
+	- Add API documentation for out-of-tree plugins
+	- Remove need for the pidgin plugin, use the
+	  D-Bus pidgin API
+
+Bug fixes:
+	- Add support for Anjal and Seamonkey mail clients
+	- Fix Balsa support
+	- Fix Thunderbird support for some cases
+	- Update man page
+	- Remove build requirement on gajim
+
+==============
 Version 2.28.0
 ==============
 
