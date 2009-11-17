@@ -6,6 +6,7 @@ INCLUDES =                                      \
 	-DLOCALEDIR="\"$(datadir)/locale\""	\
         -I$(top_srcdir)/src                     \
         -I$(top_builddir)                       \
+        -I$(builddir)				\
         $(NAUTILUS_SENDTO_CFLAGS)               \
 	$(BLUETOOTH_CFLAGS)			\
 	$(DBUS_CFLAGS)				\
@@ -21,10 +22,11 @@ bluetooth-marshal.c: bluetooth-marshal.list Makefile
 	$(AM_V_GEN) $(GLIB_GENMARSHAL) --prefix=nst_bluetooth_marshal $< --header --body > $@
 bluetooth.c: bluetooth-marshal.c bluetooth-marshal.h
 
-libnstbluetooth_la_SOURCES = bluetooth.c bluetooth-marshal.h bluetooth-marshal.c
+BUILT_SOURCES = bluetooth-marshal.h bluetooth-marshal.c
+libnstbluetooth_la_SOURCES = bluetooth.c $(BUILT_SOURCES)
 libnstbluetooth_la_LDFLAGS = -module -avoid-version
 libnstbluetooth_la_LIBADD = $(BLUETOOTH_LIBS)
 
-EXTRA_DIST = bluetooth-marshal.list
-CLEANFILES = bluetooth-marshal.h bluetooth-marshal.c
+EXTRA_DIST = bluetooth-marshal.list bluetooth.c
+CLEANFILES = $(BUILT_SOURCES)
 
