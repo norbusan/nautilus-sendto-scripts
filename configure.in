@@ -69,8 +69,17 @@ AC_SUBST(NAUTILUS_EXT_SENDTO_LIBS)
 
 dnl Get nautilus extensions directory
 dnl ---------------------------------
-NAUTILUS_EXTENSION_DIR=`$PKG_CONFIG --variable=extensiondir libnautilus-extension`
-AC_SUBST(NAUTILUS_EXTENSION_DIR)
+
+AC_ARG_WITH(nautilusdir,
+	    AS_HELP_STRING([--with-nautilusdir=DIR],[Installation path for Nautilus extension @<:@auto@:>@]),
+	    [ac_with_nautilusdir=$withval],
+	    [ac_with_nautilusdir=""])
+if test "${ac_with_nautilusdir}" = ""; then
+	ac_with_nautilusdir=`pkg-config --variable=extensiondir libnautilus-extension`
+fi
+
+AC_MSG_NOTICE([installing nautilus plugin in ${ac_with_nautilusdir}])
+AC_SUBST([NAUTILUS_EXTENSION_DIR],[${ac_with_nautilusdir}])
 
 dnl Get details about evolution
 

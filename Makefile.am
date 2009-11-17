@@ -4,7 +4,9 @@ endif
 
 SUBDIRS = src $(EVOLUTION_PLUGIN_DIR) docs po
 
-DIST_SUBDIRS = evolution src po
+DIST_SUBDIRS = evolution src docs po
+
+DISTCHECK_CONFIGURE_FLAGS = --disable-schemas-install --enable-gtk-doc --with-nautilusdir='$${libdir}/nautilus/extensions-2.0-distcheck'
 
 man_MANS = nautilus-sendto.1
 
