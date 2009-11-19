@@ -15,5 +15,5 @@ plugin_LTLIBRARIES = libnstempathy.la
 
 libnstempathy_la_SOURCES = empathy.c
 libnstempathy_la_LDFLAGS = -module -avoid-version
-libnstempathy_la_LIBADD = $(EMPATHY_LIBS)
+libnstempathy_la_LIBADD = $(EMPATHY_LIBS) $(NAUTILUS_SENDTO_LIBS)
 

@@ -16,5 +16,5 @@ plugin_LTLIBRARIES = libnstburn.la
 
 libnstburn_la_SOURCES = nautilus-burn.c
 libnstburn_la_LDFLAGS = -module -avoid-version
-libnstburn_la_LIBADD = $(GIO_LIBS) $(builddir)/../libnstcommon.la
+libnstburn_la_LIBADD = $(GIO_LIBS) $(NAUTILUS_SENDTO_LIBS) $(builddir)/../libnstcommon.la
 

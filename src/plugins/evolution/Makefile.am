@@ -28,7 +28,7 @@ plugin_LTLIBRARIES = libnstevolution.la
 
 libnstevolution_la_SOURCES = evolution.c $(CLA_FILES) $(MARSHALFILES)
 libnstevolution_la_LDFLAGS = -module -avoid-version
-libnstevolution_la_LIBADD = $(NST_EBOOK_LIBS)
+libnstevolution_la_LIBADD = $(NST_EBOOK_LIBS) $(NAUTILUS_SENDTO_LIBS)
 
 EXTRA_DIST = $(CLA_FILES)
 CLEANFILES = econtactentry-marshal.c econtactentry-marshal.h

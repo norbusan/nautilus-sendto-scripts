@@ -15,5 +15,5 @@ plugin_LTLIBRARIES = libnstupnp.la
 
 libnstupnp_la_SOURCES = upnp.c
 libnstupnp_la_LDFLAGS = -module -avoid-version
-libnstupnp_la_LIBADD = $(UPNP_LIBS)
+libnstupnp_la_LIBADD = $(UPNP_LIBS) $(NAUTILUS_SENDTO_LIBS)
 

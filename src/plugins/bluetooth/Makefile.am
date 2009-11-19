@@ -25,7 +25,7 @@ bluetooth.c: bluetooth-marshal.c bluetooth-marshal.h
 BUILT_SOURCES = bluetooth-marshal.h bluetooth-marshal.c
 libnstbluetooth_la_SOURCES = bluetooth.c $(BUILT_SOURCES)
 libnstbluetooth_la_LDFLAGS = -module -avoid-version
-libnstbluetooth_la_LIBADD = $(BLUETOOTH_LIBS)
+libnstbluetooth_la_LIBADD = $(BLUETOOTH_LIBS) $(NAUTILUS_SENDTO_LIBS)
 
 EXTRA_DIST = bluetooth-marshal.list bluetooth.c
 CLEANFILES = $(BUILT_SOURCES)

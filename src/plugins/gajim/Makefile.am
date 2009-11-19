@@ -14,5 +14,5 @@ plugin_LTLIBRARIES = libnstgajim.la
 
 libnstgajim_la_SOURCES = gajim.c
 libnstgajim_la_LDFLAGS = -module -avoid-version
-libnstgajim_la_LIBADD = $(DBUS_LIBS)
+libnstgajim_la_LIBADD = $(DBUS_LIBS) $(NAUTILUS_SENDTO_LIBS)
 

@@ -16,5 +16,5 @@ plugin_LTLIBRARIES = libnstpidgin.la
 
 libnstpidgin_la_SOURCES = pidgin.c
 libnstpidgin_la_LDFLAGS = -module -avoid-version
-libnstpidgin_la_LIBADD = $(PIDGIN_LIBS)
+libnstpidgin_la_LIBADD = $(PIDGIN_LIBS) $(NAUTILUS_SENDTO_LIBS)
 
