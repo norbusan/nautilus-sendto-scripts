@@ -29,6 +29,15 @@
 #include <gmodule.h>
 #include <gtk/gtk.h>
 
+/**
+ * SECTION:nautilus-sendto-plugin
+ * @short_description: nautilus-sento plug-in
+ * @stability: Stable
+ * @include: bluetooth-plugin.h
+ *
+ * Plug-ins can be used to extend nautilus-sendto.
+ **/
+
 typedef struct _NstPluginInfo NstPluginInfo;
 typedef struct _NstPlugin NstPlugin;
 

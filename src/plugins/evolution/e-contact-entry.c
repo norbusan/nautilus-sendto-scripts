@@ -85,7 +85,7 @@ struct EContactEntryPriv {
   GDestroyNotify display_destroy;
 };
 
-/**
+/*
  * Struct containing details of the sources we are searching.
  */
 typedef struct _EntryLookup {
@@ -96,7 +96,7 @@ typedef struct _EntryLookup {
   EBookView *bookview;
 } EntryLookup;
 
-/**
+/*
  * List store columns.
  */
 enum {
@@ -116,7 +116,7 @@ static guint entry_height (GtkWidget *widget);
 static const char* stringify_ebook_error (const EBookStatus status);
 static void e_contact_entry_item_free (EContactEntyItem *item);
 
-/**
+/*
  * The entry was activated.  Take the first contact found and signal the user.
  */
 static void
@@ -164,7 +164,7 @@ entry_activate_cb (EContactEntry *entry, gpointer user_data)
   }
 }
 
-/**
+/*
  * A contact was selected in the completion drop-down, so send a signal.
  */
 static gboolean
@@ -235,7 +235,7 @@ e_contact_entry_display_func (EContact *contact)
 
 /* This is the maximum number of entries that GTK+ will show */
 #define MAX_ENTRIES 15
-/**
+/*
  * Callback from the EBookView that more contacts matching the query have been found. Add these to
  * the model if we still want more contacts, or stop the view.
  */
@@ -332,7 +332,7 @@ view_contacts_added_cb (EBook *book, GList *contacts, gpointer user_data)
   }
 }
 
-/**
+/*
  * The query on the EBookView has completed.
  */
 static void
@@ -348,7 +348,7 @@ view_completed_cb (EBookView *book_view, EBookViewStatus status, gpointer user_d
   g_object_unref (lookup->bookview);
 }
 
-/**
+/*
  * The EBookView to lookup the completions with has been created.
  */
 static void
@@ -779,7 +779,7 @@ lookup_entry_free (EntryLookup *lookup)
   g_free (lookup);
 }
 
-/**
+/*
  * Split a string of tokens separated by whitespace into an array of tokens.
  */
 static GArray *
@@ -809,7 +809,7 @@ split_query_string (const gchar *str)
   return parts;
 }
 
-/**
+/*
  * Create a query which looks for the specified string in a contact's full name, email addresses and
  * nick name.
  */
@@ -847,7 +847,7 @@ create_query (EContactEntry *entry, const char* s)
   return query;
 }
 
-/**
+/*
  * Given a widget, determines the height that text will normally be drawn.
  */
 static guint
@@ -861,7 +861,7 @@ entry_height (GtkWidget *widget)
   return bound;
 }
 
-/**
+/*
  * Free a EContactEntyItem struct.
  */
 static void
@@ -872,7 +872,7 @@ e_contact_entry_item_free (EContactEntyItem *item)
   g_free (item);
 }
 
-/**
+/*
  * Return a string representing a given EBook status code.
  */
 static const char*
