@@ -506,6 +506,20 @@ pack_entry_changed_cb (GObject *object, GParamSpec *spec, NS_ui *ui)
 }
 
 static void
+update_button_image (GtkSettings *settings,
+		     GParamSpec *spec,
+		     GtkWidget *widget)
+{
+	gboolean show_images;
+
+	g_object_get (settings, "gtk-button-images", &show_images, NULL);
+	if (show_images == FALSE)
+		gtk_widget_hide (widget);
+	else
+		gtk_widget_show (widget);
+}
+
+static void
 nautilus_sendto_create_ui (void)
 {
 	GtkBuilder *app;	
@@ -513,6 +527,8 @@ nautilus_sendto_create_ui (void)
 	NS_ui *ui;
 	gboolean one_file = FALSE;
 	gboolean supports_dirs;
+	GtkSettings *settings;
+	GtkWidget *button_image;
 
 	app = gtk_builder_new ();
 	if (!gtk_builder_add_from_file (app, UIDIR "/" "nautilus-sendto.ui", &error))	{
@@ -534,6 +550,12 @@ nautilus_sendto_create_ui (void)
 	ui->status_box = GTK_WIDGET (gtk_builder_get_object (app, "status_box"));
 	ui->status_label = GTK_WIDGET (gtk_builder_get_object (app, "status_label"));
 	ui->status_image = GTK_WIDGET (gtk_builder_get_object (app, "status_image"));
+
+	settings = gtk_settings_get_default ();
+	button_image = GTK_WIDGET (gtk_builder_get_object (app, "image1"));
+	g_signal_connect (G_OBJECT (settings), "notify::gtk-button-images",
+			  G_CALLBACK (update_button_image), button_image);
+	update_button_image (settings, NULL, button_image);
 
  	gtk_combo_box_set_active (GTK_COMBO_BOX(ui->pack_combobox), 
  		gconf_client_get_int(gconf_client, 
