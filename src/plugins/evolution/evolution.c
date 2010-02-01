@@ -113,8 +113,8 @@ init (NstPlugin *plugin)
 	return TRUE;
 }
 
-static
-void contacts_selected_cb (GtkWidget *entry, EContact *contact, const char *identifier, NstPlugin *plugin)
+static void
+contacts_selected_cb (GtkWidget *entry, EContact *contact, const char *identifier, NstPlugin *plugin)
 {
 	char *text;
 
