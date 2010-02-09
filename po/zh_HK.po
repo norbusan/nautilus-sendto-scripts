@@ -1,4 +1,4 @@
-# traditional Chinese translation of nautilus-sendto.
+# Chinese (Hong Kong) translation of nautilus-sendto.
 # Copyright (C) 2005 Free Software Foundation, Inc.
 # Abel Cheung <abel@oaka.org>, 2005.
 # Chao-Hsiung Liao <j_h_liau@yahoo.com.tw>, 2010.
@@ -7,9 +7,9 @@ msgstr ""
 "Project-Id-Version: nautilus-sendto 2.28.2\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-02-10 06:08+0800\n"
-"PO-Revision-Date: 2010-02-09 06:20+0800\n"
+"PO-Revision-Date: 2010-02-10 06:09+0800\n"
 "Last-Translator: Chao-Hsiung Liao <j_h_liau@yahoo.com.tw>\n"
-"Language-Team: Chinese (traditional)\n"
+"Language-Team: Chinese (Hong Kong) <community@linuxhall.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -129,11 +129,11 @@ msgstr "藍牙 (OBEX Push)"
 
 #: ../src/plugins/empathy/empathy.c:144
 msgid "The contact selected cannot receive files."
-msgstr "選取的連絡人不能接收檔案。"
+msgstr "選取的聯絡人不能接收檔案。"
 
 #: ../src/plugins/empathy/empathy.c:150
 msgid "The contact selected is offline."
-msgstr "選取的連絡人已離線。"
+msgstr "選取的聯絡人已離線。"
 
 #: ../src/plugins/empathy/empathy.c:205
 msgid "No error message"
@@ -150,12 +150,12 @@ msgstr "電子郵件"
 #: ../src/plugins/evolution/e-contact-entry.c:153
 #, c-format
 msgid "Cannot get contact: %s"
-msgstr "不能取得連絡人：%s"
+msgstr "不能取得聯絡人：%s"
 
 #: ../src/plugins/evolution/e-contact-entry.c:186
 #, c-format
 msgid "Could not find contact: %s"
-msgstr "找不到連絡人：%s"
+msgstr "找不到聯絡人：%s"
 
 #: ../src/plugins/evolution/e-contact-entry.c:414
 msgid "Cannot create searchable view."
@@ -183,7 +183,7 @@ msgstr "通訊錄不存在。"
 
 #: ../src/plugins/evolution/e-contact-entry.c:896
 msgid "The \"Me\" contact does not exist."
-msgstr "連絡人「我」不存在。"
+msgstr "聯絡人「我」不存在。"
 
 #: ../src/plugins/evolution/e-contact-entry.c:898
 msgid "The address book is not loaded."
@@ -199,11 +199,11 @@ msgstr "當存取這個通訊錄時權限被拒。"
 
 #: ../src/plugins/evolution/e-contact-entry.c:904
 msgid "The contact was not found."
-msgstr "找不到連絡人。"
+msgstr "找不到聯絡人。"
 
 #: ../src/plugins/evolution/e-contact-entry.c:906
 msgid "This contact ID already exists."
-msgstr "這個連絡人 ID 已經存在。"
+msgstr "這個聯絡人 ID 已經存在。"
 
 #: ../src/plugins/evolution/e-contact-entry.c:908
 msgid "The protocol is not supported."
