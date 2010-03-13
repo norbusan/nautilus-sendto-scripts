@@ -1,21 +1,21 @@
 # GNOME Korea translation of nautilus-sendto.
-# Copyright (C) 2007 THE nautilus-sendto'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the nautilus-sendto package.
+#
 # Young-Ho Cha <ganadist at mizi.com>, 2007.
 # Namhyung Kim <namhyung@gmail.com>, 2007.
-# 
-# 
+# Changwoo Ryu <cwryu@debian.org>, 2010.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: nautilus-sendto\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-11-16 20:04+0000\n"
-"PO-Revision-Date: 2007-12-31 15:06+0900\n"
-"Last-Translator: Namhyung Kim <namhyung@gmail.com>\n"
-"Language-Team: GNOME Korea <gnome-kr-hackers@lists.kldp.net>\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=nautilus-sendto&component=general\n"
+"POT-Creation-Date: 2010-03-14 02:18+0900\n"
+"PO-Revision-Date: 2010-03-14 02:28+0900\n"
+"Last-Translator: Changwoo Ryu <cwryu@debian.org>\n"
+"Language-Team: GNOME Korea <gnome-kr@googlegroups.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit"
+"Content-Transfer-Encoding: 8bit\n"
 
 #: ../nst.schemas.in.h:1
 msgid "Last plugin used to send"
@@ -29,193 +29,267 @@ msgstr "이전에 사용된 압축 파일 형식"
 msgid ""
 "Used to store which plugin was used the last time files were sent using "
 "nautilus-sendto."
-msgstr ""
-"이전에 노틸러스 보내기를 통해 파일에 사용된 플러그인을 저장할 때 사용."
+msgstr "이전에 노틸러스 보내기를 통해 파일에 사용된 플러그인을 저장할 때 사용."
 
 #: ../nst.schemas.in.h:4
 msgid ""
 "Used to store which type of archive was used the last time (0: zip, 1: tar."
 "gz, 2: tar.bz2)."
 msgstr ""
-"이전에 사용한 압축 파일의 형식을 저장할 때 사용 (0: zip, 1: tar.gz, 2: tar.bz2)."
+"이전에 사용한 압축 파일의 형식을 저장할 때 사용 (0: zip, 1: tar.gz, 2: tar."
+"bz2)."
 
-#. type
-#. ui requirement
-#. flags
-#. dependencies
-#. priority
-#. id
-#: ../gaim_plugin/nautilus-sendto-plugin.c:308
-#: ../pidgin_plugin/nautilus-sendto-plugin.c:308
-msgid "Nautilus Integration"
-msgstr "노틸러스 연동"
+#: ../evolution/nautilus-sendto.c:47
+msgid "_Send to..."
+msgstr "보내기(_S)..."
 
-#. name
-#. version
-#. summary
-#. name
-#. version
-#. summary
-#: ../gaim_plugin/nautilus-sendto-plugin.c:310
-#: ../gaim_plugin/nautilus-sendto-plugin.c:311
-#: ../pidgin_plugin/nautilus-sendto-plugin.c:310
-#: ../pidgin_plugin/nautilus-sendto-plugin.c:311
-msgid "Provides integration with Nautilus"
-msgstr "노틸러스와 연동되도록 합니다"
+#: ../evolution/org-gnome-evolution-send-attachments-to.eplug.xml.h:1
+msgid "Send files to remote devices, or people"
+msgstr "파일을 원격 장치나 다른 사람에게 보냅니다"
 
-#: ../src/nautilus-nste.c:95 ../src/nautilus-nste.c:100
+#. the path to the shared library
+#: ../evolution/org-gnome-evolution-send-attachments-to.eplug.xml.h:3
 msgid "Send to..."
 msgstr "보내기..."
 
-#: ../src/nautilus-nste.c:96
-msgid "Send file by mail, instant message..."
-msgstr "전자메일, 즉석 메시지로 파일 보내기..."
-
-#: ../src/nautilus-nste.c:101
-msgid "Send files by mail, instant message..."
-msgstr "전자메일, 즉석 메시지로 파일 보내기..."
-
-#: ../src/nautilus-sendto-command.c:73
-msgid "Default folder to use"
-msgstr "사용할 기본 폴더"
-
-#: ../src/nautilus-sendto-command.c:248
-msgid "You don't insert the package name"
-msgstr "꾸러미 이름을 넣을 수 없습니다"
-
-#: ../src/nautilus-sendto-command.c:509
-msgid "Files"
-msgstr "파일"
-
-#: ../src/nautilus-sendto-command.c:699
-msgid "Expects URIs or filenames to be passed as options\n"
-msgstr "옵션으로 URI 또는 파일 이름이 전달될 것으로 예상\n"
-
-#: ../src/nautilus-sendto-command.c:716
-msgid "Nautilus Sendto"
-msgstr "노틸러스 보내기"
-
-#: ../src/nautilus-sendto-command.c:720
-#, c-format
-msgid "Could not parse command-line options: %s\n"
-msgstr "명령행 옵션을 분석할 수 없음: %s\n"
-
-#: ../src/nautilus-sendto-command.c:735
-msgid "Could not load any plugins."
-msgstr "아무 플러그인도 불러올 수 없음."
-
-#: ../src/nautilus-sendto-command.c:738
-msgid "Please verify your installation"
-msgstr "설치 상태를 확인하십시오"
-
-#: ../src/nautilus-sendto.glade.h:1
-msgid "<b>Compression</b>"
-msgstr "<b>압축</b>"
-
-#: ../src/nautilus-sendto.glade.h:2
-msgid "<b>Destination</b>"
-msgstr "<b>대상</b>"
-
-#: ../src/nautilus-sendto.glade.h:3
+#: ../src/nautilus-nste.c:92 ../src/nautilus-nste.c:97
+#: ../src/nautilus-sendto.ui.h:3
 msgid "Send To..."
 msgstr "보내기..."
 
-#: ../src/nautilus-sendto.glade.h:4
+# ...은 기타 등등이라는 뜻
+#: ../src/nautilus-nste.c:93
+msgid "Send file by mail, instant message..."
+msgstr "전자메일, 메신저 등에 파일 보내기"
+
+# ...은 기타 등등이라는 뜻
+#: ../src/nautilus-nste.c:98
+msgid "Send files by mail, instant message..."
+msgstr "전자메일, 메신저 등에 파일 보내기"
+
+#: ../src/nautilus-sendto-command.c:569
+msgid "Files"
+msgstr "파일"
+
+#: ../src/nautilus-sendto-command.c:782
+#, c-format
+msgid "Expects URIs or filenames to be passed as options\n"
+msgstr "옵션으로 URI 또는 파일 이름이 전달될 것으로 예상\n"
+
+#: ../src/nautilus-sendto-command.c:799
+msgid "Nautilus Sendto"
+msgstr "노틸러스 보내기"
+
+#: ../src/nautilus-sendto-command.c:803
+#, c-format
+msgid "Could not parse command-line options: %s\n"
+msgstr "명령행 옵션을 분석할 수 없습니다: %s\n"
+
+#: ../src/nautilus-sendto-command.c:818
+msgid "Could not load any plugins."
+msgstr "아무 플러그인도 불러올 수 없습니다."
+
+#: ../src/nautilus-sendto-command.c:821
+msgid "Please verify your installation"
+msgstr "설치 상태를 확인하십시오"
+
+#: ../src/nautilus-sendto.ui.h:1
+msgid "<b>Compression</b>"
+msgstr "<b>압축</b>"
+
+#: ../src/nautilus-sendto.ui.h:2
+msgid "<b>Destination</b>"
+msgstr "<b>대상</b>"
+
+#: ../src/nautilus-sendto.ui.h:4
 msgid "Send _as:"
 msgstr "보낼 방법(_A):"
 
-#: ../src/nautilus-sendto.glade.h:5
+#: ../src/nautilus-sendto.ui.h:5
+msgid "Send _packed in:"
+msgstr "묶어서 보내기(_P):"
+
+#: ../src/nautilus-sendto.ui.h:6
 msgid "Send t_o:"
 msgstr "받을 사람(_O):"
 
-#: ../src/nautilus-sendto.glade.h:6
+#: ../src/nautilus-sendto.ui.h:7
 msgid "_Send"
 msgstr "보내기(_S)"
 
-#: ../src/nautilus-sendto.glade.h:7
-msgid "_Send packed in:"
-msgstr "묶어서 보내기(_S):"
-
-#: ../src/plugins/balsa.c:103
-msgid "Email (Balsa)"
-msgstr "전자메일 (Balsa)"
-
-#: ../src/plugins/bluetooth.c:421
+#: ../src/plugins/bluetooth/bluetooth.c:451
 msgid "Programming error, could not find the device in the list"
 msgstr "프로그래밍 오류, 목록에서 장치를 찾을 수 없음"
 
-#: ../src/plugins/bluetooth.c:442
-msgid "Device does not support Obex File Transfer"
-msgstr "장치가 Obex 파일 전송을 지원하지 않음"
+#: ../src/plugins/bluetooth/bluetooth.c:526
+#, c-format
+msgid "Obex Push file transfer unsupported"
+msgstr "Obex 푸시 파일 전송을 지원하지 않습니다"
 
-#: ../src/plugins/bluetooth.c:457
+#: ../src/plugins/bluetooth/bluetooth.c:550
 msgid "Bluetooth (OBEX Push)"
 msgstr "블루투스 (OBEX Push)"
 
-#: ../src/plugins/evolution.c:273
+#: ../src/plugins/empathy/empathy.c:144
+msgid "The contact selected cannot receive files."
+msgstr "선택한 연락처는 파일을 받을 수 없습니다."
+
+#: ../src/plugins/empathy/empathy.c:150
+msgid "The contact selected is offline."
+msgstr "선택한 연락처는 연결 중지 상태입니다."
+
+#: ../src/plugins/empathy/empathy.c:205
+msgid "No error message"
+msgstr "오류 메시지 없음"
+
+#: ../src/plugins/empathy/empathy.c:281
+msgid "Instant Message (Empathy)"
+msgstr "메신저 (엠퍼시)"
+
+#: ../src/plugins/evolution/evolution.c:369
 msgid "Email"
-msgstr "전자우편"
+msgstr "전자메일"
 
-#: ../src/plugins/gaim.c:228
-msgid "Instant Message (Gaim)"
-msgstr "즉석 메세지 (Gaim)"
+#: ../src/plugins/evolution/e-contact-entry.c:153
+#, c-format
+msgid "Cannot get contact: %s"
+msgstr "연락처를 가져올 수 없습니다: %s"
 
-#: ../src/plugins/gajim.c:402
+#: ../src/plugins/evolution/e-contact-entry.c:186
+#, c-format
+msgid "Could not find contact: %s"
+msgstr "연락처를 찾을 수 없습니다: %s"
+
+#: ../src/plugins/evolution/e-contact-entry.c:414
+msgid "Cannot create searchable view."
+msgstr "검색 가능 뷰를 만들 수 없습니다."
+
+#: ../src/plugins/evolution/e-contact-entry.c:886
+msgid "Success"
+msgstr "성공"
+
+#: ../src/plugins/evolution/e-contact-entry.c:888
+msgid "An argument was invalid."
+msgstr "인자가 잘못됐습니다."
+
+#: ../src/plugins/evolution/e-contact-entry.c:890
+msgid "The address book is busy."
+msgstr "주소록이 사용 중입니다."
+
+#: ../src/plugins/evolution/e-contact-entry.c:892
+msgid "The address book is offline."
+msgstr "주소록이 연결 중지 상태입니다."
+
+#: ../src/plugins/evolution/e-contact-entry.c:894
+msgid "The address book does not exist."
+msgstr "주소록이 없습니다."
+
+#: ../src/plugins/evolution/e-contact-entry.c:896
+msgid "The \"Me\" contact does not exist."
+msgstr "\"나\" 연락처가 없습니다."
+
+#: ../src/plugins/evolution/e-contact-entry.c:898
+msgid "The address book is not loaded."
+msgstr "주소록을 읽어들이지 않았습니다."
+
+#: ../src/plugins/evolution/e-contact-entry.c:900
+msgid "The address book is already loaded."
+msgstr "주소록을 이미 읽어들였습니다."
+
+#: ../src/plugins/evolution/e-contact-entry.c:902
+msgid "Permission was denied when accessing the address book."
+msgstr "주소록에 접근하는데 권한이 거부되었습니다."
+
+#: ../src/plugins/evolution/e-contact-entry.c:904
+msgid "The contact was not found."
+msgstr "연락처가 없습니다."
+
+#: ../src/plugins/evolution/e-contact-entry.c:906
+msgid "This contact ID already exists."
+msgstr "이 연락처 ID가 이미 있습니다."
+
+#: ../src/plugins/evolution/e-contact-entry.c:908
+msgid "The protocol is not supported."
+msgstr "프로토콜을 지원하지 않습니다."
+
+#: ../src/plugins/evolution/e-contact-entry.c:910
+msgid "The operation was cancelled."
+msgstr "해당 동작을 취소했습니다."
+
+#: ../src/plugins/evolution/e-contact-entry.c:912
+msgid "The operation could not be cancelled."
+msgstr "해당 동작은 취소할 수 없습니다."
+
+#: ../src/plugins/evolution/e-contact-entry.c:914
+msgid "The address book authentication failed."
+msgstr "주소록 인증이 실패했습니다."
+
+#: ../src/plugins/evolution/e-contact-entry.c:916
+msgid ""
+"Authentication is required to access the address book and was not given."
+msgstr "주소록에 접근하는데 인증이 필요하지만 인증하지 않았습니다."
+
+#: ../src/plugins/evolution/e-contact-entry.c:918
+msgid "A secure connection is not available."
+msgstr "보안 연결을 사용할 수 없습니다."
+
+#: ../src/plugins/evolution/e-contact-entry.c:920
+msgid "A CORBA error occurred whilst accessing the address book."
+msgstr "주소록에 접근하는데 CORBA 오류가 발생했습니다."
+
+#: ../src/plugins/evolution/e-contact-entry.c:922
+msgid "The address book source does not exist."
+msgstr "주소록 소스가 없습니다."
+
+#: ../src/plugins/evolution/e-contact-entry.c:924
+#: ../src/plugins/evolution/e-contact-entry.c:927
+msgid "An unknown error occurred."
+msgstr "알 수 없는 오류가 발생했습니다."
+
+#: ../src/plugins/gajim/gajim.c:417
 msgid "Unable to send file"
 msgstr "파일을 보낼 수 없음"
 
-#: ../src/plugins/gajim.c:403
+#: ../src/plugins/gajim/gajim.c:418
 msgid "There is no connection to gajim remote service."
 msgstr "gajim 원격 서비스와 연결되지 않음."
 
-#: ../src/plugins/gajim.c:427 ../src/plugins/gajim.c:466
+#: ../src/plugins/gajim/gajim.c:442 ../src/plugins/gajim/gajim.c:482
 msgid "Sending file failed"
 msgstr "파일 보내기 실패"
 
-#: ../src/plugins/gajim.c:428
+#: ../src/plugins/gajim/gajim.c:443
 msgid "Recipient is missing."
-msgstr "수신자가 없음."
+msgstr "수신자가 없 습니다."
 
-#: ../src/plugins/gajim.c:466
+#: ../src/plugins/gajim/gajim.c:482
 msgid "Unknown recipient."
-msgstr "알 수 없는 수신자."
+msgstr "수신자를 알 수 없습니다."
 
-#: ../src/plugins/gajim.c:488
+#: ../src/plugins/gajim/gajim.c:505
 msgid "Instant Message (Gajim)"
-msgstr "즉석 메세지 (Gajim)"
+msgstr "메신저 (Gajim)"
 
-#: ../src/plugins/pidgin.c:228
+#: ../src/plugins/nautilus-burn/nautilus-burn.c:92
+msgid "New CD/DVD"
+msgstr "새 CD/DVD"
+
+#: ../src/plugins/nautilus-burn/nautilus-burn.c:99
+msgid "Existing CD/DVD"
+msgstr "기존 CD/DVD"
+
+#: ../src/plugins/nautilus-burn/nautilus-burn.c:178
+msgid "CD/DVD Creator"
+msgstr "CD/DVD 만들기"
+
+#: ../src/plugins/pidgin/pidgin.c:464
 msgid "Instant Message (Pidgin)"
-msgstr "즉석 메세지 (Pidgin)"
+msgstr "메신저 (피진)"
 
-#: ../src/plugins/sylpheed-claws.c:131
-msgid "Email (Claws Mail)"
-msgstr "전자메일 (Claws Mail)"
+#: ../src/plugins/removable-devices/removable-devices.c:224
+msgid "Removable disks and shares"
+msgstr "이동식 디스크 및 공유"
 
-#: ../src/plugins/thunderbird.c:102
-msgid "Email (Thunderbird)"
-msgstr "전자메일 (Thunderbird)"
-
-#~ msgid "FOLDER"
-#~ msgstr "폴더"
-
-#~ msgid ""
-#~ ".zip\n"
-#~ ".tar.gz\n"
-#~ ".tar.bz2"
-#~ msgstr ""
-#~ ".zip\n"
-#~ ".tar.gz\n"
-#~ ".tar.bz2"
-
-#~ msgid "*"
-#~ msgstr "*"
-
-#~ msgid "Nautilus Sendto component"
-#~ msgstr "노틸러스 보내기 컴포넌트"
-
-#~ msgid "Sendo To..."
-#~ msgstr "보내기..."
-
-#~ msgid "You don't insert any email address"
-#~ msgstr "전자우편 주소를 넣을 수 없습니다"
+#: ../src/plugins/upnp/upnp.c:309
+msgid "UPnP Media Server"
+msgstr "UPnP 미디어 서버"
