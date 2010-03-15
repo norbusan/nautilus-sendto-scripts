@@ -1,4 +1,16 @@
 ==============
+Version 2.28.3
+==============
+
+Nautilus Sento
+
+Bug fixes:
+	- Fix undefined references when linking plugins
+	- Fix possible crasher in Bluetooth plugin
+	- Respect the "gtk-button-images" setting
+	- Fix keyboard selection in mail plugin
+
+==============
 Version 2.28.2
 ==============
 
