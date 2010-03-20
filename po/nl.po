@@ -3,14 +3,14 @@
 # This file is distributed under the same license as the nautilus-sendto package.
 #
 # Reinout van Schouwen <reinout@cs.vu.nl>, 2004–2005
-# Wouter Bolsterlee <wbolster@gnome.org>, 2006–2008
+# Wouter Bolsterlee <wbolster@gnome.org>, 2006–2010
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: nautilus-sendto\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-03-25 13:19+0100\n"
-"PO-Revision-Date: 2008-03-25 13:19+0100\n"
+"POT-Creation-Date: 2010-03-20 17:02+0100\n"
+"PO-Revision-Date: 2010-03-20 17:02+0100\n"
 "Last-Translator: Wouter Bolsterlee <wbolster@gnome.org>\n"
 "Language-Team: Dutch <vertaling@vrijschrift.org>\n"
 "MIME-Version: 1.0\n"
@@ -41,256 +41,278 @@ msgstr ""
 "Geeft aan welk archieftype voor het meest recent is gebruikt (0: zip, 1: tar."
 "gz, 2: tar.bz2)."
 
-#. type
-#. ui requirement
-#. flags
-#. dependencies
-#. priority
-#. id
-#: ../gaim_plugin/nautilus-sendto-plugin.c:308
-#: ../pidgin_plugin/nautilus-sendto-plugin.c:308
-msgid "Nautilus Integration"
-msgstr "Nautilus-integratie"
+#: ../evolution/nautilus-sendto.c:47
+msgid "_Send to..."
+msgstr "_Sturen naar…"
 
-#. name
-#. version
-#. summary
-#. name
-#. version
-#. summary
-#: ../gaim_plugin/nautilus-sendto-plugin.c:310
-#: ../gaim_plugin/nautilus-sendto-plugin.c:311
-#: ../pidgin_plugin/nautilus-sendto-plugin.c:310
-#: ../pidgin_plugin/nautilus-sendto-plugin.c:311
-msgid "Provides integration with Nautilus"
-msgstr "Voorziet in integratie met Nautilus"
+#: ../evolution/org-gnome-evolution-send-attachments-to.eplug.xml.h:1
+msgid "Send files to remote devices, or people"
+msgstr "Bestanden naar apparaten of mensen sturen"
+
+#. the path to the shared library
+#: ../evolution/org-gnome-evolution-send-attachments-to.eplug.xml.h:3
+msgid "Send to..."
+msgstr "Sturen naar…"
 
 #: ../src/nautilus-nste.c:92 ../src/nautilus-nste.c:97
-msgid "Send to..."
-msgstr "Sturen naar..."
+#: ../src/nautilus-sendto.ui.h:3
+msgid "Send To..."
+msgstr "Sturen naar…"
 
 #: ../src/nautilus-nste.c:93
 msgid "Send file by mail, instant message..."
-msgstr "Bestand versturen per e-mail, direct bericht..."
+msgstr "Bestand versturen per e-mail, direct bericht…"
 
 #: ../src/nautilus-nste.c:98
 msgid "Send files by mail, instant message..."
-msgstr "Bestanden versturen per e-mail, direct bericht..."
+msgstr "Bestanden versturen per e-mail, direct bericht…"
 
-#: ../src/nautilus-sendto-command.c:75
-msgid "Default folder to use"
-msgstr "Standaardmap"
-
-#: ../src/nautilus-sendto-command.c:250
-msgid "You don't insert the package name"
-msgstr "U heeft de pakketnaam niet ingevoerd"
-
-#: ../src/nautilus-sendto-command.c:511
+#: ../src/nautilus-sendto-command.c:569
 msgid "Files"
 msgstr "Bestanden"
 
-#: ../src/nautilus-sendto-command.c:707
+#: ../src/nautilus-sendto-command.c:782
 #, c-format
 msgid "Expects URIs or filenames to be passed as options\n"
 msgstr "Verwacht URI's of bestandsnamen die als opties meegegeven worden\n"
 
-#: ../src/nautilus-sendto-command.c:724
-msgid "Nautilus Sendto"
-msgstr "Nautilus Sendto"
-
-#: ../src/nautilus-sendto-command.c:728
+#: ../src/nautilus-sendto-command.c:803
 #, c-format
 msgid "Could not parse command-line options: %s\n"
 msgstr "Kon opdrachtregelparameters niet verwerken: %s\n"
 
-#: ../src/nautilus-sendto-command.c:743
+#: ../src/nautilus-sendto-command.c:818
 msgid "Could not load any plugins."
 msgstr "Kon geen plugins laden."
 
-#: ../src/nautilus-sendto-command.c:746
+#: ../src/nautilus-sendto-command.c:821
 msgid "Please verify your installation"
 msgstr "Controleer de installatie"
 
-#: ../src/nautilus-sendto.glade.h:1
+#: ../src/nautilus-sendto.ui.h:1
 msgid "<b>Compression</b>"
 msgstr "<b>Compressie</b>"
 
-#: ../src/nautilus-sendto.glade.h:2
+#: ../src/nautilus-sendto.ui.h:2
 msgid "<b>Destination</b>"
 msgstr "<b>Bestemming</b>"
 
-#: ../src/nautilus-sendto.glade.h:3
-msgid "Send To..."
-msgstr "Sturen naar…"
-
-#: ../src/nautilus-sendto.glade.h:4
+#: ../src/nautilus-sendto.ui.h:4
 msgid "Send _as:"
 msgstr "Versturen _als:"
 
-#: ../src/nautilus-sendto.glade.h:5
+#: ../src/nautilus-sendto.ui.h:5
 msgid "Send _packed in:"
 msgstr "Versturen ver_pakt in"
 
-#: ../src/nautilus-sendto.glade.h:6
+#: ../src/nautilus-sendto.ui.h:6
 msgid "Send t_o:"
 msgstr "Versturen _naar:"
 
-#: ../src/nautilus-sendto.glade.h:7
+#: ../src/nautilus-sendto.ui.h:7
 msgid "_Send"
 msgstr "Ver_sturen"
 
-#: ../src/plugins/balsa.c:103
-msgid "Email (Balsa)"
-msgstr "E-mail (Balsa)"
-
-#: ../src/plugins/bluetooth.c:423
+#: ../src/plugins/bluetooth/bluetooth.c:451
 msgid "Programming error, could not find the device in the list"
 msgstr "Programmeerfout, kon apparaat niet in lijst vinden."
 
-#: ../src/plugins/bluetooth.c:444
+#: ../src/plugins/bluetooth/bluetooth.c:526
 #, c-format
-msgid "Device does not support Obex File Transfer"
-msgstr "Apparaat ondersteunt geen Obex-bestandsoverdracht"
+msgid "Obex Push file transfer unsupported"
+msgstr "Obex-push-bestandsoverdracht wordt niet ondersteund"
 
-#: ../src/plugins/bluetooth.c:459
+#: ../src/plugins/bluetooth/bluetooth.c:550
 msgid "Bluetooth (OBEX Push)"
 msgstr "Bluetooth (OBEX Push)"
 
-#: ../src/plugins/evolution.c:196
+#: ../src/plugins/empathy/empathy.c:144
+msgid "The contact selected cannot receive files."
+msgstr "Het geselecteerde contact kan geen bestanden ontvangen."
+
+#: ../src/plugins/empathy/empathy.c:150
+msgid "The contact selected is offline."
+msgstr "Het geselecteerde contact is offline."
+
+#: ../src/plugins/empathy/empathy.c:205
+msgid "No error message"
+msgstr "Geen foutmelding"
+
+#: ../src/plugins/empathy/empathy.c:281
+msgid "Instant Message (Empathy)"
+msgstr "Direct bericht (Empathy)"
+
+#: ../src/plugins/evolution/evolution.c:369
 msgid "Email"
 msgstr "E-mail"
 
-#: ../src/plugins/e-contact-entry.c:158
+#: ../src/plugins/evolution/e-contact-entry.c:153
 #, c-format
 msgid "Cannot get contact: %s"
 msgstr "Kan contact niet opvragen: %s"
 
-#: ../src/plugins/e-contact-entry.c:191
+#: ../src/plugins/evolution/e-contact-entry.c:186
 #, c-format
 msgid "Could not find contact: %s"
 msgstr "Kan contact niet vinden: %s"
 
-#: ../src/plugins/e-contact-entry.c:417
+#: ../src/plugins/evolution/e-contact-entry.c:414
 msgid "Cannot create searchable view."
 msgstr "Kan geen doorzoekbare weergave krijgen."
 
-#: ../src/plugins/e-contact-entry.c:890
+#: ../src/plugins/evolution/e-contact-entry.c:886
 msgid "Success"
 msgstr "Succes"
 
-#: ../src/plugins/e-contact-entry.c:892
+#: ../src/plugins/evolution/e-contact-entry.c:888
 msgid "An argument was invalid."
 msgstr "Een parameter was ongeldig."
 
-#: ../src/plugins/e-contact-entry.c:894
+#: ../src/plugins/evolution/e-contact-entry.c:890
 msgid "The address book is busy."
 msgstr "Het adresboek is bezig."
 
-#: ../src/plugins/e-contact-entry.c:896
+#: ../src/plugins/evolution/e-contact-entry.c:892
 msgid "The address book is offline."
 msgstr "Het adresboek is offline."
 
-#: ../src/plugins/e-contact-entry.c:898
+#: ../src/plugins/evolution/e-contact-entry.c:894
 msgid "The address book does not exist."
 msgstr "Het adresboek bestaat niet."
 
-#: ../src/plugins/e-contact-entry.c:900
+#: ../src/plugins/evolution/e-contact-entry.c:896
 msgid "The \"Me\" contact does not exist."
 msgstr "Het ‘Ik’-contact bestaat niet."
 
-#: ../src/plugins/e-contact-entry.c:902
+#: ../src/plugins/evolution/e-contact-entry.c:898
 msgid "The address book is not loaded."
 msgstr "Het adresboek is niet geladen."
 
-#: ../src/plugins/e-contact-entry.c:904
+#: ../src/plugins/evolution/e-contact-entry.c:900
 msgid "The address book is already loaded."
 msgstr "Het adresboek is reeds geladen."
 
-#: ../src/plugins/e-contact-entry.c:906
+#: ../src/plugins/evolution/e-contact-entry.c:902
 msgid "Permission was denied when accessing the address book."
 msgstr "Toegang tot adresboek geweigerd."
 
-#: ../src/plugins/e-contact-entry.c:908
+#: ../src/plugins/evolution/e-contact-entry.c:904
 msgid "The contact was not found."
 msgstr "Het contact kon niet gevonden worden."
 
-#: ../src/plugins/e-contact-entry.c:910
+#: ../src/plugins/evolution/e-contact-entry.c:906
 msgid "This contact ID already exists."
 msgstr "Dit contact-ID bestaat al."
 
-#: ../src/plugins/e-contact-entry.c:912
+#: ../src/plugins/evolution/e-contact-entry.c:908
 msgid "The protocol is not supported."
 msgstr "Het protocol wordt niet ondersteund."
 
-#: ../src/plugins/e-contact-entry.c:914
+#: ../src/plugins/evolution/e-contact-entry.c:910
 msgid "The operation was cancelled."
 msgstr "De bewerking is geannuleerd."
 
-#: ../src/plugins/e-contact-entry.c:916
+#: ../src/plugins/evolution/e-contact-entry.c:912
 msgid "The operation could not be cancelled."
 msgstr "De bewerking kon niet geannuleerd worden."
 
-#: ../src/plugins/e-contact-entry.c:918
+#: ../src/plugins/evolution/e-contact-entry.c:914
 msgid "The address book authentication failed."
 msgstr "Aanmelden voor adresboek is mislukt."
 
-#: ../src/plugins/e-contact-entry.c:920
+#: ../src/plugins/evolution/e-contact-entry.c:916
 msgid ""
 "Authentication is required to access the address book and was not given."
 msgstr "Het adresboek vereist aanmeldgegevens, maar deze zijn niet gegeven."
 
-#: ../src/plugins/e-contact-entry.c:922
+#: ../src/plugins/evolution/e-contact-entry.c:918
 msgid "A secure connection is not available."
 msgstr "Een beveiligde verbinding is niet beschikbaar."
 
-#: ../src/plugins/e-contact-entry.c:924
+#: ../src/plugins/evolution/e-contact-entry.c:920
 msgid "A CORBA error occurred whilst accessing the address book."
 msgstr "Een CORBA-fout is opgetreden tijdens het gebruik van het adresboek."
 
-#: ../src/plugins/e-contact-entry.c:926
+#: ../src/plugins/evolution/e-contact-entry.c:922
 msgid "The address book source does not exist."
 msgstr "De adresboek-bron bestaat niet."
 
-#: ../src/plugins/e-contact-entry.c:928 ../src/plugins/e-contact-entry.c:931
+#: ../src/plugins/evolution/e-contact-entry.c:924
+#: ../src/plugins/evolution/e-contact-entry.c:927
 msgid "An unknown error occurred."
 msgstr "Een onbekende fout is opgetreden."
 
-#: ../src/plugins/gaim.c:228
-msgid "Instant Message (Gaim)"
-msgstr "Direct bericht (Gaim)"
-
-#: ../src/plugins/gajim.c:402
+#: ../src/plugins/gajim/gajim.c:417
 msgid "Unable to send file"
 msgstr "Kon bestand niet verzenden"
 
-#: ../src/plugins/gajim.c:403
+#: ../src/plugins/gajim/gajim.c:418
 msgid "There is no connection to gajim remote service."
 msgstr "Er is geen verbinding met de gajim remote-service"
 
-#: ../src/plugins/gajim.c:427 ../src/plugins/gajim.c:466
+#: ../src/plugins/gajim/gajim.c:442 ../src/plugins/gajim/gajim.c:482
 msgid "Sending file failed"
 msgstr "Verzenden van bestand mislukt"
 
-#: ../src/plugins/gajim.c:428
+#: ../src/plugins/gajim/gajim.c:443
 msgid "Recipient is missing."
 msgstr "Geadresseerde ontbreekt."
 
-#: ../src/plugins/gajim.c:466
+#: ../src/plugins/gajim/gajim.c:482
 msgid "Unknown recipient."
 msgstr "Onbekende geadresseerde"
 
-#: ../src/plugins/gajim.c:488
+#: ../src/plugins/gajim/gajim.c:505
 msgid "Instant Message (Gajim)"
 msgstr "Direct bericht (Gajim)"
 
-#: ../src/plugins/pidgin.c:239
+#: ../src/plugins/nautilus-burn/nautilus-burn.c:92
+msgid "New CD/DVD"
+msgstr "Nieuwe cd/dvd"
+
+#: ../src/plugins/nautilus-burn/nautilus-burn.c:99
+msgid "Existing CD/DVD"
+msgstr "Bestaande cd/dvd"
+
+#: ../src/plugins/nautilus-burn/nautilus-burn.c:178
+msgid "CD/DVD Creator"
+msgstr "Cd/dvd-maker"
+
+#: ../src/plugins/pidgin/pidgin.c:464
 msgid "Instant Message (Pidgin)"
 msgstr "Direct bericht (Pidgin)"
 
-#: ../src/plugins/sylpheed-claws.c:131
-msgid "Email (Claws Mail)"
-msgstr "E-mail (Claws-mail)"
+#: ../src/plugins/removable-devices/removable-devices.c:224
+msgid "Removable disks and shares"
+msgstr "Verwijderbare (gedeelde) schijven"
 
-#: ../src/plugins/thunderbird.c:102
-msgid "Email (Thunderbird)"
-msgstr "E-mail (Thunderbird)"
+#: ../src/plugins/upnp/upnp.c:309
+msgid "UPnP Media Server"
+msgstr "UPnP-mediaserver"
+
+#~ msgid "Nautilus Integration"
+#~ msgstr "Nautilus-integratie"
+
+#~ msgid "Provides integration with Nautilus"
+#~ msgstr "Voorziet in integratie met Nautilus"
+
+#~ msgid "Default folder to use"
+#~ msgstr "Standaardmap"
+
+#~ msgid "You don't insert the package name"
+#~ msgstr "U heeft de pakketnaam niet ingevoerd"
+
+#~ msgid "Nautilus Sendto"
+#~ msgstr "Nautilus Sendto"
+
+#~ msgid "Email (Balsa)"
+#~ msgstr "E-mail (Balsa)"
+
+#~ msgid "Device does not support Obex File Transfer"
+#~ msgstr "Apparaat ondersteunt geen Obex-bestandsoverdracht"
+
+#~ msgid "Email (Claws Mail)"
+#~ msgstr "E-mail (Claws-mail)"
+
+#~ msgid "Email (Thunderbird)"
+#~ msgstr "E-mail (Thunderbird)"
