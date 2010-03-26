@@ -2,14 +2,16 @@
 # Copyright (C) 2009-2010 nautilus-sendto'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the nautilus-sendto package.
 # jeevz <jeevanism@gmail.com>, 2009.
+# Labeeb Elbiem <mmlabeeb@gmail.com>, 2010.
 # Reviewed by Praveen Arimbrathodiyil <pravi.a@gmail.com, 2010.
 msgid ""
 msgstr ""
 "Project-Id-Version: nautilus-sendto-master\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=nautilus-sendto&component=general\n"
-"POT-Creation-Date: 2010-02-28 21:32+0000\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
+"product=nautilus-sendto&component=general\n"
+"POT-Creation-Date: 2010-03-15 11:55+0000\n"
 "PO-Revision-Date: 2010-03-05 19:56+0530\n"
-"Last-Translator: jeevanism@gmail.com\n"
+"Last-Translator: mmlabeeb@gmail.com\n"
 "Language-Team: SMC <smc-discuss@googlegroups.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -28,12 +30,15 @@ msgid ""
 "Used to store which plugin was used the last time files were sent using "
 "nautilus-sendto."
 msgstr ""
+"നോട്ടിലസ്-സെന്‍ഡ്ടു ഉപയോഗിച്ച് കഴിഞ്ഞ പ്രാവശ്യം  ഫയലുകള്‍ അയച്ചപ്പോള്‍ ഉപയോഗിച്ച സംയോജകം ഏതാണെന്ന് " "ഓര്‍ത്തുവെക്കാന്‍ ഉപയോഗിച്ചിരിക്കുന്നു."
 
 #: ../nst.schemas.in.h:4
 msgid ""
 "Used to store which type of archive was used the last time (0: zip, 1: tar."
 "gz, 2: tar.bz2)."
 msgstr ""
+"കഴിഞ്ഞ പ്രാവശ്യം ഏതു തരം  ഫയല്‍ ചുരുക്കല്‍ സംവിധാനമാണ് ഉപയോഗിച്ചതെന്ന് ഓര്‍ത്തുവെച്ചിരിക്കുന്നു  (0: zip, 1: tar."
+"gz, 2: tar.bz2)."
 
 #: ../evolution/nautilus-sendto.c:47
 msgid "_Send to..."
@@ -68,20 +73,16 @@ msgstr "ഫയലുകള്‍ "
 #: ../src/nautilus-sendto-command.c:782
 #, c-format
 msgid "Expects URIs or filenames to be passed as options\n"
-msgstr ""
-
-#: ../src/nautilus-sendto-command.c:799
-msgid "Nautilus Sendto"
-msgstr "നോട്ടിലസ് സെന്‍ഡ്ടു"
+msgstr "URIകളോ ഫയല്‍നാമങ്ങളോ സൂചകങ്ങളായി നല്‍കാന്‍ പ്രതീക്ഷിക്കുന്നു\n"
 
 #: ../src/nautilus-sendto-command.c:803
 #, c-format
 msgid "Could not parse command-line options: %s\n"
-msgstr ""
+msgstr "ഈ കമാന്റ്‌‌ലൈന്‍ സൂചകങ്ങള്‍ വായിച്ചെടുക്കാന്‍ സാധിച്ചില്ല: %s\n"
 
 #: ../src/nautilus-sendto-command.c:818
 msgid "Could not load any plugins."
-msgstr ""
+msgstr "ഒരു സംയോജകങ്ങളും  തുറക്കാന്‍ സാധിച്ചില്ല."
 
 #: ../src/nautilus-sendto-command.c:821
 msgid "Please verify your installation"
@@ -89,139 +90,139 @@ msgstr "നിങ്ങളുടെ ഇന്‍സ്റ്റലേഷന്�
 
 #: ../src/nautilus-sendto.ui.h:1
 msgid "<b>Compression</b>"
-msgstr ""
+msgstr "<b>ചുരുക്കുക</b>"
 
 #: ../src/nautilus-sendto.ui.h:2
 msgid "<b>Destination</b>"
-msgstr ""
+msgstr "<b>ലക്ഷ്യസ്ഥാനം</b>"
 
 #: ../src/nautilus-sendto.ui.h:4
 msgid "Send _as:"
-msgstr ""
+msgstr "അ_യക്കേണ്ടത്:"
 
 #: ../src/nautilus-sendto.ui.h:5
 msgid "Send _packed in:"
-msgstr ""
+msgstr "കെട്ടി_പൂട്ടി അയക്കുക:"
 
 #: ../src/nautilus-sendto.ui.h:6
 msgid "Send t_o:"
-msgstr ""
+msgstr "_ഇതിലേക്ക് അയക്കുക:"
 
 #: ../src/nautilus-sendto.ui.h:7
 msgid "_Send"
-msgstr ""
+msgstr "_അയക്കുക"
 
 #: ../src/plugins/bluetooth/bluetooth.c:451
 msgid "Programming error, could not find the device in the list"
-msgstr ""
+msgstr "പ്രോഗ്രാമിംഗ് തകരാറ്, പട്ടികയിലെ ഡിവൈസ് കണ്ടെത്താന്‍ സാധിച്ചില്ല "
 
 #: ../src/plugins/bluetooth/bluetooth.c:526
 #, c-format
 msgid "Obex Push file transfer unsupported"
-msgstr ""
+msgstr "ഒബെക്സ് പുഷ് ഫയല്‍ കൈമാറ്റ സംവിധാനത്തിന്  പിന്തുണയില്ല "
 
 #: ../src/plugins/bluetooth/bluetooth.c:550
 msgid "Bluetooth (OBEX Push)"
-msgstr ""
+msgstr "ബ്ലുടൂത്ത് (ഒബെക്സ് പുഷ്)"
 
 #: ../src/plugins/empathy/empathy.c:144
 msgid "The contact selected cannot receive files."
-msgstr ""
+msgstr "തെരെഞ്ഞെടുത്ത സ്വീകര്‍ത്താവിന് ഫയലുകള്‍ സ്വീകരിക്കാന്‍ സാധ്യമല്ല."
 
 #: ../src/plugins/empathy/empathy.c:150
 msgid "The contact selected is offline."
-msgstr ""
+msgstr "തെരെഞ്ഞെടുത്ത സ്വീകര്‍ത്താവ് ഓഫ്‌‌ലൈന്‍ ആണ്"
 
 #: ../src/plugins/empathy/empathy.c:205
 msgid "No error message"
-msgstr ""
+msgstr "തകരാറു സന്ദേശങ്ങള്‍ ഒന്നുമില്ല"
 
 #: ../src/plugins/empathy/empathy.c:281
 msgid "Instant Message (Empathy)"
-msgstr ""
+msgstr "നിമിഷ സന്ദേശം  (എംപതി)"
 
 #: ../src/plugins/evolution/evolution.c:369
 msgid "Email"
-msgstr ""
+msgstr "ഇമെയില്‍"
 
 #: ../src/plugins/evolution/e-contact-entry.c:153
 #, c-format
 msgid "Cannot get contact: %s"
-msgstr ""
+msgstr "%s എന്ന വിലാസം ലഭിച്ചില്ല"
 
 #: ../src/plugins/evolution/e-contact-entry.c:186
 #, c-format
 msgid "Could not find contact: %s"
-msgstr ""
+msgstr "%s എന്ന വിലാസം കണ്ടെത്തിയില്ല"
 
 #: ../src/plugins/evolution/e-contact-entry.c:414
 msgid "Cannot create searchable view."
-msgstr ""
+msgstr "തെരയാന്‍ അനുയോജ്യമായ കാഴ്ച ഒരുക്കാന്‍ സാധിച്ചില്ല."
 
 #: ../src/plugins/evolution/e-contact-entry.c:886
 msgid "Success"
-msgstr ""
+msgstr "വിജയിച്ചിരിക്കുന്നു"
 
 #: ../src/plugins/evolution/e-contact-entry.c:888
 msgid "An argument was invalid."
-msgstr ""
+msgstr "ഒരു ആര്‍ഗ്യുമെന്റ് നിലനില്‍ക്കുന്നതല്ല."
 
 #: ../src/plugins/evolution/e-contact-entry.c:890
 msgid "The address book is busy."
-msgstr ""
+msgstr "വിലാസപുസ്തകം  മറ്റൊരുപയോഗത്തിലാണ്."
 
 #: ../src/plugins/evolution/e-contact-entry.c:892
 msgid "The address book is offline."
-msgstr ""
+msgstr "വിലാസപുസ്തകം  ഓഫ്‌‌ലൈന്‍ ആണ്."
 
 #: ../src/plugins/evolution/e-contact-entry.c:894
 msgid "The address book does not exist."
-msgstr ""
+msgstr "ഈ വിലാസപുസ്തകം  നിലവിലില്ല."
 
 #: ../src/plugins/evolution/e-contact-entry.c:896
 msgid "The \"Me\" contact does not exist."
-msgstr ""
+msgstr "\"Me\" എന്ന വിലാസം  നിലവിലില്ല."
 
 #: ../src/plugins/evolution/e-contact-entry.c:898
 msgid "The address book is not loaded."
-msgstr ""
+msgstr "വിലാസപുസ്തകം  തുറന്നില്ല."
 
 #: ../src/plugins/evolution/e-contact-entry.c:900
 msgid "The address book is already loaded."
-msgstr ""
+msgstr "വിലാസപുസ്തകം  ഇപ്പൊഴേ നിലവിലുണ്ട്."
 
 #: ../src/plugins/evolution/e-contact-entry.c:902
 msgid "Permission was denied when accessing the address book."
-msgstr ""
+msgstr "വിലാസപുസ്തകം  പരിശോധിക്കാനുള്ള അനുവാദം നിഷേധിക്കപ്പെട്ടിരിക്കുന്നു."
 
 #: ../src/plugins/evolution/e-contact-entry.c:904
 msgid "The contact was not found."
-msgstr ""
+msgstr "ഈ വിലാസം  കണ്ടെത്തിയില്ല"
 
 #: ../src/plugins/evolution/e-contact-entry.c:906
 msgid "This contact ID already exists."
-msgstr ""
+msgstr "ഈ വിലാസത്തിന്റെ ഐഡി നിലവിലുണ്ട്."
 
 #: ../src/plugins/evolution/e-contact-entry.c:908
 msgid "The protocol is not supported."
-msgstr ""
+msgstr "ഈ പ്രോട്ടോകോള്‍ പിന്തുണയില്ലാത്തതാണ്."
 
 #: ../src/plugins/evolution/e-contact-entry.c:910
 msgid "The operation was cancelled."
-msgstr ""
+msgstr "ഈ നടപടി നിര്‍ത്തിയിരിക്കുന്നു"
 
 #: ../src/plugins/evolution/e-contact-entry.c:912
 msgid "The operation could not be cancelled."
-msgstr ""
+msgstr "ഈ നടപടി നിറുത്താന്‍ സാധ്യമല്ല"
 
 #: ../src/plugins/evolution/e-contact-entry.c:914
 msgid "The address book authentication failed."
-msgstr ""
+msgstr "വിലാസപുസ്തകത്തിലേക്കുള്ള തിരിച്ചറിയല്‍ പരിശോധന പരാജയപ്പെട്ടു"
 
 #: ../src/plugins/evolution/e-contact-entry.c:916
 msgid ""
 "Authentication is required to access the address book and was not given."
-msgstr ""
+msgstr "വിലാസപുസ്തകം പരിശോധിക്കാന്‍ ആവശ്യമായ തിരിച്ചറിയല്‍ നല്കിയിട്ടില്ല"
 
 #: ../src/plugins/evolution/e-contact-entry.c:918
 msgid "A secure connection is not available."
@@ -229,16 +230,16 @@ msgstr "സുരക്ഷിതമായ ഒരു ബന്ധം ലഭ്യ
 
 #: ../src/plugins/evolution/e-contact-entry.c:920
 msgid "A CORBA error occurred whilst accessing the address book."
-msgstr "വിലാസ പുസ്തകം നോക്കുന്നതിനിടയില്‍ കോര്‍ബയില്‍ ഒരു തെറ്റ് സംഭവിച്ചു."
+msgstr "വിലാസപുസ്തകം നോക്കുന്നതിനിടയില്‍ ഒരു CORBA പിശക് സംഭവിച്ചു."
 
 #: ../src/plugins/evolution/e-contact-entry.c:922
 msgid "The address book source does not exist."
-msgstr "വിലാസ പുസ്തകത്തിന്റെ ഉറവിടം നിലവിലില്ല."
+msgstr "വിലാസപുസ്തകത്തിന്റെ ഉറവിടം നിലവിലില്ല."
 
 #: ../src/plugins/evolution/e-contact-entry.c:924
 #: ../src/plugins/evolution/e-contact-entry.c:927
 msgid "An unknown error occurred."
-msgstr "അറിയപ്പെടാത്ത തെറ്റ് സംഭവിച്ചു."
+msgstr "അറിയപ്പെടാത്ത എന്തോ ഒരു തെറ്റ് സംഭവിച്ചു."
 
 #: ../src/plugins/gajim/gajim.c:417
 msgid "Unable to send file"
@@ -254,7 +255,7 @@ msgstr "ഫയല്‍ അയയ്ക്കല്‍ പരാജയപ്പ�
 
 #: ../src/plugins/gajim/gajim.c:443
 msgid "Recipient is missing."
-msgstr "സ്വീകര്‍ത്താവു് നല്‍കിയിട്ടില്ല."
+msgstr "സ്വീകര്‍ത്താവിനെപ്പറ്റി നല്‍കിയിട്ടില്ല."
 
 #: ../src/plugins/gajim/gajim.c:482
 msgid "Unknown recipient."
@@ -287,3 +288,6 @@ msgstr "ഊരി മാറ്റാവുന്ന ഡിസ്കുകളു�
 #: ../src/plugins/upnp/upnp.c:309
 msgid "UPnP Media Server"
 msgstr "ആഗോള പ്ലുഗ് ആന്‍ഡ്‌ പ്ലേ (യുപിഎന്‍പി) മീഡിയ സെര്‍വര്‍"
+
+#~ msgid "Nautilus Sendto"
+#~ msgstr "നോട്ടിലസ് സെന്‍ഡ്ടു"
