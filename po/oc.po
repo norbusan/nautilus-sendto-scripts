@@ -3,13 +3,13 @@
 # Copyright (C) 2004-2007 Free Software Foundation, Inc.
 # This file is distributed under the GNU General Public License Version 2.
 #
-# Yannig Marchegay (Kokoyaya) <yannig@marchegay.org>, 2006-2008.
+# Yannig Marchegay (Kokoyaya) <yannig@marchegay.org>, 2006-2008, 2010.
 msgid ""
 msgstr ""
 "Project-Id-Version: oc\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-06-09 15:21+0200\n"
-"PO-Revision-Date: 2007-12-27 17:38+0100\n"
+"POT-Creation-Date: 2010-04-14 18:57+0200\n"
+"PO-Revision-Date: 2010-04-14 19:01+0200\n"
 "Last-Translator: Yannig Marchegay (Kokoyaya) <yannig@marchegay.org>\n"
 "Language-Team: Occitan <ubuntu-l10n-oci@lists.ubuntu.com>\n"
 "MIME-Version: 1.0\n"
@@ -19,50 +19,43 @@ msgstr ""
 
 #: ../nst.schemas.in.h:1
 msgid "Last plugin used to send"
-msgstr ""
+msgstr "Darrièr ajuston utilizar per mandar"
 
 #: ../nst.schemas.in.h:2
 msgid "Last type of archive used"
-msgstr ""
+msgstr "Darrièra mena d'archiva utilizada"
 
 #: ../nst.schemas.in.h:3
 msgid ""
 "Used to store which plugin was used the last time files were sent using "
 "nautilus-sendto."
 msgstr ""
+"Utilizat per memorizar lo darrièr ajuston que serviguèt pel mandadís al "
+"moment de la darrièra utilizacion de nautilus-sendto."
 
 #: ../nst.schemas.in.h:4
 msgid ""
 "Used to store which type of archive was used the last time (0: zip, 1: tar."
 "gz, 2: tar.bz2)."
 msgstr ""
+"Utilizat per memorizar quin tipe d'archiu es estat utilizat en darrièr (0 : "
+"zip, 1 : tar.gz, 2 : tar.bz2)."
 
-#. type
-#. ui requirement
-#. flags
-#. dependencies
-#. priority
-#. id
-#: ../gaim_plugin/nautilus-sendto-plugin.c:308
-#: ../pidgin_plugin/nautilus-sendto-plugin.c:331
-msgid "Nautilus Integration"
-msgstr "Integracion a Nautilus"
+#: ../evolution/nautilus-sendto.c:47
+msgid "_Send to..."
+msgstr "_Mandar a..."
 
-#. name
-#. version
-#. summary
-#. name
-#. version
-#. summary
-#: ../gaim_plugin/nautilus-sendto-plugin.c:310
-#: ../gaim_plugin/nautilus-sendto-plugin.c:311
-#: ../pidgin_plugin/nautilus-sendto-plugin.c:333
-#: ../pidgin_plugin/nautilus-sendto-plugin.c:334
-msgid "Provides integration with Nautilus"
-msgstr "Provesís una integracion amb Nautilus"
+#: ../evolution/org-gnome-evolution-send-attachments-to.eplug.xml.h:1
+msgid "Send files to remote devices, or people"
+msgstr "Mandar de fichièrs a d'aparelhs distants o a de personas"
+
+#. the path to the shared library
+#: ../evolution/org-gnome-evolution-send-attachments-to.eplug.xml.h:3
+msgid "Send to..."
+msgstr "Enviar a..."
 
 #: ../src/nautilus-nste.c:92 ../src/nautilus-nste.c:97
-#: ../src/nautilus-sendto.glade.h:3
+#: ../src/nautilus-sendto.ui.h:3
 msgid "Send To..."
 msgstr "Enviar a..."
 
@@ -74,219 +67,253 @@ msgstr "Enviar lo fichièr per corrièl, messatge instantanèu..."
 msgid "Send files by mail, instant message..."
 msgstr "Enviar los fichièrs per corriel, messatge instantanèu..."
 
-#: ../src/nautilus-sendto-command.c:75
-msgid "Default folder to use"
-msgstr "Repertòri d'utilizar per defaut"
-
-#: ../src/nautilus-sendto-command.c:533
+#: ../src/nautilus-sendto-command.c:569
 msgid "Files"
 msgstr "Fichièrs"
 
-#: ../src/nautilus-sendto-command.c:731
+#: ../src/nautilus-sendto-command.c:782
 #, c-format
 msgid "Expects URIs or filenames to be passed as options\n"
-msgstr ""
+msgstr "Las opcions esperadas son d'URI o de noms de fichièrs\n"
 
-#: ../src/nautilus-sendto-command.c:748
-msgid "Nautilus Sendto"
-msgstr "Nautilus Sendto"
-
-#: ../src/nautilus-sendto-command.c:752
+#: ../src/nautilus-sendto-command.c:803
 #, c-format
 msgid "Could not parse command-line options: %s\n"
-msgstr ""
+msgstr "Impossible d'analizar las opcions de la linha de comandas : %s\n"
 
-#: ../src/nautilus-sendto-command.c:767
+#: ../src/nautilus-sendto-command.c:818
 msgid "Could not load any plugins."
 msgstr "Impossible de cargar d'ajuston."
 
-#: ../src/nautilus-sendto-command.c:770
+#: ../src/nautilus-sendto-command.c:821
 msgid "Please verify your installation"
 msgstr "Verificatz vòstra installacion"
 
-#: ../src/nautilus-sendto.glade.h:1
+#: ../src/nautilus-sendto.ui.h:1
 msgid "<b>Compression</b>"
 msgstr "<b>Compression</b>"
 
-#: ../src/nautilus-sendto.glade.h:2
+#: ../src/nautilus-sendto.ui.h:2
 msgid "<b>Destination</b>"
 msgstr "<b>Cibla</b>"
 
-#: ../src/nautilus-sendto.glade.h:4
+#: ../src/nautilus-sendto.ui.h:4
 msgid "Send _as:"
 msgstr "Enviar _coma :"
 
 #
-#: ../src/nautilus-sendto.glade.h:5
+#: ../src/nautilus-sendto.ui.h:5
 msgid "Send _packed in:"
-msgstr ""
+msgstr "Mandar una còpia _compressada dins :"
 
-#: ../src/nautilus-sendto.glade.h:6
+#: ../src/nautilus-sendto.ui.h:6
 msgid "Send t_o:"
 msgstr "Enviar _a :"
 
-#: ../src/nautilus-sendto.glade.h:7
+#: ../src/nautilus-sendto.ui.h:7
 msgid "_Send"
 msgstr "_Enviar"
 
-#: ../src/plugins/balsa.c:103
-msgid "Email (Balsa)"
-msgstr "Corrièl (Balsa)"
-
-#: ../src/plugins/bluetooth.c:423
+#: ../src/plugins/bluetooth/bluetooth.c:451
 msgid "Programming error, could not find the device in the list"
-msgstr ""
+msgstr "Error de programacion, impossible de trobar lo periferic dins la tièra"
 
-#: ../src/plugins/bluetooth.c:444
+#: ../src/plugins/bluetooth/bluetooth.c:526
 #, c-format
-msgid "Device does not support Obex File Transfer"
-msgstr ""
+msgid "Obex Push file transfer unsupported"
+msgstr "Lo transferiment de fichièr Obex Push es pas pres en carga"
 
-#: ../src/plugins/bluetooth.c:459
+#: ../src/plugins/bluetooth/bluetooth.c:550
 msgid "Bluetooth (OBEX Push)"
-msgstr ""
+msgstr "Bluetooth (OBEX Push)"
 
-#: ../src/plugins/evolution.c:210
+#: ../src/plugins/empathy/empathy.c:144
+msgid "The contact selected cannot receive files."
+msgstr "Lo contacte seleccionat pòt pas recebre de fichièrs."
+
+#: ../src/plugins/empathy/empathy.c:150
+msgid "The contact selected is offline."
+msgstr "Lo contacte seleccionat es desconnectat."
+
+#: ../src/plugins/empathy/empathy.c:205
+msgid "No error message"
+msgstr "Pas de messatge d'error"
+
+#: ../src/plugins/empathy/empathy.c:281
+msgid "Instant Message (Empathy)"
+msgstr "Messatjariá instantanèa (Empathy)"
+
+#: ../src/plugins/evolution/evolution.c:369
 msgid "Email"
 msgstr "Corrièl"
 
-#: ../src/plugins/e-contact-entry.c:158
+#: ../src/plugins/evolution/e-contact-entry.c:153
 #, c-format
 msgid "Cannot get contact: %s"
-msgstr ""
+msgstr "Impossible d'obténer lo contacte : %s"
 
-#: ../src/plugins/e-contact-entry.c:191
+#: ../src/plugins/evolution/e-contact-entry.c:186
 #, c-format
 msgid "Could not find contact: %s"
-msgstr ""
+msgstr "Impossible de trobar lo contacte : %s"
 
-#: ../src/plugins/e-contact-entry.c:417
+#: ../src/plugins/evolution/e-contact-entry.c:414
 msgid "Cannot create searchable view."
-msgstr ""
+msgstr "Impossible de crear una vista de recèrca."
 
-#: ../src/plugins/e-contact-entry.c:889
+#: ../src/plugins/evolution/e-contact-entry.c:886
 msgid "Success"
-msgstr ""
+msgstr "Succès"
 
-#: ../src/plugins/e-contact-entry.c:891
+#: ../src/plugins/evolution/e-contact-entry.c:888
 msgid "An argument was invalid."
-msgstr ""
+msgstr "Un argument èra pas valid."
 
-#: ../src/plugins/e-contact-entry.c:893
+#: ../src/plugins/evolution/e-contact-entry.c:890
 msgid "The address book is busy."
-msgstr ""
+msgstr "Lo quasernet d'adreças es ocupat."
 
-#: ../src/plugins/e-contact-entry.c:895
+#: ../src/plugins/evolution/e-contact-entry.c:892
 msgid "The address book is offline."
-msgstr ""
+msgstr "Lo quasernet d'adreças es desconnectat."
 
-#: ../src/plugins/e-contact-entry.c:897
+#: ../src/plugins/evolution/e-contact-entry.c:894
 msgid "The address book does not exist."
-msgstr ""
+msgstr "Lo quasernet d'adreças existís pas."
 
-#: ../src/plugins/e-contact-entry.c:899
+#: ../src/plugins/evolution/e-contact-entry.c:896
 msgid "The \"Me\" contact does not exist."
-msgstr ""
+msgstr "Lo contacte « Ieu » existís pas."
 
-#: ../src/plugins/e-contact-entry.c:901
+#: ../src/plugins/evolution/e-contact-entry.c:898
 msgid "The address book is not loaded."
-msgstr ""
+msgstr "Lo quasernet d'adreças es pas cargat."
 
-#: ../src/plugins/e-contact-entry.c:903
+#: ../src/plugins/evolution/e-contact-entry.c:900
 msgid "The address book is already loaded."
-msgstr ""
+msgstr "Lo quasernet d'adreças es ja cargat."
 
-#: ../src/plugins/e-contact-entry.c:905
+#: ../src/plugins/evolution/e-contact-entry.c:902
 msgid "Permission was denied when accessing the address book."
-msgstr ""
+msgstr "Permission refusada per accedir al quasernet d'adreças."
 
-#: ../src/plugins/e-contact-entry.c:907
+#: ../src/plugins/evolution/e-contact-entry.c:904
 msgid "The contact was not found."
-msgstr ""
+msgstr "Lo contacte es pas estat trobat."
 
-#: ../src/plugins/e-contact-entry.c:909
+#: ../src/plugins/evolution/e-contact-entry.c:906
 msgid "This contact ID already exists."
-msgstr ""
+msgstr "L'identificant del contacte existís ja."
 
-#: ../src/plugins/e-contact-entry.c:911
+#: ../src/plugins/evolution/e-contact-entry.c:908
 msgid "The protocol is not supported."
-msgstr ""
+msgstr "Lo protocòl es pas suportat."
 
-#: ../src/plugins/e-contact-entry.c:913
+#: ../src/plugins/evolution/e-contact-entry.c:910
 msgid "The operation was cancelled."
-msgstr ""
+msgstr "Operacion anullada."
 
-#: ../src/plugins/e-contact-entry.c:915
+#: ../src/plugins/evolution/e-contact-entry.c:912
 msgid "The operation could not be cancelled."
-msgstr ""
+msgstr "L'operacion pòt pas èsser anullada."
 
-#: ../src/plugins/e-contact-entry.c:917
+#: ../src/plugins/evolution/e-contact-entry.c:914
 msgid "The address book authentication failed."
-msgstr ""
+msgstr "L'autentificacion alprèp del quasernet d'adreças a pas capitat."
 
-#: ../src/plugins/e-contact-entry.c:919
+#: ../src/plugins/evolution/e-contact-entry.c:916
 msgid ""
 "Authentication is required to access the address book and was not given."
 msgstr ""
+"Una autentificacion es requesida per accedir al quasernet d'adreças e es pas "
+"estada provesida."
 
-#: ../src/plugins/e-contact-entry.c:921
+#: ../src/plugins/evolution/e-contact-entry.c:918
 msgid "A secure connection is not available."
-msgstr ""
+msgstr "Cap de connexion segurizada es disponibla."
 
-#: ../src/plugins/e-contact-entry.c:923
+#: ../src/plugins/evolution/e-contact-entry.c:920
 msgid "A CORBA error occurred whilst accessing the address book."
 msgstr ""
+"Una error CORBA s'es producha al moment de l'accès al quasernet d'adreças."
 
-#: ../src/plugins/e-contact-entry.c:925
+#: ../src/plugins/evolution/e-contact-entry.c:922
 msgid "The address book source does not exist."
-msgstr ""
+msgstr "La sorça del quasernet d'adreças existís pas."
 
-#: ../src/plugins/e-contact-entry.c:927 ../src/plugins/e-contact-entry.c:930
+#: ../src/plugins/evolution/e-contact-entry.c:924
+#: ../src/plugins/evolution/e-contact-entry.c:927
 msgid "An unknown error occurred."
-msgstr ""
+msgstr "I a agut una error desconeguda."
 
-#: ../src/plugins/gaim.c:228
-msgid "Instant Message (Gaim)"
-msgstr "Messatge instantanèu (Gaim)"
-
-#: ../src/plugins/gajim.c:402
+#: ../src/plugins/gajim/gajim.c:417
 msgid "Unable to send file"
 msgstr "Impossible d'enviar lo fichièr"
 
-#: ../src/plugins/gajim.c:403
+#: ../src/plugins/gajim/gajim.c:418
 msgid "There is no connection to gajim remote service."
 msgstr "I a pas de connexion al servici distant gajim."
 
-#: ../src/plugins/gajim.c:427 ../src/plugins/gajim.c:466
+#: ../src/plugins/gajim/gajim.c:442 ../src/plugins/gajim/gajim.c:482
 msgid "Sending file failed"
 msgstr "Lo mandadís de fichièr a pas capitat"
 
-#: ../src/plugins/gajim.c:428
+#: ../src/plugins/gajim/gajim.c:443
 msgid "Recipient is missing."
-msgstr ""
+msgstr "Manca lo destinatari."
 
-#: ../src/plugins/gajim.c:466
+#: ../src/plugins/gajim/gajim.c:482
 msgid "Unknown recipient."
 msgstr "Destinatari desconegut."
 
-#: ../src/plugins/gajim.c:488
+#: ../src/plugins/gajim/gajim.c:505
 msgid "Instant Message (Gajim)"
 msgstr "Messatge instantanèu (Gajim)"
 
-#: ../src/plugins/pidgin.c:239
+#: ../src/plugins/nautilus-burn/nautilus-burn.c:92
+msgid "New CD/DVD"
+msgstr "CD/DVD novèl"
+
+#: ../src/plugins/nautilus-burn/nautilus-burn.c:99
+msgid "Existing CD/DVD"
+msgstr "CD/DVD existent"
+
+#: ../src/plugins/nautilus-burn/nautilus-burn.c:178
+msgid "CD/DVD Creator"
+msgstr "Creator de CD/DVD"
+
+#: ../src/plugins/pidgin/pidgin.c:464
 msgid "Instant Message (Pidgin)"
 msgstr "Messatge instantanèu (Pidgin)"
 
-#: ../src/plugins/sylpheed-claws.c:131
-msgid "Email (Claws Mail)"
-msgstr "Corrièl (Claws Mail)"
+#: ../src/plugins/removable-devices/removable-devices.c:224
+msgid "Removable disks and shares"
+msgstr "Partiments e disques amovibles"
 
-#: ../src/plugins/thunderbird.c:105
-msgid "Email (Thunderbird)"
-msgstr "Corrièl (Thunderbird)"
+#: ../src/plugins/upnp/upnp.c:309
+msgid "UPnP Media Server"
+msgstr "Servidor mèdia UPnP"
 
-#~ msgid "Send to..."
-#~ msgstr "Enviar a..."
+#~ msgid "Nautilus Integration"
+#~ msgstr "Integracion a Nautilus"
+
+#~ msgid "Provides integration with Nautilus"
+#~ msgstr "Provesís una integracion amb Nautilus"
+
+#~ msgid "Default folder to use"
+#~ msgstr "Repertòri d'utilizar per defaut"
+
+#~ msgid "Nautilus Sendto"
+#~ msgstr "Nautilus Sendto"
+
+#~ msgid "Email (Balsa)"
+#~ msgstr "Corrièl (Balsa)"
+
+#~ msgid "Email (Claws Mail)"
+#~ msgstr "Corrièl (Claws Mail)"
+
+#~ msgid "Email (Thunderbird)"
+#~ msgstr "Corrièl (Thunderbird)"
 
 #~ msgid "You don't insert the package name"
 #~ msgstr "Inserissètz pas lo nom del paquetatge"
