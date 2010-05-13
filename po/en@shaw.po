@@ -100,10 +100,9 @@ msgstr "𐑕𐑧𐑯𐑛 𐑨𐑟:"
 msgid "Send _packed in:"
 msgstr "𐑕𐑧𐑯𐑛 𐑐𐑨𐑒𐑑 𐑦𐑯:"
 
-#, fuzzy
 #: ../src/nautilus-sendto.ui.h:6
 msgid "Send t_o:"
-msgstr "𐑕𐑧𐑯𐑛 t_o:"
+msgstr "𐑕𐑧𐑯𐑛 _𐑑:"
 
 #: ../src/nautilus-sendto.ui.h:7
 msgid "_Send"
