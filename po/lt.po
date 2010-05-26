@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nautilus-sendto HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-03-14 21:52+0200\n"
-"PO-Revision-Date: 2009-03-14 21:56+0200\n"
+"POT-Creation-Date: 2010-05-26 23:06+0300\n"
+"PO-Revision-Date: 2010-05-26 23:06+0300\n"
 "Last-Translator: Žygimantas Beručka <zygis@gnome.org>\n"
 "Language-Team: Lithuanian <gnome-lt@lists.akl.lt>\n"
 "MIME-Version: 1.0\n"
@@ -57,32 +57,8 @@ msgstr "Siųsti failus žmonėms ar į nuotolinius įrenginius"
 msgid "Send to..."
 msgstr "Siųsti..."
 
-#. type
-#. ui requirement
-#. flags
-#. dependencies
-#. priority
-#. id
-#: ../gaim_plugin/nautilus-sendto-plugin.c:309
-#: ../pidgin_plugin/nautilus-sendto-plugin.c:331
-msgid "Nautilus Integration"
-msgstr "Nautilus integracija"
-
-#. name
-#. version
-#. summary
-#. name
-#. version
-#. summary
-#: ../gaim_plugin/nautilus-sendto-plugin.c:311
-#: ../gaim_plugin/nautilus-sendto-plugin.c:312
-#: ../pidgin_plugin/nautilus-sendto-plugin.c:333
-#: ../pidgin_plugin/nautilus-sendto-plugin.c:334
-msgid "Provides integration with Nautilus"
-msgstr "Suteikia Nautilus integraciją"
-
 #: ../src/nautilus-nste.c:92 ../src/nautilus-nste.c:97
-#: ../src/nautilus-sendto.glade.h:3
+#: ../src/nautilus-sendto.ui.h:3
 msgid "Send To..."
 msgstr "Siųsti..."
 
@@ -94,236 +70,239 @@ msgstr "Siųsti failą paštu, žinute..."
 msgid "Send files by mail, instant message..."
 msgstr "Siųsti failus paštu, žinute..."
 
-#: ../src/nautilus-sendto-command.c:533
+#: ../src/nautilus-sendto-command.c:569
 msgid "Files"
 msgstr "Failai"
 
-#: ../src/nautilus-sendto-command.c:737
+#: ../src/nautilus-sendto-command.c:782
 #, c-format
 msgid "Expects URIs or filenames to be passed as options\n"
 msgstr "Tikimasi URI arba failų pavadinimų, nurodytų kaip parinčių\n"
 
-#: ../src/nautilus-sendto-command.c:754
-msgid "Nautilus Sendto"
-msgstr "Nautilus sendto"
-
-#: ../src/nautilus-sendto-command.c:758
+#: ../src/nautilus-sendto-command.c:803
 #, c-format
 msgid "Could not parse command-line options: %s\n"
 msgstr "Nepavyko apdoroti komandų eilutės parinkčių: %s\n"
 
-#: ../src/nautilus-sendto-command.c:773
+#: ../src/nautilus-sendto-command.c:818
 msgid "Could not load any plugins."
 msgstr "Nepavyko įkelti jokių įskiepių."
 
-#: ../src/nautilus-sendto-command.c:776
+#: ../src/nautilus-sendto-command.c:821
 msgid "Please verify your installation"
 msgstr "Patikrinkite, ar programa gerai įdiegta."
 
-#: ../src/nautilus-sendto.glade.h:1
+#: ../src/nautilus-sendto.ui.h:1
 msgid "<b>Compression</b>"
 msgstr "<b>Glaudinimas</b>"
 
-#: ../src/nautilus-sendto.glade.h:2
+#: ../src/nautilus-sendto.ui.h:2
 msgid "<b>Destination</b>"
 msgstr "<b>Paskirtis</b>"
 
-#: ../src/nautilus-sendto.glade.h:4
+#: ../src/nautilus-sendto.ui.h:4
 msgid "Send _as:"
 msgstr "Siųsti _kaip:"
 
-#: ../src/nautilus-sendto.glade.h:5
+#: ../src/nautilus-sendto.ui.h:5
 msgid "Send _packed in:"
 msgstr "Siųsti su_pakuotą:"
 
-#: ../src/nautilus-sendto.glade.h:6
+#: ../src/nautilus-sendto.ui.h:6
 msgid "Send t_o:"
 msgstr "_Gavėjas:"
 
-#: ../src/nautilus-sendto.glade.h:7
+#: ../src/nautilus-sendto.ui.h:7
 msgid "_Send"
 msgstr "_Siųsti"
 
-#: ../src/plugins/bluetooth/bluetooth.c:445
+#: ../src/plugins/bluetooth/bluetooth.c:451
 msgid "Programming error, could not find the device in the list"
 msgstr "Programavimo klaida, nepavyko rasti sąraše esančio įrenginio"
 
-#: ../src/plugins/bluetooth/bluetooth.c:520
+#: ../src/plugins/bluetooth/bluetooth.c:526
 #, c-format
 msgid "Obex Push file transfer unsupported"
 msgstr "Obex Push failų siuntimas nepalaikomas"
 
-#: ../src/plugins/bluetooth/bluetooth.c:544
+#: ../src/plugins/bluetooth/bluetooth.c:550
 msgid "Bluetooth (OBEX Push)"
 msgstr "Bluetooth (OBEX Push)"
 
-#: ../src/plugins/empathy/empathy.c:136
+#: ../src/plugins/empathy/empathy.c:144
 msgid "The contact selected cannot receive files."
 msgstr "Pasirinktas kontaktas negali gauti failų."
 
-#: ../src/plugins/empathy/empathy.c:142
+#: ../src/plugins/empathy/empathy.c:150
 msgid "The contact selected is offline."
 msgstr "Pasirinktas kontaktas yra atsijungęs."
 
-#: ../src/plugins/empathy/empathy.c:195 ../src/plugins/empathy/empathy.c:256
+#: ../src/plugins/empathy/empathy.c:205
 msgid "No error message"
 msgstr "Nėra klaidos pranešimo"
 
-#: ../src/plugins/empathy/empathy.c:309
+#: ../src/plugins/empathy/empathy.c:281
 msgid "Instant Message (Empathy)"
 msgstr "Žinute (Empathy)"
 
-#: ../src/plugins/evolution/evolution.c:367
+#: ../src/plugins/evolution/evolution.c:369
 msgid "Email"
 msgstr "El. paštu"
 
-#: ../src/plugins/evolution/e-contact-entry.c:152
+#: ../src/plugins/evolution/e-contact-entry.c:153
 #, c-format
 msgid "Cannot get contact: %s"
 msgstr "Nepavyko gauti kontakto: %s"
 
-#: ../src/plugins/evolution/e-contact-entry.c:185
+#: ../src/plugins/evolution/e-contact-entry.c:186
 #, c-format
 msgid "Could not find contact: %s"
 msgstr "Nepavyko surasti kontakto: %s"
 
-#: ../src/plugins/evolution/e-contact-entry.c:411
+#: ../src/plugins/evolution/e-contact-entry.c:414
 msgid "Cannot create searchable view."
 msgstr "Nepavyko sukurti ieškotino rodinio."
 
-#: ../src/plugins/evolution/e-contact-entry.c:883
+#: ../src/plugins/evolution/e-contact-entry.c:886
 msgid "Success"
 msgstr "Baigtis sėkminga"
 
-#: ../src/plugins/evolution/e-contact-entry.c:885
+#: ../src/plugins/evolution/e-contact-entry.c:888
 msgid "An argument was invalid."
 msgstr "Argumentas netaisyklingas."
 
-#: ../src/plugins/evolution/e-contact-entry.c:887
+#: ../src/plugins/evolution/e-contact-entry.c:890
 msgid "The address book is busy."
 msgstr "Adresų knygutė užimta."
 
-#: ../src/plugins/evolution/e-contact-entry.c:889
+#: ../src/plugins/evolution/e-contact-entry.c:892
 msgid "The address book is offline."
 msgstr "Adresų knyga atsijungimo veiksenoje."
 
-#: ../src/plugins/evolution/e-contact-entry.c:891
+#: ../src/plugins/evolution/e-contact-entry.c:894
 msgid "The address book does not exist."
 msgstr "Adresų knyga neegzistuoja."
 
-#: ../src/plugins/evolution/e-contact-entry.c:893
+#: ../src/plugins/evolution/e-contact-entry.c:896
 msgid "The \"Me\" contact does not exist."
 msgstr "Kontaktas „Aš“ neegzistuoja."
 
-#: ../src/plugins/evolution/e-contact-entry.c:895
+#: ../src/plugins/evolution/e-contact-entry.c:898
 msgid "The address book is not loaded."
 msgstr "Adresų knygutė neįkelta."
 
-#: ../src/plugins/evolution/e-contact-entry.c:897
+#: ../src/plugins/evolution/e-contact-entry.c:900
 msgid "The address book is already loaded."
 msgstr "Adresų knygutė jau įkelta."
 
-#: ../src/plugins/evolution/e-contact-entry.c:899
+#: ../src/plugins/evolution/e-contact-entry.c:902
 msgid "Permission was denied when accessing the address book."
 msgstr "Prieigos prie adresų knygos teisės buvo neduotos."
 
-#: ../src/plugins/evolution/e-contact-entry.c:901
+#: ../src/plugins/evolution/e-contact-entry.c:904
 msgid "The contact was not found."
 msgstr "Kontaktas nerastas."
 
-#: ../src/plugins/evolution/e-contact-entry.c:903
+#: ../src/plugins/evolution/e-contact-entry.c:906
 msgid "This contact ID already exists."
 msgstr "Toks kontakto ID jau yra."
 
-#: ../src/plugins/evolution/e-contact-entry.c:905
+#: ../src/plugins/evolution/e-contact-entry.c:908
 msgid "The protocol is not supported."
 msgstr "Protokolas nepalaikomas"
 
-#: ../src/plugins/evolution/e-contact-entry.c:907
+#: ../src/plugins/evolution/e-contact-entry.c:910
 msgid "The operation was cancelled."
 msgstr "Operacija buvo nutraukta"
 
-#: ../src/plugins/evolution/e-contact-entry.c:909
+#: ../src/plugins/evolution/e-contact-entry.c:912
 msgid "The operation could not be cancelled."
 msgstr "Šios operacijos nepavyko atšaukti."
 
-#: ../src/plugins/evolution/e-contact-entry.c:911
+#: ../src/plugins/evolution/e-contact-entry.c:914
 msgid "The address book authentication failed."
 msgstr "Nepavyko nustatyti tapatybės."
 
-#: ../src/plugins/evolution/e-contact-entry.c:913
+#: ../src/plugins/evolution/e-contact-entry.c:916
 msgid ""
 "Authentication is required to access the address book and was not given."
 msgstr ""
 "Norint gauti prieigą prie adresų knygos, reikia nurodyti tapatybę, tačiau ji "
 "nenurodyta."
 
-#: ../src/plugins/evolution/e-contact-entry.c:915
+#: ../src/plugins/evolution/e-contact-entry.c:918
 msgid "A secure connection is not available."
 msgstr "Saugus ryšys neprieinamas."
 
-#: ../src/plugins/evolution/e-contact-entry.c:917
+#: ../src/plugins/evolution/e-contact-entry.c:920
 msgid "A CORBA error occurred whilst accessing the address book."
 msgstr "CORBA klaida bandant gauti prieigą prie adresų knygos."
 
-#: ../src/plugins/evolution/e-contact-entry.c:919
+#: ../src/plugins/evolution/e-contact-entry.c:922
 msgid "The address book source does not exist."
 msgstr "Adresų knygos šaltinis neegzistuoja."
 
-#: ../src/plugins/evolution/e-contact-entry.c:921
 #: ../src/plugins/evolution/e-contact-entry.c:924
+#: ../src/plugins/evolution/e-contact-entry.c:927
 msgid "An unknown error occurred."
 msgstr "Įvyko nežinoma klaida."
 
-#: ../src/plugins/gaim/gaim.c:228
-msgid "Instant Message (Gaim)"
-msgstr "Žinute (Gaim)"
-
-#: ../src/plugins/gajim/gajim.c:402
+#: ../src/plugins/gajim/gajim.c:417
 msgid "Unable to send file"
 msgstr "Nepavyko išsiųsti failo"
 
-#: ../src/plugins/gajim/gajim.c:403
+#: ../src/plugins/gajim/gajim.c:418
 msgid "There is no connection to gajim remote service."
 msgstr "Nėra ryšio su gajim nutolusia paslauga."
 
-#: ../src/plugins/gajim/gajim.c:427 ../src/plugins/gajim/gajim.c:466
+#: ../src/plugins/gajim/gajim.c:442 ../src/plugins/gajim/gajim.c:482
 msgid "Sending file failed"
 msgstr "Išsiųsti failo nepavyko"
 
-#: ../src/plugins/gajim/gajim.c:428
+#: ../src/plugins/gajim/gajim.c:443
 msgid "Recipient is missing."
 msgstr "Trūksta gavėjo."
 
-#: ../src/plugins/gajim/gajim.c:466
+#: ../src/plugins/gajim/gajim.c:482
 msgid "Unknown recipient."
 msgstr "Nežinomas gavėjas."
 
-#: ../src/plugins/gajim/gajim.c:488
+#: ../src/plugins/gajim/gajim.c:505
 msgid "Instant Message (Gajim)"
 msgstr "Žinute (Gajim)"
 
-#: ../src/plugins/nautilus-burn/nautilus-burn.c:70
-#: ../src/plugins/nautilus-burn/nautilus-burn.c:85
+#: ../src/plugins/nautilus-burn/nautilus-burn.c:92
 msgid "New CD/DVD"
 msgstr "Naujas CD / DVD"
 
-#: ../src/plugins/nautilus-burn/nautilus-burn.c:83
+#: ../src/plugins/nautilus-burn/nautilus-burn.c:99
 msgid "Existing CD/DVD"
 msgstr "Esantis CD / DVD"
 
-#: ../src/plugins/nautilus-burn/nautilus-burn.c:162
+#: ../src/plugins/nautilus-burn/nautilus-burn.c:178
 msgid "CD/DVD Creator"
 msgstr "CD / DVD kūrimas"
 
-#: ../src/plugins/pidgin/pidgin.c:350
+#: ../src/plugins/pidgin/pidgin.c:464
 msgid "Instant Message (Pidgin)"
 msgstr "Žinute (Pidgin)"
 
-#: ../src/plugins/removable-devices/removable-devices.c:219
+#: ../src/plugins/removable-devices/removable-devices.c:224
 msgid "Removable disks and shares"
-msgstr "Išimai diskai ir viešiniai"
+msgstr "Išimami diskai ir viešiniai"
 
-#: ../src/plugins/upnp/upnp.c:298
+#: ../src/plugins/upnp/upnp.c:309
 msgid "UPnP Media Server"
 msgstr "UPnP medijos serveris"
+
+#~ msgid "Nautilus Integration"
+#~ msgstr "Nautilus integracija"
+
+#~ msgid "Provides integration with Nautilus"
+#~ msgstr "Suteikia Nautilus integraciją"
+
+#~ msgid "Nautilus Sendto"
+#~ msgstr "Nautilus sendto"
+
+#~ msgid "Instant Message (Gaim)"
+#~ msgstr "Žinute (Gaim)"
