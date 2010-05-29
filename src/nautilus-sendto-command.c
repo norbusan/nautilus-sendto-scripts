@@ -335,7 +335,7 @@ static void
 send_if_no_pack_cb (GtkWidget *widget, NS_ui *ui)
 {
 	if (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (ui->pack_checkbutton))) {
-		if (GTK_WIDGET_IS_SENSITIVE (ui->pack_entry)) {
+		if (gtk_widget_is_sensitive (ui->pack_entry)) {
 			gtk_widget_grab_focus (ui->pack_entry);
 		} else {
 			gtk_widget_grab_focus (ui->pack_checkbutton);

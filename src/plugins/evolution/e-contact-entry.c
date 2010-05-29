@@ -385,7 +385,7 @@ entry_changed_cb (GtkEditable *editable, gpointer user_data)
   EContactEntry *entry;
   entry = E_CONTACT_ENTRY (editable);
 
-  if (GTK_ENTRY (editable)->text_length >= entry->priv->lookup_length) {
+  if (gtk_entry_get_text_length (GTK_ENTRY (editable)) >= entry->priv->lookup_length) {
     GList *l;
     EBookQuery *query;
 
