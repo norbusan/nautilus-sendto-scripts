@@ -2,14 +2,14 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the nautilus-sendto package.
 #
-# Matej Urbančič <matej.urban@gmail.com>, 2006 - 2009.
+# Matej Urbančič <mateju@svn.gnome.org>, 2006 - 2010.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: nautilus-sendto HEAD\n"
+"Project-Id-Version: nautilus-sendto master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=nautilus-sendto&component=general\n"
 "POT-Creation-Date: 2009-04-27 13:10+0000\n"
-"PO-Revision-Date: 2009-10-06 11:25+0100\n"
+"PO-Revision-Date: 2010-06-07 20:28+0100\n"
 "Last-Translator: Matej Urbančič <mateju@svn.gnome.org>\n"
 "Language-Team: Slovenian GNOME Translation Team <gnome-si@googlegroups.com>\n"
 "MIME-Version: 1.0\n"
@@ -30,11 +30,11 @@ msgstr "Zadnja uporabljena vrsta arhiva"
 
 #: ../nst.schemas.in.h:3
 msgid "Used to store which plugin was used the last time files were sent using nautilus-sendto."
-msgstr "Uporabljeno za beleženje zadnje uporabljenega vstavka med pošiljanjem preko nautilus-sendto."
+msgstr "Uporabljeno za shranjevanje podatkov o nazadnje uporabljenem vstavku med pošiljanjem preko nautilus-sendto."
 
 #: ../nst.schemas.in.h:4
 msgid "Used to store which type of archive was used the last time (0: zip, 1: tar.gz, 2: tar.bz2)."
-msgstr "Uporabljeno za beleženje zadnje uporabljenega arhiva (0: zip, 1: tar.gz, 2: tar.bz2)."
+msgstr "Uporabljeno za shranjevanje podatkov o nazadnje uporabljenem vstavku arhiva (0: zip, 1: tar.gz, 2: tar.bz2)."
 
 #: ../evolution/nautilus-sendto.c:47
 #| msgid "Send to..."
@@ -48,7 +48,7 @@ msgstr "Pošiljanje datotek oddaljenim napravam in stikom"
 #. the path to the shared library
 #: ../evolution/org-gnome-evolution-send-attachments-to.eplug.xml.h:3
 msgid "Send to..."
-msgstr "Pošlji za ..."
+msgstr "Pošlji na ..."
 
 #. type
 #. ui requirement
@@ -72,15 +72,15 @@ msgstr "Omogoči povezavo programa z Nautilusom"
 #: ../src/nautilus-nste.c:97
 #: ../src/nautilus-sendto.glade.h:3
 msgid "Send To..."
-msgstr "Pošlji za ..."
+msgstr "Pošlji na ..."
 
 #: ../src/nautilus-nste.c:93
 msgid "Send file by mail, instant message..."
-msgstr "Pošlji datoteko preko elektronske pošte, trenutnega sporočanja ..."
+msgstr "Pošlji datoteko preko elektronske pošte, hipnega sporočanja ..."
 
 #: ../src/nautilus-nste.c:98
 msgid "Send files by mail, instant message..."
-msgstr "Pošlji datoteke preko elektronske pošte, trenutnega sporočanja ..."
+msgstr "Pošlji datoteke preko elektronske pošte, hipnega sporočanja ..."
 
 #: ../src/nautilus-sendto-command.c:533
 msgid "Files"
@@ -98,7 +98,7 @@ msgstr "Nautilus Pošlji na"
 #: ../src/nautilus-sendto-command.c:758
 #, c-format
 msgid "Could not parse command-line options: %s\n"
-msgstr "No mogoče razčleniti možnosti ukazne vrstice: %s\n"
+msgstr "Ni mogoče razčleniti možnosti ukazne vrstice: %s\n"
 
 #: ../src/nautilus-sendto-command.c:773
 msgid "Could not load any plugins."
@@ -119,12 +119,12 @@ msgstr "<b>Cilj</b>"
 #: ../src/nautilus-sendto.glade.h:4
 #| msgid "Send as:"
 msgid "Send _as:"
-msgstr "Pošlji kot:"
+msgstr "Pošlji _kot:"
 
 #: ../src/nautilus-sendto.glade.h:5
 #| msgid "Send packed in"
 msgid "Send _packed in:"
-msgstr "Pošlji stisnjeno v:"
+msgstr "Pošlji _stisnjeno v:"
 
 #: ../src/nautilus-sendto.glade.h:6
 #| msgid "Send to:"
@@ -137,12 +137,12 @@ msgstr "_Pošlji"
 
 #: ../src/plugins/bluetooth/bluetooth.c:448
 msgid "Programming error, could not find the device in the list"
-msgstr "Napaka programa, na seznamu ni mogoče najti naprave"
+msgstr "Napaka programa; na seznamu ni mogoče najti naprave"
 
 #: ../src/plugins/bluetooth/bluetooth.c:523
 #, c-format
 msgid "Obex Push file transfer unsupported"
-msgstr "Prenos Obex Push datotek ni podprt"
+msgstr "Obex Push prenos datotek ni podprt"
 
 #: ../src/plugins/bluetooth/bluetooth.c:547
 #| msgid "Bluetooth (OBEX)"
@@ -165,11 +165,11 @@ msgstr "Ni sporočil o napakah"
 #: ../src/plugins/empathy/empathy.c:294
 #| msgid "Instant Message (Gaim)"
 msgid "Instant Message (Empathy)"
-msgstr "Trenutno sporočanje (Empathy)"
+msgstr "Hipno sporočanje (Empathy)"
 
 #: ../src/plugins/evolution/evolution.c:366
 msgid "Email"
-msgstr "E-Pošta"
+msgstr "Elektronska pošta"
 
 #: ../src/plugins/evolution/e-contact-entry.c:152
 #, c-format
@@ -183,11 +183,11 @@ msgstr "Ni mogoče najti stika: %s"
 
 #: ../src/plugins/evolution/e-contact-entry.c:411
 msgid "Cannot create searchable view."
-msgstr "Ni mogoče ustvariti iskalnega pogleda"
+msgstr "Ni mogoče ustvariti iskalnega pogleda."
 
 #: ../src/plugins/evolution/e-contact-entry.c:883
 msgid "Success"
-msgstr "Uspešno zaključeno"
+msgstr "Uspešno"
 
 #: ../src/plugins/evolution/e-contact-entry.c:885
 msgid "An argument was invalid."
@@ -203,7 +203,7 @@ msgstr "Imenik ni povezan v omrežje."
 
 #: ../src/plugins/evolution/e-contact-entry.c:891
 msgid "The address book does not exist."
-msgstr "Imenik ne obstaja"
+msgstr "Imenik ne obstaja."
 
 #: ../src/plugins/evolution/e-contact-entry.c:893
 msgid "The \"Me\" contact does not exist."
@@ -235,7 +235,7 @@ msgstr "Protokol ni podprt."
 
 #: ../src/plugins/evolution/e-contact-entry.c:907
 msgid "The operation was cancelled."
-msgstr "Opravilo je bilo preklicano."
+msgstr "Opravilo je preklicano."
 
 #: ../src/plugins/evolution/e-contact-entry.c:909
 msgid "The operation could not be cancelled."
@@ -272,12 +272,12 @@ msgstr "Ni mogoče poslati datoteke"
 
 #: ../src/plugins/gajim/gajim.c:404
 msgid "There is no connection to gajim remote service."
-msgstr "Ni povezave z (gajim) oddaljenimi storitvami"
+msgstr "Ni povezave z (gajim) oddaljenimi storitvami."
 
 #: ../src/plugins/gajim/gajim.c:428
 #: ../src/plugins/gajim/gajim.c:467
 msgid "Sending file failed"
-msgstr "Pošiljanje datoteke ni bilo uspešno."
+msgstr "Pošiljanje datoteke ni uspelo."
 
 #: ../src/plugins/gajim/gajim.c:429
 msgid "Recipient is missing."
@@ -289,7 +289,7 @@ msgstr "Neznan prejemnik."
 
 #: ../src/plugins/gajim/gajim.c:489
 msgid "Instant Message (Gajim)"
-msgstr "Trenutno sporočanje (Gajim)"
+msgstr "Hipno sporočanje (Gajim)"
 
 #: ../src/plugins/nautilus-burn/nautilus-burn.c:73
 #: ../src/plugins/nautilus-burn/nautilus-burn.c:88
@@ -307,7 +307,7 @@ msgstr "CD/DVD zapisovalnik"
 #: ../src/plugins/pidgin/pidgin.c:353
 #| msgid "Instant Message (Gaim)"
 msgid "Instant Message (Pidgin)"
-msgstr "Trenutno sporočanje (Pidgin)"
+msgstr "Hipno sporočanje (Pidgin)"
 
 #: ../src/plugins/removable-devices/removable-devices.c:224
 msgid "Removable disks and shares"
@@ -321,8 +321,6 @@ msgstr "Večpredstavnostni UPnP strežnik"
 #~ msgstr "Privzeta mapa za uporabo"
 #~ msgid "FOLDER"
 #~ msgstr "MAPA"
-#~ msgid "You don't insert the package name"
-#~ msgstr "Ne vnesete imena paketa"
 #~ msgid ""
 #~ ".zip\n"
 #~ ".tar.gz\n"
@@ -331,10 +329,3 @@ msgstr "Večpredstavnostni UPnP strežnik"
 #~ ".zip\n"
 #~ ".tar.gz\n"
 #~ ".tar.bz2"
-#~ msgid "Email (Balsa)"
-#~ msgstr "E-Pošta (Balsa)"
-#~ msgid "Email (Claws Mail)"
-#~ msgstr "E-Pošta (Claws Pošta)"
-#~ msgid "Email (Thunderbird)"
-#~ msgstr "E-Pošta (Thunderbird)"
-
