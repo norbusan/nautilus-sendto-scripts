@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: nautilus-sendto VERSION\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=nautilus-sendto&component=general\n"
-"POT-Creation-Date: 2010-03-15 11:55+0000\n"
-"PO-Revision-Date: 2010-04-08 15:14+0700\n"
+"POT-Creation-Date: 2010-05-29 01:42+0000\n"
+"PO-Revision-Date: 2010-06-07 11:49+0700\n"
 "Last-Translator: Theppitak Karoonboonyanan <thep@linux.thai.net>\n"
 "Language-Team: Thai <thai-l10n@googlegroups.com>\n"
 "MIME-Version: 1.0\n"
@@ -178,7 +178,7 @@ msgstr "ไม่มีสมุดที่อยู่นี้"
 
 #: ../src/plugins/evolution/e-contact-entry.c:896
 msgid "The \"Me\" contact does not exist."
-msgstr "ไม่มีที่อยู่ติดต่อ \"ข้าพเจ้า (Me)\""
+msgstr "ไม่มีที่อยู่ติดต่อ \"ฉัน (Me)\""
 
 #: ../src/plugins/evolution/e-contact-entry.c:898
 msgid "The address book is not loaded."
