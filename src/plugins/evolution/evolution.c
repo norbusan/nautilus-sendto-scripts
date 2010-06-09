@@ -99,9 +99,18 @@ init (NstPlugin *plugin)
 		/* Find what the default mailer is */
 		if (strstr (mail_cmd, "balsa"))
 			type = MAILER_BALSA;
-		else if (strstr (mail_cmd, "thunder") || strstr (mail_cmd, "seamonkey"))
+		else if (strstr (mail_cmd, "thunder") || strstr (mail_cmd, "seamonkey")) {
+			char **strv;
+
 			type = MAILER_THUNDERBIRD;
-		else if (strstr (mail_cmd, "sylpheed") || strstr (mail_cmd, "claws"))
+
+			/* Thunderbird sucks, see
+			 * https://bugzilla.gnome.org/show_bug.cgi?id=614222 */
+			strv = g_strsplit (mail_cmd, " ", -1);
+			g_free (mail_cmd);
+			mail_cmd = g_strdup_printf ("%s %%s", strv[0]);
+			g_strfreev (strv);
+		} else if (strstr (mail_cmd, "sylpheed") || strstr (mail_cmd, "claws"))
 			type = MAILER_SYLPHEED;
 		else if (strstr (mail_cmd, "anjal"))
 			type = MAILER_EVO;
