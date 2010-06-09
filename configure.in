@@ -81,18 +81,6 @@ fi
 AC_MSG_NOTICE([installing nautilus plugin in ${ac_with_nautilusdir}])
 AC_SUBST([NAUTILUS_EXTENSION_DIR],[${ac_with_nautilusdir}])
 
-dnl Get details about evolution
-
-PKG_CHECK_MODULES(EVOLUTION, evolution-plugin < 2.27.1,
-		  enable_evo=yes, enable_evo=no)
-AM_CONDITIONAL(HAVE_EVOLUTION, test "x$enable_evo" = "xyes")
-
-plugindir=`$PKG_CONFIG --variable=plugindir evolution-plugin`
-AC_SUBST(plugindir)
-
-EVO_PLUGIN_RULE=$srcdir/evolution/plugin.mk
-AC_SUBST_FILE(EVO_PLUGIN_RULE)
-
 # The full list of plugins
 allowed_plugins="bluetooth empathy evolution gajim nautilus-burn pidgin removable-devices upnp"
 
@@ -291,7 +279,6 @@ src/plugins/upnp/Makefile
 docs/Makefile
 docs/nautilus-sendto/Makefile
 docs/nautilus-sendto/version.xml
-evolution/Makefile
 po/Makefile.in
 ])
 
@@ -313,12 +300,6 @@ if test "x${PLUGINS}" != "x" ; then
 	done
 else
 	AC_MSG_NOTICE([   No nautilus-sendto plugins enabled])
-fi
-
-if test "x$enable_evo" = "xyes"; then
-	AC_MSG_NOTICE([** Evolution send-to plugin ( < 2.27.1) enabled])
-else
-	AC_MSG_NOTICE([   Evolution send-to plugin ( < 2.27.1) disabled])
 fi
 
 echo "                                                       "

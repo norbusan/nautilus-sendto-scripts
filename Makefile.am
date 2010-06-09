@@ -1,10 +1,4 @@
-if HAVE_EVOLUTION
-EVOLUTION_PLUGIN_DIR=evolution
-endif
-
-SUBDIRS = src $(EVOLUTION_PLUGIN_DIR) docs po
-
-DIST_SUBDIRS = evolution src docs po
+SUBDIRS = src docs po
 
 DISTCHECK_CONFIGURE_FLAGS = --disable-schemas-install --enable-gtk-doc --with-nautilusdir='$${libdir}/nautilus/extensions-2.0-distcheck'
 

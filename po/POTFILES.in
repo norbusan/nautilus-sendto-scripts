@@ -1,8 +1,6 @@
 # List of source files containing translatable strings.
 # Please keep this file sorted alphabetically.
 nst.schemas.in
-evolution/nautilus-sendto.c
-evolution/org-gnome-evolution-send-attachments-to.eplug.xml
 src/nautilus-nste.c
 src/nautilus-nste.h
 src/nautilus-sendto-command.c
