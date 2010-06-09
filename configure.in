@@ -38,8 +38,6 @@ NAUTILUS_EXTENSION=2.13.3
 DBUS_REQUIRED=1.0
 DBUS_GLIB_REQUIRED=0.60
 GUPNP_REQUIRED=0.13
-EMPATHY_REQUIRED=2.27.91
-EMPATHY_GTK_REQUIRED=2.27.91
 
 AC_SUBST(GLIB_REQUIRED)
 AC_SUBST(GTHREAD_REQUIRED)
@@ -50,8 +48,6 @@ AC_SUBST(NAUTILUS_EXTENSION)
 AC_SUBST(BLUETOOTH_REQUIRED)
 AC_SUBST(DBUS_REQUIRED)
 AC_SUBST(GUPNP_REQUIRED)
-AC_SUBST(EMPATHY_REQUIRED)
-AC_SUBST(EMPATHY_GTK_REQUIRED)
 
 PKG_CHECK_MODULES(NAUTILUS_SENDTO,\
 	 glib-2.0 >= $GLIB_REQUIRED                \
@@ -82,7 +78,7 @@ AC_MSG_NOTICE([installing nautilus plugin in ${ac_with_nautilusdir}])
 AC_SUBST([NAUTILUS_EXTENSION_DIR],[${ac_with_nautilusdir}])
 
 # The full list of plugins
-allowed_plugins="bluetooth empathy evolution gajim nautilus-burn pidgin removable-devices upnp"
+allowed_plugins="bluetooth evolution gajim nautilus-burn pidgin removable-devices upnp"
 
 plugin_error_or_ignore()
 {
@@ -138,14 +134,6 @@ for plugin in ${used_plugins}; do
 					  enable_bluetooth=yes, enable_bluetooth=no)
 			if test "${enable_bluetooth}" != "yes" ; then
 				plugin_error_or_ignore "you need dbus-glib to build the Bluetooth plugin"
-				add_plugin="0"
-			fi
-		;;
-		empathy)
-			PKG_CHECK_MODULES(EMPATHY, libempathy >= $EMPATHY_REQUIRED libempathy-gtk >= $EMPATHY_GTK_REQUIRED libempathy-gtk <= 2.29.1 gio-2.0 telepathy-glib,
-					  enable_empathy=yes, enable_empathy=no)
-			if test "${enable_empathy}" != "yes" ; then
-				plugin_error_or_ignore "you need libempathy and libempathy-gtk to build the Empathy plugin"
 				add_plugin="0"
 			fi
 		;;
@@ -269,7 +257,6 @@ src/Makefile
 src/nautilus-sendto.pc
 src/plugins/Makefile
 src/plugins/bluetooth/Makefile
-src/plugins/empathy/Makefile
 src/plugins/evolution/Makefile
 src/plugins/gajim/Makefile
 src/plugins/nautilus-burn/Makefile
