@@ -665,8 +665,6 @@ nautilus_sendto_plugin_dir_process (const char *plugindir)
 				if (p->info->init(p)) {
 					plugin_list = g_list_append (plugin_list, p);
 				} else {
-					if (!p->info->never_unload)
-						g_module_close (p->module);
 					g_free (p);
 				}
 			}
