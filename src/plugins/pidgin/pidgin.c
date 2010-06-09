@@ -463,7 +463,7 @@ NstPluginInfo plugin_info = {
 	"pidgin",
 	N_("Instant Message (Pidgin)"),
 	NULL,
-	FALSE,
+	TRUE,
 	NAUTILUS_CAPS_NONE,
 	init,
 	get_contacts_widget,
