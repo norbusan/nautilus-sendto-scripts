@@ -429,6 +429,7 @@ set_model_for_options_combobox (NS_ui *ui)
         GtkListStore *model;
 	GtkIconTheme *it;
 	GtkCellRenderer *renderer;
+	GtkWidget *widget;
 	GList *aux;
 	NstPlugin *p;
 	char *last_used = NULL;
@@ -483,6 +484,10 @@ set_model_for_options_combobox (NS_ui *ui)
 			  G_CALLBACK (option_changed), ui);
 
 	gtk_combo_box_set_active (GTK_COMBO_BOX (ui->options_combobox), option);
+
+	/* Grab the focus for the most recently used widget */
+	widget = g_list_nth_data (ui->contact_widgets, option);
+	gtk_widget_grab_focus (widget);
 
 	return last_used_support_dirs;
 }
