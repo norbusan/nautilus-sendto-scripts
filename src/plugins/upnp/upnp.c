@@ -308,7 +308,6 @@ NstPluginInfo plugin_info = {
 	"upnp",
 	N_("UPnP Media Server"),
 	NULL,
-	FALSE,
 	NAUTILUS_CAPS_NONE,
 	init,
 	get_contacts_widget,

@@ -377,7 +377,6 @@ NstPluginInfo plugin_info = {
 	"evolution",
 	N_("Email"),
 	NULL,
-	FALSE,
 	NAUTILUS_CAPS_NONE,
 	init,
 	get_contacts_widget,

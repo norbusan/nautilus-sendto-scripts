@@ -549,7 +549,6 @@ NstPluginInfo plugin_info = {
 	"bluetooth",
 	N_("Bluetooth (OBEX Push)"),
 	NULL,
-	FALSE,
 	NAUTILUS_CAPS_NONE,
 	init,
 	get_contacts_widget,

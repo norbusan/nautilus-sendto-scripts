@@ -504,7 +504,6 @@ NstPluginInfo plugin_info = {
 	"gajim",
 	N_("Instant Message (Gajim)"),
 	NULL,
-	TRUE,
 	NAUTILUS_CAPS_NONE,
 	init,
 	get_contacts_widget,
