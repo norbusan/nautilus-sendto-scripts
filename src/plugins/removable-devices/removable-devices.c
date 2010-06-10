@@ -43,10 +43,11 @@ cb_mount_removed (GVolumeMonitor *volume_monitor,
 {
 	GtkTreeIter iter;
 	GtkListStore *store;
-	gboolean b;
+	gboolean b, found;
 
 	store = GTK_LIST_STORE (gtk_combo_box_get_model (GTK_COMBO_BOX (cb)));
 	b = gtk_tree_model_get_iter_first (GTK_TREE_MODEL (store), &iter);
+	found = FALSE;
 
 	while (b) {
 		GMount *m;
@@ -54,10 +55,20 @@ cb_mount_removed (GVolumeMonitor *volume_monitor,
 		if (m == mount) {
 			gtk_list_store_remove (store, &iter);
 			g_object_unref (m);
+			found = TRUE;
 			break;
 		}
 		g_object_unref (m);
 		b = gtk_tree_model_iter_next (GTK_TREE_MODEL (store), &iter);
+	}
+
+	/* If a mount was removed */
+	if (found != FALSE) {
+		/* And it was the selected one */
+		if (gtk_combo_box_get_active (GTK_COMBO_BOX (cb)) == -1) {
+			/* Select the first item in the list */
+			gtk_combo_box_set_active (GTK_COMBO_BOX (cb), 0);
+		}
 	}
 }
 
@@ -69,6 +80,11 @@ cb_mount_changed (GVolumeMonitor *volume_monitor,
 	GtkTreeIter iter;
 	gboolean b;
 	GtkListStore *store;
+
+	if (g_mount_is_shadowed (mount) != FALSE) {
+		cb_mount_removed (volume_monitor, mount, plugin);
+		return;
+	}
 
 	store = GTK_LIST_STORE (gtk_combo_box_get_model (GTK_COMBO_BOX (cb)));
 	b = gtk_tree_model_get_iter_first (GTK_TREE_MODEL (store), &iter);
@@ -103,6 +119,9 @@ cb_mount_added (GVolumeMonitor *volume_monitor,
 	GtkTreeIter iter;
 	GtkTreeModel *model;
 	gboolean select_added;
+
+	if (g_mount_is_shadowed (mount) != FALSE)
+		return;
 
 	name = g_mount_get_name (mount);
 	model = gtk_combo_box_get_model (GTK_COMBO_BOX (cb));
@@ -151,6 +170,11 @@ get_contacts_widget (NstPlugin *plugin)
 
 	for (l = mounts; l != NULL; l = l->next) {
 		char *name;
+
+		if (g_mount_is_shadowed (l->data) != FALSE) {
+			g_object_unref (l->data);
+			continue;
+		}
 
 		name = g_mount_get_name (l->data);
 
