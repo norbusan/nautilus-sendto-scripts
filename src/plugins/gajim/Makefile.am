@@ -7,6 +7,7 @@ INCLUDES =                                      \
         -I$(top_srcdir)/src                     \
         -I$(top_builddir)                       \
         $(NAUTILUS_SENDTO_CFLAGS)               \
+        $(DBUS_CFLAGS)				\
         $(DISABLE_DEPRECATED)			\
 	$(WARN_CFLAGS)
 
