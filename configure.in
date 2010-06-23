@@ -76,7 +76,7 @@ AC_MSG_NOTICE([installing nautilus plugin in ${ac_with_nautilusdir}])
 AC_SUBST([NAUTILUS_EXTENSION_DIR],[${ac_with_nautilusdir}])
 
 # The full list of plugins
-allowed_plugins="bluetooth evolution gajim nautilus-burn pidgin removable-devices upnp"
+allowed_plugins="evolution gajim nautilus-burn pidgin removable-devices upnp"
 
 plugin_error_or_ignore()
 {
@@ -127,14 +127,6 @@ for plugin in ${used_plugins}; do
 	add_plugin="1"
 
 	case ${plugin} in
-		bluetooth)
-			PKG_CHECK_MODULES(BLUETOOTH, dbus-glib-1 >= $DBUS_GLIB_REQUIRED,
-					  enable_bluetooth=no, enable_bluetooth=no)
-			if test "${enable_bluetooth}" != "yes" ; then
-				plugin_error_or_ignore "you need dbus-glib to build the Bluetooth plugin"
-				add_plugin="0"
-			fi
-		;;
 		evolution)
 			PKG_CHECK_MODULES(NST_EBOOK, libebook-1.2 >= $EBOOK_REQUIRED,
 					   enable_evolution=yes, enable_evolution=no)
@@ -251,7 +243,6 @@ Makefile
 src/Makefile
 src/nautilus-sendto.pc
 src/plugins/Makefile
-src/plugins/bluetooth/Makefile
 src/plugins/evolution/Makefile
 src/plugins/gajim/Makefile
 src/plugins/nautilus-burn/Makefile
