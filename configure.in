@@ -1,6 +1,6 @@
 AC_PREREQ(2.52)
 
-AC_INIT(nautilus-sendto, 2.28.4, http://www.gnome.org)
+AC_INIT(nautilus-sendto, 2.90.0, http://www.gnome.org)
 AM_CONFIG_HEADER(config.h)
 
 AM_INIT_AUTOMAKE([1.9 dist-bzip2 no-dist-gzip check-news])
@@ -31,10 +31,10 @@ dnl --------------------------------------------------
 
 GLIB_REQUIRED=2.6.0
 GTHREAD_REQUIRED=2.6.0
-GTK_REQUIRED=2.18
+GTK_REQUIRED=2.90.3
 EBOOK_REQUIRED=1.5.3
 GCONF_REQUIRED=2.13.0
-NAUTILUS_EXTENSION=2.13.3
+NAUTILUS_EXTENSION=2.31.3
 DBUS_REQUIRED=1.0
 DBUS_GLIB_REQUIRED=0.60
 GUPNP_REQUIRED=0.13
@@ -53,7 +53,7 @@ PKG_CHECK_MODULES(NAUTILUS_SENDTO,\
 	 glib-2.0 >= $GLIB_REQUIRED                \
 	 gthread-2.0 >= $GTHREAD_REQUIRED         \
 	 gmodule-2.0 >= $GLIB_REQUIRED		  \
-	 gtk+-2.0    >= $GTK_REQUIRED             \
+	 gtk+-3.0    >= $GTK_REQUIRED             \
 	 gconf-2.0 >= $GCONF_REQUIRED)
 AC_SUBST(NAUTILUS_SENDTO_CFLAGS)
 AC_SUBST(NAUTILUS_SENDTO_LIBS)
