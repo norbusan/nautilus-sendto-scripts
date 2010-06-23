@@ -27,12 +27,10 @@
 #include <glib/gi18n.h>
 #include <glib/gstdio.h>
 #include <gtk/gtk.h>
-#include <gconf/gconf-client.h>
 #include "nautilus-sendto-plugin.h"
 
-#define NAUTILUS_SENDTO_GCONF		"/desktop/gnome/nautilus-sendto"
-#define NAUTILUS_SENDTO_LAST_MEDIUM	NAUTILUS_SENDTO_GCONF"/last_medium"
-#define NAUTILUS_SENDTO_LAST_COMPRESS	NAUTILUS_SENDTO_GCONF"/last_compress"
+#define NAUTILUS_SENDTO_LAST_MEDIUM	"last-medium"
+#define NAUTILUS_SENDTO_LAST_COMPRESS	"last-compress"
 #define NAUTILUS_SENDTO_STATUS_LABEL_TIMEOUT_SECONDS 10
 
 #define UNINSTALLED_PLUGINDIR "plugins/removable-devices"
@@ -56,7 +54,7 @@ GList *plugin_list = NULL;
 GHashTable *hash ;
 guint option = 0;
 
-static GConfClient *gconf_client = NULL;
+static GSettings *settings = NULL;
 
 typedef struct _NS_ui NS_ui;
 
@@ -218,10 +216,9 @@ pack_files (NS_ui *ui)
 		g_assert_not_reached ();
 	}
 
-	gconf_client_set_int(gconf_client, 
-			     NAUTILUS_SENDTO_LAST_COMPRESS, 
-			     gtk_combo_box_get_active(GTK_COMBO_BOX(ui->pack_combobox)), 
-			     NULL);
+	g_settings_set_int (settings,
+			    NAUTILUS_SENDTO_LAST_COMPRESS,
+			    gtk_combo_box_get_active(GTK_COMBO_BOX(ui->pack_combobox)));
 
 	cmd = g_string_new ("");
 	g_string_printf (cmd, "%s --add-to=\"%s/%s%s\"",
@@ -301,13 +298,14 @@ send_button_cb (GtkWidget *widget, NS_ui *ui)
 		}
 	}
 
-	gconf_client_set_string (gconf_client, 
-				NAUTILUS_SENDTO_LAST_MEDIUM, p->info->id, NULL);
+	g_settings_set_string (settings,
+			       NAUTILUS_SENDTO_LAST_MEDIUM,
+			       p->info->id);
 
 	if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(ui->pack_checkbutton))){
 		f = pack_files (ui);
 		if (f != NULL) {
-			GList *packed_file = NULL;		
+			GList *packed_file = NULL;
 			packed_file = g_list_append (packed_file, f);
 			if (!p->info->send_files (p, w, packed_file)) {
 				g_list_free (packed_file);
@@ -440,8 +438,8 @@ set_model_for_options_combobox (NS_ui *ui)
 
 	model = gtk_list_store_new (NUM_COLUMNS, GDK_TYPE_PIXBUF, G_TYPE_STRING);
 
-	last_used = gconf_client_get_string (gconf_client,
-			NAUTILUS_SENDTO_LAST_MEDIUM, NULL);
+	last_used = g_settings_get_string (settings,
+					   NAUTILUS_SENDTO_LAST_MEDIUM);
 
 	for (aux = plugin_list; aux; aux = aux->next) {
 		p = (NstPlugin *) aux->data;
@@ -527,12 +525,12 @@ update_button_image (GtkSettings *settings,
 static void
 nautilus_sendto_create_ui (void)
 {
-	GtkBuilder *app;	
+	GtkBuilder *app;
 	GError* error = NULL;
 	NS_ui *ui;
 	gboolean one_file = FALSE;
 	gboolean supports_dirs;
-	GtkSettings *settings;
+	GtkSettings *gtk_settings;
 	GtkWidget *button_image;
 
 	app = gtk_builder_new ();
@@ -556,15 +554,15 @@ nautilus_sendto_create_ui (void)
 	ui->status_label = GTK_WIDGET (gtk_builder_get_object (app, "status_label"));
 	ui->status_image = GTK_WIDGET (gtk_builder_get_object (app, "status_image"));
 
-	settings = gtk_settings_get_default ();
+	gtk_settings = gtk_settings_get_default ();
 	button_image = GTK_WIDGET (gtk_builder_get_object (app, "image1"));
-	g_signal_connect (G_OBJECT (settings), "notify::gtk-button-images",
+	g_signal_connect (G_OBJECT (gtk_settings), "notify::gtk-button-images",
 			  G_CALLBACK (update_button_image), button_image);
-	update_button_image (settings, NULL, button_image);
+	update_button_image (gtk_settings, NULL, button_image);
 
- 	gtk_combo_box_set_active (GTK_COMBO_BOX(ui->pack_combobox), 
- 		gconf_client_get_int(gconf_client, 
- 				NAUTILUS_SENDTO_LAST_COMPRESS, NULL));
+	gtk_combo_box_set_active (GTK_COMBO_BOX(ui->pack_combobox),
+				  g_settings_get_int (settings,
+						      NAUTILUS_SENDTO_LAST_COMPRESS));
 
 	if (file_list != NULL && file_list->next != NULL)
 		one_file = FALSE;
@@ -808,7 +806,7 @@ int main (int argc, char **argv)
 		return 1;
 	}
 
-	gconf_client = gconf_client_get_default();
+	settings = g_settings_new ("org.gnome.Nautilus.Sendto");
 	nautilus_sendto_init ();
 	if (nautilus_sendto_plugin_init () == FALSE) {
 		GtkWidget *error_dialog;
@@ -831,9 +829,9 @@ int main (int argc, char **argv)
 		return 1;
 	}
 	nautilus_sendto_create_ui ();
-			
+
 	gtk_main ();
-	g_object_unref(gconf_client);
+	g_object_unref(settings);
 
 	return 0;
 }

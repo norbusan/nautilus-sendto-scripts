@@ -15,6 +15,7 @@ AC_PROG_CC
 AM_PROG_LIBTOOL
 AC_PROG_INSTALL
 AC_PROG_MAKE_SET
+GLIB_GSETTINGS
 
 dnl gtk-doc checks
 GTK_DOC_CHECK(1.9)
@@ -29,11 +30,10 @@ ERROR_CFLAGS="-Wall -Wextra -Werror -Wno_missing_field_initializers -Wno_unused_
 
 dnl --------------------------------------------------
 
-GLIB_REQUIRED=2.6.0
+GLIB_REQUIRED=2.25.9
 GTHREAD_REQUIRED=2.6.0
 GTK_REQUIRED=2.90.3
 EBOOK_REQUIRED=1.5.3
-GCONF_REQUIRED=2.13.0
 NAUTILUS_EXTENSION=2.31.3
 DBUS_REQUIRED=1.0
 DBUS_GLIB_REQUIRED=0.60
@@ -42,7 +42,6 @@ GUPNP_REQUIRED=0.13
 AC_SUBST(GLIB_REQUIRED)
 AC_SUBST(GTHREAD_REQUIRED)
 AC_SUBST(GTK_REQUIRED)
-AC_SUBST(GCONF_REQUIRED)
 AC_SUBST(EBOOK_REQUIRED)
 AC_SUBST(NAUTILUS_EXTENSION)
 AC_SUBST(BLUETOOTH_REQUIRED)
@@ -53,8 +52,7 @@ PKG_CHECK_MODULES(NAUTILUS_SENDTO,\
 	 glib-2.0 >= $GLIB_REQUIRED                \
 	 gthread-2.0 >= $GTHREAD_REQUIRED         \
 	 gmodule-2.0 >= $GLIB_REQUIRED		  \
-	 gtk+-3.0    >= $GTK_REQUIRED             \
-	 gconf-2.0 >= $GCONF_REQUIRED)
+	 gtk+-3.0    >= $GTK_REQUIRED)
 AC_SUBST(NAUTILUS_SENDTO_CFLAGS)
 AC_SUBST(NAUTILUS_SENDTO_LIBS)
 
@@ -131,7 +129,7 @@ for plugin in ${used_plugins}; do
 	case ${plugin} in
 		bluetooth)
 			PKG_CHECK_MODULES(BLUETOOTH, dbus-glib-1 >= $DBUS_GLIB_REQUIRED,
-					  enable_bluetooth=yes, enable_bluetooth=no)
+					  enable_bluetooth=no, enable_bluetooth=no)
 			if test "${enable_bluetooth}" != "yes" ; then
 				plugin_error_or_ignore "you need dbus-glib to build the Bluetooth plugin"
 				add_plugin="0"
@@ -247,9 +245,6 @@ AC_SUBST(GETTEXT_PACKAGE)
 AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE, "$GETTEXT_PACKAGE", [GetText Package])
 
 AM_GLIB_GNU_GETTEXT
-
-AC_PATH_PROG(GCONFTOOL, gconftool-2)
-AM_GCONF_SOURCE_2
 
 AC_OUTPUT([
 Makefile

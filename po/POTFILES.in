@@ -1,13 +1,12 @@
 # List of source files containing translatable strings.
 # Please keep this file sorted alphabetically.
-nst.schemas.in
 src/nautilus-nste.c
 src/nautilus-nste.h
 src/nautilus-sendto-command.c
 src/nautilus-sendto-module.c
+src/org.gnome.Nautilus.Sendto.gschema.xml.in
 [type: gettext/glade]src/nautilus-sendto.ui
 src/plugins/bluetooth/bluetooth.c
-src/plugins/empathy/empathy.c
 src/plugins/evolution/evolution.c
 src/plugins/evolution/e-contact-entry.c
 src/plugins/gajim/gajim.c

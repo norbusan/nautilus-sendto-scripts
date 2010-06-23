@@ -1,6 +1,6 @@
 SUBDIRS = src docs po
 
-DISTCHECK_CONFIGURE_FLAGS = --disable-schemas-install --enable-gtk-doc --with-nautilusdir='$${libdir}/nautilus/extensions-2.0-distcheck'
+DISTCHECK_CONFIGURE_FLAGS = --enable-gtk-doc --with-nautilusdir='$${libdir}/nautilus/extensions-2.0-distcheck'
 
 man_MANS = nautilus-sendto.1
 
@@ -16,7 +16,7 @@ EXTRA_DIST =                    \
 	$(man_MANS)             \
 	$(schema_in_files)
 
-CLEANFILES = 			\
+CLEANFILES =			\
 	$(schema_DATA)
 
 DISTCLEANFILES =                        \
@@ -24,11 +24,6 @@ DISTCLEANFILES =                        \
 	intltool-extract                \
 	intltool-merge                  \
 	intltool-update
-
-schema_in_files = nst.schemas.in
-schemadir = $(sysconfdir)/gconf/schemas
-schema_DATA = $(schema_in_files:.schemas.in=.schemas)
-@INTLTOOL_SCHEMAS_RULE@
 
 # Build ChangeLog from GIT history
 ChangeLog:

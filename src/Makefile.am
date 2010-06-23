@@ -61,11 +61,19 @@ nst-enum-types.c: $(nst_headers_to_scan_for_enums) Makefile nst-enum-types.h
 			--fhead "#include <nautilus-sendto-plugin.h>\n" \
 			--fhead "#include \"nst-enum-types.h\"\n" \
 			--fhead "#include <glib-object.h>" \
-		      	--fprod "\n/* enumerations from \"@filename@\" */" \
+			--fprod "\n/* enumerations from \"@filename@\" */" \
 			--vhead "GType\n@enum_name@_get_type (void)\n{\n  static GType etype = 0;\n  if (etype == 0) {\n    static const G@Type@Value values[] = {" 	\
 			--vprod "      { @VALUENAME@, \"@VALUENAME@\", \"@valuenick@\" }," \
 			--vtail "      { 0, NULL, NULL }\n    };\n    etype = g_@type@_register_static (\"@EnumName@\", values);\n  }\n  return etype;\n}\n" \
 		$(nst_headers_to_scan_for_enums)) > $@
+
+convertdir=$(datadir)/GConf/gsettings
+convert_DATA=nautilus-sendto-convert
+
+gsettingsschema_in_files = org.gnome.Nautilus.Sendto.gschema.xml.in
+gsettings_SCHEMAS = $(gsettingsschema_in_files:.xml.in=.xml)
+@INTLTOOL_XML_NOMERGE_RULE@
+@GSETTINGS_RULES@
 
 EXTRA_DIST = $(ui_DATA) nautilus-sendto.pc.in
 CLEANFILES = $(nst_built_headers) $(nst_built_cfiles)
