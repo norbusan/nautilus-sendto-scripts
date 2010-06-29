@@ -1,8 +1,22 @@
 ==============
+Version 2.90.0
+==============
+
+Nautilus Sendto
+
+- Port to GTK+ 3.x and GSettings
+- Remove Bluetooth plugin, now in gnome-bluetooth itself
+- Remove Empathy plugin, now in empathy itself
+- Fix handling of shadowed mounts in the removable drives plugin
+- Never unload plugins, to avoid crashes
+- Fix mailto: command for Thunderbird
+- Make the last select medium's widget grab focus on startup
+
+==============
 Version 2.28.4
 ==============
 
-Nautilus Sento
+Nautilus Sendto
 
 - Release for GNOME 2.30
 - Updated translations
@@ -11,7 +25,7 @@ Nautilus Sento
 Version 2.28.3
 ==============
 
-Nautilus Sento
+Nautilus Sendto
 
 Bug fixes:
 	- Fix undefined references when linking plugins

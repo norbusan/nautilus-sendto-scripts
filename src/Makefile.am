@@ -68,12 +68,12 @@ nst-enum-types.c: $(nst_headers_to_scan_for_enums) Makefile nst-enum-types.h
 		$(nst_headers_to_scan_for_enums)) > $@
 
 convertdir=$(datadir)/GConf/gsettings
-convert_DATA=nautilus-sendto-convert
+convert_DATA = nautilus-sendto-convert
 
 gsettingsschema_in_files = org.gnome.Nautilus.Sendto.gschema.xml.in
 gsettings_SCHEMAS = $(gsettingsschema_in_files:.xml.in=.xml)
 @INTLTOOL_XML_NOMERGE_RULE@
 @GSETTINGS_RULES@
 
-EXTRA_DIST = $(ui_DATA) nautilus-sendto.pc.in
+EXTRA_DIST = $(ui_DATA) nautilus-sendto.pc.in $(convert_DATA) $(gsettingsschema_in_files)
 CLEANFILES = $(nst_built_headers) $(nst_built_cfiles)
