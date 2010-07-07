@@ -1,17 +1,16 @@
 # Hungarian translation of nautilus-sendto.
-# Copyright (C) 2004, 2005, 2006, 2007, 2008, 2009 Free Software Foundation, Inc.
+# Copyright (C) 2004, 2005, 2006, 2007, 2008, 2009, 2010 Free Software Foundation, Inc.
 # This file is distributed under the same license as the nautilus-sendto package.
 #
 # Gabor Kelemen <kelemeng at gnome dot hu>, 2004, 2005, 2006, 2007, 2008, 2009, 2010.
 # Szabolcs Varga <shirokuma at shirokuma dot hu>, 2005.
 # Kalman Kemenczy <kkemenczy at novell dot com>, 2008.
-
 msgid ""
 msgstr ""
 "Project-Id-Version: nautilus-sendto master\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-07-07 11:34+0200\n"
-"PO-Revision-Date: 2009-08-15 02:08+0200\n"
+"PO-Revision-Date: 2010-07-07 11:37+0200\n"
 "Last-Translator: Gabor Kelemen <kelemeng at gnome dot hu>\n"
 "Language-Team: Hungarian <gnome at fsf dot hu>\n"
 "MIME-Version: 1.0\n"
@@ -158,10 +157,8 @@ msgid "The address book authentication failed."
 msgstr "A címjegyzék hitelesítése meghiúsult."
 
 #: ../src/plugins/evolution/e-contact-entry.c:916
-msgid ""
-"Authentication is required to access the address book and was not given."
-msgstr ""
-"A címjegyzék eléréséhez hitelesítés szükséges, ami nem került megadásra."
+msgid "Authentication is required to access the address book and was not given."
+msgstr "A címjegyzék eléréséhez hitelesítés szükséges, ami nem került megadásra."
 
 #: ../src/plugins/evolution/e-contact-entry.c:918
 msgid "A secure connection is not available."
@@ -228,59 +225,3 @@ msgstr "Cserélhető lemezek és megosztások"
 msgid "UPnP Media Server"
 msgstr "UPnP médiakiszolgáló"
 
-#~ msgid "Last plugin used to send"
-#~ msgstr "Az utoljára küldésre használt bővítmény"
-
-#~ msgid "Last type of archive used"
-#~ msgstr "Az utoljára használt archívum típusa"
-
-#~ msgid ""
-#~ "Used to store which plugin was used the last time files were sent using "
-#~ "nautilus-sendto."
-#~ msgstr ""
-#~ "Az a bővítmény, amelynek használatával utoljára fájlok lettek küldve."
-
-#~ msgid ""
-#~ "Used to store which type of archive was used the last time (0: zip, 1: "
-#~ "tar.gz, 2: tar.bz2)."
-#~ msgstr ""
-#~ "Az utoljára használt archívum típusa (0: zip, 1: tar.gz, 2: tar.bz2)."
-
-#~ msgid "_Send to..."
-#~ msgstr "_Küldés…"
-
-#~ msgid "Send files to remote devices, or people"
-#~ msgstr "Fájlok küldése távoli eszközöknek vagy személyeknek"
-
-#~ msgid "Send to..."
-#~ msgstr "Küldés…"
-
-#~ msgid "Nautilus Integration"
-#~ msgstr "Nautilus-integráció"
-
-#~ msgid "Provides integration with Nautilus"
-#~ msgstr "Integráció biztosítása a Nautilusszal"
-
-#~ msgid "Nautilus Sendto"
-#~ msgstr "Nautilus küldés"
-
-#~ msgid "Programming error, could not find the device in the list"
-#~ msgstr "Programozási hiba, az eszköz nem található a listában"
-
-#~ msgid "Obex Push file transfer unsupported"
-#~ msgstr "Az Obex Push fájlátvitel nem támogatott"
-
-#~ msgid "Bluetooth (OBEX Push)"
-#~ msgstr "Bluetooth (OBEX küldés)"
-
-#~ msgid "The contact selected cannot receive files."
-#~ msgstr "A kiválasztott partner nem tud fájlokat fogadni."
-
-#~ msgid "The contact selected is offline."
-#~ msgstr "A kiválasztott partner nem érhető el."
-
-#~ msgid "No error message"
-#~ msgstr "Nincs hibaüzenet"
-
-#~ msgid "Instant Message (Empathy)"
-#~ msgstr "Azonnali üzenet (Empathy)"
