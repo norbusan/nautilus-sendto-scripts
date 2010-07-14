@@ -3,25 +3,27 @@
 # This file is distributed under the same license as the PACKAGE package.
 # Alexandru Szasz <alexxed@gmail.com>, 2007.
 # Adi Roiban, 2009
-# Lucian Adrian Grijincu <lucian.grijincu@gmail.com>, 2009
+# Lucian Adrian Grijincu <lucian.grijincu@gmail.com>, 2009, 2010.
 msgid ""
 msgstr ""
 "Project-Id-Version: nautilus-sendto trunk\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
-"product=nautilus-sendto&component=general\n"
-"POT-Creation-Date: 2009-09-28 20:51+0000\n"
-"PO-Revision-Date: 2009-10-03 20:47+0300\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product"
+"=nautilus-sendto&component=general\n"
+"POT-Creation-Date: 2010-06-09 16:37+0000\n"
+"PO-Revision-Date: 2010-07-15 01:31+0300\n"
 "Last-Translator: Lucian Adrian Grijincu <lucian.grijincu@gmail.com>\n"
-"Language-Team: Romanian <gnomero-list@lists.sourceforge.net>\n"
+"Language-Team: Romanian Gnome Team <gnomero-list@lists.sourceforge.net>\n"
+"Language: ro\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
 "20)) ? 1 : 2);;\n"
+"X-Generator: Virtaal 0.6.1\n"
 
 #: ../nst.schemas.in.h:1
 msgid "Last plugin used to send"
-msgstr "Ultimul modul folosit pentru trimitere"
+msgstr "Ultimul modul de extensie folosit pentru trimitere"
 
 #: ../nst.schemas.in.h:2
 msgid "Last type of archive used"
@@ -32,47 +34,16 @@ msgid ""
 "Used to store which plugin was used the last time files were sent using "
 "nautilus-sendto."
 msgstr ""
-"Folosit pentru a stoca care modul a fost utilizat ultima dată când s-au "
-"trimis fișiere prin nautilus-sendto."
+"Folosit pentru a stoca care modul de extensie a fost utilizat ultima dată "
+"când s-au trimis fișiere prin nautilus-sendto."
 
 #: ../nst.schemas.in.h:4
 msgid ""
 "Used to store which type of archive was used the last time (0: zip, 1: tar."
 "gz, 2: tar.bz2)."
 msgstr ""
-"Folosit pentru a stoca ce tip de arhivă a fost utilizat ultima dată (0: "
-"zip, 1: tar.gz, 2: tar.bz2)."
-
-#: ../evolution/nautilus-sendto.c:47
-msgid "_Send to..."
-msgstr "_Trimite la..."
-
-#: ../evolution/org-gnome-evolution-send-attachments-to.eplug.xml.h:1
-msgid "Send files to remote devices, or people"
-msgstr "Trimite fișiere dispozitivelor la distanță sau către alte persoane"
-
-#. the path to the shared library
-#: ../evolution/org-gnome-evolution-send-attachments-to.eplug.xml.h:3
-msgid "Send to..."
-msgstr "Trimite la..."
-
-#. type
-#. ui requirement
-#. flags
-#. dependencies
-#. priority
-#. id
-#: ../pidgin_plugin/nautilus-sendto-plugin.c:342
-msgid "Nautilus Integration"
-msgstr "Integrare cu Nautilus"
-
-#. name
-#. version
-#. summary
-#: ../pidgin_plugin/nautilus-sendto-plugin.c:344
-#: ../pidgin_plugin/nautilus-sendto-plugin.c:345
-msgid "Provides integration with Nautilus"
-msgstr "Asigură integrarea cu Nautilus"
+"Folosit pentru a stoca ce tip de arhivă a fost utilizat ultima dată (0: zip, "
+"1: tar.gz, 2: tar.bz2)."
 
 #: ../src/nautilus-nste.c:92 ../src/nautilus-nste.c:97
 #: ../src/nautilus-sendto.ui.h:3
@@ -87,29 +58,25 @@ msgstr "Trimiteți fișier prin mail, mesagerie instant..."
 msgid "Send files by mail, instant message..."
 msgstr "Trimiteți fișiere prin mail, mesagerie instant..."
 
-#: ../src/nautilus-sendto-command.c:547
+#: ../src/nautilus-sendto-command.c:574
 msgid "Files"
 msgstr "Fișiere"
 
-#: ../src/nautilus-sendto-command.c:751
+#: ../src/nautilus-sendto-command.c:787
 #, c-format
 msgid "Expects URIs or filenames to be passed as options\n"
 msgstr "Se așteaptă adrese web sau un nume de fișiere ca opțiuni\n"
 
-#: ../src/nautilus-sendto-command.c:768
-msgid "Nautilus Sendto"
-msgstr "Nautilus trimite către"
-
-#: ../src/nautilus-sendto-command.c:772
+#: ../src/nautilus-sendto-command.c:808
 #, c-format
 msgid "Could not parse command-line options: %s\n"
 msgstr "Nu s-au putut analiza opțiunile date în linia de comandă: %s\n"
 
-#: ../src/nautilus-sendto-command.c:787
+#: ../src/nautilus-sendto-command.c:823
 msgid "Could not load any plugins."
-msgstr "Nu s-a putut încărca nici un modul."
+msgstr "Nu s-a putut încărca nici un modul de extensie."
 
-#: ../src/nautilus-sendto-command.c:790
+#: ../src/nautilus-sendto-command.c:826
 msgid "Please verify your installation"
 msgstr "Verificați instalarea dumneavoastră"
 
@@ -137,16 +104,16 @@ msgstr "Trimite _la:"
 msgid "_Send"
 msgstr "_Trimite"
 
-#: ../src/plugins/bluetooth/bluetooth.c:448
+#: ../src/plugins/bluetooth/bluetooth.c:451
 msgid "Programming error, could not find the device in the list"
 msgstr "Eroare de programare, nu se găsește dispozitivul în listă"
 
-#: ../src/plugins/bluetooth/bluetooth.c:523
+#: ../src/plugins/bluetooth/bluetooth.c:526
 #, c-format
 msgid "Obex Push file transfer unsupported"
 msgstr "Transferul de fișiere „Obex Push” nu este suportat"
 
-#: ../src/plugins/bluetooth/bluetooth.c:547
+#: ../src/plugins/bluetooth/bluetooth.c:550
 msgid "Bluetooth (OBEX Push)"
 msgstr "Bluetooth (OBEX Push)"
 
@@ -166,129 +133,129 @@ msgstr "Nici un mesaj de eroare"
 msgid "Instant Message (Empathy)"
 msgstr "Mesagerie instant (Empathy)"
 
-#: ../src/plugins/evolution/evolution.c:368
+#: ../src/plugins/evolution/evolution.c:378
 msgid "Email"
 msgstr "Mail"
 
-#: ../src/plugins/evolution/e-contact-entry.c:152
+#: ../src/plugins/evolution/e-contact-entry.c:153
 #, c-format
 msgid "Cannot get contact: %s"
 msgstr "Nu s-a putut obține contactul: %s"
 
-#: ../src/plugins/evolution/e-contact-entry.c:185
+#: ../src/plugins/evolution/e-contact-entry.c:186
 #, c-format
 msgid "Could not find contact: %s"
 msgstr "Nu s-a putut găsi contactul: %s"
 
-#: ../src/plugins/evolution/e-contact-entry.c:411
+#: ../src/plugins/evolution/e-contact-entry.c:414
 msgid "Cannot create searchable view."
 msgstr "Nu s-a putut crea pagina de căutare."
 
-#: ../src/plugins/evolution/e-contact-entry.c:883
+#: ../src/plugins/evolution/e-contact-entry.c:886
 msgid "Success"
 msgstr "Succes"
 
-#: ../src/plugins/evolution/e-contact-entry.c:885
+#: ../src/plugins/evolution/e-contact-entry.c:888
 msgid "An argument was invalid."
 msgstr "Unul dintre argumente nu a fost valid."
 
-#: ../src/plugins/evolution/e-contact-entry.c:887
+#: ../src/plugins/evolution/e-contact-entry.c:890
 msgid "The address book is busy."
 msgstr "Agenda este ocupată."
 
-#: ../src/plugins/evolution/e-contact-entry.c:889
+#: ../src/plugins/evolution/e-contact-entry.c:892
 msgid "The address book is offline."
 msgstr "Agenda este deconectată."
 
-#: ../src/plugins/evolution/e-contact-entry.c:891
+#: ../src/plugins/evolution/e-contact-entry.c:894
 msgid "The address book does not exist."
 msgstr "Nu există o agendă."
 
-#: ../src/plugins/evolution/e-contact-entry.c:893
+#: ../src/plugins/evolution/e-contact-entry.c:896
 msgid "The \"Me\" contact does not exist."
 msgstr "Contactul „Eu” nu există."
 
-#: ../src/plugins/evolution/e-contact-entry.c:895
+#: ../src/plugins/evolution/e-contact-entry.c:898
 msgid "The address book is not loaded."
 msgstr "Agenda nu este încărcată."
 
-#: ../src/plugins/evolution/e-contact-entry.c:897
+#: ../src/plugins/evolution/e-contact-entry.c:900
 msgid "The address book is already loaded."
 msgstr "Agenda este deja încărcată."
 
-#: ../src/plugins/evolution/e-contact-entry.c:899
+#: ../src/plugins/evolution/e-contact-entry.c:902
 msgid "Permission was denied when accessing the address book."
 msgstr "Nu aveți dreptul de a accesa agenda."
 
-#: ../src/plugins/evolution/e-contact-entry.c:901
+#: ../src/plugins/evolution/e-contact-entry.c:904
 msgid "The contact was not found."
 msgstr "Contactul nu a fost găsit."
 
-#: ../src/plugins/evolution/e-contact-entry.c:903
+#: ../src/plugins/evolution/e-contact-entry.c:906
 msgid "This contact ID already exists."
 msgstr "Există deja un contact pentru acest ID."
 
-#: ../src/plugins/evolution/e-contact-entry.c:905
+#: ../src/plugins/evolution/e-contact-entry.c:908
 msgid "The protocol is not supported."
 msgstr "Nu există suport pentru acest protocol."
 
-#: ../src/plugins/evolution/e-contact-entry.c:907
+#: ../src/plugins/evolution/e-contact-entry.c:910
 msgid "The operation was cancelled."
 msgstr "Operațiunea a fost anulată."
 
-#: ../src/plugins/evolution/e-contact-entry.c:909
+#: ../src/plugins/evolution/e-contact-entry.c:912
 msgid "The operation could not be cancelled."
 msgstr "Operațiunea nu a putut fi anulată."
 
-#: ../src/plugins/evolution/e-contact-entry.c:911
+#: ../src/plugins/evolution/e-contact-entry.c:914
 msgid "The address book authentication failed."
 msgstr "Autentificarea în agendă a eșuat."
 
-#: ../src/plugins/evolution/e-contact-entry.c:913
+#: ../src/plugins/evolution/e-contact-entry.c:916
 msgid ""
 "Authentication is required to access the address book and was not given."
 msgstr ""
 "Autentificarea este obligatorie la accesarea agendei, dar nu s-au primit "
 "date de autentificare."
 
-#: ../src/plugins/evolution/e-contact-entry.c:915
+#: ../src/plugins/evolution/e-contact-entry.c:918
 msgid "A secure connection is not available."
 msgstr "Nu e disponibilă nici o conexiune securizată."
 
-#: ../src/plugins/evolution/e-contact-entry.c:917
+#: ../src/plugins/evolution/e-contact-entry.c:920
 msgid "A CORBA error occurred whilst accessing the address book."
 msgstr "S-a produs o eroare CORBA la accesarea agendei."
 
-#: ../src/plugins/evolution/e-contact-entry.c:919
+#: ../src/plugins/evolution/e-contact-entry.c:922
 msgid "The address book source does not exist."
 msgstr "Nu există sursa agendei."
 
-#: ../src/plugins/evolution/e-contact-entry.c:921
 #: ../src/plugins/evolution/e-contact-entry.c:924
+#: ../src/plugins/evolution/e-contact-entry.c:927
 msgid "An unknown error occurred."
 msgstr "S-a produs o eroare neidentificată."
 
-#: ../src/plugins/gajim/gajim.c:403
+#: ../src/plugins/gajim/gajim.c:417
 msgid "Unable to send file"
 msgstr "Nu se poate trimite fișierul"
 
-#: ../src/plugins/gajim/gajim.c:404
+#: ../src/plugins/gajim/gajim.c:418
 msgid "There is no connection to gajim remote service."
 msgstr "Nu există nici o conexiune la serviciul la distanță gajim."
 
-#: ../src/plugins/gajim/gajim.c:428 ../src/plugins/gajim/gajim.c:467
+#: ../src/plugins/gajim/gajim.c:442 ../src/plugins/gajim/gajim.c:482
 msgid "Sending file failed"
 msgstr "Trimiterea fișierului a eșuat"
 
-#: ../src/plugins/gajim/gajim.c:429
+#: ../src/plugins/gajim/gajim.c:443
 msgid "Recipient is missing."
 msgstr "Destinatarul lipsește."
 
-#: ../src/plugins/gajim/gajim.c:467
+#: ../src/plugins/gajim/gajim.c:482
 msgid "Unknown recipient."
 msgstr "Destinatar necunoscut."
 
-#: ../src/plugins/gajim/gajim.c:489
+#: ../src/plugins/gajim/gajim.c:505
 msgid "Instant Message (Gajim)"
 msgstr "Mesagerie instant (Gajim)"
 
@@ -304,15 +271,32 @@ msgstr "CD/DVD existent"
 msgid "CD/DVD Creator"
 msgstr "Creare CD/DVD"
 
-#: ../src/plugins/pidgin/pidgin.c:353
+#: ../src/plugins/pidgin/pidgin.c:464
 msgid "Instant Message (Pidgin)"
 msgstr "Mesaj instant (Pidgin)"
 
 #: ../src/plugins/removable-devices/removable-devices.c:224
 msgid "Removable disks and shares"
-msgstr "Partajări și discuri amovibile"
+msgstr "Partajări și discuri detașabile"
 
 #: ../src/plugins/upnp/upnp.c:309
 msgid "UPnP Media Server"
 msgstr "Server media UPnP"
 
+#~ msgid "_Send to..."
+#~ msgstr "_Trimite la..."
+
+#~ msgid "Send files to remote devices, or people"
+#~ msgstr "Trimite fișiere dispozitivelor la distanță sau către alte persoane"
+
+#~ msgid "Send to..."
+#~ msgstr "Trimite la..."
+
+#~ msgid "Nautilus Integration"
+#~ msgstr "Integrare cu Nautilus"
+
+#~ msgid "Provides integration with Nautilus"
+#~ msgstr "Asigură integrarea cu Nautilus"
+
+#~ msgid "Nautilus Sendto"
+#~ msgstr "Nautilus trimite către"
