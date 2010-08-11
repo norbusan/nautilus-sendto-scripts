@@ -1,6 +1,6 @@
 /*
- *  Nautilus-sendto 
- * 
+ *  Nautilus-sendto
+ *
  *  Copyright (C) 2004 Free Software Foundation, Inc.
  *
  *  This library is free software; you can redistribute it and/or
@@ -17,8 +17,8 @@
  *  License along with this library; if not, write to the Free
  *  Software Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  *
- *  Author: Roberto Majadas <roberto.majadas@openshine.com> 
- * 
+ *  Author: Roberto Majadas <roberto.majadas@openshine.com>
+ *
  */
 
 #include <config.h>
@@ -34,7 +34,7 @@ static GObjectClass *parent_class;
 
 static void
 sendto_callback (NautilusMenuItem *item,
-	      gpointer          user_data)
+		 gpointer          user_data)
 {
 	GList            *files, *scan;
 	NautilusFileInfo *file;
@@ -57,7 +57,7 @@ sendto_callback (NautilusMenuItem *item,
 	g_spawn_command_line_async (cmd->str, NULL);
 
 	g_string_free (cmd, TRUE);
-}	 
+}
 
 static GList *
 nautilus_nste_get_file_items (NautilusMenuProvider *provider,
@@ -86,7 +86,7 @@ nautilus_nste_get_file_items (NautilusMenuProvider *provider,
 	}
 
 	one_item = (files != NULL) && (files->next == NULL);
-	if (one_item && 
+	if (one_item &&
 	    !nautilus_file_info_is_directory ((NautilusFileInfo *)files->data)) {
 		item = nautilus_menu_item_new ("NautilusNste::sendto",
 					       _("Send To..."),
@@ -98,33 +98,30 @@ nautilus_nste_get_file_items (NautilusMenuProvider *provider,
 					       _("Send files by mail, instant message..."),
 					       "document-send");
 	}
-  g_signal_connect (item, 
-      "activate",
-      G_CALLBACK (sendto_callback),
-      provider);
-  g_object_set_data_full (G_OBJECT (item), 
-      "files",
-      nautilus_file_info_list_copy (files),
-      (GDestroyNotify) nautilus_file_info_list_free);
+	g_signal_connect (item,
+			  "activate",
+			  G_CALLBACK (sendto_callback),
+			  provider);
+	g_object_set_data_full (G_OBJECT (item),
+				"files",
+				nautilus_file_info_list_copy (files),
+				(GDestroyNotify) nautilus_file_info_list_free);
 
-  items = g_list_append (items, item);
+	items = g_list_append (items, item);
 
 	return items;
 }
 
-
-static void 
+static void
 nautilus_nste_menu_provider_iface_init (NautilusMenuProviderIface *iface)
 {
 	iface->get_file_items = nautilus_nste_get_file_items;
 }
 
-
-static void 
+static void
 nautilus_nste_instance_init (NautilusNste *nste)
 {
 }
-
 
 static void
 nautilus_nste_class_init (NautilusNsteClass *class)
@@ -132,16 +129,13 @@ nautilus_nste_class_init (NautilusNsteClass *class)
 	parent_class = g_type_class_peek_parent (class);
 }
 
-
 static GType nste_type = 0;
 
-
 GType
-nautilus_nste_get_type (void) 
+nautilus_nste_get_type (void)
 {
 	return nste_type;
 }
-
 
 void
 nautilus_nste_register_type (GTypeModule *module)
@@ -151,7 +145,7 @@ nautilus_nste_register_type (GTypeModule *module)
 		(GBaseInitFunc) NULL,
 		(GBaseFinalizeFunc) NULL,
 		(GClassInitFunc) nautilus_nste_class_init,
-		NULL, 
+		NULL,
 		NULL,
 		sizeof (NautilusNste),
 		0,
@@ -165,12 +159,13 @@ nautilus_nste_register_type (GTypeModule *module)
 	};
 
 	nste_type = g_type_module_register_type (module,
-					         G_TYPE_OBJECT,
-					         "NautilusNste",
-					         &info, 0);
+						 G_TYPE_OBJECT,
+						 "NautilusNste",
+						 &info, 0);
 
 	g_type_module_add_interface (module,
 				     nste_type,
 				     NAUTILUS_TYPE_MENU_PROVIDER,
 				     &menu_provider_iface_info);
 }
+

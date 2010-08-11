@@ -1,10 +1,14 @@
 plugindir = $(libdir)/nautilus-sendto/plugins
 
+plugin_in_files = evolution.nst-plugin.in
+%.nst-plugin: %.nst-plugin.in $(INTLTOOL_MERGE) $(wildcard $(top_srcdir)/po/*po) ; $(INTLTOOL_MERGE) $(top_srcdir)/po $< $@ -d -u -c $(top_builddir)/po/.intltool-merge-cache
+plugin_DATA = evolution.nst-plugin
+
 INCLUDES =                                      \
         -DDATADIR=\"$(datadir)\"                \
         -DICONDIR=\"$(icondir)\"                \
 	-DLOCALEDIR="\"$(datadir)/locale\""	\
-        -I$(top_srcdir)/src                     \
+        -I$(top_srcdir)/src/plugins             \
         -I$(top_builddir)                       \
         $(NAUTILUS_SENDTO_CFLAGS)               \
 	$(NST_EBOOK_CFLAGS)			\
@@ -28,8 +32,8 @@ plugin_LTLIBRARIES = libnstevolution.la
 
 libnstevolution_la_SOURCES = evolution.c $(CLA_FILES) $(MARSHALFILES)
 libnstevolution_la_LDFLAGS = -module -avoid-version
-libnstevolution_la_LIBADD = $(NST_EBOOK_LIBS) $(NAUTILUS_SENDTO_LIBS)
+libnstevolution_la_LIBADD = $(NST_EBOOK_LIBS) $(NAUTILUS_SENDTO_LIBS) $(builddir)/../libnstcommon.la $(builddir)/../libnautilussendto-1.0.la
 
-EXTRA_DIST = $(CLA_FILES)
+EXTRA_DIST = $(CLA_FILES) $(plugin_in_files)
 CLEANFILES = econtactentry-marshal.c econtactentry-marshal.h
 

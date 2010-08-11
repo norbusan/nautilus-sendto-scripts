@@ -1,18 +1,17 @@
-SUBDIRS = plugins
+SUBDIRS = extension plugins
 INCLUDES =					\
 	-DDATADIR=\"$(datadir)\"		\
-	-DPLUGINDIR=\"$(libdir)/nautilus-sendto/plugins\"	\
+	-DPLUGINDIR=\"$(pkglibdir)/plugins\"	\
+	-DLIBDIR=\"$(pkglibdir)\"		\
 	-I$(top_srcdir)				\
 	-I$(top_builddir)			\
-	-DUIDIR=\""$(uidir)"\"		\
+	-I$(top_srcdir)/src/plugins		\
+	-DUIDIR=\""$(uidir)"\"			\
 	-DLOCALEDIR="\"$(datadir)/locale\""	\
 	$(NAUTILUS_SENDTO_CFLAGS)		\
 	$(NAUTILUS_EXT_SENDTO_CFLAGS)		\
 	$(DISABLE_DEPRECATED)			\
 	$(WARN_CFLAGS)
-
-nautilus_sendto_includedir = $(includedir)/nautilus-sendto/
-nautilus_sendto_include_HEADERS = nautilus-sendto-plugin.h
 
 pkgconfigdir = $(libdir)/pkgconfig
 pkgconfig_DATA = nautilus-sendto.pc
@@ -22,7 +21,6 @@ uidir = $(datadir)/nautilus-sendto/ui
 
 noinst_LTLIBRARIES = libnstplugin.la
 libnstplugin_la_SOURCES =			\
-	nautilus-sendto-plugin.h		\
 	nst-enum-types.c			\
 	nst-enum-types.h
 libnstplugin_la_LIBADD = $(NAUTILUS_SENDTO_LIBS)
@@ -30,19 +28,9 @@ libnstplugin_la_LIBADD = $(NAUTILUS_SENDTO_LIBS)
 bin_PROGRAMS = nautilus-sendto
 
 nautilus_sendto_SOURCES = nautilus-sendto-command.c
-nautilus_sendto_LDADD = $(NAUTILUS_SENDTO_LIBS) libnstplugin.la
+nautilus_sendto_LDADD = $(NAUTILUS_SENDTO_LIBS) libnstplugin.la $(builddir)/plugins/libnautilussendto-1.0.la
 
-nautilus_extensiondir = $(NAUTILUS_EXTENSION_DIR)
-nautilus_extension_LTLIBRARIES = libnautilus-sendto.la
-libnautilus_sendto_la_SOURCES =		\
-	nautilus-nste.c			\
-	nautilus-nste.h			\
-	nautilus-sendto-module.c
-
-libnautilus_sendto_la_LDFLAGS = -module -avoid-version -no-undefined
-libnautilus_sendto_la_LIBADD  = $(NAUTILUS_EXT_SENDTO_LIBS)
-
-nst_headers_to_scan_for_enums = nautilus-sendto-plugin.h
+nst_headers_to_scan_for_enums = plugins/nautilus-sendto-plugin.h
 # Generate the enums source code, with glib-mkenums:
 # This is based on the same Makefile.am stuff in pango:
 nst_built_headers = nst-enum-types.h
@@ -58,7 +46,7 @@ nst-enum-types.h: $(nst_headers_to_scan_for_enums) Makefile
 
 nst-enum-types.c: $(nst_headers_to_scan_for_enums) Makefile nst-enum-types.h
 	$(AM_V_GEN) (cd $(srcdir) && glib-mkenums \
-			--fhead "#include <nautilus-sendto-plugin.h>\n" \
+			--fhead "#include <plugins/nautilus-sendto-plugin.h>\n" \
 			--fhead "#include \"nst-enum-types.h\"\n" \
 			--fhead "#include <glib-object.h>" \
 			--fprod "\n/* enumerations from \"@filename@\" */" \

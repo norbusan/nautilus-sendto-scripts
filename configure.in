@@ -25,6 +25,7 @@ GNOME_DEBUG_CHECK
 GNOME_COMPILE_WARNINGS([maximum])
 GNOME_CXX_WARNINGS
 GNOME_MAINTAINER_MODE_DEFINES
+GOBJECT_INTROSPECTION_CHECK([0.6.7])
 
 ERROR_CFLAGS="-Wall -Wextra -Werror -Wno_missing_field_initializers -Wno_unused_parameter"
 
@@ -34,10 +35,11 @@ GLIB_REQUIRED=2.25.9
 GTHREAD_REQUIRED=2.6.0
 GTK_REQUIRED=2.90.3
 EBOOK_REQUIRED=1.5.3
-NAUTILUS_EXTENSION=2.31.3
+NAUTILUS_EXTENSION=2.30.1
 DBUS_REQUIRED=1.0
 DBUS_GLIB_REQUIRED=0.60
 GUPNP_REQUIRED=0.13
+LIBPEAS_REQUIRED=0.5.4
 
 AC_SUBST(GLIB_REQUIRED)
 AC_SUBST(GTHREAD_REQUIRED)
@@ -48,13 +50,16 @@ AC_SUBST(BLUETOOTH_REQUIRED)
 AC_SUBST(DBUS_REQUIRED)
 AC_SUBST(GUPNP_REQUIRED)
 
-PKG_CHECK_MODULES(NAUTILUS_SENDTO,\
-	 glib-2.0 >= $GLIB_REQUIRED                \
-	 gthread-2.0 >= $GTHREAD_REQUIRED         \
-	 gmodule-2.0 >= $GLIB_REQUIRED		  \
-	 gtk+-3.0    >= $GTK_REQUIRED)
+PKG_CHECK_MODULES(NAUTILUS_SENDTO,		\
+	 glib-2.0 >= $GLIB_REQUIRED		\
+	 gthread-2.0 >= $GTHREAD_REQUIRED	\
+	 gmodule-2.0 >= $GLIB_REQUIRED		\
+	 gtk+-3.0    >= $GTK_REQUIRED		\
+	 libpeas-1.0 >= $LIBPEAS_REQUIRED)
 AC_SUBST(NAUTILUS_SENDTO_CFLAGS)
 AC_SUBST(NAUTILUS_SENDTO_LIBS)
+
+PKG_CHECK_MODULES(GIO, gio-2.0)
 
 PKG_CHECK_MODULES(NAUTILUS_EXT_SENDTO,\
 	 libnautilus-extension >= $NAUTILUS_EXTENSION)
@@ -128,7 +133,7 @@ for plugin in ${used_plugins}; do
 
 	case ${plugin} in
 		evolution)
-			PKG_CHECK_MODULES(NST_EBOOK, libebook-1.2 >= $EBOOK_REQUIRED,
+			PKG_CHECK_MODULES(NST_EBOOK, libebook-1.2 >= $EBOOK_REQUIRED libpeas-1.0,
 					   enable_evolution=yes, enable_evolution=no)
 			if test "${enable_evolution}" != "yes" ; then
 				plugin_error_or_ignore "you need libebook from evolution-data-server to build the Evolution plugin"
@@ -147,7 +152,7 @@ for plugin in ${used_plugins}; do
 
 			GAJIM_SHARE_DIR="$GAJIM_PATH"/share/gajim
 
-			PKG_CHECK_MODULES(DBUS, dbus-1 >= $DBUS_REQUIRED dbus-glib-1 >= $DBUS_GLIB_REQUIRED,
+			PKG_CHECK_MODULES(DBUS, dbus-1 >= $DBUS_REQUIRED dbus-glib-1 >= $DBUS_GLIB_REQUIRED libpeas-1.0,
 					  [
 					   AC_SUBST(DBUS_CFLAGS)
 					   AC_SUBST(DBUS_LIBS)
@@ -164,31 +169,19 @@ for plugin in ${used_plugins}; do
 			fi
 		;;
 		nautilus-burn)
-			PKG_CHECK_MODULES(GIO, gio-2.0,
-					  enable_burn=yes, enable_burn=no)
-			if test "${enable_burn}" != "yes" ; then
-				plugin_error_or_ignore "you need gio installed for the nautilus-burn plugin"
-				add_plugin="0"
-			fi
+		;;
+		removable-devices)
 		;;
 		pidgin)
-			PKG_CHECK_MODULES(PIDGIN, dbus-glib-1 >= $DBUS_GLIB_REQUIRED,
+			PKG_CHECK_MODULES(PIDGIN, dbus-glib-1 >= $DBUS_GLIB_REQUIRED libpeas-1.0,
 					  enable_pidgin=yes, enable_pidgin=no)
 			if test "${enable_pidgin}" != "yes" ; then
 				plugin_error_or_ignore "you need dbus-glib to build the pidgin plugin"
 				add_plugin="0"
 			fi
 		;;
-		removable-devices)
-			PKG_CHECK_MODULES(GIO, gio-2.0,
-					  enable_removable=yes, enable_removable=no)
-			if test "${enable_removable}" != "yes" ; then
-				plugin_error_or_ignore "you need gio-2.0 to build the removable-devices plugin"
-				add_plugin="0"
-			fi
-		;;
 		upnp)
-			PKG_CHECK_MODULES(UPNP, gupnp-1.0 >= $GUPNP_REQUIRED,
+			PKG_CHECK_MODULES(UPNP, gupnp-1.0 >= $GUPNP_REQUIRED libpeas-1.0,
 					  enable_upnp=yes, enable_upnp=no)
 			if test "${enable_upnp}" != "yes" ; then
 				plugin_error_or_ignore "you need gupnp installed for the upnp plugin"
@@ -241,6 +234,7 @@ AM_GLIB_GNU_GETTEXT
 AC_OUTPUT([
 Makefile
 src/Makefile
+src/extension/Makefile
 src/nautilus-sendto.pc
 src/plugins/Makefile
 src/plugins/evolution/Makefile

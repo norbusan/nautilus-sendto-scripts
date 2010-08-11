@@ -1,8 +1,6 @@
-/* -*- Mode: C; tab-width: 8; indent-tabs-mode: t; c-basic-offset: 8 -*- */
-
-/* 
+/*
  * Copyright (C) 2004 Roberto Majadas
- * 
+ *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License as
  * published by the Free Software Foundation; either version 2 of the
@@ -19,6 +17,7 @@
  * Boston, MA 02110-1301  USA.
  *
  * Author:  Roberto Majadas <roberto.majadas@openshine.com>
+ *          Bastien Nocera <hadess@hadess.net>
  */
 
 #include "config.h"
@@ -27,12 +26,17 @@
 #include <glib/gi18n-lib.h>
 #include <string.h>
 #include "nautilus-sendto-plugin.h"
+#include "nst-common.h"
 
-#define GCONF_COMPLETION "/apps/evolution/addressbook"
-#define GCONF_COMPLETION_SOURCES GCONF_COMPLETION "/sources"
-#define DEFAULT_MAILTO "/desktop/gnome/url-handlers/mailto/command"
+#define EVOLUTION_TYPE_PLUGIN         (evolution_plugin_get_type ())
+#define EVOLUTION_PLUGIN(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), EVOLUTION_TYPE_PLUGIN, EvolutionPlugin))
+#define EVOLUTION_PLUGIN_CLASS(k)     (G_TYPE_CHECK_CLASS_CAST((k), EVOLUTION_TYPE_PLUGIN, EvolutionPlugin))
+#define EVOLUTION_IS_PLUGIN(o)        (G_TYPE_CHECK_INSTANCE_TYPE ((o), EVOLUTION_TYPE_PLUGIN))
+#define EVOLUTION_IS_PLUGIN_CLASS(k)  (G_TYPE_CHECK_CLASS_TYPE ((k), EVOLUTION_TYPE_PLUGIN))
+#define EVOLUTION_PLUGIN_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), EVOLUTION_TYPE_PLUGIN, EvolutionPluginClass))
 
-#define CONTACT_FORMAT "%s <%s>"
+typedef struct _EvolutionPlugin       EvolutionPlugin;
+typedef struct _EvolutionPluginClass  EvolutionPluginClass;
 
 typedef enum {
 	MAILER_UNKNOWN,
@@ -42,10 +46,30 @@ typedef enum {
 	MAILER_THUNDERBIRD,
 } MailerType;
 
-static char *mail_cmd = NULL;
-static MailerType type = MAILER_UNKNOWN;
-static char *email = NULL;
-static char *name = NULL;
+struct _EvolutionPlugin {
+	PeasExtensionBase parent_instance;
+
+	GtkWidget *vbox;
+	GtkWidget *entry;
+	GtkWidget *packer;
+
+	char *mail_cmd;
+	MailerType type;
+	char *email;
+	char *name;
+};
+
+struct _EvolutionPluginClass {
+	PeasExtensionBaseClass parent_class;
+};
+
+NAUTILUS_PLUGIN_REGISTER(EVOLUTION_TYPE_PLUGIN, EvolutionPlugin, evolution_plugin)
+
+#define GCONF_COMPLETION "/apps/evolution/addressbook"
+#define GCONF_COMPLETION_SOURCES GCONF_COMPLETION "/sources"
+#define DEFAULT_MAILTO "/desktop/gnome/url-handlers/mailto/command"
+
+#define CONTACT_FORMAT "%s <%s>"
 
 static char *
 get_evo_cmd (void)
@@ -62,7 +86,6 @@ get_evo_cmd (void)
 		NULL};
 	guint i;
 
-	
 	for (i = 0; cmds[i] != NULL; i++) {
 		tmp = g_find_program_in_path (cmds[i]);
 		if (tmp != NULL)
@@ -77,94 +100,114 @@ get_evo_cmd (void)
 	return retval;
 }
 
-static gboolean
-init (NstPlugin *plugin)
+static void
+evolution_plugin_init (EvolutionPlugin *p)
 {
 	GConfClient *client;
 
-	g_print ("Init evolution plugin\n");
-	
 	bindtextdomain (GETTEXT_PACKAGE, LOCALEDIR);
 	bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
 
+	p->type = MAILER_UNKNOWN;
+	p->email = NULL;
+	p->name = NULL;
+
 	client = gconf_client_get_default ();
-	mail_cmd = gconf_client_get_string (client, DEFAULT_MAILTO, NULL);
+	p->mail_cmd = gconf_client_get_string (client, DEFAULT_MAILTO, NULL);
 	g_object_unref (client);
 
-	if (mail_cmd == NULL || *mail_cmd == '\0') {
-		g_free (mail_cmd);
-		mail_cmd = get_evo_cmd ();
-		type = MAILER_EVO;
+	if (p->mail_cmd == NULL || *p->mail_cmd == '\0') {
+		g_free (p->mail_cmd);
+		p->mail_cmd = get_evo_cmd ();
+		p->type = MAILER_EVO;
 	} else {
 		/* Find what the default mailer is */
-		if (strstr (mail_cmd, "balsa"))
-			type = MAILER_BALSA;
-		else if (strstr (mail_cmd, "thunder") || strstr (mail_cmd, "seamonkey")) {
+		if (strstr (p->mail_cmd, "balsa"))
+			p->type = MAILER_BALSA;
+		else if (strstr (p->mail_cmd, "thunder") || strstr (p->mail_cmd, "seamonkey")) {
 			char **strv;
 
-			type = MAILER_THUNDERBIRD;
+			p->type = MAILER_THUNDERBIRD;
 
 			/* Thunderbird sucks, see
 			 * https://bugzilla.gnome.org/show_bug.cgi?id=614222 */
-			strv = g_strsplit (mail_cmd, " ", -1);
-			g_free (mail_cmd);
-			mail_cmd = g_strdup_printf ("%s %%s", strv[0]);
+			strv = g_strsplit (p->mail_cmd, " ", -1);
+			g_free (p->mail_cmd);
+			p->mail_cmd = g_strdup_printf ("%s %%s", strv[0]);
 			g_strfreev (strv);
-		} else if (strstr (mail_cmd, "sylpheed") || strstr (mail_cmd, "claws"))
-			type = MAILER_SYLPHEED;
-		else if (strstr (mail_cmd, "anjal"))
-			type = MAILER_EVO;
+		} else if (strstr (p->mail_cmd, "sylpheed") || strstr (p->mail_cmd, "claws"))
+			p->type = MAILER_SYLPHEED;
+		else if (strstr (p->mail_cmd, "anjal"))
+			p->type = MAILER_EVO;
 	}
+}
 
-	if (mail_cmd == NULL)
+static gboolean
+evolution_plugin_supports_mime_types (NautilusSendtoPlugin *plugin,
+				      const char          **mime_types)
+{
+	EvolutionPlugin *p;
+
+	p = EVOLUTION_PLUGIN (plugin);
+
+	if (p->mail_cmd == NULL)
 		return FALSE;
+
+	//FIXME check for types and setup the packer
 
 	return TRUE;
 }
 
 static void
-contacts_selected_cb (GtkWidget *entry, EContact *contact, const char *identifier, NstPlugin *plugin)
+contacts_selected_cb (GtkWidget       *entry,
+		      EContact        *contact,
+		      const char      *identifier,
+		      EvolutionPlugin *p)
 {
 	char *text;
 
-	g_free (email);
-	email = NULL;
+	g_free (p->email);
+	p->email = NULL;
 
 	if (identifier != NULL)
-		email = g_strdup (identifier);
+		p->email = g_strdup (identifier);
 	else
-		email = e_contact_get (contact, E_CONTACT_EMAIL_1);
+		p->email = e_contact_get (contact, E_CONTACT_EMAIL_1);
 
-	g_free (name);
-	name = NULL;
+	g_free (p->name);
+	p->name = NULL;
 
-	name = e_contact_get (contact, E_CONTACT_FULL_NAME);
-	if (name == NULL) {
-		name = e_contact_get (contact, E_CONTACT_NICKNAME);
-		if (name == NULL)
-			name = e_contact_get (contact, E_CONTACT_ORG);
+	p->name = e_contact_get (contact, E_CONTACT_FULL_NAME);
+	if (p->name == NULL) {
+		p->name = e_contact_get (contact, E_CONTACT_NICKNAME);
+		if (p->name == NULL)
+			p->name = e_contact_get (contact, E_CONTACT_ORG);
 	}
-	if (name != NULL) {
-		text = g_strdup_printf (CONTACT_FORMAT, (char*) name, email);
+	if (p->name != NULL) {
+		text = g_strdup_printf (CONTACT_FORMAT, (char*) p->name, p->email);
 		gtk_entry_set_text (GTK_ENTRY (entry), text);
 		g_free (text);
 	} else
-		gtk_entry_set_text (GTK_ENTRY (entry), email);
+		gtk_entry_set_text (GTK_ENTRY (entry), p->email);
 }
 
 static void
-state_change_cb (GtkWidget *entry, gboolean state, gpointer data)
+state_change_cb (GtkWidget       *entry,
+		 gboolean         state,
+		 EvolutionPlugin *p)
 {
 	if (state == FALSE) {
-		g_free (email);
-		email = NULL;
-		g_free (name);
-		name = NULL;
+		g_free (p->email);
+		p->email = NULL;
+		g_free (p->name);
+		p->name = NULL;
 	}
 }
 
 static void
-error_cb (EContactEntry *entry_widget, const char *error, NstPlugin *plugin)
+error_cb (EContactEntry   *entry_widget,
+	  const char      *error,
+	  EvolutionPlugin *plugin)
 {
 	g_warning ("An error occurred: %s", error);
 }
@@ -182,8 +225,10 @@ add_sources (EContactEntry *entry)
 }
 
 static void
-sources_changed_cb (GConfClient *client, guint cnxn_id,
-		GConfEntry *entry, EContactEntry *entry_widget)
+sources_changed_cb (GConfClient   *client,
+		    guint          cnxn_id,
+		    GConfEntry    *entry,
+		    EContactEntry *entry_widget)
 {
 	add_sources (entry_widget);
 }
@@ -201,40 +246,56 @@ setup_source_changes (EContactEntry *entry)
 			entry, NULL, NULL);
 }
 
-static
-GtkWidget* get_contacts_widget (NstPlugin *plugin)
+static GtkWidget *
+evolution_plugin_get_widget (NautilusSendtoPlugin *plugin,
+			     GList                *file_list)
 {
-	GtkWidget *entry;
+	EvolutionPlugin *p;
+	GtkWidget *alignment;
 
-	entry = e_contact_entry_new ();
-	g_signal_connect (G_OBJECT (entry), "contact-selected",
+	p = EVOLUTION_PLUGIN (plugin);
+	p->entry = e_contact_entry_new ();
+	g_signal_connect (G_OBJECT (p->entry), "contact-selected",
 			  G_CALLBACK (contacts_selected_cb), plugin);
-	g_signal_connect (G_OBJECT (entry), "state-change",
-			  G_CALLBACK (state_change_cb), NULL);
-	g_signal_connect (G_OBJECT (entry), "error",
+	g_signal_connect (G_OBJECT (p->entry), "state-change",
+			  G_CALLBACK (state_change_cb), plugin);
+	g_signal_connect (G_OBJECT (p->entry), "error",
 			  G_CALLBACK (error_cb), plugin);
 
-	add_sources (E_CONTACT_ENTRY (entry));
-	setup_source_changes (E_CONTACT_ENTRY (entry));
+	add_sources (E_CONTACT_ENTRY (p->entry));
+	setup_source_changes (E_CONTACT_ENTRY (p->entry));
 
-	return entry;
+	p->vbox = gtk_vbox_new (FALSE, 8);
+	gtk_box_pack_start (GTK_BOX (p->vbox), p->entry, FALSE, FALSE, 0);
+
+	alignment = gtk_alignment_new (0.0, 1.0, 1.0, 0.0);
+	p->packer = nst_pack_widget_new ();
+	nst_pack_widget_set_from_names (NST_PACK_WIDGET (p->packer), file_list);
+	gtk_container_add (GTK_CONTAINER (alignment), p->packer);
+	gtk_box_pack_start (GTK_BOX (p->vbox), alignment, TRUE, TRUE, 0);
+
+	gtk_widget_show_all (p->vbox);
+
+	return p->vbox;
 }
 
 static void
-get_evo_mailto (GtkWidget *contact_widget, GString *mailto, GList *file_list)
+get_evo_mailto (EvolutionPlugin *p,
+		GString         *mailto,
+		GList           *file_list)
 {
 	GList *l;
 
 	g_string_append (mailto, "mailto:");
-	if (email != NULL) {
-		if (name != NULL)
-			g_string_append_printf (mailto, "\""CONTACT_FORMAT"\"", name, email);
+	if (p->email != NULL) {
+		if (p->name != NULL)
+			g_string_append_printf (mailto, "\""CONTACT_FORMAT"\"", p->name, p->email);
 		else
-			g_string_append_printf (mailto, "%s", email);
+			g_string_append_printf (mailto, "%s", p->email);
 	} else {
 		const char *text;
 
-		text = gtk_entry_get_text (GTK_ENTRY (contact_widget));
+		text = gtk_entry_get_text (GTK_ENTRY (p->entry));
 		if (text != NULL && *text != '\0')
 			g_string_append_printf (mailto, "\"%s\"", text);
 		else
@@ -247,21 +308,23 @@ get_evo_mailto (GtkWidget *contact_widget, GString *mailto, GList *file_list)
 }
 
 static void
-get_balsa_mailto (GtkWidget *contact_widget, GString *mailto, GList *file_list)
+get_balsa_mailto (EvolutionPlugin *p,
+		  GString         *mailto,
+		  GList           *file_list)
 {
 	GList *l;
 
-	if (strstr (mail_cmd, " -m ") == NULL && strstr (mail_cmd, " --compose=") == NULL)
+	if (strstr (p->mail_cmd, " -m ") == NULL && strstr (p->mail_cmd, " --compose=") == NULL)
 		g_string_append (mailto, " --compose=");
-	if (email != NULL) {
-		if (name != NULL)
-			g_string_append_printf (mailto, "\""CONTACT_FORMAT"\"", name, email);
+	if (p->email != NULL) {
+		if (p->name != NULL)
+			g_string_append_printf (mailto, "\""CONTACT_FORMAT"\"", p->name, p->email);
 		else
-			g_string_append_printf (mailto, "%s", email);
+			g_string_append_printf (mailto, "%s", p->email);
 	} else {
 		const char *text;
 
-		text = gtk_entry_get_text (GTK_ENTRY (contact_widget));
+		text = gtk_entry_get_text (GTK_ENTRY (p->entry));
 		if (text != NULL && *text != '\0')
 			g_string_append_printf (mailto, "\"%s\"", text);
 		else
@@ -274,20 +337,22 @@ get_balsa_mailto (GtkWidget *contact_widget, GString *mailto, GList *file_list)
 }
 
 static void
-get_thunderbird_mailto (GtkWidget *contact_widget, GString *mailto, GList *file_list)
+get_thunderbird_mailto (EvolutionPlugin *p,
+			GString         *mailto,
+			GList           *file_list)
 {
 	GList *l;
 
 	g_string_append (mailto, "-compose \"");
-	if (email != NULL) {
-		if (name != NULL)
-			g_string_append_printf (mailto, "to='"CONTACT_FORMAT"',", name, email);
+	if (p->email != NULL) {
+		if (p->name != NULL)
+			g_string_append_printf (mailto, "to='"CONTACT_FORMAT"',", p->name, p->email);
 		else
-			g_string_append_printf (mailto, "to='%s',", email);
+			g_string_append_printf (mailto, "to='%s',", p->email);
 	} else {
 		const char *text;
 
-		text = gtk_entry_get_text (GTK_ENTRY (contact_widget));
+		text = gtk_entry_get_text (GTK_ENTRY (p->entry));
 		if (text != NULL && *text != '\0')
 			g_string_append_printf (mailto, "to='%s',", text);
 	}
@@ -299,20 +364,22 @@ get_thunderbird_mailto (GtkWidget *contact_widget, GString *mailto, GList *file_
 }
 
 static void
-get_sylpheed_mailto (GtkWidget *contact_widget, GString *mailto, GList *file_list)
+get_sylpheed_mailto (EvolutionPlugin *p,
+		     GString         *mailto,
+		     GList           *file_list)
 {
 	GList *l;
 
 	g_string_append (mailto, "--compose ");
-	if (email != NULL) {
-		if (name != NULL)
-			g_string_append_printf (mailto, "\""CONTACT_FORMAT"\" ", name, email);
+	if (p->email != NULL) {
+		if (p->name != NULL)
+			g_string_append_printf (mailto, "\""CONTACT_FORMAT"\" ", p->name, p->email);
 		else
-			g_string_append_printf (mailto, "%s ", email);
+			g_string_append_printf (mailto, "%s ", p->email);
 	} else {
 		const char *text;
 
-		text = gtk_entry_get_text (GTK_ENTRY (contact_widget));
+		text = gtk_entry_get_text (GTK_ENTRY (p->entry));
 		if (text != NULL && *text != '\0')
 			g_string_append_printf (mailto, "\"%s\" ", text);
 		else
@@ -325,33 +392,35 @@ get_sylpheed_mailto (GtkWidget *contact_widget, GString *mailto, GList *file_lis
 }
 
 static gboolean
-send_files (NstPlugin *plugin,
-	    GtkWidget *contact_widget,
-	    GList *file_list)
+evolution_plugin_send_files (NautilusSendtoPlugin *plugin,
+			     GList                *file_list)
 {
+	EvolutionPlugin *p;
 	gchar *cmd;
 	GString *mailto;
 
+	p = EVOLUTION_PLUGIN (plugin);
+
 	mailto = g_string_new ("");
-	switch (type) {
+	switch (p->type) {
 	case MAILER_BALSA:
-		get_balsa_mailto (contact_widget, mailto, file_list);
+		get_balsa_mailto (p, mailto, file_list);
 		break;
 	case MAILER_SYLPHEED:
-		get_sylpheed_mailto (contact_widget, mailto, file_list);
+		get_sylpheed_mailto (p, mailto, file_list);
 		break;
 	case MAILER_THUNDERBIRD:
-		get_thunderbird_mailto (contact_widget, mailto, file_list);
+		get_thunderbird_mailto (p, mailto, file_list);
 		break;
 	case MAILER_EVO:
 	default:
-		get_evo_mailto (contact_widget, mailto, file_list);
+		get_evo_mailto (p, mailto, file_list);
 	}
 
-	cmd = g_strdup_printf (mail_cmd, mailto->str);
+	cmd = g_strdup_printf (p->mail_cmd, mailto->str);
 	g_string_free (mailto, TRUE);
 
-	g_message ("Mailer type: %d", type);
+	g_message ("Mailer type: %d", p->type);
 	g_message ("Command: %s", cmd);
 
 	g_spawn_command_line_async (cmd, NULL);
@@ -360,30 +429,24 @@ send_files (NstPlugin *plugin,
 	return TRUE;
 }
 
-static 
-gboolean destroy (NstPlugin *plugin){
-	g_free (mail_cmd);
-	mail_cmd = NULL;
-	g_free (name);
-	name = NULL;
-	g_free (email);
-	email = NULL;
-	return TRUE;
+static void
+evolution_plugin_finalize (GObject *object)
+{
+	EvolutionPlugin *p;
+
+	p = EVOLUTION_PLUGIN (object);
+
+	g_free (p->mail_cmd);
+	p->mail_cmd = NULL;
+
+	g_free (p->name);
+	p->name = NULL;
+
+	g_free (p->email);
+	p->email = NULL;
+
+	gtk_widget_destroy (p->entry);
+	p->entry = NULL;
+
 }
-
-static 
-NstPluginInfo plugin_info = {
-	"emblem-mail",
-	"evolution",
-	N_("Email"),
-	NULL,
-	NAUTILUS_CAPS_NONE,
-	init,
-	get_contacts_widget,
-	NULL,
-	send_files,
-	destroy
-}; 
-
-NST_INIT_PLUGIN (plugin_info)
 

@@ -1,7 +1,7 @@
 /*
- *  Nautilus SendTo 
- * 
- *  Copyright (C) 2005 Roberto Majadas 
+ *  Nautilus SendTo
+ *
+ *  Copyright (C) 2005 Roberto Majadas
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU General Public
@@ -18,7 +18,7 @@
  *  Software Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  *
  *  Author: Roberto Majadas <roberto.majadas@openshine.com>
- * 
+ *
  */
 
 #include <config.h>
@@ -37,24 +37,20 @@ nautilus_module_initialize (GTypeModule*module)
 	bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
 }
 
-
 void
 nautilus_module_shutdown (void)
 {
 }
 
-
-void 
+void
 nautilus_module_list_types (const GType **types,
 			    int          *num_types)
 {
 	static GType type_list[1];
-	
+
 	type_list[0] = NAUTILUS_TYPE_NSTE;
 	*types = type_list;
 
 	*num_types = 1;
 }
-
-
 

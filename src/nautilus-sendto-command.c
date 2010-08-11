@@ -1,8 +1,6 @@
-/* -*- Mode: C; tab-width: 8; indent-tabs-mode: t; c-basic-offset: 8 -*- */
-
-/* 
+/*
  * Copyright (C) 2004 Roberto Majadas
- * 
+ *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License as
  * published by the Free Software Foundation; either version 2 of the
@@ -19,36 +17,41 @@
  * Boston, MA 02110-1301  USA.
  *
  * Author:  Roberto Majadas <roberto.majadas@openshine.com>
+ *          Bastien Nocera <hadess@hadess.net>
  */
 
 #include "config.h"
 #include <string.h>
 #include <stdlib.h>
+#include <libpeas/peas.h>
+#include <girepository.h>
 #include <glib/gi18n.h>
 #include <glib/gstdio.h>
 #include <gtk/gtk.h>
 #include "nautilus-sendto-plugin.h"
 
 #define NAUTILUS_SENDTO_LAST_MEDIUM	"last-medium"
-#define NAUTILUS_SENDTO_LAST_COMPRESS	"last-compress"
 #define NAUTILUS_SENDTO_STATUS_LABEL_TIMEOUT_SECONDS 10
 
 #define UNINSTALLED_PLUGINDIR "plugins/removable-devices"
-#define UNINSTALLED_SOURCE "nautilus-sendto-command.c"
-
-#define SOEXT           ("." G_MODULE_SUFFIX)
-#define SOEXT_LEN       (strlen (SOEXT))
 
 enum {
 	COLUMN_ICON,
+	COLUMN_ID,
+	COLUMN_PAGE_NUM,
 	COLUMN_DESCRIPTION,
 	NUM_COLUMNS,
 };
 
 /* Options */
 static char **filenames = NULL;
+static gboolean run_from_build_dir = FALSE;
+
+static PeasEngine *engine;
+static PeasExtensionSet *exten_set;
 
 GList *file_list = NULL;
+char **mime_types = NULL;
 gboolean has_dirs = FALSE;
 GList *plugin_list = NULL;
 GHashTable *hash ;
@@ -60,193 +63,27 @@ typedef struct _NS_ui NS_ui;
 
 struct _NS_ui {
 	GtkWidget *dialog;
-	GtkWidget *options_combobox;
+	GtkWidget *options_treeview;
+	GtkWidget *contacts_notebook;
 	GtkWidget *send_to_label;
 	GtkWidget *hbox_contacts_ws;
 	GtkWidget *cancel_button;
 	GtkWidget *send_button;
-	GtkWidget *pack_combobox;
-	GtkWidget *pack_checkbutton;
-	GtkWidget *pack_entry;
-	GList *contact_widgets;
-
-	GtkWidget *status_box;
-	GtkWidget *status_image;
-	GtkWidget *status_label;
-	guint status_timeoutid;
 };
 
 static const GOptionEntry entries[] = {
-	{ G_OPTION_REMAINING, '\0', 0, G_OPTION_ARG_FILENAME_ARRAY, &filenames, "Files to send", "[FILES...]" },
+	{ "run-from-build-dir", 'b', 0, G_OPTION_ARG_NONE, &run_from_build_dir, N_("Run from build directory"), NULL },
+	{ G_OPTION_REMAINING, '\0', 0, G_OPTION_ARG_FILENAME_ARRAY, &filenames, N_("Files to send"), "[FILES...]" },
 	{ NULL }
 };
 
-static void 
+static void
 destroy_dialog (GtkWidget *widget, gpointer data )
 {
         gtk_main_quit ();
 }
 
-static char *
-get_filename_from_list (void)
-{
-	GList *l;
-	GString *common_part = NULL;
-	gboolean matches = TRUE;
-	guint offset = 0;
-	const char *encoding;
-	gboolean use_utf8 = TRUE;
-
-	encoding = g_getenv ("G_FILENAME_ENCODING");
-
-	if (encoding != NULL && strcasecmp(encoding, "UTF-8") != 0)
-		use_utf8 = FALSE;
-
-	if (file_list == NULL)
-		return NULL;
-
-	common_part = g_string_new("");
-
-	while (TRUE) {
-		gunichar cur_char = '\0';
-		for (l = file_list; l ; l = l->next) {
-			char *path = NULL, *name = NULL;
-			char *offset_name = NULL;
-
-			path = g_filename_from_uri ((char *) l->data,
-					NULL, NULL);
-			if (!path)
-				break;
-
-			name = g_path_get_basename (path);
-
-			if (!use_utf8) {
-				char *tmp;
-
-				tmp = g_filename_to_utf8 (name, -1,
-						NULL, NULL, NULL);
-				g_free (name);
-				name = tmp;
-			}
-
-			if (!name) {
-				g_free (path);
-				break;
-			}
-
-			if (offset >= g_utf8_strlen (name, -1)) {
-				g_free(name);
-				g_free(path);
-				matches = FALSE;
-				break;
-			}
-
-			offset_name = g_utf8_offset_to_pointer (name, offset);
-
-			if (offset_name == g_utf8_strrchr (name, -1, '.')) {
-				g_free (name);
-				g_free (path);
-				matches = FALSE;
-				break;
-			}
-			if (cur_char == '\0') {
-				cur_char = g_utf8_get_char (offset_name);
-			} else if (cur_char != g_utf8_get_char (offset_name)) {
-				g_free (name);
-				g_free (path);
-				matches = FALSE;
-				break;
-			}
-			g_free (name);
-			g_free (path);
-		}
-		if (matches == TRUE && cur_char != '\0') {
-			offset++;
-			common_part = g_string_append_unichar (common_part,
-					cur_char);
-		} else {
-			break;
-		}
-	}
-
-	if (g_utf8_strlen (common_part->str, -1) < 4) {
-		g_string_free (common_part, TRUE);
-		return NULL;
-	}
-
-	return g_string_free (common_part, FALSE);
-}
-
-static char *
-pack_files (NS_ui *ui)
-{
-	char *file_roller_cmd;
-	const char *filename;
-	GList *l;
-	GString *cmd, *tmp;
-	char *pack_type, *tmp_dir, *tmp_work_dir, *packed_file;
-
-	file_roller_cmd = g_find_program_in_path ("file-roller");
-	filename = gtk_entry_get_text(GTK_ENTRY(ui->pack_entry));
-
-	g_assert (filename != NULL && *filename != '\0');
-	
-	tmp_dir = g_strdup_printf ("%s/nautilus-sendto-%s", 
-				   g_get_tmp_dir(), g_get_user_name());	
-	g_mkdir (tmp_dir, 0700);
-	tmp_work_dir = g_strdup_printf ("%s/nautilus-sendto-%s/%li",
-					g_get_tmp_dir(), g_get_user_name(),
-					time(NULL));
-	g_mkdir (tmp_work_dir, 0700);
-	g_free (tmp_dir);
-
-	switch (gtk_combo_box_get_active (GTK_COMBO_BOX(ui->pack_combobox)))
-	{
-	case 0:
-		pack_type = g_strdup (".zip");
-		break;
-	case 1:
-		pack_type = g_strdup (".tar.gz");
-		break;
-	case 2: 
-		pack_type = g_strdup (".tar.bz2");
-		break;
-	default:
-		pack_type = NULL;
-		g_assert_not_reached ();
-	}
-
-	g_settings_set_int (settings,
-			    NAUTILUS_SENDTO_LAST_COMPRESS,
-			    gtk_combo_box_get_active(GTK_COMBO_BOX(ui->pack_combobox)));
-
-	cmd = g_string_new ("");
-	g_string_printf (cmd, "%s --add-to=\"%s/%s%s\"",
-			 file_roller_cmd, tmp_work_dir,
-			 filename,
-			 pack_type);
-
-	/* file-roller doesn't understand URIs */
-	for (l = file_list ; l; l=l->next){
-		char *file;
-
-		file = g_filename_from_uri (l->data, NULL, NULL);
-		g_string_append_printf (cmd," \"%s\"", file);
-		g_free (file);
-	}
-
-	g_spawn_command_line_sync (cmd->str, NULL, NULL, NULL, NULL);
-	g_string_free (cmd, TRUE);
-	tmp = g_string_new("");
-	g_string_printf (tmp,"%s/%s%s", tmp_work_dir,
-			 filename,
-			 pack_type);
-	g_free (tmp_work_dir);
-	packed_file = g_filename_to_uri (tmp->str, NULL, NULL);
-	g_string_free(tmp, TRUE);
-	return packed_file;
-}
-
+#if 0
 static gboolean
 status_label_clear (gpointer data)
 {
@@ -258,10 +95,11 @@ status_label_clear (gpointer data)
 
 	return FALSE;
 }
-
+#endif
 static void
 send_button_cb (GtkWidget *widget, NS_ui *ui)
 {
+#if 0
 	char *f, *error;
 	NstPlugin *p;
 	GtkWidget *w;
@@ -327,8 +165,10 @@ send_button_cb (GtkWidget *widget, NS_ui *ui)
 		file_list = NULL;
 	}
 	destroy_dialog (NULL,NULL);
+#endif
 }
 
+#if 0
 static void
 send_if_no_pack_cb (GtkWidget *widget, NS_ui *ui)
 {
@@ -342,170 +182,133 @@ send_if_no_pack_cb (GtkWidget *widget, NS_ui *ui)
 		send_button_cb (widget, ui);
 	}
 }
+#endif
 
 static void
-toggle_pack_check (GtkWidget *widget, NS_ui *ui)
+option_changed (GtkTreeSelection *treeselection,
+		NS_ui *ui)
 {
-	GtkToggleButton *t = GTK_TOGGLE_BUTTON (widget);
-	gboolean enabled, send_enabled;
+	GtkTreeModel *model;
+	GtkTreeIter iter;
+	int page_num;
 
-	enabled = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (t));
-	gtk_widget_set_sensitive (ui->pack_combobox, enabled);
-	gtk_widget_set_sensitive (ui->pack_entry, enabled);
+	if (gtk_tree_selection_get_selected (treeselection, &model, &iter) == FALSE)
+		return;
 
-	send_enabled = TRUE;
+	gtk_tree_model_get (model, &iter,
+			    COLUMN_PAGE_NUM, &page_num,
+			    -1);
 
-	if (enabled) {
-		const char *filename;
+	gtk_notebook_set_current_page (GTK_NOTEBOOK (ui->contacts_notebook),
+				       page_num);
 
-		filename = gtk_entry_get_text(GTK_ENTRY(ui->pack_entry));
-		if (filename == NULL || *filename == '\0')
-			send_enabled = FALSE;
-	}
-
-	gtk_widget_set_sensitive (ui->send_button, send_enabled);
+	/* FIXME: Get a widget in the plugin to grab focus? */
 }
 
 static void
-option_changed (GtkComboBox *cb, NS_ui *ui)
-{
-	GList *aux;
-	NstPlugin *p;
-	gboolean supports_dirs = FALSE;
-
-	aux = g_list_nth (ui->contact_widgets, option);
-	option = gtk_combo_box_get_active (GTK_COMBO_BOX(cb));
-	gtk_widget_hide ((GtkWidget *) aux->data);
-	aux = g_list_nth (ui->contact_widgets, option);
-	gtk_widget_show ((GtkWidget *) aux->data);
-
-	gtk_label_set_mnemonic_widget (GTK_LABEL (ui->send_to_label), aux->data);
-
-	p = (NstPlugin *) g_list_nth_data (plugin_list, option);
-	supports_dirs = (p->info->capabilities & NAUTILUS_CAPS_SEND_DIRECTORIES);
-
-	if (has_dirs == FALSE || supports_dirs != FALSE) {
-		gboolean toggle;
-
-		toggle = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (ui->pack_checkbutton));
-		gtk_widget_set_sensitive (ui->pack_combobox, toggle);
-		gtk_widget_set_sensitive (ui->pack_entry, toggle);
-		gtk_widget_set_sensitive (ui->pack_checkbutton, TRUE);
-	} else {
-		gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (ui->pack_checkbutton), TRUE);
-		gtk_widget_set_sensitive (ui->pack_checkbutton, FALSE);
-	}
-}
-
-static void
-set_contact_widgets (NS_ui *ui)
-{
-	GList *aux ;
-	GtkWidget *w;
-	NstPlugin *p;
-
-	ui->contact_widgets = NULL;
-
-	for (aux = plugin_list; aux; aux = aux->next){
-		p = (NstPlugin *) aux->data;
-		w = p->info->get_contacts_widget(p);
-		gtk_box_pack_end (GTK_BOX(ui->hbox_contacts_ws),w, TRUE, TRUE, 0);
-		gtk_widget_hide (GTK_WIDGET(w));
-		ui->contact_widgets = g_list_append (ui->contact_widgets, w);
-		if (GTK_IS_ENTRY (w)) {
-			g_signal_connect_after (G_OBJECT (w), "activate",
-						G_CALLBACK (send_if_no_pack_cb), ui);
-		}
-	}
-}
-
-static gboolean
-set_model_for_options_combobox (NS_ui *ui)
+set_model_for_options_treeview (NS_ui *ui)
 {
 	GdkPixbuf *pixbuf;
-        GtkTreeIter iter;
-        GtkListStore *model;
+	GtkTreeIter iter;
+	GtkListStore *model;
 	GtkIconTheme *it;
 	GtkCellRenderer *renderer;
-	GtkWidget *widget;
-	GList *aux;
-	NstPlugin *p;
 	char *last_used = NULL;
 	int i = 0;
-	gboolean last_used_support_dirs = FALSE;
+	GtkTreeViewColumn *column;
+	GtkTreeSelection *selection;
+	GtkTreePath *path;
+	char **list;
+	gboolean supported;
+
+	/* Disable this call if you want to debug */
+	gtk_notebook_set_show_tabs (GTK_NOTEBOOK (ui->contacts_notebook), FALSE);
 
 	it = gtk_icon_theme_get_default ();
 
-	model = gtk_list_store_new (NUM_COLUMNS, GDK_TYPE_PIXBUF, G_TYPE_STRING);
+	model = gtk_list_store_new (NUM_COLUMNS, GDK_TYPE_PIXBUF, G_TYPE_STRING, G_TYPE_INT, G_TYPE_STRING);
 
 	last_used = g_settings_get_string (settings,
 					   NAUTILUS_SENDTO_LAST_MEDIUM);
 
-	for (aux = plugin_list; aux; aux = aux->next) {
-		p = (NstPlugin *) aux->data;
-		pixbuf = gtk_icon_theme_load_icon (it, p->info->icon, 16, 
+	/* Populate the tree model */
+	list = peas_engine_get_loaded_plugins (engine);
+	for (i = 0; list[i] != NULL; i++) {
+		GtkWidget *label, *w;
+		PeasPluginInfo *info;
+		PeasExtension *ext;
+		const char *id;
+		int page_num;
+
+		info = peas_engine_get_plugin_info (engine, list[i]);
+		id = peas_plugin_info_get_module_name (info);
+
+		ext = peas_extension_set_get_extension (exten_set, info);
+
+		/* Check if the plugin supports the mime-types of the files we have */
+		if (peas_extension_call (ext, "supports_mime_types", mime_types, &supported) == FALSE ||
+		    supported == FALSE) {
+			g_message ("'%s' does not support mime-types", id);
+			continue;
+		}
+
+		if (peas_extension_call (ext, "get_widget", file_list, &w) == FALSE || w == NULL) {
+			g_warning ("Failed to get widget for %s", id);
+			continue;
+		}
+
+		pixbuf = gtk_icon_theme_load_icon (it, peas_plugin_info_get_icon_name (info), 16,
 						   GTK_ICON_LOOKUP_USE_BUILTIN, NULL);
+		label = gtk_label_new (id);
+		page_num = gtk_notebook_append_page (GTK_NOTEBOOK (ui->contacts_notebook), w, label);
+
 		gtk_list_store_append (model, &iter);
 		gtk_list_store_set (model, &iter,
-					COLUMN_ICON, pixbuf,
-					COLUMN_DESCRIPTION, dgettext(p->info->gettext_package, p->info->description),
-					-1);
-		if (last_used != NULL && !strcmp(last_used, p->info->id)) {
+				    COLUMN_ICON, pixbuf,
+				    COLUMN_ID, id,
+				    COLUMN_PAGE_NUM, page_num,
+				    COLUMN_DESCRIPTION, peas_plugin_info_get_name (info),
+				    -1);
+
+		gtk_widget_show (w);
+
+		if (last_used != NULL && !strcmp(last_used, id))
 			option = i;
-			last_used_support_dirs = (p->info->capabilities & NAUTILUS_CAPS_SEND_DIRECTORIES);
-		}
-		i++;
 	}
 	g_free(last_used);
 
-	gtk_combo_box_set_model (GTK_COMBO_BOX(ui->options_combobox),
-				GTK_TREE_MODEL (model));
-	renderer = gtk_cell_renderer_pixbuf_new ();
-        gtk_cell_layout_pack_start (GTK_CELL_LAYOUT (ui->options_combobox),
-                                    renderer,
-                                    FALSE);
-        gtk_cell_layout_set_attributes (GTK_CELL_LAYOUT (ui->options_combobox), 
-					renderer,
-                                        "pixbuf", COLUMN_ICON,
-                                        NULL);		
-        renderer = gtk_cell_renderer_text_new ();
-        g_object_set (G_OBJECT (renderer), "ellipsize", PANGO_ELLIPSIZE_END, NULL);
-        gtk_cell_layout_pack_start (GTK_CELL_LAYOUT (ui->options_combobox),
-                                    renderer,
-                                    TRUE);
-        gtk_cell_layout_set_attributes (GTK_CELL_LAYOUT (ui->options_combobox), 
-					renderer,
-                                        "text", COLUMN_DESCRIPTION,
-                                        NULL);
+	selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (ui->options_treeview));
+	gtk_tree_selection_set_mode (selection, GTK_SELECTION_BROWSE);
 
-	g_signal_connect (G_OBJECT (ui->options_combobox), "changed",
+	gtk_tree_view_set_model (GTK_TREE_VIEW (ui->options_treeview),
+				 GTK_TREE_MODEL (model));
+	column = gtk_tree_view_column_new ();
+	renderer = gtk_cell_renderer_pixbuf_new ();
+	gtk_cell_layout_pack_start (GTK_CELL_LAYOUT (column),
+				    renderer,
+				    FALSE);
+	gtk_cell_layout_set_attributes (GTK_CELL_LAYOUT (column),
+					renderer,
+					"pixbuf", COLUMN_ICON,
+					NULL);
+	renderer = gtk_cell_renderer_text_new ();
+	g_object_set (G_OBJECT (renderer), "ellipsize", PANGO_ELLIPSIZE_END, NULL);
+	gtk_cell_layout_pack_start (GTK_CELL_LAYOUT (column),
+				    renderer,
+				    TRUE);
+	gtk_cell_layout_set_attributes (GTK_CELL_LAYOUT (column),
+					renderer,
+					"text", COLUMN_DESCRIPTION,
+					NULL);
+	gtk_tree_view_append_column (GTK_TREE_VIEW (ui->options_treeview), column);
+
+	g_signal_connect (G_OBJECT (selection), "changed",
 			  G_CALLBACK (option_changed), ui);
 
-	gtk_combo_box_set_active (GTK_COMBO_BOX (ui->options_combobox), option);
-
-	/* Grab the focus for the most recently used widget */
-	widget = g_list_nth_data (ui->contact_widgets, option);
-	gtk_widget_grab_focus (widget);
-
-	return last_used_support_dirs;
-}
-
-static void
-pack_entry_changed_cb (GObject *object, GParamSpec *spec, NS_ui *ui)
-{
-	gboolean send_enabled;
-
-	send_enabled = TRUE;
-
-	if (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (ui->pack_checkbutton))) {
-		const char *filename;
-
-		filename = gtk_entry_get_text(GTK_ENTRY(ui->pack_entry));
-		if (filename == NULL || *filename == '\0')
-			send_enabled = FALSE;
-	}
-
-	gtk_widget_set_sensitive (ui->send_button, send_enabled);
+	/* Select the previously selected option */
+	path = gtk_tree_path_new_from_indices (option, -1);
+	gtk_tree_selection_select_path (selection, path);
+	gtk_tree_path_free (path);
 }
 
 static void
@@ -528,31 +331,27 @@ nautilus_sendto_create_ui (void)
 	GtkBuilder *app;
 	GError* error = NULL;
 	NS_ui *ui;
-	gboolean one_file = FALSE;
-	gboolean supports_dirs;
 	GtkSettings *gtk_settings;
 	GtkWidget *button_image;
 
 	app = gtk_builder_new ();
-	if (!gtk_builder_add_from_file (app, UIDIR "/" "nautilus-sendto.ui", &error))	{
-		g_warning ("Couldn't load builder file: %s", error->message);
-		g_error_free (error);
+	/* FIXME, use run_from_build_dir instead */
+	if (!gtk_builder_add_from_file (app, "nautilus-sendto.ui", NULL)) {
+		if (!gtk_builder_add_from_file (app, UIDIR "/" "nautilus-sendto.ui", &error)) {
+			g_warning ("Couldn't load builder file: %s", error->message);
+			g_error_free (error);
+		}
 	}
 
 	ui = g_new0 (NS_ui, 1);
 
+	ui->options_treeview = GTK_WIDGET (gtk_builder_get_object (app, "options_treeview"));
+	ui->contacts_notebook = GTK_WIDGET (gtk_builder_get_object (app, "contacts_notebook"));
 	ui->hbox_contacts_ws = GTK_WIDGET (gtk_builder_get_object (app, "hbox_contacts_widgets"));
 	ui->send_to_label = GTK_WIDGET (gtk_builder_get_object (app, "send_to_label"));
-	ui->options_combobox = GTK_WIDGET (gtk_builder_get_object (app, "options_combobox"));
 	ui->dialog = GTK_WIDGET (gtk_builder_get_object (app, "nautilus_sendto_dialog"));
 	ui->cancel_button = GTK_WIDGET (gtk_builder_get_object (app, "cancel_button"));
 	ui->send_button = GTK_WIDGET (gtk_builder_get_object (app, "send_button"));
-	ui->pack_combobox = GTK_WIDGET (gtk_builder_get_object (app, "pack_combobox"));	
-	ui->pack_entry = GTK_WIDGET (gtk_builder_get_object (app, "pack_entry"));
-	ui->pack_checkbutton = GTK_WIDGET (gtk_builder_get_object (app, "pack_checkbutton"));
-	ui->status_box = GTK_WIDGET (gtk_builder_get_object (app, "status_box"));
-	ui->status_label = GTK_WIDGET (gtk_builder_get_object (app, "status_label"));
-	ui->status_image = GTK_WIDGET (gtk_builder_get_object (app, "status_image"));
 
 	gtk_settings = gtk_settings_get_default ();
 	button_image = GTK_WIDGET (gtk_builder_get_object (app, "image1"));
@@ -560,148 +359,84 @@ nautilus_sendto_create_ui (void)
 			  G_CALLBACK (update_button_image), button_image);
 	update_button_image (gtk_settings, NULL, button_image);
 
-	gtk_combo_box_set_active (GTK_COMBO_BOX(ui->pack_combobox),
-				  g_settings_get_int (settings,
-						      NAUTILUS_SENDTO_LAST_COMPRESS));
+	/* FIXME:
+	 * Set the title of the window depending on the mime-types in mime_types */
 
-	if (file_list != NULL && file_list->next != NULL)
-		one_file = FALSE;
-	else if (file_list != NULL)
-		one_file = TRUE;
-	
-	gtk_entry_set_text (GTK_ENTRY (ui->pack_entry), _("Files"));
-
-	if (one_file) {
-		char *filepath = NULL, *filename = NULL;
-
-		filepath = g_filename_from_uri ((char *)file_list->data,
-				NULL, NULL);
-
-		if (filepath != NULL)
-			filename = g_path_get_basename (filepath);
-		if (filename != NULL && filename[0] != '\0')
-			gtk_entry_set_text (GTK_ENTRY (ui->pack_entry), filename);
-
-		g_free (filename);
-		g_free (filepath);
-	} else {
-		char *filename = get_filename_from_list ();
-		if (filename != NULL && filename[0] != '\0') {
-			gtk_entry_set_text (GTK_ENTRY (ui->pack_entry),
-					filename);
-		}
-		g_free (filename);
-	}
-
-	set_contact_widgets (ui);
-	supports_dirs = set_model_for_options_combobox (ui);
+	set_model_for_options_treeview (ui);
 	g_signal_connect (G_OBJECT (ui->dialog), "destroy",
                           G_CALLBACK (destroy_dialog), NULL);
 	g_signal_connect (G_OBJECT (ui->cancel_button), "clicked",
 			  G_CALLBACK (destroy_dialog), NULL);
 	g_signal_connect (G_OBJECT (ui->send_button), "clicked",
 			  G_CALLBACK (send_button_cb), ui);
-	g_signal_connect (G_OBJECT (ui->pack_entry), "activate",
-			  G_CALLBACK (send_button_cb), ui);
-	g_signal_connect (G_OBJECT (ui->pack_entry), "notify::text",
-			  G_CALLBACK (pack_entry_changed_cb), ui);
-	g_signal_connect (G_OBJECT (ui->pack_checkbutton), "toggled",
-			  G_CALLBACK (toggle_pack_check), ui);
-
-	if (has_dirs == FALSE || supports_dirs != FALSE) {
-		gboolean toggle;
-
-		toggle = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (ui->pack_checkbutton));
-		gtk_widget_set_sensitive (ui->pack_combobox, toggle);
-		gtk_widget_set_sensitive (ui->pack_entry, toggle);
-	} else {
-		gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (ui->pack_checkbutton), TRUE);
-		gtk_widget_set_sensitive (ui->pack_checkbutton, FALSE);
-	}
 
 	gtk_widget_show (ui->dialog);
-
 }
 
 static void
-nautilus_sendto_plugin_dir_process (const char *plugindir)
+nautilus_sendto_plugin_load_all (void)
 {
-	GDir *dir;
-	const char *item;
-	NstPlugin *p = NULL;
-	gboolean (*nst_init_plugin)(NstPlugin *p);
-	GError *err = NULL;
+	const GList *list, *l;
+	GPtrArray *activate;
 
-	dir = g_dir_open (plugindir, 0, &err);
-
-	if (dir == NULL) {
-		g_warning ("Can't open the plugins dir: %s", err ? err->message : "No reason");
-		if (err)
-			g_error_free (err);
-	} else {
-		while ((item = g_dir_read_name(dir))) {
-			if (g_str_has_suffix (item, SOEXT)) {
-				char *module_path;
-
-				p = g_new0(NstPlugin, 1);
-				module_path = g_module_build_path (plugindir, item);
-				p->module = g_module_open (module_path, 0);
-			        if (!p->module) {
-                			g_warning ("error opening %s: %s", module_path, g_module_error ());
-					g_free (module_path);
-					continue;
-				}
-				g_free (module_path);
-
-				if (!g_module_symbol (p->module, "nst_init_plugin", (gpointer *) &nst_init_plugin)) {
-			                g_warning ("error: %s", g_module_error ());
-					g_module_close (p->module);
-					continue;
-				}
-
-				nst_init_plugin (p);
-				if (p->info->init(p)) {
-					plugin_list = g_list_append (plugin_list, p);
-				} else {
-					g_free (p);
-				}
-			}
-		}
-		g_dir_close (dir);
+	activate = g_ptr_array_new ();
+	list = peas_engine_get_plugin_list (PEAS_ENGINE (engine));
+	for (l = list; l != NULL; l = l->next) {
+		PeasPluginInfo *info = l->data;
+		g_ptr_array_add (activate, (gpointer) peas_plugin_info_get_module_name (info));
 	}
+	g_ptr_array_add (activate, NULL);
+
+	peas_engine_set_loaded_plugins (PEAS_ENGINE (engine), (const char **) activate->pdata);
+	g_ptr_array_free (activate, TRUE);
 }
 
-static gboolean
+static void
 nautilus_sendto_plugin_init (void)
 {
-	if (g_file_test (UNINSTALLED_PLUGINDIR, G_FILE_TEST_IS_DIR) != FALSE) {
-		/* Try to load the local plugins */
-		GError *err = NULL;
-		GDir *dir;
-		const char *item;
+	GPtrArray *search_paths;
+	char **paths, *user_dir;
 
-		dir = g_dir_open ("plugins/", 0, &err);
-		if (dir == NULL) {
-			g_warning ("Can't open the plugins dir: %s", err ? err->message : "No reason");
-			if (err)
-				g_error_free (err);
-			return FALSE;
-		}
-		while ((item = g_dir_read_name(dir))) {
-			char *plugindir;
-
-			plugindir = g_strdup_printf ("plugins/%s/.libs/", item);
-			if (g_file_test (plugindir, G_FILE_TEST_IS_DIR) != FALSE)
-				nautilus_sendto_plugin_dir_process (plugindir);
-			g_free (plugindir);
-		}
-		g_dir_close (dir);
+	g_irepository_require (g_irepository_get_default (), "Peas", "1.0", 0, NULL);
+	/* FIXME load the uninstalled version of the bindings if needed */
+	if (g_irepository_require (g_irepository_get_default (), "NautilusSendto", "1.0", 0, NULL) == NULL) {
+		g_warning ("Failed to load NautilusSendto bindings");
 	}
 
-	if (g_list_length (plugin_list) == 0)
-		nautilus_sendto_plugin_dir_process (PLUGINDIR);
+	search_paths = g_ptr_array_new ();
 
-	return g_list_length (plugin_list) != 0;
+	/* Add uninstalled plugins */
+	if (g_file_test (UNINSTALLED_PLUGINDIR, G_FILE_TEST_IS_DIR) != FALSE) {
+		g_ptr_array_add (search_paths, "plugins/");
+		g_ptr_array_add (search_paths, "plugins/");
+	}
+
+	/* Add user plugins */
+	user_dir = g_build_filename (g_get_user_config_dir (), "nautilus-sendto", "plugins", NULL);
+	g_ptr_array_add (search_paths, user_dir);
+	g_ptr_array_add (search_paths, user_dir);
+
+	/* Add system-wide plugins */
+	g_ptr_array_add (search_paths, PLUGINDIR);
+	g_ptr_array_add (search_paths, PLUGINDIR);
+
+	/* Terminate array */
+	g_ptr_array_add (search_paths, NULL);
+
+	/* Init engine */
+	paths = (char **) g_ptr_array_free (search_paths, FALSE);
+	engine = peas_engine_new ("Nst",
+				  LIBDIR,
+				  (const gchar **) paths);
+	g_free (user_dir);
+
+	/* Create the extension set */
+	exten_set = peas_extension_set_new (PEAS_ENGINE (engine),
+					    NAUTILUS_SENDTO_TYPE_PLUGIN,
+					    NULL);
+
+	/* Load all the plugins now */
+	nautilus_sendto_plugin_load_all ();
 }
 
 static char *
@@ -748,21 +483,59 @@ escape_ampersands_and_commas (const char *url)
 }
 
 static void
+collate_mimetypes (const char *key,
+		   gpointer    value,
+		   GPtrArray  *array)
+{
+	g_ptr_array_add (array, g_strdup (key));
+}
+
+static void
 nautilus_sendto_init (void)
 {
+	GHashTable *ht;
+	GPtrArray *array;
 	int i;
 
-	if (g_module_supported() == FALSE)
-		g_error ("Could not initialize gmodule support");
+	ht = g_hash_table_new_full (g_str_hash, g_direct_equal,
+				    g_free, NULL);
 
+	/* Clean up the URIs passed, and collect the mime-types of
+	 * the files */
 	for (i = 0; filenames != NULL && filenames[i] != NULL; i++) {
 		GFile *file;
 		char *filename, *escaped, *uri;
+		GFileInfo *info;
+		const char *mimetype;
 
+		/* We need a filename */
 		file = g_file_new_for_commandline_arg (filenames[i]);
 		filename = g_file_get_path (file);
-		if (filename == NULL)
+		if (filename == NULL) {
+			g_object_unref (file);
 			continue;
+		}
+
+		/* Get the mime-type, and whether the file is readable */
+		info = g_file_query_info (file,
+					  G_FILE_ATTRIBUTE_STANDARD_FAST_CONTENT_TYPE","G_FILE_ATTRIBUTE_ACCESS_CAN_READ,
+					  G_FILE_QUERY_INFO_NONE,
+					  NULL,
+					  NULL);
+		g_object_unref (file);
+
+		if (info == NULL)
+			continue;
+
+		if (g_file_info_get_attribute_boolean (info, G_FILE_ATTRIBUTE_ACCESS_CAN_READ) == FALSE) {
+			g_message ("Foobar is not readable");
+			g_object_unref (info);
+			continue;
+		}
+		mimetype = g_file_info_get_attribute_string (info, G_FILE_ATTRIBUTE_STANDARD_FAST_CONTENT_TYPE);
+		g_hash_table_insert (ht, g_strdup (mimetype), GINT_TO_POINTER (1));
+
+		g_object_unref (info);
 
 		if (g_file_test (filename, G_FILE_TEST_IS_DIR) != FALSE)
 			has_dirs = TRUE;
@@ -780,11 +553,20 @@ nautilus_sendto_init (void)
 	}
 
 	if (file_list == NULL) {
+		/* FIXME, this needs to be done in UI now */
 		g_print (_("Expects URIs or filenames to be passed as options\n"));
 		exit (1);
 	}
 
 	file_list = g_list_reverse (file_list);
+
+	/* Collate the mime-types */
+	array = g_ptr_array_new ();
+	g_hash_table_foreach (ht, (GHFunc) collate_mimetypes, array);
+	g_hash_table_destroy (ht);
+
+	g_ptr_array_add (array, NULL);
+	mime_types = (char **) g_ptr_array_free (array, FALSE);
 }
 
 int main (int argc, char **argv)
@@ -808,30 +590,12 @@ int main (int argc, char **argv)
 
 	settings = g_settings_new ("org.gnome.Nautilus.Sendto");
 	nautilus_sendto_init ();
-	if (nautilus_sendto_plugin_init () == FALSE) {
-		GtkWidget *error_dialog;
-
-		error_dialog =
-			gtk_message_dialog_new (NULL,
-						GTK_DIALOG_MODAL,
-						GTK_MESSAGE_ERROR,
-						GTK_BUTTONS_OK,
-						_("Could not load any plugins."));
-		gtk_message_dialog_format_secondary_text
-			(GTK_MESSAGE_DIALOG (error_dialog),
-			 _("Please verify your installation"));
-
-		gtk_window_set_title (GTK_WINDOW (error_dialog), ""); /* as per HIG */
-		gtk_container_set_border_width (GTK_CONTAINER (error_dialog), 5);
-		gtk_dialog_set_default_response (GTK_DIALOG (error_dialog),
-						 GTK_RESPONSE_OK);
-		gtk_dialog_run (GTK_DIALOG (error_dialog));
-		return 1;
-	}
+	nautilus_sendto_plugin_init ();
 	nautilus_sendto_create_ui ();
 
 	gtk_main ();
 	g_object_unref(settings);
+	g_strfreev (mime_types);
 
 	return 0;
 }

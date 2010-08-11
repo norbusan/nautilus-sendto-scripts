@@ -1,5 +1,4 @@
 /*
- *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License as
  * published by the Free Software Foundation; either version 2 of the
@@ -26,6 +25,29 @@
 #include "nst-common.h"
 #include "nautilus-sendto-plugin.h"
 
+#define REMOVABLE_TYPE_DEVICES_PLUGIN         (removable_devices_plugin_get_type ())
+#define REMOVABLE_DEVICES_PLUGIN(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), REMOVABLE_TYPE_DEVICES_PLUGIN, RemovableDevicesPlugin))
+#define REMOVABLE_DEVICES_PLUGIN_CLASS(k)     (G_TYPE_CHECK_CLASS_CAST((k), REMOVABLE_TYPE_DEVICES_PLUGIN, RemovableDevicesPlugin))
+#define REMOVABLE_IS_DEVICES_PLUGIN(o)        (G_TYPE_CHECK_INSTANCE_TYPE ((o), REMOVABLE_TYPE_DEVICES_PLUGIN))
+#define REMOVABLE_IS_DEVICES_PLUGIN_CLASS(k)  (G_TYPE_CHECK_CLASS_TYPE ((k), REMOVABLE_TYPE_DEVICES_PLUGIN))
+#define REMOVABLE_DEVICES_PLUGIN_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), REMOVABLE_TYPE_DEVICES_PLUGIN, RemovableDevicesPluginClass))
+
+typedef struct _RemovableDevicesPlugin       RemovableDevicesPlugin;
+typedef struct _RemovableDevicesPluginClass  RemovableDevicesPluginClass;
+
+struct _RemovableDevicesPlugin {
+	PeasExtensionBase parent_instance;
+
+	GVolumeMonitor *vol_monitor;
+	GtkWidget *cb;
+};
+
+struct _RemovableDevicesPluginClass {
+	PeasExtensionBaseClass parent_class;
+};
+
+NAUTILUS_PLUGIN_REGISTER(REMOVABLE_TYPE_DEVICES_PLUGIN, RemovableDevicesPlugin, removable_devices_plugin)
+
 enum {
 	NAME_COL,
 	ICON_COL,
@@ -33,19 +55,16 @@ enum {
 	NUM_COLS,
 };
 
-GVolumeMonitor* vol_monitor = NULL;
-GtkWidget *cb;
-
 static void
-cb_mount_removed (GVolumeMonitor *volume_monitor,
-		  GMount         *mount,
-		  NstPlugin      *plugin)
+cb_mount_removed (GVolumeMonitor         *volume_monitor,
+		  GMount                 *mount,
+		  RemovableDevicesPlugin *p)
 {
 	GtkTreeIter iter;
 	GtkListStore *store;
 	gboolean b, found;
 
-	store = GTK_LIST_STORE (gtk_combo_box_get_model (GTK_COMBO_BOX (cb)));
+	store = GTK_LIST_STORE (gtk_combo_box_get_model (GTK_COMBO_BOX (p->cb)));
 	b = gtk_tree_model_get_iter_first (GTK_TREE_MODEL (store), &iter);
 	found = FALSE;
 
@@ -65,28 +84,28 @@ cb_mount_removed (GVolumeMonitor *volume_monitor,
 	/* If a mount was removed */
 	if (found != FALSE) {
 		/* And it was the selected one */
-		if (gtk_combo_box_get_active (GTK_COMBO_BOX (cb)) == -1) {
+		if (gtk_combo_box_get_active (GTK_COMBO_BOX (p->cb)) == -1) {
 			/* Select the first item in the list */
-			gtk_combo_box_set_active (GTK_COMBO_BOX (cb), 0);
+			gtk_combo_box_set_active (GTK_COMBO_BOX (p->cb), 0);
 		}
 	}
 }
 
 static void
-cb_mount_changed (GVolumeMonitor *volume_monitor,
-		  GMount         *mount,
-		  NstPlugin      *plugin)
+cb_mount_changed (GVolumeMonitor         *volume_monitor,
+		  GMount                 *mount,
+		  RemovableDevicesPlugin *p)
 {
 	GtkTreeIter iter;
 	gboolean b;
 	GtkListStore *store;
 
 	if (g_mount_is_shadowed (mount) != FALSE) {
-		cb_mount_removed (volume_monitor, mount, plugin);
+		cb_mount_removed (volume_monitor, mount, p);
 		return;
 	}
 
-	store = GTK_LIST_STORE (gtk_combo_box_get_model (GTK_COMBO_BOX (cb)));
+	store = GTK_LIST_STORE (gtk_combo_box_get_model (GTK_COMBO_BOX (p->cb)));
 	b = gtk_tree_model_get_iter_first (GTK_TREE_MODEL (store), &iter);
 
 	while (b) {
@@ -111,9 +130,9 @@ cb_mount_changed (GVolumeMonitor *volume_monitor,
 }
 
 static void
-cb_mount_added (GVolumeMonitor *volume_monitor,
-		GMount         *mount,
-		NstPlugin      *plugin)
+cb_mount_added (GVolumeMonitor         *volume_monitor,
+		GMount                 *mount,
+		RemovableDevicesPlugin *p)
 {
 	char *name;
 	GtkTreeIter iter;
@@ -124,7 +143,7 @@ cb_mount_added (GVolumeMonitor *volume_monitor,
 		return;
 
 	name = g_mount_get_name (mount);
-	model = gtk_combo_box_get_model (GTK_COMBO_BOX (cb));
+	model = gtk_combo_box_get_model (GTK_COMBO_BOX (p->cb));
 
 	select_added = gtk_tree_model_iter_n_children (model, NULL) == 0;
 
@@ -138,33 +157,54 @@ cb_mount_added (GVolumeMonitor *volume_monitor,
 	g_free (name);
 
 	if (select_added != FALSE)
-		gtk_combo_box_set_active (GTK_COMBO_BOX (cb), 0);
+		gtk_combo_box_set_active (GTK_COMBO_BOX (p->cb), 0);
 
 }
 
 static gboolean
-init (NstPlugin *plugin)
+removable_devices_plugin_send_files (NautilusSendtoPlugin *plugin,
+				     GList                *file_list)
 {
-	g_print ("Init removable-devices plugin\n");
+	RemovableDevicesPlugin *p = REMOVABLE_DEVICES_PLUGIN (plugin);
+	GtkListStore *store;
+	GtkTreeIter iter;
+	GMount *dest_mount;
+	GFile *mount_root;
 
-	bindtextdomain (GETTEXT_PACKAGE, LOCALEDIR);
-	bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
+	if (gtk_combo_box_get_active_iter (GTK_COMBO_BOX (p->cb), &iter) == FALSE)
+		return TRUE;
 
-	vol_monitor = g_volume_monitor_get ();
-	cb = gtk_combo_box_new ();
+	store = GTK_LIST_STORE (gtk_combo_box_get_model (GTK_COMBO_BOX (p->cb)));
+	gtk_tree_model_get (GTK_TREE_MODEL (store), &iter, MOUNT_COL, &dest_mount, -1);
+	mount_root = g_mount_get_root (dest_mount);
+
+	copy_files_to (file_list, mount_root);
+
+	g_object_unref (mount_root);
 
 	return TRUE;
 }
 
-static GtkWidget*
-get_contacts_widget (NstPlugin *plugin)
+static gboolean
+removable_devices_plugin_supports_mime_types (NautilusSendtoPlugin *plugin,
+					      const char          **mime_types)
 {
+	/* All the mime-types are supported */
+	return TRUE;
+}
+
+static GtkWidget *
+removable_devices_plugin_get_widget (NautilusSendtoPlugin *plugin,
+				     GList                *file_list)
+{
+	RemovableDevicesPlugin *p = REMOVABLE_DEVICES_PLUGIN (plugin);
 	GtkListStore *store;
 	GList *l, *mounts;
 	GtkTreeIter iter;
+	GtkWidget *box;
 	GtkCellRenderer *text_renderer, *icon_renderer;
 
-	mounts = g_volume_monitor_get_mounts (vol_monitor);
+	mounts = g_volume_monitor_get_mounts (p->vol_monitor);
 
 	store = gtk_list_store_new (NUM_COLS, G_TYPE_STRING, G_TYPE_ICON, G_TYPE_OBJECT);
 
@@ -190,70 +230,54 @@ get_contacts_widget (NstPlugin *plugin)
 	}
 	g_list_free (mounts);
 
-	gtk_cell_layout_clear (GTK_CELL_LAYOUT (cb));
-	gtk_combo_box_set_model (GTK_COMBO_BOX (cb), GTK_TREE_MODEL (store));
+	gtk_cell_layout_clear (GTK_CELL_LAYOUT (p->cb));
+	gtk_combo_box_set_model (GTK_COMBO_BOX (p->cb), GTK_TREE_MODEL (store));
 
 	text_renderer = gtk_cell_renderer_text_new ();
 	icon_renderer = gtk_cell_renderer_pixbuf_new ();
-	gtk_cell_layout_pack_start (GTK_CELL_LAYOUT (cb), icon_renderer, FALSE);
-	gtk_cell_layout_pack_start (GTK_CELL_LAYOUT (cb), text_renderer, TRUE);
+	gtk_cell_layout_pack_start (GTK_CELL_LAYOUT (p->cb), icon_renderer, FALSE);
+	gtk_cell_layout_pack_start (GTK_CELL_LAYOUT (p->cb), text_renderer, TRUE);
 
-	gtk_cell_layout_set_attributes (GTK_CELL_LAYOUT (cb), text_renderer, "text", 0,  NULL);
-	gtk_cell_layout_set_attributes (GTK_CELL_LAYOUT (cb), icon_renderer, "gicon", 1,  NULL);
-	gtk_combo_box_set_active (GTK_COMBO_BOX (cb), 0);
+	gtk_cell_layout_set_attributes (GTK_CELL_LAYOUT (p->cb), text_renderer, "text", 0,  NULL);
+	gtk_cell_layout_set_attributes (GTK_CELL_LAYOUT (p->cb), icon_renderer, "gicon", 1,  NULL);
+	gtk_combo_box_set_active (GTK_COMBO_BOX (p->cb), 0);
 
-	g_signal_connect (G_OBJECT (vol_monitor), "mount-removed", G_CALLBACK (cb_mount_removed), plugin);
-	g_signal_connect (G_OBJECT (vol_monitor), "mount-added", G_CALLBACK (cb_mount_added), plugin);
-	g_signal_connect (G_OBJECT (vol_monitor), "mount-changed", G_CALLBACK (cb_mount_changed), plugin);
+	g_signal_connect (G_OBJECT (p->vol_monitor), "mount-removed", G_CALLBACK (cb_mount_removed), plugin);
+	g_signal_connect (G_OBJECT (p->vol_monitor), "mount-added", G_CALLBACK (cb_mount_added), plugin);
+	g_signal_connect (G_OBJECT (p->vol_monitor), "mount-changed", G_CALLBACK (cb_mount_changed), plugin);
 
-	return cb;
+	box = gtk_vbox_new (FALSE, 8);
+	gtk_box_pack_start (GTK_BOX (box), p->cb, TRUE, FALSE, 0);
+	gtk_widget_show_all (box);
+
+	return box;
 }
 
-static gboolean
-send_files (NstPlugin *plugin, GtkWidget *contact_widget,
-	    GList *file_list)
+static void
+removable_devices_plugin_init (RemovableDevicesPlugin *p)
 {
-	GtkListStore *store;
-	GtkTreeIter iter;
-	GMount *dest_mount;
-	GFile *mount_root;
+	bindtextdomain (GETTEXT_PACKAGE, LOCALEDIR);
+	bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
 
-	if (gtk_combo_box_get_active_iter (GTK_COMBO_BOX (contact_widget), &iter) == FALSE)
-		return TRUE;
-
-	store = GTK_LIST_STORE (gtk_combo_box_get_model (GTK_COMBO_BOX (cb)));
-	gtk_tree_model_get (GTK_TREE_MODEL (store), &iter, MOUNT_COL, &dest_mount, -1);
-	mount_root = g_mount_get_root (dest_mount);
-
-	copy_files_to (file_list, mount_root);
-
-	g_object_unref (mount_root);
-
-	return TRUE;
+	p->vol_monitor = g_volume_monitor_get ();
+	p->cb = gtk_combo_box_new ();
 }
 
-static gboolean
-destroy (NstPlugin *plugin)
+static void
+removable_devices_plugin_finalize (GObject *object)
 {
-	gtk_widget_destroy (cb);
+	RemovableDevicesPlugin *p = REMOVABLE_DEVICES_PLUGIN (object);
 
-	g_object_unref (vol_monitor);
-	return TRUE;
+	if (p->cb != NULL) {
+		gtk_widget_destroy (p->cb);
+		p->cb = NULL;
+	}
+
+	if (p->vol_monitor != NULL) {
+		g_object_unref (p->vol_monitor);
+		p->vol_monitor = NULL;
+	}
+
+	G_OBJECT_CLASS (removable_devices_plugin_parent_class)->finalize (object);
 }
-
-static
-NstPluginInfo plugin_info = {
-	"folder-remote",
-	"folder-remote",
-	N_("Removable disks and shares"),
-	NULL,
-	NAUTILUS_CAPS_SEND_DIRECTORIES,
-	init,
-	get_contacts_widget,
-	NULL,
-	send_files,
-	destroy
-};
-
-NST_INIT_PLUGIN (plugin_info)
 

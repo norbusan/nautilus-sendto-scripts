@@ -1,8 +1,6 @@
-/* -*- Mode: C; tab-width: 8; indent-tabs-mode: t; c-basic-offset: 8 -*- */
-
-/* 
+/*
  * Copyright (C) 2008 Jader Henrique da Silva
- * 
+ *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License as
  * published by the Free Software Foundation; either version 2 of the
@@ -108,7 +106,7 @@ GtkWidget* get_contacts_widget (NstPlugin *plugin)
 	gtk_cell_layout_pack_start (GTK_CELL_LAYOUT (widget),
 				    renderer,
 				    FALSE);
-	gtk_cell_layout_set_attributes (GTK_CELL_LAYOUT (widget), 
+	gtk_cell_layout_set_attributes (GTK_CELL_LAYOUT (widget),
 					renderer,
 					"icon-name", COL_PIXBUF,
 					NULL);
@@ -116,7 +114,7 @@ GtkWidget* get_contacts_widget (NstPlugin *plugin)
 	gtk_cell_layout_pack_start (GTK_CELL_LAYOUT (widget),
 				    renderer,
 				    TRUE);
-	gtk_cell_layout_set_attributes (GTK_CELL_LAYOUT (widget), 
+	gtk_cell_layout_set_attributes (GTK_CELL_LAYOUT (widget),
 					renderer,
 					"text", COL_LABEL,
 					NULL);
@@ -162,7 +160,7 @@ gboolean send_files (NstPlugin *plugin,
 	return TRUE;
 }
 
-static 
+static
 gboolean destroy (NstPlugin *plugin){
 
 	g_object_unref (burn);
@@ -171,7 +169,7 @@ gboolean destroy (NstPlugin *plugin){
 
 }
 
-static 
+static
 NstPluginInfo plugin_info = {
 	"brasero",
 	"nautilus-burn",
@@ -183,7 +181,7 @@ NstPluginInfo plugin_info = {
 	NULL,
 	send_files,
 	destroy
-}; 
+};
 
 NST_INIT_PLUGIN (plugin_info)
 

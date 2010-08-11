@@ -1,0 +1,6 @@
+[Nst Plugin]
+Module=nstremovable_devices
+IAge=1
+_Name=Removable disks and shares
+Authors=Maxim Ermilov <ermilov.maxim@gmail.com>, Bastien Nocera <hadess@hadess.net>
+Icon=folder-remote
