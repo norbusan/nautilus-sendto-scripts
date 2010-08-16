@@ -31,7 +31,3 @@ ChangeLog:
 		git log --stat --after="Fri Apr 17 16:36:52 2009" > $@; \
 	fi
 
-install-data-local:
-	-GCONF_CONFIG_SOURCE=$(GCONF_SCHEMA_CONFIG_SOURCE) $(GCONFTOOL) --makefile-install-rule $(srcdir)/$(schema_DATA)
-
-
