@@ -45,8 +45,14 @@ typedef struct {
 GType nst_pack_widget_get_type      (void);
 GtkWidget *nst_pack_widget_new      (void);
 
-char *nst_pack_widget_pack_files    (NstPackWidget *widget,
-				     GList         *file_list);
-void nst_pack_widget_set_from_names (NstPackWidget *widget,
-				     GList         *file_list);
+char *nst_pack_widget_pack_files     (NstPackWidget *widget,
+				      GList         *file_list);
+void nst_pack_widget_set_from_names  (NstPackWidget *widget,
+				      GList         *file_list);
+void nst_pack_widget_set_enabled     (NstPackWidget *widget,
+				      gboolean       enabled);
+gboolean nst_pack_widget_get_enabled (NstPackWidget *widget);
+void nst_pack_widget_set_force_enabled     (NstPackWidget *widget,
+					    gboolean       force_enabled);
+gboolean nst_pack_widget_get_force_enabled (NstPackWidget *widget);
 

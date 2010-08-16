@@ -107,6 +107,7 @@ struct NstPackWidgetPrivate {
 	GtkWidget *pack_combobox;
 	GtkWidget *pack_entry;
 	GtkWidget *pack_checkbutton;
+	gboolean can_send;
 };
 
 G_DEFINE_TYPE (NstPackWidget, nst_pack_widget, GTK_TYPE_VBOX)
@@ -114,6 +115,11 @@ G_DEFINE_TYPE (NstPackWidget, nst_pack_widget, GTK_TYPE_VBOX)
 
 static void pack_entry_changed_cb (GObject *object, GParamSpec *spec, NstPackWidget *widget);
 static void toggle_pack_check (GtkWidget *toggle, NstPackWidget *widget);
+
+enum {
+	PROP_0,
+	PROP_CAN_SEND
+};
 
 static char *
 get_filename_from_list (GList *file_list)
@@ -204,8 +210,35 @@ get_filename_from_list (GList *file_list)
 }
 
 static void
+nst_pack_widget_get_property (GObject    *object,
+			      guint       property_id,
+			      GValue     *value,
+			      GParamSpec *pspec)
+{
+	NstPackWidget *widget;
+
+	widget = NST_PACK_WIDGET (object);
+
+	switch (property_id) {
+	case PROP_CAN_SEND:
+		g_value_set_boolean (value, widget->priv->can_send);
+		break;
+	default:
+		G_OBJECT_WARN_INVALID_PROPERTY_ID (object, property_id, pspec);
+	}
+}
+
+static void
 nst_pack_widget_class_init (NstPackWidgetClass *klass)
 {
+	GObjectClass *object_class = G_OBJECT_CLASS (klass);
+
+	object_class->get_property = nst_pack_widget_get_property;
+
+	g_object_class_install_property (object_class, PROP_CAN_SEND,
+					 g_param_spec_boolean ("can-send", "Can send", "Whether the text entry is filled if compression is active.",
+							       TRUE, G_PARAM_READABLE));
+
 	g_type_class_add_private (klass, sizeof (NstPackWidgetPrivate));
 }
 
@@ -244,7 +277,9 @@ nst_pack_widget_init (NstPackWidget *self)
 			  G_CALLBACK (pack_entry_changed_cb), self);
 	g_signal_connect (G_OBJECT (priv->pack_checkbutton), "toggled",
 			  G_CALLBACK (toggle_pack_check), self);
-
+	nst_pack_widget_set_enabled (self, FALSE);
+	/* Because the default is FALSE, and we're not changing the value */
+	toggle_pack_check (priv->pack_checkbutton, self);
 
 	settings = g_settings_new ("org.gnome.Nautilus.Sendto");
 	gtk_combo_box_set_active (GTK_COMBO_BOX (priv->pack_combobox),
@@ -253,6 +288,46 @@ nst_pack_widget_init (NstPackWidget *self)
 	g_object_unref (settings);
 
 	gtk_container_add (GTK_CONTAINER (self), vbox);
+}
+
+void
+nst_pack_widget_set_enabled (NstPackWidget *widget,
+			     gboolean       enabled)
+{
+	g_return_if_fail (NST_PACK_WIDGET (widget));
+
+	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (widget->priv->pack_checkbutton), enabled);
+	/* The toggled callback will take care of making the entry unsensitive */
+}
+
+gboolean
+nst_pack_widget_get_enabled (NstPackWidget *widget)
+{
+	g_return_val_if_fail (NST_PACK_WIDGET (widget), FALSE);
+
+	return gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (widget->priv->pack_checkbutton));
+}
+
+void
+nst_pack_widget_set_force_enabled (NstPackWidget *widget,
+				   gboolean       force_enabled)
+{
+	g_return_if_fail (NST_PACK_WIDGET (widget));
+
+	if (force_enabled) {
+		gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (widget->priv->pack_checkbutton), TRUE);
+		gtk_widget_set_sensitive (widget->priv->pack_checkbutton, FALSE);
+	} else {
+		gtk_widget_set_sensitive (widget->priv->pack_checkbutton, TRUE);
+	}
+}
+
+gboolean
+nst_pack_widget_get_force_enabled (NstPackWidget *widget)
+{
+	g_return_val_if_fail (NST_PACK_WIDGET (widget), FALSE);
+
+	return gtk_widget_get_sensitive (widget->priv->pack_checkbutton);
 }
 
 void
@@ -270,10 +345,11 @@ nst_pack_widget_set_from_names (NstPackWidget *widget,
 		one_file = TRUE;
 
 	if (one_file) {
-		char *filepath = NULL, *filename = NULL;
+		char *filepath, *filename;
 
 		filepath = g_filename_from_uri ((char *)file_list->data,
-				NULL, NULL);
+						NULL, NULL);
+		filename = NULL;
 
 		if (filepath != NULL)
 			filename = g_path_get_basename (filepath);
@@ -283,10 +359,12 @@ nst_pack_widget_set_from_names (NstPackWidget *widget,
 		g_free (filename);
 		g_free (filepath);
 	} else {
-		char *filename = get_filename_from_list (file_list);
+		char *filename;
+
+		filename = get_filename_from_list (file_list);
 		if (filename != NULL && filename[0] != '\0') {
 			gtk_entry_set_text (GTK_ENTRY (priv->pack_entry),
-					filename);
+					    filename);
 		}
 		g_free (filename);
 	}
@@ -370,6 +448,17 @@ nst_pack_widget_pack_files (NstPackWidget *widget,
 }
 
 static void
+pack_entry_set_send_enabled (NstPackWidget *widget,
+			     gboolean       send_enabled)
+{
+	if (send_enabled != widget->priv->can_send) {
+		widget->priv->can_send = send_enabled;
+
+		g_object_notify (G_OBJECT (widget), "can-send");
+	}
+}
+
+static void
 toggle_pack_check (GtkWidget *toggle, NstPackWidget *widget)
 {
 	GtkToggleButton *t = GTK_TOGGLE_BUTTON (toggle);
@@ -391,8 +480,7 @@ toggle_pack_check (GtkWidget *toggle, NstPackWidget *widget)
 			send_enabled = FALSE;
 	}
 
-//FIXME changed property
-//	gtk_widget_set_sensitive (priv->send_button, send_enabled);
+	pack_entry_set_send_enabled (widget, send_enabled);
 }
 
 static void
@@ -412,8 +500,7 @@ pack_entry_changed_cb (GObject *object, GParamSpec *spec, NstPackWidget *widget)
 			send_enabled = FALSE;
 	}
 
-//FIXME changed property
-//	gtk_widget_set_sensitive (ui->send_button, send_enabled);
+	pack_entry_set_send_enabled (widget, send_enabled);
 }
 
 GtkWidget *
