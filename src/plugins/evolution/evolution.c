@@ -420,23 +420,37 @@ evolution_plugin_send_files (NautilusSendtoPlugin *plugin,
 	EvolutionPlugin *p;
 	gchar *cmd;
 	GString *mailto;
+	GList *packed;
 
 	p = EVOLUTION_PLUGIN (plugin);
+
+	packed = NULL;
+	if (nst_pack_widget_get_enabled (NST_PACK_WIDGET (p->packer))) {
+		char *filename;
+
+		filename = nst_pack_widget_pack_files (NST_PACK_WIDGET (p->packer), file_list);
+		packed = g_list_append (packed, filename);
+	}
 
 	mailto = g_string_new ("");
 	switch (p->type) {
 	case MAILER_BALSA:
-		get_balsa_mailto (p, mailto, file_list);
+		get_balsa_mailto (p, mailto, packed ? packed : file_list);
 		break;
 	case MAILER_SYLPHEED:
-		get_sylpheed_mailto (p, mailto, file_list);
+		get_sylpheed_mailto (p, mailto, packed ? packed : file_list);
 		break;
 	case MAILER_THUNDERBIRD:
-		get_thunderbird_mailto (p, mailto, file_list);
+		get_thunderbird_mailto (p, mailto, packed ? packed : file_list);
 		break;
 	case MAILER_EVO:
 	default:
-		get_evo_mailto (p, mailto, file_list);
+		get_evo_mailto (p, mailto, packed ? packed : file_list);
+	}
+
+	if (packed != NULL) {
+		g_free (packed->data);
+		g_list_free (packed);
 	}
 
 	cmd = g_strdup_printf (p->mail_cmd, mailto->str);
