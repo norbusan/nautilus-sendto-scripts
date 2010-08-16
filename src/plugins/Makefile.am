@@ -6,7 +6,7 @@ NST_COMMON_SOURCES = nst-common.c nst-common.h
 
 noinst_LTLIBRARIES = libnstcommon.la
 libnstcommon_la_SOURCES = $(NST_COMMON_SOURCES)
-libnstcommon_la_CFLAGS = $(NAUTILUS_SENDTO_CFLAGS)
+libnstcommon_la_CFLAGS = $(NAUTILUS_SENDTO_CFLAGS) -DUIDIR=\""$(uidir)"\"
 libnstcommon_la_LIBADD = $(NAUTILUS_SENDTO_LIBS)
 
 EXTRA_DIST = $(NST_COMMON_SOURCES)
@@ -18,6 +18,9 @@ lib_LTLIBRARIES = libnautilussendto-1.0.la
 libnautilussendto_1_0_la_SOURCES = nautilus-sendto-plugin.h nautilus-sendto-plugin.c
 libnautilussendto_1_0_la_LIBADD = $(NAUTILUS_SENDTO_LIBS)
 libnautilussendto_1_0_la_CFLAGS = $(NAUTILUS_SENDTO_CFLAGS)
+
+ui_DATA = pack-entry.ui
+uidir = $(datadir)/nautilus-sendto/ui
 
 if HAVE_INTROSPECTION
 -include $(INTROSPECTION_MAKEFILE)

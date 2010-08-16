@@ -334,10 +334,12 @@ nautilus_sendto_create_ui (void)
 	const char *ui_file;
 
 	app = gtk_builder_new ();
-	if (run_from_build_dir)
+	if (run_from_build_dir) {
 		ui_file = "nautilus-sendto.ui";
-	else
+		g_setenv ("NST_RUN_FROM_BUILDDIR", "1", TRUE);
+	} else {
 		ui_file = UIDIR "/" "nautilus-sendto.ui";
+	}
 
 	if (!gtk_builder_add_from_file (app, ui_file, &error)) {
 		g_warning ("Couldn't load builder file: %s", error->message);

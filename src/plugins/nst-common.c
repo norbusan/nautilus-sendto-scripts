@@ -217,14 +217,19 @@ nst_pack_widget_init (NstPackWidget *self)
 	GtkWidget *vbox;
 	NstPackWidgetPrivate *priv;
 	GSettings *settings;
+	const char *ui_file;
 
 	self->priv = NST_PACK_WIDGET_GET_PRIVATE (self);
 	priv = self->priv;
 
 	builder = gtk_builder_new ();
-	//FIXME load from system
-	if (!gtk_builder_add_from_file (builder, "plugins/pack-entry.ui", &error)) {
-		g_warning ("Couldn't load builder file: %s", error->message);
+	if (g_getenv ("NST_RUN_FROM_BUILDDIR") != NULL)
+		ui_file = "plugins/pack-entry.ui";
+	else
+		ui_file = UIDIR "/" "pack-entry.ui";
+
+	if (!gtk_builder_add_from_file (builder, ui_file, &error)) {
+		g_warning ("Couldn't load builder file '%s': %s", ui_file, error->message);
 		g_error_free (error);
 	}
 
