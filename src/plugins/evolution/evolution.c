@@ -52,6 +52,7 @@ struct _EvolutionPlugin {
 	GtkWidget *vbox;
 	GtkWidget *entry;
 	GtkWidget *packer;
+	gboolean has_dirs;
 
 	char *mail_cmd;
 	MailerType type;
@@ -147,13 +148,17 @@ evolution_plugin_supports_mime_types (NautilusSendtoPlugin *plugin,
 				      const char          **mime_types)
 {
 	EvolutionPlugin *p;
+	guint i;
 
 	p = EVOLUTION_PLUGIN (plugin);
 
 	if (p->mail_cmd == NULL)
 		return FALSE;
 
-	//FIXME check for types and setup the packer
+	for (i = 0; mime_types[i] != NULL; i++) {
+		if (g_str_equal (mime_types[i], "inode/directory"))
+			p->has_dirs = TRUE;
+	}
 
 	return TRUE;
 }
@@ -246,6 +251,19 @@ setup_source_changes (EContactEntry *entry)
 			entry, NULL, NULL);
 }
 
+static void
+can_send_changed (GObject         *gobject,
+		  GParamSpec      *pspec,
+		  EvolutionPlugin *p)
+{
+	gboolean can_send;
+
+	g_object_get (gobject, "can-send", &can_send, NULL);
+
+	/* FIXME, export this to the shell */
+	g_message ("Packer can send? %d", can_send);
+}
+
 static GtkWidget *
 evolution_plugin_get_widget (NautilusSendtoPlugin *plugin,
 			     GList                *file_list)
@@ -271,6 +289,10 @@ evolution_plugin_get_widget (NautilusSendtoPlugin *plugin,
 	alignment = gtk_alignment_new (0.0, 1.0, 1.0, 0.0);
 	p->packer = nst_pack_widget_new ();
 	nst_pack_widget_set_from_names (NST_PACK_WIDGET (p->packer), file_list);
+	if (p->has_dirs != FALSE)
+		nst_pack_widget_set_force_enabled (NST_PACK_WIDGET (p->packer), TRUE);
+	g_signal_connect (G_OBJECT (p->packer), "notify::can-send",
+			  G_CALLBACK (can_send_changed), p);
 	gtk_container_add (GTK_CONTAINER (alignment), p->packer);
 	gtk_box_pack_start (GTK_BOX (p->vbox), alignment, TRUE, TRUE, 0);
 
