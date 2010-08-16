@@ -81,106 +81,46 @@ destroy_dialog (GtkWidget *widget, gpointer data )
         gtk_main_quit ();
 }
 
-#if 0
-static gboolean
-status_label_clear (gpointer data)
-{
-	NS_ui *ui = (NS_ui *) data;
-	gtk_label_set_label (GTK_LABEL (ui->status_label), "");
-	gtk_widget_hide (ui->status_image);
-
-	ui->status_timeoutid = 0;
-
-	return FALSE;
-}
-#endif
 static void
 send_button_cb (GtkWidget *widget, NS_ui *ui)
 {
-#if 0
-	char *f, *error;
-	NstPlugin *p;
-	GtkWidget *w;
+	GtkTreeModel *model;
+	GtkTreeSelection *treeselection;
+	GtkTreeIter iter;
+	char *id;
+	PeasPluginInfo *info;
+	PeasExtension *ext;
+	gboolean success;
+
+	treeselection = gtk_tree_view_get_selection (GTK_TREE_VIEW (ui->options_treeview));
+	if (gtk_tree_selection_get_selected (treeselection, &model, &iter) == FALSE)
+		return;
 
 	gtk_widget_set_sensitive (ui->dialog, FALSE);
 
-	p = (NstPlugin *) g_list_nth_data (plugin_list, option);
-	w = (GtkWidget *) g_list_nth_data (ui->contact_widgets, option);
-
-	if (ui->status_timeoutid != 0) {
-		g_source_remove (ui->status_timeoutid);
-		status_label_clear (ui);
-	}
-
-	if (p == NULL)
-		return;
-
-	if (p->info->validate_destination != NULL) {
-		error = NULL;
-		if (p->info->validate_destination (p, w, &error) == FALSE) {
-			char *message;
-
-			message = g_strdup_printf ("<b>%s</b>", error);
-			g_free (error);
-			gtk_label_set_markup (GTK_LABEL (ui->status_label), message);
-			g_free (message);
-			ui->status_timeoutid = g_timeout_add_seconds (NAUTILUS_SENDTO_STATUS_LABEL_TIMEOUT_SECONDS,
-								      status_label_clear,
-								      ui);
-			gtk_widget_show (ui->status_image);
-			gtk_widget_show (ui->status_box);
-			gtk_widget_set_sensitive (ui->dialog, TRUE);
-			return;
-		}
-	}
+	gtk_tree_model_get (model, &iter,
+			    COLUMN_ID, &id,
+			    -1);
 
 	g_settings_set_string (settings,
 			       NAUTILUS_SENDTO_LAST_MEDIUM,
-			       p->info->id);
+			       id);
 
-	if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(ui->pack_checkbutton))){
-		f = pack_files (ui);
-		if (f != NULL) {
-			GList *packed_file = NULL;
-			packed_file = g_list_append (packed_file, f);
-			if (!p->info->send_files (p, w, packed_file)) {
-				g_list_free (packed_file);
-				return;
-			}
-			g_list_free (packed_file);
-		} else {
-			gtk_widget_set_sensitive (ui->dialog, TRUE);
-			return;
-		}
-	} else {
-		if (!p->info->send_files (p, w, file_list)) {
-			g_list_foreach (file_list, (GFunc) g_free, NULL);
-			g_list_free (file_list);
-			file_list = NULL;
-			return;
-		}
-		g_list_free (file_list);
-		file_list = NULL;
+	info = peas_engine_get_plugin_info (engine, id);
+	ext = peas_extension_set_get_extension (exten_set, info);
+
+	if (peas_extension_call (ext, "send_files", file_list, &success) == FALSE ||
+	    success == FALSE) {
+		/* FIXME report the error in the UI */
+		g_warning ("Failed to send files");
+		gtk_widget_set_sensitive (ui->dialog, TRUE);
+		g_free (id);
+		return;
 	}
+
+	g_free (id);
 	destroy_dialog (NULL,NULL);
-#endif
 }
-
-#if 0
-static void
-send_if_no_pack_cb (GtkWidget *widget, NS_ui *ui)
-{
-	if (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (ui->pack_checkbutton))) {
-		if (gtk_widget_is_sensitive (ui->pack_entry)) {
-			gtk_widget_grab_focus (ui->pack_entry);
-		} else {
-			gtk_widget_grab_focus (ui->pack_checkbutton);
-		}
-	} else {
-		send_button_cb (widget, ui);
-	}
-}
-#endif
 
 static void
 option_changed (GtkTreeSelection *treeselection,
