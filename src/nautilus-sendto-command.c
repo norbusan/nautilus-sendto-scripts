@@ -33,8 +33,6 @@
 #define NAUTILUS_SENDTO_LAST_MEDIUM	"last-medium"
 #define NAUTILUS_SENDTO_STATUS_LABEL_TIMEOUT_SECONDS 10
 
-#define UNINSTALLED_PLUGINDIR "plugins/removable-devices"
-
 enum {
 	COLUMN_ICON,
 	COLUMN_ID,
@@ -333,14 +331,17 @@ nautilus_sendto_create_ui (void)
 	NS_ui *ui;
 	GtkSettings *gtk_settings;
 	GtkWidget *button_image;
+	const char *ui_file;
 
 	app = gtk_builder_new ();
-	/* FIXME, use run_from_build_dir instead */
-	if (!gtk_builder_add_from_file (app, "nautilus-sendto.ui", NULL)) {
-		if (!gtk_builder_add_from_file (app, UIDIR "/" "nautilus-sendto.ui", &error)) {
-			g_warning ("Couldn't load builder file: %s", error->message);
-			g_error_free (error);
-		}
+	if (run_from_build_dir)
+		ui_file = "nautilus-sendto.ui";
+	else
+		ui_file = UIDIR "/" "nautilus-sendto.ui";
+
+	if (!gtk_builder_add_from_file (app, ui_file, &error)) {
+		g_warning ("Couldn't load builder file: %s", error->message);
+		g_error_free (error);
 	}
 
 	ui = g_new0 (NS_ui, 1);
@@ -397,8 +398,12 @@ nautilus_sendto_plugin_init (void)
 	GPtrArray *search_paths;
 	char **paths, *user_dir;
 
-	g_irepository_require (g_irepository_get_default (), "Peas", "1.0", 0, NULL);
-	/* FIXME load the uninstalled version of the bindings if needed */
+	/* FIXME error out properly */
+	if (g_irepository_require (g_irepository_get_default (), "Peas", "1.0", 0, NULL) == NULL) {
+		g_warning ("Failed to load Peas bindings");
+	}
+	if (run_from_build_dir)
+		g_irepository_prepend_search_path ("plugins/");
 	if (g_irepository_require (g_irepository_get_default (), "NautilusSendto", "1.0", 0, NULL) == NULL) {
 		g_warning ("Failed to load NautilusSendto bindings");
 	}
@@ -406,7 +411,7 @@ nautilus_sendto_plugin_init (void)
 	search_paths = g_ptr_array_new ();
 
 	/* Add uninstalled plugins */
-	if (g_file_test (UNINSTALLED_PLUGINDIR, G_FILE_TEST_IS_DIR) != FALSE) {
+	if (run_from_build_dir) {
 		g_ptr_array_add (search_paths, "plugins/");
 		g_ptr_array_add (search_paths, "plugins/");
 	}
