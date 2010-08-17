@@ -257,7 +257,7 @@ nst_pack_widget_init (NstPackWidget *self)
 
 	builder = gtk_builder_new ();
 	if (g_getenv ("NST_RUN_FROM_BUILDDIR") != NULL)
-		ui_file = "plugins/pack-entry.ui";
+		ui_file = "../data/pack-entry.ui";
 	else
 		ui_file = UIDIR "/" "pack-entry.ui";
 

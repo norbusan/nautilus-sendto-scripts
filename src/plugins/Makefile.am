@@ -19,7 +19,6 @@ libnautilussendto_1_0_la_SOURCES = nautilus-sendto-plugin.h nautilus-sendto-plug
 libnautilussendto_1_0_la_LIBADD = $(NAUTILUS_SENDTO_LIBS)
 libnautilussendto_1_0_la_CFLAGS = $(NAUTILUS_SENDTO_CFLAGS)
 
-ui_DATA = pack-entry.ui
 uidir = $(datadir)/nautilus-sendto/ui
 
 if HAVE_INTROSPECTION

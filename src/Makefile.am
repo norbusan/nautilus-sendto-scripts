@@ -13,12 +13,6 @@ INCLUDES =					\
 	$(DISABLE_DEPRECATED)			\
 	$(WARN_CFLAGS)
 
-pkgconfigdir = $(libdir)/pkgconfig
-pkgconfig_DATA = nautilus-sendto.pc
-
-ui_DATA = nautilus-sendto.ui
-uidir = $(datadir)/nautilus-sendto/ui
-
 noinst_LTLIBRARIES = libnstplugin.la
 libnstplugin_la_SOURCES =			\
 	nst-enum-types.c			\
@@ -55,13 +49,4 @@ nst-enum-types.c: $(nst_headers_to_scan_for_enums) Makefile nst-enum-types.h
 			--vtail "      { 0, NULL, NULL }\n    };\n    etype = g_@type@_register_static (\"@EnumName@\", values);\n  }\n  return etype;\n}\n" \
 		$(nst_headers_to_scan_for_enums)) > $@
 
-convertdir=$(datadir)/GConf/gsettings
-convert_DATA = nautilus-sendto-convert
-
-gsettingsschema_in_files = org.gnome.Nautilus.Sendto.gschema.xml.in
-gsettings_SCHEMAS = $(gsettingsschema_in_files:.xml.in=.xml)
-@INTLTOOL_XML_NOMERGE_RULE@
-@GSETTINGS_RULES@
-
-EXTRA_DIST = $(ui_DATA) nautilus-sendto.pc.in $(convert_DATA) $(gsettingsschema_in_files)
 CLEANFILES = $(nst_built_headers) $(nst_built_cfiles)

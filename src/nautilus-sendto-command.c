@@ -275,7 +275,7 @@ nautilus_sendto_create_ui (void)
 
 	app = gtk_builder_new ();
 	if (run_from_build_dir) {
-		ui_file = "nautilus-sendto.ui";
+		ui_file = "../data/nautilus-sendto.ui";
 		g_setenv ("NST_RUN_FROM_BUILDDIR", "1", TRUE);
 	} else {
 		ui_file = UIDIR "/" "nautilus-sendto.ui";

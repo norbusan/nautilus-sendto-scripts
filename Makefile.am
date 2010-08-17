@@ -1,4 +1,4 @@
-SUBDIRS = src docs po
+SUBDIRS = data src docs po
 
 DISTCHECK_CONFIGURE_FLAGS = --enable-gtk-doc --with-nautilusdir='$${libdir}/nautilus/extensions-2.0-distcheck'
 

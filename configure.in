@@ -233,9 +233,10 @@ AM_GLIB_GNU_GETTEXT
 
 AC_OUTPUT([
 Makefile
+data/Makefile
+data/nautilus-sendto.pc
 src/Makefile
 src/extension/Makefile
-src/nautilus-sendto.pc
 src/plugins/Makefile
 src/plugins/evolution/Makefile
 src/plugins/gajim/Makefile
