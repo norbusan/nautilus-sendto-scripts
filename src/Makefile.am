@@ -61,4 +61,5 @@ nst-enum-types.c: $(nst_headers_to_scan_for_enums) Makefile nst-enum-types.h
 			--vtail "      { 0, NULL, NULL }\n    };\n    etype = g_@type@_register_static (\"@EnumName@\", values);\n  }\n  return etype;\n}\n" \
 		$(nst_headers_to_scan_for_enums)) > $@
 
+EXTRA_DIST = test-mimetype-data
 CLEANFILES = $(nst_built_headers) $(nst_built_cfiles)

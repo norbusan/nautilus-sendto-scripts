@@ -38,6 +38,7 @@ nst.schemas
 po/.intltool-merge-cache
 po/POTFILES
 po/stamp-it
+src/test-mimetype
 src/nautilus-sendto
 src/nst-enum-types.c
 src/nst-enum-types.h
