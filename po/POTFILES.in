@@ -3,10 +3,11 @@
 src/extension/nautilus-nste.c
 src/extension/nautilus-nste.h
 src/nautilus-sendto-command.c
-src/org.gnome.Nautilus.Sendto.gschema.xml.in
-[type: gettext/glade]src/nautilus-sendto.ui
+src/nautilus-sendto-mimetype.c
+data/org.gnome.Nautilus.Sendto.gschema.xml.in
+[type: gettext/glade]data/nautilus-sendto.ui
 src/plugins/nst-common.c
-src/plugins/pack-entry.ui
+data/pack-entry.ui
 src/plugins/evolution/evolution.c
 src/plugins/evolution/e-contact-entry.c
 src/plugins/gajim/gajim.c
