@@ -52,7 +52,7 @@ static PeasExtensionSet *exten_set;
 
 GList *file_list = NULL;
 char **mime_types = NULL;
-gboolean has_dirs = FALSE;
+guint num_dirs = 0;
 GList *plugin_list = NULL;
 GHashTable *hash ;
 guint option = 0;
@@ -307,7 +307,9 @@ nautilus_sendto_create_ui (void)
 
 	/* Set a title depending on the number of files to
 	 * share, and their types */
-	title = nst_title_from_mime_types ((const char **) mime_types, g_list_length (file_list));
+	title = nst_title_from_mime_types ((const char **) mime_types,
+					   g_list_length (file_list) - num_dirs,
+					   num_dirs);
 	gtk_window_set_title (GTK_WINDOW (gtk_builder_get_object (app, "nautilus_sendto_dialog")),
 			     title);
 	g_free (title);
@@ -488,11 +490,10 @@ nautilus_sendto_init (void)
 		}
 		mimetype = g_file_info_get_attribute_string (info, G_FILE_ATTRIBUTE_STANDARD_FAST_CONTENT_TYPE);
 		g_hash_table_insert (ht, g_strdup (mimetype), GINT_TO_POINTER (1));
+		if (g_str_equal (mimetype, "inode/directory"))
+			num_dirs++;
 
 		g_object_unref (info);
-
-		if (g_file_test (filename, G_FILE_TEST_IS_DIR) != FALSE)
-			has_dirs = TRUE;
 
 		uri = g_filename_to_uri (filename, NULL, NULL);
 		g_free (filename);

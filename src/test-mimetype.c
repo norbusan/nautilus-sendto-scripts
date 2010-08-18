@@ -2,33 +2,73 @@
 #include "config.h"
 
 #include <locale.h>
+#include <stdlib.h>
 #include <glib.h>
 #include <glib-object.h>
 #include <glib/gi18n.h>
 
 #include "nautilus-sendto-mimetype.h"
 
-typedef struct {
-	const char **mimetypes;
-	guint num_files;
-	const char *result;
-} TitleTests;
-
-static TitleTests titles[] = {
-	{
-		{ "application/octet-stream", NULL },
-		1,
-		"Sharing one file",
-	},
-};
-
 static void
 test_name (void)
 {
-	guint i;
+	guint i, num_lines;
+	char *contents, **lines;
 
-	for (i = 0; i < G_N_ELEMENTS (titles); i++) {
-		g_assert_cmpstr (nst_title_from_mime_types (titles[i].mimetypes, titles[i].num_files), ==, titles[i].result);
+	char *bug, *result;
+	int num_files, num_dirs;
+	GPtrArray *types;
+
+	if (g_file_get_contents (TEST_SRCDIR "test-mimetype-data", &contents, NULL, NULL) == FALSE)
+		g_error ("Failed to open test-mimetype-data file");
+
+	lines = g_strsplit (contents, "\n", -1);
+	num_lines = g_strv_length (lines);
+	g_free (contents);
+
+	num_files = -1;
+	num_dirs = -1;
+	bug = NULL;
+	result = NULL;
+	types = g_ptr_array_new ();
+
+	for (i = 0; i < num_lines; i++) {
+		char **mimetypes;
+
+		if (*lines[i] == '#')
+			continue;
+		if (*lines[i] == '\0') {
+			continue;
+		}
+		if (bug == NULL) {
+			bug = lines[i];
+			continue;
+		}
+		if (strstr (lines[i], "/") != NULL) {
+			g_ptr_array_add (types, lines[i]);
+			continue;
+		}
+		if (num_files == -1) {
+			num_files = (int) strtod (lines[i], NULL);
+			continue;
+		}
+		if (num_dirs == -1) {
+			num_dirs = (int) strtod (lines[i], NULL);
+			continue;
+		}
+		result = lines[i];
+
+		g_ptr_array_add (types, NULL);
+		mimetypes = (char **) g_ptr_array_free (types, FALSE);
+
+		g_test_bug (bug);
+		g_assert_cmpstr (nst_title_from_mime_types ((const char **) mimetypes, num_files, num_dirs), ==, result);
+
+		num_files = -1;
+		num_dirs = -1;
+		bug = NULL;
+		result = NULL;
+		types = g_ptr_array_new ();
 	}
 }
 

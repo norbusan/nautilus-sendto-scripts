@@ -1,0 +1,57 @@
+# Test data for the nautilus-sendto title setter
+# Records are separated by an empty line
+# First line is the bug number in question, use NULL if none
+# Subsequent lines are mime-types (they all contain a '/')
+# Followed by the number of files
+# and the number of directories
+# and the expected result
+
+NULL
+application/octetstream
+1
+0
+Sharing 1 file
+
+NULL
+image/jpeg
+1
+0
+Sharing 1 photo
+
+NULL
+image/jpeg
+image/foobar
+2
+0
+Sharing 2 images
+
+NULL
+image/fab
+1
+0
+Sharing 1 image
+
+NULL
+video/ogg
+1
+0
+Sharing 1 video
+
+NULL
+text/x-python
+1
+0
+Sharing 1 text file
+
+NULL
+inode/directory
+0
+1
+Sharing 1 folder
+
+NULL
+inode/directory
+video/ogg
+1
+1
+Sharing 2 folders and files

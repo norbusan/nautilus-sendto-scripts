@@ -23,5 +23,6 @@
 #include <glib.h>
 
 char *nst_title_from_mime_types (const char **mimetypes,
-				 guint        num_files);
+				 guint        num_files,
+				 guint        num_dirs);
 

@@ -10,6 +10,7 @@ INCLUDES =					\
 	-I$(top_srcdir)/src/plugins		\
 	-DUIDIR=\""$(uidir)"\"			\
 	-DLOCALEDIR="\"$(datadir)/locale\""	\
+	-DTEST_SRCDIR=\""$(srcdir)/"\"		\
 	$(NAUTILUS_SENDTO_CFLAGS)		\
 	$(NAUTILUS_EXT_SENDTO_CFLAGS)		\
 	$(DISABLE_DEPRECATED)			\
