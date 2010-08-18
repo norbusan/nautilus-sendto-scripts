@@ -28,7 +28,9 @@
 #include <glib/gi18n.h>
 #include <glib/gstdio.h>
 #include <gtk/gtk.h>
+
 #include "nautilus-sendto-plugin.h"
+#include "nautilus-sendto-mimetype.h"
 
 #define NAUTILUS_SENDTO_LAST_MEDIUM	"last-medium"
 #define NAUTILUS_SENDTO_STATUS_LABEL_TIMEOUT_SECONDS 10
@@ -272,6 +274,7 @@ nautilus_sendto_create_ui (void)
 	GtkSettings *gtk_settings;
 	GtkWidget *button_image;
 	const char *ui_file;
+	char *title;
 
 	app = gtk_builder_new ();
 	if (run_from_build_dir) {
@@ -302,8 +305,12 @@ nautilus_sendto_create_ui (void)
 			  G_CALLBACK (update_button_image), button_image);
 	update_button_image (gtk_settings, NULL, button_image);
 
-	/* FIXME:
-	 * Set the title of the window depending on the mime-types in mime_types */
+	/* Set a title depending on the number of files to
+	 * share, and their types */
+	title = nst_title_from_mime_types ((const char **) mime_types, g_list_length (file_list));
+	gtk_window_set_title (GTK_WINDOW (gtk_builder_get_object (app, "nautilus_sendto_dialog")),
+			     title);
+	g_free (title);
 
 	set_model_for_options_treeview (ui);
 	g_signal_connect (G_OBJECT (ui->dialog), "destroy",
