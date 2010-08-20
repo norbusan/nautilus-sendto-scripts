@@ -2,26 +2,20 @@ SUBDIRS = . removable-devices evolution
 #SUBDIRS = . $(PLUGINS)
 DIST_SUBDIRS = $(ALL_PLUGINS)
 
-NST_COMMON_SOURCES = nst-common.c nst-common.h
-
-noinst_LTLIBRARIES = libnstcommon.la
-libnstcommon_la_SOURCES = $(NST_COMMON_SOURCES)
-libnstcommon_la_CFLAGS = $(NAUTILUS_SENDTO_CFLAGS) -DUIDIR=\""$(uidir)"\"
-libnstcommon_la_LIBADD = $(NAUTILUS_SENDTO_LIBS)
-
-EXTRA_DIST = $(NST_COMMON_SOURCES)
-
 nautilus_sendto_includedir = $(includedir)/nautilus-sendto/
-nautilus_sendto_include_HEADERS = nautilus-sendto-plugin.h
+nautilus_sendto_include_HEADERS = nautilus-sendto-plugin.h nst-common.h nautilus-sendto-packer.h
 
 lib_LTLIBRARIES = libnautilussendto-1.0.la
-libnautilussendto_1_0_la_SOURCES = nautilus-sendto-plugin.h nautilus-sendto-plugin.c
+libnautilussendto_1_0_la_SOURCES =				\
+	nautilus-sendto-plugin.c				\
+	nst-common.c						\
+	nautilus-sendto-packer.c				\
+	$(nautilus_sendto_include_HEADERS)
 libnautilussendto_1_0_la_LIBADD = $(NAUTILUS_SENDTO_LIBS)
-libnautilussendto_1_0_la_CFLAGS = $(NAUTILUS_SENDTO_CFLAGS)
+libnautilussendto_1_0_la_CFLAGS = $(NAUTILUS_SENDTO_CFLAGS) -DUIDIR=\""$(uidir)"\"
 
 uidir = $(datadir)/nautilus-sendto/ui
 
-if HAVE_INTROSPECTION
 -include $(INTROSPECTION_MAKEFILE)
 INTROSPECTION_GIRS = NautilusSendto-1.0.gir
 INTROSPECTION_SCANNER_ARGS = --add-include-path=$(top_builddir)/src --warn-all
@@ -42,5 +36,4 @@ typelibdir = $(libdir)/girepository-1.0
 typelib_DATA = $(INTROSPECTION_GIRS:.gir=.typelib)
 
 CLEANFILES = $(gir_DATA) $(typelib_DATA)
-endif
 

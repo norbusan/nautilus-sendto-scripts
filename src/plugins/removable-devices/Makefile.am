@@ -19,6 +19,6 @@ plugin_LTLIBRARIES = libnstremovable_devices.la
 
 libnstremovable_devices_la_SOURCES = removable-devices.c
 libnstremovable_devices_la_LDFLAGS = -module -avoid-version
-libnstremovable_devices_la_LIBADD = $(GIO_LIBS) $(NAUTILUS_SENDTO_LIBS) $(builddir)/../libnstcommon.la $(builddir)/../libnautilussendto-1.0.la
+libnstremovable_devices_la_LIBADD = $(GIO_LIBS) $(NAUTILUS_SENDTO_LIBS) $(builddir)/../libnautilussendto-1.0.la
 
 EXTRA_DIST = $(plugin_in_files)

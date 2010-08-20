@@ -22,37 +22,3 @@
 
 gboolean copy_files_to (GList *file_list, GFile *dest);
 
-#include <gtk/gtk.h>
-
-#define NST_TYPE_PACK_WIDGET         (nst_pack_widget_get_type ())
-#define NST_PACK_WIDGET(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), NST_TYPE_PACK_WIDGET, NstPackWidget))
-#define NST_PACK_WIDGET_CLASS(k)     (G_TYPE_CHECK_CLASS_CAST((k), NST_TYPE_PACK_WIDGET, NstPackWidget))
-#define NST_IS_PACK_WIDGET(o)        (G_TYPE_CHECK_INSTANCE_TYPE ((o), NST_TYPE_PACK_WIDGET))
-#define NST_IS_PACK_WIDGET_CLASS(k)  (G_TYPE_CHECK_CLASS_TYPE ((k), NST_TYPE_PACK_WIDGET))
-#define NST_PACK_WIDGET_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), NST_TYPE_PACK_WIDGET, NstPackWidgetClass))
-
-typedef struct NstPackWidgetPrivate NstPackWidgetPrivate;
-
-typedef struct {
-	GtkVBox parent;
-	NstPackWidgetPrivate *priv;
-} NstPackWidget;
-
-typedef struct {
-	GtkVBoxClass parent;
-} NstPackWidgetClass;
-
-GType nst_pack_widget_get_type      (void);
-GtkWidget *nst_pack_widget_new      (void);
-
-char *nst_pack_widget_pack_files     (NstPackWidget *widget,
-				      GList         *file_list);
-void nst_pack_widget_set_from_names  (NstPackWidget *widget,
-				      GList         *file_list);
-void nst_pack_widget_set_enabled     (NstPackWidget *widget,
-				      gboolean       enabled);
-gboolean nst_pack_widget_get_enabled (NstPackWidget *widget);
-void nst_pack_widget_set_force_enabled     (NstPackWidget *widget,
-					    gboolean       force_enabled);
-gboolean nst_pack_widget_get_force_enabled (NstPackWidget *widget);
-

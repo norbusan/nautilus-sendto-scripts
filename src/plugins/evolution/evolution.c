@@ -26,7 +26,7 @@
 #include <glib/gi18n-lib.h>
 #include <string.h>
 #include "nautilus-sendto-plugin.h"
-#include "nst-common.h"
+#include "nautilus-sendto-packer.h"
 
 #define EVOLUTION_TYPE_PLUGIN         (evolution_plugin_get_type ())
 #define EVOLUTION_PLUGIN(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), EVOLUTION_TYPE_PLUGIN, EvolutionPlugin))
