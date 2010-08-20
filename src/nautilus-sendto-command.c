@@ -36,6 +36,7 @@
 #define NAUTILUS_SENDTO_STATUS_LABEL_TIMEOUT_SECONDS 10
 
 enum {
+	COLUMN_IS_SEPARATOR,
 	COLUMN_ICON,
 	COLUMN_ID,
 	COLUMN_PAGE_NUM,
@@ -145,6 +146,20 @@ option_changed (GtkTreeSelection *treeselection,
 	/* FIXME: Get a widget in the plugin to grab focus? */
 }
 
+static gboolean
+separator_func (GtkTreeModel *model,
+		GtkTreeIter  *iter,
+		gpointer      data)
+{
+	gboolean is_sep;
+
+	gtk_tree_model_get (model, iter,
+			    COLUMN_IS_SEPARATOR, &is_sep,
+			    -1);
+
+	return is_sep;
+}
+
 static void
 set_model_for_options_treeview (NS_ui *ui)
 {
@@ -159,17 +174,22 @@ set_model_for_options_treeview (NS_ui *ui)
 	GtkTreeSelection *selection;
 	GtkTreePath *path;
 	char **list;
-	gboolean supported;
 
 	/* Disable this call if you want to debug */
 	gtk_notebook_set_show_tabs (GTK_NOTEBOOK (ui->contacts_notebook), FALSE);
 
 	it = gtk_icon_theme_get_default ();
 
-	model = gtk_list_store_new (NUM_COLUMNS, GDK_TYPE_PIXBUF, G_TYPE_STRING, G_TYPE_INT, G_TYPE_STRING);
+	model = gtk_list_store_new (NUM_COLUMNS, G_TYPE_BOOLEAN, GDK_TYPE_PIXBUF, G_TYPE_STRING, G_TYPE_INT, G_TYPE_STRING);
 
 	last_used = g_settings_get_string (settings,
 					   NAUTILUS_SENDTO_LAST_MEDIUM);
+
+	/* Insert the expander */
+	gtk_list_store_insert_after (model, &iter, NULL);
+	gtk_list_store_set (model, &iter,
+			    COLUMN_IS_SEPARATOR, TRUE,
+			    -1);
 
 	/* Populate the tree model */
 	list = peas_engine_get_loaded_plugins (engine);
@@ -179,6 +199,7 @@ set_model_for_options_treeview (NS_ui *ui)
 		PeasExtension *ext;
 		const char *id;
 		int page_num;
+		gboolean supported;
 
 		info = peas_engine_get_plugin_info (engine, list[i]);
 		id = peas_plugin_info_get_module_name (info);
@@ -202,8 +223,14 @@ set_model_for_options_treeview (NS_ui *ui)
 		label = gtk_label_new (id);
 		page_num = gtk_notebook_append_page (GTK_NOTEBOOK (ui->contacts_notebook), w, label);
 
-		gtk_list_store_append (model, &iter);
+		/* XXX: do this properly */
+		if (strstr (id, "evolution")) {
+			gtk_list_store_insert_after (model, &iter, NULL);
+		} else {
+			gtk_list_store_append (model, &iter);
+		}
 		gtk_list_store_set (model, &iter,
+				    COLUMN_IS_SEPARATOR, FALSE,
 				    COLUMN_ICON, pixbuf,
 				    COLUMN_ID, id,
 				    COLUMN_PAGE_NUM, page_num,
@@ -216,6 +243,7 @@ set_model_for_options_treeview (NS_ui *ui)
 			option = i;
 	}
 	g_free(last_used);
+	g_strfreev (list);
 
 	selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (ui->options_treeview));
 	gtk_tree_selection_set_mode (selection, GTK_SELECTION_BROWSE);
@@ -223,6 +251,8 @@ set_model_for_options_treeview (NS_ui *ui)
 	gtk_tree_view_set_model (GTK_TREE_VIEW (ui->options_treeview),
 				 GTK_TREE_MODEL (model));
 	column = gtk_tree_view_column_new ();
+
+	/* Pixbuf */
 	renderer = gtk_cell_renderer_pixbuf_new ();
 	gtk_cell_layout_pack_start (GTK_CELL_LAYOUT (column),
 				    renderer,
@@ -231,6 +261,8 @@ set_model_for_options_treeview (NS_ui *ui)
 					renderer,
 					"pixbuf", COLUMN_ICON,
 					NULL);
+
+	/* Text */
 	renderer = gtk_cell_renderer_text_new ();
 	g_object_set (G_OBJECT (renderer), "ellipsize", PANGO_ELLIPSIZE_END, NULL);
 	gtk_cell_layout_pack_start (GTK_CELL_LAYOUT (column),
@@ -240,8 +272,13 @@ set_model_for_options_treeview (NS_ui *ui)
 					renderer,
 					"text", COLUMN_DESCRIPTION,
 					NULL);
-	gtk_tree_view_append_column (GTK_TREE_VIEW (ui->options_treeview), column);
 
+	/* Separator */
+	gtk_tree_view_set_row_separator_func (GTK_TREE_VIEW (ui->options_treeview),
+					      separator_func,
+					      NULL, NULL);
+
+	gtk_tree_view_append_column (GTK_TREE_VIEW (ui->options_treeview), column);
 	g_signal_connect (G_OBJECT (selection), "changed",
 			  G_CALLBACK (option_changed), ui);
 
