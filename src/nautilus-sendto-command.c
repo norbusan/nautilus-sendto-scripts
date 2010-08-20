@@ -382,7 +382,6 @@ nautilus_sendto_plugin_init (void)
 	/* Init engine */
 	paths = (char **) g_ptr_array_free (search_paths, FALSE);
 	engine = peas_engine_new ("Nst",
-				  LIBDIR,
 				  (const gchar **) paths);
 	g_free (user_dir);
 
