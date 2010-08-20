@@ -380,20 +380,21 @@ nautilus_sendto_plugin_load_all (void)
 	g_ptr_array_free (activate, TRUE);
 }
 
-static void
+static gboolean
 nautilus_sendto_plugin_init (void)
 {
 	GPtrArray *search_paths;
 	char **paths, *user_dir;
 
-	/* FIXME error out properly */
 	if (g_irepository_require (g_irepository_get_default (), "Peas", "1.0", 0, NULL) == NULL) {
 		g_warning ("Failed to load Peas bindings");
+		return FALSE;
 	}
 	if (run_from_build_dir)
 		g_irepository_prepend_search_path ("plugins/");
 	if (g_irepository_require (g_irepository_get_default (), "NautilusSendto", "1.0", 0, NULL) == NULL) {
 		g_warning ("Failed to load NautilusSendto bindings");
+		return FALSE;
 	}
 
 	search_paths = g_ptr_array_new ();
@@ -429,6 +430,8 @@ nautilus_sendto_plugin_init (void)
 
 	/* Load all the plugins now */
 	nautilus_sendto_plugin_load_all ();
+
+	return TRUE;
 }
 
 static char *
@@ -581,7 +584,8 @@ int main (int argc, char **argv)
 
 	settings = g_settings_new ("org.gnome.Nautilus.Sendto");
 	nautilus_sendto_init ();
-	nautilus_sendto_plugin_init ();
+	if (nautilus_sendto_plugin_init () == FALSE)
+		return 1;
 	nautilus_sendto_create_ui ();
 
 	gtk_main ();
