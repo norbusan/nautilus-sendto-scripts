@@ -64,10 +64,12 @@ typedef struct _NS_ui NS_ui;
 
 struct _NS_ui {
 	GtkWidget *dialog;
+	GtkWidget *scrolled_window;
 	GtkWidget *options_treeview;
 	GtkWidget *contacts_notebook;
 	GtkWidget *send_to_label;
 	GtkWidget *hbox_contacts_ws;
+	GtkWidget *buttons;
 	GtkWidget *cancel_button;
 	GtkWidget *send_button;
 };
@@ -85,6 +87,16 @@ destroy_dialog (GtkWidget *widget, gpointer data )
 }
 
 static void
+make_sensitive_for_send (NS_ui *ui,
+			 gboolean sensitive)
+{
+	/* The plugins are responsible for making themselves
+	 * unsensitive during send */
+	gtk_widget_set_sensitive (ui->scrolled_window, sensitive);
+	gtk_widget_set_sensitive (ui->buttons, sensitive);
+}
+
+static void
 send_button_cb (GtkWidget *widget, NS_ui *ui)
 {
 	GtkTreeModel *model;
@@ -99,7 +111,7 @@ send_button_cb (GtkWidget *widget, NS_ui *ui)
 	if (gtk_tree_selection_get_selected (treeselection, &model, &iter) == FALSE)
 		return;
 
-	gtk_widget_set_sensitive (ui->dialog, FALSE);
+	make_sensitive_for_send (ui, FALSE);
 
 	gtk_tree_model_get (model, &iter,
 			    COLUMN_ID, &id,
@@ -116,7 +128,7 @@ send_button_cb (GtkWidget *widget, NS_ui *ui)
 	    success == FALSE) {
 		/* FIXME report the error in the UI */
 		g_warning ("Failed to send files");
-		gtk_widget_set_sensitive (ui->dialog, TRUE);
+		make_sensitive_for_send (ui, TRUE);
 		g_free (id);
 		return;
 	}
@@ -330,9 +342,11 @@ nautilus_sendto_create_ui (void)
 
 	ui->options_treeview = GTK_WIDGET (gtk_builder_get_object (app, "options_treeview"));
 	ui->contacts_notebook = GTK_WIDGET (gtk_builder_get_object (app, "contacts_notebook"));
+	ui->scrolled_window = GTK_WIDGET (gtk_builder_get_object (app, "scrolledwindow1"));
 	ui->hbox_contacts_ws = GTK_WIDGET (gtk_builder_get_object (app, "hbox_contacts_widgets"));
 	ui->send_to_label = GTK_WIDGET (gtk_builder_get_object (app, "send_to_label"));
 	ui->dialog = GTK_WIDGET (gtk_builder_get_object (app, "nautilus_sendto_dialog"));
+	ui->buttons = GTK_WIDGET (gtk_builder_get_object (app, "dialog-action_area2"));
 	ui->cancel_button = GTK_WIDGET (gtk_builder_get_object (app, "cancel_button"));
 	ui->send_button = GTK_WIDGET (gtk_builder_get_object (app, "send_button"));
 
