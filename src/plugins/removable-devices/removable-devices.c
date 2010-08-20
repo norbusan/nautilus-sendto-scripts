@@ -161,7 +161,7 @@ cb_mount_added (GVolumeMonitor         *volume_monitor,
 
 }
 
-static gboolean
+static NautilusSendtoSendStatus
 removable_devices_plugin_send_files (NautilusSendtoPlugin *plugin,
 				     GList                *file_list)
 {
@@ -182,7 +182,7 @@ removable_devices_plugin_send_files (NautilusSendtoPlugin *plugin,
 
 	g_object_unref (mount_root);
 
-	return TRUE;
+	return NST_SEND_STATUS_SUCCESS;
 }
 
 static gboolean

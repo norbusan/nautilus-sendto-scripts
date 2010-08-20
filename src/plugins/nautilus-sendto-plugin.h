@@ -36,13 +36,20 @@ G_BEGIN_DECLS
 typedef struct _NautilusSendtoPlugin           NautilusSendtoPlugin; /* dummy typedef */
 typedef struct _NautilusSendtoPluginInterface  NautilusSendtoPluginInterface;
 
+typedef enum {
+	NST_SEND_STATUS_SUCCESS,
+	NST_SEND_STATUS_IN_PROGRESS,
+	NST_SEND_STATUS_FAILED
+} NautilusSendtoSendStatus;
+
 struct _NautilusSendtoPluginInterface
 {
 	GTypeInterface g_iface;
 
 	gboolean    (*supports_mime_types) (NautilusSendtoPlugin *plugin,
 					    const char          **mime_types);
-	gboolean    (*send_files)  (NautilusSendtoPlugin *plugin,
+	NautilusSendtoSendStatus
+		    (*send_files)  (NautilusSendtoPlugin *plugin,
 				    GList                *file_list);
 	GtkWidget  *(*get_widget)  (NautilusSendtoPlugin *plugin,
 				    GList                *file_list);
@@ -53,14 +60,15 @@ GtkWidget  *nautilus_sendto_plugin_get_widget (NautilusSendtoPlugin  *plugin,
 					       GList                 *file_list);
 gboolean    nautilus_sendto_plugin_supports_mime_types (NautilusSendtoPlugin *plugin,
 							const char          **mime_types);
-gboolean    nautilus_sendto_plugin_send_files (NautilusSendtoPlugin *plugin,
+NautilusSendtoSendStatus
+	    nautilus_sendto_plugin_send_files (NautilusSendtoPlugin *plugin,
 					       GList                *file_list);
 
 #define NAUTILUS_PLUGIN_REGISTER(TYPE_NAME, TypeName, type_name)					\
 	GType type_name##_get_type (void) G_GNUC_CONST;							\
 	G_MODULE_EXPORT void  peas_register_types (PeasObjectModule *module);				\
 	static GtkWidget *type_name##_get_widget (NautilusSendtoPlugin *plugin, GList *file_list);	\
-	static gboolean type_name##_send_files (NautilusSendtoPlugin *plugin, GList *file_list);	\
+	static NautilusSendtoSendStatus type_name##_send_files (NautilusSendtoPlugin *plugin, GList *file_list); \
 	static gboolean type_name##_supports_mime_types (NautilusSendtoPlugin *plugin, const char **mime_types); \
 	static void nautilus_sendto_plugin_iface_init (NautilusSendtoPluginInterface *iface);		\
 	static void type_name##_finalize (GObject *object);						\

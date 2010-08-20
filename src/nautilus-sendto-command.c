@@ -105,7 +105,7 @@ send_button_cb (GtkWidget *widget, NS_ui *ui)
 	char *id;
 	PeasPluginInfo *info;
 	PeasExtension *ext;
-	gboolean success;
+	NautilusSendtoSendStatus status;
 
 	treeselection = gtk_tree_view_get_selection (GTK_TREE_VIEW (ui->options_treeview));
 	if (gtk_tree_selection_get_selected (treeselection, &model, &iter) == FALSE)
@@ -124,8 +124,8 @@ send_button_cb (GtkWidget *widget, NS_ui *ui)
 	info = peas_engine_get_plugin_info (engine, id);
 	ext = peas_extension_set_get_extension (exten_set, info);
 
-	if (peas_extension_call (ext, "send_files", file_list, &success) == FALSE ||
-	    success == FALSE) {
+	if (peas_extension_call (ext, "send_files", file_list, &status) == FALSE ||
+	    status != NST_SEND_STATUS_SUCCESS) {
 		/* FIXME report the error in the UI */
 		g_warning ("Failed to send files");
 		make_sensitive_for_send (ui, TRUE);

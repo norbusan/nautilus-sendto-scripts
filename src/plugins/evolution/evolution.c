@@ -413,7 +413,7 @@ get_sylpheed_mailto (EvolutionPlugin *p,
 	}
 }
 
-static gboolean
+static NautilusSendtoSendStatus
 evolution_plugin_send_files (NautilusSendtoPlugin *plugin,
 			     GList                *file_list)
 {
@@ -462,7 +462,7 @@ evolution_plugin_send_files (NautilusSendtoPlugin *plugin,
 	g_spawn_command_line_async (cmd, NULL);
 	g_free (cmd);
 
-	return TRUE;
+	return NST_SEND_STATUS_SUCCESS;
 }
 
 static void

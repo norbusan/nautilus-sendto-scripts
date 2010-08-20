@@ -90,11 +90,13 @@ nautilus_sendto_plugin_supports_mime_types (NautilusSendtoPlugin  *plugin,
  * @plugin: a #NautilusSendtoPlugin instance
  * @file_list: (element-type utf8): a #GList of strings representing the files to send
  *
- * Returns a #gboolean representing failure or success
+ * Returns a #NautilusSendtoSendStatus representing failure or success
  *
- * Return value: %FALSE on failure.
+ * Return value: %NST_SEND_STATUS_SUCCESS on success,
+ * %NST_SEND_STATUS_IN_PROGRESS if the send will take a while,
+ * %NST_SEND_STATUS_FAILED if it failed.
  */
-gboolean
+NautilusSendtoSendStatus
 nautilus_sendto_plugin_send_files (NautilusSendtoPlugin *plugin,
 				   GList                *file_list)
 {
@@ -107,5 +109,5 @@ nautilus_sendto_plugin_send_files (NautilusSendtoPlugin *plugin,
 	if (G_LIKELY (iface->send_files != NULL))
 		return iface->send_files (plugin, file_list);
 
-	return FALSE;
+	return NST_SEND_STATUS_FAILED;
 }
