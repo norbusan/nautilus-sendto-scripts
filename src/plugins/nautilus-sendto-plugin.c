@@ -89,25 +89,56 @@ nautilus_sendto_plugin_supports_mime_types (NautilusSendtoPlugin  *plugin,
  * nautilus_sendto_plugin_send_files:
  * @plugin: a #NautilusSendtoPlugin instance
  * @file_list: (element-type utf8): a #GList of strings representing the files to send
+ * @callback: a #GAsyncReadyCallback to call when the request is satisfied
  *
- * Returns a #NautilusSendtoSendStatus representing failure or success
- *
- * Return value: %NST_SEND_STATUS_SUCCESS on success,
- * %NST_SEND_STATUS_IN_PROGRESS if the send will take a while,
- * %NST_SEND_STATUS_FAILED if it failed.
+ * Sends the list of files in @file_list, and calls the @callback
+ * when done. You should then call nautilus_sendto_plugin_send_files_finish().
  */
-NautilusSendtoSendStatus
+void
 nautilus_sendto_plugin_send_files (NautilusSendtoPlugin *plugin,
-				   GList                *file_list)
+				   GList                *file_list,
+				   GAsyncReadyCallback   callback,
+				   gpointer              user_data)
 {
 	NautilusSendtoPluginInterface *iface;
 
-	g_return_val_if_fail (NAUTILUS_SENDTO_IS_PLUGIN (plugin), FALSE);
+	g_return_if_fail (NAUTILUS_SENDTO_IS_PLUGIN (plugin));
 
 	iface = NAUTILUS_SENDTO_PLUGIN_GET_IFACE (plugin);
 
 	if (G_LIKELY (iface->send_files != NULL))
-		return iface->send_files (plugin, file_list);
-
-	return NST_SEND_STATUS_FAILED;
+		iface->send_files (plugin, file_list, callback, user_data);
 }
+
+/**
+ * nautilus_sendto_plugin_send_files_finish:
+ * @plugin: a #NautilusSendtoPlugin instance
+ * @res: a #GAsyncResult.
+ * @error: a #GError, or %NULL
+ *
+ * Returns: the #NautilusSendtoSendStatus representing the
+ * result of the operation.
+ */
+NautilusSendtoSendStatus
+nautilus_sendto_plugin_send_files_finish (NautilusSendtoPlugin *plugin,
+					  GAsyncResult         *res,
+					  GError              **error)
+{
+	GSimpleAsyncResult *simple;
+	NautilusSendtoSendStatus status;
+
+	g_return_val_if_fail (g_simple_async_result_is_valid (res,
+							      G_OBJECT (plugin),
+							      nautilus_sendto_plugin_send_files),
+			      NST_SEND_STATUS_FAILED);
+
+	simple = (GSimpleAsyncResult *) res;
+
+	if (g_simple_async_result_propagate_error (simple, error))
+		return NST_SEND_STATUS_FAILED;
+
+	status = GPOINTER_TO_INT (g_simple_async_result_get_op_res_gpointer (simple));
+
+	return status;
+}
+

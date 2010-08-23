@@ -413,14 +413,17 @@ get_sylpheed_mailto (EvolutionPlugin *p,
 	}
 }
 
-static NautilusSendtoSendStatus
+static void
 evolution_plugin_send_files (NautilusSendtoPlugin *plugin,
-			     GList                *file_list)
+			     GList                *file_list,
+			     GAsyncReadyCallback   callback,
+			     gpointer              user_data)
 {
 	EvolutionPlugin *p;
 	gchar *cmd;
 	GString *mailto;
 	GList *packed;
+	GSimpleAsyncResult *simple;
 
 	p = EVOLUTION_PLUGIN (plugin);
 
@@ -428,9 +431,15 @@ evolution_plugin_send_files (NautilusSendtoPlugin *plugin,
 	if (nst_pack_widget_get_enabled (NST_PACK_WIDGET (p->packer))) {
 		char *filename;
 
+		/* FIXME: this should be async */
 		filename = nst_pack_widget_pack_files (NST_PACK_WIDGET (p->packer), file_list);
 		packed = g_list_append (packed, filename);
 	}
+
+	simple = g_simple_async_result_new (G_OBJECT (plugin),
+					    callback,
+					    user_data,
+					    nautilus_sendto_plugin_send_files);
 
 	mailto = g_string_new ("");
 	switch (p->type) {
@@ -459,10 +468,15 @@ evolution_plugin_send_files (NautilusSendtoPlugin *plugin,
 	g_message ("Mailer type: %d", p->type);
 	g_message ("Command: %s", cmd);
 
+	/* FIXME: collect errors from this call */
 	g_spawn_command_line_async (cmd, NULL);
 	g_free (cmd);
 
-	return NST_SEND_STATUS_SUCCESS;
+	g_simple_async_result_set_op_res_gpointer (simple,
+						   GINT_TO_POINTER (NST_SEND_STATUS_SUCCESS_DONE),
+						   NULL);
+	g_simple_async_result_complete_in_idle (simple);
+	g_object_unref (simple);
 }
 
 static void

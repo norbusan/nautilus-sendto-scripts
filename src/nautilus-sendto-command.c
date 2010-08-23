@@ -97,6 +97,30 @@ make_sensitive_for_send (NS_ui *ui,
 }
 
 static void
+send_callback (GObject      *object,
+	       GAsyncResult *res,
+	       gpointer      user_data)
+{
+	NS_ui *ui = (NS_ui *) user_data;
+	NautilusSendtoSendStatus status;
+
+	status = nautilus_sendto_plugin_send_files_finish (NAUTILUS_SENDTO_PLUGIN (object),
+							   res, NULL);
+
+	g_message ("send_callback %d", status);
+
+	if (status == NST_SEND_STATUS_SUCCESS_DONE) {
+		destroy_dialog (NULL, NULL);
+	} else if (status == NST_SEND_STATUS_SUCCESS) {
+		//FIXME make the buttons into a single close button
+	} else if (status == NST_SEND_STATUS_FAILED) {
+		/* Do nothing, the plugin should report an error */
+	} else {
+		g_assert_not_reached ();
+	}
+}
+
+static void
 send_button_cb (GtkWidget *widget, NS_ui *ui)
 {
 	GtkTreeModel *model;
@@ -105,7 +129,6 @@ send_button_cb (GtkWidget *widget, NS_ui *ui)
 	char *id;
 	PeasPluginInfo *info;
 	PeasExtension *ext;
-	NautilusSendtoSendStatus status;
 
 	treeselection = gtk_tree_view_get_selection (GTK_TREE_VIEW (ui->options_treeview));
 	if (gtk_tree_selection_get_selected (treeselection, &model, &iter) == FALSE)
@@ -124,8 +147,7 @@ send_button_cb (GtkWidget *widget, NS_ui *ui)
 	info = peas_engine_get_plugin_info (engine, id);
 	ext = peas_extension_set_get_extension (exten_set, info);
 
-	if (peas_extension_call (ext, "send_files", file_list, &status) == FALSE ||
-	    status != NST_SEND_STATUS_SUCCESS) {
+	if (peas_extension_call (ext, "send_files", file_list, send_callback, ui) == FALSE) {
 		/* FIXME report the error in the UI */
 		g_warning ("Failed to send files");
 		make_sensitive_for_send (ui, TRUE);
@@ -134,7 +156,6 @@ send_button_cb (GtkWidget *widget, NS_ui *ui)
 	}
 
 	g_free (id);
-	destroy_dialog (NULL,NULL);
 }
 
 static void

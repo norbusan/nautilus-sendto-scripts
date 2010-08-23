@@ -161,28 +161,44 @@ cb_mount_added (GVolumeMonitor         *volume_monitor,
 
 }
 
-static NautilusSendtoSendStatus
+static void
 removable_devices_plugin_send_files (NautilusSendtoPlugin *plugin,
-				     GList                *file_list)
+				     GList                *file_list,
+				     GAsyncReadyCallback   callback,
+				     gpointer              user_data)
 {
 	RemovableDevicesPlugin *p = REMOVABLE_DEVICES_PLUGIN (plugin);
 	GtkListStore *store;
 	GtkTreeIter iter;
 	GMount *dest_mount;
 	GFile *mount_root;
+	GSimpleAsyncResult *simple;
 
-	if (gtk_combo_box_get_active_iter (GTK_COMBO_BOX (p->cb), &iter) == FALSE)
-		return TRUE;
+	if (gtk_combo_box_get_active_iter (GTK_COMBO_BOX (p->cb), &iter) == FALSE) {
+		/* FIXME: This should not happen */
+		g_assert_not_reached ();
+		return;
+	}
 
 	store = GTK_LIST_STORE (gtk_combo_box_get_model (GTK_COMBO_BOX (p->cb)));
 	gtk_tree_model_get (GTK_TREE_MODEL (store), &iter, MOUNT_COL, &dest_mount, -1);
 	mount_root = g_mount_get_root (dest_mount);
 
+	simple = g_simple_async_result_new (G_OBJECT (plugin),
+					    callback,
+					    user_data,
+					    nautilus_sendto_plugin_send_files);
+
 	copy_files_to (file_list, mount_root);
 
 	g_object_unref (mount_root);
 
-	return NST_SEND_STATUS_SUCCESS;
+	/* FIXME: Report errors properly */
+	g_simple_async_result_set_op_res_gpointer (simple,
+						   GINT_TO_POINTER (NST_SEND_STATUS_SUCCESS_DONE),
+						   NULL);
+	g_simple_async_result_complete_in_idle (simple);
+	g_object_unref (simple);
 }
 
 static gboolean
