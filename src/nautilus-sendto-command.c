@@ -41,6 +41,7 @@ enum {
 	COLUMN_ID,
 	COLUMN_PAGE_NUM,
 	COLUMN_DESCRIPTION,
+	COLUMN_CAN_SEND,
 	NUM_COLUMNS,
 };
 
@@ -60,9 +61,7 @@ guint option = 0;
 
 static GSettings *settings = NULL;
 
-typedef struct _NS_ui NS_ui;
-
-struct _NS_ui {
+typedef struct {
 	GtkWidget *dialog;
 	GtkWidget *scrolled_window;
 	GtkWidget *options_treeview;
@@ -72,7 +71,9 @@ struct _NS_ui {
 	GtkWidget *buttons;
 	GtkWidget *cancel_button;
 	GtkWidget *send_button;
-};
+
+	char *last_used;
+} NautilusSendto;
 
 static const GOptionEntry entries[] = {
 	{ "run-from-build-dir", 'b', 0, G_OPTION_ARG_NONE, &run_from_build_dir, N_("Run from build directory"), NULL },
@@ -87,13 +88,13 @@ destroy_dialog (GtkWidget *widget, gpointer data )
 }
 
 static void
-make_sensitive_for_send (NS_ui *ui,
+make_sensitive_for_send (NautilusSendto *nst,
 			 gboolean sensitive)
 {
 	/* The plugins are responsible for making themselves
 	 * unsensitive during send */
-	gtk_widget_set_sensitive (ui->scrolled_window, sensitive);
-	gtk_widget_set_sensitive (ui->buttons, sensitive);
+	gtk_widget_set_sensitive (nst->scrolled_window, sensitive);
+	gtk_widget_set_sensitive (nst->buttons, sensitive);
 }
 
 static void
@@ -101,7 +102,7 @@ send_callback (GObject      *object,
 	       GAsyncResult *res,
 	       gpointer      user_data)
 {
-	NS_ui *ui = (NS_ui *) user_data;
+	NautilusSendto *nst = (NautilusSendto *) user_data;
 	NautilusSendtoSendStatus status;
 
 	status = nautilus_sendto_plugin_send_files_finish (NAUTILUS_SENDTO_PLUGIN (object),
@@ -121,7 +122,7 @@ send_callback (GObject      *object,
 }
 
 static void
-send_button_cb (GtkWidget *widget, NS_ui *ui)
+send_button_cb (GtkWidget *widget, NautilusSendto *nst)
 {
 	GtkTreeModel *model;
 	GtkTreeSelection *treeselection;
@@ -130,11 +131,11 @@ send_button_cb (GtkWidget *widget, NS_ui *ui)
 	PeasPluginInfo *info;
 	PeasExtension *ext;
 
-	treeselection = gtk_tree_view_get_selection (GTK_TREE_VIEW (ui->options_treeview));
+	treeselection = gtk_tree_view_get_selection (GTK_TREE_VIEW (nst->options_treeview));
 	if (gtk_tree_selection_get_selected (treeselection, &model, &iter) == FALSE)
 		return;
 
-	make_sensitive_for_send (ui, FALSE);
+	make_sensitive_for_send (nst, FALSE);
 
 	gtk_tree_model_get (model, &iter,
 			    COLUMN_ID, &id,
@@ -147,10 +148,10 @@ send_button_cb (GtkWidget *widget, NS_ui *ui)
 	info = peas_engine_get_plugin_info (engine, id);
 	ext = peas_extension_set_get_extension (exten_set, info);
 
-	if (peas_extension_call (ext, "send_files", file_list, send_callback, ui) == FALSE) {
+	if (peas_extension_call (ext, "send_files", file_list, send_callback, nst) == FALSE) {
 		/* FIXME report the error in the UI */
 		g_warning ("Failed to send files");
-		make_sensitive_for_send (ui, TRUE);
+		make_sensitive_for_send (nst, TRUE);
 		g_free (id);
 		return;
 	}
@@ -159,24 +160,61 @@ send_button_cb (GtkWidget *widget, NS_ui *ui)
 }
 
 static void
+can_send_cb (NautilusSendtoPlugin *plugin,
+	     const char           *id,
+	     gboolean              can_send,
+	     NautilusSendto                *nst)
+{
+	GtkTreeModel *model;
+	GtkTreeIter iter;
+	gboolean cont;
+
+	g_return_if_fail (id != NULL);
+
+	model = gtk_tree_view_get_model (GTK_TREE_VIEW (nst->options_treeview));
+
+	cont = gtk_tree_model_get_iter_first (model, &iter);
+	while (cont) {
+		char *selected_id;
+
+		gtk_tree_model_get (model, &iter,
+				    COLUMN_ID, &selected_id,
+				    -1);
+		if (selected_id != NULL &&
+		    g_str_equal (id, selected_id) != FALSE) {
+			g_free (selected_id);
+			gtk_list_store_set (GTK_LIST_STORE (model), &iter,
+					    COLUMN_CAN_SEND, can_send,
+					    -1);
+			return;
+		}
+		g_free (selected_id);
+		cont = gtk_tree_model_iter_next (model, &iter);
+	}
+
+	g_warning ("Page ID '%s' not found in loaded pages", id);
+}
+
+static void
 option_changed (GtkTreeSelection *treeselection,
-		NS_ui *ui)
+		NautilusSendto *nst)
 {
 	GtkTreeModel *model;
 	GtkTreeIter iter;
 	int page_num;
+	gboolean can_send;
 
 	if (gtk_tree_selection_get_selected (treeselection, &model, &iter) == FALSE)
 		return;
 
 	gtk_tree_model_get (model, &iter,
 			    COLUMN_PAGE_NUM, &page_num,
+			    COLUMN_CAN_SEND, &can_send,
 			    -1);
 
-	gtk_notebook_set_current_page (GTK_NOTEBOOK (ui->contacts_notebook),
+	gtk_notebook_set_current_page (GTK_NOTEBOOK (nst->contacts_notebook),
 				       page_num);
-
-	/* FIXME: Get a widget in the plugin to grab focus? */
+	gtk_widget_set_sensitive (nst->send_button, can_send);
 }
 
 static gboolean
@@ -194,29 +232,80 @@ separator_func (GtkTreeModel *model,
 }
 
 static void
-set_model_for_options_treeview (NS_ui *ui)
+add_widget_cb (NautilusSendtoPlugin *plugin,
+	       const char           *name,
+	       const char           *icon_name,
+	       const char           *id,
+	       GtkWidget            *widget,
+	       NautilusSendto                *nst)
 {
 	GdkPixbuf *pixbuf;
+	GtkWidget *label;
 	GtkTreeIter iter;
 	GtkListStore *model;
-	GtkIconTheme *it;
+	int page_num;
+
+	g_return_if_fail (name != NULL);
+	g_return_if_fail (id != NULL);
+	g_return_if_fail (widget != NULL);
+
+	model = GTK_LIST_STORE (gtk_tree_view_get_model (GTK_TREE_VIEW (nst->options_treeview)));
+
+	if (icon_name != NULL) {
+		GtkIconTheme *it;
+
+		it = gtk_icon_theme_get_default ();
+		pixbuf = gtk_icon_theme_load_icon (it, icon_name, 16,
+						   GTK_ICON_LOOKUP_USE_BUILTIN, NULL);
+	} else {
+		pixbuf = NULL;
+	}
+	label = gtk_label_new (id);
+	page_num = gtk_notebook_append_page (GTK_NOTEBOOK (nst->contacts_notebook),
+					     widget, label);
+
+	/* XXX: do this properly */
+	if (strstr (id, "evolution")) {
+		gtk_list_store_insert_after (model, &iter, NULL);
+	} else {
+		gtk_list_store_append (model, &iter);
+	}
+	gtk_list_store_set (model, &iter,
+			    COLUMN_IS_SEPARATOR, FALSE,
+			    COLUMN_ICON, pixbuf,
+			    COLUMN_ID, id,
+			    COLUMN_PAGE_NUM, page_num,
+			    COLUMN_DESCRIPTION, name,
+			    -1);
+
+	gtk_widget_show (widget);
+
+	if (nst->last_used != NULL &&
+	    g_str_equal (nst->last_used, id)) {
+		GtkTreeSelection *selection;
+
+		selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (nst->options_treeview));
+		gtk_tree_selection_select_iter (selection, &iter);
+	}
+}
+
+static void
+set_model_for_options_treeview (NautilusSendto *nst)
+{
+	GtkTreeIter iter;
+	GtkListStore *model;
 	GtkCellRenderer *renderer;
-	char *last_used = NULL;
 	int i = 0;
 	GtkTreeViewColumn *column;
 	GtkTreeSelection *selection;
-	GtkTreePath *path;
 	char **list;
 
 	/* Disable this call if you want to debug */
-	gtk_notebook_set_show_tabs (GTK_NOTEBOOK (ui->contacts_notebook), FALSE);
+	gtk_notebook_set_show_tabs (GTK_NOTEBOOK (nst->contacts_notebook), FALSE);
 
-	it = gtk_icon_theme_get_default ();
-
-	model = gtk_list_store_new (NUM_COLUMNS, G_TYPE_BOOLEAN, GDK_TYPE_PIXBUF, G_TYPE_STRING, G_TYPE_INT, G_TYPE_STRING);
-
-	last_used = g_settings_get_string (settings,
-					   NAUTILUS_SENDTO_LAST_MEDIUM);
+	model = gtk_list_store_new (NUM_COLUMNS, G_TYPE_BOOLEAN, GDK_TYPE_PIXBUF, G_TYPE_STRING, G_TYPE_INT, G_TYPE_STRING, G_TYPE_BOOLEAN);
+	gtk_tree_view_set_model (GTK_TREE_VIEW (nst->options_treeview),
+				 GTK_TREE_MODEL (model));
 
 	/* Insert the expander */
 	gtk_list_store_insert_after (model, &iter, NULL);
@@ -224,65 +313,42 @@ set_model_for_options_treeview (NS_ui *ui)
 			    COLUMN_IS_SEPARATOR, TRUE,
 			    -1);
 
-	/* Populate the tree model */
+	/* Load the plugins */
 	list = peas_engine_get_loaded_plugins (engine);
 	for (i = 0; list[i] != NULL; i++) {
-		GtkWidget *label, *w;
 		PeasPluginInfo *info;
 		PeasExtension *ext;
 		const char *id;
-		int page_num;
 		gboolean supported;
+		GObject *object;
 
 		info = peas_engine_get_plugin_info (engine, list[i]);
 		id = peas_plugin_info_get_module_name (info);
 
 		ext = peas_extension_set_get_extension (exten_set, info);
 
+		if (peas_extension_call (ext, "get_object", &object) == FALSE ||
+		    object == NULL) {
+			g_warning ("Could not get object for plugin '%s'", id);
+			continue;
+		}
+
+		g_signal_connect (object, "add-widget",
+				  G_CALLBACK (add_widget_cb), nst);
+		g_signal_connect (object, "can-send",
+				  G_CALLBACK (can_send_cb), nst);
+
 		/* Check if the plugin supports the mime-types of the files we have */
-		if (peas_extension_call (ext, "supports_mime_types", mime_types, &supported) == FALSE ||
+		if (peas_extension_call (ext, "supports_mime_types", file_list, mime_types, &supported) == FALSE ||
 		    supported == FALSE) {
 			g_message ("'%s' does not support mime-types", id);
-			continue;
 		}
-
-		if (peas_extension_call (ext, "get_widget", file_list, &w) == FALSE || w == NULL) {
-			g_warning ("Failed to get widget for %s", id);
-			continue;
-		}
-
-		pixbuf = gtk_icon_theme_load_icon (it, peas_plugin_info_get_icon_name (info), 16,
-						   GTK_ICON_LOOKUP_USE_BUILTIN, NULL);
-		label = gtk_label_new (id);
-		page_num = gtk_notebook_append_page (GTK_NOTEBOOK (ui->contacts_notebook), w, label);
-
-		/* XXX: do this properly */
-		if (strstr (id, "evolution")) {
-			gtk_list_store_insert_after (model, &iter, NULL);
-		} else {
-			gtk_list_store_append (model, &iter);
-		}
-		gtk_list_store_set (model, &iter,
-				    COLUMN_IS_SEPARATOR, FALSE,
-				    COLUMN_ICON, pixbuf,
-				    COLUMN_ID, id,
-				    COLUMN_PAGE_NUM, page_num,
-				    COLUMN_DESCRIPTION, peas_plugin_info_get_name (info),
-				    -1);
-
-		gtk_widget_show (w);
-
-		if (last_used != NULL && !strcmp(last_used, id))
-			option = i;
 	}
-	g_free(last_used);
 	g_strfreev (list);
 
-	selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (ui->options_treeview));
+	selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (nst->options_treeview));
 	gtk_tree_selection_set_mode (selection, GTK_SELECTION_BROWSE);
 
-	gtk_tree_view_set_model (GTK_TREE_VIEW (ui->options_treeview),
-				 GTK_TREE_MODEL (model));
 	column = gtk_tree_view_column_new ();
 
 	/* Pixbuf */
@@ -307,18 +373,13 @@ set_model_for_options_treeview (NS_ui *ui)
 					NULL);
 
 	/* Separator */
-	gtk_tree_view_set_row_separator_func (GTK_TREE_VIEW (ui->options_treeview),
+	gtk_tree_view_set_row_separator_func (GTK_TREE_VIEW (nst->options_treeview),
 					      separator_func,
 					      NULL, NULL);
 
-	gtk_tree_view_append_column (GTK_TREE_VIEW (ui->options_treeview), column);
+	gtk_tree_view_append_column (GTK_TREE_VIEW (nst->options_treeview), column);
 	g_signal_connect (G_OBJECT (selection), "changed",
-			  G_CALLBACK (option_changed), ui);
-
-	/* Select the previously selected option */
-	path = gtk_tree_path_new_from_indices (option, -1);
-	gtk_tree_selection_select_path (selection, path);
-	gtk_tree_path_free (path);
+			  G_CALLBACK (option_changed), nst);
 }
 
 static void
@@ -340,7 +401,7 @@ nautilus_sendto_create_ui (void)
 {
 	GtkBuilder *app;
 	GError* error = NULL;
-	NS_ui *ui;
+	NautilusSendto *nst;
 	GtkSettings *gtk_settings;
 	GtkWidget *button_image;
 	const char *ui_file;
@@ -359,17 +420,20 @@ nautilus_sendto_create_ui (void)
 		g_error_free (error);
 	}
 
-	ui = g_new0 (NS_ui, 1);
+	nst = g_new0 (NautilusSendto, 1);
 
-	ui->options_treeview = GTK_WIDGET (gtk_builder_get_object (app, "options_treeview"));
-	ui->contacts_notebook = GTK_WIDGET (gtk_builder_get_object (app, "contacts_notebook"));
-	ui->scrolled_window = GTK_WIDGET (gtk_builder_get_object (app, "scrolledwindow1"));
-	ui->hbox_contacts_ws = GTK_WIDGET (gtk_builder_get_object (app, "hbox_contacts_widgets"));
-	ui->send_to_label = GTK_WIDGET (gtk_builder_get_object (app, "send_to_label"));
-	ui->dialog = GTK_WIDGET (gtk_builder_get_object (app, "nautilus_sendto_dialog"));
-	ui->buttons = GTK_WIDGET (gtk_builder_get_object (app, "dialog-action_area2"));
-	ui->cancel_button = GTK_WIDGET (gtk_builder_get_object (app, "cancel_button"));
-	ui->send_button = GTK_WIDGET (gtk_builder_get_object (app, "send_button"));
+	nst->options_treeview = GTK_WIDGET (gtk_builder_get_object (app, "options_treeview"));
+	nst->contacts_notebook = GTK_WIDGET (gtk_builder_get_object (app, "contacts_notebook"));
+	nst->scrolled_window = GTK_WIDGET (gtk_builder_get_object (app, "scrolledwindow1"));
+	nst->hbox_contacts_ws = GTK_WIDGET (gtk_builder_get_object (app, "hbox_contacts_widgets"));
+	nst->send_to_label = GTK_WIDGET (gtk_builder_get_object (app, "send_to_label"));
+	nst->dialog = GTK_WIDGET (gtk_builder_get_object (app, "nautilus_sendto_dialog"));
+	nst->buttons = GTK_WIDGET (gtk_builder_get_object (app, "dialog-action_area2"));
+	nst->cancel_button = GTK_WIDGET (gtk_builder_get_object (app, "cancel_button"));
+	nst->send_button = GTK_WIDGET (gtk_builder_get_object (app, "send_button"));
+
+	nst->last_used = g_settings_get_string (settings,
+					       NAUTILUS_SENDTO_LAST_MEDIUM);
 
 	gtk_settings = gtk_settings_get_default ();
 	button_image = GTK_WIDGET (gtk_builder_get_object (app, "image1"));
@@ -386,15 +450,15 @@ nautilus_sendto_create_ui (void)
 			     title);
 	g_free (title);
 
-	set_model_for_options_treeview (ui);
-	g_signal_connect (G_OBJECT (ui->dialog), "destroy",
+	set_model_for_options_treeview (nst);
+	g_signal_connect (G_OBJECT (nst->dialog), "destroy",
                           G_CALLBACK (destroy_dialog), NULL);
-	g_signal_connect (G_OBJECT (ui->cancel_button), "clicked",
+	g_signal_connect (G_OBJECT (nst->cancel_button), "clicked",
 			  G_CALLBACK (destroy_dialog), NULL);
-	g_signal_connect (G_OBJECT (ui->send_button), "clicked",
-			  G_CALLBACK (send_button_cb), ui);
+	g_signal_connect (G_OBJECT (nst->send_button), "clicked",
+			  G_CALLBACK (send_button_cb), nst);
 
-	gtk_widget_show (ui->dialog);
+	gtk_widget_show (nst->dialog);
 }
 
 static void
@@ -602,6 +666,7 @@ int main (int argc, char **argv)
 {
 	GOptionContext *context;
 	GError *error = NULL;
+	NautilusSendto *nst;
 
 	bindtextdomain (GETTEXT_PACKAGE, LOCALEDIR);
 	bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
@@ -617,6 +682,8 @@ int main (int argc, char **argv)
 		return 1;
 	}
 
+	/* FIXME create the nst object here */
+
 	settings = g_settings_new ("org.gnome.Nautilus.Sendto");
 	nautilus_sendto_init ();
 	if (nautilus_sendto_plugin_init () == FALSE)
@@ -624,6 +691,11 @@ int main (int argc, char **argv)
 	nautilus_sendto_create_ui ();
 
 	gtk_main ();
+
+	/* FIXME: shut down the plugins */
+	//gtk_widget_destroy (nst->dialog);
+	//g_free (nst->last_used);
+
 	g_object_unref(settings);
 	g_strfreev (mime_types);
 

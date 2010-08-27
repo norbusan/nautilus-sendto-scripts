@@ -1,6 +1,6 @@
 [Nst Plugin]
 Module=nstevolution
 IAge=1
-_Name=Email
+Name=Email
 Authors=Bastien Nocera <hadess@hadess.net>
 Icon=emblem-mail

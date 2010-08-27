@@ -24,45 +24,45 @@
 #endif
 
 #include "nautilus-sendto-plugin.h"
+#include "nst-plugin-marshal.h"
 
 G_DEFINE_INTERFACE(NautilusSendtoPlugin, nautilus_sendto_plugin, G_TYPE_OBJECT)
 
 static void
 nautilus_sendto_plugin_default_init (NautilusSendtoPluginInterface *iface)
 {
+	g_signal_new ("add-widget",
+		      NAUTILUS_SENDTO_TYPE_PLUGIN,
+		      G_SIGNAL_RUN_LAST,
+		      G_STRUCT_OFFSET (NautilusSendtoPluginInterface, add_widget),
+		      NULL, NULL,
+		      nst_plugin_marshal_VOID__STRING_STRING_STRING_OBJECT,
+		      G_TYPE_NONE, 4, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_OBJECT);
+	g_signal_new ("can-send",
+		      NAUTILUS_SENDTO_TYPE_PLUGIN,
+		      G_SIGNAL_RUN_LAST,
+		      G_STRUCT_OFFSET (NautilusSendtoPluginInterface, can_send),
+		      NULL, NULL,
+		      nst_plugin_marshal_VOID__STRING_BOOLEAN,
+		      G_TYPE_NONE, 2, G_TYPE_STRING, G_TYPE_BOOLEAN);
 }
 
 /**
- * nautilus_sendto_plugin_get_widget:
+ * nautilus_sendto_get_object:
  * @plugin: a #NautilusSendtoPlugin instance
- * @file_list: (element-type utf8): a #GList of strings representing the files to send.
- * The file list should not be cached, and can be used to create a good archive name,
- * if the plugin allows for compression, for example.
  *
- * Returns a #GtkWidget for the plugin in question.
- *
- * Return value: a #GtkWidget, or %NULL if the plugin does not implement
- * the required interface.
+ * Returns: (transfer none): a reference to the #NautilusSendtoPlugin instance.
  */
-GtkWidget *
-nautilus_sendto_plugin_get_widget (NautilusSendtoPlugin  *plugin,
-				   GList                 *file_list)
+GObject *
+nautilus_sendto_plugin_get_object (NautilusSendtoPlugin *plugin)
 {
-	NautilusSendtoPluginInterface *iface;
-
-	g_return_val_if_fail (NAUTILUS_SENDTO_IS_PLUGIN (plugin), FALSE);
-
-	iface = NAUTILUS_SENDTO_PLUGIN_GET_IFACE (plugin);
-
-	if (G_LIKELY (iface->get_widget != NULL))
-		return iface->get_widget (plugin, file_list);
-
-	return NULL;
+	return G_OBJECT (plugin);
 }
 
 /**
  * nautilus_sendto_plugin_supports_mime_types:
  * @plugin: a #NautilusSendtoPlugin instance
+ * @file_list: (element-type utf8): a #GList of strings representing the files to send
  * @mime_types: a list of mime-types for the file types to send.
  *
  * Returns a #gboolean.
@@ -71,6 +71,7 @@ nautilus_sendto_plugin_get_widget (NautilusSendtoPlugin  *plugin,
  */
 gboolean
 nautilus_sendto_plugin_supports_mime_types (NautilusSendtoPlugin  *plugin,
+					    GList                 *file_list,
 					    const char           **mime_types)
 {
 	NautilusSendtoPluginInterface *iface;
@@ -80,7 +81,7 @@ nautilus_sendto_plugin_supports_mime_types (NautilusSendtoPlugin  *plugin,
 	iface = NAUTILUS_SENDTO_PLUGIN_GET_IFACE (plugin);
 
 	if (G_LIKELY (iface->supports_mime_types != NULL))
-		return iface->supports_mime_types (plugin, mime_types);
+		return iface->supports_mime_types (plugin, file_list, mime_types);
 
 	return FALSE;
 }

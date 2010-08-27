@@ -39,8 +39,10 @@ po/POTFILES
 po/stamp-it
 src/test-mimetype
 src/nautilus-sendto
-src/nst-enum-types.c
-src/nst-enum-types.h
+src/plugins/nst-enum-types.c
+src/plugins/nst-enum-types.h
+src/plugins/nst-plugin-marshal.c
+src/plugins/nst-plugin-marshal.h
 src/plugins/NautilusSendto-1.0.gir
 src/plugins/NautilusSendto-1.0.typelib
 src/plugins/bluetooth/bluetooth-marshal.c

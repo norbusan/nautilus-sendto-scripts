@@ -201,14 +201,6 @@ removable_devices_plugin_send_files (NautilusSendtoPlugin *plugin,
 	g_object_unref (simple);
 }
 
-static gboolean
-removable_devices_plugin_supports_mime_types (NautilusSendtoPlugin *plugin,
-					      const char          **mime_types)
-{
-	/* All the mime-types are supported */
-	return TRUE;
-}
-
 static GtkWidget *
 removable_devices_plugin_get_widget (NautilusSendtoPlugin *plugin,
 				     GList                *file_list)
@@ -267,6 +259,22 @@ removable_devices_plugin_get_widget (NautilusSendtoPlugin *plugin,
 	gtk_widget_show_all (box);
 
 	return box;
+}
+
+static gboolean
+removable_devices_plugin_supports_mime_types (NautilusSendtoPlugin *plugin,
+					      GList                *file_list,
+					      const char          **mime_types)
+{
+	g_signal_emit_by_name (G_OBJECT (plugin),
+			       "add-widget",
+			       _("Removable disks and shares"),
+			       "folder-remote",
+			       "removable-devices",
+			       removable_devices_plugin_get_widget (plugin, file_list));
+
+	/* All the mime-types are supported */
+	return TRUE;
 }
 
 static void

@@ -18,8 +18,6 @@ INCLUDES =					\
 
 noinst_LTLIBRARIES = libnstplugin.la
 libnstplugin_la_SOURCES =			\
-	nst-enum-types.c			\
-	nst-enum-types.h			\
 	nautilus-sendto-mimetype.c		\
 	nautilus-sendto-mimetype.h
 libnstplugin_la_LIBADD = $(NAUTILUS_SENDTO_LIBS)

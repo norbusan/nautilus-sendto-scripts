@@ -143,26 +143,6 @@ evolution_plugin_init (EvolutionPlugin *p)
 	}
 }
 
-static gboolean
-evolution_plugin_supports_mime_types (NautilusSendtoPlugin *plugin,
-				      const char          **mime_types)
-{
-	EvolutionPlugin *p;
-	guint i;
-
-	p = EVOLUTION_PLUGIN (plugin);
-
-	if (p->mail_cmd == NULL)
-		return FALSE;
-
-	for (i = 0; mime_types[i] != NULL; i++) {
-		if (g_str_equal (mime_types[i], "inode/directory"))
-			p->has_dirs = TRUE;
-	}
-
-	return TRUE;
-}
-
 static void
 contacts_selected_cb (GtkWidget       *entry,
 		      EContact        *contact,
@@ -299,6 +279,34 @@ evolution_plugin_get_widget (NautilusSendtoPlugin *plugin,
 	gtk_widget_show_all (p->vbox);
 
 	return p->vbox;
+}
+
+static gboolean
+evolution_plugin_supports_mime_types (NautilusSendtoPlugin *plugin,
+				      GList                *file_list,
+				      const char          **mime_types)
+{
+	EvolutionPlugin *p;
+	guint i;
+
+	p = EVOLUTION_PLUGIN (plugin);
+
+	if (p->mail_cmd == NULL)
+		return FALSE;
+
+	for (i = 0; mime_types[i] != NULL; i++) {
+		if (g_str_equal (mime_types[i], "inode/directory"))
+			p->has_dirs = TRUE;
+	}
+
+	g_signal_emit_by_name (G_OBJECT (plugin),
+			       "add-widget",
+			       _("Mail"),
+			       "emblem-mail",
+			       "evolution",
+			       evolution_plugin_get_widget (plugin, file_list));
+
+	return TRUE;
 }
 
 static void

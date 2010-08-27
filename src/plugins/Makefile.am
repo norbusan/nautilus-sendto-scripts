@@ -1,9 +1,17 @@
-SUBDIRS = . removable-devices evolution
+SUBDIRS = . removable-devices evolution socialweb
 #SUBDIRS = . $(PLUGINS)
 DIST_SUBDIRS = $(ALL_PLUGINS)
 
 nautilus_sendto_includedir = $(includedir)/nautilus-sendto/
 nautilus_sendto_include_HEADERS = nautilus-sendto-plugin.h nst-common.h nautilus-sendto-packer.h
+
+MARSHALFILES = nst-plugin-marshal.c nst-plugin-marshal.h
+BUILT_SOURCES = $(MARSHALFILES)
+
+nst-plugin-marshal.c: nst-plugin-marshal.h
+	$(AM_V_GEN) ( $(GLIB_GENMARSHAL) --prefix=nst_plugin_marshal $(srcdir)/nst-plugin-marshal.list --header --body > nst-plugin-marshal.c )
+nst-plugin-marshal.h: nst-plugin-marshal.list
+	$(AM_V_GEN) ( $(GLIB_GENMARSHAL) --prefix=nst_plugin_marshal $(srcdir)/nst-plugin-marshal.list --header > nst-plugin-marshal.h )
 
 lib_LTLIBRARIES = libnautilussendto-1.0.la
 libnautilussendto_1_0_la_SOURCES =				\
@@ -12,7 +20,8 @@ libnautilussendto_1_0_la_SOURCES =				\
 	nautilus-sendto-packer.c				\
 	nst-enum-types.h					\
 	nst-enum-types.c					\
-	$(nautilus_sendto_include_HEADERS)
+	$(nautilus_sendto_include_HEADERS)			\
+	$(MARSHALFILES)
 libnautilussendto_1_0_la_LIBADD = $(NAUTILUS_SENDTO_LIBS)
 libnautilussendto_1_0_la_CFLAGS = $(NAUTILUS_SENDTO_CFLAGS) -DUIDIR=\""$(uidir)"\"
 

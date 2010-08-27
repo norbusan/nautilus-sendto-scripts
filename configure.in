@@ -81,7 +81,7 @@ AC_MSG_NOTICE([installing nautilus plugin in ${ac_with_nautilusdir}])
 AC_SUBST([NAUTILUS_EXTENSION_DIR],[${ac_with_nautilusdir}])
 
 # The full list of plugins
-allowed_plugins="evolution gajim nautilus-burn pidgin removable-devices upnp"
+allowed_plugins="evolution gajim nautilus-burn pidgin removable-devices socialweb upnp"
 
 plugin_error_or_ignore()
 {
@@ -180,6 +180,14 @@ for plugin in ${used_plugins}; do
 				add_plugin="0"
 			fi
 		;;
+		socialweb)
+			PKG_CHECK_MODULES(SOCIALWEB, libsocialweb-client,
+					  enable_libsocialweb=yes, enable_libsocialweb=no)
+			if test "${enable_libsocialweb}" != "yes"; then
+				plugin_error_or_ignore "you need libsocialweb-client to build the libsocialweb plugin"
+				add_plugin="0"
+			fi
+		;;
 		upnp)
 			PKG_CHECK_MODULES(UPNP, gupnp-1.0 >= $GUPNP_REQUIRED libpeas-1.0,
 					  enable_upnp=yes, enable_upnp=no)
@@ -210,16 +218,6 @@ AC_MSG_RESULT([$PLUGINS])
 AC_SUBST([ALL_PLUGINS])
 AC_SUBST([PLUGINS])
 
-dnl For the pidgin plugin
-AM_CONDITIONAL(HAVE_PIDGIN, test "x$enable_pidgin" = "xyes")
-
-dnl For the GIO based plugins
-enable_nst_common=no
-if test "x$enable_burn" = "xyes" -o "x$enable_removable" = "xyes"; then
-	enable_nst_common=yes
-fi
-AM_CONDITIONAL(HAVE_GIO, test "x$enable_nst_common" = "xyes")
-
 GLIB_GENMARSHAL=`$PKG_CONFIG --variable=glib_genmarshal glib-2.0`
 AC_SUBST(GLIB_GENMARSHAL)
 
@@ -243,6 +241,7 @@ src/plugins/gajim/Makefile
 src/plugins/nautilus-burn/Makefile
 src/plugins/pidgin/Makefile
 src/plugins/removable-devices/Makefile
+src/plugins/socialweb/Makefile
 src/plugins/upnp/Makefile
 docs/Makefile
 docs/nautilus-sendto/Makefile

@@ -33,7 +33,7 @@ G_BEGIN_DECLS
 #define NAUTILUS_SENDTO_IS_PLUGIN(obj)           (G_TYPE_CHECK_INSTANCE_TYPE ((obj), NAUTILUS_SENDTO_TYPE_PLUGIN))
 #define NAUTILUS_SENDTO_PLUGIN_GET_IFACE(obj)    (G_TYPE_INSTANCE_GET_INTERFACE ((obj), NAUTILUS_SENDTO_TYPE_PLUGIN, NautilusSendtoPluginInterface))
 
-typedef struct _NautilusSendtoPlugin           NautilusSendtoPlugin; /* dummy typedef */
+typedef struct _NautilusSendtoPlugin           NautilusSendtoPlugin;
 typedef struct _NautilusSendtoPluginInterface  NautilusSendtoPluginInterface;
 
 typedef enum {
@@ -47,19 +47,28 @@ struct _NautilusSendtoPluginInterface
 	GTypeInterface g_iface;
 
 	gboolean    (*supports_mime_types) (NautilusSendtoPlugin *plugin,
+					    GList                *file_list,
 					    const char          **mime_types);
 	void	    (*send_files)  (NautilusSendtoPlugin *plugin,
 				    GList                *file_list,
 				    GAsyncReadyCallback   callback,
 				    gpointer              user_data);
-	GtkWidget  *(*get_widget)  (NautilusSendtoPlugin *plugin,
-				    GList                *file_list);
+
+	/* signals */
+	void        (*add_widget)  (NautilusSendtoPlugin *plugin,
+				    const char           *name,
+				    const char           *icon_name,
+				    const char           *id,
+				    GtkWidget            *widget);
+	void        (*can_send)    (NautilusSendtoPlugin *plugin,
+				    const char           *id,
+				    gboolean              can_send);
 };
 
-GType       nautilus_sendto_plugin_get_type                (void);
-GtkWidget  *nautilus_sendto_plugin_get_widget (NautilusSendtoPlugin  *plugin,
-					       GList                 *file_list);
+GType       nautilus_sendto_plugin_get_type            (void);
+GObject    *nautilus_sendto_plugin_get_object          (NautilusSendtoPlugin *plugin);
 gboolean    nautilus_sendto_plugin_supports_mime_types (NautilusSendtoPlugin *plugin,
+							GList                *file_list,
 							const char          **mime_types);
 void        nautilus_sendto_plugin_send_files (NautilusSendtoPlugin *plugin,
 					       GList                *file_list,
@@ -72,9 +81,8 @@ NautilusSendtoSendStatus nautilus_sendto_plugin_send_files_finish (NautilusSendt
 #define NAUTILUS_PLUGIN_REGISTER(TYPE_NAME, TypeName, type_name)					\
 	GType type_name##_get_type (void) G_GNUC_CONST;							\
 	G_MODULE_EXPORT void  peas_register_types (PeasObjectModule *module);				\
-	static GtkWidget *type_name##_get_widget (NautilusSendtoPlugin *plugin, GList *file_list);	\
 	static void type_name##_send_files (NautilusSendtoPlugin *plugin, GList *file_list, GAsyncReadyCallback callback, gpointer user_data); \
-	static gboolean type_name##_supports_mime_types (NautilusSendtoPlugin *plugin, const char **mime_types); \
+	static gboolean type_name##_supports_mime_types (NautilusSendtoPlugin *plugin, GList *file_list, const char **mime_types); \
 	static void nautilus_sendto_plugin_iface_init (NautilusSendtoPluginInterface *iface);		\
 	static void type_name##_finalize (GObject *object);						\
 	G_DEFINE_DYNAMIC_TYPE_EXTENDED (TypeName,							\
@@ -86,7 +94,6 @@ NautilusSendtoSendStatus nautilus_sendto_plugin_send_files_finish (NautilusSendt
 	static void											\
 	nautilus_sendto_plugin_iface_init (NautilusSendtoPluginInterface *iface)			\
 	{												\
-		iface->get_widget = type_name##_get_widget;						\
 		iface->send_files = type_name##_send_files;						\
 		iface->supports_mime_types = type_name##_supports_mime_types;				\
 	}												\
