@@ -177,10 +177,16 @@ can_send_cb (NautilusSendtoPlugin *plugin,
 				    -1);
 		if (selected_id != NULL &&
 		    g_str_equal (id, selected_id) != FALSE) {
+			GtkTreeSelection *selection;
+
 			g_free (selected_id);
 			gtk_list_store_set (GTK_LIST_STORE (model), &iter,
 					    COLUMN_CAN_SEND, can_send,
 					    -1);
+
+			selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (nst->options_treeview));
+			if (gtk_tree_selection_iter_is_selected (selection, &iter))
+				gtk_widget_set_sensitive (nst->send_button, can_send);
 			return;
 		}
 		g_free (selected_id);
