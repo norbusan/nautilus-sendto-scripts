@@ -52,15 +52,6 @@ static gboolean run_from_build_dir = FALSE;
 static PeasEngine *engine;
 static PeasExtensionSet *exten_set;
 
-GList *file_list = NULL;
-char **mime_types = NULL;
-guint num_dirs = 0;
-GList *plugin_list = NULL;
-GHashTable *hash ;
-guint option = 0;
-
-static GSettings *settings = NULL;
-
 typedef struct {
 	GtkWidget *dialog;
 	GtkWidget *scrolled_window;
@@ -73,6 +64,10 @@ typedef struct {
 	GtkWidget *send_button;
 
 	char *last_used;
+	GSettings *settings;
+	GList *file_list;
+	char **mime_types;
+	guint num_dirs;
 } NautilusSendto;
 
 static const GOptionEntry entries[] = {
@@ -141,14 +136,14 @@ send_button_cb (GtkWidget *widget, NautilusSendto *nst)
 			    COLUMN_ID, &id,
 			    -1);
 
-	g_settings_set_string (settings,
+	g_settings_set_string (nst->settings,
 			       NAUTILUS_SENDTO_LAST_MEDIUM,
 			       id);
 
 	info = peas_engine_get_plugin_info (engine, id);
 	ext = peas_extension_set_get_extension (exten_set, info);
 
-	if (peas_extension_call (ext, "send_files", file_list, send_callback, nst) == FALSE) {
+	if (peas_extension_call (ext, "send_files", nst->file_list, send_callback, nst) == FALSE) {
 		/* FIXME report the error in the UI */
 		g_warning ("Failed to send files");
 		make_sensitive_for_send (nst, TRUE);
@@ -339,7 +334,8 @@ set_model_for_options_treeview (NautilusSendto *nst)
 				  G_CALLBACK (can_send_cb), nst);
 
 		/* Check if the plugin supports the mime-types of the files we have */
-		if (peas_extension_call (ext, "supports_mime_types", file_list, mime_types, &supported) == FALSE ||
+		if (peas_extension_call (ext, "supports_mime_types",
+					 nst->file_list, nst->mime_types, &supported) == FALSE ||
 		    supported == FALSE) {
 			g_message ("'%s' does not support mime-types", id);
 		}
@@ -397,11 +393,10 @@ update_button_image (GtkSettings *settings,
 }
 
 static void
-nautilus_sendto_create_ui (void)
+nautilus_sendto_create_ui (NautilusSendto *nst)
 {
 	GtkBuilder *app;
 	GError* error = NULL;
-	NautilusSendto *nst;
 	GtkSettings *gtk_settings;
 	GtkWidget *button_image;
 	const char *ui_file;
@@ -418,9 +413,8 @@ nautilus_sendto_create_ui (void)
 	if (!gtk_builder_add_from_file (app, ui_file, &error)) {
 		g_warning ("Couldn't load builder file: %s", error->message);
 		g_error_free (error);
+		return;
 	}
-
-	nst = g_new0 (NautilusSendto, 1);
 
 	nst->options_treeview = GTK_WIDGET (gtk_builder_get_object (app, "options_treeview"));
 	nst->contacts_notebook = GTK_WIDGET (gtk_builder_get_object (app, "contacts_notebook"));
@@ -432,8 +426,8 @@ nautilus_sendto_create_ui (void)
 	nst->cancel_button = GTK_WIDGET (gtk_builder_get_object (app, "cancel_button"));
 	nst->send_button = GTK_WIDGET (gtk_builder_get_object (app, "send_button"));
 
-	nst->last_used = g_settings_get_string (settings,
-					       NAUTILUS_SENDTO_LAST_MEDIUM);
+	nst->last_used = g_settings_get_string (nst->settings,
+						NAUTILUS_SENDTO_LAST_MEDIUM);
 
 	gtk_settings = gtk_settings_get_default ();
 	button_image = GTK_WIDGET (gtk_builder_get_object (app, "image1"));
@@ -443,9 +437,9 @@ nautilus_sendto_create_ui (void)
 
 	/* Set a title depending on the number of files to
 	 * share, and their types */
-	title = nst_title_from_mime_types ((const char **) mime_types,
-					   g_list_length (file_list) - num_dirs,
-					   num_dirs);
+	title = nst_title_from_mime_types ((const char **) nst->mime_types,
+					   g_list_length (nst->file_list) - nst->num_dirs,
+					   nst->num_dirs);
 	gtk_window_set_title (GTK_WINDOW (gtk_builder_get_object (app, "nautilus_sendto_dialog")),
 			     title);
 	g_free (title);
@@ -480,7 +474,7 @@ nautilus_sendto_plugin_load_all (void)
 }
 
 static gboolean
-nautilus_sendto_plugin_init (void)
+nautilus_sendto_plugin_init (NautilusSendto *nst)
 {
 	GPtrArray *search_paths;
 	char **paths, *user_dir;
@@ -585,7 +579,7 @@ collate_mimetypes (const char *key,
 }
 
 static void
-nautilus_sendto_init (void)
+nautilus_sendto_init (NautilusSendto *nst)
 {
 	GHashTable *ht;
 	GPtrArray *array;
@@ -629,7 +623,7 @@ nautilus_sendto_init (void)
 		mimetype = g_file_info_get_attribute_string (info, G_FILE_ATTRIBUTE_STANDARD_FAST_CONTENT_TYPE);
 		g_hash_table_insert (ht, g_strdup (mimetype), GINT_TO_POINTER (1));
 		if (g_str_equal (mimetype, "inode/directory"))
-			num_dirs++;
+			nst->num_dirs++;
 
 		g_object_unref (info);
 
@@ -638,20 +632,20 @@ nautilus_sendto_init (void)
 		escaped = escape_ampersands_and_commas (uri);
 
 		if (escaped == NULL) {
-			file_list = g_list_prepend (file_list, uri);
+			nst->file_list = g_list_prepend (nst->file_list, uri);
 		} else {
-			file_list = g_list_prepend (file_list, escaped);
+			nst->file_list = g_list_prepend (nst->file_list, escaped);
 			g_free (uri);
 		}
 	}
 
-	if (file_list == NULL) {
+	if (nst->file_list == NULL) {
 		/* FIXME, this needs to be done in UI now */
 		g_print (_("Expects URIs or filenames to be passed as options\n"));
 		exit (1);
 	}
 
-	file_list = g_list_reverse (file_list);
+	nst->file_list = g_list_reverse (nst->file_list);
 
 	/* Collate the mime-types */
 	array = g_ptr_array_new ();
@@ -659,7 +653,7 @@ nautilus_sendto_init (void)
 	g_hash_table_destroy (ht);
 
 	g_ptr_array_add (array, NULL);
-	mime_types = (char **) g_ptr_array_free (array, FALSE);
+	nst->mime_types = (char **) g_ptr_array_free (array, FALSE);
 }
 
 int main (int argc, char **argv)
@@ -682,22 +676,21 @@ int main (int argc, char **argv)
 		return 1;
 	}
 
-	/* FIXME create the nst object here */
-
-	settings = g_settings_new ("org.gnome.Nautilus.Sendto");
-	nautilus_sendto_init ();
-	if (nautilus_sendto_plugin_init () == FALSE)
+	nst = g_new0 (NautilusSendto, 1);
+	nst->settings = g_settings_new ("org.gnome.Nautilus.Sendto");
+	nautilus_sendto_init (nst);
+	if (nautilus_sendto_plugin_init (nst) == FALSE)
 		return 1;
-	nautilus_sendto_create_ui ();
+	nautilus_sendto_create_ui (nst);
 
 	gtk_main ();
 
 	/* FIXME: shut down the plugins */
-	//gtk_widget_destroy (nst->dialog);
-	//g_free (nst->last_used);
-
-	g_object_unref(settings);
-	g_strfreev (mime_types);
+	gtk_widget_destroy (nst->dialog);
+	g_free (nst->last_used);
+	g_object_unref(nst->settings);
+	g_strfreev (nst->mime_types);
+	g_free (nst);
 
 	return 0;
 }
