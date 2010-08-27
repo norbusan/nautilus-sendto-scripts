@@ -77,13 +77,13 @@ get_evo_cmd (void)
 {
 	char *tmp = NULL;
 	char *retval;
-	char *cmds[] = {"evolution",
+	char *cmds[] = {
+		"evolution",
 		"evolution-2.0",
 		"evolution-2.2",
 		"evolution-2.4",
 		"evolution-2.6",
 		"evolution-2.8", /* for the future */
-		"evolution-3.0", /* but how far to go ? */
 		NULL};
 	guint i;
 
@@ -240,8 +240,11 @@ can_send_changed (GObject         *gobject,
 
 	g_object_get (gobject, "can-send", &can_send, NULL);
 
-	/* FIXME, export this to the shell */
-	g_message ("Packer can send? %d", can_send);
+	/* FIXME, can we validate whatever was already in the entry? */
+	g_signal_emit_by_name (G_OBJECT (p),
+			       "can-send",
+			       "evolution",
+			       can_send);
 }
 
 static GtkWidget *
@@ -306,6 +309,10 @@ evolution_plugin_supports_mime_types (NautilusSendtoPlugin *plugin,
 			       "evolution",
 			       evolution_plugin_get_widget (plugin, file_list));
 
+	g_signal_emit_by_name (G_OBJECT (p),
+			       "can-send",
+			       "evolution",
+			       TRUE);
 	return TRUE;
 }
 
