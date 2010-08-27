@@ -1,7 +1,6 @@
 *.gmo
 *.la
 *.lo
-*.nst-plugin
 *.o
 *.swp
 *~
