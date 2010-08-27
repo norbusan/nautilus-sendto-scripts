@@ -77,7 +77,7 @@ static const GOptionEntry entries[] = {
 };
 
 static void
-destroy_dialog (GtkWidget *widget, gpointer data )
+destroy_dialog (GtkWidget *widget, gpointer data)
 {
         gtk_main_quit ();
 }
@@ -445,8 +445,6 @@ nautilus_sendto_create_ui (NautilusSendto *nst)
 	g_free (title);
 
 	set_model_for_options_treeview (nst);
-	g_signal_connect (G_OBJECT (nst->dialog), "destroy",
-                          G_CALLBACK (destroy_dialog), NULL);
 	g_signal_connect (G_OBJECT (nst->cancel_button), "clicked",
 			  G_CALLBACK (destroy_dialog), NULL);
 	g_signal_connect (G_OBJECT (nst->send_button), "clicked",
