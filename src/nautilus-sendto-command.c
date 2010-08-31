@@ -671,7 +671,7 @@ int main (int argc, char **argv)
 	textdomain (GETTEXT_PACKAGE);
 
 	g_thread_init (NULL);
-	context = g_option_context_new ("nautilus-sendto");
+	context = g_option_context_new ("");
 	g_option_context_add_main_entries (context, entries, GETTEXT_PACKAGE);
 	g_option_context_add_group (context, gtk_get_option_group (TRUE));
 	if (g_option_context_parse (context, &argc, &argv, &error) == FALSE) {
