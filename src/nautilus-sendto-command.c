@@ -28,6 +28,9 @@
 #include <glib/gi18n.h>
 #include <glib/gstdio.h>
 #include <gtk/gtk.h>
+#ifdef GDK_WINDOWING_X11
+#include <gdk/gdkx.h>
+#endif
 
 #include "nautilus-sendto-plugin.h"
 #include "nautilus-sendto-mimetype.h"
@@ -48,6 +51,7 @@ enum {
 /* Options */
 static char **filenames = NULL;
 static gboolean run_from_build_dir = FALSE;
+static gint64 xid = 0;
 
 static PeasEngine *engine;
 static PeasExtensionSet *exten_set;
@@ -72,6 +76,7 @@ typedef struct {
 
 static const GOptionEntry entries[] = {
 	{ "run-from-build-dir", 'b', 0, G_OPTION_ARG_NONE, &run_from_build_dir, N_("Run from build directory"), NULL },
+	{ "xid", 'x', 0, G_OPTION_ARG_INT64, &xid, N_("Use XID as parent to the send dialogue"), NULL },
 	{ G_OPTION_REMAINING, '\0', 0, G_OPTION_ARG_FILENAME_ARRAY, &filenames, N_("Files to send"), "[FILES...]" },
 	{ NULL }
 };
@@ -431,6 +436,16 @@ nautilus_sendto_create_ui (NautilusSendto *nst)
 	nst->buttons = GTK_WIDGET (gtk_builder_get_object (app, "dialog-action_area2"));
 	nst->cancel_button = GTK_WIDGET (gtk_builder_get_object (app, "cancel_button"));
 	nst->send_button = GTK_WIDGET (gtk_builder_get_object (app, "send_button"));
+
+#ifdef GDK_WINDOWING_X11
+	if (xid != 0) {
+		GdkWindow *window;
+		gtk_widget_realize (nst->dialog);
+		window = gdk_window_foreign_new (xid);
+		gdk_window_set_transient_for (gtk_widget_get_window (nst->dialog),
+					      window);
+	}
+#endif
 
 	nst->last_used = g_settings_get_string (nst->settings,
 						NAUTILUS_SENDTO_LAST_MEDIUM);
