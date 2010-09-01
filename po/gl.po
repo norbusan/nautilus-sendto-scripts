@@ -6,14 +6,15 @@
 # Ignacio Casal Quinteiro <icq@cvs.gnome.org>, 2007.
 # Ignacio Casal Quinteiro <icq@svn.gnome.org>, 2007.
 # Fran Diéguez <frandieguez@ubuntu.com>, 2010.
+# Fran Dieguez <frandieguez@ubuntu.com>, 2010.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-21 14:39+0200\n"
-"PO-Revision-Date: 2010-07-21 14:40+0200\n"
-"Last-Translator: Fran Diéguez <frandieguez@ubuntu.com>\n"
+"POT-Creation-Date: 2010-09-01 20:45+0200\n"
+"PO-Revision-Date: 2010-09-01 20:48+0200\n"
+"Last-Translator: Fran Dieguez <frandieguez@ubuntu.com>\n"
 "Language-Team: Galician <gnome-gl-list@gnome.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -21,68 +22,99 @@ msgstr ""
 "X-Generator: KBabel 1.11.4\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
 
-#: ../src/nautilus-nste.c:92 ../src/nautilus-nste.c:97
-#: ../src/nautilus-sendto.ui.h:3
+#: ../src/extension/nautilus-nste.c:78 ../src/extension/nautilus-nste.c:83
 msgid "Send To..."
 msgstr "Enviar a...."
 
-#: ../src/nautilus-nste.c:93
+#: ../src/extension/nautilus-nste.c:79
 msgid "Send file by mail, instant message..."
 msgstr "Enviar un ficheiro por correo, por mensaxe instantánea..."
 
-#: ../src/nautilus-nste.c:98
+#: ../src/extension/nautilus-nste.c:84
 msgid "Send files by mail, instant message..."
 msgstr "Enviar ficheiros por correo, por mensaxe instantánea..."
 
-#: ../src/nautilus-sendto-command.c:572
-msgid "Files"
-msgstr "Ficheiros"
+#: ../src/nautilus-sendto-command.c:78
+msgid "Run from build directory"
+msgstr "Executar desde o cartafol de construción"
 
-#: ../src/nautilus-sendto-command.c:783
+#: ../src/nautilus-sendto-command.c:79
+msgid "Use XID as parent to the send dialogue"
+msgstr "Usar o XID como pai para o diálogo de envío"
+
+#: ../src/nautilus-sendto-command.c:80
+msgid "Files to send"
+msgstr "Ficheiros para enviar"
+
+#. FIXME, this needs to be done in UI now
+#: ../src/nautilus-sendto-command.c:663
 #, c-format
 msgid "Expects URIs or filenames to be passed as options\n"
 msgstr "Expera que se pasen como opcións URIs ou nomes de ficheiros\n"
 
-#: ../src/nautilus-sendto-command.c:804
+#: ../src/nautilus-sendto-command.c:693
 #, c-format
 msgid "Could not parse command-line options: %s\n"
 msgstr "Non foi posíbel analizar as opcións da liña de ordes: %s\n"
 
-#: ../src/nautilus-sendto-command.c:819
-msgid "Could not load any plugins."
-msgstr "Non foi posíbel cargar algún engadidos."
+#: ../src/nautilus-sendto-mimetype.c:50
+#, c-format
+msgid "Sharing %d folder"
+msgid_plural "Sharing %d folders"
+msgstr[0] "Compartir %d cartafol"
+msgstr[1] "Compartir %d cartafoles"
 
-#: ../src/nautilus-sendto-command.c:822
-msgid "Please verify your installation"
-msgstr "Comprobe a súa instalación."
+#: ../src/nautilus-sendto-mimetype.c:52
+#, c-format
+msgid "Sharing %d folders and files"
+msgstr "Compartir %d cartafoles e ficheiros"
 
-#: ../src/nautilus-sendto.ui.h:1
-msgid "<b>Compression</b>"
-msgstr "<b>Compresión</b>"
+#: ../src/nautilus-sendto-mimetype.c:77
+#, c-format
+msgid "Sharing %d video"
+msgid_plural "Sharing %d videos"
+msgstr[0] "Compartir %d vídeo"
+msgstr[1] "Compartir %d vídeos"
 
-#: ../src/nautilus-sendto.ui.h:2
-msgid "<b>Destination</b>"
-msgstr "<b>Destino</b>"
+#: ../src/nautilus-sendto-mimetype.c:79
+#, c-format
+msgid "Sharing %d photo"
+msgid_plural "Sharing %d photos"
+msgstr[0] "Compartir %d foto"
+msgstr[1] "Compartir %d fotos"
 
-#: ../src/nautilus-sendto.ui.h:4
-msgid "Send _as:"
-msgstr "Enviar _como:"
+#: ../src/nautilus-sendto-mimetype.c:81
+#, c-format
+msgid "Sharing %d image"
+msgid_plural "Sharing %d images"
+msgstr[0] "Compartir %d imaxe"
+msgstr[1] "Compartir %d imaxes"
 
-#: ../src/nautilus-sendto.ui.h:5
-msgid "Send _packed in:"
-msgstr "E_nviar empaquetado en:"
+#: ../src/nautilus-sendto-mimetype.c:83
+#, c-format
+msgid "Sharing %d text file"
+msgid_plural "Sharing %d text files"
+msgstr[0] "Compartir %d ficheiro de texto"
+msgstr[1] "Compartir %d ficheiros de texto"
 
-#: ../src/nautilus-sendto.ui.h:6
-msgid "Send t_o:"
-msgstr "Enviar _a:"
+#: ../src/nautilus-sendto-mimetype.c:85
+#, c-format
+msgid "Sharing %d file"
+msgid_plural "Sharing %d files"
+msgstr[0] "Compartir %d ficheiro"
+msgstr[1] "Compartir %d ficheiros"
 
-#: ../src/nautilus-sendto.ui.h:7
+#: ../data/nautilus-sendto.ui.h:1
 msgid "_Send"
 msgstr "_Enviar"
 
-#: ../src/plugins/evolution/evolution.c:378
-msgid "Email"
-msgstr "Correo-e"
+#: ../src/plugins/nautilus-sendto-packer.c:197
+msgid "Files"
+msgstr "Ficheiros"
+
+#: ../src/plugins/evolution/evolution.c:307
+msgid "Mail"
+msgstr "Correo electrónico"
 
 #: ../src/plugins/evolution/e-contact-entry.c:153
 #, c-format
@@ -206,15 +238,15 @@ msgstr "Destinatario descoñecido."
 msgid "Instant Message (Gajim)"
 msgstr "Mensaxe instantánea (Gajim)"
 
-#: ../src/plugins/nautilus-burn/nautilus-burn.c:92
+#: ../src/plugins/nautilus-burn/nautilus-burn.c:90
 msgid "New CD/DVD"
 msgstr "Novo CD/DVD"
 
-#: ../src/plugins/nautilus-burn/nautilus-burn.c:99
+#: ../src/plugins/nautilus-burn/nautilus-burn.c:97
 msgid "Existing CD/DVD"
 msgstr "CD/DVD existente"
 
-#: ../src/plugins/nautilus-burn/nautilus-burn.c:178
+#: ../src/plugins/nautilus-burn/nautilus-burn.c:176
 msgid "CD/DVD Creator"
 msgstr "Creador de CD/DVD"
 
@@ -222,10 +254,52 @@ msgstr "Creador de CD/DVD"
 msgid "Instant Message (Pidgin)"
 msgstr "Mensaxe instantánea (Pidgin)"
 
-#: ../src/plugins/removable-devices/removable-devices.c:248
+#: ../src/plugins/removable-devices/removable-devices.c:271
 msgid "Removable disks and shares"
 msgstr "Discos removíbeis e compartidos"
+
+#: ../src/plugins/socialweb/socialweb.c:148
+#, c-format
+msgid "Service '%s' is not configured."
+msgstr "O servizo «%s» non está configurado."
+
+#: ../src/plugins/socialweb/socialweb.c:151
+#: ../src/plugins/socialweb/socialweb.c:168
+msgid "_Configure"
+msgstr "_Configurar"
+
+#: ../src/plugins/socialweb/socialweb.c:155
+#: ../src/plugins/socialweb/socialweb.c:175
+#, c-format
+msgid "Logged in to service '%s'."
+msgstr "Sesión iniciada no servizo «%s»."
+
+#: ../src/plugins/socialweb/socialweb.c:165
+#, c-format
+msgid "Could not log in to service '%s'."
+msgstr "Non foi posíbel iniciar a sesión no servizo «%s»."
 
 #: ../src/plugins/upnp/upnp.c:309
 msgid "UPnP Media Server"
 msgstr "Servidor multimedia UPnP"
+
+#~ msgid "Could not load any plugins."
+#~ msgstr "Non foi posíbel cargar algún engadidos."
+
+#~ msgid "Please verify your installation"
+#~ msgstr "Comprobe a súa instalación."
+
+#~ msgid "<b>Compression</b>"
+#~ msgstr "<b>Compresión</b>"
+
+#~ msgid "<b>Destination</b>"
+#~ msgstr "<b>Destino</b>"
+
+#~ msgid "Send _as:"
+#~ msgstr "Enviar _como:"
+
+#~ msgid "Send _packed in:"
+#~ msgstr "E_nviar empaquetado en:"
+
+#~ msgid "Send t_o:"
+#~ msgstr "Enviar _a:"
