@@ -65,25 +65,11 @@ nautilus_nste_get_file_items (NautilusMenuProvider *provider,
 			      GList                *files)
 {
 	GList    *items = NULL;
-	GList    *scan;
 	gboolean  one_item;
 	NautilusMenuItem *item;
 
 	if (files == NULL)
 		return NULL;
-
-	for (scan = files; scan; scan = scan->next) {
-		NautilusFileInfo *file = scan->data;
-		gchar            *scheme;
-		gboolean          local;
-
-		scheme = nautilus_file_info_get_uri_scheme (file);
-		local = strncmp (scheme, "file", 4) == 0;
-		g_free (scheme);
-
-		if (!local)
-			return NULL;
-	}
 
 	one_item = (files != NULL) && (files->next == NULL);
 	if (one_item &&
