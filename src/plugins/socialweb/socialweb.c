@@ -57,14 +57,24 @@ NAUTILUS_PLUGIN_REGISTER(SOCIALWEB_TYPE_PLUGIN, SocialwebPlugin, socialweb_plugi
 
 static void
 socialweb_plugin_send_files (NautilusSendtoPlugin *plugin,
-				     GList                *file_list,
-				     GAsyncReadyCallback   callback,
-				     gpointer              user_data)
+			     const char           *id,
+			     GList                *file_list,
+			     GAsyncReadyCallback   callback,
+			     gpointer              user_data)
 {
+	SocialwebPlugin *p = SOCIALWEB_PLUGIN (plugin);
+	SocialwebPage *page;
+
+	g_message ("socialweb_plugin_send_files %s", id);
+
+	page = g_hash_table_lookup (p->pages, id);
+	g_return_if_fail (page != NULL);
+
+	/* FIXME call sw_client_service_upload_photo */
+
 	/* FIXME
 	 * hack for facebook, convert files to jpeg for upload */
 #if 0
-	SocialwebPlugin *p = SOCIALWEB_PLUGIN (plugin);
 	GtkListStore *store;
 	GtkTreeIter iter;
 	GMount *dest_mount;
