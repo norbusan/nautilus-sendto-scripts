@@ -430,6 +430,7 @@ get_sylpheed_mailto (EvolutionPlugin *p,
 
 static void
 evolution_plugin_send_files (NautilusSendtoPlugin *plugin,
+			     const char           *id,
 			     GList                *file_list,
 			     GAsyncReadyCallback   callback,
 			     gpointer              user_data)

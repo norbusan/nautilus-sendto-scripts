@@ -163,6 +163,7 @@ cb_mount_added (GVolumeMonitor         *volume_monitor,
 
 static void
 removable_devices_plugin_send_files (NautilusSendtoPlugin *plugin,
+				     const char           *id,
 				     GList                *file_list,
 				     GAsyncReadyCallback   callback,
 				     gpointer              user_data)

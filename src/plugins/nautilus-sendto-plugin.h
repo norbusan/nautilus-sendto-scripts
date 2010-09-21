@@ -50,6 +50,7 @@ struct _NautilusSendtoPluginInterface
 					    GList                *file_list,
 					    const char          **mime_types);
 	void	    (*send_files)  (NautilusSendtoPlugin *plugin,
+				    const char           *id,
 				    GList                *file_list,
 				    GAsyncReadyCallback   callback,
 				    gpointer              user_data);
@@ -71,6 +72,7 @@ gboolean    nautilus_sendto_plugin_supports_mime_types (NautilusSendtoPlugin *pl
 							GList                *file_list,
 							const char          **mime_types);
 void        nautilus_sendto_plugin_send_files (NautilusSendtoPlugin *plugin,
+					       const char           *id,
 					       GList                *file_list,
 					       GAsyncReadyCallback   callback,
 					       gpointer              user_data);
@@ -81,7 +83,7 @@ NautilusSendtoSendStatus nautilus_sendto_plugin_send_files_finish (NautilusSendt
 #define NAUTILUS_PLUGIN_REGISTER(TYPE_NAME, TypeName, type_name)					\
 	GType type_name##_get_type (void) G_GNUC_CONST;							\
 	G_MODULE_EXPORT void  peas_register_types (PeasObjectModule *module);				\
-	static void type_name##_send_files (NautilusSendtoPlugin *plugin, GList *file_list, GAsyncReadyCallback callback, gpointer user_data); \
+	static void type_name##_send_files (NautilusSendtoPlugin *plugin, const char *id, GList *file_list, GAsyncReadyCallback callback, gpointer user_data); \
 	static gboolean type_name##_supports_mime_types (NautilusSendtoPlugin *plugin, GList *file_list, const char **mime_types); \
 	static void nautilus_sendto_plugin_iface_init (NautilusSendtoPluginInterface *iface);		\
 	static void type_name##_finalize (GObject *object);						\

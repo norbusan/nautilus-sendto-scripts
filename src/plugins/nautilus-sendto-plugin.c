@@ -97,6 +97,7 @@ nautilus_sendto_plugin_supports_mime_types (NautilusSendtoPlugin  *plugin,
  */
 void
 nautilus_sendto_plugin_send_files (NautilusSendtoPlugin *plugin,
+				   const char           *id,
 				   GList                *file_list,
 				   GAsyncReadyCallback   callback,
 				   gpointer              user_data)
@@ -104,11 +105,12 @@ nautilus_sendto_plugin_send_files (NautilusSendtoPlugin *plugin,
 	NautilusSendtoPluginInterface *iface;
 
 	g_return_if_fail (NAUTILUS_SENDTO_IS_PLUGIN (plugin));
+	g_return_if_fail (id != NULL);
 
 	iface = NAUTILUS_SENDTO_PLUGIN_GET_IFACE (plugin);
 
 	if (G_LIKELY (iface->send_files != NULL))
-		iface->send_files (plugin, file_list, callback, user_data);
+		iface->send_files (plugin, id, file_list, callback, user_data);
 }
 
 /**
