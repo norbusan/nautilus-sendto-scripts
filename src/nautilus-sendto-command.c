@@ -42,6 +42,7 @@ enum {
 	COLUMN_IS_SEPARATOR,
 	COLUMN_ICON,
 	COLUMN_ID,
+	COLUMN_EXT,
 	COLUMN_PAGE_NUM,
 	COLUMN_DESCRIPTION,
 	COLUMN_CAN_SEND,
@@ -128,7 +129,6 @@ send_button_cb (GtkWidget *widget, NautilusSendto *nst)
 	GtkTreeSelection *treeselection;
 	GtkTreeIter iter;
 	char *id;
-	PeasPluginInfo *info;
 	PeasExtension *ext;
 
 	treeselection = gtk_tree_view_get_selection (GTK_TREE_VIEW (nst->options_treeview));
@@ -139,16 +139,14 @@ send_button_cb (GtkWidget *widget, NautilusSendto *nst)
 
 	gtk_tree_model_get (model, &iter,
 			    COLUMN_ID, &id,
+			    COLUMN_EXT, &ext,
 			    -1);
 
 	g_settings_set_string (nst->settings,
 			       NAUTILUS_SENDTO_LAST_MEDIUM,
 			       id);
 
-	info = peas_engine_get_plugin_info (engine, id);
-	ext = peas_extension_set_get_extension (exten_set, info);
-
-	if (peas_extension_call (ext, "send_files", nst->file_list, send_callback, nst) == FALSE) {
+	if (peas_extension_call (ext, "send_files", id, nst->file_list, send_callback, nst) == FALSE) {
 		/* FIXME report the error in the UI */
 		g_warning ("Failed to send files");
 		make_sensitive_for_send (nst, TRUE);
@@ -163,7 +161,7 @@ static void
 can_send_cb (NautilusSendtoPlugin *plugin,
 	     const char           *id,
 	     gboolean              can_send,
-	     NautilusSendto                *nst)
+	     NautilusSendto       *nst)
 {
 	GtkTreeModel *model;
 	GtkTreeIter iter;
@@ -280,6 +278,7 @@ add_widget_cb (NautilusSendtoPlugin *plugin,
 			    COLUMN_IS_SEPARATOR, FALSE,
 			    COLUMN_ICON, pixbuf,
 			    COLUMN_ID, id,
+			    COLUMN_EXT, plugin,
 			    COLUMN_PAGE_NUM, page_num,
 			    COLUMN_DESCRIPTION, name,
 			    -1);
@@ -309,7 +308,7 @@ set_model_for_options_treeview (NautilusSendto *nst)
 	/* Disable this call if you want to debug */
 	gtk_notebook_set_show_tabs (GTK_NOTEBOOK (nst->contacts_notebook), FALSE);
 
-	model = gtk_list_store_new (NUM_COLUMNS, G_TYPE_BOOLEAN, GDK_TYPE_PIXBUF, G_TYPE_STRING, G_TYPE_INT, G_TYPE_STRING, G_TYPE_BOOLEAN);
+	model = gtk_list_store_new (NUM_COLUMNS, G_TYPE_BOOLEAN, GDK_TYPE_PIXBUF, G_TYPE_STRING, G_TYPE_OBJECT, G_TYPE_INT, G_TYPE_STRING, G_TYPE_BOOLEAN);
 	gtk_tree_view_set_model (GTK_TREE_VIEW (nst->options_treeview),
 				 GTK_TREE_MODEL (model));
 
