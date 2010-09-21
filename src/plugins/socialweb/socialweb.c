@@ -232,9 +232,9 @@ got_dynamic_caps_cb (SwClientService *service,
 
 	g_signal_emit_by_name (G_OBJECT (plugin),
 			       "add-widget",
+	                       sw_client_service_get_name (service),
 			       sw_client_service_get_display_name (service),
 			       NULL, /* FIXME, icon name, see http://bugs.meego.com/show_bug.cgi?id=5944 */
-			       sw_client_service_get_name (service),
 			       page->page);
 
 	g_signal_emit_by_name (G_OBJECT (plugin),
@@ -301,33 +301,29 @@ get_services_cb (SwClient        *client,
 	}
 }
 
-static gboolean
-socialweb_plugin_supports_mime_types (NautilusSendtoPlugin *plugin,
-				      GList                *file_list,
-				      const char          **mime_types)
+static void
+socialweb_plugin_create_widgets (NautilusSendtoPlugin *plugin,
+				 GList                *file_list,
+				 const char          **mime_types)
 {
 	SocialwebPlugin *p = (SocialwebPlugin *) plugin;
-	gboolean retval = FALSE;
 
 	if (g_strv_length ((char **) mime_types) != 1) {
-		g_message ("more than one mime type");
-		return FALSE;
+		/* FIXME: Handle mixed image types */
+		return;
 	} else if (g_str_equal (mime_types[0], "image/jpeg")) {
-		retval = TRUE;
+		/* Do nothing */
 	} else if (g_content_type_is_a (mime_types[0], "image/*")) {
 		/* Some of the plugins, such as Facebook,
 		 * don't support sending non-JPEG images */
 		p->has_non_photos = TRUE;
-		retval = TRUE;
 	} else {
-		return FALSE;
+		return;
 	}
 
 	sw_client_get_services (p->client,
 				(SwClientGetServicesCallback) get_services_cb,
 				plugin);
-
-	return retval;
 }
 
 static void

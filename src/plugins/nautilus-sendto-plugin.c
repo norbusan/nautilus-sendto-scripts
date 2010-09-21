@@ -60,30 +60,27 @@ nautilus_sendto_plugin_get_object (NautilusSendtoPlugin *plugin)
 }
 
 /**
- * nautilus_sendto_plugin_supports_mime_types:
+ * nautilus_sendto_plugin_create_widgets:
  * @plugin: a #NautilusSendtoPlugin instance
  * @file_list: (element-type utf8): a #GList of strings representing the files to send
  * @mime_types: a list of mime-types for the file types to send.
  *
- * Returns a #gboolean.
- *
- * Return value: %FALSE if one or more of the mime_types cannot be sent through that plugin.
+ * Causes the plugin to create its widgets, if all mime types are supported.
+ * The new widgets are returned via add-widget signal.
  */
-gboolean
-nautilus_sendto_plugin_supports_mime_types (NautilusSendtoPlugin  *plugin,
-					    GList                 *file_list,
-					    const char           **mime_types)
+void
+nautilus_sendto_plugin_create_widgets (NautilusSendtoPlugin  *plugin,
+                                       GList                 *file_list,
+                                       const char           **mime_types)
 {
 	NautilusSendtoPluginInterface *iface;
 
-	g_return_val_if_fail (NAUTILUS_SENDTO_IS_PLUGIN (plugin), FALSE);
+	g_return_if_fail (NAUTILUS_SENDTO_IS_PLUGIN (plugin));
 
 	iface = NAUTILUS_SENDTO_PLUGIN_GET_IFACE (plugin);
 
-	if (G_LIKELY (iface->supports_mime_types != NULL))
-		return iface->supports_mime_types (plugin, file_list, mime_types);
-
-	return FALSE;
+	if (G_LIKELY (iface->create_widgets != NULL))
+		iface->create_widgets (plugin, file_list, mime_types);
 }
 
 /**

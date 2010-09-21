@@ -284,10 +284,10 @@ evolution_plugin_get_widget (NautilusSendtoPlugin *plugin,
 	return p->vbox;
 }
 
-static gboolean
-evolution_plugin_supports_mime_types (NautilusSendtoPlugin *plugin,
-				      GList                *file_list,
-				      const char          **mime_types)
+static void
+evolution_plugin_create_widgets (NautilusSendtoPlugin *plugin,
+				 GList                *file_list,
+				 const char          **mime_types)
 {
 	EvolutionPlugin *p;
 	guint i;
@@ -295,7 +295,7 @@ evolution_plugin_supports_mime_types (NautilusSendtoPlugin *plugin,
 	p = EVOLUTION_PLUGIN (plugin);
 
 	if (p->mail_cmd == NULL)
-		return FALSE;
+		return;
 
 	for (i = 0; mime_types[i] != NULL; i++) {
 		if (g_str_equal (mime_types[i], "inode/directory"))
@@ -304,16 +304,15 @@ evolution_plugin_supports_mime_types (NautilusSendtoPlugin *plugin,
 
 	g_signal_emit_by_name (G_OBJECT (plugin),
 			       "add-widget",
+			       "evolution",
 			       _("Mail"),
 			       "emblem-mail",
-			       "evolution",
 			       evolution_plugin_get_widget (plugin, file_list));
 
 	g_signal_emit_by_name (G_OBJECT (p),
 			       "can-send",
 			       "evolution",
 			       TRUE);
-	return TRUE;
 }
 
 static void

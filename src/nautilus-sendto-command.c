@@ -237,11 +237,11 @@ separator_func (GtkTreeModel *model,
 
 static void
 add_widget_cb (NautilusSendtoPlugin *plugin,
+	       const char           *id,
 	       const char           *name,
 	       const char           *icon_name,
-	       const char           *id,
 	       GtkWidget            *widget,
-	       NautilusSendto                *nst)
+	       NautilusSendto       *nst)
 {
 	GdkPixbuf *pixbuf;
 	GtkWidget *label;
@@ -324,7 +324,6 @@ set_model_for_options_treeview (NautilusSendto *nst)
 		PeasPluginInfo *info;
 		PeasExtension *ext;
 		const char *id;
-		gboolean supported;
 		GObject *object;
 
 		info = peas_engine_get_plugin_info (engine, list[i]);
@@ -342,13 +341,7 @@ set_model_for_options_treeview (NautilusSendto *nst)
 				  G_CALLBACK (add_widget_cb), nst);
 		g_signal_connect (object, "can-send",
 				  G_CALLBACK (can_send_cb), nst);
-
-		/* Check if the plugin supports the mime-types of the files we have */
-		if (peas_extension_call (ext, "supports_mime_types",
-					 nst->file_list, nst->mime_types, &supported) == FALSE ||
-		    supported == FALSE) {
-			g_message ("'%s' does not support mime-types", id);
-		}
+		peas_extension_call (ext, "create_widgets", nst->file_list, nst->mime_types);
 	}
 	g_strfreev (list);
 
