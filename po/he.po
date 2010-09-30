@@ -6,10 +6,10 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: nautilus-sendto.HEAD\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=nautilus-sendto&component=general\n"
-"POT-Creation-Date: 2009-04-27 13:10+0000\n"
-"PO-Revision-Date: 2009-05-25 23:34+0200\n"
-"Last-Translator: Mark Krapivner <mark125@gmail.com>\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2010-09-30 21:53+0200\n"
+"PO-Revision-Date: 2010-09-30 21:59+0200\n"
+"Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <he@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -18,321 +18,281 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-Language: Hebrew\n"
 
-#: ../nst.schemas.in.h:1
-msgid "Last plugin used to send"
-msgstr "Last plugin used to send"
-
-#: ../nst.schemas.in.h:2
-msgid "Last type of archive used"
-msgstr "Last type of archive used"
-
-#: ../nst.schemas.in.h:3
-msgid "Used to store which plugin was used the last time files were sent using nautilus-sendto."
-msgstr "Used to store which plugin was used the last time files were sent using nautilus-sendto."
-
-#: ../nst.schemas.in.h:4
-msgid "Used to store which type of archive was used the last time (0: zip, 1: tar.gz, 2: tar.bz2)."
-msgstr "Used to store which type of archive was used the last time (0: zip, 1: tar.gz, 2: tar.bz2)."
-
-#: ../evolution/nautilus-sendto.c:47
-#| msgid "Send to..."
-msgid "_Send to..."
-msgstr "_שלח אל..."
-
-#: ../evolution/org-gnome-evolution-send-attachments-to.eplug.xml.h:1
-msgid "Send files to remote devices, or people"
-msgstr "שליח קבצים להתקנים או אנשים מרוחקים"
-
-#. the path to the shared library
-#: ../evolution/org-gnome-evolution-send-attachments-to.eplug.xml.h:3
-msgid "Send to..."
-msgstr "שלח אל..."
-
-#. type
-#. ui requirement
-#. flags
-#. dependencies
-#. priority
-#. id
-#: ../pidgin_plugin/nautilus-sendto-plugin.c:342
-msgid "Nautilus Integration"
-msgstr "שילוב ב־Nautilus"
-
-#. name
-#. version
-#. summary
-#: ../pidgin_plugin/nautilus-sendto-plugin.c:344
-#: ../pidgin_plugin/nautilus-sendto-plugin.c:345
-msgid "Provides integration with Nautilus"
-msgstr "מספק שילוב ב־Nautilus"
-
-#: ../src/nautilus-nste.c:92
-#: ../src/nautilus-nste.c:97
-#: ../src/nautilus-sendto.glade.h:3
+#: ../src/extension/nautilus-nste.c:78 ../src/extension/nautilus-nste.c:83
 msgid "Send To..."
-msgstr "שלח אל..."
+msgstr "שליחה אל..."
 
-#: ../src/nautilus-nste.c:93
+#: ../src/extension/nautilus-nste.c:79
 msgid "Send file by mail, instant message..."
-msgstr "שלח קובץ בדוא\"ל, מסרים מידיים..."
+msgstr "שליחת קובץ בדוא״ל, מסרים מידיים..."
 
-#: ../src/nautilus-nste.c:98
+#: ../src/extension/nautilus-nste.c:84
 msgid "Send files by mail, instant message..."
-msgstr "שלח קבצים בדוא\"ל, מסרים מידיים..."
+msgstr "שליחת קבצים בדוא״ל, מסרים מידיים..."
 
-#: ../src/nautilus-sendto-command.c:533
-msgid "Files"
-msgstr "קבצים"
+#: ../src/nautilus-sendto-command.c:79
+msgid "Run from build directory"
+msgstr "Run from build directory"
 
-#: ../src/nautilus-sendto-command.c:737
+#: ../src/nautilus-sendto-command.c:80
+msgid "Use XID as parent to the send dialogue"
+msgstr "Use XID as parent to the send dialogue"
+
+#: ../src/nautilus-sendto-command.c:81
+msgid "Files to send"
+msgstr "Files to send"
+
+#. FIXME, this needs to be done in UI now
+#: ../src/nautilus-sendto-command.c:655
 #, c-format
 msgid "Expects URIs or filenames to be passed as options\n"
 msgstr "Expects URIs or filenames to be passed as options\n"
 
-#: ../src/nautilus-sendto-command.c:754
-msgid "Nautilus Sendto"
-msgstr "Nautilus Sendto"
-
-#: ../src/nautilus-sendto-command.c:758
+#: ../src/nautilus-sendto-command.c:685
 #, c-format
 msgid "Could not parse command-line options: %s\n"
 msgstr "Could not parse command-line options: %s\n"
 
-#: ../src/nautilus-sendto-command.c:773
-msgid "Could not load any plugins."
-msgstr "לא ניתן היה לטעון תוספים"
-
-#: ../src/nautilus-sendto-command.c:776
-msgid "Please verify your installation"
-msgstr "נא לוודא את תקינות ההתקנה"
-
-#: ../src/nautilus-sendto.glade.h:1
-msgid "<b>Compression</b>"
-msgstr "<b>כיווץ</b>"
-
-#: ../src/nautilus-sendto.glade.h:2
-msgid "<b>Destination</b>"
-msgstr "<b>יעד</b>"
-
-#: ../src/nautilus-sendto.glade.h:4
-msgid "Send _as:"
-msgstr "שלח _כ:"
-
-#: ../src/nautilus-sendto.glade.h:5
-msgid "Send _packed in:"
-msgstr "שלח ארוז _ב:"
-
-#: ../src/nautilus-sendto.glade.h:6
-msgid "Send t_o:"
-msgstr "שלח _אל:"
-
-#: ../src/nautilus-sendto.glade.h:7
-msgid "_Send"
-msgstr "_שלח"
-
-#: ../src/plugins/bluetooth/bluetooth.c:448
-msgid "Programming error, could not find the device in the list"
-msgstr "שגיאת תכנות, ההתקן לא נמצא ברשימה"
-
-#: ../src/plugins/bluetooth/bluetooth.c:523
+#: ../src/nautilus-sendto-mimetype.c:50
 #, c-format
-msgid "Obex Push file transfer unsupported"
-msgstr "העברת קבצים מסוג Obex Push לא נתמכת"
+msgid "Sharing %d folder"
+msgid_plural "Sharing %d folders"
+msgstr[0] "תיקייה אחת משותפת"
+msgstr[1] "%d תיקיות משותפות"
 
-#: ../src/plugins/bluetooth/bluetooth.c:547
-msgid "Bluetooth (OBEX Push)"
-msgstr "Bluetooth (OBEX Push)"
+#: ../src/nautilus-sendto-mimetype.c:52
+#, c-format
+msgid "Sharing %d folders and files"
+msgstr "%d קבצים ותיקיות משותפים"
 
-#: ../src/plugins/empathy/empathy.c:124
-msgid "The contact selected cannot receive files."
-msgstr "איש הקשר שנבחר לא יכול לקבל קבצים."
+#: ../src/nautilus-sendto-mimetype.c:77
+#, c-format
+msgid "Sharing %d video"
+msgid_plural "Sharing %d videos"
+msgstr[0] "וידאו אחד משותף"
+msgstr[1] "%d סרטוני וידאו משותפים"
 
-#: ../src/plugins/empathy/empathy.c:130
-#| msgid "The contact was not found."
-msgid "The contact selected is offline."
-msgstr "איש הקשר שנבחר מנותק."
+#: ../src/nautilus-sendto-mimetype.c:79
+#, c-format
+msgid "Sharing %d photo"
+msgid_plural "Sharing %d photos"
+msgstr[0] "צילום אחד משותף"
+msgstr[1] "%d צילומים משותפים"
 
-#: ../src/plugins/empathy/empathy.c:183
-#: ../src/plugins/empathy/empathy.c:244
-msgid "No error message"
-msgstr "אין הודעת שגיאה"
+#: ../src/nautilus-sendto-mimetype.c:81
+#, c-format
+msgid "Sharing %d image"
+msgid_plural "Sharing %d images"
+msgstr[0] "תמונה אחת משותפת"
+msgstr[1] "%d תמונות משותפות"
 
-#: ../src/plugins/empathy/empathy.c:294
-#| msgid "Instant Message (Gaim)"
-msgid "Instant Message (Empathy)"
-msgstr "מסר מיידי (Empathy)"
+#: ../src/nautilus-sendto-mimetype.c:83
+#, c-format
+msgid "Sharing %d text file"
+msgid_plural "Sharing %d text files"
+msgstr[0] "קובץ טקסט אחד משותף"
+msgstr[1] "%d קובצי טקסט משותפים"
 
-#: ../src/plugins/evolution/evolution.c:366
-msgid "Email"
-msgstr "דואר אלקטרוני"
+#: ../src/nautilus-sendto-mimetype.c:85
+#, c-format
+msgid "Sharing %d file"
+msgid_plural "Sharing %d files"
+msgstr[0] "קובץ אחד משותף"
+msgstr[1] "%d קבצים משותפים"
 
-#: ../src/plugins/evolution/e-contact-entry.c:152
+#: ../data/nautilus-sendto.ui.h:1
+msgid "_Send"
+msgstr "_שליחה"
+
+#: ../src/plugins/nautilus-sendto-packer.c:197
+msgid "Files"
+msgstr "קבצים"
+
+#: ../src/plugins/evolution/evolution.c:308
+msgid "Mail"
+msgstr "דוא״ל"
+
+#: ../src/plugins/evolution/e-contact-entry.c:153
 #, c-format
 msgid "Cannot get contact: %s"
 msgstr "לא ניתן לקבל איש קשר: %s"
 
-#: ../src/plugins/evolution/e-contact-entry.c:185
+#: ../src/plugins/evolution/e-contact-entry.c:186
 #, c-format
 msgid "Could not find contact: %s"
 msgstr "לא ניתן למצוא איש קשר: %s"
 
-#: ../src/plugins/evolution/e-contact-entry.c:411
+#: ../src/plugins/evolution/e-contact-entry.c:414
 msgid "Cannot create searchable view."
 msgstr "לא ניתן ליצור תצוגה ניתנת לחיפוש"
 
-#: ../src/plugins/evolution/e-contact-entry.c:883
+#: ../src/plugins/evolution/e-contact-entry.c:886
 msgid "Success"
 msgstr "הצלחה"
 
-#: ../src/plugins/evolution/e-contact-entry.c:885
+#: ../src/plugins/evolution/e-contact-entry.c:888
 msgid "An argument was invalid."
-msgstr "ארגומנט היה שגוי"
+msgstr "ארגומנט היה שגוי."
 
-#: ../src/plugins/evolution/e-contact-entry.c:887
+#: ../src/plugins/evolution/e-contact-entry.c:890
 msgid "The address book is busy."
 msgstr "ספר הכתובות עסוק."
 
-#: ../src/plugins/evolution/e-contact-entry.c:889
+#: ../src/plugins/evolution/e-contact-entry.c:892
 msgid "The address book is offline."
 msgstr "ספר הכתובות אינו מקוון."
 
-#: ../src/plugins/evolution/e-contact-entry.c:891
+#: ../src/plugins/evolution/e-contact-entry.c:894
 msgid "The address book does not exist."
 msgstr "ספר הכתובות אינו קיים."
 
-#: ../src/plugins/evolution/e-contact-entry.c:893
+#: ../src/plugins/evolution/e-contact-entry.c:896
 msgid "The \"Me\" contact does not exist."
 msgstr "איש הקשר \"אני\" אינו קיים."
 
-#: ../src/plugins/evolution/e-contact-entry.c:895
+#: ../src/plugins/evolution/e-contact-entry.c:898
 msgid "The address book is not loaded."
 msgstr "ספר הכתובות אינו טעון."
 
-#: ../src/plugins/evolution/e-contact-entry.c:897
+#: ../src/plugins/evolution/e-contact-entry.c:900
 msgid "The address book is already loaded."
 msgstr "ספר הכתובות כבר טעון."
 
-#: ../src/plugins/evolution/e-contact-entry.c:899
+#: ../src/plugins/evolution/e-contact-entry.c:902
 msgid "Permission was denied when accessing the address book."
 msgstr "ההרשאה נדחתה בזמן הגישה לספר הכתובות."
 
-#: ../src/plugins/evolution/e-contact-entry.c:901
+#: ../src/plugins/evolution/e-contact-entry.c:904
 msgid "The contact was not found."
-msgstr "איש הקשר לא נימצא."
+msgstr "איש הקשר לא נמצא."
 
-#: ../src/plugins/evolution/e-contact-entry.c:903
+#: ../src/plugins/evolution/e-contact-entry.c:906
 msgid "This contact ID already exists."
 msgstr "מזהה איש הקשר כבר קיים."
 
-#: ../src/plugins/evolution/e-contact-entry.c:905
+#: ../src/plugins/evolution/e-contact-entry.c:908
 msgid "The protocol is not supported."
 msgstr "הפרוטוקול אינו נתמך."
 
-#: ../src/plugins/evolution/e-contact-entry.c:907
+#: ../src/plugins/evolution/e-contact-entry.c:910
 msgid "The operation was cancelled."
 msgstr "הפעולה בוטלה."
 
-#: ../src/plugins/evolution/e-contact-entry.c:909
+#: ../src/plugins/evolution/e-contact-entry.c:912
 msgid "The operation could not be cancelled."
 msgstr "לא ניתן לבטל את הפעולה."
 
-#: ../src/plugins/evolution/e-contact-entry.c:911
+#: ../src/plugins/evolution/e-contact-entry.c:914
 msgid "The address book authentication failed."
 msgstr "אימות ספר הכתובות נכשל."
 
-#: ../src/plugins/evolution/e-contact-entry.c:913
-msgid "Authentication is required to access the address book and was not given."
-msgstr "אימות נדרש על מנת לגשת לספר הכתובות."
+#: ../src/plugins/evolution/e-contact-entry.c:916
+msgid ""
+"Authentication is required to access the address book and was not given."
+msgstr "נדרש אימות כדי לגשת לספר הכתובות."
 
-#: ../src/plugins/evolution/e-contact-entry.c:915
+#: ../src/plugins/evolution/e-contact-entry.c:918
 msgid "A secure connection is not available."
 msgstr "חיבור מאובטח אינו זמין."
 
-#: ../src/plugins/evolution/e-contact-entry.c:917
+#: ../src/plugins/evolution/e-contact-entry.c:920
 msgid "A CORBA error occurred whilst accessing the address book."
 msgstr "התרחשה שגיאת CORBA בזמן הגישה לספר הכתובות."
 
-#: ../src/plugins/evolution/e-contact-entry.c:919
+#: ../src/plugins/evolution/e-contact-entry.c:922
 msgid "The address book source does not exist."
 msgstr "ספר הכתובות אינו קיים."
 
-#: ../src/plugins/evolution/e-contact-entry.c:921
 #: ../src/plugins/evolution/e-contact-entry.c:924
+#: ../src/plugins/evolution/e-contact-entry.c:927
 msgid "An unknown error occurred."
-msgstr "ארעה שגיעה לא ידועה."
+msgstr "אירעה שגיאה לא ידועה."
 
-#: ../src/plugins/gajim/gajim.c:403
+#: ../src/plugins/gajim/gajim.c:417
 msgid "Unable to send file"
 msgstr "לא ניתן לשלוח קובץ"
 
-#: ../src/plugins/gajim/gajim.c:404
+#: ../src/plugins/gajim/gajim.c:418
 msgid "There is no connection to gajim remote service."
 msgstr "אין חיבור לשירות מרוחק של gajim."
 
-#: ../src/plugins/gajim/gajim.c:428
-#: ../src/plugins/gajim/gajim.c:467
+#: ../src/plugins/gajim/gajim.c:442 ../src/plugins/gajim/gajim.c:482
 msgid "Sending file failed"
-msgstr "שליחת קובץ נכשלה"
+msgstr "שליחת הקובץ נכשלה"
 
-#: ../src/plugins/gajim/gajim.c:429
+#: ../src/plugins/gajim/gajim.c:443
 msgid "Recipient is missing."
 msgstr "הנמען חסר."
 
-#: ../src/plugins/gajim/gajim.c:467
+#: ../src/plugins/gajim/gajim.c:482
 msgid "Unknown recipient."
 msgstr "נמען לא ידוע."
 
-#: ../src/plugins/gajim/gajim.c:489
+#: ../src/plugins/gajim/gajim.c:505
 msgid "Instant Message (Gajim)"
 msgstr "מסר מיידי (Gajim)"
 
-#: ../src/plugins/nautilus-burn/nautilus-burn.c:73
-#: ../src/plugins/nautilus-burn/nautilus-burn.c:88
+#: ../src/plugins/nautilus-burn/nautilus-burn.c:90
 msgid "New CD/DVD"
 msgstr "תקליטור חדש"
 
-#: ../src/plugins/nautilus-burn/nautilus-burn.c:86
+#: ../src/plugins/nautilus-burn/nautilus-burn.c:97
 msgid "Existing CD/DVD"
-msgstr "טקליטור קיים"
+msgstr "תקליטור קיים"
 
-#: ../src/plugins/nautilus-burn/nautilus-burn.c:165
+#: ../src/plugins/nautilus-burn/nautilus-burn.c:176
 msgid "CD/DVD Creator"
 msgstr "יוצר התקליטורים"
 
-#: ../src/plugins/pidgin/pidgin.c:353
+#: ../src/plugins/pidgin/pidgin.c:464
 msgid "Instant Message (Pidgin)"
 msgstr "מסר מיידי (Pidgin)"
 
-#: ../src/plugins/removable-devices/removable-devices.c:224
+#: ../src/plugins/removable-devices/removable-devices.c:274
 msgid "Removable disks and shares"
 msgstr "שיתופים וכוננים נתיקים"
 
-#: ../src/plugins/upnp/upnp.c:301
+#: ../src/plugins/socialweb/socialweb.c:158
+#, c-format
+msgid "Service '%s' is not configured."
+msgstr "השירות '%s' לא מוגדר."
+
+#: ../src/plugins/socialweb/socialweb.c:161
+#: ../src/plugins/socialweb/socialweb.c:178
+msgid "_Configure"
+msgstr "ה_גדרה"
+
+#: ../src/plugins/socialweb/socialweb.c:165
+#: ../src/plugins/socialweb/socialweb.c:185
+#, c-format
+msgid "Logged in to service '%s'."
+msgstr "נכנסת לשירות '%s'."
+
+#: ../src/plugins/socialweb/socialweb.c:175
+#, c-format
+msgid "Could not log in to service '%s'."
+msgstr "לא ניתן להיכנס לשירות '%s'."
+
+#: ../src/plugins/upnp/upnp.c:309
 msgid "UPnP Media Server"
 msgstr "שרת מדיה UPnP"
 
-#~ msgid "Default folder to use"
-#~ msgstr "תיקיית ברירת מחדל לשימוש"
-#~ msgid "Email (Balsa)"
-#~ msgstr "דוא\"ל (Balsa)"
-#~ msgid "Device does not support Obex File Transfer"
-#~ msgstr "ההתקן אינו תומך בהעברת קבצים בעזרת Obex"
-#~ msgid "Email (Claws Mail)"
-#~ msgstr "דוא\"ל (Claws Mail)"
-#~ msgid "Email (Thunderbird)"
-#~ msgstr "דוא\"ל (Thunderbird)"
-#~ msgid "FOLDER"
-#~ msgstr "תיקייה"
-#~ msgid "You don't insert the package name"
-#~ msgstr "לא הכנסת את שם האריזה"
-#~ msgid ""
-#~ ".zip\n"
-#~ ".tar.gz\n"
-#~ ".tar.bz2"
-#~ msgstr ""
-#~ ".zip\n"
-#~ ".tar.gz\n"
-#~ ".tar.bz2"
-#~ msgid "*"
-#~ msgstr "*"
+#~ msgid "Last plugin used to send"
+#~ msgstr "Last plugin used to send"
 
+#~ msgid "Last type of archive used"
+#~ msgstr "Last type of archive used"
+
+#~ msgid ""
+#~ "Used to store which plugin was used the last time files were sent using "
+#~ "nautilus-sendto."
+#~ msgstr ""
+#~ "Used to store which plugin was used the last time files were sent using "
+#~ "nautilus-sendto."
+
+#~ msgid ""
+#~ "Used to store which type of archive was used the last time (0: zip, 1: "
+#~ "tar.gz, 2: tar.bz2)."
+#~ msgstr ""
+#~ "Used to store which type of archive was used the last time (0: zip, 1: "
+#~ "tar.gz, 2: tar.bz2)."
