@@ -1,4 +1,4 @@
-[Nst Plugin]
+[Plugin]
 Module=nstsocialweb
 IAge=1
 Name=libsocialweb photo uploader

@@ -1,6 +1,6 @@
 plugindir = $(libdir)/nautilus-sendto/plugins
 
-plugin_DATA = removable-devices.nst-plugin
+plugin_DATA = removable-devices.plugin
 
 INCLUDES =                                      \
         -DDATADIR=\"$(datadir)\"                \

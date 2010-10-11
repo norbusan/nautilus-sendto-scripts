@@ -1,4 +1,4 @@
-[Nst Plugin]
+[Plugin]
 Module=nstremovable_devices
 IAge=1
 Name=Removable disks and shares

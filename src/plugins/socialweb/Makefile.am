@@ -1,6 +1,6 @@
 plugindir = $(libdir)/nautilus-sendto/plugins
 
-plugin_DATA = socialweb.nst-plugin
+plugin_DATA = socialweb.plugin
 
 INCLUDES =                                      \
         -DDATADIR=\"$(datadir)\"                \

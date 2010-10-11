@@ -503,29 +503,24 @@ nautilus_sendto_plugin_init (NautilusSendto *nst)
 
 	search_paths = g_ptr_array_new ();
 
-	/* Add uninstalled plugins */
-	if (run_from_build_dir) {
-		g_ptr_array_add (search_paths, "plugins/");
-		g_ptr_array_add (search_paths, "plugins/");
-	}
-
-	/* Add user plugins */
-	user_dir = g_build_filename (g_get_user_config_dir (), "nautilus-sendto", "plugins", NULL);
-	g_ptr_array_add (search_paths, user_dir);
-	g_ptr_array_add (search_paths, user_dir);
-
-	/* Add system-wide plugins */
-	g_ptr_array_add (search_paths, PLUGINDIR);
-	g_ptr_array_add (search_paths, PLUGINDIR);
-
 	/* Terminate array */
 	g_ptr_array_add (search_paths, NULL);
 
 	/* Init engine */
 	paths = (char **) g_ptr_array_free (search_paths, FALSE);
-	engine = peas_engine_new ("Nst",
-				  (const gchar **) paths);
+	engine = peas_engine_get_default ();
+
+	/* Add uninstalled plugins */
+	if (run_from_build_dir)
+		peas_engine_add_search_path (engine, "plugins/", "plugins/");
+
+	/* Add user plugins */
+	user_dir = g_build_filename (g_get_user_config_dir (), "nautilus-sendto", "plugins", NULL);
+	peas_engine_add_search_path (engine, user_dir, user_dir);
 	g_free (user_dir);
+
+	/* Add system-wide plugins */
+	peas_engine_add_search_path (engine, PLUGINDIR, PLUGINDIR);
 
 	/* Create the extension set */
 	exten_set = peas_extension_set_new (PEAS_ENGINE (engine),

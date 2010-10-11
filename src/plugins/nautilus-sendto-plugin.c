@@ -48,10 +48,10 @@ nautilus_sendto_plugin_default_init (NautilusSendtoPluginInterface *iface)
 }
 
 /**
- * nautilus_sendto_get_object:
+ * nautilus_sendto_plugin_get_object:
  * @plugin: a #NautilusSendtoPlugin instance
  *
- * Returns: (transfer none): a reference to the #NautilusSendtoPlugin instance.
+ * Returns: (transfer none): a #NautilusSendtoPlugin object.
  */
 GObject *
 nautilus_sendto_plugin_get_object (NautilusSendtoPlugin *plugin)

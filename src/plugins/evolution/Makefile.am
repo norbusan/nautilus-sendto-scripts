@@ -1,6 +1,6 @@
 plugindir = $(libdir)/nautilus-sendto/plugins
 
-plugin_DATA = evolution.nst-plugin
+plugin_DATA = evolution.plugin
 
 INCLUDES =                                      \
         -DDATADIR=\"$(datadir)\"                \
