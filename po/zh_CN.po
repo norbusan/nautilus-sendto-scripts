@@ -1,15 +1,15 @@
 # Simplified Chinese translation to nautilus-sendto
-# Copyright (C) 2009 Free Software Foundation, Inc.
+# Copyright (C) 2009, 2010 Free Software Foundation, Inc.
 # This file is distributed under the same license as the nautilus-sendto package.
 # Funda Wang <fundawang@linux.net.cn>, 2004.
-# Aron Xu <happyaron.xu@gmail.com>, 2009.
+# Aron Xu <happyaron.xu@gmail.com>, 2009, 2010.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: nautilus-sendto HEAD\n"
+"Project-Id-Version: nautilus-sendto master\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-09-01 15:35+0800\n"
-"PO-Revision-Date: 2009-08-10 16:24+0000\n"
+"PO-Revision-Date: 2010-10-13 19:09+0800\n"
 "Last-Translator: Aron Xu <happyaron.xu@gmail.com>\n"
 "Language-Team: Chinese (simplified) <i18n-zh@googlegroups.com>\n"
 "MIME-Version: 1.0\n"
@@ -34,7 +34,7 @@ msgstr "用来存储上次使用 nautilus-sendto 发送文件的插件。"
 msgid ""
 "Used to store which type of archive was used the last time (0: zip, 1: tar."
 "gz, 2: tar.bz2)."
-msgstr "用来存储上次使用的存档的类型 (0: zip, 1: tar.gz, 2: tar.bz2)。"
+msgstr "用来存储上次使用的存档的类型(0: zip, 1: tar.gz, 2: tar.bz2)。"
 
 #: ../evolution/nautilus-sendto.c:47
 msgid "_Send to..."
@@ -294,11 +294,11 @@ msgstr "存在的 CD/DVD"
 
 #: ../src/plugins/nautilus-burn/nautilus-burn.c:165
 msgid "CD/DVD Creator"
-msgstr "CD/DVD 生成器"
+msgstr "CD/DVD 创建器"
 
 #: ../src/plugins/pidgin/pidgin.c:353
 msgid "Instant Message (Pidgin)"
-msgstr "及时信息 (Pidgin)"
+msgstr "即时消息(Pidgin)"
 
 #: ../src/plugins/removable-devices/removable-devices.c:224
 msgid "Removable disks and shares"
@@ -306,10 +306,4 @@ msgstr "可移动的光盘和共享"
 
 #: ../src/plugins/upnp/upnp.c:301
 msgid "UPnP Media Server"
-msgstr "UPnP 媒介服务器"
-
-#~ msgid "Instant Message (Gaim)"
-#~ msgstr "即时通讯(Gaim)"
-
-#~ msgid "*"
-#~ msgstr "*"
+msgstr "UPnP 媒体服务器"
