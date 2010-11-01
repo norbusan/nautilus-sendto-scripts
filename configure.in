@@ -61,25 +61,6 @@ AC_SUBST(NAUTILUS_SENDTO_LIBS)
 
 PKG_CHECK_MODULES(GIO, gio-2.0)
 
-PKG_CHECK_MODULES(NAUTILUS_EXT_SENDTO,\
-	 libnautilus-extension >= $NAUTILUS_EXTENSION)
-AC_SUBST(NAUTILUS_EXT_SENDTO_CFLAGS)
-AC_SUBST(NAUTILUS_EXT_SENDTO_LIBS)
-
-dnl Get nautilus extensions directory
-dnl ---------------------------------
-
-AC_ARG_WITH(nautilusdir,
-	    AS_HELP_STRING([--with-nautilusdir=DIR],[Installation path for Nautilus extension @<:@auto@:>@]),
-	    [ac_with_nautilusdir=$withval],
-	    [ac_with_nautilusdir=""])
-if test "${ac_with_nautilusdir}" = ""; then
-	ac_with_nautilusdir=`pkg-config --variable=extensiondir libnautilus-extension`
-fi
-
-AC_MSG_NOTICE([installing nautilus plugin in ${ac_with_nautilusdir}])
-AC_SUBST([NAUTILUS_EXTENSION_DIR],[${ac_with_nautilusdir}])
-
 # The full list of plugins
 allowed_plugins="evolution gajim nautilus-burn pidgin removable-devices socialweb upnp"
 
@@ -234,7 +215,6 @@ Makefile
 data/Makefile
 data/nautilus-sendto.pc
 src/Makefile
-src/extension/Makefile
 src/plugins/Makefile
 src/plugins/evolution/Makefile
 src/plugins/gajim/Makefile

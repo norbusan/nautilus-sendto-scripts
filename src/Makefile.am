@@ -1,6 +1,6 @@
 include $(top_srcdir)/Makefile.decl
 
-SUBDIRS = extension plugins
+SUBDIRS = plugins
 INCLUDES =					\
 	-DDATADIR=\"$(datadir)\"		\
 	-DPLUGINDIR=\"$(pkglibdir)/plugins\"	\

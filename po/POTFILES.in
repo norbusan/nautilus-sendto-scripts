@@ -1,7 +1,5 @@
 # List of source files containing translatable strings.
 # Please keep this file sorted alphabetically.
-src/extension/nautilus-nste.c
-src/extension/nautilus-nste.h
 src/nautilus-sendto-command.c
 src/nautilus-sendto-mimetype.c
 data/org.gnome.Nautilus.Sendto.gschema.xml.in
