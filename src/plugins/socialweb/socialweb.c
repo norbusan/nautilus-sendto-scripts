@@ -39,8 +39,8 @@ struct _SocialwebPlugin {
 	SwClient *client;
 	GHashTable *pages;
 
-	/* See socialweb_plugin_supports_mime_types() */
-	gboolean has_non_photos;
+	gboolean has_photos;
+	gboolean has_videos;
 };
 
 struct _SocialwebPluginClass {
@@ -263,6 +263,22 @@ service_capability_changed (SwClientService  *service,
 			       can_send);
 }
 
+static gboolean
+service_supports_files (SocialwebPlugin *p,
+			const char     **caps)
+{
+	if (p->has_videos && p->has_photos) {
+		return (sw_client_service_has_cap (caps, "has-photo-upload-iface") != FALSE &&
+			sw_client_service_has_cap (caps, "has-video-upload-iface") != FALSE);
+	} else if (p->has_videos) {
+		return sw_client_service_has_cap (caps, "has-video-upload-iface");
+	} else if (p->has_photos) {
+		return sw_client_service_has_cap (caps, "has-photo-upload-iface");
+	} else {
+		g_assert_not_reached ();
+	}
+}
+
 static void
 got_static_caps_cb (SwClientService *service,
 		    const char     **caps,
@@ -271,7 +287,7 @@ got_static_caps_cb (SwClientService *service,
 {
 	g_message ("got_static_caps_cb '%p' for service '%s'", caps, sw_client_service_get_name (service));
 
-	if (sw_client_service_has_cap (caps, "has-photo-upload-iface") != FALSE) {
+	if (service_supports_files (plugin, caps)) {
 		sw_client_service_get_dynamic_capabilities (service,
 							    (SwClientServiceGetCapabilitiesCallback) got_dynamic_caps_cb,
 							    plugin);
@@ -307,18 +323,18 @@ socialweb_plugin_create_widgets (NautilusSendtoPlugin *plugin,
 				 const char          **mime_types)
 {
 	SocialwebPlugin *p = (SocialwebPlugin *) plugin;
+	guint i;
 
-	if (g_strv_length ((char **) mime_types) != 1) {
-		/* FIXME: Handle mixed image types */
-		return;
-	} else if (g_str_equal (mime_types[0], "image/jpeg")) {
-		/* Do nothing */
-	} else if (g_content_type_is_a (mime_types[0], "image/*")) {
-		/* Some of the plugins, such as Facebook,
-		 * don't support sending non-JPEG images */
-		p->has_non_photos = TRUE;
-	} else {
-		return;
+	for (i = 0; mime_types[i] != NULL; i++) {
+		if (g_content_type_is_a (mime_types[i], "image/*")) {
+			p->has_photos = TRUE;
+		} else if (g_content_type_is_a (mime_types[i], "video/*")) {
+			p->has_videos = TRUE;
+		} else {
+			/* Don't even bother trying to get services, we
+			 * can't support those file types */
+			return;
+		}
 	}
 
 	sw_client_get_services (p->client,
