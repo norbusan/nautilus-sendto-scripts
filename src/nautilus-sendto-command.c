@@ -42,7 +42,7 @@ enum {
 	COLUMN_IS_SEPARATOR,
 	COLUMN_ICON,
 	COLUMN_ID,
-	COLUMN_EXT,
+	COLUMN_PLUGIN,
 	COLUMN_PAGE_NUM,
 	COLUMN_DESCRIPTION,
 	COLUMN_CAN_SEND,
@@ -129,6 +129,7 @@ send_button_cb (GtkWidget *widget, NautilusSendto *nst)
 	GtkTreeSelection *treeselection;
 	GtkTreeIter iter;
 	char *id;
+	NautilusSendtoPlugin *plugin;
 	PeasExtension *ext;
 
 	treeselection = gtk_tree_view_get_selection (GTK_TREE_VIEW (nst->options_treeview));
@@ -139,8 +140,9 @@ send_button_cb (GtkWidget *widget, NautilusSendto *nst)
 
 	gtk_tree_model_get (model, &iter,
 			    COLUMN_ID, &id,
-			    COLUMN_EXT, &ext,
+			    COLUMN_PLUGIN, &plugin,
 			    -1);
+	ext = g_object_get_data (G_OBJECT (plugin), "ext");
 
 	g_settings_set_string (nst->settings,
 			       NAUTILUS_SENDTO_LAST_MEDIUM,
@@ -278,7 +280,7 @@ add_widget_cb (NautilusSendtoPlugin *plugin,
 			    COLUMN_IS_SEPARATOR, FALSE,
 			    COLUMN_ICON, pixbuf,
 			    COLUMN_ID, id,
-			    COLUMN_EXT, plugin,
+			    COLUMN_PLUGIN, plugin,
 			    COLUMN_PAGE_NUM, page_num,
 			    COLUMN_DESCRIPTION, name,
 			    -1);
@@ -336,6 +338,8 @@ set_model_for_options_treeview (NautilusSendto *nst)
 			g_warning ("Could not get object for plugin '%s'", id);
 			continue;
 		}
+
+		g_object_set_data (G_OBJECT (object), "ext", ext);
 
 		g_signal_connect (object, "add-widget",
 				  G_CALLBACK (add_widget_cb), nst);
