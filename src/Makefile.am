@@ -1,5 +1,7 @@
 include $(top_srcdir)/Makefile.decl
 
+uidir = $(datadir)/nautilus-sendto/ui
+
 SUBDIRS = plugins
 INCLUDES =					\
 	-DDATADIR=\"$(datadir)\"		\
