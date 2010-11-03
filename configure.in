@@ -160,7 +160,7 @@ for plugin in ${used_plugins}; do
 			fi
 		;;
 		socialweb)
-			PKG_CHECK_MODULES(SOCIALWEB, libsocialweb-client,
+			PKG_CHECK_MODULES(SOCIALWEB, libsocialweb-client >= 0.25.7,
 					  enable_libsocialweb=yes, enable_libsocialweb=no)
 			if test "${enable_libsocialweb}" != "yes"; then
 				plugin_error_or_ignore "you need libsocialweb-client to build the libsocialweb plugin"
