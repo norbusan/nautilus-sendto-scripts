@@ -3,7 +3,7 @@ SUBDIRS = . removable-devices evolution socialweb
 DIST_SUBDIRS = $(ALL_PLUGINS)
 
 nautilus_sendto_includedir = $(includedir)/nautilus-sendto/
-nautilus_sendto_include_HEADERS = nautilus-sendto-plugin.h nst-common.h nautilus-sendto-packer.h
+nautilus_sendto_include_HEADERS = nautilus-sendto-plugin.h nst-common.h nautilus-sendto-packer.h nautilus-sendto-filelist.h
 
 MARSHALFILES = nst-plugin-marshal.c nst-plugin-marshal.h
 BUILT_SOURCES = $(MARSHALFILES)
@@ -18,6 +18,7 @@ libnautilussendto_1_0_la_SOURCES =				\
 	nautilus-sendto-plugin.c				\
 	nst-common.c						\
 	nautilus-sendto-packer.c				\
+	nautilus-sendto-filelist.c				\
 	nst-enum-types.h					\
 	nst-enum-types.c					\
 	$(nautilus_sendto_include_HEADERS)			\
