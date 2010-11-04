@@ -626,7 +626,7 @@ nautilus_sendto_init (NautilusSendto *nst)
 			continue;
 
 		if (g_file_info_get_attribute_boolean (info, G_FILE_ATTRIBUTE_ACCESS_CAN_READ) == FALSE) {
-			g_message ("Foobar is not readable");
+			g_message ("'%s' is not readable", filenames[i]);
 			g_object_unref (info);
 			continue;
 		}
