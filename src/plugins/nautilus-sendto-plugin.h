@@ -42,6 +42,14 @@ typedef enum {
 	NST_SEND_STATUS_FAILED
 } NautilusSendtoSendStatus;
 
+typedef enum {
+	NAUTILUS_SENDTO_PLUGIN_ERROR_GENERIC
+} NautilusSendtoPluginError;
+
+#define NAUTILUS_SENDTO_PLUGIN_ERROR (nautilus_sendto_plugin_error_quark ())
+
+GQuark nautilus_sendto_plugin_error_quark (void);
+
 struct _NautilusSendtoPluginInterface
 {
 	GTypeInterface g_iface;
