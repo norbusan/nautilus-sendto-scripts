@@ -21,6 +21,8 @@
 #include <string.h>
 #include <glib/gi18n-lib.h>
 #include "nautilus-sendto-plugin.h"
+#include "nautilus-sendto-filelist.h"
+#include "nautilus-sendto-progress.h"
 #include <libsocialweb-client/sw-client.h>
 
 #define SOCIALWEB_TYPE_PLUGIN         (socialweb_plugin_get_type ())
@@ -50,10 +52,185 @@ struct _SocialwebPluginClass {
 typedef struct {
 	GtkWidget *page;
 	GtkWidget *bar;
+	GtkWidget *progress;
 	SwClientService *service;
+	NstFileList *list;
+
+	GAsyncReadyCallback callback;
+	gpointer user_data;
+	guint64 written; /* Size of the files uploaded not including current one */
+	guint64 current_size; /* Size of the currently uploading file */
+
+	SocialwebPlugin *plugin;
 } SocialwebPage;
 
 NAUTILUS_PLUGIN_REGISTER(SOCIALWEB_TYPE_PLUGIN, SocialwebPlugin, socialweb_plugin)
+
+static void send_one (SocialwebPage *page);
+
+static void
+send_error (SocialwebPage *page,
+	    GError        *error)
+{
+	GSimpleAsyncResult *simple;
+
+	simple = g_simple_async_result_new_from_error (G_OBJECT (page->plugin),
+						       page->callback,
+						       page->user_data,
+						       error);
+	page->callback = NULL;
+	page->user_data = NULL;
+
+	if (page->list != NULL) {
+		g_object_unref (page->list);
+		page->list = NULL;
+	}
+
+	g_error_free (error);
+	g_simple_async_result_complete_in_idle (simple);
+}
+
+static void
+prepare_send_one (SocialwebPage *page)
+{
+	page->written += page->current_size;
+
+	nst_progress_bar_set_uploaded (NST_PROGRESS_BAR (page->progress), page->written);
+
+	/* And onto the next file */
+	send_one (page);
+}
+
+static void
+send_one_photo_cb (GObject *source_object,
+		   GAsyncResult *res,
+		   gpointer user_data)
+{
+	SocialwebPage *page;
+	GError *error = NULL;
+
+	g_message ("finished sending one photo");
+
+	page = (SocialwebPage *) user_data;
+	if (sw_client_service_upload_photo_finish (page->service, res, &error) == FALSE) {
+		send_error (page, error);
+		return;
+	}
+
+	prepare_send_one (page);
+}
+
+static void
+send_one_video_cb (GObject *source_object,
+		   GAsyncResult *res,
+		   gpointer user_data)
+{
+	SocialwebPage *page;
+	GError *error = NULL;
+
+	g_message ("finished sending one video");
+
+	page = (SocialwebPage *) user_data;
+	if (sw_client_service_upload_video_finish (page->service, res, &error) == FALSE) {
+		send_error (page, error);
+		return;
+	}
+
+	prepare_send_one (page);
+}
+
+static void
+progress_callback (goffset current_num_bytes,
+		   goffset total_num_bytes,
+		   gpointer user_data)
+{
+	SocialwebPage *page;
+
+	page = (SocialwebPage *) user_data;
+
+	nst_progress_bar_set_uploaded (NST_PROGRESS_BAR (page->progress),
+				       current_num_bytes + page->written);
+}
+
+static void
+send_one (SocialwebPage *page)
+{
+	NstFile *file;
+	char *path;
+	char *label;
+
+	/* Get the first file out of the list */
+	file = nst_file_list_pop_file (page->list);
+
+	if (file == NULL) {
+		GSimpleAsyncResult *simple;
+
+		/* We should be all done now */
+		g_object_unref (page->list);
+		page->list = NULL;
+
+		simple = g_simple_async_result_new (G_OBJECT (page->plugin),
+						    page->callback,
+						    page->user_data,
+						    nautilus_sendto_plugin_send_files);
+		page->callback = NULL;
+		page->user_data = NULL;
+
+		g_simple_async_result_set_op_res_gpointer (simple,
+							   GINT_TO_POINTER (NST_SEND_STATUS_SUCCESS_DONE),
+							   NULL);
+		g_simple_async_result_complete_in_idle (simple);
+		return;
+	}
+
+	label = g_strdup_printf (_("Uploading '%s'"), file->display_name);
+	nst_progress_bar_set_label (NST_PROGRESS_BAR (page->progress), label);
+	g_free (label);
+
+	path = g_file_get_path (file->file);
+	/* This would happen if we got a path in the main code
+	 * but couldn't get one now, not sure this could happen */
+	g_assert (path != NULL);
+
+	page->current_size = file->size;
+
+	if (g_content_type_is_a (file->mime_type, "video/*")) {
+		sw_client_service_upload_video (page->service,
+						path,
+						NULL,
+						NULL,
+						progress_callback,
+						page,
+						send_one_video_cb,
+						page);
+	} else if (g_content_type_is_a (file->mime_type, "image/*")) {
+		sw_client_service_upload_photo (page->service,
+						path,
+						NULL,
+						NULL,
+						progress_callback,
+						page,
+						send_one_photo_cb,
+						page);
+	} else {
+		g_assert_not_reached ();
+	}
+
+	g_free (path);
+
+	g_boxed_free (NST_TYPE_FILE, file);
+}
+
+static void
+info_gathered_cb (NstFileList     *list,
+		  gboolean         success,
+		  guint64          size,
+		  SocialwebPage   *page)
+{
+	gtk_widget_hide (page->bar);
+	nst_progress_bar_set_total_size (NST_PROGRESS_BAR (page->progress), size);
+	send_one (page);
+}
 
 static void
 socialweb_plugin_send_files (NautilusSendtoPlugin *plugin,
@@ -70,53 +247,34 @@ socialweb_plugin_send_files (NautilusSendtoPlugin *plugin,
 	page = g_hash_table_lookup (p->pages, id);
 	g_return_if_fail (page != NULL);
 
-	/* FIXME call sw_client_service_upload_photo */
+	page->callback = callback;
+	page->user_data = user_data;
+	page->written = 0;
+	page->current_size = 0;
 
-	/* FIXME
-	 * hack for facebook, convert files to jpeg for upload */
-#if 0
-	GtkListStore *store;
-	GtkTreeIter iter;
-	GMount *dest_mount;
-	GFile *mount_root;
-	GSimpleAsyncResult *simple;
+	gtk_widget_show (page->progress);
+	nst_progress_bar_set_label (NST_PROGRESS_BAR (page->progress), _("Preparing upload"));
 
-	if (gtk_combo_box_get_active_iter (GTK_COMBO_BOX (p->cb), &iter) == FALSE) {
-		/* FIXME: This should not happen */
-		g_assert_not_reached ();
-		return;
-	}
-
-	store = GTK_LIST_STORE (gtk_combo_box_get_model (GTK_COMBO_BOX (p->cb)));
-	gtk_tree_model_get (GTK_TREE_MODEL (store), &iter, MOUNT_COL, &dest_mount, -1);
-	mount_root = g_mount_get_root (dest_mount);
-
-	simple = g_simple_async_result_new (G_OBJECT (plugin),
-					    callback,
-					    user_data,
-					    nautilus_sendto_plugin_send_files);
-
-	copy_files_to (file_list, mount_root);
-
-	g_object_unref (mount_root);
-
-	/* FIXME: Report errors properly */
-	g_simple_async_result_set_op_res_gpointer (simple,
-						   GINT_TO_POINTER (NST_SEND_STATUS_SUCCESS_DONE),
-						   NULL);
-	g_simple_async_result_complete_in_idle (simple);
-	g_object_unref (simple);
-#endif
+	page->list = nst_file_list_new ();
+	g_signal_connect (G_OBJECT (page->list), "info-gathered",
+			  G_CALLBACK (info_gathered_cb), page);
+	nst_file_list_set_files (page->list, file_list);
 }
 
 static SocialwebPage *
-create_widget (SwClientService *service)
+create_widget (SocialwebPlugin *plugin,
+	       SwClientService *service)
 {
 	SocialwebPage *page;
 
 	page = g_new0 (SocialwebPage, 1);
 	page->page = gtk_vbox_new (FALSE, 8);
 	page->service = g_object_ref (service);
+	page->plugin = plugin;
+	page->progress = nst_progress_bar_new ();
+	gtk_widget_set_no_show_all (page->progress, TRUE);
+	gtk_box_pack_start (GTK_BOX (page->page), page->progress,
+			    FALSE, FALSE, 0);
 
 	return page;
 }
@@ -197,7 +355,7 @@ update_infobar_for_caps (SocialwebPage   *page,
 	gtk_container_add (GTK_CONTAINER (gtk_info_bar_get_content_area (GTK_INFO_BAR (page->bar))),
 			   label);
 	gtk_box_pack_start (GTK_BOX (page->page), page->bar,
-			    FALSE, FALSE, 0);
+			    TRUE, FALSE, 0);
 	gtk_widget_show_all (page->page);
 
 	g_signal_connect (page->bar, "response",
@@ -223,7 +381,7 @@ got_dynamic_caps_cb (SwClientService *service,
 		return;
 	}
 
-	page = create_widget (service);
+	page = create_widget (plugin, service);
 	can_send = update_infobar_for_caps (page, caps, plugin);
 
 	g_hash_table_insert (plugin->pages,
