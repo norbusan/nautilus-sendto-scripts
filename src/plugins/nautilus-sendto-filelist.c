@@ -107,6 +107,7 @@ get_file_info_cb (GObject *source_object,
 	file->size = g_file_info_get_attribute_uint64 (info,
 						       G_FILE_ATTRIBUTE_STANDARD_SIZE);
 	file->mime_type = g_strdup (g_file_info_get_content_type (info));
+	file->display_name = g_strdup (g_file_info_get_display_name (info));
 
 	/* And onto the next file */
 	p->current = p->current->next;
@@ -143,7 +144,7 @@ get_file_info (NstFileList *list)
 	f = file->file;
 
 	g_file_query_info_async (f,
-				 G_FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE","G_FILE_ATTRIBUTE_STANDARD_SIZE,
+				 G_FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE","G_FILE_ATTRIBUTE_STANDARD_SIZE","G_FILE_ATTRIBUTE_STANDARD_DISPLAY_NAME,
 				 G_FILE_QUERY_INFO_NONE,
 				 0,
 				 NULL,

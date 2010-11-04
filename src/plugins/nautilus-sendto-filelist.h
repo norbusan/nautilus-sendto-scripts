@@ -23,6 +23,7 @@ typedef struct {
 	GFile *file;
 	guint64 size;
 	char *mime_type;
+	char *display_name;
 } NstFile;
 
 #define NST_TYPE_FILE (nst_file_get_type ())
