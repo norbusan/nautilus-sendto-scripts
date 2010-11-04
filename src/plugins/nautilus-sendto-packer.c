@@ -115,7 +115,10 @@ get_filename_from_list (GList *file_list)
 			g_free (name);
 			g_free (path);
 		}
-		if (matches == TRUE && cur_char != '\0') {
+		if (matches == TRUE &&
+		    cur_char != '\0' &&
+		    cur_char != '-' &&
+		    cur_char != '_') {
 			offset++;
 			common_part = g_string_append_unichar (common_part,
 					cur_char);
