@@ -83,7 +83,7 @@ static const GOptionEntry entries[] = {
 };
 
 static void
-destroy_dialog (GtkWidget *widget, gpointer data)
+destroy_dialog (void)
 {
         gtk_main_quit ();
 }
@@ -103,7 +103,6 @@ send_callback (GObject      *object,
 	       GAsyncResult *res,
 	       gpointer      user_data)
 {
-	NautilusSendto *nst = (NautilusSendto *) user_data;
 	NautilusSendtoSendStatus status;
 
 	status = nautilus_sendto_plugin_send_files_finish (NAUTILUS_SENDTO_PLUGIN (object),
@@ -112,7 +111,7 @@ send_callback (GObject      *object,
 	g_message ("send_callback %d", status);
 
 	if (status == NST_SEND_STATUS_SUCCESS_DONE) {
-		destroy_dialog (NULL, NULL);
+		destroy_dialog ();
 	} else if (status == NST_SEND_STATUS_SUCCESS) {
 		//FIXME make the buttons into a single close button
 	} else if (status == NST_SEND_STATUS_FAILED) {
@@ -123,7 +122,7 @@ send_callback (GObject      *object,
 }
 
 static void
-send_button_cb (GtkWidget *widget, NautilusSendto *nst)
+send_button_cb (NautilusSendto *nst)
 {
 	GtkTreeModel *model;
 	GtkTreeSelection *treeselection;
@@ -157,6 +156,24 @@ send_button_cb (GtkWidget *widget, NautilusSendto *nst)
 	}
 
 	g_free (id);
+}
+
+static void
+dialog_response_cb (GtkDialog      *dialog,
+		    int             response_id,
+		    NautilusSendto *nst)
+{
+	switch (response_id) {
+	case GTK_RESPONSE_CANCEL:
+	case GTK_RESPONSE_DELETE_EVENT:
+		destroy_dialog ();
+		break;
+	case GTK_RESPONSE_OK:
+		send_button_cb (nst);
+		break;
+	default:
+		g_warning ("Unhandled dialog response '%d'", response_id);
+	}
 }
 
 static void
@@ -462,10 +479,8 @@ nautilus_sendto_create_ui (NautilusSendto *nst)
 	g_free (title);
 
 	set_model_for_options_treeview (nst);
-	g_signal_connect (G_OBJECT (nst->cancel_button), "clicked",
-			  G_CALLBACK (destroy_dialog), NULL);
-	g_signal_connect (G_OBJECT (nst->send_button), "clicked",
-			  G_CALLBACK (send_button_cb), nst);
+	g_signal_connect (G_OBJECT (nst->dialog), "response",
+			  G_CALLBACK (dialog_response_cb), nst);
 
 	gtk_widget_show (nst->dialog);
 }
