@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nautilus-sendto.HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-09-30 21:53+0200\n"
-"PO-Revision-Date: 2010-09-30 21:59+0200\n"
+"POT-Creation-Date: 2010-11-06 17:19+0200\n"
+"PO-Revision-Date: 2010-11-06 17:19+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <he@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -17,18 +17,6 @@ msgstr ""
 "X-Generator: KBabel 1.10.2\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-Language: Hebrew\n"
-
-#: ../src/extension/nautilus-nste.c:78 ../src/extension/nautilus-nste.c:83
-msgid "Send To..."
-msgstr "שליחה אל..."
-
-#: ../src/extension/nautilus-nste.c:79
-msgid "Send file by mail, instant message..."
-msgstr "שליחת קובץ בדוא״ל, מסרים מידיים..."
-
-#: ../src/extension/nautilus-nste.c:84
-msgid "Send files by mail, instant message..."
-msgstr "שליחת קבצים בדוא״ל, מסרים מידיים..."
 
 #: ../src/nautilus-sendto-command.c:79
 msgid "Run from build directory"
@@ -43,12 +31,12 @@ msgid "Files to send"
 msgstr "Files to send"
 
 #. FIXME, this needs to be done in UI now
-#: ../src/nautilus-sendto-command.c:655
+#: ../src/nautilus-sendto-command.c:669
 #, c-format
 msgid "Expects URIs or filenames to be passed as options\n"
 msgstr "Expects URIs or filenames to be passed as options\n"
 
-#: ../src/nautilus-sendto-command.c:685
+#: ../src/nautilus-sendto-command.c:699
 #, c-format
 msgid "Could not parse command-line options: %s\n"
 msgstr "Could not parse command-line options: %s\n"
@@ -104,7 +92,7 @@ msgstr[1] "%d קבצים משותפים"
 msgid "_Send"
 msgstr "_שליחה"
 
-#: ../src/plugins/nautilus-sendto-packer.c:197
+#: ../src/plugins/nautilus-sendto-packer.c:200
 msgid "Files"
 msgstr "קבצים"
 
@@ -252,23 +240,32 @@ msgstr "מסר מיידי (Pidgin)"
 msgid "Removable disks and shares"
 msgstr "שיתופים וכוננים נתיקים"
 
-#: ../src/plugins/socialweb/socialweb.c:158
+#: ../src/plugins/socialweb/socialweb.c:186
+#, c-format
+msgid "Uploading '%s'"
+msgstr "'%s' בהעלאה"
+
+#: ../src/plugins/socialweb/socialweb.c:256
+msgid "Preparing upload"
+msgstr "ההעלאה בהכנות"
+
+#: ../src/plugins/socialweb/socialweb.c:316
 #, c-format
 msgid "Service '%s' is not configured."
 msgstr "השירות '%s' לא מוגדר."
 
-#: ../src/plugins/socialweb/socialweb.c:161
-#: ../src/plugins/socialweb/socialweb.c:178
+#: ../src/plugins/socialweb/socialweb.c:319
+#: ../src/plugins/socialweb/socialweb.c:336
 msgid "_Configure"
 msgstr "ה_גדרה"
 
-#: ../src/plugins/socialweb/socialweb.c:165
-#: ../src/plugins/socialweb/socialweb.c:185
+#: ../src/plugins/socialweb/socialweb.c:323
+#: ../src/plugins/socialweb/socialweb.c:343
 #, c-format
 msgid "Logged in to service '%s'."
 msgstr "נכנסת לשירות '%s'."
 
-#: ../src/plugins/socialweb/socialweb.c:175
+#: ../src/plugins/socialweb/socialweb.c:333
 #, c-format
 msgid "Could not log in to service '%s'."
 msgstr "לא ניתן להיכנס לשירות '%s'."
@@ -276,6 +273,15 @@ msgstr "לא ניתן להיכנס לשירות '%s'."
 #: ../src/plugins/upnp/upnp.c:309
 msgid "UPnP Media Server"
 msgstr "שרת מדיה UPnP"
+
+#~ msgid "Send To..."
+#~ msgstr "שליחה אל..."
+
+#~ msgid "Send file by mail, instant message..."
+#~ msgstr "שליחת קובץ בדוא״ל, מסרים מידיים..."
+
+#~ msgid "Send files by mail, instant message..."
+#~ msgstr "שליחת קבצים בדוא״ל, מסרים מידיים..."
 
 #~ msgid "Last plugin used to send"
 #~ msgstr "Last plugin used to send"
