@@ -6,9 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: nautilus-sendto\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
-"product=nautilus-sendto&component=general\n"
-"POT-Creation-Date: 2010-10-21 13:54+0000\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=nautilus-sendto&component=general\n"
+"POT-Creation-Date: 2010-11-04 17:06+0000\n"
 "PO-Revision-Date: 2010-09-25 10:52+0600\n"
 "Last-Translator: Sahran <sahran@live.com>\n"
 "Language-Team: Uyghur Computer Science Association <UKIJ@yahoogroups.com>\n"
@@ -19,37 +18,25 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Poedit-Language: Uighur\n"
 
-#: ../src/extension/nautilus-nste.c:78 ../src/extension/nautilus-nste.c:83
-msgid "Send To..."
-msgstr "يوللاش ئورنى…"
-
-#: ../src/extension/nautilus-nste.c:79
-msgid "Send file by mail, instant message..."
-msgstr "ئېلخەت، مۇڭداشقۇدا ھۆججەت يوللا…"
-
-#: ../src/extension/nautilus-nste.c:84
-msgid "Send files by mail, instant message..."
-msgstr "ئېلخەت، مۇڭداشقۇدا ھۆججەت يوللا…"
-
 #: ../src/nautilus-sendto-command.c:79
 msgid "Run from build directory"
 msgstr "قۇرۇلغان مۇندەرىجىدىن ئىجرا قىل"
 
 #: ../src/nautilus-sendto-command.c:80
 msgid "Use XID as parent to the send dialogue"
-msgstr " XID يوللاش سۆزلەشكۈسىنىڭ ئاتىسى قىلىپ ئىشلەت"
+msgstr "XID يوللاش سۆزلەشكۈسىنىڭ ئاتىسى قىلىپ ئىشلەت"
 
 #: ../src/nautilus-sendto-command.c:81
 msgid "Files to send"
 msgstr "يوللايدىغان ھۆججەتلەر"
 
 #. FIXME, this needs to be done in UI now
-#: ../src/nautilus-sendto-command.c:650
+#: ../src/nautilus-sendto-command.c:654
 #, c-format
 msgid "Expects URIs or filenames to be passed as options\n"
 msgstr "URI ياكى ھۆججەت ئاتى تاللانما قىلىنىدۇ\n"
 
-#: ../src/nautilus-sendto-command.c:680
+#: ../src/nautilus-sendto-command.c:684
 #, c-format
 msgid "Could not parse command-line options: %s\n"
 msgstr "بۇيرۇق قۇرى تاللانمىسىنى يېشەلمىدى: %s\n"
@@ -184,8 +171,7 @@ msgstr "ئادرېس دەپتىرى سالاھىيىتىنى دەلىللىيە�
 #: ../src/plugins/evolution/e-contact-entry.c:916
 msgid ""
 "Authentication is required to access the address book and was not given."
-msgstr ""
-"ئادرېس دەپتىرىنى زىيارەت قىلىشتا دەلىللەش زۆرۈر، بۇ دەلىللەش بېرىلمىگەن."
+msgstr "ئادرېس دەپتىرىنى زىيارەت قىلىشتا دەلىللەش زۆرۈر، بۇ دەلىللەش بېرىلمىگەن."
 
 #: ../src/plugins/evolution/e-contact-entry.c:918
 msgid "A secure connection is not available."
@@ -248,23 +234,32 @@ msgstr "مۇڭداشقۇ (Pidgin)"
 msgid "Removable disks and shares"
 msgstr "يان دىسكا ۋە ھەمبەھىر"
 
-#: ../src/plugins/socialweb/socialweb.c:158
+#: ../src/plugins/socialweb/socialweb.c:186
+#, c-format
+msgid "Uploading '%s'"
+msgstr ""
+
+#: ../src/plugins/socialweb/socialweb.c:256
+msgid "Preparing upload"
+msgstr ""
+
+#: ../src/plugins/socialweb/socialweb.c:316
 #, c-format
 msgid "Service '%s' is not configured."
 msgstr "مۇلازىمەت '%s' سەپلەنمىگەن."
 
-#: ../src/plugins/socialweb/socialweb.c:161
-#: ../src/plugins/socialweb/socialweb.c:178
+#: ../src/plugins/socialweb/socialweb.c:319
+#: ../src/plugins/socialweb/socialweb.c:336
 msgid "_Configure"
 msgstr "سەپلە(_C)"
 
-#: ../src/plugins/socialweb/socialweb.c:165
-#: ../src/plugins/socialweb/socialweb.c:185
+#: ../src/plugins/socialweb/socialweb.c:323
+#: ../src/plugins/socialweb/socialweb.c:343
 #, c-format
 msgid "Logged in to service '%s'."
 msgstr "مۇلازىمەت '%s' قا تىزىمغا كىردى."
 
-#: ../src/plugins/socialweb/socialweb.c:175
+#: ../src/plugins/socialweb/socialweb.c:333
 #, c-format
 msgid "Could not log in to service '%s'."
 msgstr "مۇلازىمەت '%s' قا تىزىمغا كىرەلمىدى."
@@ -272,6 +267,15 @@ msgstr "مۇلازىمەت '%s' قا تىزىمغا كىرەلمىدى."
 #: ../src/plugins/upnp/upnp.c:309
 msgid "UPnP Media Server"
 msgstr "UPnP ۋاسىتە مۇلازىمېتىر"
+
+#~ msgid "Send To..."
+#~ msgstr "يوللاش ئورنى…"
+
+#~ msgid "Send file by mail, instant message..."
+#~ msgstr "ئېلخەت، مۇڭداشقۇدا ھۆججەت يوللا…"
+
+#~ msgid "Send files by mail, instant message..."
+#~ msgstr "ئېلخەت، مۇڭداشقۇدا ھۆججەت يوللا…"
 
 #~ msgid "Could not load any plugins."
 #~ msgstr "ھېچقانداق قىستۇرمىنى يۈكلىيەلمىدى."
