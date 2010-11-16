@@ -26,7 +26,7 @@
     <property name="type_hint">normal</property>
     <property name="icon_name">document-send</property>
     <child internal-child="vbox">
-      <object class="GtkVBox" id="dialog-vbox2">
+      <object class="GtkBox" id="dialog-vbox2">
         <property name="visible">True</property>
         <property name="spacing">2</property>
         <child>
@@ -84,6 +84,8 @@
           </object>
           <packing>
             <property name="position">2</property>
+            <property name="fill">True</property>
+            <property name="expand">True</property>
           </packing>
         </child>
         <child internal-child="action_area">
