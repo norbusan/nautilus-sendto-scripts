@@ -2,12 +2,12 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # Sahran <sahran@live.com>, 2010-09-22.
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: nautilus-sendto\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=nautilus-sendto&component=general\n"
-"POT-Creation-Date: 2010-11-04 17:06+0000\n"
+"POT-Creation-Date: 2010-11-13 21:53+0000\n"
 "PO-Revision-Date: 2010-09-25 10:52+0600\n"
 "Last-Translator: Sahran <sahran@live.com>\n"
 "Language-Team: Uyghur Computer Science Association <UKIJ@yahoogroups.com>\n"
@@ -31,12 +31,12 @@ msgid "Files to send"
 msgstr "يوللايدىغان ھۆججەتلەر"
 
 #. FIXME, this needs to be done in UI now
-#: ../src/nautilus-sendto-command.c:654
+#: ../src/nautilus-sendto-command.c:669
 #, c-format
 msgid "Expects URIs or filenames to be passed as options\n"
 msgstr "URI ياكى ھۆججەت ئاتى تاللانما قىلىنىدۇ\n"
 
-#: ../src/nautilus-sendto-command.c:684
+#: ../src/nautilus-sendto-command.c:699
 #, c-format
 msgid "Could not parse command-line options: %s\n"
 msgstr "بۇيرۇق قۇرى تاللانمىسىنى يېشەلمىدى: %s\n"
@@ -86,7 +86,7 @@ msgstr[0] "%d ھۆججەتنى ھەمبەھىرلەۋاتىدۇ"
 msgid "_Send"
 msgstr "يوللا(_S)"
 
-#: ../src/plugins/nautilus-sendto-packer.c:197
+#: ../src/plugins/nautilus-sendto-packer.c:200
 msgid "Files"
 msgstr "ھۆججەتلەر"
 
@@ -237,11 +237,11 @@ msgstr "يان دىسكا ۋە ھەمبەھىر"
 #: ../src/plugins/socialweb/socialweb.c:186
 #, c-format
 msgid "Uploading '%s'"
-msgstr ""
+msgstr "«%s» نى يۈكلەۋاتىدۇ"
 
 #: ../src/plugins/socialweb/socialweb.c:256
 msgid "Preparing upload"
-msgstr ""
+msgstr "يۈكلەشكە تەييارلىنىۋاتىدۇ"
 
 #: ../src/plugins/socialweb/socialweb.c:316
 #, c-format
