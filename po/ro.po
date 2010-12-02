@@ -4,138 +4,112 @@
 # Alexandru Szasz <alexxed@gmail.com>, 2007.
 # Adi Roiban, 2009
 # Lucian Adrian Grijincu <lucian.grijincu@gmail.com>, 2009, 2010.
+# Nichita Utiu <nikita.utiu@gmail.com>, 2010.
+# Daniel Șerbănescu <cyber19rider@gmail.com>, 2010.
 msgid ""
 msgstr ""
 "Project-Id-Version: nautilus-sendto trunk\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product"
-"=nautilus-sendto&component=general\n"
-"POT-Creation-Date: 2010-06-09 16:37+0000\n"
-"PO-Revision-Date: 2010-07-15 01:31+0300\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
+"product=nautilus-sendto&component=general\n"
+"POT-Creation-Date: 2010-11-23 16:27+0000\n"
+"PO-Revision-Date: 2010-12-02 02:22+0300\n"
 "Last-Translator: Lucian Adrian Grijincu <lucian.grijincu@gmail.com>\n"
 "Language-Team: Romanian Gnome Team <gnomero-list@lists.sourceforge.net>\n"
-"Language: ro\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: ro\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
 "20)) ? 1 : 2);;\n"
 "X-Generator: Virtaal 0.6.1\n"
 
-#: ../nst.schemas.in.h:1
-msgid "Last plugin used to send"
-msgstr "Ultimul modul de extensie folosit pentru trimitere"
+#: ../src/nautilus-sendto-command.c:79
+msgid "Run from build directory"
+msgstr "Execută din dosarul de construcție"
 
-#: ../nst.schemas.in.h:2
-msgid "Last type of archive used"
-msgstr "Ultimul tip de arhivă folosit"
+#: ../src/nautilus-sendto-command.c:80
+msgid "Use XID as parent to the send dialogue"
+msgstr "Folosește XID ca părinte al dialogului de trimitere"
 
-#: ../nst.schemas.in.h:3
-msgid ""
-"Used to store which plugin was used the last time files were sent using "
-"nautilus-sendto."
-msgstr ""
-"Folosit pentru a stoca care modul de extensie a fost utilizat ultima dată "
-"când s-au trimis fișiere prin nautilus-sendto."
+#: ../src/nautilus-sendto-command.c:81
+msgid "Files to send"
+msgstr "Fișiere de trimis"
 
-#: ../nst.schemas.in.h:4
-msgid ""
-"Used to store which type of archive was used the last time (0: zip, 1: tar."
-"gz, 2: tar.bz2)."
-msgstr ""
-"Folosit pentru a stoca ce tip de arhivă a fost utilizat ultima dată (0: zip, "
-"1: tar.gz, 2: tar.bz2)."
-
-#: ../src/nautilus-nste.c:92 ../src/nautilus-nste.c:97
-#: ../src/nautilus-sendto.ui.h:3
-msgid "Send To..."
-msgstr "Trimite către..."
-
-#: ../src/nautilus-nste.c:93
-msgid "Send file by mail, instant message..."
-msgstr "Trimiteți fișier prin mail, mesagerie instant..."
-
-#: ../src/nautilus-nste.c:98
-msgid "Send files by mail, instant message..."
-msgstr "Trimiteți fișiere prin mail, mesagerie instant..."
-
-#: ../src/nautilus-sendto-command.c:574
-msgid "Files"
-msgstr "Fișiere"
-
-#: ../src/nautilus-sendto-command.c:787
+#. FIXME, this needs to be done in UI now
+#: ../src/nautilus-sendto-command.c:669
 #, c-format
 msgid "Expects URIs or filenames to be passed as options\n"
-msgstr "Se așteaptă adrese web sau un nume de fișiere ca opțiuni\n"
+msgstr "Se așteaptă adrese web sau nume de fișiere ca opțiuni\n"
 
-#: ../src/nautilus-sendto-command.c:808
+#: ../src/nautilus-sendto-command.c:699
 #, c-format
 msgid "Could not parse command-line options: %s\n"
-msgstr "Nu s-au putut analiza opțiunile date în linia de comandă: %s\n"
+msgstr "Nu s-au putut analiza opțiunile din linia de comandă: %s\n"
 
-#: ../src/nautilus-sendto-command.c:823
-msgid "Could not load any plugins."
-msgstr "Nu s-a putut încărca nici un modul de extensie."
+#: ../src/nautilus-sendto-mimetype.c:50
+#, c-format
+msgid "Sharing %d folder"
+msgid_plural "Sharing %d folders"
+msgstr[0] "Se partajează un dosar"
+msgstr[1] "Se partajează %d dosare"
+msgstr[2] "Se partajează %d de dosare"
 
-#: ../src/nautilus-sendto-command.c:826
-msgid "Please verify your installation"
-msgstr "Verificați instalarea dumneavoastră"
+#: ../src/nautilus-sendto-mimetype.c:52
+#, c-format
+msgid "Sharing %d folders and files"
+msgstr "Se partajează %d dosare și fișiere"
 
-#: ../src/nautilus-sendto.ui.h:1
-msgid "<b>Compression</b>"
-msgstr "<b>Compresie</b>"
+#: ../src/nautilus-sendto-mimetype.c:77
+#, c-format
+msgid "Sharing %d video"
+msgid_plural "Sharing %d videos"
+msgstr[0] "Se partajează un videoclip"
+msgstr[1] "Se partajează %d videoclipuri"
+msgstr[2] "Se partajează %d de videoclipuri"
 
-#: ../src/nautilus-sendto.ui.h:2
-msgid "<b>Destination</b>"
-msgstr "<b>Destinație</b>"
+#: ../src/nautilus-sendto-mimetype.c:79
+#, c-format
+msgid "Sharing %d photo"
+msgid_plural "Sharing %d photos"
+msgstr[0] "Se partajează o fotografie"
+msgstr[1] "Se partajează %d fotografii"
+msgstr[2] "Se partajează %d de fotografii"
 
-#: ../src/nautilus-sendto.ui.h:4
-msgid "Send _as:"
-msgstr "Trimite c_a:"
+#: ../src/nautilus-sendto-mimetype.c:81
+#, c-format
+msgid "Sharing %d image"
+msgid_plural "Sharing %d images"
+msgstr[0] "Se partajează o imagine"
+msgstr[1] "Se partajează %d imagini"
+msgstr[2] "Se partajează %d de imagini"
 
-#: ../src/nautilus-sendto.ui.h:5
-msgid "Send _packed in:"
-msgstr "Trimite îm_pachetat în:"
+#: ../src/nautilus-sendto-mimetype.c:83
+#, c-format
+msgid "Sharing %d text file"
+msgid_plural "Sharing %d text files"
+msgstr[0] "Se partajează un fișier text"
+msgstr[1] "Se partajează %d fișiere text"
+msgstr[2] "Se partajează %d de fișiere text"
 
-#: ../src/nautilus-sendto.ui.h:6
-msgid "Send t_o:"
-msgstr "Trimite _la:"
+#: ../src/nautilus-sendto-mimetype.c:85
+#, c-format
+msgid "Sharing %d file"
+msgid_plural "Sharing %d files"
+msgstr[0] "Se partajează un fișier"
+msgstr[1] "Se partajează %d fișiere"
+msgstr[2] "Se partajează %d de fișiere"
 
-#: ../src/nautilus-sendto.ui.h:7
+#: ../data/nautilus-sendto.ui.h:1
 msgid "_Send"
 msgstr "_Trimite"
 
-#: ../src/plugins/bluetooth/bluetooth.c:451
-msgid "Programming error, could not find the device in the list"
-msgstr "Eroare de programare, nu se găsește dispozitivul în listă"
+#: ../src/plugins/nautilus-sendto-packer.c:200
+msgid "Files"
+msgstr "Fișiere"
 
-#: ../src/plugins/bluetooth/bluetooth.c:526
-#, c-format
-msgid "Obex Push file transfer unsupported"
-msgstr "Transferul de fișiere „Obex Push” nu este suportat"
-
-#: ../src/plugins/bluetooth/bluetooth.c:550
-msgid "Bluetooth (OBEX Push)"
-msgstr "Bluetooth (OBEX Push)"
-
-#: ../src/plugins/empathy/empathy.c:144
-msgid "The contact selected cannot receive files."
-msgstr "Contactul ales nu poate primi fișiere."
-
-#: ../src/plugins/empathy/empathy.c:150
-msgid "The contact selected is offline."
-msgstr "Contactul ales este deconectat."
-
-#: ../src/plugins/empathy/empathy.c:205
-msgid "No error message"
-msgstr "Nici un mesaj de eroare"
-
-#: ../src/plugins/empathy/empathy.c:281
-msgid "Instant Message (Empathy)"
-msgstr "Mesagerie instant (Empathy)"
-
-#: ../src/plugins/evolution/evolution.c:378
-msgid "Email"
-msgstr "Mail"
+#: ../src/plugins/evolution/evolution.c:308
+msgid "Mail"
+msgstr "Email"
 
 #: ../src/plugins/evolution/e-contact-entry.c:153
 #, c-format
@@ -149,7 +123,7 @@ msgstr "Nu s-a putut găsi contactul: %s"
 
 #: ../src/plugins/evolution/e-contact-entry.c:414
 msgid "Cannot create searchable view."
-msgstr "Nu s-a putut crea pagina de căutare."
+msgstr "Nu s-a putut crea vizualizarea capabilă de căutare."
 
 #: ../src/plugins/evolution/e-contact-entry.c:886
 msgid "Success"
@@ -157,7 +131,7 @@ msgstr "Succes"
 
 #: ../src/plugins/evolution/e-contact-entry.c:888
 msgid "An argument was invalid."
-msgstr "Unul dintre argumente nu a fost valid."
+msgstr "Un argument nu a fost valid."
 
 #: ../src/plugins/evolution/e-contact-entry.c:890
 msgid "The address book is busy."
@@ -169,7 +143,7 @@ msgstr "Agenda este deconectată."
 
 #: ../src/plugins/evolution/e-contact-entry.c:894
 msgid "The address book does not exist."
-msgstr "Nu există o agendă."
+msgstr "Nu există agenda."
 
 #: ../src/plugins/evolution/e-contact-entry.c:896
 msgid "The \"Me\" contact does not exist."
@@ -185,7 +159,7 @@ msgstr "Agenda este deja încărcată."
 
 #: ../src/plugins/evolution/e-contact-entry.c:902
 msgid "Permission was denied when accessing the address book."
-msgstr "Nu aveți dreptul de a accesa agenda."
+msgstr "Permisiunea a fost refuzată la accesarea agendei."
 
 #: ../src/plugins/evolution/e-contact-entry.c:904
 msgid "The contact was not found."
@@ -193,11 +167,11 @@ msgstr "Contactul nu a fost găsit."
 
 #: ../src/plugins/evolution/e-contact-entry.c:906
 msgid "This contact ID already exists."
-msgstr "Există deja un contact pentru acest ID."
+msgstr "Acest ID de contact există deja."
 
 #: ../src/plugins/evolution/e-contact-entry.c:908
 msgid "The protocol is not supported."
-msgstr "Nu există suport pentru acest protocol."
+msgstr "Nu există suport pentru protocol."
 
 #: ../src/plugins/evolution/e-contact-entry.c:910
 msgid "The operation was cancelled."
@@ -209,31 +183,31 @@ msgstr "Operațiunea nu a putut fi anulată."
 
 #: ../src/plugins/evolution/e-contact-entry.c:914
 msgid "The address book authentication failed."
-msgstr "Autentificarea în agendă a eșuat."
+msgstr "Autentificarea agendei a eșuat."
 
 #: ../src/plugins/evolution/e-contact-entry.c:916
 msgid ""
 "Authentication is required to access the address book and was not given."
 msgstr ""
-"Autentificarea este obligatorie la accesarea agendei, dar nu s-au primit "
-"date de autentificare."
+"Datele de autentificarea sunt obligatorii pentru a accesa agenda, dar nu au "
+"fost furnizate."
 
 #: ../src/plugins/evolution/e-contact-entry.c:918
 msgid "A secure connection is not available."
-msgstr "Nu e disponibilă nici o conexiune securizată."
+msgstr "Nicio conexiune securizată nu este disponibilă."
 
 #: ../src/plugins/evolution/e-contact-entry.c:920
 msgid "A CORBA error occurred whilst accessing the address book."
-msgstr "S-a produs o eroare CORBA la accesarea agendei."
+msgstr "A avut loc o eroare CORBA la accesarea agendei."
 
 #: ../src/plugins/evolution/e-contact-entry.c:922
 msgid "The address book source does not exist."
-msgstr "Nu există sursa agendei."
+msgstr "Sursa agendei nu există."
 
 #: ../src/plugins/evolution/e-contact-entry.c:924
 #: ../src/plugins/evolution/e-contact-entry.c:927
 msgid "An unknown error occurred."
-msgstr "S-a produs o eroare neidentificată."
+msgstr "A avut loc o eroare necunoscută."
 
 #: ../src/plugins/gajim/gajim.c:417
 msgid "Unable to send file"
@@ -241,7 +215,7 @@ msgstr "Nu se poate trimite fișierul"
 
 #: ../src/plugins/gajim/gajim.c:418
 msgid "There is no connection to gajim remote service."
-msgstr "Nu există nici o conexiune la serviciul la distanță gajim."
+msgstr "Nu există nicio conexiune la serviciul la distanță gajim."
 
 #: ../src/plugins/gajim/gajim.c:442 ../src/plugins/gajim/gajim.c:482
 msgid "Sending file failed"
@@ -259,29 +233,130 @@ msgstr "Destinatar necunoscut."
 msgid "Instant Message (Gajim)"
 msgstr "Mesagerie instant (Gajim)"
 
-#: ../src/plugins/nautilus-burn/nautilus-burn.c:92
+#: ../src/plugins/nautilus-burn/nautilus-burn.c:90
 msgid "New CD/DVD"
 msgstr "CD/DVD nou"
 
-#: ../src/plugins/nautilus-burn/nautilus-burn.c:99
+#: ../src/plugins/nautilus-burn/nautilus-burn.c:97
 msgid "Existing CD/DVD"
 msgstr "CD/DVD existent"
 
-#: ../src/plugins/nautilus-burn/nautilus-burn.c:178
+#: ../src/plugins/nautilus-burn/nautilus-burn.c:176
 msgid "CD/DVD Creator"
-msgstr "Creare CD/DVD"
+msgstr "Creator de CD/DVD"
 
 #: ../src/plugins/pidgin/pidgin.c:464
 msgid "Instant Message (Pidgin)"
-msgstr "Mesaj instant (Pidgin)"
+msgstr "Mesagerie instant (Pidgin)"
 
-#: ../src/plugins/removable-devices/removable-devices.c:224
+#: ../src/plugins/removable-devices/removable-devices.c:274
 msgid "Removable disks and shares"
 msgstr "Partajări și discuri detașabile"
+
+#: ../src/plugins/socialweb/socialweb.c:186
+#, c-format
+msgid "Uploading '%s'"
+msgstr "Se încarcă „%s”"
+
+#: ../src/plugins/socialweb/socialweb.c:256
+msgid "Preparing upload"
+msgstr "Se pregătește încărcarea"
+
+#: ../src/plugins/socialweb/socialweb.c:316
+#, c-format
+msgid "Service '%s' is not configured."
+msgstr "Serviciul „%s” nu este configurat."
+
+#: ../src/plugins/socialweb/socialweb.c:319
+#: ../src/plugins/socialweb/socialweb.c:336
+msgid "_Configure"
+msgstr "_Configurează"
+
+#: ../src/plugins/socialweb/socialweb.c:323
+#: ../src/plugins/socialweb/socialweb.c:343
+#, c-format
+msgid "Logged in to service '%s'."
+msgstr "Autentificat la serviciul „%s”."
+
+#: ../src/plugins/socialweb/socialweb.c:333
+#, c-format
+msgid "Could not log in to service '%s'."
+msgstr "Nu s-a putut autentifica la serviciul „%s”."
 
 #: ../src/plugins/upnp/upnp.c:309
 msgid "UPnP Media Server"
 msgstr "Server media UPnP"
+
+#~ msgid "Last plugin used to send"
+#~ msgstr "Ultimul modul de extensie folosit pentru trimitere"
+
+#~ msgid "Last type of archive used"
+#~ msgstr "Ultimul tip de arhivă folosit"
+
+#~ msgid ""
+#~ "Used to store which plugin was used the last time files were sent using "
+#~ "nautilus-sendto."
+#~ msgstr ""
+#~ "Folosit pentru a stoca care modul de extensie a fost utilizat ultima dată "
+#~ "când s-au trimis fișiere prin nautilus-sendto."
+
+#~ msgid ""
+#~ "Used to store which type of archive was used the last time (0: zip, 1: "
+#~ "tar.gz, 2: tar.bz2)."
+#~ msgstr ""
+#~ "Folosit pentru a stoca ce tip de arhivă a fost utilizat ultima dată (0: "
+#~ "zip, 1: tar.gz, 2: tar.bz2)."
+
+#~ msgid "Send To..."
+#~ msgstr "Trimite către..."
+
+#~ msgid "Send file by mail, instant message..."
+#~ msgstr "Trimiteți fișier prin mail, mesagerie instant..."
+
+#~ msgid "Send files by mail, instant message..."
+#~ msgstr "Trimiteți fișiere prin mail, mesagerie instant..."
+
+#~ msgid "Could not load any plugins."
+#~ msgstr "Nu s-a putut încărca nici un modul de extensie."
+
+#~ msgid "Please verify your installation"
+#~ msgstr "Verificați instalarea dumneavoastră"
+
+#~ msgid "<b>Compression</b>"
+#~ msgstr "<b>Compresie</b>"
+
+#~ msgid "<b>Destination</b>"
+#~ msgstr "<b>Destinație</b>"
+
+#~ msgid "Send _as:"
+#~ msgstr "Trimite c_a:"
+
+#~ msgid "Send _packed in:"
+#~ msgstr "Trimite îm_pachetat în:"
+
+#~ msgid "Send t_o:"
+#~ msgstr "Trimite _la:"
+
+#~ msgid "Programming error, could not find the device in the list"
+#~ msgstr "Eroare de programare, nu se găsește dispozitivul în listă"
+
+#~ msgid "Obex Push file transfer unsupported"
+#~ msgstr "Transferul de fișiere „Obex Push” nu este suportat"
+
+#~ msgid "Bluetooth (OBEX Push)"
+#~ msgstr "Bluetooth (OBEX Push)"
+
+#~ msgid "The contact selected cannot receive files."
+#~ msgstr "Contactul ales nu poate primi fișiere."
+
+#~ msgid "The contact selected is offline."
+#~ msgstr "Contactul ales este deconectat."
+
+#~ msgid "No error message"
+#~ msgstr "Nici un mesaj de eroare"
+
+#~ msgid "Instant Message (Empathy)"
+#~ msgstr "Mesagerie instant (Empathy)"
 
 #~ msgid "_Send to..."
 #~ msgstr "_Trimite la..."
