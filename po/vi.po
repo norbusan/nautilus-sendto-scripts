@@ -1,14 +1,14 @@
 # Vietnamese translation for Nautilus SendTo.
 # Copyright © 2006 Gnome i18n Project for Vietnamese.
 # Clytie Siddall <clytie@riverland.net.au>, 2005-2006.
-#
+# Nguyễn Thái Ngọc Duy <pclouds@gmail.com>, 2010.
 msgid ""
 msgstr ""
 "Project-Id-Version: nautilus-sendto Gnome HEAD\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=nautilus-sendto&component=general\n"
 "POT-Creation-Date: 2010-11-04 17:06+0000\n"
-"PO-Revision-Date: 2006-08-26 22:27+0930\n"
+"PO-Revision-Date: 2010-12-26 19:01+0700\n"
 "Last-Translator: Clytie Siddall <clytie@riverland.net.au>\n"
 "Language-Team: Vietnamese <gnomevi-list@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -19,69 +19,68 @@ msgstr ""
 
 #: ../src/nautilus-sendto-command.c:79
 msgid "Run from build directory"
-msgstr ""
+msgstr "Chạy từ thư mục biên dịch"
 
 #: ../src/nautilus-sendto-command.c:80
 msgid "Use XID as parent to the send dialogue"
-msgstr ""
+msgstr "Dùng XID làm cha của hộp thoại gửi"
 
 #: ../src/nautilus-sendto-command.c:81
-#, fuzzy
 #| msgid "Unable to send file"
 msgid "Files to send"
-msgstr "Không thể gởi tập tin"
+msgstr "Tập tin cần gửi"
 
 #. FIXME, this needs to be done in UI now
 #: ../src/nautilus-sendto-command.c:654
 #, c-format
 msgid "Expects URIs or filenames to be passed as options\n"
-msgstr ""
+msgstr "Cần URI hoặc tên tập tin làm tuỳ chọn\n"
 
 #: ../src/nautilus-sendto-command.c:684
 #, c-format
 msgid "Could not parse command-line options: %s\n"
-msgstr ""
+msgstr "Không thể phân tích tuỳ chọn dòng lệnh: %s\n"
 
 #: ../src/nautilus-sendto-mimetype.c:50
 #, c-format
 msgid "Sharing %d folder"
 msgid_plural "Sharing %d folders"
-msgstr[0] ""
+msgstr[0] "Chia sẻ %d thư mục"
 
 #: ../src/nautilus-sendto-mimetype.c:52
 #, c-format
 msgid "Sharing %d folders and files"
-msgstr ""
+msgstr "Chia sẻ %d thư mục và tập tin"
 
 #: ../src/nautilus-sendto-mimetype.c:77
 #, c-format
 msgid "Sharing %d video"
 msgid_plural "Sharing %d videos"
-msgstr[0] ""
+msgstr[0] "Chia sẻ %d phim"
 
 #: ../src/nautilus-sendto-mimetype.c:79
 #, c-format
 msgid "Sharing %d photo"
 msgid_plural "Sharing %d photos"
-msgstr[0] ""
+msgstr[0] "Chia sẻ %d ảnh"
 
 #: ../src/nautilus-sendto-mimetype.c:81
 #, c-format
 msgid "Sharing %d image"
 msgid_plural "Sharing %d images"
-msgstr[0] ""
+msgstr[0] "Chia sẻ %d ảnh"
 
 #: ../src/nautilus-sendto-mimetype.c:83
 #, c-format
 msgid "Sharing %d text file"
 msgid_plural "Sharing %d text files"
-msgstr[0] ""
+msgstr[0] "Chia sẻ %d văn bản"
 
 #: ../src/nautilus-sendto-mimetype.c:85
 #, c-format
 msgid "Sharing %d file"
 msgid_plural "Sharing %d files"
-msgstr[0] ""
+msgstr[0] "Chia sẻ %d tập tin"
 
 #: ../data/nautilus-sendto.ui.h:1
 msgid "_Send"
@@ -92,106 +91,105 @@ msgid "Files"
 msgstr "Tập tin"
 
 #: ../src/plugins/evolution/evolution.c:308
-#, fuzzy
 #| msgid "Email"
 msgid "Mail"
-msgstr "Thư điện tử"
+msgstr "Thư"
 
 #: ../src/plugins/evolution/e-contact-entry.c:153
 #, c-format
 msgid "Cannot get contact: %s"
-msgstr ""
+msgstr "Không thể lấy liên lạc: %s"
 
 #: ../src/plugins/evolution/e-contact-entry.c:186
 #, c-format
 msgid "Could not find contact: %s"
-msgstr ""
+msgstr "Không thể tìm liên lạc: %s"
 
 #: ../src/plugins/evolution/e-contact-entry.c:414
 msgid "Cannot create searchable view."
-msgstr ""
+msgstr "Không thể tạo khung xem tìm kiếm được."
 
 #: ../src/plugins/evolution/e-contact-entry.c:886
 msgid "Success"
-msgstr ""
+msgstr "Thành công"
 
 #: ../src/plugins/evolution/e-contact-entry.c:888
 msgid "An argument was invalid."
-msgstr ""
+msgstr "Đối số không hợp lệ."
 
 #: ../src/plugins/evolution/e-contact-entry.c:890
 msgid "The address book is busy."
-msgstr ""
+msgstr "Sổ địa chỉ đang bận."
 
 #: ../src/plugins/evolution/e-contact-entry.c:892
 msgid "The address book is offline."
-msgstr ""
+msgstr "Sổ địa chỉ ngoại tuyến."
 
 #: ../src/plugins/evolution/e-contact-entry.c:894
 msgid "The address book does not exist."
-msgstr ""
+msgstr "Sổ địa chỉ không tồn tại."
 
 #: ../src/plugins/evolution/e-contact-entry.c:896
 msgid "The \"Me\" contact does not exist."
-msgstr ""
+msgstr "Liên lạc \"Tôi\" không tồn tại."
 
 #: ../src/plugins/evolution/e-contact-entry.c:898
 msgid "The address book is not loaded."
-msgstr ""
+msgstr "Sổ địa chỉ chưa được nạp."
 
 #: ../src/plugins/evolution/e-contact-entry.c:900
 msgid "The address book is already loaded."
-msgstr ""
+msgstr "Sổ địa chỉ đã nạp rồi."
 
 #: ../src/plugins/evolution/e-contact-entry.c:902
 msgid "Permission was denied when accessing the address book."
-msgstr ""
+msgstr "Không đủ quyền truy cập sổ địa chỉ."
 
 #: ../src/plugins/evolution/e-contact-entry.c:904
 msgid "The contact was not found."
-msgstr ""
+msgstr "Không tìm thấy liên lạc."
 
 #: ../src/plugins/evolution/e-contact-entry.c:906
 msgid "This contact ID already exists."
-msgstr ""
+msgstr "ID liên lạc đã có rồi."
 
 #: ../src/plugins/evolution/e-contact-entry.c:908
 msgid "The protocol is not supported."
-msgstr ""
+msgstr "Không hỗ trợ giao thức."
 
 #: ../src/plugins/evolution/e-contact-entry.c:910
 msgid "The operation was cancelled."
-msgstr ""
+msgstr "Thao tác bị huỷ."
 
 #: ../src/plugins/evolution/e-contact-entry.c:912
 msgid "The operation could not be cancelled."
-msgstr ""
+msgstr "Không thể huỷ thao tác."
 
 #: ../src/plugins/evolution/e-contact-entry.c:914
 msgid "The address book authentication failed."
-msgstr ""
+msgstr "Xác thực sổ địa chỉ thất bại."
 
 #: ../src/plugins/evolution/e-contact-entry.c:916
 msgid ""
 "Authentication is required to access the address book and was not given."
-msgstr ""
+msgstr "Cần xác thực để truy cập sổ địa chỉ, nhưng chưa làm."
 
 #: ../src/plugins/evolution/e-contact-entry.c:918
 msgid "A secure connection is not available."
-msgstr ""
+msgstr "Không có kết nối an toàn."
 
 #: ../src/plugins/evolution/e-contact-entry.c:920
 msgid "A CORBA error occurred whilst accessing the address book."
-msgstr ""
+msgstr "Lỗi CORBA khi truy cập sổ địa chỉ."
 
 #: ../src/plugins/evolution/e-contact-entry.c:922
 msgid "The address book source does not exist."
-msgstr ""
+msgstr "Nguồn sổ địa chỉ không tồn tại."
 
 #: ../src/plugins/evolution/e-contact-entry.c:924
 #: ../src/plugins/evolution/e-contact-entry.c:927
 msgid "An unknown error occurred."
-msgstr ""
+msgstr "Lỗi lạ."
 
 #: ../src/plugins/gajim/gajim.c:417
 msgid "Unable to send file"
@@ -219,59 +217,58 @@ msgstr "Tin nhắn tức khắc (Gajim)"
 
 #: ../src/plugins/nautilus-burn/nautilus-burn.c:90
 msgid "New CD/DVD"
-msgstr ""
+msgstr "CD/DVD mới"
 
 #: ../src/plugins/nautilus-burn/nautilus-burn.c:97
 msgid "Existing CD/DVD"
-msgstr ""
+msgstr "CD/DVD đã có"
 
 #: ../src/plugins/nautilus-burn/nautilus-burn.c:176
 msgid "CD/DVD Creator"
-msgstr ""
+msgstr "Trình ghi CD/DVD"
 
 #: ../src/plugins/pidgin/pidgin.c:464
-#, fuzzy
 #| msgid "Instant Message (Gaim)"
 msgid "Instant Message (Pidgin)"
-msgstr "Tin nhắn tức khắc (Gaim)"
+msgstr "Nhắn tin nhanh (Pidgin)"
 
 #: ../src/plugins/removable-devices/removable-devices.c:274
 msgid "Removable disks and shares"
-msgstr ""
+msgstr "Đĩa di động và chia sẻ"
 
 #: ../src/plugins/socialweb/socialweb.c:186
 #, c-format
 msgid "Uploading '%s'"
-msgstr ""
+msgstr "Đang đưa '%s' lên"
 
 #: ../src/plugins/socialweb/socialweb.c:256
 msgid "Preparing upload"
-msgstr ""
+msgstr "Đang chuẩn bị đưa lên"
 
 #: ../src/plugins/socialweb/socialweb.c:316
 #, c-format
 msgid "Service '%s' is not configured."
-msgstr ""
+msgstr "Chưa cấu hình dịch vụ '%s'."
 
 #: ../src/plugins/socialweb/socialweb.c:319
 #: ../src/plugins/socialweb/socialweb.c:336
 msgid "_Configure"
-msgstr ""
+msgstr "_Cấu hình"
 
 #: ../src/plugins/socialweb/socialweb.c:323
 #: ../src/plugins/socialweb/socialweb.c:343
 #, c-format
 msgid "Logged in to service '%s'."
-msgstr ""
+msgstr "Đã đăng nhập vào dịch vụ '%s'."
 
 #: ../src/plugins/socialweb/socialweb.c:333
 #, c-format
 msgid "Could not log in to service '%s'."
-msgstr ""
+msgstr "Không thể đăng nhập vào dịch vụ '%s'."
 
 #: ../src/plugins/upnp/upnp.c:309
 msgid "UPnP Media Server"
-msgstr ""
+msgstr "Máy chủ lưu trữ UPnP"
 
 # type
 # ui requirement
