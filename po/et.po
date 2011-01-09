@@ -1,10 +1,11 @@
 # Nautilus-sento eesti tõlge.
 # Estonian translation of Nautilus-sendto.
 #
-# Copyright (C) 2009, The Gnome Project.
-# This file is distributed under the same license as the nautilus-sendto package.
+# Copyright (C) 2009-2011 The Gnome Project.
+# This file is distributed under the same license as the nautilus-sendto
+# package.
 #
-# Ivar Smolin <okul linux ee>, 2006, 2010.
+# Ivar Smolin <okul linux ee>, 2006, 2010, 2011.
 # Mattias Põldaru <mahfiaz gmail com>, 2009.
 #
 msgid ""
@@ -13,7 +14,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=nautilus-sendto&component=general\n"
 "POT-Creation-Date: 2010-12-02 00:26+0000\n"
-"PO-Revision-Date: 2010-11-09 16:18+0200\n"
+"PO-Revision-Date: 2011-01-09 17:26+0200\n"
 "Last-Translator: Ivar Smolin <okul@linux.ee>\n"
 "Language-Team: Estonian <gnome-et@linux.ee>\n"
 "Language: et\n"
@@ -23,10 +24,10 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 msgid "Run from build directory"
-msgstr ""
+msgstr "Käivitamine kompileerimise kataloogist"
 
 msgid "Use XID as parent to the send dialogue"
-msgstr ""
+msgstr "XID kasutamine saatmisdialoogi ülemise aknana"
 
 msgid "Files to send"
 msgstr "Saadetavad failid"
