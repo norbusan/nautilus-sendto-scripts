@@ -1,15 +1,15 @@
 # Norwegian bokmål translation of nautilus-sendto.
 # Copyright (C) 2006 Free Software Foundation
 # This file is distributed under the same license as the nautilus-sendto package
-# Kjartan Maraas <kmaraas@gnome.org>, 2005-2010.
+# Kjartan Maraas <kmaraas@gnome.org>, 2005-2011.
 # Øivind Hoel <ohoel@cvs.gnome.org>, 2006.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: nautilus-sendto 2.91.x\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-11-20 19:11+0100\n"
-"PO-Revision-Date: 2010-11-20 19:14+0100\n"
+"POT-Creation-Date: 2011-01-20 19:17+0100\n"
+"PO-Revision-Date: 2011-01-20 19:17+0100\n"
 "Last-Translator: Kjartan Maraas <kmaraas@gnome.org>\n"
 "Language-Team: Norwegian Bokmål <i18n-nb@lister.ping.uio.no>\n"
 "Language: \n"
@@ -99,6 +99,10 @@ msgstr "Filer"
 #: ../src/plugins/nautilus-sendto-progress.c:187
 msgid "_Cancel"
 msgstr "A_vbryt"
+
+#: ../data/pack-entry.ui.h:1
+msgid "Send _packed in:"
+msgstr "Send _pakket i:"
 
 #: ../src/plugins/evolution/evolution.c:308
 msgid "Mail"
