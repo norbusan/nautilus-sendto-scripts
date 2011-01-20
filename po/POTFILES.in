@@ -6,6 +6,7 @@ data/org.gnome.Nautilus.Sendto.gschema.xml.in
 [type: gettext/glade]data/nautilus-sendto.ui
 src/plugins/nst-common.c
 src/plugins/nautilus-sendto-packer.c
+src/plugins/nautilus-sendto-progress.c
 [type: gettext/glade]data/pack-entry.ui
 src/plugins/evolution/evolution.c
 src/plugins/evolution/e-contact-entry.c
