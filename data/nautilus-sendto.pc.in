@@ -6,5 +6,5 @@ pluginsdir=@libdir@/nautilus-sendto/plugins
 Name: nautilus-sendto
 Description: Extend nautilus-sendto through plugins
 Version: @VERSION@
-Requires: glib-2.0 gmodule-2.0 gtk+-3.0
+Requires: glib-2.0 gmodule-2.0 gtk+-3.0 libpeas-1.0
 Cflags: -I${includedir}/nautilus-sendto
