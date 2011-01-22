@@ -1,14 +1,14 @@
 # Swedish messages for nautilus-sendto.
-# Copyright (C) 2005, 2006, 2007, 2008, 2009, 2010 Free Software Foundation, Inc.
+# Copyright (C) 2005-2011 Free Software Foundation, Inc.
 # Christian Rose <menthos@menthos.com>, 2005.
-# Daniel Nylander <po@danielnylander.se>, 2006, 2007, 2008, 2009, 2010.
+# Daniel Nylander <po@danielnylander.se>, 2006, 2007, 2008, 2009, 2010, 2011.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: nautilus-sendto\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-12-29 15:03+0100\n"
-"PO-Revision-Date: 2010-12-29 15:59+0100\n"
+"POT-Creation-Date: 2011-01-22 14:06+0100\n"
+"PO-Revision-Date: 2011-01-22 14:07+0100\n"
 "Last-Translator: Daniel Nylander <po@danielnylander.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "Language: sv\n"
@@ -94,6 +94,14 @@ msgstr "_Skicka"
 #: ../src/plugins/nautilus-sendto-packer.c:200
 msgid "Files"
 msgstr "Filer"
+
+#: ../src/plugins/nautilus-sendto-progress.c:187
+msgid "_Cancel"
+msgstr "_Avbryt"
+
+#: ../data/pack-entry.ui.h:1
+msgid "Send _packed in:"
+msgstr "Skicka _paketerat i:"
 
 #: ../src/plugins/evolution/evolution.c:308
 msgid "Mail"
@@ -317,8 +325,6 @@ msgstr "UPnP-mediaserver"
 #~ msgstr "<b>Mål</b>"
 #~ msgid "Send _as:"
 #~ msgstr "Skicka s_om:"
-#~ msgid "Send _packed in:"
-#~ msgstr "Skicka _paketerat i:"
 #~ msgid "Send t_o:"
 #~ msgstr "Skicka _till:"
 #~ msgid "Programming error, could not find the device in the list"
