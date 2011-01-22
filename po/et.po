@@ -13,14 +13,14 @@ msgstr ""
 "Project-Id-Version: nautilus-sendto MASTER\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=nautilus-sendto&component=general\n"
-"POT-Creation-Date: 2010-12-02 00:26+0000\n"
-"PO-Revision-Date: 2011-01-09 17:26+0200\n"
+"POT-Creation-Date: 2011-01-20 18:18+0000\n"
+"PO-Revision-Date: 2011-01-22 10:53+0200\n"
 "Last-Translator: Ivar Smolin <okul@linux.ee>\n"
 "Language-Team: Estonian <gnome-et@linux.ee>\n"
-"Language: et\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: et\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 msgid "Run from build directory"
@@ -86,6 +86,12 @@ msgstr "_Saada"
 
 msgid "Files"
 msgstr "Failid"
+
+msgid "_Cancel"
+msgstr "Tühista"
+
+msgid "Send _packed in:"
+msgstr "Saata _pakituna arhiivis:"
 
 msgid "Mail"
 msgstr "E-sõnum"
@@ -282,9 +288,6 @@ msgstr "UPnP meediaserver"
 
 #~ msgid "Send _as:"
 #~ msgstr "_Millega saata:"
-
-#~ msgid "Send _packed in:"
-#~ msgstr "Saata _pakituna arhiivis:"
 
 #~ msgid "Send t_o:"
 #~ msgstr "_Kellele saata:"
