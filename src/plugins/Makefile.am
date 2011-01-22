@@ -1,5 +1,4 @@
-SUBDIRS = . removable-devices evolution socialweb
-#SUBDIRS = . $(PLUGINS)
+SUBDIRS = . $(PLUGINS)
 DIST_SUBDIRS = $(ALL_PLUGINS)
 
 noinst_PROGRAMS = test-progress

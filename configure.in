@@ -60,8 +60,8 @@ AC_SUBST(NAUTILUS_SENDTO_LIBS)
 PKG_CHECK_MODULES(GIO, gio-2.0)
 
 # The full list of plugins
-allowed_plugins="evolution gajim nautilus-burn pidgin removable-devices socialweb upnp"
-
+allowed_plugins="evolution removable-devices socialweb"
+# These need porting: gajim nautilus-burn pidgin upnp
 plugin_error_or_ignore()
 {
 	if test "${error_on_bad_plugin}" = "1" ; then
