@@ -3,13 +3,13 @@
 # Copyright (C) 2006 THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # Automatically generated, 2006.
-# Khaled Hosny <khaledhosny@eglug.org>, 2006, 2007, 2009.
+# Khaled Hosny <khaledhosny@eglug.org>, 2006, 2007, 2009, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: nautilus-sendto.HEAD.ar\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-11-10 00:14+0200\n"
-"PO-Revision-Date: 2009-11-10 00:14+0300\n"
+"POT-Creation-Date: 2011-01-23 15:44+0200\n"
+"PO-Revision-Date: 2011-01-23 15:44+0300\n"
 "Last-Translator: Khaled Hosny <khaledhosny@eglug.org>\n"
 "Language-Team: Arabic <doc@arabeyes.org>\n"
 "MIME-Version: 1.0\n"
@@ -17,236 +17,218 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: ar\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
-"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
-"X-Generator: Virtaal 0.4.1\n"
+"&& n%100<=10 ? 3 : n%100>=11 ? 4 : 5;\n"
+"X-Generator: Virtaal 0.6.1\n"
 "X-Poedit-Language: Arabic\n"
 
-#: ../nst.schemas.in.h:1
-msgid "Last plugin used to send"
-msgstr "آخر مُلحق استُخدِم للإرسال"
+#: ../src/nautilus-sendto-command.c:79
+msgid "Run from build directory"
+msgstr "شغّل من دليل البناء"
 
-#: ../nst.schemas.in.h:2
-msgid "Last type of archive used"
-msgstr "آخر نوع أرشيف استُخدِم"
-
-#: ../nst.schemas.in.h:3
-msgid ""
-"Used to store which plugin was used the last time files were sent using "
-"nautilus-sendto."
+#: ../src/nautilus-sendto-command.c:80
+msgid "Use XID as parent to the send dialogue"
 msgstr ""
-"يُستخدم لتخزين ماهو المُلحق الذي استُخدِم آخر مرة اُرسِلت ملفات باستخدام أرسل إلى-"
-"ناوتلس"
 
-#: ../nst.schemas.in.h:4
-msgid ""
-"Used to store which type of archive was used the last time (0: zip, 1: tar."
-"gz, 2: tar.bz2)."
-msgstr ""
-"يُستخدم لتخزين ما نوع الأرشيف المُستخدم آخر مرة (0: zip, 1: tar.gz, 2: tar."
-"bz2)."
+#: ../src/nautilus-sendto-command.c:81
+#, fuzzy
+msgid "Files to send"
+msgstr "تعذّر إرسال الملف"
 
-#: ../evolution/nautilus-sendto.c:47
-msgid "_Send to..."
-msgstr "أرسل إ_لى..."
-
-#: ../evolution/org-gnome-evolution-send-attachments-to.eplug.xml.h:1
-msgid "Send files to remote devices, or people"
-msgstr "أرسل الملفات إلى أجهزة بعيدة، أو إلى الآخرين"
-
-#. the path to the shared library
-#: ../evolution/org-gnome-evolution-send-attachments-to.eplug.xml.h:3
-msgid "Send to..."
-msgstr "أرسل إلى..."
-
-#: ../src/nautilus-nste.c:92 ../src/nautilus-nste.c:97
-#: ../src/nautilus-sendto.ui.h:3
-msgid "Send To..."
-msgstr "أرسل إلى..."
-
-#: ../src/nautilus-nste.c:93
-msgid "Send file by mail, instant message..."
-msgstr "أرسل الملف بالبريد، رسالة فورية..."
-
-#: ../src/nautilus-nste.c:98
-msgid "Send files by mail, instant message..."
-msgstr "أرسل الملفات بالبريد، رسالة فورية..."
-
-#: ../src/nautilus-sendto-command.c:547
-msgid "Files"
-msgstr "ملفات"
-
-#: ../src/nautilus-sendto-command.c:760
+#. FIXME, this needs to be done in UI now
+#: ../src/nautilus-sendto-command.c:669
 #, c-format
 msgid "Expects URIs or filenames to be passed as options\n"
 msgstr "يتوقّع أن تمرر المسارات (URI) أو العناوين كخيارات\n"
 
-#: ../src/nautilus-sendto-command.c:777
-msgid "Nautilus Sendto"
-msgstr "أرسل إلى - نوتلِس"
-
-#: ../src/nautilus-sendto-command.c:781
+#: ../src/nautilus-sendto-command.c:699
 #, c-format
 msgid "Could not parse command-line options: %s\n"
 msgstr "تعذّر تحليل خيارات سطر الأوامر: %s\n"
 
-#: ../src/nautilus-sendto-command.c:796
-msgid "Could not load any plugins."
-msgstr "تعذّر تحميل أية ملحقات."
+#: ../src/nautilus-sendto-mimetype.c:50
+#, c-format
+msgid "Sharing %d folder"
+msgid_plural "Sharing %d folders"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+msgstr[4] ""
+msgstr[5] ""
 
-#: ../src/nautilus-sendto-command.c:799
-msgid "Please verify your installation"
-msgstr "رجاء راجع تثبيتك"
+#: ../src/nautilus-sendto-mimetype.c:52
+#, c-format
+msgid "Sharing %d folders and files"
+msgstr ""
 
-#: ../src/nautilus-sendto.ui.h:1
-msgid "<b>Compression</b>"
-msgstr "<b>الضغط</b>"
+#: ../src/nautilus-sendto-mimetype.c:77
+#, c-format
+msgid "Sharing %d video"
+msgid_plural "Sharing %d videos"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+msgstr[4] ""
+msgstr[5] ""
 
-#: ../src/nautilus-sendto.ui.h:2
-msgid "<b>Destination</b>"
-msgstr "<b>الوِجهة</b>"
+#: ../src/nautilus-sendto-mimetype.c:79
+#, c-format
+msgid "Sharing %d photo"
+msgid_plural "Sharing %d photos"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+msgstr[4] ""
+msgstr[5] ""
 
-#: ../src/nautilus-sendto.ui.h:4
-msgid "Send _as:"
-msgstr "أرسِل _ك‍:"
+#: ../src/nautilus-sendto-mimetype.c:81
+#, c-format
+msgid "Sharing %d image"
+msgid_plural "Sharing %d images"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+msgstr[4] ""
+msgstr[5] ""
 
-#: ../src/nautilus-sendto.ui.h:5
-msgid "Send _packed in:"
-msgstr "أرسٍل _محزّما في:"
+#: ../src/nautilus-sendto-mimetype.c:83
+#, c-format
+msgid "Sharing %d text file"
+msgid_plural "Sharing %d text files"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+msgstr[4] ""
+msgstr[5] ""
 
-#: ../src/nautilus-sendto.ui.h:6
-msgid "Send t_o:"
-msgstr "أرسِل إ_لى:"
+#: ../src/nautilus-sendto-mimetype.c:85
+#, c-format
+msgid "Sharing %d file"
+msgid_plural "Sharing %d files"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+msgstr[4] ""
+msgstr[5] ""
 
-#: ../src/nautilus-sendto.ui.h:7
+#: ../data/nautilus-sendto.ui.h:1
 msgid "_Send"
 msgstr "أر_سل"
 
-#: ../src/plugins/bluetooth/bluetooth.c:448
-msgid "Programming error, could not find the device in the list"
-msgstr "خطأ برمجي، لم أتمكن من العثور على جهاز في القائمة"
+#: ../src/plugins/nautilus-sendto-packer.c:200
+msgid "Files"
+msgstr "ملفات"
 
-#: ../src/plugins/bluetooth/bluetooth.c:523
-#, c-format
-msgid "Obex Push file transfer unsupported"
-msgstr "نقل ملفات Obex Push مدعوم"
+#: ../src/plugins/nautilus-sendto-progress.c:187
+msgid "_Cancel"
+msgstr "أ_لغِ"
 
-#: ../src/plugins/bluetooth/bluetooth.c:547
-msgid "Bluetooth (OBEX Push)"
-msgstr "بلوتوث (OBEX Push)"
+#: ../data/pack-entry.ui.h:1
+msgid "Send _packed in:"
+msgstr "أرسٍل _محزّما في:"
 
-#: ../src/plugins/empathy/empathy.c:144
-msgid "The contact selected cannot receive files."
-msgstr "المُتراسل المحدد لا يستطيع استقبال ملفات."
+#: ../src/plugins/evolution/evolution.c:308
+msgid "Mail"
+msgstr "البريد"
 
-#: ../src/plugins/empathy/empathy.c:150
-msgid "The contact selected is offline."
-msgstr "المتراسل المحدد غير متّصل."
-
-#: ../src/plugins/empathy/empathy.c:205
-msgid "No error message"
-msgstr "لا رسالة خطأ"
-
-#: ../src/plugins/empathy/empathy.c:281
-msgid "Instant Message (Empathy)"
-msgstr "رسالة فورية (إمبَثي)"
-
-#: ../src/plugins/evolution/evolution.c:369
-msgid "Email"
-msgstr "بريد"
-
-#: ../src/plugins/evolution/e-contact-entry.c:152
+#: ../src/plugins/evolution/e-contact-entry.c:153
 #, c-format
 msgid "Cannot get contact: %s"
 msgstr "تعذّر جلب المتراسل: %s"
 
-#: ../src/plugins/evolution/e-contact-entry.c:185
+#: ../src/plugins/evolution/e-contact-entry.c:186
 #, c-format
 msgid "Could not find contact: %s"
 msgstr "تعذّر العثور على المتراسل: %s"
 
-#: ../src/plugins/evolution/e-contact-entry.c:411
+#: ../src/plugins/evolution/e-contact-entry.c:414
 msgid "Cannot create searchable view."
 msgstr "تعذّر إنشاء منظور يمكن البحث به."
 
-#: ../src/plugins/evolution/e-contact-entry.c:883
+#: ../src/plugins/evolution/e-contact-entry.c:886
 msgid "Success"
 msgstr "نجح"
 
-#: ../src/plugins/evolution/e-contact-entry.c:885
+#: ../src/plugins/evolution/e-contact-entry.c:888
 msgid "An argument was invalid."
 msgstr "المعطى غير سليم."
 
-#: ../src/plugins/evolution/e-contact-entry.c:887
+#: ../src/plugins/evolution/e-contact-entry.c:890
 msgid "The address book is busy."
 msgstr "دفتر العناوين مشغول."
 
-#: ../src/plugins/evolution/e-contact-entry.c:889
+#: ../src/plugins/evolution/e-contact-entry.c:892
 msgid "The address book is offline."
 msgstr "دفتر العناوين غير متّصل."
 
-#: ../src/plugins/evolution/e-contact-entry.c:891
+#: ../src/plugins/evolution/e-contact-entry.c:894
 msgid "The address book does not exist."
 msgstr "دفتر العناوين غير موجود."
 
-#: ../src/plugins/evolution/e-contact-entry.c:893
+#: ../src/plugins/evolution/e-contact-entry.c:896
 msgid "The \"Me\" contact does not exist."
 msgstr "المتراسل لا وجود له."
 
-#: ../src/plugins/evolution/e-contact-entry.c:895
+#: ../src/plugins/evolution/e-contact-entry.c:898
 msgid "The address book is not loaded."
 msgstr "دفتر العناوين غير مُحمّل."
 
-#: ../src/plugins/evolution/e-contact-entry.c:897
+#: ../src/plugins/evolution/e-contact-entry.c:900
 msgid "The address book is already loaded."
 msgstr "دفتر العناوين مُحمّل فعلا."
 
-#: ../src/plugins/evolution/e-contact-entry.c:899
+#: ../src/plugins/evolution/e-contact-entry.c:902
 msgid "Permission was denied when accessing the address book."
 msgstr "مُنِع الإذن أثناء محاولة الوصول إلى دفتر العناوين."
 
-#: ../src/plugins/evolution/e-contact-entry.c:901
+#: ../src/plugins/evolution/e-contact-entry.c:904
 msgid "The contact was not found."
 msgstr "لم يُعثر على المُتراسل."
 
-#: ../src/plugins/evolution/e-contact-entry.c:903
+#: ../src/plugins/evolution/e-contact-entry.c:906
 msgid "This contact ID already exists."
 msgstr "لا وجود لمعرّف المتراسل."
 
-#: ../src/plugins/evolution/e-contact-entry.c:905
+#: ../src/plugins/evolution/e-contact-entry.c:908
 msgid "The protocol is not supported."
 msgstr "البروتوكول غير مدعوم."
 
-#: ../src/plugins/evolution/e-contact-entry.c:907
+#: ../src/plugins/evolution/e-contact-entry.c:910
 msgid "The operation was cancelled."
 msgstr "أُلغيت العملية."
 
-#: ../src/plugins/evolution/e-contact-entry.c:909
+#: ../src/plugins/evolution/e-contact-entry.c:912
 msgid "The operation could not be cancelled."
 msgstr "تعذّر إلغاء العملية."
 
-#: ../src/plugins/evolution/e-contact-entry.c:911
+#: ../src/plugins/evolution/e-contact-entry.c:914
 msgid "The address book authentication failed."
 msgstr "فشل استيثاق دفتر العناوين."
 
-#: ../src/plugins/evolution/e-contact-entry.c:913
+#: ../src/plugins/evolution/e-contact-entry.c:916
 msgid ""
 "Authentication is required to access the address book and was not given."
 msgstr "الاستيثاق مطلوب للوصل إلى دفتر العناوين لكنه لم يُعطَ."
 
-#: ../src/plugins/evolution/e-contact-entry.c:915
+#: ../src/plugins/evolution/e-contact-entry.c:918
 msgid "A secure connection is not available."
 msgstr "لا يتوفر اتصال آمن."
 
-#: ../src/plugins/evolution/e-contact-entry.c:917
+#: ../src/plugins/evolution/e-contact-entry.c:920
 msgid "A CORBA error occurred whilst accessing the address book."
 msgstr "حدث خطأ CORBA أثناء محاولة الوصول إلى دفتر العناوين."
 
-#: ../src/plugins/evolution/e-contact-entry.c:919
+#: ../src/plugins/evolution/e-contact-entry.c:922
 msgid "The address book source does not exist."
 msgstr "لا وجود لمصدر دفتر العناوين."
 
-#: ../src/plugins/evolution/e-contact-entry.c:921
 #: ../src/plugins/evolution/e-contact-entry.c:924
+#: ../src/plugins/evolution/e-contact-entry.c:927
 msgid "An unknown error occurred."
 msgstr "حدث خطأ مجهول."
 
@@ -274,15 +256,15 @@ msgstr "متلقّي مجهول."
 msgid "Instant Message (Gajim)"
 msgstr "رسالة فورية (Gajim)"
 
-#: ../src/plugins/nautilus-burn/nautilus-burn.c:92
+#: ../src/plugins/nautilus-burn/nautilus-burn.c:90
 msgid "New CD/DVD"
 msgstr "اسطوانة\\دي‌ڤي‌دي جديد"
 
-#: ../src/plugins/nautilus-burn/nautilus-burn.c:99
+#: ../src/plugins/nautilus-burn/nautilus-burn.c:97
 msgid "Existing CD/DVD"
 msgstr "اسطوانة\\دي‌ڤي‌دي موجود"
 
-#: ../src/plugins/nautilus-burn/nautilus-burn.c:178
+#: ../src/plugins/nautilus-burn/nautilus-burn.c:176
 msgid "CD/DVD Creator"
 msgstr "منشئ اسطوانات/دي‌ڤي‌دي"
 
@@ -290,13 +272,123 @@ msgstr "منشئ اسطوانات/دي‌ڤي‌دي"
 msgid "Instant Message (Pidgin)"
 msgstr "رسالة فورية (بِدْجِن)"
 
-#: ../src/plugins/removable-devices/removable-devices.c:224
+#: ../src/plugins/removable-devices/removable-devices.c:274
 msgid "Removable disks and shares"
 msgstr "الأقراص المنفصلة والمشاركات"
+
+#: ../src/plugins/socialweb/socialweb.c:186
+#, c-format
+msgid "Uploading '%s'"
+msgstr ""
+
+#: ../src/plugins/socialweb/socialweb.c:256
+msgid "Preparing upload"
+msgstr ""
+
+#: ../src/plugins/socialweb/socialweb.c:316
+#, c-format
+msgid "Service '%s' is not configured."
+msgstr ""
+
+#: ../src/plugins/socialweb/socialweb.c:319
+#: ../src/plugins/socialweb/socialweb.c:336
+msgid "_Configure"
+msgstr "ا_ضبط"
+
+#: ../src/plugins/socialweb/socialweb.c:323
+#: ../src/plugins/socialweb/socialweb.c:343
+#, c-format
+msgid "Logged in to service '%s'."
+msgstr ""
+
+#: ../src/plugins/socialweb/socialweb.c:333
+#, fuzzy, c-format
+msgid "Could not log in to service '%s'."
+msgstr "تعذّر العثور على المتراسل: %s"
 
 #: ../src/plugins/upnp/upnp.c:309
 msgid "UPnP Media Server"
 msgstr "خادوم وسائط UPnP"
+
+#~ msgid "Last plugin used to send"
+#~ msgstr "آخر مُلحق استُخدِم للإرسال"
+
+#~ msgid "Last type of archive used"
+#~ msgstr "آخر نوع أرشيف استُخدِم"
+
+#~ msgid ""
+#~ "Used to store which plugin was used the last time files were sent using "
+#~ "nautilus-sendto."
+#~ msgstr ""
+#~ "يُستخدم لتخزين ماهو المُلحق الذي استُخدِم آخر مرة اُرسِلت ملفات باستخدام أرسل "
+#~ "إلى-ناوتلس"
+
+#~ msgid ""
+#~ "Used to store which type of archive was used the last time (0: zip, 1: "
+#~ "tar.gz, 2: tar.bz2)."
+#~ msgstr ""
+#~ "يُستخدم لتخزين ما نوع الأرشيف المُستخدم آخر مرة (0: zip, 1: tar.gz, 2: tar."
+#~ "bz2)."
+
+#~ msgid "_Send to..."
+#~ msgstr "أرسل إ_لى..."
+
+#~ msgid "Send files to remote devices, or people"
+#~ msgstr "أرسل الملفات إلى أجهزة بعيدة، أو إلى الآخرين"
+
+#~ msgid "Send to..."
+#~ msgstr "أرسل إلى..."
+
+#~ msgid "Send To..."
+#~ msgstr "أرسل إلى..."
+
+#~ msgid "Send file by mail, instant message..."
+#~ msgstr "أرسل الملف بالبريد، رسالة فورية..."
+
+#~ msgid "Send files by mail, instant message..."
+#~ msgstr "أرسل الملفات بالبريد، رسالة فورية..."
+
+#~ msgid "Nautilus Sendto"
+#~ msgstr "أرسل إلى - نوتلِس"
+
+#~ msgid "Could not load any plugins."
+#~ msgstr "تعذّر تحميل أية ملحقات."
+
+#~ msgid "Please verify your installation"
+#~ msgstr "رجاء راجع تثبيتك"
+
+#~ msgid "<b>Compression</b>"
+#~ msgstr "<b>الضغط</b>"
+
+#~ msgid "<b>Destination</b>"
+#~ msgstr "<b>الوِجهة</b>"
+
+#~ msgid "Send _as:"
+#~ msgstr "أرسِل _ك‍:"
+
+#~ msgid "Send t_o:"
+#~ msgstr "أرسِل إ_لى:"
+
+#~ msgid "Programming error, could not find the device in the list"
+#~ msgstr "خطأ برمجي، لم أتمكن من العثور على جهاز في القائمة"
+
+#~ msgid "Obex Push file transfer unsupported"
+#~ msgstr "نقل ملفات Obex Push مدعوم"
+
+#~ msgid "Bluetooth (OBEX Push)"
+#~ msgstr "بلوتوث (OBEX Push)"
+
+#~ msgid "The contact selected cannot receive files."
+#~ msgstr "المُتراسل المحدد لا يستطيع استقبال ملفات."
+
+#~ msgid "The contact selected is offline."
+#~ msgstr "المتراسل المحدد غير متّصل."
+
+#~ msgid "No error message"
+#~ msgstr "لا رسالة خطأ"
+
+#~ msgid "Instant Message (Empathy)"
+#~ msgstr "رسالة فورية (إمبَثي)"
 
 #~ msgid "Nautilus Integration"
 #~ msgstr "التكامل مع نوتلس"
