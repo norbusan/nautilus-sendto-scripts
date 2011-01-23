@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nautilus-sendto.HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-16 22:19+0200\n"
-"PO-Revision-Date: 2011-01-16 22:19+0200\n"
+"POT-Creation-Date: 2011-01-23 02:41+0200\n"
+"PO-Revision-Date: 2011-01-23 02:42+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <he@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -95,6 +95,10 @@ msgstr "_שליחה"
 #: ../src/plugins/nautilus-sendto-packer.c:200
 msgid "Files"
 msgstr "קבצים"
+
+#: ../src/plugins/nautilus-sendto-progress.c:187
+msgid "_Cancel"
+msgstr "בי_טול"
 
 #: ../data/pack-entry.ui.h:1
 msgid "Send _packed in:"
