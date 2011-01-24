@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nautilus-sendto master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=nautilus-sendto&component=general\n"
-"POT-Creation-Date: 2010-11-06 10:00+0000\n"
-"PO-Revision-Date: 2010-11-06 15:08+0100\n"
+"POT-Creation-Date: 2011-01-24 14:40+0000\n"
+"PO-Revision-Date: 2011-01-24 21:48+0100\n"
 "Last-Translator: Matej Urbančič <mateju@svn.gnome.org>\n"
 "Language-Team: Slovenian GNOME Translation Team <gnome-si@googlegroups.com>\n"
 "Language: \n"
@@ -111,6 +111,14 @@ msgstr "_Pošlji"
 #: ../src/plugins/nautilus-sendto-packer.c:200
 msgid "Files"
 msgstr "Datoteke"
+
+#: ../src/plugins/nautilus-sendto-progress.c:187
+msgid "_Cancel"
+msgstr "_Prekliči"
+
+#: ../data/pack-entry.ui.h:1
+msgid "Send _packed in:"
+msgstr "Pošlji _stisnjeno v:"
 
 #: ../src/plugins/evolution/evolution.c:308
 msgid "Mail"
