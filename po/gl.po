@@ -6,14 +6,14 @@
 # Ignacio Casal Quinteiro <icq@cvs.gnome.org>, 2007.
 # Ignacio Casal Quinteiro <icq@svn.gnome.org>, 2007.
 # Fran Dieguez <frandieguez@ubuntu.com>, 2010.
-# Fran Diéguez <frandieguez@ubuntu.com>, 2010.
+# Fran Diéguez <frandieguez@ubuntu.com>, 2010, 2011.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-11-13 01:55+0100\n"
-"PO-Revision-Date: 2010-11-13 01:56+0100\n"
+"POT-Creation-Date: 2011-01-30 18:04+0100\n"
+"PO-Revision-Date: 2011-01-30 18:05+0100\n"
 "Last-Translator: Fran Diéguez <frandieguez@ubuntu.com>\n"
 "Language-Team: Galician <gnome-gl-list@gnome.org>\n"
 "Language: gl\n"
@@ -100,6 +100,14 @@ msgstr "_Enviar"
 #: ../src/plugins/nautilus-sendto-packer.c:200
 msgid "Files"
 msgstr "Ficheiros"
+
+#: ../src/plugins/nautilus-sendto-progress.c:187
+msgid "_Cancel"
+msgstr "_Cancelar"
+
+#: ../data/pack-entry.ui.h:1
+msgid "Send _packed in:"
+msgstr "E_nviar empaquetado en:"
 
 #: ../src/plugins/evolution/evolution.c:308
 msgid "Mail"
@@ -304,9 +312,6 @@ msgstr "Servidor multimedia UPnP"
 
 #~ msgid "Send _as:"
 #~ msgstr "Enviar _como:"
-
-#~ msgid "Send _packed in:"
-#~ msgstr "E_nviar empaquetado en:"
 
 #~ msgid "Send t_o:"
 #~ msgstr "Enviar _a:"
