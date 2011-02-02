@@ -506,8 +506,7 @@ nautilus_sendto_plugin_load_all (void)
 static gboolean
 nautilus_sendto_plugin_init (NautilusSendto *nst)
 {
-	GPtrArray *search_paths;
-	char **paths, *user_dir;
+	char *user_dir;
 
 	if (g_irepository_require (g_irepository_get_default (), "Peas", "1.0", 0, NULL) == NULL) {
 		g_warning ("Failed to load Peas bindings");
@@ -520,13 +519,7 @@ nautilus_sendto_plugin_init (NautilusSendto *nst)
 		return FALSE;
 	}
 
-	search_paths = g_ptr_array_new ();
-
-	/* Terminate array */
-	g_ptr_array_add (search_paths, NULL);
-
 	/* Init engine */
-	paths = (char **) g_ptr_array_free (search_paths, FALSE);
 	engine = peas_engine_get_default ();
 
 	/* Add uninstalled plugins */
