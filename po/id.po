@@ -1,17 +1,18 @@
 # translation of nautilus-sendto to Indonesian
-# Copyright (C) YEAR THE nautilus-sendto'S COPYRIGHT HOLDER
+# Copyright (C) 2009 THE nautilus-sendto'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the nautilus-sendto package.
 #
 # Imam Musthaqim <userindesign@gmail.com>, 2009.
-# Dirgita <dirgitadevina@yahoo.co.id>, 2010.
+# Dirgita <dirgitadevina@yahoo.co.id>, 2010, 2011.
 # Andika Triwidada <andika@gmail.com>, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: nautilus-sendto.master.id\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=nautilus-sendto&component=general\n"
-"POT-Creation-Date: 2010-11-04 17:06+0000\n"
-"PO-Revision-Date: 2011-01-11 11:32+0700\n"
-"Last-Translator: Andika Triwidada <andika@gmail.com>\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
+"product=nautilus-sendto&component=general\n"
+"POT-Creation-Date: 2011-02-02 13:32+0000\n"
+"PO-Revision-Date: 2011-02-01 22:35+0700\n"
+"Last-Translator: Dirgita <dirgitadevina@yahoo.co.id>\n"
 "Language-Team: Indonesian <gnome-l10n-id@googlegroups.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -34,12 +35,12 @@ msgid "Files to send"
 msgstr "Berkas yang hendak dikirim"
 
 #. FIXME, this needs to be done in UI now
-#: ../src/nautilus-sendto-command.c:654
+#: ../src/nautilus-sendto-command.c:662
 #, c-format
 msgid "Expects URIs or filenames to be passed as options\n"
 msgstr "Diharapkan URI atau nama berkas yang dilewatkan sebagai opsi\n"
 
-#: ../src/nautilus-sendto-command.c:684
+#: ../src/nautilus-sendto-command.c:692
 #, c-format
 msgid "Could not parse command-line options: %s\n"
 msgstr "Tidak dapat mengurai opsi baris-perintah: %s\n"
@@ -89,9 +90,17 @@ msgstr[0] "Berbagi %d berkas"
 msgid "_Send"
 msgstr "_Kirim"
 
-#: ../src/plugins/nautilus-sendto-packer.c:197
+#: ../src/plugins/nautilus-sendto-packer.c:200
 msgid "Files"
 msgstr "Berkas"
+
+#: ../src/plugins/nautilus-sendto-progress.c:187
+msgid "_Cancel"
+msgstr "_Batal"
+
+#: ../data/pack-entry.ui.h:1
+msgid "Send _packed in:"
+msgstr "Kirim _paket dalam:"
 
 #: ../src/plugins/evolution/evolution.c:308
 msgid "Mail"
@@ -172,8 +181,10 @@ msgid "The address book authentication failed."
 msgstr "Otentikasi buku alamat gagal."
 
 #: ../src/plugins/evolution/e-contact-entry.c:916
-msgid "Authentication is required to access the address book and was not given."
-msgstr "Diperlukan otentikasi untuk mengakses buku alamat, namun tidak diberikan."
+msgid ""
+"Authentication is required to access the address book and was not given."
+msgstr ""
+"Diperlukan otentikasi untuk mengakses buku alamat, namun tidak diberikan."
 
 #: ../src/plugins/evolution/e-contact-entry.c:918
 msgid "A secure connection is not available."
@@ -200,8 +211,7 @@ msgstr "Tidak dapat mengirim berkas"
 msgid "There is no connection to gajim remote service."
 msgstr "Tidak ada koneksi menuju layanan jarak jauh gajim."
 
-#: ../src/plugins/gajim/gajim.c:442
-#: ../src/plugins/gajim/gajim.c:482
+#: ../src/plugins/gajim/gajim.c:442 ../src/plugins/gajim/gajim.c:482
 msgid "Sending file failed"
 msgstr "Gagal mengirim berkas"
 
@@ -271,73 +281,3 @@ msgstr "Tidak dapat masuk pada layanan '%s'."
 msgid "UPnP Media Server"
 msgstr "Server Media UPnP"
 
-#~ msgid "Send To..."
-#~ msgstr "Kirim Ke..."
-
-#~ msgid "Send file by mail, instant message..."
-#~ msgstr "Mengirim berkas melalui surat, pesan instan..."
-
-#~ msgid "Send files by mail, instant message..."
-#~ msgstr "Mengirim berkas melalui surat, pesan instan..."
-
-#~ msgid "Could not load any plugins."
-#~ msgstr "Tidak dapat memuat pengaya manapun"
-
-#~ msgid "Please verify your installation"
-#~ msgstr "Periksalah instalasi Anda"
-
-#~ msgid "<b>Compression</b>"
-#~ msgstr "<b>Kompresi</b>"
-
-#~ msgid "<b>Destination</b>"
-#~ msgstr "<b>Tujuan</b>"
-
-#~ msgid "Send _as:"
-#~ msgstr "Kirim seb_agai:"
-
-#~ msgid "Send _packed in:"
-#~ msgstr "Kirim _paket dalam:"
-
-#~ msgid "Send t_o:"
-#~ msgstr "Kirim k_e:"
-
-#~ msgid "Last plugin used to send"
-#~ msgstr "Pengaya terakhir yang digunakan untuk mengirim"
-
-#~ msgid "Last type of archive used"
-#~ msgstr "Jenis arsip terakhir yang digunakan"
-
-#~ msgid ""
-#~ "Used to store which plugin was used the last time files were sent using "
-#~ "nautilus-sendto."
-#~ msgstr ""
-#~ "Digunakan untuk menyimpan pengaya di saat terakhir kali mengirim berkas "
-#~ "melalui nautilus-sendto."
-
-#~ msgid ""
-#~ "Used to store which type of archive was used the last time (0: zip, 1: "
-#~ "tar.gz, 2: tar.bz2)."
-#~ msgstr ""
-#~ "Digunakan untuk menyimpan jenis arsip yang terakhir kali dipakai (0: zip, "
-#~ "1: tar.gz, 2: tar.bz2)."
-
-#~ msgid "Programming error, could not find the device in the list"
-#~ msgstr "Galat, perangkat tidak ditemukan di dalam daftar"
-
-#~ msgid "Obex Push file transfer unsupported"
-#~ msgstr "Transfer berkas melalui Obex Push tidak didukung"
-
-#~ msgid "Bluetooth (OBEX Push)"
-#~ msgstr "Bluetooth (OBEX Push)"
-
-#~ msgid "The contact selected cannot receive files."
-#~ msgstr "Kontak yang dipilih tidak dapat menerima berkas."
-
-#~ msgid "The contact selected is offline."
-#~ msgstr "Kontak yang dipilih dalam kondisi luring."
-
-#~ msgid "No error message"
-#~ msgstr "Tidak ada pesan galat"
-
-#~ msgid "Instant Message (Empathy)"
-#~ msgstr "Pesan Instan (Empathy)"
