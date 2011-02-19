@@ -1,0 +1,226 @@
+# Uyghur translation for nautilus-sendto
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# Sahran <sahran@live.com>, 2010-09-22.
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: nautilus-sendto\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
+"product=nautilus-sendto&component=general\n"
+"POT-Creation-Date: 2010-10-29 20:43+0000\n"
+"PO-Revision-Date: 2010-09-25 10:52+0600\n"
+"Last-Translator: Sahran <sahran@live.com>\n"
+"Language-Team: Uyghur Computer Science Association <UKIJ@yahoogroups.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: Uighur\n"
+
+#: ../src/nautilus-nste.c:78 ../src/nautilus-nste.c:83
+#: ../src/nautilus-sendto.ui.h:3
+msgid "Send To..."
+msgstr "يوللا…"
+
+#: ../src/nautilus-nste.c:79
+msgid "Send file by mail, instant message..."
+msgstr "ئېلخەت، مۇڭداشقۇدا ھۆججەت يوللا…"
+
+#: ../src/nautilus-nste.c:84
+msgid "Send files by mail, instant message..."
+msgstr "ئېلخەت، مۇڭداشقۇدا ھۆججەت يوللا…"
+
+#: ../src/nautilus-sendto-command.c:576
+msgid "Files"
+msgstr "ھۆججەتلەر"
+
+#: ../src/nautilus-sendto-command.c:788
+#, c-format
+msgid "Expects URIs or filenames to be passed as options\n"
+msgstr "URI ياكى ھۆججەت ئاتى تاللانما قىلىنىدۇ\n"
+
+#: ../src/nautilus-sendto-command.c:809
+#, c-format
+msgid "Could not parse command-line options: %s\n"
+msgstr "بۇيرۇق قۇرى تاللانمىسىنى يېشەلمىدى: %s\n"
+
+#: ../src/nautilus-sendto-command.c:824
+msgid "Could not load any plugins."
+msgstr "ھېچقانداق قىستۇرمىنى يۈكلىيەلمەيدۇ."
+
+#: ../src/nautilus-sendto-command.c:827
+msgid "Please verify your installation"
+msgstr "ئورنىتىشنى دەلىللەڭ."
+
+#: ../src/nautilus-sendto.ui.h:1
+msgid "<b>Compression</b>"
+msgstr "<b>پرېسلاش</b>"
+
+#: ../src/nautilus-sendto.ui.h:2
+msgid "<b>Destination</b>"
+msgstr "<b>نىشان</b>"
+
+#: ../src/nautilus-sendto.ui.h:4
+msgid "Send _as:"
+msgstr "سۈپىتىدە يوللا(_A):"
+
+#: ../src/nautilus-sendto.ui.h:5
+msgid "Send _packed in:"
+msgstr "بوغچا يوللا(_p):"
+
+#: ../src/nautilus-sendto.ui.h:6
+msgid "Send t_o:"
+msgstr "يوللاش ئورنى(_O):"
+
+#: ../src/nautilus-sendto.ui.h:7
+msgid "_Send"
+msgstr "يوللا(_S)"
+
+#: ../src/plugins/evolution/evolution.c:378
+msgid "Email"
+msgstr "ئېلخەت"
+
+#: ../src/plugins/evolution/e-contact-entry.c:153
+#, c-format
+msgid "Cannot get contact: %s"
+msgstr "ئالاقەداشقا ئېرىشەلمىدى: %s"
+
+#: ../src/plugins/evolution/e-contact-entry.c:186
+#, c-format
+msgid "Could not find contact: %s"
+msgstr "ئالاقەداشنى تاپالمىدى: %s"
+
+#: ../src/plugins/evolution/e-contact-entry.c:414
+msgid "Cannot create searchable view."
+msgstr "ئىزدەشچان كۆرۈنۈشنى قۇرالمىدى."
+
+#: ../src/plugins/evolution/e-contact-entry.c:886
+msgid "Success"
+msgstr "مۇۋەپپەقىيەتلىك"
+
+#: ../src/plugins/evolution/e-contact-entry.c:888
+msgid "An argument was invalid."
+msgstr "ئەركىن ئۆزگەرگۈچى ئىناۋەتسىز."
+
+#: ../src/plugins/evolution/e-contact-entry.c:890
+msgid "The address book is busy."
+msgstr "ئادرېس دەپتىرى ئالدىراش."
+
+#: ../src/plugins/evolution/e-contact-entry.c:892
+msgid "The address book is offline."
+msgstr "ئادرېس دەپتىرى تورسىز."
+
+#: ../src/plugins/evolution/e-contact-entry.c:894
+msgid "The address book does not exist."
+msgstr "بۇ ئادرېس دەپتىرى مەۋجۇت ئەمەس."
+
+#: ../src/plugins/evolution/e-contact-entry.c:896
+msgid "The \"Me\" contact does not exist."
+msgstr "«مېنىڭ» ئالاقەداشلىرىم مەۋجۇت ئەمەس."
+
+#: ../src/plugins/evolution/e-contact-entry.c:898
+msgid "The address book is not loaded."
+msgstr "ئادرېس دەپتىرىنى يۈكلىيەلمىدى."
+
+#: ../src/plugins/evolution/e-contact-entry.c:900
+msgid "The address book is already loaded."
+msgstr "ئادرېس دەپتىرى يۈكلەندى."
+
+#: ../src/plugins/evolution/e-contact-entry.c:902
+msgid "Permission was denied when accessing the address book."
+msgstr "ئادرېس دەپتىرىنى زىيارەت قىلىش ھوقۇقى چەكلەنگەن."
+
+#: ../src/plugins/evolution/e-contact-entry.c:904
+msgid "The contact was not found."
+msgstr "ئالاقەداشلار تېپىلمىدى."
+
+#: ../src/plugins/evolution/e-contact-entry.c:906
+msgid "This contact ID already exists."
+msgstr "بۇ ئالاقەداش ID مەۋجۇت."
+
+#: ../src/plugins/evolution/e-contact-entry.c:908
+msgid "The protocol is not supported."
+msgstr "كېلىشىمنى قوللىمايدۇ."
+
+#: ../src/plugins/evolution/e-contact-entry.c:910
+msgid "The operation was cancelled."
+msgstr "مەشغۇلاتتىن ۋاز كەچتى."
+
+#: ../src/plugins/evolution/e-contact-entry.c:912
+msgid "The operation could not be cancelled."
+msgstr "مەشغۇلاتتىن ۋاز كېچەلمىدى."
+
+#: ../src/plugins/evolution/e-contact-entry.c:914
+msgid "The address book authentication failed."
+msgstr "ئادرېس دەپتىرى سالاھىيىتىنى دەلىللىيەلمىدى."
+
+#: ../src/plugins/evolution/e-contact-entry.c:916
+msgid ""
+"Authentication is required to access the address book and was not given."
+msgstr ""
+"ئادرېس دەپتىرىنى زىيارەت قىلىشتا دەلىللەش زۆرۈر، بۇ دەلىللەش بېرىلمىگەن."
+
+#: ../src/plugins/evolution/e-contact-entry.c:918
+msgid "A secure connection is not available."
+msgstr "بىخەتەر ئۇلىنىشنى ئىشلەتكىلى بولمايدۇ."
+
+#: ../src/plugins/evolution/e-contact-entry.c:920
+msgid "A CORBA error occurred whilst accessing the address book."
+msgstr "ئادرېس دەپتىرىنى زىيارەت قىلغاندا CORBA خاتالىقى كۆرۈلدى."
+
+#: ../src/plugins/evolution/e-contact-entry.c:922
+msgid "The address book source does not exist."
+msgstr "ئادرېس دەپتەر مەنبەسى مەۋجۇت ئەمەس."
+
+#: ../src/plugins/evolution/e-contact-entry.c:924
+#: ../src/plugins/evolution/e-contact-entry.c:927
+msgid "An unknown error occurred."
+msgstr "نامەلۇم خاتالىق كۆرۈلدى."
+
+#: ../src/plugins/gajim/gajim.c:417
+msgid "Unable to send file"
+msgstr "ھۆججەت يوللىيالمايدۇ"
+
+#: ../src/plugins/gajim/gajim.c:418
+msgid "There is no connection to gajim remote service."
+msgstr "gajim يىراقتىكى مۇلازىمەت ئۇلىنىشى مەۋجۇت ئەمەس"
+
+#: ../src/plugins/gajim/gajim.c:442 ../src/plugins/gajim/gajim.c:482
+msgid "Sending file failed"
+msgstr "ھۆججەتنى يوللىيالمىدى"
+
+#: ../src/plugins/gajim/gajim.c:443
+msgid "Recipient is missing."
+msgstr "تاپشۇرۇۋالغۇچى كەم."
+
+#: ../src/plugins/gajim/gajim.c:482
+msgid "Unknown recipient."
+msgstr "نامەلۇم تاپشۇرۇۋالغۇچى."
+
+#: ../src/plugins/gajim/gajim.c:505
+msgid "Instant Message (Gajim)"
+msgstr "مۇڭداشقۇچ (Gajim)"
+
+#: ../src/plugins/nautilus-burn/nautilus-burn.c:92
+msgid "New CD/DVD"
+msgstr "يېڭى CD/DVD"
+
+#: ../src/plugins/nautilus-burn/nautilus-burn.c:99
+msgid "Existing CD/DVD"
+msgstr "مەۋجۇت CD/DVD"
+
+#: ../src/plugins/nautilus-burn/nautilus-burn.c:178
+msgid "CD/DVD Creator"
+msgstr "CD/DVD ياسىغۇچ"
+
+#: ../src/plugins/pidgin/pidgin.c:464
+msgid "Instant Message (Pidgin)"
+msgstr "مۇڭداشقۇ (Pidgin)"
+
+#: ../src/plugins/removable-devices/removable-devices.c:248
+msgid "Removable disks and shares"
+msgstr "يان دىسكا ۋە ھەمبەھىر"
+
+#: ../src/plugins/upnp/upnp.c:309
+msgid "UPnP Media Server"
+msgstr "UPnP ۋاسىتە مۇلازىمېتىر"
