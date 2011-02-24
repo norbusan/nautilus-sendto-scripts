@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nautilus-sendto 2.91.x\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-20 19:17+0100\n"
+"POT-Creation-Date: 2011-02-24 10:23+0100\n"
 "PO-Revision-Date: 2011-01-20 19:17+0100\n"
 "Last-Translator: Kjartan Maraas <kmaraas@gnome.org>\n"
 "Language-Team: Norwegian Bokmål <i18n-nb@lister.ping.uio.no>\n"
@@ -31,12 +31,12 @@ msgid "Files to send"
 msgstr "Filer som skal sendes"
 
 #. FIXME, this needs to be done in UI now
-#: ../src/nautilus-sendto-command.c:669
+#: ../src/nautilus-sendto-command.c:662
 #, c-format
 msgid "Expects URIs or filenames to be passed as options\n"
 msgstr "Forventer URIer eller filnavn som alternativer\n"
 
-#: ../src/nautilus-sendto-command.c:699
+#: ../src/nautilus-sendto-command.c:692
 #, c-format
 msgid "Could not parse command-line options: %s\n"
 msgstr "Kunne ikke lese kommandolinjeflagg: %s\n"
