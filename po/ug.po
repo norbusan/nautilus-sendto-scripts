@@ -1,56 +1,55 @@
-# Uyghur translation for nautilus-sendto
+# SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# Sahran <sahran@live.com>, 2010-09-22.
-# 
+# Gheyret Kenji <gheyret@yahoo.com>, 2011.
+# Sahran <sahran.ug@gmail.com>, 2011.
 msgid ""
 msgstr ""
-"Project-Id-Version: nautilus-sendto\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=nautilus-sendto&component=general\n"
-"POT-Creation-Date: 2010-10-29 20:43+0000\n"
-"PO-Revision-Date: 2010-09-25 10:52+0600\n"
-"Last-Translator: Sahran <sahran@live.com>\n"
+"POT-Creation-Date: 2011-03-04 15:12+0000\n"
+"PO-Revision-Date: 2011-03-04 21:53+0600\n"
+"Last-Translator: Sahran <sahran.ug@gmail.com>\n"
 "Language-Team: Uyghur Computer Science Association <UKIJ@yahoogroups.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Poedit-Language: Uighur\n"
 
-#: ../src/nautilus-nste.c:78 ../src/nautilus-nste.c:83
+#: ../src/nautilus-nste.c:92 ../src/nautilus-nste.c:97
 #: ../src/nautilus-sendto.ui.h:3
 msgid "Send To..."
 msgstr "يوللا…"
 
-#: ../src/nautilus-nste.c:79
+#: ../src/nautilus-nste.c:93
 msgid "Send file by mail, instant message..."
 msgstr "ئېلخەت، مۇڭداشقۇدا ھۆججەت يوللا…"
 
-#: ../src/nautilus-nste.c:84
+#: ../src/nautilus-nste.c:98
 msgid "Send files by mail, instant message..."
 msgstr "ئېلخەت، مۇڭداشقۇدا ھۆججەت يوللا…"
 
-#: ../src/nautilus-sendto-command.c:576
+#: ../src/nautilus-sendto-command.c:572
 msgid "Files"
 msgstr "ھۆججەتلەر"
 
-#: ../src/nautilus-sendto-command.c:788
+#: ../src/nautilus-sendto-command.c:783
 #, c-format
 msgid "Expects URIs or filenames to be passed as options\n"
 msgstr "URI ياكى ھۆججەت ئاتى تاللانما قىلىنىدۇ\n"
 
-#: ../src/nautilus-sendto-command.c:809
+#: ../src/nautilus-sendto-command.c:804
 #, c-format
 msgid "Could not parse command-line options: %s\n"
 msgstr "بۇيرۇق قۇرى تاللانمىسىنى يېشەلمىدى: %s\n"
 
-#: ../src/nautilus-sendto-command.c:824
+#: ../src/nautilus-sendto-command.c:819
 msgid "Could not load any plugins."
-msgstr "ھېچقانداق قىستۇرمىنى يۈكلىيەلمەيدۇ."
+msgstr "ھېچقانداق قىستۇرمىنى يۈكلىيەلمىدى."
 
-#: ../src/nautilus-sendto-command.c:827
+#: ../src/nautilus-sendto-command.c:822
 msgid "Please verify your installation"
-msgstr "ئورنىتىشنى دەلىللەڭ."
+msgstr "ئورنىتىشنى تەكشۈرۈڭ"
 
 #: ../src/nautilus-sendto.ui.h:1
 msgid "<b>Compression</b>"
@@ -124,7 +123,7 @@ msgstr "ئادرېس دەپتىرىنى يۈكلىيەلمىدى."
 
 #: ../src/plugins/evolution/e-contact-entry.c:900
 msgid "The address book is already loaded."
-msgstr "ئادرېس دەپتىرى يۈكلەندى."
+msgstr "ئادرېس دەپتىرى يۈكلەنگەن."
 
 #: ../src/plugins/evolution/e-contact-entry.c:902
 msgid "Permission was denied when accessing the address book."
@@ -136,7 +135,7 @@ msgstr "ئالاقەداشلار تېپىلمىدى."
 
 #: ../src/plugins/evolution/e-contact-entry.c:906
 msgid "This contact ID already exists."
-msgstr "بۇ ئالاقەداش ID مەۋجۇت."
+msgstr "بۇ ئالاقەداش كىملىكى مەۋجۇت."
 
 #: ../src/plugins/evolution/e-contact-entry.c:908
 msgid "The protocol is not supported."
@@ -162,7 +161,7 @@ msgstr ""
 
 #: ../src/plugins/evolution/e-contact-entry.c:918
 msgid "A secure connection is not available."
-msgstr "بىخەتەر ئۇلىنىشنى ئىشلەتكىلى بولمايدۇ."
+msgstr "بىخەتەر باغلىنىشنى ئىشلەتكىلى بولمايدۇ."
 
 #: ../src/plugins/evolution/e-contact-entry.c:920
 msgid "A CORBA error occurred whilst accessing the address book."
@@ -183,7 +182,7 @@ msgstr "ھۆججەت يوللىيالمايدۇ"
 
 #: ../src/plugins/gajim/gajim.c:418
 msgid "There is no connection to gajim remote service."
-msgstr "gajim يىراقتىكى مۇلازىمەت ئۇلىنىشى مەۋجۇت ئەمەس"
+msgstr "gajim يىراقتىكى مۇلازىمەت باغلىنىشى مەۋجۇت ئەمەس"
 
 #: ../src/plugins/gajim/gajim.c:442 ../src/plugins/gajim/gajim.c:482
 msgid "Sending file failed"
@@ -195,11 +194,11 @@ msgstr "تاپشۇرۇۋالغۇچى كەم."
 
 #: ../src/plugins/gajim/gajim.c:482
 msgid "Unknown recipient."
-msgstr "نامەلۇم تاپشۇرۇۋالغۇچى."
+msgstr "نامەلۇم تاپشۇرۋالغۇچى."
 
 #: ../src/plugins/gajim/gajim.c:505
 msgid "Instant Message (Gajim)"
-msgstr "مۇڭداشقۇچ (Gajim)"
+msgstr "مۇڭداشقۇ (Gajim)"
 
 #: ../src/plugins/nautilus-burn/nautilus-burn.c:92
 msgid "New CD/DVD"
