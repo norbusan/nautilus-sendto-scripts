@@ -1,5 +1,5 @@
 <schemalist>
-  <schema id="org.gnome.Nautilus.Sendto" path="/org/gnome/NautilusSendto" gettext-domain="nautilus-sendto">
+  <schema id="org.gnome.Nautilus.Sendto" path="/org/gnome/NautilusSendto/" gettext-domain="nautilus-sendto">
     <key name="last-medium" type="s">
       <default>''</default>
       <summary>Last plugin used to send</summary>
