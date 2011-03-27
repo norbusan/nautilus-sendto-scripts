@@ -1,14 +1,13 @@
-# SOME DESCRIPTIVE TITLE.
+# Uyghur translation for nautilus-sendto.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # Gheyret Kenji <gheyret@yahoo.com>, 2011.
 # Sahran <sahran.ug@gmail.com>, 2011.
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
-"product=nautilus-sendto&component=general\n"
-"POT-Creation-Date: 2011-03-04 15:12+0000\n"
+"Project-Id-Version: nautilus-sendto\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=nautilus-sendto&component=general\n"
+"POT-Creation-Date: 2011-03-04 21:27+0000\n"
 "PO-Revision-Date: 2011-03-04 21:53+0600\n"
 "Last-Translator: Sahran <sahran.ug@gmail.com>\n"
 "Language-Team: Uyghur Computer Science Association <UKIJ@yahoogroups.com>\n"
@@ -123,7 +122,7 @@ msgstr "ئادرېس دەپتىرىنى يۈكلىيەلمىدى."
 
 #: ../src/plugins/evolution/e-contact-entry.c:900
 msgid "The address book is already loaded."
-msgstr "ئادرېس دەپتىرى يۈكلەنگەن."
+msgstr "ئادرېس دەپتىرى يۈكلەندى."
 
 #: ../src/plugins/evolution/e-contact-entry.c:902
 msgid "Permission was denied when accessing the address book."
@@ -135,7 +134,7 @@ msgstr "ئالاقەداشلار تېپىلمىدى."
 
 #: ../src/plugins/evolution/e-contact-entry.c:906
 msgid "This contact ID already exists."
-msgstr "بۇ ئالاقەداش كىملىكى مەۋجۇت."
+msgstr "بۇ ئالاقەداش ID سى مەۋجۇت."
 
 #: ../src/plugins/evolution/e-contact-entry.c:908
 msgid "The protocol is not supported."
@@ -156,8 +155,7 @@ msgstr "ئادرېس دەپتىرى سالاھىيىتىنى دەلىللىيە�
 #: ../src/plugins/evolution/e-contact-entry.c:916
 msgid ""
 "Authentication is required to access the address book and was not given."
-msgstr ""
-"ئادرېس دەپتىرىنى زىيارەت قىلىشتا دەلىللەش زۆرۈر، بۇ دەلىللەش بېرىلمىگەن."
+msgstr "ئادرېس دەپتىرىنى زىيارەت قىلىشتا دەلىللەش زۆرۈر، بۇ دەلىللەش بېرىلمىگەن."
 
 #: ../src/plugins/evolution/e-contact-entry.c:918
 msgid "A secure connection is not available."
@@ -194,11 +192,11 @@ msgstr "تاپشۇرۇۋالغۇچى كەم."
 
 #: ../src/plugins/gajim/gajim.c:482
 msgid "Unknown recipient."
-msgstr "نامەلۇم تاپشۇرۋالغۇچى."
+msgstr "نامەلۇم تاپشۇرۇۋالغۇچى."
 
 #: ../src/plugins/gajim/gajim.c:505
 msgid "Instant Message (Gajim)"
-msgstr "مۇڭداشقۇ (Gajim)"
+msgstr "مۇڭداشقۇچ (Gajim)"
 
 #: ../src/plugins/nautilus-burn/nautilus-burn.c:92
 msgid "New CD/DVD"
