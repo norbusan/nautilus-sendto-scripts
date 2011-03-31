@@ -13,28 +13,26 @@ msgstr ""
 "Project-Id-Version: nautilus-sendto 3.0\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=nautilus-sendto&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2011-03-13 18:46+0000\n"
-"PO-Revision-Date: 2011-03-15 08:34+0300\n"
+"POT-Creation-Date: 2011-03-27 19:43+0000\n"
+"PO-Revision-Date: 2011-03-31 00:01+0300\n"
 "Last-Translator: Mattias Põldaru <mahfiaz@gmail.com>\n"
 "Language-Team: Estonian <gnome-et@linux.ee>\n"
+"Language: et\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: et\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-msgid "Send To..."
-msgstr "Saada..."
+msgid "Run from build directory"
+msgstr "Käivitamine kompileerimise kataloogist"
 
-msgid "Send file by mail, instant message..."
-msgstr "Saada fail e-postiga, kiirsõnumina..."
+msgid "Use XID as parent to the send dialogue"
+msgstr "XID kasutamine saatmisdialoogi ülemise aknana"
 
-msgid "Send files by mail, instant message..."
-msgstr "Saada failid e-postiga, kiirsõnumina..."
+msgid "Files to send"
+msgstr "Saadetavad failid"
 
-msgid "Files"
-msgstr "Failid"
-
+#. FIXME, this needs to be done in UI now
 #, c-format
 msgid "Expects URIs or filenames to be passed as options\n"
 msgstr "Ootab, et URI-d või failinimed edastatakse võtmetena\n"
@@ -43,34 +41,59 @@ msgstr "Ootab, et URI-d või failinimed edastatakse võtmetena\n"
 msgid "Could not parse command-line options: %s\n"
 msgstr "Käsurea võtmete parsimine pole võimalik: %s\n"
 
-#| msgid "Could not log in to service '%s'."
-msgid "Could not load any plugins."
-msgstr "Pluginaid polnud võimalik laadida."
+#, c-format
+msgid "Sharing %d folder"
+msgid_plural "Sharing %d folders"
+msgstr[0] "%d kausta jagamine"
+msgstr[1] "%d kausta jagamine"
 
-msgid "Please verify your installation"
-msgstr "Palun kontrolli paigaldust"
+#, c-format
+msgid "Sharing %d folders and files"
+msgstr "%d kausta ja faili jagamine"
 
-msgid "<b>Compression</b>"
-msgstr "<b>Tihendus</b>"
+#, c-format
+msgid "Sharing %d video"
+msgid_plural "Sharing %d videos"
+msgstr[0] "%d video jagamine"
+msgstr[1] "%d video jagamine"
 
-msgid "<b>Destination</b>"
-msgstr "<b>Sihtkoht</b>"
+#, c-format
+msgid "Sharing %d photo"
+msgid_plural "Sharing %d photos"
+msgstr[0] "%d foto jagamine"
+msgstr[1] "%d foto jagamine"
 
-#| msgid "Send _packed in:"
-msgid "Send _as:"
-msgstr "Saada _kui:"
+#, c-format
+msgid "Sharing %d image"
+msgid_plural "Sharing %d images"
+msgstr[0] "%d pildi jagamine"
+msgstr[1] "%d pildi jagamine"
 
-msgid "Send _packed in:"
-msgstr "Saata _pakituna arhiivis:"
+#, c-format
+msgid "Sharing %d text file"
+msgid_plural "Sharing %d text files"
+msgstr[0] "%d tekstifaili jagamine"
+msgstr[1] "%d tekstifaili jagamine"
 
-msgid "Send t_o:"
-msgstr "Saada _kuhu:"
+#, c-format
+msgid "Sharing %d file"
+msgid_plural "Sharing %d files"
+msgstr[0] "%d faili jagamine"
+msgstr[1] "%d faili jagamine"
 
 msgid "_Send"
 msgstr "_Saada"
 
-#| msgid "Mail"
-msgid "Email"
+msgid "Files"
+msgstr "Failid"
+
+msgid "_Cancel"
+msgstr "_Loobu"
+
+msgid "Send _packed in:"
+msgstr "Saata _pakituna arhiivis:"
+
+msgid "Mail"
 msgstr "E-post"
 
 #, c-format
@@ -180,65 +203,36 @@ msgstr "Välksõnum (Pidgin)"
 msgid "Removable disks and shares"
 msgstr "Eemaldatavad andmekandjad ja jagatud kataloogid"
 
+#, c-format
+msgid "Uploading '%s'"
+msgstr "'%s' üleslaadimine"
+
+msgid "Preparing upload"
+msgstr "Üleslaadimise ettevalmistamine"
+
+#, c-format
+msgid "Service '%s' is not configured."
+msgstr "Teenus '%s' on seadistamata."
+
+msgid "_Configure"
+msgstr "_Seadista"
+
+#, c-format
+msgid "Logged in to service '%s'."
+msgstr "Sisse logitud teenusesse '%s'."
+
+#, c-format
+msgid "Could not log in to service '%s'."
+msgstr "Pole võimalik sisse logida teenusesse '%s'."
+
 msgid "UPnP Media Server"
 msgstr "UPnP meediaserver"
 
-#~ msgid "Run from build directory"
-#~ msgstr "Käivitamine kompileerimise kataloogist"
+#~ msgid "Send To..."
+#~ msgstr "Saada..."
 
-#~ msgid "Use XID as parent to the send dialogue"
-#~ msgstr "XID kasutamine saatmisdialoogi ülemise aknana"
+#~ msgid "Send file by mail, instant message..."
+#~ msgstr "Saada fail e-postiga, kiirsõnumina..."
 
-#~ msgid "Files to send"
-#~ msgstr "Saadetavad failid"
-
-#~ msgid "Sharing %d folder"
-#~ msgid_plural "Sharing %d folders"
-#~ msgstr[0] "%d kausta jagamine"
-#~ msgstr[1] "%d kausta jagamine"
-
-#~ msgid "Sharing %d folders and files"
-#~ msgstr "%d kausta ja faili jagamine"
-
-#~ msgid "Sharing %d video"
-#~ msgid_plural "Sharing %d videos"
-#~ msgstr[0] "%d video jagamine"
-#~ msgstr[1] "%d video jagamine"
-
-#~ msgid "Sharing %d photo"
-#~ msgid_plural "Sharing %d photos"
-#~ msgstr[0] "%d foto jagamine"
-#~ msgstr[1] "%d foto jagamine"
-
-#~ msgid "Sharing %d image"
-#~ msgid_plural "Sharing %d images"
-#~ msgstr[0] "%d pildi jagamine"
-#~ msgstr[1] "%d pildi jagamine"
-
-#~ msgid "Sharing %d text file"
-#~ msgid_plural "Sharing %d text files"
-#~ msgstr[0] "%d tekstifaili jagamine"
-#~ msgstr[1] "%d tekstifaili jagamine"
-
-#~ msgid "Sharing %d file"
-#~ msgid_plural "Sharing %d files"
-#~ msgstr[0] "%d faili jagamine"
-#~ msgstr[1] "%d faili jagamine"
-
-#~ msgid "_Cancel"
-#~ msgstr "Tühista"
-
-#~ msgid "Uploading '%s'"
-#~ msgstr "'%s' üleslaadimine"
-
-#~ msgid "Preparing upload"
-#~ msgstr "Üleslaadimise ettevalmistamine"
-
-#~ msgid "Service '%s' is not configured."
-#~ msgstr "Teenus '%s' on seadistamata."
-
-#~ msgid "_Configure"
-#~ msgstr "_Seadista"
-
-#~ msgid "Logged in to service '%s'."
-#~ msgstr "Sisse logitud teenusesse '%s'."
+#~ msgid "Send files by mail, instant message..."
+#~ msgstr "Saada failid e-postiga, kiirsõnumina..."
