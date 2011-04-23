@@ -10,7 +10,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=nautilus-sendto&keywords=I18N+L10N&component=general\n"
 "POT-Creation-Date: 2011-04-04 20:27+0000\n"
-"PO-Revision-Date: 2011-04-06 23:47+0300\n"
+"PO-Revision-Date: 2011-04-23 03:01+0300\n"
 "Last-Translator: Muhammet Kara <muhammet.k@gmail.com>\n"
 "Language-Team: Turkish <gnome-turk@gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -38,7 +38,7 @@ msgstr "Dosyalar"
 #: ../src/nautilus-sendto-command.c:783
 #, c-format
 msgid "Expects URIs or filenames to be passed as options\n"
-msgstr ""
+msgstr "Seçenek olarak internet adresleri veya dosya adları bekler\n"
 
 #: ../src/nautilus-sendto-command.c:804
 #, c-format
