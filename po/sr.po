@@ -1,6 +1,5 @@
 # Serbian translation of nautilus-send-to
 # Courtesy of Prevod.org team (http://prevod.org/) -- 2010.
-#
 # This file is distributed under the same license as the nautilus-send-to package.
 # Милош Поповић <gpopac@gmail.com>, 2010.
 # Мирослав Николић <miroslavnikolic@rocketmail.com>, 2011.
@@ -9,8 +8,8 @@ msgstr ""
 "Project-Id-Version: nautilus-send-to\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=nautilus-sendto&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2011-03-13 18:46+0000\n"
-"PO-Revision-Date: 2011-03-06 21:41+0200\n"
+"POT-Creation-Date: 2011-05-13 01:58+0000\n"
+"PO-Revision-Date: 2011-05-17 20:04+0200\n"
 "Last-Translator: Мирослав Николић <miroslavnikolic@rocketmail.com>\n"
 "Language-Team: Serbian <gnom@prevod.org>\n"
 "MIME-Version: 1.0\n"
@@ -19,68 +18,102 @@ msgstr ""
 "Language: Serbian (sr)\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
 "10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Virtaal 0.5.2\n"
 
-#: ../src/nautilus-nste.c:92 ../src/nautilus-nste.c:97
-#: ../src/nautilus-sendto.ui.h:3
-msgid "Send To..."
-msgstr "Пошаљи у..."
+#: ../src/nautilus-sendto-command.c:79
+msgid "Run from build directory"
+msgstr "Покрени из директоријума изградње"
 
-#: ../src/nautilus-nste.c:93
-msgid "Send file by mail, instant message..."
-msgstr "Шаље датотеку е-поштом или брзом поруком..."
+#: ../src/nautilus-sendto-command.c:80
+msgid "Use XID as parent to the send dialogue"
+msgstr "Користи ХИД као основу за прозорче слања"
 
-#: ../src/nautilus-nste.c:98
-msgid "Send files by mail, instant message..."
-msgstr "Шаље датотеке е-поштом или брзом поруком..."
+#: ../src/nautilus-sendto-command.c:81
+msgid "Files to send"
+msgstr "Датотеке за слање"
 
-#: ../src/nautilus-sendto-command.c:572
-msgid "Files"
-msgstr "Датотеке"
-
-#: ../src/nautilus-sendto-command.c:783
+#. FIXME, this needs to be done in UI now
+#: ../src/nautilus-sendto-command.c:662
 #, c-format
 msgid "Expects URIs or filenames to be passed as options\n"
 msgstr "Очекујем унос адреса или имена датотека у виду опција\n"
 
-#: ../src/nautilus-sendto-command.c:804
+#: ../src/nautilus-sendto-command.c:692
 #, c-format
 msgid "Could not parse command-line options: %s\n"
 msgstr "Не могу да рашчланим опције наредбе: %s\n"
 
-#: ../src/nautilus-sendto-command.c:819
-msgid "Could not load any plugins."
-msgstr "Не могу да учитам додатке."
+#: ../src/nautilus-sendto-mimetype.c:50
+#, c-format
+msgid "Sharing %d folder"
+msgid_plural "Sharing %d folders"
+msgstr[0] "Делим %d фасциклу"
+msgstr[1] "Делим %d фасцикле"
+msgstr[2] "Делим %d фасцикли"
 
-#: ../src/nautilus-sendto-command.c:822
-msgid "Please verify your installation"
-msgstr "Проверите да ли је програм исправно инсталиран."
+#: ../src/nautilus-sendto-mimetype.c:52
+#, c-format
+msgid "Sharing %d folders and files"
+msgstr "Дељење %d фасцикли и датотека"
 
-#: ../src/nautilus-sendto.ui.h:1
-msgid "<b>Compression</b>"
-msgstr "<b>Паковање</b>"
+#: ../src/nautilus-sendto-mimetype.c:77
+#, c-format
+msgid "Sharing %d video"
+msgid_plural "Sharing %d videos"
+msgstr[0] "Делим %d видео снимак"
+msgstr[1] "Делим %d видео снимка"
+msgstr[2] "Делим %d видео снимака"
 
-#: ../src/nautilus-sendto.ui.h:2
-msgid "<b>Destination</b>"
-msgstr "<b>Одредиште</b>"
+#: ../src/nautilus-sendto-mimetype.c:79
+#, c-format
+msgid "Sharing %d photo"
+msgid_plural "Sharing %d photos"
+msgstr[0] "Делим %d фотографију"
+msgstr[1] "Делим %d фотографије"
+msgstr[2] "Делим %d фотографија"
 
-#: ../src/nautilus-sendto.ui.h:4
-msgid "Send _as:"
-msgstr "Пошаљи _у:"
+#: ../src/nautilus-sendto-mimetype.c:81
+#, c-format
+msgid "Sharing %d image"
+msgid_plural "Sharing %d images"
+msgstr[0] "Делим %d слику"
+msgstr[1] "Делим %d слике"
+msgstr[2] "Делим %d слика"
 
-#: ../src/nautilus-sendto.ui.h:5
-msgid "Send _packed in:"
-msgstr "Пошаљи _запаковано као:"
+#: ../src/nautilus-sendto-mimetype.c:83
+#, c-format
+msgid "Sharing %d text file"
+msgid_plural "Sharing %d text files"
+msgstr[0] "Делим %d текстуалну датотеку"
+msgstr[1] "Делим %d текстуалне датотеке"
+msgstr[2] "Делим %d текстуалних датотека"
 
-#: ../src/nautilus-sendto.ui.h:6
-msgid "Send t_o:"
-msgstr "Пошаљи _на:"
+#: ../src/nautilus-sendto-mimetype.c:85
+#, c-format
+msgid "Sharing %d file"
+msgid_plural "Sharing %d files"
+msgstr[0] "Делим %d датотеку"
+msgstr[1] "Делим %d датотеке"
+msgstr[2] "Делим %d датотека"
 
-#: ../src/nautilus-sendto.ui.h:7
+#: ../data/nautilus-sendto.ui.h:1
 msgid "_Send"
 msgstr "По_шаљи"
 
-#: ../src/plugins/evolution/evolution.c:378
-msgid "Email"
+#: ../src/plugins/nautilus-sendto-packer.c:200
+msgid "Files"
+msgstr "Датотеке"
+
+#: ../src/plugins/nautilus-sendto-progress.c:187
+msgid "_Cancel"
+msgstr "_Откажи"
+
+#: ../data/pack-entry.ui.h:1
+msgid "Send _packed in:"
+msgstr "Пошаљи _запаковано као:"
+
+#: ../src/plugins/evolution/evolution.c:308
+msgid "Mail"
 msgstr "Е-пошта"
 
 #: ../src/plugins/evolution/e-contact-entry.c:153
@@ -203,15 +236,15 @@ msgstr "Није познат прималац."
 msgid "Instant Message (Gajim)"
 msgstr "Брзе поруке (Гајим)"
 
-#: ../src/plugins/nautilus-burn/nautilus-burn.c:92
+#: ../src/plugins/nautilus-burn/nautilus-burn.c:90
 msgid "New CD/DVD"
 msgstr "Нови ЦД/ДВД"
 
-#: ../src/plugins/nautilus-burn/nautilus-burn.c:99
+#: ../src/plugins/nautilus-burn/nautilus-burn.c:97
 msgid "Existing CD/DVD"
 msgstr "Постојећи ЦД/ДВД"
 
-#: ../src/plugins/nautilus-burn/nautilus-burn.c:178
+#: ../src/plugins/nautilus-burn/nautilus-burn.c:176
 msgid "CD/DVD Creator"
 msgstr "Место за израду дискова"
 
@@ -219,13 +252,70 @@ msgstr "Место за израду дискова"
 msgid "Instant Message (Pidgin)"
 msgstr "Брзе поруке (Пиџин)"
 
-#: ../src/plugins/removable-devices/removable-devices.c:248
+#: ../src/plugins/removable-devices/removable-devices.c:274
 msgid "Removable disks and shares"
 msgstr "Уклоњиве или дељене дискове"
+
+#: ../src/plugins/socialweb/socialweb.c:186
+#, c-format
+msgid "Uploading '%s'"
+msgstr "Шаљем „%s“"
+
+#: ../src/plugins/socialweb/socialweb.c:256
+msgid "Preparing upload"
+msgstr "Припремам за слање"
+
+#: ../src/plugins/socialweb/socialweb.c:316
+#, c-format
+msgid "Service '%s' is not configured."
+msgstr "Услуга „%s“ није подешена."
+
+#: ../src/plugins/socialweb/socialweb.c:319
+#: ../src/plugins/socialweb/socialweb.c:336
+msgid "_Configure"
+msgstr "_Подеси"
+
+#: ../src/plugins/socialweb/socialweb.c:323
+#: ../src/plugins/socialweb/socialweb.c:343
+#, c-format
+msgid "Logged in to service '%s'."
+msgstr "Пријављени сте на услугу „%s“."
+
+#: ../src/plugins/socialweb/socialweb.c:333
+#, c-format
+msgid "Could not log in to service '%s'."
+msgstr "Не могу да се пријавим на услугу „%s“."
 
 #: ../src/plugins/upnp/upnp.c:309
 msgid "UPnP Media Server"
 msgstr "УПнП медијски сервер"
+
+#~ msgid "Send To..."
+#~ msgstr "Пошаљи у..."
+
+#~ msgid "Send file by mail, instant message..."
+#~ msgstr "Шаље датотеку е-поштом или брзом поруком..."
+
+#~ msgid "Send files by mail, instant message..."
+#~ msgstr "Шаље датотеке е-поштом или брзом поруком..."
+
+#~ msgid "Could not load any plugins."
+#~ msgstr "Не могу да учитам додатке."
+
+#~ msgid "Please verify your installation"
+#~ msgstr "Проверите да ли је програм исправно инсталиран."
+
+#~ msgid "<b>Compression</b>"
+#~ msgstr "<b>Паковање</b>"
+
+#~ msgid "<b>Destination</b>"
+#~ msgstr "<b>Одредиште</b>"
+
+#~ msgid "Send _as:"
+#~ msgstr "Пошаљи _у:"
+
+#~ msgid "Send t_o:"
+#~ msgstr "Пошаљи _на:"
 
 #~ msgid "Last plugin used to send"
 #~ msgstr "Последњи додатак којим је извршено слање"
