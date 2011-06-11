@@ -1,83 +1,105 @@
-# SOME DESCRIPTIVE TITLE.
+# Uyghur translation for nautilus-sendto.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # Gheyret Kenji <gheyret@yahoo.com>, 2011.
 # Sahran <sahran.ug@gmail.com>, 2011.
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: nautilus-sendto\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
-"product=nautilus-sendto&component=general\n"
-"POT-Creation-Date: 2011-03-04 15:12+0000\n"
+"product=nautilus-sendto&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2011-05-22 21:02+0000\n"
 "PO-Revision-Date: 2011-03-04 21:53+0600\n"
 "Last-Translator: Sahran <sahran.ug@gmail.com>\n"
 "Language-Team: Uyghur Computer Science Association <UKIJ@yahoogroups.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 
-#: ../src/nautilus-nste.c:92 ../src/nautilus-nste.c:97
-#: ../src/nautilus-sendto.ui.h:3
-msgid "Send To..."
-msgstr "يوللا…"
+#: ../src/nautilus-sendto-command.c:79
+msgid "Run from build directory"
+msgstr "قۇرۇلغان مۇندەرىجىدىن ئىجرا قىل"
 
-#: ../src/nautilus-nste.c:93
-msgid "Send file by mail, instant message..."
-msgstr "ئېلخەت، مۇڭداشقۇدا ھۆججەت يوللا…"
+#: ../src/nautilus-sendto-command.c:80
+msgid "Use XID as parent to the send dialogue"
+msgstr "XID نى يوللاش سۆزلەشكۈسىنىڭ ئاتىسى قىلىپ ئىشلەت"
 
-#: ../src/nautilus-nste.c:98
-msgid "Send files by mail, instant message..."
-msgstr "ئېلخەت، مۇڭداشقۇدا ھۆججەت يوللا…"
+#: ../src/nautilus-sendto-command.c:81
+msgid "Files to send"
+msgstr "ئەۋەتىش مەغلۇپ بولدى"
 
-#: ../src/nautilus-sendto-command.c:572
-msgid "Files"
-msgstr "ھۆججەتلەر"
-
-#: ../src/nautilus-sendto-command.c:783
+#. FIXME, this needs to be done in UI now
+#: ../src/nautilus-sendto-command.c:662
 #, c-format
 msgid "Expects URIs or filenames to be passed as options\n"
 msgstr "URI ياكى ھۆججەت ئاتى تاللانما قىلىنىدۇ\n"
 
-#: ../src/nautilus-sendto-command.c:804
+#: ../src/nautilus-sendto-command.c:692
 #, c-format
 msgid "Could not parse command-line options: %s\n"
 msgstr "بۇيرۇق قۇرى تاللانمىسىنى يېشەلمىدى: %s\n"
 
-#: ../src/nautilus-sendto-command.c:819
-msgid "Could not load any plugins."
-msgstr "ھېچقانداق قىستۇرمىنى يۈكلىيەلمىدى."
+#: ../src/nautilus-sendto-mimetype.c:50
+#, c-format
+msgid "Sharing %d folder"
+msgid_plural "Sharing %d folders"
+msgstr[0] "%d قىسقۇچنى ھەمبەھىرلەۋاتىدۇ"
 
-#: ../src/nautilus-sendto-command.c:822
-msgid "Please verify your installation"
-msgstr "ئورنىتىشنى تەكشۈرۈڭ"
+#: ../src/nautilus-sendto-mimetype.c:52
+#, c-format
+msgid "Sharing %d folders and files"
+msgstr "%d قىسقۇچ ۋە ھۆججەتنى ھەمبەھىرلەۋاتىدۇ"
 
-#: ../src/nautilus-sendto.ui.h:1
-msgid "<b>Compression</b>"
-msgstr "<b>پرېسلاش</b>"
+#: ../src/nautilus-sendto-mimetype.c:77
+#, c-format
+msgid "Sharing %d video"
+msgid_plural "Sharing %d videos"
+msgstr[0] "%d سىننى ھەمبەھىرلەۋاتىدۇ"
 
-#: ../src/nautilus-sendto.ui.h:2
-msgid "<b>Destination</b>"
-msgstr "<b>نىشان</b>"
+#: ../src/nautilus-sendto-mimetype.c:79
+#, c-format
+msgid "Sharing %d photo"
+msgid_plural "Sharing %d photos"
+msgstr[0] "%d سۈرەتنى ھەمبەھىرلەۋاتىدۇ"
 
-#: ../src/nautilus-sendto.ui.h:4
-msgid "Send _as:"
-msgstr "سۈپىتىدە يوللا(_A):"
+#: ../src/nautilus-sendto-mimetype.c:81
+#, c-format
+msgid "Sharing %d image"
+msgid_plural "Sharing %d images"
+msgstr[0] "%d رەسىمنى ھەمبەھىرلەۋاتىدۇ"
 
-#: ../src/nautilus-sendto.ui.h:5
-msgid "Send _packed in:"
-msgstr "بوغچا يوللا(_p):"
+#: ../src/nautilus-sendto-mimetype.c:83
+#, c-format
+msgid "Sharing %d text file"
+msgid_plural "Sharing %d text files"
+msgstr[0] "%d تېكىست ھۆججىتىنى ھەمبەھىرلەۋاتىدۇ"
 
-#: ../src/nautilus-sendto.ui.h:6
-msgid "Send t_o:"
-msgstr "يوللاش ئورنى(_O):"
+#: ../src/nautilus-sendto-mimetype.c:85
+#, c-format
+msgid "Sharing %d file"
+msgid_plural "Sharing %d files"
+msgstr[0] "%d ھۆججەتنى ھەمبەھىرلەۋاتىدۇ"
 
-#: ../src/nautilus-sendto.ui.h:7
+#: ../data/nautilus-sendto.ui.h:1
 msgid "_Send"
 msgstr "يوللا(_S)"
 
-#: ../src/plugins/evolution/evolution.c:378
-msgid "Email"
-msgstr "ئېلخەت"
+#: ../src/plugins/nautilus-sendto-packer.c:200
+msgid "Files"
+msgstr "ھۆججەتلەر"
+
+#: ../src/plugins/nautilus-sendto-progress.c:187
+msgid "_Cancel"
+msgstr "ئەمەلدىن قالدۇر(_C)"
+
+#: ../data/pack-entry.ui.h:1
+msgid "Send _packed in:"
+msgstr "بوغچا يوللا(_p):"
+
+#: ../src/plugins/evolution/evolution.c:308
+msgid "Mail"
+msgstr "خەت-چەك"
 
 #: ../src/plugins/evolution/e-contact-entry.c:153
 #, c-format
@@ -123,7 +145,7 @@ msgstr "ئادرېس دەپتىرىنى يۈكلىيەلمىدى."
 
 #: ../src/plugins/evolution/e-contact-entry.c:900
 msgid "The address book is already loaded."
-msgstr "ئادرېس دەپتىرى يۈكلەنگەن."
+msgstr "ئادرېس دەپتىرى يۈكلەندى."
 
 #: ../src/plugins/evolution/e-contact-entry.c:902
 msgid "Permission was denied when accessing the address book."
@@ -135,7 +157,7 @@ msgstr "ئالاقەداشلار تېپىلمىدى."
 
 #: ../src/plugins/evolution/e-contact-entry.c:906
 msgid "This contact ID already exists."
-msgstr "بۇ ئالاقەداش كىملىكى مەۋجۇت."
+msgstr "بۇ ئالاقەداش ID سى مەۋجۇت."
 
 #: ../src/plugins/evolution/e-contact-entry.c:908
 msgid "The protocol is not supported."
@@ -194,21 +216,21 @@ msgstr "تاپشۇرۇۋالغۇچى كەم."
 
 #: ../src/plugins/gajim/gajim.c:482
 msgid "Unknown recipient."
-msgstr "نامەلۇم تاپشۇرۋالغۇچى."
+msgstr "نامەلۇم تاپشۇرۇۋالغۇچى."
 
 #: ../src/plugins/gajim/gajim.c:505
 msgid "Instant Message (Gajim)"
-msgstr "مۇڭداشقۇ (Gajim)"
+msgstr "مۇڭداشقۇچ (Gajim)"
 
-#: ../src/plugins/nautilus-burn/nautilus-burn.c:92
+#: ../src/plugins/nautilus-burn/nautilus-burn.c:90
 msgid "New CD/DVD"
 msgstr "يېڭى CD/DVD"
 
-#: ../src/plugins/nautilus-burn/nautilus-burn.c:99
+#: ../src/plugins/nautilus-burn/nautilus-burn.c:97
 msgid "Existing CD/DVD"
 msgstr "مەۋجۇت CD/DVD"
 
-#: ../src/plugins/nautilus-burn/nautilus-burn.c:178
+#: ../src/plugins/nautilus-burn/nautilus-burn.c:176
 msgid "CD/DVD Creator"
 msgstr "CD/DVD ياسىغۇچ"
 
@@ -216,10 +238,67 @@ msgstr "CD/DVD ياسىغۇچ"
 msgid "Instant Message (Pidgin)"
 msgstr "مۇڭداشقۇ (Pidgin)"
 
-#: ../src/plugins/removable-devices/removable-devices.c:248
+#: ../src/plugins/removable-devices/removable-devices.c:274
 msgid "Removable disks and shares"
 msgstr "يان دىسكا ۋە ھەمبەھىر"
+
+#: ../src/plugins/socialweb/socialweb.c:186
+#, c-format
+msgid "Uploading '%s'"
+msgstr "«%s» نى يۈكلەۋاتىدۇ"
+
+#: ../src/plugins/socialweb/socialweb.c:256
+msgid "Preparing upload"
+msgstr "يۈكلەشكە تەييارلىنىۋاتىدۇ"
+
+#: ../src/plugins/socialweb/socialweb.c:316
+#, c-format
+msgid "Service '%s' is not configured."
+msgstr "مۇلازىمەت '%s' سەپلەنمىگەن."
+
+#: ../src/plugins/socialweb/socialweb.c:319
+#: ../src/plugins/socialweb/socialweb.c:336
+msgid "_Configure"
+msgstr "سەپلە(_C)"
+
+#: ../src/plugins/socialweb/socialweb.c:323
+#: ../src/plugins/socialweb/socialweb.c:343
+#, c-format
+msgid "Logged in to service '%s'."
+msgstr "مۇلازىمەت '%s' غا كىردى."
+
+#: ../src/plugins/socialweb/socialweb.c:333
+#, c-format
+msgid "Could not log in to service '%s'."
+msgstr "مۇلازىمەت '%s' غا كىرەلمىدى."
 
 #: ../src/plugins/upnp/upnp.c:309
 msgid "UPnP Media Server"
 msgstr "UPnP ۋاسىتە مۇلازىمېتىر"
+
+#~ msgid "Send To..."
+#~ msgstr "يوللا…"
+
+#~ msgid "Send file by mail, instant message..."
+#~ msgstr "ئېلخەت، مۇڭداشقۇدا ھۆججەت يوللا…"
+
+#~ msgid "Send files by mail, instant message..."
+#~ msgstr "ئېلخەت، مۇڭداشقۇدا ھۆججەت يوللا…"
+
+#~ msgid "Could not load any plugins."
+#~ msgstr "ھېچقانداق قىستۇرمىنى يۈكلىيەلمىدى."
+
+#~ msgid "Please verify your installation"
+#~ msgstr "ئورنىتىشنى تەكشۈرۈڭ"
+
+#~ msgid "<b>Compression</b>"
+#~ msgstr "<b>پرېسلاش</b>"
+
+#~ msgid "<b>Destination</b>"
+#~ msgstr "<b>نىشان</b>"
+
+#~ msgid "Send _as:"
+#~ msgstr "سۈپىتىدە يوللا(_A):"
+
+#~ msgid "Send t_o:"
+#~ msgstr "يوللاش ئورنى(_O):"
