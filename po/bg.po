@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nautilus-sendto master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-14 07:33+0200\n"
-"PO-Revision-Date: 2011-01-14 07:32+0200\n"
+"POT-Creation-Date: 2011-08-11 06:47+0300\n"
+"PO-Revision-Date: 2011-08-11 06:47+0300\n"
 "Last-Translator: Alexander Shopov <ash@kambanaria.org>\n"
 "Language-Team: Bulgarian <dict@fsa-bg.org>\n"
 "Language: bg\n"
@@ -36,12 +36,12 @@ msgid "Files to send"
 msgstr "Файлове за изпращане"
 
 #. FIXME, this needs to be done in UI now
-#: ../src/nautilus-sendto-command.c:669
+#: ../src/nautilus-sendto-command.c:662
 #, c-format
 msgid "Expects URIs or filenames to be passed as options\n"
 msgstr "За опции се очакват адреси или файлове\n"
 
-#: ../src/nautilus-sendto-command.c:699
+#: ../src/nautilus-sendto-command.c:692
 #, c-format
 msgid "Could not parse command-line options: %s\n"
 msgstr "Опциите от командния ред не могат да се анализират: %s\n"
@@ -100,6 +100,14 @@ msgstr "_Изпращане"
 #: ../src/plugins/nautilus-sendto-packer.c:200
 msgid "Files"
 msgstr "Файлове"
+
+#: ../src/plugins/nautilus-sendto-progress.c:187
+msgid "_Cancel"
+msgstr "_Отказване"
+
+#: ../data/pack-entry.ui.h:1
+msgid "Send _packed in:"
+msgstr "_Изпращане пакетирано като:"
 
 #: ../src/plugins/evolution/evolution.c:308
 msgid "Mail"
