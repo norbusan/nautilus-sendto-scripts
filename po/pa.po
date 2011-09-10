@@ -3,54 +3,42 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER.
 #
 # Amanpreet Singh Alam <aalam@redhat.com>, 2004.
-# A S Alam <aalam@users.sf.net>, 2006, 2007, 2009, 2010.
+# A S Alam <aalam@users.sf.net>, 2006, 2007, 2009, 2010, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: nautilus-sendto.HEAD\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug."
-"cgi?product=nautilus-sendto&component=general\n"
-"POT-Creation-Date: 2010-09-01 14:15+0000\n"
-"PO-Revision-Date: 2010-10-09 08:50+0530\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
+"product=nautilus-sendto&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2011-06-26 20:47+0000\n"
+"PO-Revision-Date: 2011-09-10 15:20+0530\n"
 "Last-Translator: A S Alam <aalam@users.sf.net>\n"
 "Language-Team: Punjabi/Panjabi <punjabi-users@lists.sf.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.1\n"
+"X-Generator: Lokalize 1.2\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: pa\n"
 
-#: ../src/extension/nautilus-nste.c:78 ../src/extension/nautilus-nste.c:83
-msgid "Send To..."
-msgstr "...ਨੂੰ ਭੇਜੋ"
-
-#: ../src/extension/nautilus-nste.c:79
-msgid "Send file by mail, instant message..."
-msgstr "ਫਾਇਲ ਮੇਲ, ਤੁਰੰਤ ਸੁਨੇਹੇ ਰਾਹੀਂ ਭੇਜੋ..."
-
-#: ../src/extension/nautilus-nste.c:84
-msgid "Send files by mail, instant message..."
-msgstr "ਫਾਇਲਾਂ ਮੇਲ, ਤੁਰੰਤ ਸੁਨੇਹੇ ਰਾਹੀਂ ਭੇਜੋ..."
-
-#: ../src/nautilus-sendto-command.c:78
+#: ../src/nautilus-sendto-command.c:79
 msgid "Run from build directory"
 msgstr "ਬਿਲਡ ਡਾਇਰੈਕਟਰੀ ਤੋਂ ਚਲਾਓ"
 
-#: ../src/nautilus-sendto-command.c:79
+#: ../src/nautilus-sendto-command.c:80
 msgid "Use XID as parent to the send dialogue"
 msgstr "ਭੇਜੋ ਡਾਈਲਾਗ ਲਈ XID ਨੂੰ ਪੇਰੈਂਟ ਵਜੋਂ ਵਰਤੋਂ"
 
-#: ../src/nautilus-sendto-command.c:80
-#| msgid "Unable to send file"
+#: ../src/nautilus-sendto-command.c:81
 msgid "Files to send"
 msgstr "ਭੇਜਣ ਲਈ ਫਾਇਲਾਂ"
 
 #. FIXME, this needs to be done in UI now
-#: ../src/nautilus-sendto-command.c:663
+#: ../src/nautilus-sendto-command.c:662
 #, c-format
 msgid "Expects URIs or filenames to be passed as options\n"
 msgstr "ਚੋਣ ਵਜੋਂ URI ਜਾਂ ਫਾਇਲ ਨਾਂ ਦੇਣ ਦੀ ਲੋੜ ਹੈ।\n"
 
-#: ../src/nautilus-sendto-command.c:693
+#: ../src/nautilus-sendto-command.c:692
 #, c-format
 msgid "Could not parse command-line options: %s\n"
 msgstr "ਕਮਾਂਡ ਲਾਈਨ ਚੋਣਾਂ ਪਾਰਸ ਨਹੀਂ ਕੀਤੀਆਂ ਜਾ ਸਕੀਆਂ: %s\n"
@@ -106,12 +94,19 @@ msgstr[1] "%d ਫਾਇਲਾਂ ਸਾਂਝੀਆਂ ਕੀਤੀਆਂ ਜਾ
 msgid "_Send"
 msgstr "ਭੇਜੋ(_S)"
 
-#: ../src/plugins/nautilus-sendto-packer.c:197
+#: ../src/plugins/nautilus-sendto-packer.c:200
 msgid "Files"
 msgstr "ਫਾਇਲਾਂ"
 
-#: ../src/plugins/evolution/evolution.c:307
-#| msgid "Email"
+#: ../src/plugins/nautilus-sendto-progress.c:187
+msgid "_Cancel"
+msgstr "ਰੱਦ ਕਰੋ(_C)"
+
+#: ../data/pack-entry.ui.h:1
+msgid "Send _packed in:"
+msgstr "ਪੈਕ ਕਰਕੇ ਭੇਜੋ(_p):"
+
+#: ../src/plugins/evolution/evolution.c:308
 msgid "Mail"
 msgstr "ਮੇਲ"
 
@@ -251,35 +246,52 @@ msgstr "CD/DVD ਕਰੀਏਟਰ"
 msgid "Instant Message (Pidgin)"
 msgstr "ਸੁਨੇਹਾ ਭੇਜੋ (ਪਿਡਗਿਨ)"
 
-#: ../src/plugins/removable-devices/removable-devices.c:271
+#: ../src/plugins/removable-devices/removable-devices.c:274
 msgid "Removable disks and shares"
 msgstr "ਹਟਾਉਣਯੋਗ ਡਿਸਕਾਂ ਅਤੇ ਸ਼ੇਅਰ"
 
-#: ../src/plugins/socialweb/socialweb.c:148
+#: ../src/plugins/socialweb/socialweb.c:186
+#, c-format
+msgid "Uploading '%s'"
+msgstr "'%s' ਅੱਪਲੋਡ ਕੀਤੀ ਜਾ ਰਹੀ ਹੈ"
+
+#: ../src/plugins/socialweb/socialweb.c:256
+msgid "Preparing upload"
+msgstr "ਅੱਪਲੋਡ ਲਈ ਤਿਆਰ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ"
+
+#: ../src/plugins/socialweb/socialweb.c:316
 #, c-format
 msgid "Service '%s' is not configured."
 msgstr "ਸਰਵਿਸ '%s' ਸੰਰਚਿਤ ਨਹੀਂ ਹੈ।"
 
-#: ../src/plugins/socialweb/socialweb.c:151
-#: ../src/plugins/socialweb/socialweb.c:168
+#: ../src/plugins/socialweb/socialweb.c:319
+#: ../src/plugins/socialweb/socialweb.c:336
 msgid "_Configure"
 msgstr "ਸੰਰਚਨਾ(_C)"
 
-#: ../src/plugins/socialweb/socialweb.c:155
-#: ../src/plugins/socialweb/socialweb.c:175
+#: ../src/plugins/socialweb/socialweb.c:323
+#: ../src/plugins/socialweb/socialweb.c:343
 #, c-format
 msgid "Logged in to service '%s'."
 msgstr "ਸਰਵਿਸ '%s' ਵਿੱਚ ਲਾਗਇਨ ਕੀਤਾ।"
 
-#: ../src/plugins/socialweb/socialweb.c:165
+#: ../src/plugins/socialweb/socialweb.c:333
 #, c-format
-#| msgid "Could not find contact: %s"
 msgid "Could not log in to service '%s'."
 msgstr "ਸਰਵਿਸ '%s' ਵਿੱਚ ਲਾਗਇਨ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਿਆ।"
 
 #: ../src/plugins/upnp/upnp.c:309
 msgid "UPnP Media Server"
 msgstr "UPnP ਮੀਡਿਆ ਪਲੇਅਰ"
+
+#~ msgid "Send To..."
+#~ msgstr "...ਨੂੰ ਭੇਜੋ"
+
+#~ msgid "Send file by mail, instant message..."
+#~ msgstr "ਫਾਇਲ ਮੇਲ, ਤੁਰੰਤ ਸੁਨੇਹੇ ਰਾਹੀਂ ਭੇਜੋ..."
+
+#~ msgid "Send files by mail, instant message..."
+#~ msgstr "ਫਾਇਲਾਂ ਮੇਲ, ਤੁਰੰਤ ਸੁਨੇਹੇ ਰਾਹੀਂ ਭੇਜੋ..."
 
 #~ msgid "Last plugin used to send"
 #~ msgstr "ਭੇਜਣ ਲਈ ਵਰਤੀ ਆਖਰੀ ਪਲੱਗਇਨ"
@@ -335,10 +347,6 @@ msgstr "UPnP ਮੀਡਿਆ ਪਲੇਅਰ"
 #~| msgid "Send as:"
 #~ msgid "Send _as:"
 #~ msgstr "ਇੰਝ ਭੇਜੋ(_a):"
-
-#~| msgid "Send packed in"
-#~ msgid "Send _packed in:"
-#~ msgstr "ਪੈਕ ਕਰਕੇ ਭੇਜੋ(_p):"
 
 #~| msgid "Send to:"
 #~ msgid "Send t_o:"
