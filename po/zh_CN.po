@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nautilus-sendto master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
-"product=nautilus-sendto&component=general\n"
-"POT-Creation-Date: 2010-11-20 18:15+0000\n"
+"product=nautilus-sendto&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2011-09-10 09:51+0000\n"
 "PO-Revision-Date: 2010-11-24 00:23+0800\n"
 "Last-Translator: Eleanor Chen <chenyueg@gmail.com>\n"
 "Language-Team: Chinese (simplified) <i18n-zh@googlegroups.com>\n"
@@ -32,12 +32,12 @@ msgid "Files to send"
 msgstr "要发送的文件"
 
 #. FIXME, this needs to be done in UI now
-#: ../src/nautilus-sendto-command.c:669
+#: ../src/nautilus-sendto-command.c:662
 #, c-format
 msgid "Expects URIs or filenames to be passed as options\n"
 msgstr "需要网址或者文件名称来作为选项\n"
 
-#: ../src/nautilus-sendto-command.c:699
+#: ../src/nautilus-sendto-command.c:692
 #, c-format
 msgid "Could not parse command-line options: %s\n"
 msgstr "不能够解析命令行选项：%s\n"
@@ -90,6 +90,14 @@ msgstr "发送(_S)"
 #: ../src/plugins/nautilus-sendto-packer.c:200
 msgid "Files"
 msgstr "文件"
+
+#: ../src/plugins/nautilus-sendto-progress.c:187
+msgid "_Cancel"
+msgstr "取消(_C)"
+
+#: ../data/pack-entry.ui.h:1
+msgid "Send _packed in:"
+msgstr "发送包在(_)："
 
 #: ../src/plugins/evolution/evolution.c:308
 msgid "Mail"
@@ -326,9 +334,6 @@ msgstr "UPnP 媒体服务器"
 
 #~ msgid "Send _as:"
 #~ msgstr "发送作为(_A)："
-
-#~ msgid "Send _packed in:"
-#~ msgstr "发送包在(_)："
 
 #~ msgid "Send t_o:"
 #~ msgstr "发送到(_O)："
