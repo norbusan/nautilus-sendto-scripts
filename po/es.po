@@ -4,15 +4,16 @@
 #
 # Jesse Aviles <jesseaviles@gmail.com>, 2008.
 # Jorge González <jorgegonz@svn.gnome.org>, 2007, 2009, 2010, 2011.
+# Daniel Mustieles <daniel.mustieles@gmail.com>, 2011.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: nautilus-sendto.master.es\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
-"product=nautilus-sendto&component=general\n"
-"POT-Creation-Date: 2011-01-20 18:18+0000\n"
-"PO-Revision-Date: 2011-01-22 16:09+0100\n"
-"Last-Translator: Jorge González <jorgegonz@svn.gnome.org>\n"
+"product=nautilus-sendto&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2011-06-26 20:47+0000\n"
+"PO-Revision-Date: 2011-09-14 17:51+0200\n"
+"Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: Español <gnome-es-list@gnome.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,7 +23,7 @@ msgstr ""
 
 #: ../src/nautilus-sendto-command.c:79
 msgid "Run from build directory"
-msgstr "Ejecutar desde el directorio de construcción"
+msgstr "Ejecutar desde la carpeta de construcción"
 
 #: ../src/nautilus-sendto-command.c:80
 msgid "Use XID as parent to the send dialogue"
@@ -33,12 +34,12 @@ msgid "Files to send"
 msgstr "Archivos para enviar"
 
 #. FIXME, this needs to be done in UI now
-#: ../src/nautilus-sendto-command.c:669
+#: ../src/nautilus-sendto-command.c:662
 #, c-format
 msgid "Expects URIs or filenames to be passed as options\n"
 msgstr "Espera que se pasen como opciones URI o nombres de archivo\n"
 
-#: ../src/nautilus-sendto-command.c:699
+#: ../src/nautilus-sendto-command.c:692
 #, c-format
 msgid "Could not parse command-line options: %s\n"
 msgstr "No se pudieron analizar las opciones de la línea de comandos: %s\n"
