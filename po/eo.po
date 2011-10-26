@@ -3,6 +3,7 @@
 # This file is distributed under the same license as the nautilus-sendto package.
 # Ed GLEZ <herzo2@gmail.com>, 2006.
 # Michael MORONI, <haikara90@gmail.com>, 2009.
+# Tiffany Antopolski <tiffany.antopolski@gmail.com>, 2011.
 # Kristjan SCHMIDT <kristjan.schmidt@googlemail.com>, 2010, 2011.
 #
 msgid ""
@@ -10,17 +11,18 @@ msgstr ""
 "Project-Id-Version: nautilus-sendto\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=nautilus-sendto&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2011-05-13 01:58+0000\n"
-"PO-Revision-Date: 2011-05-22 11:44+0200\n"
+"POT-Creation-Date: 2011-10-07 14:59+0000\n"
+"PO-Revision-Date: 2011-10-26 19:46+0200\n"
 "Last-Translator: Kristjan SCHMIDT <kristjan.schmidt@googlemail.com>\n"
 "Language-Team: Esperanto <ubuntu-l10n-eo@lists.launchpad.net>\n"
-"Language: eo\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-05-22 09:20+0000\n"
-"X-Generator: Launchpad (build 13085)\n"
+"Content-Transfer-Encoding: 8bits\n"
+"Language: eo\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"X-Generator: Virtaal 0.7.1-rc1\n"
+"X-Launchpad-Export-Date: 2010-06-29 16:36+0000\n"
+"X-Project-Style: gnome\n"
 
 #: ../src/nautilus-sendto-command.c:79
 msgid "Run from build directory"
@@ -38,12 +40,12 @@ msgstr "Sendotaj dosierojn"
 #: ../src/nautilus-sendto-command.c:662
 #, c-format
 msgid "Expects URIs or filenames to be passed as options\n"
-msgstr "Ĝi atendas URI-ojn aŭ dosierajn nomojn kiel opcioj\n"
+msgstr "Atendas URI-ojn aŭ dosiernomojn kiel opcioj\n"
 
 #: ../src/nautilus-sendto-command.c:692
 #, c-format
 msgid "Could not parse command-line options: %s\n"
-msgstr "Ne povis analizi la komandliniajn opciojn: %s\n"
+msgstr "Ne eblas analizi komandliniajn opciojn: %s\n"
 
 #: ../src/nautilus-sendto-mimetype.c:50
 #, c-format
@@ -120,11 +122,11 @@ msgstr "Ne eblas akiri kontakton: %s"
 #: ../src/plugins/evolution/e-contact-entry.c:186
 #, c-format
 msgid "Could not find contact: %s"
-msgstr "Ne povas trovi kontakton: %s"
+msgstr "Ne eblas trovi kontakton: %s"
 
 #: ../src/plugins/evolution/e-contact-entry.c:414
 msgid "Cannot create searchable view."
-msgstr "Ne povas krei serĉeblan vidon."
+msgstr "Ne eblas krei serĉeblan vidon."
 
 #: ../src/plugins/evolution/e-contact-entry.c:886
 msgid "Success"
@@ -180,7 +182,7 @@ msgstr "La ago estis nuligita."
 
 #: ../src/plugins/evolution/e-contact-entry.c:912
 msgid "The operation could not be cancelled."
-msgstr "La ago ne povas esti nuligita"
+msgstr "La ago ne povas esti nuligita."
 
 #: ../src/plugins/evolution/e-contact-entry.c:914
 msgid "The address book authentication failed."
@@ -303,7 +305,7 @@ msgstr "UPnP-aŭdvidea servilo"
 #~ msgstr "Sendi dosierojn per retpoŝto, tujmesaĝo..."
 
 #~ msgid "Could not load any plugins."
-#~ msgstr "Ne povas ŝarĝi iun kromprogramaron."
+#~ msgstr "Ne eblas ŝargi iun kromprogramaron."
 
 #~ msgid "Please verify your installation"
 #~ msgstr "Bonvolu kontroli vian instaladon"
@@ -320,8 +322,11 @@ msgstr "UPnP-aŭdvidea servilo"
 #~ msgid "Send t_o:"
 #~ msgstr "Sendi _al:"
 
+#~ msgid "Email"
+#~ msgstr "Retpoŝto"
+
 #~ msgid "Programming error, could not find the device in the list"
-#~ msgstr "Programada eraro, ne povas trovi la aparaton en la listo"
+#~ msgstr "Programada eraro, ne eblas trovi la aparaton en la listo"
 
 #~ msgid "Obex Push file transfer unsupported"
 #~ msgstr "Nesubtenata 'Obex Push'-dosiertransigo"
