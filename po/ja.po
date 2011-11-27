@@ -4,33 +4,35 @@
 # Takeshi AIHANA <takeshi.aihana@gmail.com>, 2004-2009.
 # Takayuki KUSANO <AE5T-KSN@asahi-net.or.jp>, 2010.
 # Jiro Matsuzawa <matsuzawa.jr@gmail.com>, 2011
+# Hideki Yamnane <henrich@debian.org>, 2011.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: nautilus-sendto master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=nautilus-sendto&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2011-03-19 13:33+0000\n"
-"PO-Revision-Date: 2011-03-22 22:36+0900\n"
-"Last-Translator: Jiro Matsuzawa <matsuzawa.jr@gmail.com>\n"
+"POT-Creation-Date: 2011-10-26 17:47+0000\n"
+"PO-Revision-Date: 2011-11-27 16:29+0900\n"
+"Last-Translator: Hideki Yamnane <henrich@debian.org>\n"
 "Language-Team: Japanese <gnome-translation@gnome.gr.jp>\n"
-"Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: ja\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 
 #: ../src/nautilus-sendto-command.c:79
 msgid "Run from build directory"
-msgstr ""
+msgstr "ビルドディレクトリから実行する"
 
 #: ../src/nautilus-sendto-command.c:80
+#, fuzzy
 msgid "Use XID as parent to the send dialogue"
-msgstr ""
+msgstr "送信ダイアログで XID を親として利用する"
 
 #: ../src/nautilus-sendto-command.c:81
-#, fuzzy
 msgid "Files to send"
-msgstr "ファイルを送信できません"
+msgstr "送信するファイル"
 
 #. FIXME, this needs to be done in UI now
 #: ../src/nautilus-sendto-command.c:662
@@ -41,54 +43,48 @@ msgstr "オプションとして URI または ファイル名を指定してく
 #: ../src/nautilus-sendto-command.c:692
 #, c-format
 msgid "Could not parse command-line options: %s\n"
-msgstr "コマンドライン・オプションを解析できませんでした: %s\n"
+msgstr "コマンドラインオプションを解析できませんでした: %s\n"
 
 #: ../src/nautilus-sendto-mimetype.c:50
 #, c-format
 msgid "Sharing %d folder"
 msgid_plural "Sharing %d folders"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d 個のフォルダーを共有する"
 
 #: ../src/nautilus-sendto-mimetype.c:52
 #, c-format
 msgid "Sharing %d folders and files"
-msgstr ""
+msgstr "%d 個のフォルダーとファイルを共有する"
 
 #: ../src/nautilus-sendto-mimetype.c:77
 #, c-format
 msgid "Sharing %d video"
 msgid_plural "Sharing %d videos"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d 個のビデオを共有する"
 
 #: ../src/nautilus-sendto-mimetype.c:79
 #, c-format
 msgid "Sharing %d photo"
 msgid_plural "Sharing %d photos"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d 枚の写真を共有する"
 
 #: ../src/nautilus-sendto-mimetype.c:81
 #, c-format
 msgid "Sharing %d image"
 msgid_plural "Sharing %d images"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d 枚の画像を共有する"
 
 #: ../src/nautilus-sendto-mimetype.c:83
 #, c-format
 msgid "Sharing %d text file"
 msgid_plural "Sharing %d text files"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d 個のテキストファイルを共有する"
 
 #: ../src/nautilus-sendto-mimetype.c:85
 #, c-format
 msgid "Sharing %d file"
 msgid_plural "Sharing %d files"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d 個のファイルを共有する"
 
 #: ../data/nautilus-sendto.ui.h:1
 msgid "_Send"
@@ -100,7 +96,7 @@ msgstr "ファイル"
 
 #: ../src/plugins/nautilus-sendto-progress.c:187
 msgid "_Cancel"
-msgstr ""
+msgstr "キャンセル(_C)"
 
 #: ../data/pack-entry.ui.h:1
 msgid "Send _packed in:"
@@ -108,7 +104,7 @@ msgstr "書庫にして送信する(_P):"
 
 #: ../src/plugins/evolution/evolution.c:308
 msgid "Mail"
-msgstr ""
+msgstr "メール"
 
 #: ../src/plugins/evolution/e-contact-entry.c:153
 #, c-format
@@ -118,7 +114,7 @@ msgstr "次の連絡先を取得できません: %s"
 #: ../src/plugins/evolution/e-contact-entry.c:186
 #, c-format
 msgid "Could not find contact: %s"
-msgstr "次の連作先が見つかりませんでした: %s"
+msgstr "次の連絡先が見つかりませんでした: %s"
 
 #: ../src/plugins/evolution/e-contact-entry.c:414
 msgid "Cannot create searchable view."
@@ -146,7 +142,7 @@ msgstr "アドレス帳が見つかりません。"
 
 #: ../src/plugins/evolution/e-contact-entry.c:896
 msgid "The \"Me\" contact does not exist."
-msgstr "自分の連作先が存在しません。"
+msgstr "自分の連絡先が存在しません。"
 
 #: ../src/plugins/evolution/e-contact-entry.c:898
 msgid "The address book is not loaded."
@@ -212,7 +208,7 @@ msgstr "ファイルを送信できません"
 
 #: ../src/plugins/gajim/gajim.c:418
 msgid "There is no connection to gajim remote service."
-msgstr "gajim のリモート・サービスへ接続していません。"
+msgstr "gajim のリモートサービスへ接続していません。"
 
 #: ../src/plugins/gajim/gajim.c:442 ../src/plugins/gajim/gajim.c:482
 msgid "Sending file failed"
@@ -228,7 +224,7 @@ msgstr "不明な応答メッセージです。"
 
 #: ../src/plugins/gajim/gajim.c:505
 msgid "Instant Message (Gajim)"
-msgstr "インスタント・メッセージ (Gajim)"
+msgstr "インスタントメッセージ (Gajim)"
 
 #: ../src/plugins/nautilus-burn/nautilus-burn.c:90
 msgid "New CD/DVD"
@@ -244,137 +240,42 @@ msgstr "CD/DVD の作成"
 
 #: ../src/plugins/pidgin/pidgin.c:464
 msgid "Instant Message (Pidgin)"
-msgstr "インスタント・メッセンジャー (Pidgin)"
+msgstr "インスタントメッセンジャー (Pidgin)"
 
 #: ../src/plugins/removable-devices/removable-devices.c:274
 msgid "Removable disks and shares"
-msgstr "リムーバブル・ディスクと共有"
+msgstr "リムーバブルディスクと共有"
 
 #: ../src/plugins/socialweb/socialweb.c:186
 #, c-format
 msgid "Uploading '%s'"
-msgstr ""
+msgstr "'%s' をアップロード中"
 
 #: ../src/plugins/socialweb/socialweb.c:256
 msgid "Preparing upload"
-msgstr ""
+msgstr "アップロードの準備中"
 
 #: ../src/plugins/socialweb/socialweb.c:316
 #, c-format
 msgid "Service '%s' is not configured."
-msgstr ""
+msgstr "サービス '%s' は設定されていません。"
 
 #: ../src/plugins/socialweb/socialweb.c:319
 #: ../src/plugins/socialweb/socialweb.c:336
 msgid "_Configure"
-msgstr ""
+msgstr "設定(_C)"
 
 #: ../src/plugins/socialweb/socialweb.c:323
 #: ../src/plugins/socialweb/socialweb.c:343
 #, c-format
 msgid "Logged in to service '%s'."
-msgstr ""
+msgstr "サービス '%s' にログインしました。"
 
 #: ../src/plugins/socialweb/socialweb.c:333
-#, fuzzy, c-format
+#, c-format
 msgid "Could not log in to service '%s'."
-msgstr "次の連作先が見つかりませんでした: %s"
+msgstr "次のサービスにログインできませんでした: %s"
 
 #: ../src/plugins/upnp/upnp.c:309
 msgid "UPnP Media Server"
-msgstr "UPnP メディア・サーバ"
-
-#~ msgid "Send To..."
-#~ msgstr "送る..."
-
-#~ msgid "Send file by mail, instant message..."
-#~ msgstr ""
-#~ "ファイルをメールやインスタント・メッセンジャーなどを使って送信します..."
-
-#~ msgid "Send files by mail, instant message..."
-#~ msgstr ""
-#~ "ファイルをメールやインスタント・メッセンジャーなどを使って送信します..."
-
-#~ msgid "Could not load any plugins."
-#~ msgstr "プラグインを読み込めませんでした。"
-
-#~ msgid "Please verify your installation"
-#~ msgstr "インストールを確認してください"
-
-#~ msgid "<b>Compression</b>"
-#~ msgstr "<b>圧縮</b>"
-
-#~ msgid "<b>Destination</b>"
-#~ msgstr "<b>送信先</b>"
-
-#~ msgid "Send _as:"
-#~ msgstr "使用するアプリ(_A):"
-
-#~ msgid "Send t_o:"
-#~ msgstr "宛先(_O):"
-
-#~ msgid "Email"
-#~ msgstr "メーラー"
-
-#~ msgid "Last plugin used to send"
-#~ msgstr "最後に使用した送信プラグイン"
-
-#~ msgid "Last type of archive used"
-#~ msgstr "最後に使用したアーカイブの種類"
-
-#~ msgid ""
-#~ "Used to store which plugin was used the last time files were sent using "
-#~ "nautilus-sendto."
-#~ msgstr ""
-#~ "nautilus-sendto を使って最後にファイルを送信した時に使用したプラグインの名"
-#~ "前を格納します。"
-
-#~ msgid ""
-#~ "Used to store which type of archive was used the last time (0: zip, 1: "
-#~ "tar.gz, 2: tar.bz2)."
-#~ msgstr ""
-#~ "nautilus-sendto を使って、最後に送信したアーカイブの種類を格納します (0: "
-#~ "zip、1: tar.gz、2: tar.bz2)。"
-
-#~ msgid "_Send to..."
-#~ msgstr "送る(_S)..."
-
-#~ msgid "Send files to remote devices, or people"
-#~ msgstr ""
-#~ "リモート・デバイスや指定したアドレスにファイルを送信するプラグインです。"
-
-#~ msgid "Send to..."
-#~ msgstr "ファイルを送る"
-
-#~ msgid "Nautilus Integration"
-#~ msgstr "Nautilus との連携"
-
-#~ msgid "Provides integration with Nautilus"
-#~ msgstr "GNOME Nautilus との連携機能を提供します。"
-
-#~ msgid "Nautilus Sendto"
-#~ msgstr "Nautilus Sendto"
-
-#~ msgid "Programming error, could not find the device in the list"
-#~ msgstr "プログラム・エラーです (Bluetooth のデバイスを検出できませんでした)"
-
-#~ msgid "Obex Push file transfer unsupported"
-#~ msgstr "Obex プッシュ式ファイル転送はサポートしていません"
-
-#~ msgid "Bluetooth (OBEX Push)"
-#~ msgstr "Bluetooth (OBEX プッシュ)"
-
-#~ msgid "The contact selected cannot receive files."
-#~ msgstr "この仲間はファイルを受け取ることができません。"
-
-#~ msgid "The contact selected is offline."
-#~ msgstr "この仲間はオフラインのようです。"
-
-#~ msgid "No error message"
-#~ msgstr "エラー・メッセージ無し"
-
-#~ msgid "Instant Message (Empathy)"
-#~ msgstr "インスタント・メッセンジャー (Empathy)"
-
-#~ msgid "Instant Message (Gaim)"
-#~ msgstr "インスタント・メッセンジャー"
+msgstr "UPnP メディアサーバー"
