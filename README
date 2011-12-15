@@ -1,0 +1,11 @@
+***********************************
+* Libsocialweb in nautilus-sendto *
+***********************************
+
+In order to be able to use of libsocialweb and share your files
+(videos or images) using other social sharing technologies, you will
+need to set up some libsocialweb accounts. So as to do this, download bisho
+(MeeGo configuration tool for libsocialweb social network aggregator),
+and use it to set up all your accounts. Once you have done this and
+have restarted nautilus-sendto, you should be able to see the
+configured accounts available for use.
