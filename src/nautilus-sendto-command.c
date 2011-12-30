@@ -53,6 +53,7 @@ enum {
 static char **filenames = NULL;
 static gboolean run_from_build_dir = FALSE;
 static gint64 xid = 0;
+static gboolean show_version = FALSE;
 
 static PeasEngine *engine;
 static PeasExtensionSet *exten_set;
@@ -79,6 +80,7 @@ static const GOptionEntry entries[] = {
 	{ "run-from-build-dir", 'b', 0, G_OPTION_ARG_NONE, &run_from_build_dir, N_("Run from build directory"), NULL },
 	{ "xid", 'x', 0, G_OPTION_ARG_INT64, &xid, N_("Use XID as parent to the send dialogue"), NULL },
 	{ G_OPTION_REMAINING, '\0', 0, G_OPTION_ARG_FILENAME_ARRAY, &filenames, N_("Files to send"), "[FILES...]" },
+	{"version", 'v', 0, G_OPTION_ARG_NONE, &show_version, N_("Output version information and exit"), NULL},
 	{ NULL }
 };
 
@@ -692,6 +694,11 @@ int main (int argc, char **argv)
 		g_print (_("Could not parse command-line options: %s\n"), error->message);
 		g_error_free (error);
 		return 1;
+	}
+
+        if (show_version) {
+		g_print ("%s %s\n", PACKAGE_NAME, PACKAGE_VERSION);
+		return 0;
 	}
 
 	nst = g_new0 (NautilusSendto, 1);
