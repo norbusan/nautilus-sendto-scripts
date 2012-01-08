@@ -1,9 +1,9 @@
 # Bulgarian translation of nautilus-sendto po-file.
-# Copyright (C) 2004, 2005, 2007, 2011 Free Software Foundation, Inc.
+# Copyright (C) 2004, 2005, 2007, 2011, 2012 Free Software Foundation, Inc.
 # Copyright (C) 2010 Krasimir Chonov <mk2616@abv.bg>.
 # This file is distributed under the same license as the nautilus-sendto package.
 # Vladimir Petkov <kaladan@gmail.com>, 2004.
-# Alexander Shopov <ash@kambanaria.org>, 2005, 2011.
+# Alexander Shopov <ash@kambanaria.org>, 2005, 2011, 2012.
 # Yavor Doganov <yavor@doganov.org>. 2007.
 # Krasimir Chonov <mk2616@abv.bg>, 2010.
 #
@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nautilus-sendto master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-08-11 06:47+0300\n"
-"PO-Revision-Date: 2011-08-11 06:47+0300\n"
+"POT-Creation-Date: 2012-01-08 07:58+0200\n"
+"PO-Revision-Date: 2012-01-08 07:58+0200\n"
 "Last-Translator: Alexander Shopov <ash@kambanaria.org>\n"
 "Language-Team: Bulgarian <dict@fsa-bg.org>\n"
 "Language: bg\n"
@@ -21,27 +21,31 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
-#: ../src/nautilus-sendto-command.c:79
+#: ../src/nautilus-sendto-command.c:80
 msgid "Run from build directory"
 msgstr "Стартиране от папката за компилация"
 
-#: ../src/nautilus-sendto-command.c:80
+#: ../src/nautilus-sendto-command.c:81
 msgid "Use XID as parent to the send dialogue"
 msgstr ""
 "Определяне на родителския прозорец, към който да се отвори прозореца, чрез "
 "XID"
 
-#: ../src/nautilus-sendto-command.c:81
+#: ../src/nautilus-sendto-command.c:82
 msgid "Files to send"
 msgstr "Файлове за изпращане"
 
+#: ../src/nautilus-sendto-command.c:83
+msgid "Output version information and exit"
+msgstr "Извеждане на информация за версията и изход"
+
 #. FIXME, this needs to be done in UI now
-#: ../src/nautilus-sendto-command.c:662
+#: ../src/nautilus-sendto-command.c:664
 #, c-format
 msgid "Expects URIs or filenames to be passed as options\n"
 msgstr "За опции се очакват адреси или файлове\n"
 
-#: ../src/nautilus-sendto-command.c:692
+#: ../src/nautilus-sendto-command.c:694
 #, c-format
 msgid "Could not parse command-line options: %s\n"
 msgstr "Опциите от командния ред не могат да се анализират: %s\n"
