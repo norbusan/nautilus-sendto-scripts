@@ -59,8 +59,9 @@
               </packing>
             </child>
             <child>
-              <object class="GtkHBox" id="hbox_contacts_widgets">
+              <object class="GtkBox" id="hbox_contacts_widgets">
                 <property name="visible">True</property>
+                <property name="orientation">horizontal</property>
                 <property name="spacing">12</property>
                 <child>
                   <object class="GtkNotebook" id="contacts_notebook">
@@ -119,8 +120,9 @@
                     <property name="xscale">0</property>
                     <property name="yscale">0</property>
                     <child>
-                      <object class="GtkHBox" id="hbox2">
+                      <object class="GtkBox" id="hbox2">
                         <property name="visible">True</property>
+                        <property name="orientation">horizontal</property>
                         <property name="spacing">2</property>
                         <child>
                           <object class="GtkSpinner" id="spinner">

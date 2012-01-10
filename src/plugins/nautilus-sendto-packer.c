@@ -213,6 +213,7 @@ nst_pack_widget_init (NstPackWidget *self)
 						      NAUTILUS_SENDTO_LAST_COMPRESS));
 	g_object_unref (settings);
 
+	gtk_orientable_set_orientation (GTK_ORIENTABLE (self), GTK_ORIENTATION_VERTICAL);
 	gtk_container_add (GTK_CONTAINER (self), vbox);
 }
 

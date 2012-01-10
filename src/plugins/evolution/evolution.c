@@ -266,7 +266,7 @@ evolution_plugin_get_widget (NautilusSendtoPlugin *plugin,
 	add_sources (E_CONTACT_ENTRY (p->entry));
 	setup_source_changes (E_CONTACT_ENTRY (p->entry));
 
-	p->vbox = gtk_vbox_new (FALSE, 8);
+	p->vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 8);
 	gtk_box_pack_start (GTK_BOX (p->vbox), p->entry, FALSE, FALSE, 0);
 
 	alignment = gtk_alignment_new (0.0, 1.0, 1.0, 0.0);

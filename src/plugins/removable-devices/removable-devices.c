@@ -255,7 +255,7 @@ removable_devices_plugin_get_widget (NautilusSendtoPlugin *plugin,
 	g_signal_connect (G_OBJECT (p->vol_monitor), "mount-added", G_CALLBACK (cb_mount_added), plugin);
 	g_signal_connect (G_OBJECT (p->vol_monitor), "mount-changed", G_CALLBACK (cb_mount_changed), plugin);
 
-	box = gtk_vbox_new (FALSE, 8);
+	box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 8);
 	gtk_box_pack_start (GTK_BOX (box), p->cb, TRUE, FALSE, 0);
 	gtk_widget_show_all (box);
 

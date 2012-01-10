@@ -17,7 +17,7 @@
       </row>
     </data>
   </object>
-                      <object class="GtkVBox" id="vbox4">
+                      <object class="GtkBox" id="vbox4">
                         <property name="visible">True</property>
                         <property name="homogeneous">False</property>
 			<property name="spacing">6</property>
@@ -52,7 +52,7 @@
                             <property name="left_padding">12</property>
                             <property name="right_padding">0</property>
                             <child>
-                              <object class="GtkHBox" id="hbox4">
+                              <object class="GtkBox" id="hbox4">
                                 <property name="visible">True</property>
                                 <property name="homogeneous">False</property>
 				<property name="spacing">6</property>

@@ -268,7 +268,7 @@ create_widget (SocialwebPlugin *plugin,
 	SocialwebPage *page;
 
 	page = g_new0 (SocialwebPage, 1);
-	page->page = gtk_vbox_new (FALSE, 8);
+	page->page = gtk_box_new (GTK_ORIENTATION_VERTICAL, 8);
 	page->service = g_object_ref (service);
 	page->plugin = plugin;
 	page->progress = nst_progress_bar_new ();

@@ -30,12 +30,12 @@
 typedef struct NstPackWidgetPrivate NstPackWidgetPrivate;
 
 typedef struct {
-	GtkVBox parent;
+	GtkBox parent;
 	NstPackWidgetPrivate *priv;
 } NstPackWidget;
 
 typedef struct {
-	GtkVBoxClass parent;
+	GtkBoxClass parent;
 } NstPackWidgetClass;
 
 GType nst_pack_widget_get_type      (void);
