@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nautilus-sendto\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-22 14:06+0100\n"
-"PO-Revision-Date: 2011-01-22 14:07+0100\n"
+"POT-Creation-Date: 2012-01-18 09:14+0100\n"
+"PO-Revision-Date: 2012-01-18 09:14+0100\n"
 "Last-Translator: Daniel Nylander <po@danielnylander.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "Language: sv\n"
@@ -17,25 +17,29 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../src/nautilus-sendto-command.c:79
+#: ../src/nautilus-sendto-command.c:80
 msgid "Run from build directory"
 msgstr "Kör från byggkatalogen"
 
-#: ../src/nautilus-sendto-command.c:80
+#: ../src/nautilus-sendto-command.c:81
 msgid "Use XID as parent to the send dialogue"
 msgstr "Använd XID som förälder till sänd-dialogrutan"
 
-#: ../src/nautilus-sendto-command.c:81
+#: ../src/nautilus-sendto-command.c:82
 msgid "Files to send"
 msgstr "Filer att skicka"
 
+#: ../src/nautilus-sendto-command.c:83
+msgid "Output version information and exit"
+msgstr "Skriv ut versionsinformation och avsluta"
+
 #. FIXME, this needs to be done in UI now
-#: ../src/nautilus-sendto-command.c:669
+#: ../src/nautilus-sendto-command.c:664
 #, c-format
 msgid "Expects URIs or filenames to be passed as options\n"
 msgstr "Förväntar URI:er eller filnamn att skickas som flaggor\n"
 
-#: ../src/nautilus-sendto-command.c:699
+#: ../src/nautilus-sendto-command.c:694
 #, c-format
 msgid "Could not parse command-line options: %s\n"
 msgstr "Kunde inte tolka kommandoradsflaggor: %s\n"
@@ -283,62 +287,86 @@ msgstr "UPnP-mediaserver"
 
 #~ msgid "Last plugin used to send"
 #~ msgstr "Senaste använd insticksmodul för att skicka"
+
 #~ msgid "Last type of archive used"
 #~ msgstr "Senaste använda arkivtyp"
+
 #~ msgid ""
 #~ "Used to store which plugin was used the last time files were sent using "
 #~ "nautilus-sendto."
 #~ msgstr ""
 #~ "Används för att lagra vilken insticksmodul som användes när filer senast "
 #~ "skickades med nautilus-sendto."
+
 #~ msgid ""
 #~ "Used to store which type of archive was used the last time (0: zip, 1: "
 #~ "tar.gz, 2: tar.bz2)."
 #~ msgstr ""
 #~ "Används för att lagra vilken arkivtyp som senast användes (0: zip, 1: tar."
 #~ "gz, 2: tar.bz2)."
+
 #~ msgid "_Send to..."
 #~ msgstr "S_kicka till..."
+
 #~ msgid "Send files to remote devices, or people"
 #~ msgstr "Skicka filer till fjärrenheter eller personer"
+
 #~ msgid "Send to..."
 #~ msgstr "Skicka till..."
+
 #~ msgid "Nautilus Integration"
 #~ msgstr "Nautilus-integration"
+
 #~ msgid "Provides integration with Nautilus"
 #~ msgstr "Tillhandahåller integration med Nautilus"
+
 #~ msgid "Send To..."
 #~ msgstr "Skicka till..."
+
 #~ msgid "Send file by mail, instant message..."
 #~ msgstr "Skicka filen med e-post, snabbmeddelandeprogram..."
+
 #~ msgid "Send files by mail, instant message..."
 #~ msgstr "Skicka filerna med e-post, snabbmeddelandeprogram..."
+
 #~ msgid "Nautilus Sendto"
 #~ msgstr "Nautilus Skickatill"
+
 #~ msgid "Could not load any plugins."
 #~ msgstr "Kunde inte läsa in några insticksmoduler."
+
 #~ msgid "Please verify your installation"
 #~ msgstr "Kontrollera din installation"
+
 #~ msgid "<b>Compression</b>"
 #~ msgstr "<b>Komprimering</b>"
+
 #~ msgid "<b>Destination</b>"
 #~ msgstr "<b>Mål</b>"
+
 #~ msgid "Send _as:"
 #~ msgstr "Skicka s_om:"
+
 #~ msgid "Send t_o:"
 #~ msgstr "Skicka _till:"
+
 #~ msgid "Programming error, could not find the device in the list"
 #~ msgstr "Programmeringsfel, kunde inte hitta enheten i listan"
+
 #~ msgid "Obex Push file transfer unsupported"
 #~ msgstr "Inget stöd för Obex Push-filöverföring"
+
 #~ msgid "Bluetooth (OBEX Push)"
 #~ msgstr "Bluetooth (OBEX Push)"
+
 #~ msgid "The contact selected cannot receive files."
 #~ msgstr "Vald kontakt kan inte ta emot filer."
+
 #~ msgid "The contact selected is offline."
 #~ msgstr "Vald kontakt är frånkopplad."
+
 #~ msgid "No error message"
 #~ msgstr "Inget felmeddelande"
+
 #~ msgid "Instant Message (Empathy)"
 #~ msgstr "Snabbmeddelande (Empathy)"
-
