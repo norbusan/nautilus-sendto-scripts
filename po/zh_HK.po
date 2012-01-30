@@ -9,9 +9,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nautilus-sendto 2.91.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-05-13 09:57+0800\n"
-"PO-Revision-Date: 2011-05-13 09:57+0800\n"
-"Last-Translator: Pin-hsien Li <pspeter9931@gmail.com>\n"
+"POT-Creation-Date: 2012-01-30 19:36+0800\n"
+"PO-Revision-Date: 2012-01-30 19:36+0800\n"
+"Last-Translator: Chao-Hsiung Liao <j_h_liau@yahoo.com.tw>\n"
 "Language-Team: Chinese (Hong Kong) <community@linuxhall.org>\n"
 "Language: zh_TW\n"
 "MIME-Version: 1.0\n"
@@ -20,25 +20,29 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Virtaal 0.5.1\n"
 
-#: ../src/nautilus-sendto-command.c:79
+#: ../src/nautilus-sendto-command.c:80
 msgid "Run from build directory"
 msgstr "從編譯目錄執行"
 
-#: ../src/nautilus-sendto-command.c:80
+#: ../src/nautilus-sendto-command.c:81
 msgid "Use XID as parent to the send dialogue"
 msgstr "使用 XID 做為傳送對話盒的父項"
 
-#: ../src/nautilus-sendto-command.c:81
+#: ../src/nautilus-sendto-command.c:82
 msgid "Files to send"
 msgstr "要傳送的檔案"
 
+#: ../src/nautilus-sendto-command.c:83
+msgid "Output version information and exit"
+msgstr "輸出版本資訊並結束"
+
 #. FIXME, this needs to be done in UI now
-#: ../src/nautilus-sendto-command.c:662
+#: ../src/nautilus-sendto-command.c:664
 #, c-format
 msgid "Expects URIs or filenames to be passed as options\n"
 msgstr "應使用 URI 或檔案名稱做為選項\n"
 
-#: ../src/nautilus-sendto-command.c:692
+#: ../src/nautilus-sendto-command.c:694
 #, c-format
 msgid "Could not parse command-line options: %s\n"
 msgstr "無法分析命令列選項：%s\n"
@@ -277,52 +281,3 @@ msgstr "無法登入服務「%s」。"
 #: ../src/plugins/upnp/upnp.c:309
 msgid "UPnP Media Server"
 msgstr "UPnP 媒體伺服器"
-
-#~ msgid "Send To..."
-#~ msgstr "傳送到…"
-
-#~ msgid "Send file by mail, instant message..."
-#~ msgstr "經電子郵件、即時訊息等等途徑傳送檔案"
-
-#~ msgid "Send files by mail, instant message..."
-#~ msgstr "經電子郵件、即時訊息等等途徑傳送檔案"
-
-#~ msgid "Last plugin used to send"
-#~ msgstr "上次用來傳送的外掛程式"
-
-#~ msgid "Last type of archive used"
-#~ msgstr "上次使用的壓縮檔類型"
-
-#~ msgid ""
-#~ "Used to store which plugin was used the last time files were sent using "
-#~ "nautilus-sendto."
-#~ msgstr "用來儲存上次使用 nautilus-sendto 傳送檔案的外掛程式。"
-
-#~ msgid ""
-#~ "Used to store which type of archive was used the last time (0: zip, 1: "
-#~ "tar.gz, 2: tar.bz2)."
-#~ msgstr "用來儲存上次使用的壓縮檔類型 (0: zip、1: tar.gz、2: tar.bz2)。"
-
-#~ msgid "_Send to..."
-#~ msgstr "傳送到(_S)…"
-
-#~ msgid "Send files to remote devices, or people"
-#~ msgstr "傳送檔案給遠端裝置或人員"
-
-#~ msgid "Send to..."
-#~ msgstr "傳送到…"
-
-#~ msgid "Nautilus Sendto"
-#~ msgstr "Nautilus 傳送檔案"
-
-#~ msgid "Could not load any plugins."
-#~ msgstr "無法載入任何外掛程式。"
-
-#~ msgid "Please verify your installation"
-#~ msgstr "請檢查安裝是否正確"
-
-#~ msgid "<b>Compression</b>"
-#~ msgstr "<b>壓縮</b>"
-
-#~ msgid "<b>Destination</b>"
-#~ msgstr "<b>目的端</b>"
