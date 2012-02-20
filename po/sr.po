@@ -1,44 +1,48 @@
 # Serbian translation of nautilus-send-to
-# Courtesy of Prevod.org team (http://prevod.org/) -- 2010.
+# Courtesy of Prevod.org team (http://prevod.org/) -- 2010—2012.
 # This file is distributed under the same license as the nautilus-send-to package.
 # Милош Поповић <gpopac@gmail.com>, 2010.
-# Мирослав Николић <miroslavnikolic@rocketmail.com>, 2011.
+# Мирослав Николић <miroslavnikolic@rocketmail.com>, 2011, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: nautilus-send-to\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
-"product=nautilus-sendto&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2011-05-13 01:58+0000\n"
-"PO-Revision-Date: 2011-05-17 20:04+0200\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product"
+"=nautilus-sendto&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2012-01-28 16:44+0000\n"
+"PO-Revision-Date: 2012-02-19 16:57+0200\n"
 "Last-Translator: Мирослав Николић <miroslavnikolic@rocketmail.com>\n"
 "Language-Team: Serbian <gnom@prevod.org>\n"
+"Language: sr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: Serbian (sr)\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
-"10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Virtaal 0.5.2\n"
-
-#: ../src/nautilus-sendto-command.c:79
-msgid "Run from build directory"
-msgstr "Покрени из директоријума изградње"
+"Plural-Forms: nplurals=4; plural=n==1? 3 : n%10==1 && n%100!=11 ? 0 : "
+"n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Project-Style: gnome\n"
 
 #: ../src/nautilus-sendto-command.c:80
+msgid "Run from build directory"
+msgstr "Покреће из директоријума изградње"
+
+#: ../src/nautilus-sendto-command.c:81
 msgid "Use XID as parent to the send dialogue"
 msgstr "Користи ХИД као основу за прозорче слања"
 
-#: ../src/nautilus-sendto-command.c:81
+#: ../src/nautilus-sendto-command.c:82
 msgid "Files to send"
 msgstr "Датотеке за слање"
 
+#: ../src/nautilus-sendto-command.c:83
+msgid "Output version information and exit"
+msgstr "Исписује податке о издању и излази"
+
 #. FIXME, this needs to be done in UI now
-#: ../src/nautilus-sendto-command.c:662
+#: ../src/nautilus-sendto-command.c:664
 #, c-format
 msgid "Expects URIs or filenames to be passed as options\n"
 msgstr "Очекујем унос адреса или имена датотека у виду опција\n"
 
-#: ../src/nautilus-sendto-command.c:692
+#: ../src/nautilus-sendto-command.c:694
 #, c-format
 msgid "Could not parse command-line options: %s\n"
 msgstr "Не могу да рашчланим опције наредбе: %s\n"
@@ -50,6 +54,7 @@ msgid_plural "Sharing %d folders"
 msgstr[0] "Делим %d фасциклу"
 msgstr[1] "Делим %d фасцикле"
 msgstr[2] "Делим %d фасцикли"
+msgstr[3] "Делим једну фасциклу"
 
 #: ../src/nautilus-sendto-mimetype.c:52
 #, c-format
@@ -63,6 +68,7 @@ msgid_plural "Sharing %d videos"
 msgstr[0] "Делим %d видео снимак"
 msgstr[1] "Делим %d видео снимка"
 msgstr[2] "Делим %d видео снимака"
+msgstr[3] "Делим један видео снимак"
 
 #: ../src/nautilus-sendto-mimetype.c:79
 #, c-format
@@ -71,6 +77,7 @@ msgid_plural "Sharing %d photos"
 msgstr[0] "Делим %d фотографију"
 msgstr[1] "Делим %d фотографије"
 msgstr[2] "Делим %d фотографија"
+msgstr[3] "Делим једну фотографију"
 
 #: ../src/nautilus-sendto-mimetype.c:81
 #, c-format
@@ -79,6 +86,7 @@ msgid_plural "Sharing %d images"
 msgstr[0] "Делим %d слику"
 msgstr[1] "Делим %d слике"
 msgstr[2] "Делим %d слика"
+msgstr[3] "Делим једну слику"
 
 #: ../src/nautilus-sendto-mimetype.c:83
 #, c-format
@@ -87,6 +95,7 @@ msgid_plural "Sharing %d text files"
 msgstr[0] "Делим %d текстуалну датотеку"
 msgstr[1] "Делим %d текстуалне датотеке"
 msgstr[2] "Делим %d текстуалних датотека"
+msgstr[3] "Делим једну текстуалну датотеку"
 
 #: ../src/nautilus-sendto-mimetype.c:85
 #, c-format
@@ -95,6 +104,7 @@ msgid_plural "Sharing %d files"
 msgstr[0] "Делим %d датотеку"
 msgstr[1] "Делим %d датотеке"
 msgstr[2] "Делим %d датотека"
+msgstr[3] "Делим једну датотеку"
 
 #: ../data/nautilus-sendto.ui.h:1
 msgid "_Send"
@@ -114,7 +124,7 @@ msgstr "Пошаљи _запаковано као:"
 
 #: ../src/plugins/evolution/evolution.c:308
 msgid "Mail"
-msgstr "Е-пошта"
+msgstr "Ел. пошта"
 
 #: ../src/plugins/evolution/e-contact-entry.c:153
 #, c-format
@@ -128,7 +138,7 @@ msgstr "Не могу да нађем контакт: %s"
 
 #: ../src/plugins/evolution/e-contact-entry.c:414
 msgid "Cannot create searchable view."
-msgstr "Не могу прикажем претрагу."
+msgstr "Не могу да прикажем претрагу."
 
 #: ../src/plugins/evolution/e-contact-entry.c:886
 msgid "Success"
@@ -201,7 +211,7 @@ msgstr "Није доступна сигурна веза."
 
 #: ../src/plugins/evolution/e-contact-entry.c:920
 msgid "A CORBA error occurred whilst accessing the address book."
-msgstr "Дошло је до CORBA грешке приликом приступања адресару."
+msgstr "Дошло је до грешке КОРБА-е приликом приступања адресару."
 
 #: ../src/plugins/evolution/e-contact-entry.c:922
 msgid "The address book source does not exist."
@@ -250,7 +260,7 @@ msgstr "Место за израду дискова"
 
 #: ../src/plugins/pidgin/pidgin.c:464
 msgid "Instant Message (Pidgin)"
-msgstr "Брзе поруке (Пиџин)"
+msgstr "Брзе поруке (Голупко)"
 
 #: ../src/plugins/removable-devices/removable-devices.c:274
 msgid "Removable disks and shares"
