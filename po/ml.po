@@ -4,142 +4,114 @@
 # jeevz <jeevanism@gmail.com>, 2009.
 # Labeeb Elbiem <mmlabeeb@gmail.com>, 2010.
 # Reviewed by Praveen Arimbrathodiyil <pravi.a@gmail.com>, 2010.
+# Anish A <anish.nl@gmail.com>, 2010.
 msgid ""
 msgstr ""
 "Project-Id-Version: nautilus-sendto-master\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
-"product=nautilus-sendto&component=general\n"
-"POT-Creation-Date: 2010-03-15 11:55+0000\n"
-"PO-Revision-Date: 2010-03-26 12:40+0530\n"
-"Last-Translator: mmlabeeb@gmail.com\n"
-"Language-Team: SMC <smc-discuss@googlegroups.com>\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-02-20 18:37+0530\n"
+"PO-Revision-Date: 2010-12-19 10:20+0530\n"
+"Last-Translator: Anish A <anish.nl@gmail.com>\n"
+"Language-Team: Swathantra Malayalam Computing <discuss@lists.smc.org.in>\n"
+"Language: ml\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Virtaal 0.5.2\n"
 
-#: ../nst.schemas.in.h:1
-msgid "Last plugin used to send"
-msgstr "അവസാനമായി അയയ്ക്കാന്‍ ഉപയോഗിച്ച സംയോജകം"
+#: ../src/nautilus-sendto-command.c:80
+msgid "Run from build directory"
+msgstr "നിര്‍മ്മാണ ഫോള്‍ഡറില്‍നിന്ന് പ്രവര്‍ത്തിക്കുക"
 
-#: ../nst.schemas.in.h:2
-msgid "Last type of archive used"
-msgstr "അവസാനമായി ഉപയോഗിച്ച ശേഖരത്തിന്റെ തരം"
+#: ../src/nautilus-sendto-command.c:81
+msgid "Use XID as parent to the send dialogue"
+msgstr "അയക്കല്‍ ജാലകത്തിന്റെ മാതാവായി എക്സ്ഐഡിയെ ഉപയോഗിക്കുക"
 
-#: ../nst.schemas.in.h:3
-msgid ""
-"Used to store which plugin was used the last time files were sent using "
-"nautilus-sendto."
-msgstr "നോട്ടിലസ്-സെന്‍ഡ്ടു ഉപയോഗിച്ച് കഴിഞ്ഞ പ്രാവശ്യം ഫയലുകള്‍ അയച്ചപ്പോള്‍ ഉപയോഗിച്ച സംയോജകം ഏതാണെന്നു് ഓര്‍ത്തുവെക്കാന്‍ ഉപയോഗിച്ചിരിക്കുന്നു."
+#: ../src/nautilus-sendto-command.c:82
+msgid "Files to send"
+msgstr "ആയ്ക്കേണ്ട ഫയല്‍"
 
-#: ../nst.schemas.in.h:4
-msgid ""
-"Used to store which type of archive was used the last time (0: zip, 1: tar."
-"gz, 2: tar.bz2)."
-msgstr "കഴിഞ്ഞ പ്രാവശ്യം ഏതു തരം  ഫയല്‍ ചുരുക്കല്‍ സംവിധാനമാണ് ഉപയോഗിച്ചതെന്ന് ഓര്‍ത്തുവെച്ചിരിക്കുന്നു (0: zip, 1: tar.gz, 2: tar.bz2)."
+#: ../src/nautilus-sendto-command.c:83
+msgid "Output version information and exit"
+msgstr ""
 
-#: ../evolution/nautilus-sendto.c:47
-msgid "_Send to..."
-msgstr "_അയക്കേണ്ടതു്..."
-
-#: ../evolution/org-gnome-evolution-send-attachments-to.eplug.xml.h:1
-msgid "Send files to remote devices, or people"
-msgstr "ഫയലുകള്‍ ദൂരെയുള്ള ഉപകരണങ്ങളിലേയ്ക്കോ ആളുകള്‍ക്കോ അയയ്ക്കുക"
-
-#. the path to the shared library
-#: ../evolution/org-gnome-evolution-send-attachments-to.eplug.xml.h:3
-msgid "Send to..."
-msgstr "അയയ്ക്കേണ്ടതു്... "
-
-#: ../src/nautilus-nste.c:92 ../src/nautilus-nste.c:97
-#: ../src/nautilus-sendto.ui.h:3
-msgid "Send To..."
-msgstr "അയയ്ക്കേണ്ടതു്... "
-
-#: ../src/nautilus-nste.c:93
-msgid "Send file by mail, instant message..."
-msgstr "കത്തായിട്ടോ നിമിഷ സന്ദേശമായിട്ടോ ഫയല്‍ അയയ്ക്കുക..."
-
-#: ../src/nautilus-nste.c:98
-msgid "Send files by mail, instant message..."
-msgstr "കത്തായിട്ടോ നിമിഷ സന്ദേശമായിട്ടോ ഫയലുകള്‍ അയയ്ക്കുക..."
-
-#: ../src/nautilus-sendto-command.c:569
-msgid "Files"
-msgstr "ഫയലുകള്‍"
-
-#: ../src/nautilus-sendto-command.c:782
+#. FIXME, this needs to be done in UI now
+#: ../src/nautilus-sendto-command.c:664
 #, c-format
 msgid "Expects URIs or filenames to be passed as options\n"
 msgstr "യുആര്‍ഐകളോ ഫയല്‍നാമങ്ങളോ ഐച്ഛികങ്ങളായി നല്‍കാന്‍ പ്രതീക്ഷിക്കുന്നു\n"
 
-#: ../src/nautilus-sendto-command.c:803
+#: ../src/nautilus-sendto-command.c:694
 #, c-format
 msgid "Could not parse command-line options: %s\n"
 msgstr "ആജ്ഞാസ്ഥാനത്തു് നല്‍കിയ ഐച്ഛികങ്ങള്‍ വായിച്ചെടുക്കാന്‍ സാധിച്ചില്ല: %s\n"
 
-#: ../src/nautilus-sendto-command.c:818
-msgid "Could not load any plugins."
-msgstr "ഒരു സംയോജകങ്ങളും തുറക്കാന്‍ സാധിച്ചില്ല."
+#: ../src/nautilus-sendto-mimetype.c:50
+#, c-format
+msgid "Sharing %d folder"
+msgid_plural "Sharing %d folders"
+msgstr[0] "%d ഫോള്‍ഡര്‍ പങ്കുവെയ്ക്കുന്നു"
+msgstr[1] "%d ഫോള്‍ഡറുകള്‍ പങ്കുവെയ്ക്കുന്നു"
 
-#: ../src/nautilus-sendto-command.c:821
-msgid "Please verify your installation"
-msgstr "നിങ്ങളുടെ ഇന്‍സ്റ്റലേഷന്‍ ശരിയാണോ എന്നു് ഉറപ്പു വരുത്തുക"
+#: ../src/nautilus-sendto-mimetype.c:52
+#, c-format
+msgid "Sharing %d folders and files"
+msgstr "%d ഫോള്‍ഡറുകളും ഫയലുകളും പങ്കുവെയ്ക്കുന്നു"
 
-#: ../src/nautilus-sendto.ui.h:1
-msgid "<b>Compression</b>"
-msgstr "<b>ചുരുക്കുക</b>"
+#: ../src/nautilus-sendto-mimetype.c:77
+#, c-format
+msgid "Sharing %d video"
+msgid_plural "Sharing %d videos"
+msgstr[0] "%d ചലചിത്രം പങ്കുവെയ്ക്കുന്നു"
+msgstr[1] "%d ചലചിത്രങ്ങള്‍ പങ്കുവെയ്ക്കുന്നു"
 
-#: ../src/nautilus-sendto.ui.h:2
-msgid "<b>Destination</b>"
-msgstr "<b>ലക്ഷ്യസ്ഥാനം</b>"
+#: ../src/nautilus-sendto-mimetype.c:79
+#, c-format
+msgid "Sharing %d photo"
+msgid_plural "Sharing %d photos"
+msgstr[0] "%d ചിത്രം പങ്കുവെയ്ക്കുന്നു"
+msgstr[1] "%d ചിത്രങ്ങള്‍ പങ്കുവെയ്ക്കുന്നു"
 
-#: ../src/nautilus-sendto.ui.h:4
-msgid "Send _as:"
-msgstr "അ_യക്കേണ്ടത്:"
+#: ../src/nautilus-sendto-mimetype.c:81
+#, c-format
+msgid "Sharing %d image"
+msgid_plural "Sharing %d images"
+msgstr[0] "%d ചിത്രം പങ്കുവെയ്ക്കുന്നു"
+msgstr[1] "%d ചിത്രങ്ങള്‍ പങ്കുവെയ്ക്കുന്നു"
 
-#: ../src/nautilus-sendto.ui.h:5
-msgid "Send _packed in:"
-msgstr "കെട്ടി_പ്പൂട്ടി അയക്കുക:"
+#: ../src/nautilus-sendto-mimetype.c:83
+#, c-format
+msgid "Sharing %d text file"
+msgid_plural "Sharing %d text files"
+msgstr[0] "%d ലേഖന ഫയല്‍ പങ്കുവെയ്ക്കുന്നു"
+msgstr[1] "%d ലേഖന ഫയലുകള്‍ പങ്കുവെയ്ക്കുന്നു"
 
-#: ../src/nautilus-sendto.ui.h:6
-msgid "Send t_o:"
-msgstr "_ഇതിലേക്ക് അയക്കുക:"
+#: ../src/nautilus-sendto-mimetype.c:85
+#, c-format
+msgid "Sharing %d file"
+msgid_plural "Sharing %d files"
+msgstr[0] "%d ഫയല്‍ പങ്കുവെയ്ക്കുന്നു"
+msgstr[1] "%d ഫയലുകള്‍ പങ്കുവെയ്ക്കുന്നു"
 
-#: ../src/nautilus-sendto.ui.h:7
+#: ../data/nautilus-sendto.ui.h:1
 msgid "_Send"
 msgstr "_അയക്കുക"
 
-#: ../src/plugins/bluetooth/bluetooth.c:451
-msgid "Programming error, could not find the device in the list"
-msgstr "പ്രോഗ്രാമിംഗ് തകരാറ്, പട്ടികയിലെ ഉപകരണം കണ്ടെത്താന്‍ സാധിച്ചില്ല "
+#: ../src/plugins/nautilus-sendto-packer.c:200
+msgid "Files"
+msgstr "ഫയലുകള്‍"
 
-#: ../src/plugins/bluetooth/bluetooth.c:526
-#, c-format
-msgid "Obex Push file transfer unsupported"
-msgstr "ഒബെക്സ് പുഷ് ഫയല്‍ കൈമാറ്റ സംവിധാനത്തിന് പിന്തുണയില്ല"
+#: ../src/plugins/nautilus-sendto-progress.c:187
+msgid "_Cancel"
+msgstr ""
 
-#: ../src/plugins/bluetooth/bluetooth.c:550
-msgid "Bluetooth (OBEX Push)"
-msgstr "ബ്ലുടൂത്ത് (ഒബെക്സ് പുഷ്)"
+#: ../data/pack-entry.ui.h:1
+msgid "Send _packed in:"
+msgstr "കെട്ടി_പ്പൂട്ടി അയക്കുക:"
 
-#: ../src/plugins/empathy/empathy.c:144
-msgid "The contact selected cannot receive files."
-msgstr "തെരെഞ്ഞെടുത്ത സ്വീകര്‍ത്താവിന് ഫയലുകള്‍ സ്വീകരിക്കാന്‍ സാധ്യമല്ല."
-
-#: ../src/plugins/empathy/empathy.c:150
-msgid "The contact selected is offline."
-msgstr "തെരെഞ്ഞെടുത്ത സ്വീകര്‍ത്താവ് ഓഫ്‌‌ലൈന്‍ ആണ്"
-
-#: ../src/plugins/empathy/empathy.c:205
-msgid "No error message"
-msgstr "തകരാറു സന്ദേശങ്ങള്‍ ഒന്നുമില്ല"
-
-#: ../src/plugins/empathy/empathy.c:281
-msgid "Instant Message (Empathy)"
-msgstr "നിമിഷ സന്ദേശം (എമ്പതി)"
-
-#: ../src/plugins/evolution/evolution.c:369
-msgid "Email"
+#: ../src/plugins/evolution/evolution.c:308
+msgid "Mail"
 msgstr "ഈമെയില്‍"
 
 #: ../src/plugins/evolution/e-contact-entry.c:153
@@ -178,7 +150,7 @@ msgstr "ഈ വിലാസപുസ്തകം നിലവിലില്ല.
 
 #: ../src/plugins/evolution/e-contact-entry.c:896
 msgid "The \"Me\" contact does not exist."
-msgstr "\"Me\" എന്ന വിലാസം  നിലവിലില്ല."
+msgstr "\"ഞാന്‍\" എന്ന വിലാസം  നിലവിലില്ല."
 
 #: ../src/plugins/evolution/e-contact-entry.c:898
 msgid "The address book is not loaded."
@@ -262,15 +234,15 @@ msgstr "അറിയപ്പെടാത്ത സ്വീകര്‍ത്�
 msgid "Instant Message (Gajim)"
 msgstr "നിമിഷ സന്ദേശം (ഗാജിം)"
 
-#: ../src/plugins/nautilus-burn/nautilus-burn.c:92
+#: ../src/plugins/nautilus-burn/nautilus-burn.c:90
 msgid "New CD/DVD"
 msgstr "പുതിയ സിഡി/ഡിവിഡി"
 
-#: ../src/plugins/nautilus-burn/nautilus-burn.c:99
+#: ../src/plugins/nautilus-burn/nautilus-burn.c:97
 msgid "Existing CD/DVD"
 msgstr "നിലവിലുള്ള സിഡി/ഡിവിഡി"
 
-#: ../src/plugins/nautilus-burn/nautilus-burn.c:178
+#: ../src/plugins/nautilus-burn/nautilus-burn.c:176
 msgid "CD/DVD Creator"
 msgstr "സിഡി/ഡിവിഡി നിര്‍മാതാവ്"
 
@@ -278,13 +250,120 @@ msgstr "സിഡി/ഡിവിഡി നിര്‍മാതാവ്"
 msgid "Instant Message (Pidgin)"
 msgstr "നിമിഷ സന്ദേശം (പിട്ഗിന്‍)"
 
-#: ../src/plugins/removable-devices/removable-devices.c:224
+#: ../src/plugins/removable-devices/removable-devices.c:274
 msgid "Removable disks and shares"
 msgstr "ഊരി മാറ്റാവുന്ന ഡിസ്കുകളും പങ്കിട്ടവയും"
 
+#: ../src/plugins/socialweb/socialweb.c:186
+#, c-format
+msgid "Uploading '%s'"
+msgstr "'%s' കയറ്റുമതി ചെയ്യുന്നു"
+
+#: ../src/plugins/socialweb/socialweb.c:256
+msgid "Preparing upload"
+msgstr "കയറ്റുമതിയ്ക്ക് തയ്യാറെടുക്കുന്നു"
+
+#: ../src/plugins/socialweb/socialweb.c:316
+#, c-format
+msgid "Service '%s' is not configured."
+msgstr "'%s' സേവനം സജ്ജീകരിച്ചിട്ടില്ല."
+
+#: ../src/plugins/socialweb/socialweb.c:319
+#: ../src/plugins/socialweb/socialweb.c:336
+msgid "_Configure"
+msgstr "_സജ്ജീകരിയ്ക്കുക"
+
+#: ../src/plugins/socialweb/socialweb.c:323
+#: ../src/plugins/socialweb/socialweb.c:343
+#, c-format
+msgid "Logged in to service '%s'."
+msgstr "'%s' സേവനത്തിലേയ്ക്ക് പ്രവേശിച്ചിരിക്കുന്നു"
+
+#: ../src/plugins/socialweb/socialweb.c:333
+#, c-format
+msgid "Could not log in to service '%s'."
+msgstr "'%s' സേവനത്തിലേയ്ക്ക് പ്രവേശിക്കാന്‍ സാധിക്കുന്നില്ല."
+
 #: ../src/plugins/upnp/upnp.c:309
 msgid "UPnP Media Server"
-msgstr "ആഗോള പ്ലുഗ് ആന്‍ഡ്‌ പ്ലേ (യുപിഎന്‍പി) മീഡിയ സെര്‍വര്‍"
+msgstr "ആഗോള പ്ലുഗ് ആന്‍ഡ്‌ പ്ലേ (യുപിഎന്‍പി) മാധ്യമ സേവകന്‍"
+
+#~ msgid "Last plugin used to send"
+#~ msgstr "അവസാനമായി അയയ്ക്കാന്‍ ഉപയോഗിച്ച സംയോജകം"
+
+#~ msgid "Last type of archive used"
+#~ msgstr "അവസാനമായി ഉപയോഗിച്ച ശേഖരത്തിന്റെ തരം"
+
+#~ msgid ""
+#~ "Used to store which plugin was used the last time files were sent using "
+#~ "nautilus-sendto."
+#~ msgstr ""
+#~ "നോട്ടിലസ്-സെന്‍ഡ്ടു ഉപയോഗിച്ച് കഴിഞ്ഞ പ്രാവശ്യം ഫയലുകള്‍ അയച്ചപ്പോള്‍ ഉപയോഗിച്ച സംയോജകം "
+#~ "ഏതാണെന്നു് ഓര്‍ത്തുവെക്കാന്‍ ഉപയോഗിച്ചിരിക്കുന്നു."
+
+#~ msgid ""
+#~ "Used to store which type of archive was used the last time (0: zip, 1: "
+#~ "tar.gz, 2: tar.bz2)."
+#~ msgstr ""
+#~ "കഴിഞ്ഞ പ്രാവശ്യം ഏതു തരം  ഫയല്‍ ചുരുക്കല്‍ സംവിധാനമാണ് ഉപയോഗിച്ചതെന്ന് ഓര്‍ത്തുവെച്ചിരിക്കുന്നു "
+#~ "(0: zip, 1: tar.gz, 2: tar.bz2)."
+
+#~ msgid "_Send to..."
+#~ msgstr "_അയക്കേണ്ടതു്..."
+
+#~ msgid "Send files to remote devices, or people"
+#~ msgstr "ഫയലുകള്‍ ദൂരെയുള്ള ഉപകരണങ്ങളിലേയ്ക്കോ ആളുകള്‍ക്കോ അയയ്ക്കുക"
+
+#~ msgid "Send to..."
+#~ msgstr "അയയ്ക്കേണ്ടതു്... "
+
+#~ msgid "Send To..."
+#~ msgstr "അയയ്ക്കേണ്ടതു്... "
+
+#~ msgid "Send file by mail, instant message..."
+#~ msgstr "കത്തായിട്ടോ നിമിഷ സന്ദേശമായിട്ടോ ഫയല്‍ അയയ്ക്കുക..."
+
+#~ msgid "Send files by mail, instant message..."
+#~ msgstr "കത്തായിട്ടോ നിമിഷ സന്ദേശമായിട്ടോ ഫയലുകള്‍ അയയ്ക്കുക..."
+
+#~ msgid "Could not load any plugins."
+#~ msgstr "ഒരു സംയോജകങ്ങളും തുറക്കാന്‍ സാധിച്ചില്ല."
+
+#~ msgid "Please verify your installation"
+#~ msgstr "നിങ്ങളുടെ ഇന്‍സ്റ്റലേഷന്‍ ശരിയാണോ എന്നു് ഉറപ്പു വരുത്തുക"
+
+#~ msgid "<b>Compression</b>"
+#~ msgstr "<b>ചുരുക്കുക</b>"
+
+#~ msgid "<b>Destination</b>"
+#~ msgstr "<b>ലക്ഷ്യസ്ഥാനം</b>"
+
+#~ msgid "Send _as:"
+#~ msgstr "അ_യക്കേണ്ടത്:"
+
+#~ msgid "Send t_o:"
+#~ msgstr "_ഇതിലേക്ക് അയക്കുക:"
+
+#~ msgid "Programming error, could not find the device in the list"
+#~ msgstr "പ്രോഗ്രാമിംഗ് തകരാറ്, പട്ടികയിലെ ഉപകരണം കണ്ടെത്താന്‍ സാധിച്ചില്ല "
+
+#~ msgid "Obex Push file transfer unsupported"
+#~ msgstr "ഒബെക്സ് പുഷ് ഫയല്‍ കൈമാറ്റ സംവിധാനത്തിന് പിന്തുണയില്ല"
+
+#~ msgid "Bluetooth (OBEX Push)"
+#~ msgstr "ബ്ലുടൂത്ത് (ഒബെക്സ് പുഷ്)"
+
+#~ msgid "The contact selected cannot receive files."
+#~ msgstr "തെരെഞ്ഞെടുത്ത സ്വീകര്‍ത്താവിന് ഫയലുകള്‍ സ്വീകരിക്കാന്‍ സാധ്യമല്ല."
+
+#~ msgid "The contact selected is offline."
+#~ msgstr "തെരെഞ്ഞെടുത്ത സ്വീകര്‍ത്താവ് ഓഫ്‌‌ലൈന്‍ ആണ്"
+
+#~ msgid "No error message"
+#~ msgstr "തകരാറു സന്ദേശങ്ങള്‍ ഒന്നുമില്ല"
+
+#~ msgid "Instant Message (Empathy)"
+#~ msgstr "നിമിഷ സന്ദേശം (എമ്പതി)"
 
 #~ msgid "Nautilus Sendto"
 #~ msgstr "നോട്ടിലസ് സെന്‍ഡ്ടു"
