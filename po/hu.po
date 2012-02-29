@@ -2,85 +2,119 @@
 # Copyright (C) 2004, 2005, 2006, 2007, 2008, 2009, 2010 Free Software Foundation, Inc.
 # This file is distributed under the same license as the nautilus-sendto package.
 #
-# Gabor Kelemen <kelemeng at gnome dot hu>, 2004, 2005, 2006, 2007, 2008, 2009, 2010.
+# Gabor Kelemen <kelemeng at gnome dot hu>, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2012.
 # Szabolcs Varga <shirokuma at shirokuma dot hu>, 2005.
 # Kalman Kemenczy <kkemenczy at novell dot com>, 2008.
 msgid ""
 msgstr ""
 "Project-Id-Version: nautilus-sendto master\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-07 11:34+0200\n"
-"PO-Revision-Date: 2010-07-07 11:37+0200\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug."
+"cgi?product=nautilus-sendto&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2012-01-06 13:05+0000\n"
+"PO-Revision-Date: 2012-02-29 03:23+0100\n"
 "Last-Translator: Gabor Kelemen <kelemeng at gnome dot hu>\n"
-"Language-Team: Hungarian <gnome at fsf dot hu>\n"
+"Language-Team: Magyar <gnome-hu-list at gnome dot org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.11.4\n"
+"X-Generator: Lokalize 1.0\n"
 "Plural-Forms:  nplurals=2; plural=(n != 1);\n"
 
-#: ../src/nautilus-nste.c:92 ../src/nautilus-nste.c:97
-#: ../src/nautilus-sendto.ui.h:3
-msgid "Send To..."
-msgstr "Küldés…"
+#: ../src/nautilus-sendto-command.c:80
+msgid "Run from build directory"
+msgstr "Futtatás a build könyvtárból"
 
-#: ../src/nautilus-nste.c:93
-msgid "Send file by mail, instant message..."
-msgstr "Fájl küldése levélben, azonnali üzenetként…"
+#: ../src/nautilus-sendto-command.c:81
+msgid "Use XID as parent to the send dialogue"
+msgstr "Az XID használata a küldési ablak szülőjeként"
 
-#: ../src/nautilus-nste.c:98
-msgid "Send files by mail, instant message..."
-msgstr "Fájlok küldése levélben, azonnali üzenetként…"
+#: ../src/nautilus-sendto-command.c:82
+#| msgid "Unable to send file"
+msgid "Files to send"
+msgstr "Elküldendő fájlok"
 
-#: ../src/nautilus-sendto-command.c:572
-msgid "Files"
-msgstr "Fájlok"
+#: ../src/nautilus-sendto-command.c:83
+msgid "Output version information and exit"
+msgstr "Verzióinformációk kiírása és kilépés"
 
-#: ../src/nautilus-sendto-command.c:783
+#. FIXME, this needs to be done in UI now
+#: ../src/nautilus-sendto-command.c:664
 #, c-format
 msgid "Expects URIs or filenames to be passed as options\n"
 msgstr "URI címekre vagy fájlnevekre számít paraméterekként\n"
 
-#: ../src/nautilus-sendto-command.c:804
+#: ../src/nautilus-sendto-command.c:694
 #, c-format
 msgid "Could not parse command-line options: %s\n"
 msgstr "Nem dolgozhatók fel a parancssori kapcsolók: %s\n"
 
-#: ../src/nautilus-sendto-command.c:819
-msgid "Could not load any plugins."
-msgstr "Nem tölthetők be bővítmények."
+#: ../src/nautilus-sendto-mimetype.c:50
+#, c-format
+msgid "Sharing %d folder"
+msgid_plural "Sharing %d folders"
+msgstr[0] "%d mappa megosztása"
+msgstr[1] "%d mappa megosztása"
 
-#: ../src/nautilus-sendto-command.c:822
-msgid "Please verify your installation"
-msgstr "Ellenőrizze a telepítést"
+#: ../src/nautilus-sendto-mimetype.c:52
+#, c-format
+msgid "Sharing %d folders and files"
+msgstr "%d mappa és fájl megosztása"
 
-#: ../src/nautilus-sendto.ui.h:1
-msgid "<b>Compression</b>"
-msgstr "<b>Tömörítés</b>"
+#: ../src/nautilus-sendto-mimetype.c:77
+#, c-format
+msgid "Sharing %d video"
+msgid_plural "Sharing %d videos"
+msgstr[0] "%d videó megosztása"
+msgstr[1] "%d videó megosztása"
 
-#: ../src/nautilus-sendto.ui.h:2
-msgid "<b>Destination</b>"
-msgstr "<b>Cél</b>"
+#: ../src/nautilus-sendto-mimetype.c:79
+#, c-format
+msgid "Sharing %d photo"
+msgid_plural "Sharing %d photos"
+msgstr[0] "%d fénykép megosztása"
+msgstr[1] "%d fénykép megosztása"
 
-#: ../src/nautilus-sendto.ui.h:4
-msgid "Send _as:"
-msgstr "Küldés _módja:"
+#: ../src/nautilus-sendto-mimetype.c:81
+#, c-format
+msgid "Sharing %d image"
+msgid_plural "Sharing %d images"
+msgstr[0] "%d kép megosztása"
+msgstr[1] "%d kép megosztása"
 
-#: ../src/nautilus-sendto.ui.h:5
-msgid "Send _packed in:"
-msgstr "Küldés _tömörítve:"
+#: ../src/nautilus-sendto-mimetype.c:83
+#, c-format
+msgid "Sharing %d text file"
+msgid_plural "Sharing %d text files"
+msgstr[0] "%d szövegfájl megosztása"
+msgstr[1] "%d szövegfájl megosztása"
 
-#: ../src/nautilus-sendto.ui.h:6
-msgid "Send t_o:"
-msgstr "Küldés _célja:"
+#: ../src/nautilus-sendto-mimetype.c:85
+#, c-format
+msgid "Sharing %d file"
+msgid_plural "Sharing %d files"
+msgstr[0] "%d fájl megosztása"
+msgstr[1] "%d fájl megosztása"
 
-#: ../src/nautilus-sendto.ui.h:7
+#: ../data/nautilus-sendto.ui.h:1
 msgid "_Send"
 msgstr "_Küldés"
 
-#: ../src/plugins/evolution/evolution.c:378
-msgid "Email"
-msgstr "E-mail"
+#: ../src/plugins/nautilus-sendto-packer.c:200
+msgid "Files"
+msgstr "Fájlok"
+
+#: ../src/plugins/nautilus-sendto-progress.c:187
+msgid "_Cancel"
+msgstr "Mé_gse"
+
+#: ../data/pack-entry.ui.h:1
+msgid "Send _packed in:"
+msgstr "Küldés _tömörítve:"
+
+#: ../src/plugins/evolution/evolution.c:308
+#| msgid "Email"
+msgid "Mail"
+msgstr "Levél"
 
 #: ../src/plugins/evolution/e-contact-entry.c:153
 #, c-format
@@ -157,8 +191,10 @@ msgid "The address book authentication failed."
 msgstr "A címjegyzék hitelesítése meghiúsult."
 
 #: ../src/plugins/evolution/e-contact-entry.c:916
-msgid "Authentication is required to access the address book and was not given."
-msgstr "A címjegyzék eléréséhez hitelesítés szükséges, ami nem került megadásra."
+msgid ""
+"Authentication is required to access the address book and was not given."
+msgstr ""
+"A címjegyzék eléréséhez hitelesítés szükséges, ami nem került megadásra."
 
 #: ../src/plugins/evolution/e-contact-entry.c:918
 msgid "A secure connection is not available."
@@ -201,15 +237,15 @@ msgstr "Ismeretlen címzett."
 msgid "Instant Message (Gajim)"
 msgstr "Azonnali üzenet (Gajim)"
 
-#: ../src/plugins/nautilus-burn/nautilus-burn.c:92
+#: ../src/plugins/nautilus-burn/nautilus-burn.c:90
 msgid "New CD/DVD"
 msgstr "Új CD/DVD"
 
-#: ../src/plugins/nautilus-burn/nautilus-burn.c:99
+#: ../src/plugins/nautilus-burn/nautilus-burn.c:97
 msgid "Existing CD/DVD"
 msgstr "Meglévő CD/DVD"
 
-#: ../src/plugins/nautilus-burn/nautilus-burn.c:178
+#: ../src/plugins/nautilus-burn/nautilus-burn.c:176
 msgid "CD/DVD Creator"
 msgstr "CD/DVD-készítő"
 
@@ -217,11 +253,68 @@ msgstr "CD/DVD-készítő"
 msgid "Instant Message (Pidgin)"
 msgstr "Azonnali üzenet (Pidgin)"
 
-#: ../src/plugins/removable-devices/removable-devices.c:248
+#: ../src/plugins/removable-devices/removable-devices.c:274
 msgid "Removable disks and shares"
 msgstr "Cserélhető lemezek és megosztások"
+
+#: ../src/plugins/socialweb/socialweb.c:186
+#, c-format
+msgid "Uploading '%s'"
+msgstr "„%s” feltöltése"
+
+#: ../src/plugins/socialweb/socialweb.c:256
+msgid "Preparing upload"
+msgstr "Feltöltés előkészítése"
+
+#: ../src/plugins/socialweb/socialweb.c:316
+#, c-format
+msgid "Service '%s' is not configured."
+msgstr "A(z) „%s” szolgáltatás nincs beállítva."
+
+#: ../src/plugins/socialweb/socialweb.c:319
+#: ../src/plugins/socialweb/socialweb.c:336
+msgid "_Configure"
+msgstr "_Beállítás"
+
+#: ../src/plugins/socialweb/socialweb.c:323
+#: ../src/plugins/socialweb/socialweb.c:343
+#, c-format
+msgid "Logged in to service '%s'."
+msgstr "Bejelentkezve a(z) „%s” szolgáltatásba."
+
+#: ../src/plugins/socialweb/socialweb.c:333
+#, c-format
+#| msgid "Could not find contact: %s"
+msgid "Could not log in to service '%s'."
+msgstr "Nem lehet belépni a(z) „%s” szolgáltatásba."
 
 #: ../src/plugins/upnp/upnp.c:309
 msgid "UPnP Media Server"
 msgstr "UPnP médiakiszolgáló"
 
+#~ msgid "Send To..."
+#~ msgstr "Küldés…"
+
+#~ msgid "Send file by mail, instant message..."
+#~ msgstr "Fájl küldése levélben, azonnali üzenetként…"
+
+#~ msgid "Send files by mail, instant message..."
+#~ msgstr "Fájlok küldése levélben, azonnali üzenetként…"
+
+#~ msgid "Could not load any plugins."
+#~ msgstr "Nem tölthetők be bővítmények."
+
+#~ msgid "Please verify your installation"
+#~ msgstr "Ellenőrizze a telepítést"
+
+#~ msgid "<b>Compression</b>"
+#~ msgstr "<b>Tömörítés</b>"
+
+#~ msgid "<b>Destination</b>"
+#~ msgstr "<b>Cél</b>"
+
+#~ msgid "Send _as:"
+#~ msgstr "Küldés _módja:"
+
+#~ msgid "Send t_o:"
+#~ msgstr "Küldés _célja:"
