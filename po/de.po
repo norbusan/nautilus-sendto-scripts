@@ -3,45 +3,50 @@
 # This file is distributed under the same license as the Nautilus Sendto package.
 # Frank Arnold <frank@scirocco-5v-turbo.de>, 2004-2008.
 # Gerhard Stein <gerstrong@gmail.com>, 2008.
-# Mario Blättermann <mariobl@freenet.de>, 2008-2011.
+# Mario Blättermann <mario.blaettermann@gmail.com>, 2008-2012.
 # Lukas K. <lu@0x83.eu>, 2010.
 # Christian Kirbach <Christian.Kirbach@googelmail.com>, 2011.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: nautilus-sendto master\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-04-25 15:34+0200\n"
-"PO-Revision-Date: 2011-04-19 22:55+0200\n"
-"Last-Translator: Christian Kirbach <Christian.Kirbach@googelmail.com>\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
+"product=nautilus-sendto&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2012-01-28 16:44+0000\n"
+"PO-Revision-Date: 2012-03-04 15:51+0100\n"
+"Last-Translator: Mario Blättermann <mario.blaettermann@gmail.com>\n"
 "Language-Team: Deutsch <gnome-de@gnome.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bits\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: \n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
 "X-Poedit-Language: German\n"
 "X-Poedit-Country: GERMANY\n"
 
-#: ../src/nautilus-sendto-command.c:79
+#: ../src/nautilus-sendto-command.c:80
 msgid "Run from build directory"
 msgstr "Aus dem Erstellungsordner ausführen"
 
-#: ../src/nautilus-sendto-command.c:80
+#: ../src/nautilus-sendto-command.c:81
 msgid "Use XID as parent to the send dialogue"
 msgstr "XID als Eltern für den Sendedialog verwenden"
 
-#: ../src/nautilus-sendto-command.c:81
+#: ../src/nautilus-sendto-command.c:82
 msgid "Files to send"
 msgstr "Zu sendende Dateien"
 
+#: ../src/nautilus-sendto-command.c:83
+msgid "Output version information and exit"
+msgstr "Versionsinformationen ausgeben und beenden"
+
 #. FIXME, this needs to be done in UI now
-#: ../src/nautilus-sendto-command.c:662
+#: ../src/nautilus-sendto-command.c:664
 #, c-format
 msgid "Expects URIs or filenames to be passed as options\n"
 msgstr "URLs oder Dateinamen sollten als Optionen gesetzt werden\n"
 
-#: ../src/nautilus-sendto-command.c:692
+#: ../src/nautilus-sendto-command.c:694
 #, c-format
 msgid "Could not parse command-line options: %s\n"
 msgstr "Befehlszeilenoptionen konnten nicht eingelesen werden: %s\n"
@@ -188,8 +193,7 @@ msgid "The address book authentication failed."
 msgstr "Legitimierung für das Addressbuch ist fehlgeschlagen."
 
 #: ../src/plugins/evolution/e-contact-entry.c:916
-msgid ""
-"Authentication is required to access the address book and was not given."
+msgid "Authentication is required to access the address book and was not given."
 msgstr ""
 "Legitimierung wird benötigt, um auf das Adressbuch Zugriff zu erlangen und "
 "wurde nicht gegeben."
@@ -314,8 +318,8 @@ msgstr "UPnP-Media-Server"
 #~ "Dateien verwendet wurde."
 
 #~ msgid ""
-#~ "Used to store which type of archive was used the last time (0: zip, 1: "
-#~ "tar.gz, 2: tar.bz2)."
+#~ "Used to store which type of archive was used the last time (0: zip, 1: tar."
+#~ "gz, 2: tar.bz2)."
 #~ msgstr ""
 #~ "Wird verwendet um zu speichern, welcher Archivtyp zuletzt verwendet wurde "
 #~ "(0: zip, 1: tar.gz, 2: tar.bz2)."
