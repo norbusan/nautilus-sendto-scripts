@@ -3,46 +3,50 @@
 # This file is distributed under the same license as the nautilus-sendto package.
 # Ed GLEZ <herzo2@gmail.com>, 2006.
 # Michael MORONI, <haikara90@gmail.com>, 2009.
-# Tiffany Antopolski <tiffany.antopolski@gmail.com>, 2011.
-# Kristjan SCHMIDT <kristjan.schmidt@googlemail.com>, 2010, 2011.
+# Tiffany Antopolski <tiffany.antopolski@gmail.com>, 2011, 2012.
+# Kristjan SCHMIDT <kristjan.schmidt@googlemail.com>, 2010, 2011, 2012.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: nautilus-sendto\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=nautilus-sendto&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2011-10-07 14:59+0000\n"
-"PO-Revision-Date: 2011-10-26 19:46+0200\n"
+"POT-Creation-Date: 2012-03-06 16:52+0000\n"
+"PO-Revision-Date: 2012-03-09 19:08+0100\n"
 "Last-Translator: Kristjan SCHMIDT <kristjan.schmidt@googlemail.com>\n"
-"Language-Team: Esperanto <ubuntu-l10n-eo@lists.launchpad.net>\n"
+"Language-Team: Esperanto <gnome-l10n-eo@lists.launchpad.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bits\n"
+"Content-Transfer-Encoding: 8bit\n"
 "Language: eo\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"X-Generator: Virtaal 0.7.1-rc1\n"
+"X-Generator: Virtaal 0.7.1\n"
 "X-Launchpad-Export-Date: 2010-06-29 16:36+0000\n"
 "X-Project-Style: gnome\n"
 
-#: ../src/nautilus-sendto-command.c:79
+#: ../src/nautilus-sendto-command.c:80
 msgid "Run from build directory"
 msgstr "Ruli de la kreo-dosierujo"
 
-#: ../src/nautilus-sendto-command.c:80
+#: ../src/nautilus-sendto-command.c:81
 msgid "Use XID as parent to the send dialogue"
 msgstr "Uzi \"XID\"-on kiel gepatro de la senddialogo"
 
-#: ../src/nautilus-sendto-command.c:81
+#: ../src/nautilus-sendto-command.c:82
 msgid "Files to send"
 msgstr "Sendotaj dosierojn"
 
+#: ../src/nautilus-sendto-command.c:83
+msgid "Output version information and exit"
+msgstr "Eligi versioinformon kaj eliri"
+
 #. FIXME, this needs to be done in UI now
-#: ../src/nautilus-sendto-command.c:662
+#: ../src/nautilus-sendto-command.c:664
 #, c-format
 msgid "Expects URIs or filenames to be passed as options\n"
 msgstr "Atendas URI-ojn aŭ dosiernomojn kiel opcioj\n"
 
-#: ../src/nautilus-sendto-command.c:692
+#: ../src/nautilus-sendto-command.c:694
 #, c-format
 msgid "Could not parse command-line options: %s\n"
 msgstr "Ne eblas analizi komandliniajn opciojn: %s\n"
@@ -162,7 +166,7 @@ msgstr "La adresro estas jam ŝarĝita."
 
 #: ../src/plugins/evolution/e-contact-entry.c:902
 msgid "Permission was denied when accessing the address book."
-msgstr "Permispeto estis malpermesita kiam aliranta al adresaro."
+msgstr "Permespeto estis malpermesita kiam aliranta al la adresaro."
 
 #: ../src/plugins/evolution/e-contact-entry.c:904
 msgid "The contact was not found."
@@ -174,7 +178,7 @@ msgstr "La kontakta identigilo jam ekzistas."
 
 #: ../src/plugins/evolution/e-contact-entry.c:908
 msgid "The protocol is not supported."
-msgstr "La protokolo ne estas suportita."
+msgstr "La protokolo ne estas subtenata."
 
 #: ../src/plugins/evolution/e-contact-entry.c:910
 msgid "The operation was cancelled."
@@ -192,7 +196,7 @@ msgstr "La adresara aŭtentigkontrolo fiaskis."
 msgid ""
 "Authentication is required to access the address book and was not given."
 msgstr ""
-"Aŭtentokontrolo, kiu estas necesa por aliri al adresaro, ne estas darita."
+"Aŭtentokontrolo, kiu estas necesa por aliri al adresaro, ne estas donita."
 
 #: ../src/plugins/evolution/e-contact-entry.c:918
 msgid "A secure connection is not available."
