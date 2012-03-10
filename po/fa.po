@@ -1,44 +1,48 @@
 # Persian translation for nautilus-sendto.
 # Copyright (C) 2010 nautilus-sendto's COPYRIGHT HOLDER
 # This file is distributed under the same license as the nautilus-sendto package.
-# Arash Mousavi <mousavi.arash@gmail.com>, 2010.
+# Arash Mousavi <mousavi.arash@gmail.com>, 2010, 2012.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: nautilus-sendto gnome-2-32\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=nautilus-sendto&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2011-06-26 20:47+0000\n"
-"PO-Revision-Date: 2011-07-13 02:24+0330\n"
+"POT-Creation-Date: 2012-01-28 16:44+0000\n"
+"PO-Revision-Date: 2012-03-10 19:19+0330\n"
 "Last-Translator: Arash Mousavi <mousavi.arash@gmail.com>\n"
-"Language-Team: Persian <translate@ifsug.org>\n"
-"Language: \n"
+"Language-Team: Persian\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: \n"
 "X-Poedit-Language: Persian\n"
 "X-Poedit-Country: IRAN, ISLAMIC REPUBLIC OF\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: ../src/nautilus-sendto-command.c:79
+#: ../src/nautilus-sendto-command.c:80
 msgid "Run from build directory"
 msgstr "اجرا در پوشه ساخت"
 
-#: ../src/nautilus-sendto-command.c:80
+#: ../src/nautilus-sendto-command.c:81
 msgid "Use XID as parent to the send dialogue"
 msgstr "استفاده از شناسه X به عنوان والد برای محاوره‌ی ارسال"
 
-#: ../src/nautilus-sendto-command.c:81
+#: ../src/nautilus-sendto-command.c:82
 msgid "Files to send"
 msgstr "پرونده برای ارسال"
 
+#: ../src/nautilus-sendto-command.c:83
+msgid "Output version information and exit"
+msgstr "اطلاعات نسخه را نمایش و خارج می‌شود"
+
 #. FIXME, this needs to be done in UI now
-#: ../src/nautilus-sendto-command.c:662
+#: ../src/nautilus-sendto-command.c:664
 #, c-format
 msgid "Expects URIs or filenames to be passed as options\n"
 msgstr "انتظار آدرس و یا نام یک پرونده را به عنوان گزینه را داشتم\n"
 
-#: ../src/nautilus-sendto-command.c:692
+#: ../src/nautilus-sendto-command.c:694
 #, c-format
 msgid "Could not parse command-line options: %s\n"
 msgstr "امکان تجزیه گزینه‌های خط فرمان وجود ندارد: %s\n"
