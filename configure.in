@@ -112,7 +112,7 @@ for plugin in ${used_plugins}; do
 
 	case ${plugin} in
 		evolution)
-			PKG_CHECK_MODULES(NST_EBOOK, libebook-1.2 >= $EBOOK_REQUIRED libpeas-1.0,
+			PKG_CHECK_MODULES(NST_EBOOK, libebook-1.2 >= $EBOOK_REQUIRED libpeas-1.0 libedataserverui-3.0,
 					   enable_evolution=yes, enable_evolution=no)
 			if test "${enable_evolution}" != "yes" ; then
 				plugin_error_or_ignore "you need libebook from evolution-data-server to build the Evolution plugin"

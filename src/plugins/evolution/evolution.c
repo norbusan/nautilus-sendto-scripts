@@ -66,8 +66,6 @@ struct _EvolutionPluginClass {
 
 NAUTILUS_PLUGIN_REGISTER(EVOLUTION_TYPE_PLUGIN, EvolutionPlugin, evolution_plugin)
 
-#define GCONF_COMPLETION "/apps/evolution/addressbook"
-#define GCONF_COMPLETION_SOURCES GCONF_COMPLETION "/sources"
 #define DEFAULT_MAILTO "/desktop/gnome/url-handlers/mailto/command"
 
 #define CONTACT_FORMAT "%s <%s>"
@@ -202,33 +200,13 @@ add_sources (EContactEntry *entry)
 {
 	ESourceList *source_list;
 
-	source_list =
-		e_source_list_new_for_gconf_default (GCONF_COMPLETION_SOURCES);
-	e_contact_entry_set_source_list (E_CONTACT_ENTRY (entry),
-					 source_list);
-	g_object_unref (source_list);
-}
-
-static void
-sources_changed_cb (GConfClient   *client,
-		    guint          cnxn_id,
-		    GConfEntry    *entry,
-		    EContactEntry *entry_widget)
-{
-	add_sources (entry_widget);
-}
-
-static void
-setup_source_changes (EContactEntry *entry)
-{
-	GConfClient *gc;
-
-	gc = gconf_client_get_default ();
-	gconf_client_add_dir (gc, GCONF_COMPLETION,
-			GCONF_CLIENT_PRELOAD_ONELEVEL, NULL);
-	gconf_client_notify_add (gc, GCONF_COMPLETION,
-			(GConfClientNotifyFunc) sources_changed_cb,
-			entry, NULL, NULL);
+	if (e_client_utils_get_sources (&source_list,
+					E_CLIENT_SOURCE_TYPE_CONTACTS,
+					NULL)) {
+		e_contact_entry_set_source_list (E_CONTACT_ENTRY (entry),
+						 source_list);
+		g_object_unref (source_list);
+	}
 }
 
 static void
@@ -264,7 +242,6 @@ evolution_plugin_get_widget (NautilusSendtoPlugin *plugin,
 			  G_CALLBACK (error_cb), plugin);
 
 	add_sources (E_CONTACT_ENTRY (p->entry));
-	setup_source_changes (E_CONTACT_ENTRY (p->entry));
 
 	p->vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 8);
 	gtk_box_pack_start (GTK_BOX (p->vbox), p->entry, FALSE, FALSE, 0);
