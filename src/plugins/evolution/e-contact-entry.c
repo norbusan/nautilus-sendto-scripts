@@ -707,10 +707,8 @@ static void
 e_contact_entry_class_init (EContactEntryClass *klass)
 {
   GObjectClass *object_class;
-  GtkWidgetClass *widget_class;
   
   object_class = (GObjectClass *) klass;
-  widget_class = (GtkWidgetClass *) klass;
   
   /* GObject */
   object_class->set_property = e_contact_entry_set_property;
