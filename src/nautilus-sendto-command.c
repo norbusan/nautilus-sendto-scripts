@@ -455,8 +455,11 @@ nautilus_sendto_create_ui (NautilusSendto *nst)
 #ifdef GDK_WINDOWING_X11
 	if (xid != 0) {
 		GdkWindow *window;
+		GdkDisplayManager *manager;
+
 		gtk_widget_realize (nst->dialog);
-		window = gdk_x11_window_foreign_new_for_display (gdk_display_get_default (), xid);
+		manager = gdk_display_manager_get ();
+		window = gdk_x11_window_foreign_new_for_display (gdk_display_manager_get_default_display (manager), xid);
 		gdk_window_set_transient_for (gtk_widget_get_window (nst->dialog),
 					      window);
 	}
