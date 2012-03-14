@@ -66,8 +66,6 @@ struct _EvolutionPluginClass {
 
 NAUTILUS_PLUGIN_REGISTER(EVOLUTION_TYPE_PLUGIN, EvolutionPlugin, evolution_plugin)
 
-#define DEFAULT_MAILTO "/desktop/gnome/url-handlers/mailto/command"
-
 #define CONTACT_FORMAT "%s <%s>"
 
 static char *
@@ -102,7 +100,7 @@ get_evo_cmd (void)
 static void
 evolution_plugin_init (EvolutionPlugin *p)
 {
-	GConfClient *client;
+	GAppInfo *app_info;
 
 	bindtextdomain (GETTEXT_PACKAGE, LOCALEDIR);
 	bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
@@ -111,9 +109,13 @@ evolution_plugin_init (EvolutionPlugin *p)
 	p->email = NULL;
 	p->name = NULL;
 
-	client = gconf_client_get_default ();
-	p->mail_cmd = gconf_client_get_string (client, DEFAULT_MAILTO, NULL);
-	g_object_unref (client);
+	app_info = g_app_info_get_default_for_uri_scheme ("mailto");
+	if (app_info) {
+		mail_cmd = g_strdup (g_app_info_get_commandline (app_info));
+		g_object_unref (app_info);
+	} else {
+		mail_cmd = NULL;
+	}
 
 	if (p->mail_cmd == NULL || *p->mail_cmd == '\0') {
 		g_free (p->mail_cmd);
