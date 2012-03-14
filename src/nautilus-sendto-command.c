@@ -27,6 +27,10 @@
 #include <glib/gi18n.h>
 #include <glib/gstdio.h>
 #include <gtk/gtk.h>
+#ifdef GDK_WINDOWING_X11
+#include <gdk/gdkx.h>
+#endif
+
 #include "nautilus-sendto-plugin.h"
 
 #define NAUTILUS_SENDTO_LAST_MEDIUM	"last-medium"
@@ -53,6 +57,7 @@ gboolean has_dirs = FALSE;
 GList *plugin_list = NULL;
 GHashTable *hash ;
 guint option = 0;
+static gint64 xid = 0;
 
 static GSettings *settings = NULL;
 
@@ -77,6 +82,7 @@ struct _NS_ui {
 };
 
 static const GOptionEntry entries[] = {
+	{ "xid", 'x', 0, G_OPTION_ARG_INT64, &xid, "Use XID as parent to the send dialogue", NULL },
 	{ G_OPTION_REMAINING, '\0', 0, G_OPTION_ARG_FILENAME_ARRAY, &filenames, "Files to send", "[FILES...]" },
 	{ NULL }
 };
@@ -554,6 +560,19 @@ nautilus_sendto_create_ui (void)
 	ui->status_label = GTK_WIDGET (gtk_builder_get_object (app, "status_label"));
 	ui->status_image = GTK_WIDGET (gtk_builder_get_object (app, "status_image"));
 
+#ifdef GDK_WINDOWING_X11
+	if (xid != 0) {
+		GdkWindow *window;
+		GdkDisplayManager *manager;
+
+		gtk_widget_realize (ui->dialog);
+		manager = gdk_display_manager_get ();
+		window = gdk_x11_window_foreign_new_for_display (gdk_display_manager_get_default_display (manager), xid);
+		gdk_window_set_transient_for (gtk_widget_get_window (ui->dialog),
+					      window);
+	}
+#endif
+
 	gtk_settings = gtk_settings_get_default ();
 	button_image = GTK_WIDGET (gtk_builder_get_object (app, "image1"));
 	g_signal_connect (G_OBJECT (gtk_settings), "notify::gtk-button-images",
@@ -620,7 +639,6 @@ nautilus_sendto_create_ui (void)
 	}
 
 	gtk_widget_show (ui->dialog);
-
 }
 
 static void
