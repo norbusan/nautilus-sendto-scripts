@@ -29,8 +29,6 @@
 #include <libedataserverui/e-client-utils.h>
 #include "nautilus-sendto-plugin.h"
 
-#define DEFAULT_MAILTO "/desktop/gnome/url-handlers/mailto/command"
-
 #define CONTACT_FORMAT "%s <%s>"
 
 typedef enum {
@@ -79,16 +77,20 @@ get_evo_cmd (void)
 static gboolean
 init (NstPlugin *plugin)
 {
-	GConfClient *client;
+	GAppInfo *app_info;
 
 	g_print ("Init evolution plugin\n");
 	
 	bindtextdomain (GETTEXT_PACKAGE, LOCALEDIR);
 	bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
 
-	client = gconf_client_get_default ();
-	mail_cmd = gconf_client_get_string (client, DEFAULT_MAILTO, NULL);
-	g_object_unref (client);
+	app_info = g_app_info_get_default_for_uri_scheme ("mailto");
+	if (app_info) {
+		mail_cmd = g_strdup (g_app_info_get_commandline (app_info));
+		g_object_unref (app_info);
+	} else {
+		mail_cmd = NULL;
+	}
 
 	if (mail_cmd == NULL || *mail_cmd == '\0') {
 		g_free (mail_cmd);
