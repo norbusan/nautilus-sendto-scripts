@@ -1,18 +1,18 @@
 # translation of nautilus-sendto.po.master.te.po to Telugu
 # Telugu translation of nautilus-sendto.
-# Copyright (C) 2009 nautilus-sendto's COPYRIGHT HOLDER
+# Copyright (C) 2012 Swecha localisation team
 # This file is distributed under the same license as the nautilus-sendto package.
 #
 # Krishna Babu K <kkrothap@redhat.com>, 2009.
 # Hari Krishna <hari@swecha.net>, 2011.
-# Sasi Bhushan Boddepalli <sasi@swecha.net>, 2011
+# Sasi Bhushan Boddepalli <sasi@swecha.net>, 2011,2012
 msgid ""
 msgstr ""
 "Project-Id-Version: nautilus-sendto.po.master.te\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
-"product=nautilus-sendto&component=general\n"
-"POT-Creation-Date: 2011-01-20 18:18+0000\n"
-"PO-Revision-Date: 2009-07-02 19:36+0530\n"
+"product=nautilus-sendto&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2012-01-28 16:44+0000\n"
+"PO-Revision-Date: 2012-03-13 21:10+0530\n"
 "Last-Translator: sasi bhushan boddepalli <sasi@swecha.net>\n"
 "Language-Team: Telugu <Indlinux-telugu@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -22,25 +22,29 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
 "\n"
 
-#: ../src/nautilus-sendto-command.c:79
+#: ../src/nautilus-sendto-command.c:80
 msgid "Run from build directory"
 msgstr "వివరము అమరిక నుంచి  నడుపు"
 
-#: ../src/nautilus-sendto-command.c:80
+#: ../src/nautilus-sendto-command.c:81
 msgid "Use XID as parent to the send dialogue"
 msgstr "XID ని పంపిన  సంభాషణ కి మూలము లా ఉపయోగించుము "
 
-#: ../src/nautilus-sendto-command.c:81
+#: ../src/nautilus-sendto-command.c:82
 msgid "Files to send"
 msgstr "పంపుటకు ఫైళ్ళు "
 
+#: ../src/nautilus-sendto-command.c:83
+msgid "Output version information and exit"
+msgstr "అవుట్ పుట్ వర్షన్ సమాచారం మరియు నిష్క్రమణ"
+
 #. FIXME, this needs to be done in UI now
-#: ../src/nautilus-sendto-command.c:669
+#: ../src/nautilus-sendto-command.c:664
 #, c-format
 msgid "Expects URIs or filenames to be passed as options\n"
 msgstr "URIలు లేదా ఫైలునామములు ఐచ్చికాలుగా పంపునట్లు కోరుకొనుచున్నది\n"
 
-#: ../src/nautilus-sendto-command.c:699
+#: ../src/nautilus-sendto-command.c:694
 #, c-format
 msgid "Could not parse command-line options: %s\n"
 msgstr "ఆదేశ-వరుస ఐచ్చికాలను పార్శ్ చేయలేక పోయింది: %s\n"
@@ -278,6 +282,7 @@ msgid "Logged in to service '%s'."
 msgstr "సదుపాయమునకు ప్రవేశించారు '%s'"
 
 #: ../src/plugins/socialweb/socialweb.c:333
+#, c-format
 msgid "Could not log in to service '%s'."
 msgstr "సర్వీసుకు ప్రవేశము కుదరుటలేదు: '%s'"
 
