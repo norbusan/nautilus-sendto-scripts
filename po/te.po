@@ -3,7 +3,7 @@
 # Copyright (C) 2012 Swecha localisation team
 # This file is distributed under the same license as the nautilus-sendto package.
 #
-# Krishna Babu K <kkrothap@redhat.com>, 2009.
+# Krishna Babu K <kkrothap@redhat.com>, 2009, 2012.
 # Hari Krishna <hari@swecha.net>, 2011.
 # Sasi Bhushan Boddepalli <sasi@swecha.net>, 2011,2012
 msgid ""
@@ -53,8 +53,8 @@ msgstr "ఆదేశ-వరుస ఐచ్చికాలను పార్శ
 #, c-format
 msgid "Sharing %d folder"
 msgid_plural "Sharing %d folders"
-msgstr[0] "%d ఫోల్డరును పంచుకుంటున్నది"
-msgstr[1] "%d ఫోల్డర్లను పంచుకుంటున్నది"
+msgstr[0] "%d సంచయమును పంచుకుంటున్నది"
+msgstr[1] "%d సంచయములను పంచుకుంటున్నది"
 
 #: ../src/nautilus-sendto-mimetype.c:52
 #, c-format
@@ -86,8 +86,8 @@ msgstr[1] "ప్రతిరూపములు %d ను పంచుట "
 #, c-format
 msgid "Sharing %d text file"
 msgid_plural "Sharing %d text files"
-msgstr[0] "పాఠ్య ఫైలు  %d ను పంచుట"
-msgstr[1] "పాఠ్య ఫైళ్ళు  %d ను పంచుట"
+msgstr[0] "పాఠ ఫైలు  %d ను పంచుట"
+msgstr[1] "పాఠ ఫైళ్ళు  %d ను పంచుట"
 
 #: ../src/nautilus-sendto-mimetype.c:85
 #, c-format
@@ -128,7 +128,7 @@ msgstr "పరిచయం కనుగొనలేక పోయింది: %s
 
 #: ../src/plugins/evolution/e-contact-entry.c:414
 msgid "Cannot create searchable view."
-msgstr "శోధించదగు దర్శనమును సృష్టించలేదు."
+msgstr "అన్వేషించదగు దర్శనమును సృష్టించలేదు."
 
 #: ../src/plugins/evolution/e-contact-entry.c:886
 msgid "Success"
