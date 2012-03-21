@@ -111,10 +111,10 @@ evolution_plugin_init (EvolutionPlugin *p)
 
 	app_info = g_app_info_get_default_for_uri_scheme ("mailto");
 	if (app_info) {
-		mail_cmd = g_strdup (g_app_info_get_commandline (app_info));
+		p->mail_cmd = g_strdup (g_app_info_get_commandline (app_info));
 		g_object_unref (app_info);
 	} else {
-		mail_cmd = NULL;
+		p->mail_cmd = NULL;
 	}
 
 	if (p->mail_cmd == NULL || *p->mail_cmd == '\0') {
