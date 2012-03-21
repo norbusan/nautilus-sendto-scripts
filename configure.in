@@ -1,6 +1,10 @@
 AC_PREREQ(2.52)
 
-AC_INIT(nautilus-sendto, 3.0.1, http://www.gnome.org)
+AC_INIT([nautilus-sendto],
+        [3.0.1],
+        [https://bugzilla.gnome.org/enter_bug.cgi?product=nautilus-sendto],
+        [nautilus-sendto])
+
 AM_CONFIG_HEADER(config.h)
 
 AM_INIT_AUTOMAKE([1.9 dist-bzip2 no-dist-gzip check-news])
