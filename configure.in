@@ -5,7 +5,7 @@ AC_INIT([nautilus-sendto],
         [https://bugzilla.gnome.org/enter_bug.cgi?product=nautilus-sendto],
         [nautilus-sendto])
 
-AM_CONFIG_HEADER(config.h)
+AC_CONFIG_HEADERS([config.h])
 
 AM_INIT_AUTOMAKE([1.9 dist-bzip2 no-dist-gzip check-news])
 
@@ -14,17 +14,19 @@ m4_ifdef([AM_SILENT_RULES],[AM_SILENT_RULES([yes])])
 
 AM_MAINTAINER_MODE
 
-AM_DISABLE_STATIC
+# Check for programs
 AC_PROG_CC
-AM_PROG_LIBTOOL
 AC_PROG_INSTALL
 AC_PROG_MAKE_SET
+
+# Initialize libtool
+LT_INIT([disable-static])
+
 GLIB_GSETTINGS
 
 dnl gtk-doc checks
 GTK_DOC_CHECK(1.9)
 
-GNOME_COMMON_INIT
 GNOME_DEBUG_CHECK
 GNOME_COMPILE_WARNINGS([maximum])
 GNOME_CXX_WARNINGS
@@ -212,7 +214,7 @@ AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE, "$GETTEXT_PACKAGE", [GetText Package])
 
 AM_GLIB_GNU_GETTEXT
 
-AC_OUTPUT([
+AC_CONFIG_FILES([
 Makefile
 data/Makefile
 data/nautilus-sendto.pc
@@ -230,6 +232,7 @@ docs/nautilus-sendto/Makefile
 docs/nautilus-sendto/version.xml
 po/Makefile.in
 ])
+AC_OUTPUT
 
 echo "-------------------------------------------------------"
 echo "                                                       "
