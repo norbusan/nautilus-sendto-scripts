@@ -54,7 +54,13 @@ CFILE_GLOB=$(top_srcdir)/src/*.c
 
 # Header files to ignore when scanning.
 # e.g. IGNORE_HFILES=gtkdebug.h gtkintl.h
-IGNORE_HFILES=nautilus-nste.h bluetooth-marshal.h e-contact-entry.h econtactentry-marshal.h nst-common.h
+IGNORE_HFILES = \
+	bluetooth-marshal.h	\
+	e-contact-entry.h	\
+	econtactentry-marshal.h	\
+	nautilus-nste.h		\
+	nst-common.h		\
+	nst-enum-types.h
 
 # Images to copy into HTML directory.
 # e.g. HTML_IMAGES=$(top_srcdir)/gtk/stock-icons/stock_about_24.png
