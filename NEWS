@@ -1,4 +1,17 @@
 ==============
+Version 3.0.2
+==============
+
+Nautilus Sendto
+
+- Docs fixes
+- Update for ancient API change
+- Fix getting default mailer for GNOME 3.0
+- Port to newest e-d-s using GSettings
+- Add --xid command-line option
+- Updated translations
+
+==============
 Version 3.0.1
 ==============
 
