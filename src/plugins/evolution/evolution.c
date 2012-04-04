@@ -126,7 +126,7 @@ evolution_plugin_init (EvolutionPlugin *p)
 		/* Find what the default mailer is */
 		if (strstr (p->mail_cmd, "balsa"))
 			p->type = MAILER_BALSA;
-		else if (strstr (p->mail_cmd, "thunder") || strstr (p->mail_cmd, "seamonkey")) {
+		else if (strstr (p->mail_cmd, "thunder") || strstr (p->mail_cmd, "seamonkey") || strstr (p->mail_cmd, "icedove")) {
 			char **strv;
 
 			p->type = MAILER_THUNDERBIRD;
