@@ -517,8 +517,11 @@ e_contact_entry_set_source_list (EContactEntry *entry,
 
       if ((lookup->book = e_book_new (s, &error)) == NULL) {
         /* TODO handle this better, fire the error signal I guess */
-        g_warning ("%s", error->message);
-	g_error_free (error);
+	if (error) {
+           g_warning ("%s", error->message);
+           g_error_free (error);
+           error = NULL;
+        }
 	g_free (lookup);
       } else {
         entry->priv->lookup_entries = g_list_append (entry->priv->lookup_entries, lookup);
