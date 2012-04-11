@@ -25,6 +25,7 @@
 #include <e-contact-entry.h>
 #include <glib/gi18n-lib.h>
 #include <string.h>
+#include <libedataserverui/e-client-utils.h>
 #include "nautilus-sendto-plugin.h"
 #include "nautilus-sendto-packer.h"
 
