@@ -147,6 +147,8 @@ evolution_plugin_init (EvolutionPlugin *p)
 	/* Replace %U by %s */
 	while ((needle = g_strrstr (p->mail_cmd, "%U")) != NULL)
 		needle[1] = 's';
+	while ((needle = g_strrstr (p->mail_cmd, "%u")) != NULL)
+		needle[1] = 's';
 }
 
 static void
