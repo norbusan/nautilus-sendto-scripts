@@ -101,6 +101,7 @@ static void
 evolution_plugin_init (EvolutionPlugin *p)
 {
 	GAppInfo *app_info;
+	char *needle;
 
 	bindtextdomain (GETTEXT_PACKAGE, LOCALEDIR);
 	bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
@@ -141,6 +142,10 @@ evolution_plugin_init (EvolutionPlugin *p)
 		else if (strstr (p->mail_cmd, "anjal"))
 			p->type = MAILER_EVO;
 	}
+
+	/* Replace %U by %s */
+	while ((needle = g_strrstr (mail_cmd, "%U")) != NULL)
+		needle[1] = 's';
 }
 
 static void
