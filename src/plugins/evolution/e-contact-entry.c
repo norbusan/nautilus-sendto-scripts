@@ -227,7 +227,7 @@ e_contact_entry_display_func (EContact *contact)
   emails = e_contact_get (contact, E_CONTACT_EMAIL);
   for (l = emails; l != NULL; l = l->next) {
     item = g_new0 (EContactEntyItem, 1);
-    item->identifier = item->identifier = g_strdup (l->data);
+    item->identifier = g_strdup (l->data);
     item->display_string = g_strdup_printf ("%s <%s>", (char*)e_contact_get_const (contact, E_CONTACT_NAME_OR_ORG), item->identifier);
 
     items = g_list_prepend (items, item);
