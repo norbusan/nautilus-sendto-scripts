@@ -37,12 +37,10 @@ sendto_callback (NautilusMenuItem *item,
 	      gpointer          user_data)
 {
 	GList            *files, *scan;
-	NautilusFileInfo *file;
 	gchar            *uri;
 	GString          *cmd;
 
 	files = g_object_get_data (G_OBJECT (item), "files");
-	file = files->data;
 
 	cmd = g_string_new ("nautilus-sendto");
 
@@ -57,7 +55,7 @@ sendto_callback (NautilusMenuItem *item,
 	g_spawn_command_line_async (cmd->str, NULL);
 
 	g_string_free (cmd, TRUE);
-}	 
+}
 
 static GList *
 nautilus_nste_get_file_items (NautilusMenuProvider *provider,
