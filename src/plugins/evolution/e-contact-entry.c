@@ -339,16 +339,15 @@ view_contacts_added_cb (EBook *book, GList *contacts, gpointer user_data)
  * The query on the EBookView has completed.
  */
 static void
-view_completed_cb (EBookView *book_view, EBookViewStatus status, gpointer user_data)
+view_completed_cb (EBookView *book_view, EBookViewStatus status, const gchar *message, gpointer user_data)
 {
   EntryLookup *lookup;
   g_return_if_fail (user_data != NULL);
-  /* TODO: handle status != OK */
-  g_return_if_fail (status == E_BOOK_ERROR_OK);
   g_return_if_fail (book_view != NULL);
 
   lookup = (EntryLookup*)user_data;
   g_object_unref (lookup->bookview);
+  lookup->bookview = NULL;
 }
 
 /**
@@ -374,7 +373,7 @@ bookview_cb (EBook *book, EBookStatus status, EBookView *book_view, gpointer clo
   g_object_add_weak_pointer ((GObject*)book_view, (gpointer*)&lookup->bookview);
   
   g_signal_connect (book_view, "contacts_added", (GCallback)view_contacts_added_cb, lookup);
-  g_signal_connect (book_view, "sequence_complete", (GCallback)view_completed_cb, lookup);
+  g_signal_connect (book_view, "view_complete", (GCallback)view_completed_cb, lookup);
   
   e_book_view_start (book_view);
 }
@@ -396,6 +395,7 @@ entry_changed_cb (GtkEditable *editable, gpointer user_data)
       if (lookup->bookview) {
         e_book_view_stop (lookup->bookview);
         g_object_unref (lookup->bookview);
+        lookup->bookview = NULL;
       }
     }
     
@@ -771,6 +771,7 @@ lookup_entry_free (EntryLookup *lookup)
   if (lookup->bookview) {
     g_warning("EBookView still around");
     g_object_unref (lookup->bookview);
+    lookup->bookview = NULL;
   }
   if (lookup->book) {
     g_object_unref (lookup->book);
