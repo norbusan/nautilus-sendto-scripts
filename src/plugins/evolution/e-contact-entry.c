@@ -502,7 +502,10 @@ e_contact_entry_set_source_list (EContactEntry *entry,
       EntryLookup *lookup;
       char *uri;
 
-      uri = g_strdup_printf("%s/%s", e_source_group_peek_base_uri (group), e_source_peek_relative_uri (source));
+      if (g_strcmp0 (e_source_group_peek_base_uri (group), "local:") == 0)
+        uri = g_strdup_printf ("%s%s", e_source_group_peek_base_uri (group), e_source_peek_relative_uri (source));
+      else
+        uri = g_strdup_printf ("%s/%s", e_source_group_peek_base_uri (group), e_source_peek_relative_uri (source));
       e_source_set_absolute_uri (s, uri);
       g_free (uri);
 
