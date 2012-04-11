@@ -123,6 +123,8 @@ init (NstPlugin *plugin)
 	/* Replace %U by %s */
 	while ((needle = g_strrstr (mail_cmd, "%U")) != NULL)
 		needle[1] = 's';
+	while ((needle = g_strrstr (mail_cmd, "%u")) != NULL)
+		needle[1] = 's';
 
 	return TRUE;
 }
