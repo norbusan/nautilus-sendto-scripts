@@ -59,7 +59,6 @@ get_evo_cmd (void)
 		NULL};
 	guint i;
 
-	
 	for (i = 0; cmds[i] != NULL; i++) {
 		tmp = g_find_program_in_path (cmds[i]);
 		if (tmp != NULL)
@@ -78,9 +77,10 @@ static gboolean
 init (NstPlugin *plugin)
 {
 	GAppInfo *app_info;
+	char *needle;
 
 	g_print ("Init evolution plugin\n");
-	
+
 	bindtextdomain (GETTEXT_PACKAGE, LOCALEDIR);
 	bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
 
@@ -119,6 +119,10 @@ init (NstPlugin *plugin)
 
 	if (mail_cmd == NULL)
 		return FALSE;
+
+	/* Replace %U by %s */
+	while ((needle = g_strrstr (mail_cmd, "%U")) != NULL)
+		needle[1] = 's';
 
 	return TRUE;
 }
