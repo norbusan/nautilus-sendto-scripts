@@ -9,9 +9,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: el\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-14 20:07+0200\n"
-"PO-Revision-Date: 2011-01-13 13:42+0200\n"
-"Last-Translator: Giannis Katsampirhs <juankatsampirhs@gmail.com>\n"
+"POT-Creation-Date: 2012-05-03 11:10+0300\n"
+"PO-Revision-Date: 2012-04-23 10:51+0200\n"
+"Last-Translator: Tom Tryfonidis <tomtryf@gmail.com>\n"
 "Language-Team: Greek <team@gnome.gr>\n"
 "Language: el\n"
 "MIME-Version: 1.0\n"
@@ -21,25 +21,29 @@ msgstr ""
 "X-Poedit-Language: Greek\n"
 "X-Poedit-Country: GREECE\n"
 
-#: ../src/nautilus-sendto-command.c:79
+#: ../src/nautilus-sendto-command.c:80
 msgid "Run from build directory"
 msgstr "Εκτέλεση από τον κατάλογο εγκατάστασης"
 
-#: ../src/nautilus-sendto-command.c:80
+#: ../src/nautilus-sendto-command.c:81
 msgid "Use XID as parent to the send dialogue"
 msgstr "Χρήση του XID σαν πρωτεύον στο διάλογο αποστολής"
 
-#: ../src/nautilus-sendto-command.c:81
+#: ../src/nautilus-sendto-command.c:82
 msgid "Files to send"
 msgstr "Αρχεία προς αποστολή"
 
+#: ../src/nautilus-sendto-command.c:83
+msgid "Output version information and exit"
+msgstr "Εμφάνιση πληροφοριών έκδοσης και κλείσιμο"
+
 #. FIXME, this needs to be done in UI now
-#: ../src/nautilus-sendto-command.c:669
+#: ../src/nautilus-sendto-command.c:667
 #, c-format
 msgid "Expects URIs or filenames to be passed as options\n"
 msgstr "Αναμένει URIs ή ονόματα αρχείων ως επιλογές\n"
 
-#: ../src/nautilus-sendto-command.c:699
+#: ../src/nautilus-sendto-command.c:697
 #, c-format
 msgid "Could not parse command-line options: %s\n"
 msgstr "Δεν μπορούν να αναλυθούν οι επιλογές γραμμής εντολών: %s\n"
@@ -95,11 +99,19 @@ msgstr[1] "Διαμοίραση των αρχείων %d"
 msgid "_Send"
 msgstr "Απο_στολή"
 
-#: ../src/plugins/nautilus-sendto-packer.c:200
+#: ../src/plugins/nautilus-sendto-packer.c:201
 msgid "Files"
 msgstr "Αρχεία"
 
-#: ../src/plugins/evolution/evolution.c:308
+#: ../src/plugins/nautilus-sendto-progress.c:187
+msgid "_Cancel"
+msgstr "_Ακύρωση"
+
+#: ../data/pack-entry.ui.h:1
+msgid "Send _packed in:"
+msgstr "Αποστολή με _συμπίεση ως:"
+
+#: ../src/plugins/evolution/evolution.c:295
 msgid "Mail"
 msgstr "Ηλεκτρονικό ταχυδρομείο"
 
@@ -117,88 +129,88 @@ msgstr "Αδύνατη η εύρεση της επαφής: %s"
 msgid "Cannot create searchable view."
 msgstr "Αδύνατη η δημιουργία μιας αναζητήσιμης προβολής."
 
-#: ../src/plugins/evolution/e-contact-entry.c:886
+#: ../src/plugins/evolution/e-contact-entry.c:891
 msgid "Success"
 msgstr "Επιτυχία"
 
-#: ../src/plugins/evolution/e-contact-entry.c:888
+#: ../src/plugins/evolution/e-contact-entry.c:893
 msgid "An argument was invalid."
 msgstr "Κάποια παράμετρος ήταν μη έγκυρη."
 
-#: ../src/plugins/evolution/e-contact-entry.c:890
+#: ../src/plugins/evolution/e-contact-entry.c:895
 msgid "The address book is busy."
 msgstr "Το βιβλίο διευθύνσεων είναι απασχολημένο."
 
-#: ../src/plugins/evolution/e-contact-entry.c:892
+#: ../src/plugins/evolution/e-contact-entry.c:897
 msgid "The address book is offline."
 msgstr "Το βιβλίο διευθύνσεων είναι εκτός σύνδεσης."
 
-#: ../src/plugins/evolution/e-contact-entry.c:894
+#: ../src/plugins/evolution/e-contact-entry.c:899
 msgid "The address book does not exist."
 msgstr "Δεν υπάρχει βιβλίο διευθύνσεων."
 
-#: ../src/plugins/evolution/e-contact-entry.c:896
+#: ../src/plugins/evolution/e-contact-entry.c:901
 msgid "The \"Me\" contact does not exist."
 msgstr "Η επαφή \"Εγώ\" δεν υπάρχει."
 
-#: ../src/plugins/evolution/e-contact-entry.c:898
+#: ../src/plugins/evolution/e-contact-entry.c:903
 msgid "The address book is not loaded."
 msgstr "Το βιβλίο διευθύνσεων δεν έχει φορτωθεί."
 
-#: ../src/plugins/evolution/e-contact-entry.c:900
+#: ../src/plugins/evolution/e-contact-entry.c:905
 msgid "The address book is already loaded."
 msgstr "Το βιβλίο διευθύνσεων έχει ήδη φορτωθεί."
 
-#: ../src/plugins/evolution/e-contact-entry.c:902
+#: ../src/plugins/evolution/e-contact-entry.c:907
 msgid "Permission was denied when accessing the address book."
 msgstr "Δεν επιτράπηκε η πρόσβαση στο βιβλίο διευθύνσεων."
 
-#: ../src/plugins/evolution/e-contact-entry.c:904
+#: ../src/plugins/evolution/e-contact-entry.c:909
 msgid "The contact was not found."
 msgstr "Η επαφή δεν βρέθηκε."
 
-#: ../src/plugins/evolution/e-contact-entry.c:906
+#: ../src/plugins/evolution/e-contact-entry.c:911
 msgid "This contact ID already exists."
 msgstr "Αυτή η ταυτότητα επαφής υπάρχει ήδη."
 
-#: ../src/plugins/evolution/e-contact-entry.c:908
+#: ../src/plugins/evolution/e-contact-entry.c:913
 msgid "The protocol is not supported."
 msgstr "Το πρωτόκολλο δεν υποστηρίζεται."
 
-#: ../src/plugins/evolution/e-contact-entry.c:910
+#: ../src/plugins/evolution/e-contact-entry.c:915
 msgid "The operation was cancelled."
 msgstr "Η λειτουργία ακυρώθηκε."
 
-#: ../src/plugins/evolution/e-contact-entry.c:912
+#: ../src/plugins/evolution/e-contact-entry.c:917
 msgid "The operation could not be cancelled."
 msgstr "Η λειτουργία δεν μπόρεσε να ακυρωθεί."
 
-#: ../src/plugins/evolution/e-contact-entry.c:914
+#: ../src/plugins/evolution/e-contact-entry.c:919
 msgid "The address book authentication failed."
 msgstr "Η ταυτοποίηση του βιβλίου διευθύνσεων απέτυχε."
 
-#: ../src/plugins/evolution/e-contact-entry.c:916
+#: ../src/plugins/evolution/e-contact-entry.c:921
 msgid ""
 "Authentication is required to access the address book and was not given."
 msgstr ""
 "Για την πρόσβαση στο βιβλίο διευθύνσεων απαιτείται ταυτοποίηση, η οποία δεν "
 "δόθηκε."
 
-#: ../src/plugins/evolution/e-contact-entry.c:918
+#: ../src/plugins/evolution/e-contact-entry.c:923
 msgid "A secure connection is not available."
 msgstr "Δεν είναι διαθέσιμη μια ασφαλής σύνδεση."
 
-#: ../src/plugins/evolution/e-contact-entry.c:920
+#: ../src/plugins/evolution/e-contact-entry.c:925
 msgid "A CORBA error occurred whilst accessing the address book."
 msgstr ""
 "Παρουσιάστηκε ένα σφάλμα CORBA κατά την πρόσβαση στο βιβλίο διευθύνσεων."
 
-#: ../src/plugins/evolution/e-contact-entry.c:922
+#: ../src/plugins/evolution/e-contact-entry.c:927
 msgid "The address book source does not exist."
 msgstr "Η πηγή του βιβλίου διευθύνσεων δεν υπάρχει."
 
-#: ../src/plugins/evolution/e-contact-entry.c:924
-#: ../src/plugins/evolution/e-contact-entry.c:927
+#: ../src/plugins/evolution/e-contact-entry.c:929
+#: ../src/plugins/evolution/e-contact-entry.c:932
 msgid "An unknown error occurred."
 msgstr "Παρουσιάστηκε ένα άγνωστο σφάλμα."
 
@@ -332,9 +344,6 @@ msgstr "Εξυπηρετητής πολυμέσων UPnP"
 
 #~ msgid "Send _as:"
 #~ msgstr "Αποστολή _ως:"
-
-#~ msgid "Send _packed in:"
-#~ msgstr "Αποστολή με _συμπίεση ως:"
 
 #~ msgid "Send t_o:"
 #~ msgstr "Αποστολή _προς:"
