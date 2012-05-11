@@ -663,7 +663,7 @@ e_contact_entry_finalize (GObject *object)
 static void
 reset_search_fields (EContactEntry *entry)
 {
-  EContactField fields[] = { E_CONTACT_FULL_NAME, E_CONTACT_EMAIL, E_CONTACT_NICKNAME, E_CONTACT_ORG, 0 };
+  EContactField fields[] = { E_CONTACT_FULL_NAME, E_CONTACT_EMAIL, E_CONTACT_NICKNAME, 0 };
 
   g_free (entry->priv->search_fields);
   entry->priv->search_fields = g_new0 (EContactField, G_N_ELEMENTS (fields));
