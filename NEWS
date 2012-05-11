@@ -1,4 +1,14 @@
 ==============
+Version 3.0.3
+==============
+
+Nautilus Sendto
+
+- Fix mailer command generation
+- Treat icedove as a variant of Thunderbird
+- Plenty of evolution-data-server related bug fixes
+
+==============
 Version 3.0.2
 ==============
 
