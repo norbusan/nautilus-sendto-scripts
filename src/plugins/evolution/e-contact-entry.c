@@ -410,7 +410,7 @@ entry_changed_cb (GtkEditable *editable, gpointer user_data)
       if (!lookup->open)
         continue;
       
-      if (e_book_async_get_book_view (lookup->book, query, NULL, 11, (EBookBookViewCallback)bookview_cb, lookup) == FALSE) {
+      if (e_book_async_get_book_view (lookup->book, query, NULL, MAX_ENTRIES, (EBookBookViewCallback)bookview_cb, lookup) == FALSE) {
         g_signal_emit (entry, signals[ERROR], 0, _("Cannot create searchable view."));
       }
     }
