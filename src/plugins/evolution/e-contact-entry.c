@@ -372,7 +372,7 @@ bookview_cb (EBook *book, EBookStatus status, EBookView *book_view, gpointer clo
   lookup->bookview = book_view;
   g_object_add_weak_pointer ((GObject*)book_view, (gpointer*)&lookup->bookview);
   
-  g_signal_connect (book_view, "contacts_added", (GCallback)view_contacts_added_cb, lookup);
+  g_signal_connect (book_view, "contacts-added", (GCallback)view_contacts_added_cb, lookup);
   g_signal_connect (book_view, "view_complete", (GCallback)view_completed_cb, lookup);
   
   e_book_view_start (book_view);
