@@ -1,7 +1,7 @@
 AC_PREREQ(2.52)
 
 AC_INIT([nautilus-sendto],
-        [2.91.0],
+        [3.7.0],
         [https://bugzilla.gnome.org/enter_bug.cgi?product=nautilus-sendto],
         [nautilus-sendto])
 
