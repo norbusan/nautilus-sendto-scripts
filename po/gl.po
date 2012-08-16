@@ -1,27 +1,27 @@
-# translation of gl.po to Galego
 # This file is distributed under the same license as the PACKAGE package.
 # Copyright (C) 2010 Fran Diéguez.
-#
+# Proxecto Trasno - Adaptación do software libre á lingua galega:  Se desexas
+# colaborar connosco, podes atopar máis información en <http://trasno.net>
 # Ignacio Casal Quinteiro <nacho.resa@gmail.com>, 2005, 2006.
 # Ignacio Casal Quinteiro <icq@cvs.gnome.org>, 2007.
 # Ignacio Casal Quinteiro <icq@svn.gnome.org>, 2007.
-# Fran Diéguez <frandieguez@ubuntu.com>, 2010, 2011.
-# Fran Dieguez <frandieguez@gnome.org>, 2010, 2012.
-#
+# Fran Diéguez <frandieguez@ubuntu.com>, 2010.
+# Leandro Regueiro <leandro.regueiro@gmail.com>, 2012.
+# Fran Dieguez <frandieguez@gnome.org>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: gl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-01-15 16:06+0100\n"
-"PO-Revision-Date: 2012-01-15 16:06+0100\n"
+"POT-Creation-Date: 2012-08-16 23:59+0200\n"
+"PO-Revision-Date: 2012-08-16 23:59+0200\n"
 "Last-Translator: Fran Dieguez <frandieguez@gnome.org>\n"
-"Language-Team: Galician <gnome-l10n-gl@gnome.org>\n"
+"Language-Team: gnome-l10n-gl@gnome.org\n"
 "Language: gl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.11.4\n"
-"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Virtaal 0.7.0\n"
 
 #: ../src/nautilus-sendto-command.c:80
 msgid "Run from build directory"
@@ -33,19 +33,19 @@ msgstr "Usar o XID como pai para o diálogo de envío"
 
 #: ../src/nautilus-sendto-command.c:82
 msgid "Files to send"
-msgstr "Ficheiros para enviar"
+msgstr "Ficheiros a enviar"
 
 #: ../src/nautilus-sendto-command.c:83
 msgid "Output version information and exit"
-msgstr "Mostrar a información da versión e saír"
+msgstr "Mostrar a información de versión e saír"
 
 #. FIXME, this needs to be done in UI now
-#: ../src/nautilus-sendto-command.c:664
+#: ../src/nautilus-sendto-command.c:667
 #, c-format
 msgid "Expects URIs or filenames to be passed as options\n"
 msgstr "Expera que se pasen como opcións URIs ou nomes de ficheiros\n"
 
-#: ../src/nautilus-sendto-command.c:694
+#: ../src/nautilus-sendto-command.c:697
 #, c-format
 msgid "Could not parse command-line options: %s\n"
 msgstr "Non foi posíbel analizar as opcións da liña de ordes: %s\n"
@@ -101,7 +101,7 @@ msgstr[1] "Compartir %d ficheiros"
 msgid "_Send"
 msgstr "_Enviar"
 
-#: ../src/plugins/nautilus-sendto-packer.c:200
+#: ../src/plugins/nautilus-sendto-packer.c:201
 msgid "Files"
 msgstr "Ficheiros"
 
@@ -113,7 +113,7 @@ msgstr "_Cancelar"
 msgid "Send _packed in:"
 msgstr "E_nviar empaquetado en:"
 
-#: ../src/plugins/evolution/evolution.c:308
+#: ../src/plugins/evolution/evolution.c:295
 msgid "Mail"
 msgstr "Correo electrónico"
 
@@ -129,95 +129,95 @@ msgstr "Non foi posíbel atopar o contacto: %s"
 
 #: ../src/plugins/evolution/e-contact-entry.c:414
 msgid "Cannot create searchable view."
-msgstr "Non foi posíbel crear a visualización procurábel."
+msgstr "Non foi posíbel crear a visualización buscábel."
 
-#: ../src/plugins/evolution/e-contact-entry.c:886
+#: ../src/plugins/evolution/e-contact-entry.c:891
 msgid "Success"
 msgstr "Éxito"
 
-#: ../src/plugins/evolution/e-contact-entry.c:888
+#: ../src/plugins/evolution/e-contact-entry.c:893
 msgid "An argument was invalid."
 msgstr "Un argumento foi inválido"
 
-#: ../src/plugins/evolution/e-contact-entry.c:890
+#: ../src/plugins/evolution/e-contact-entry.c:895
 msgid "The address book is busy."
 msgstr "A axenda de enderezos está ocupada."
 
-#: ../src/plugins/evolution/e-contact-entry.c:892
+#: ../src/plugins/evolution/e-contact-entry.c:897
 msgid "The address book is offline."
 msgstr "A axenda de enderezos está fóra de liña."
 
-#: ../src/plugins/evolution/e-contact-entry.c:894
+#: ../src/plugins/evolution/e-contact-entry.c:899
 msgid "The address book does not exist."
 msgstr "A axenda de enderezos non existe."
 
-#: ../src/plugins/evolution/e-contact-entry.c:896
+#: ../src/plugins/evolution/e-contact-entry.c:901
 msgid "The \"Me\" contact does not exist."
 msgstr "O contacto «Eu» non existe."
 
-#: ../src/plugins/evolution/e-contact-entry.c:898
+#: ../src/plugins/evolution/e-contact-entry.c:903
 msgid "The address book is not loaded."
 msgstr "A axenda de enderezos non está cargada."
 
-#: ../src/plugins/evolution/e-contact-entry.c:900
+#: ../src/plugins/evolution/e-contact-entry.c:905
 msgid "The address book is already loaded."
 msgstr "A axenda de enderezos xa está cargada."
 
-#: ../src/plugins/evolution/e-contact-entry.c:902
+#: ../src/plugins/evolution/e-contact-entry.c:907
 msgid "Permission was denied when accessing the address book."
 msgstr "Denegouse o permiso ao acceder á axenda de enderezos."
 
-#: ../src/plugins/evolution/e-contact-entry.c:904
+#: ../src/plugins/evolution/e-contact-entry.c:909
 msgid "The contact was not found."
 msgstr "Non se encontrou o contacto."
 
-#: ../src/plugins/evolution/e-contact-entry.c:906
+#: ../src/plugins/evolution/e-contact-entry.c:911
 msgid "This contact ID already exists."
 msgstr "O ID do contacto xa existe."
 
-#: ../src/plugins/evolution/e-contact-entry.c:908
+#: ../src/plugins/evolution/e-contact-entry.c:913
 msgid "The protocol is not supported."
 msgstr "O protocolo non é compatíbel."
 
-#: ../src/plugins/evolution/e-contact-entry.c:910
+#: ../src/plugins/evolution/e-contact-entry.c:915
 msgid "The operation was cancelled."
 msgstr "Cancelouse a operación."
 
-#: ../src/plugins/evolution/e-contact-entry.c:912
+#: ../src/plugins/evolution/e-contact-entry.c:917
 msgid "The operation could not be cancelled."
 msgstr "A operación non foi cancelada."
 
-#: ../src/plugins/evolution/e-contact-entry.c:914
+#: ../src/plugins/evolution/e-contact-entry.c:919
 msgid "The address book authentication failed."
 msgstr "A autenticación da axenda de enderezos fallou."
 
-#: ../src/plugins/evolution/e-contact-entry.c:916
+#: ../src/plugins/evolution/e-contact-entry.c:921
 msgid ""
 "Authentication is required to access the address book and was not given."
 msgstr ""
 "Requírese autenticación para acceder á axenda de enderezos e non foi "
 "proporcionada."
 
-#: ../src/plugins/evolution/e-contact-entry.c:918
+#: ../src/plugins/evolution/e-contact-entry.c:923
 msgid "A secure connection is not available."
 msgstr "Non está dispoñíbel unha conexión segura."
 
-#: ../src/plugins/evolution/e-contact-entry.c:920
+#: ../src/plugins/evolution/e-contact-entry.c:925
 msgid "A CORBA error occurred whilst accessing the address book."
 msgstr "Produciuse un erro CORBA ao acceder á axenda de enderezos."
 
-#: ../src/plugins/evolution/e-contact-entry.c:922
+#: ../src/plugins/evolution/e-contact-entry.c:927
 msgid "The address book source does not exist."
 msgstr "A axenda de enderezos orixe non existe."
 
-#: ../src/plugins/evolution/e-contact-entry.c:924
-#: ../src/plugins/evolution/e-contact-entry.c:927
+#: ../src/plugins/evolution/e-contact-entry.c:929
+#: ../src/plugins/evolution/e-contact-entry.c:932
 msgid "An unknown error occurred."
 msgstr "Produciuse un erro descoñecido."
 
 #: ../src/plugins/gajim/gajim.c:417
 msgid "Unable to send file"
-msgstr "Imposible enviar o ficheiro"
+msgstr "Non foi posíbel enviar o ficheiro"
 
 #: ../src/plugins/gajim/gajim.c:418
 msgid "There is no connection to gajim remote service."
@@ -225,7 +225,7 @@ msgstr "Non hai conexión co servizo remoto gajim."
 
 #: ../src/plugins/gajim/gajim.c:442 ../src/plugins/gajim/gajim.c:482
 msgid "Sending file failed"
-msgstr "Produciuse un fallo ao enviar o ficheiro"
+msgstr "Produciuse un erro ao enviar o ficheiro"
 
 #: ../src/plugins/gajim/gajim.c:443
 msgid "Recipient is missing."
@@ -257,7 +257,7 @@ msgstr "Mensaxe instantánea (Pidgin)"
 
 #: ../src/plugins/removable-devices/removable-devices.c:274
 msgid "Removable disks and shares"
-msgstr "Discos removíbeis e compartidos"
+msgstr "Discos extraíbeis e recursos compartidos"
 
 #: ../src/plugins/socialweb/socialweb.c:186
 #, c-format
@@ -287,7 +287,7 @@ msgstr "Sesión iniciada no servizo «%s»."
 #: ../src/plugins/socialweb/socialweb.c:333
 #, c-format
 msgid "Could not log in to service '%s'."
-msgstr "Non foi posíbel iniciar a sesión no servizo «%s»."
+msgstr "Non foi posíbel iniciar sesión no servizo «%s»."
 
 #: ../src/plugins/upnp/upnp.c:309
 msgid "UPnP Media Server"
@@ -308,9 +308,6 @@ msgstr "Servidor multimedia UPnP"
 #~ msgid "Please verify your installation"
 #~ msgstr "Comprobe a súa instalación."
 
-#~ msgid "<b>Compression</b>"
-#~ msgstr "<b>Compresión</b>"
-
 #~ msgid "<b>Destination</b>"
 #~ msgstr "<b>Destino</b>"
 
@@ -319,3 +316,9 @@ msgstr "Servidor multimedia UPnP"
 
 #~ msgid "Send t_o:"
 #~ msgstr "Enviar _a:"
+
+#~ msgid "<b>Compression</b>"
+#~ msgstr "<b>Compresión</b>"
+
+#~ msgid "Email"
+#~ msgstr "Correo-e"
