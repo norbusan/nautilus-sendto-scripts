@@ -231,6 +231,7 @@ add_pidgin_contacts_to_model (GtkTreeStore *store,
 	g_hash_table_iter_init (&hiter, contact_hash);
 	while (g_hash_table_iter_next (&hiter, NULL, (gpointer)&contacts_group)) {
 		gint accounts;
+		gint i;
 
 		dat = g_ptr_array_index (contacts_group, 0);
 
@@ -239,7 +240,6 @@ add_pidgin_contacts_to_model (GtkTreeStore *store,
 		gtk_tree_store_append (store, parent, NULL);
 		gtk_tree_store_set (store, parent, COL_ICON, NULL, COL_ALIAS, dat->alias, -1);
 
-		gint i;
 		for (i = 0; i < accounts; ++i) {
 			dat = g_ptr_array_index (contacts_group, i);
 
@@ -444,9 +444,9 @@ destroy (NstPlugin *plugin)
 	g_hash_table_iter_init (&iter, contact_hash);
 	while (g_hash_table_iter_next (&iter, NULL, (gpointer)&contacts_group)) {
 		gint accounts;
+		gint i;
 		accounts = contacts_group->len;
 
-		gint i;
 		for (i = 0; i < accounts; ++i) {
 			dat = g_ptr_array_index (contacts_group, i);
 			free_contact (dat);

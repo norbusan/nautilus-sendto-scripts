@@ -198,6 +198,7 @@ _get_contacts (void)
 	gchar **accounts;
 	gchar **account_iter;
 	gchar *account;
+	gpointer iconset_ptr;
 	
 	error = NULL;
 
@@ -213,7 +214,7 @@ _get_contacts (void)
 		_handle_dbus_exception(error, TRUE);
 		return FALSE;
 	}
-	gpointer iconset_ptr = g_hash_table_lookup(prefs_map, "iconset");
+	iconset_ptr = g_hash_table_lookup(prefs_map, "iconset");
 	if (iconset_ptr != NULL) {
 		iconset = g_strdup((gchar *)iconset_ptr);
 	} else {
