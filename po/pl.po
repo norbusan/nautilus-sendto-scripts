@@ -4,12 +4,17 @@
 # pomóc w jego rozwijaniu i pielęgnowaniu, napisz do nas:
 # gnomepl@aviary.pl
 # -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+# Mariusz Kosyl <kosmar@poczta.onet.pl>, 2005.
+# Tomasz Dominikowski <dominikowski@gmail.com>, 2007-2009.
+# Wadim Dziedzic <wdziedzic@aviary.pl>, 2007.
+# Piotr Drąg <piotrdrag@gmail.com>, 2011-2012.
+# Aviary.pl <gnomepl@aviary.pl>, 2007-2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: nautilus-sendto\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-19 21:51+0100\n"
-"PO-Revision-Date: 2012-02-19 21:52+0100\n"
+"POT-Creation-Date: 2012-09-04 19:46+0200\n"
+"PO-Revision-Date: 2012-09-04 19:48+0200\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <gnomepl@aviary.pl>\n"
 "Language: pl\n"
@@ -38,12 +43,12 @@ msgid "Output version information and exit"
 msgstr "Wyświetla informację o wersji i kończy działanie"
 
 #. FIXME, this needs to be done in UI now
-#: ../src/nautilus-sendto-command.c:664
+#: ../src/nautilus-sendto-command.c:667
 #, c-format
 msgid "Expects URIs or filenames to be passed as options\n"
 msgstr "Oczekuje adresów URI lub nazw plików podanych jako opcje\n"
 
-#: ../src/nautilus-sendto-command.c:694
+#: ../src/nautilus-sendto-command.c:697
 #, c-format
 msgid "Could not parse command-line options: %s\n"
 msgstr "Nie można przetworzyć opcji wiersza poleceń: %s\n"
@@ -98,14 +103,14 @@ msgstr[2] "Współdzielenie %d plików tekstowych"
 msgid "Sharing %d file"
 msgid_plural "Sharing %d files"
 msgstr[0] "Współdzielenie %d pliku"
-msgstr[1] "Współdzielenie %d plików "
-msgstr[2] "Współdzielenie %d plików "
+msgstr[1] "Współdzielenie %d plików"
+msgstr[2] "Współdzielenie %d plików"
 
 #: ../data/nautilus-sendto.ui.h:1
 msgid "_Send"
 msgstr "_Wyślij"
 
-#: ../src/plugins/nautilus-sendto-packer.c:200
+#: ../src/plugins/nautilus-sendto-packer.c:201
 msgid "Files"
 msgstr "Pliki"
 
@@ -117,7 +122,7 @@ msgstr "_Anuluj"
 msgid "Send _packed in:"
 msgstr "Wyślij _spakowane:"
 
-#: ../src/plugins/evolution/evolution.c:308
+#: ../src/plugins/evolution/evolution.c:295
 msgid "Mail"
 msgstr "Poczta"
 
@@ -135,86 +140,86 @@ msgstr "Nie można odnaleźć kontaktu: %s"
 msgid "Cannot create searchable view."
 msgstr "Nie można utworzyć wyszukiwalnego widoku."
 
-#: ../src/plugins/evolution/e-contact-entry.c:886
+#: ../src/plugins/evolution/e-contact-entry.c:891
 msgid "Success"
 msgstr "Udane"
 
-#: ../src/plugins/evolution/e-contact-entry.c:888
+#: ../src/plugins/evolution/e-contact-entry.c:893
 msgid "An argument was invalid."
 msgstr "Parametr był nieprawidłowy."
 
-#: ../src/plugins/evolution/e-contact-entry.c:890
+#: ../src/plugins/evolution/e-contact-entry.c:895
 msgid "The address book is busy."
 msgstr "Książka adresowa jest zajęta."
 
-#: ../src/plugins/evolution/e-contact-entry.c:892
+#: ../src/plugins/evolution/e-contact-entry.c:897
 msgid "The address book is offline."
 msgstr "Książka adresowa jest w trybie offline."
 
-#: ../src/plugins/evolution/e-contact-entry.c:894
+#: ../src/plugins/evolution/e-contact-entry.c:899
 msgid "The address book does not exist."
 msgstr "Książka adresowa nie istnieje."
 
-#: ../src/plugins/evolution/e-contact-entry.c:896
+#: ../src/plugins/evolution/e-contact-entry.c:901
 msgid "The \"Me\" contact does not exist."
 msgstr "Kontakt \"Ja\" nie istnieje."
 
-#: ../src/plugins/evolution/e-contact-entry.c:898
+#: ../src/plugins/evolution/e-contact-entry.c:903
 msgid "The address book is not loaded."
 msgstr "Książka adresowa nie została wczytana."
 
-#: ../src/plugins/evolution/e-contact-entry.c:900
+#: ../src/plugins/evolution/e-contact-entry.c:905
 msgid "The address book is already loaded."
 msgstr "Książka adresowa została już wczytana."
 
-#: ../src/plugins/evolution/e-contact-entry.c:902
+#: ../src/plugins/evolution/e-contact-entry.c:907
 msgid "Permission was denied when accessing the address book."
 msgstr "Dostęp do książki adresowej jest zabroniony."
 
-#: ../src/plugins/evolution/e-contact-entry.c:904
+#: ../src/plugins/evolution/e-contact-entry.c:909
 msgid "The contact was not found."
 msgstr "Kontakt nie został odnaleziony."
 
-#: ../src/plugins/evolution/e-contact-entry.c:906
+#: ../src/plugins/evolution/e-contact-entry.c:911
 msgid "This contact ID already exists."
 msgstr "Identyfikator tego kontaktu już istnieje."
 
-#: ../src/plugins/evolution/e-contact-entry.c:908
+#: ../src/plugins/evolution/e-contact-entry.c:913
 msgid "The protocol is not supported."
 msgstr "Protokół nie jest obsługiwany."
 
-#: ../src/plugins/evolution/e-contact-entry.c:910
+#: ../src/plugins/evolution/e-contact-entry.c:915
 msgid "The operation was cancelled."
 msgstr "Działanie zostało anulowane."
 
-#: ../src/plugins/evolution/e-contact-entry.c:912
+#: ../src/plugins/evolution/e-contact-entry.c:917
 msgid "The operation could not be cancelled."
 msgstr "Działanie nie mogło zostać anulowane."
 
-#: ../src/plugins/evolution/e-contact-entry.c:914
+#: ../src/plugins/evolution/e-contact-entry.c:919
 msgid "The address book authentication failed."
 msgstr "Uwierzytelnienie książki adresowej się nie powiodło."
 
-#: ../src/plugins/evolution/e-contact-entry.c:916
+#: ../src/plugins/evolution/e-contact-entry.c:921
 msgid ""
 "Authentication is required to access the address book and was not given."
 msgstr ""
 "Wymagane jest uwierzytelnienie, aby uzyskać dostęp do książki adresowej."
 
-#: ../src/plugins/evolution/e-contact-entry.c:918
+#: ../src/plugins/evolution/e-contact-entry.c:923
 msgid "A secure connection is not available."
 msgstr "Bezpieczne połączenie jest niedostępne."
 
-#: ../src/plugins/evolution/e-contact-entry.c:920
+#: ../src/plugins/evolution/e-contact-entry.c:925
 msgid "A CORBA error occurred whilst accessing the address book."
 msgstr "Wystąpił błąd CORBA podczas uzyskiwania dostępu do książki adresowej."
 
-#: ../src/plugins/evolution/e-contact-entry.c:922
+#: ../src/plugins/evolution/e-contact-entry.c:927
 msgid "The address book source does not exist."
 msgstr "Źródło książki adresowej nie istnieje."
 
-#: ../src/plugins/evolution/e-contact-entry.c:924
-#: ../src/plugins/evolution/e-contact-entry.c:927
+#: ../src/plugins/evolution/e-contact-entry.c:929
+#: ../src/plugins/evolution/e-contact-entry.c:932
 msgid "An unknown error occurred."
 msgstr "Wystąpił nieznany błąd."
 
