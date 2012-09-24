@@ -3,22 +3,23 @@
 # This file is distributed under the same license as the nautilus-sendto package.
 #
 # Peteris Krisjanis <pecisk@gmail.com>, 2009.
-# Rūdofls Mazurs <rudolfs.mazurs@gmail.com>, 2011.
+# Rūdofls Mazurs <rudolfs.mazurs@gmail.com>, 2011, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: nautilus-sendto master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product"
 "=nautilus-sendto&keywords=I18N+L10N&component=general\n"
 "POT-Creation-Date: 2012-01-28 16:44+0000\n"
-"PO-Revision-Date: 2012-03-09 19:43+0200\n"
-"Last-Translator: Anita Reitere <nitalynx@gmail.com>\n"
-"Language-Team: Latviešu <lata-l10n@goglegroups.com>\n"
+"PO-Revision-Date: 2012-09-24 16:40+0300\n"
+"Last-Translator: Rūdolfs Mazurs <rudolfs.mazurs@gmail.com>\n"
+"Language-Team: Latvian <lata-l10n@googlegroups.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : "
 "2);\n"
-"X-Generator: Lokalize 1.1\n"
+"X-Generator: Lokalize 1.4\n"
+"Language: lv\n"
 
 #: ../src/nautilus-sendto-command.c:80
 msgid "Run from build directory"
@@ -26,26 +27,26 @@ msgstr "Palaist no būvējuma mapes"
 
 #: ../src/nautilus-sendto-command.c:81
 msgid "Use XID as parent to the send dialogue"
-msgstr "Lietojiet XID kā vecāku, lai aizsūtītu dialogu"
+msgstr "Lietojiet XID kā vecāku, lai aizsūtītu dialoglodziņu"
 
 #: ../src/nautilus-sendto-command.c:82
 msgid "Files to send"
-msgstr "Sūtāmie faili"
+msgstr "Sūtāmās datnes"
 
 #: ../src/nautilus-sendto-command.c:83
 msgid "Output version information and exit"
-msgstr "Izvadīt informāciju par versiju un iziet"
+msgstr "Izdrukāt versijas informāciju un iziet"
 
 #. FIXME, this needs to be done in UI now
 #: ../src/nautilus-sendto-command.c:664
 #, c-format
 msgid "Expects URIs or filenames to be passed as options\n"
-msgstr "Sagaida URI vai failu nosaukumus kā opcijas\n"
+msgstr "Sagaida URI vai datnes nosaukumus kā opcijas\n"
 
 #: ../src/nautilus-sendto-command.c:694
 #, c-format
 msgid "Could not parse command-line options: %s\n"
-msgstr "Neizdevās parsēt komandrindas opcijas: %s\n"
+msgstr "Neizdevās parsēt komandrindas opcijas — %s\n"
 
 #: ../src/nautilus-sendto-mimetype.c:50
 #, c-format
@@ -58,7 +59,7 @@ msgstr[2] "Koplieto %d mapju"
 #: ../src/nautilus-sendto-mimetype.c:52
 #, c-format
 msgid "Sharing %d folders and files"
-msgstr "Koplieto %d mapes un failus"
+msgstr "Koplieto %d mapes un datnes"
 
 #: ../src/nautilus-sendto-mimetype.c:77
 #, c-format
@@ -88,17 +89,17 @@ msgstr[2] "Koplieto %d attēlu"
 #, c-format
 msgid "Sharing %d text file"
 msgid_plural "Sharing %d text files"
-msgstr[0] "Koplieto %d teksta failu"
-msgstr[1] "Koplieto %d teksta failus"
-msgstr[2] "Koplieto %d teksta failu"
+msgstr[0] "Koplieto %d teksta datni"
+msgstr[1] "Koplieto %d teksta datnes"
+msgstr[2] "Koplieto %d teksta datņu"
 
 #: ../src/nautilus-sendto-mimetype.c:85
 #, c-format
 msgid "Sharing %d file"
 msgid_plural "Sharing %d files"
-msgstr[0] "Koplieto %d failu"
-msgstr[1] "Koplieto %d failus"
-msgstr[2] "Koplieto %d failu"
+msgstr[0] "Koplieto %d datni"
+msgstr[1] "Koplieto %d datnes"
+msgstr[2] "Koplieto %d datņu"
 
 #: ../data/nautilus-sendto.ui.h:1
 msgid "_Send"
@@ -106,7 +107,7 @@ msgstr "_Sūtīt"
 
 #: ../src/plugins/nautilus-sendto-packer.c:200
 msgid "Files"
-msgstr "Faili"
+msgstr "Datnes"
 
 #: ../src/plugins/nautilus-sendto-progress.c:187
 msgid "_Cancel"
@@ -123,12 +124,12 @@ msgstr "Pasts"
 #: ../src/plugins/evolution/e-contact-entry.c:153
 #, c-format
 msgid "Cannot get contact: %s"
-msgstr "Nevar iegūt kontaktu: %s"
+msgstr "Nevar iegūt kontaktu — %s"
 
 #: ../src/plugins/evolution/e-contact-entry.c:186
 #, c-format
 msgid "Could not find contact: %s"
-msgstr "Neizdevās atrast kontaktu: %s"
+msgstr "Neizdevās atrast kontaktu — %s"
 
 #: ../src/plugins/evolution/e-contact-entry.c:414
 msgid "Cannot create searchable view."
@@ -140,7 +141,7 @@ msgstr "Veiksmīgi"
 
 #: ../src/plugins/evolution/e-contact-entry.c:888
 msgid "An argument was invalid."
-msgstr "Arguments bija nepareizs."
+msgstr "Parametrs bija nederīgs."
 
 #: ../src/plugins/evolution/e-contact-entry.c:890
 msgid "The address book is busy."
@@ -156,7 +157,7 @@ msgstr "Adrešu grāmata neeksistē."
 
 #: ../src/plugins/evolution/e-contact-entry.c:896
 msgid "The \"Me\" contact does not exist."
-msgstr "\"Es\" kontakts neeksistē."
+msgstr "“Es” kontakts neeksistē."
 
 #: ../src/plugins/evolution/e-contact-entry.c:898
 msgid "The address book is not loaded."
@@ -168,7 +169,7 @@ msgstr "Adrešu grāmata jau ir ielādēta."
 
 #: ../src/plugins/evolution/e-contact-entry.c:902
 msgid "Permission was denied when accessing the address book."
-msgstr "Adrešu grāmatas piekļuvei atļauja netika sniegta."
+msgstr "Pieeja adrešu grāmatai liegta."
 
 #: ../src/plugins/evolution/e-contact-entry.c:904
 msgid "The contact was not found."
@@ -184,15 +185,15 @@ msgstr "Protokols nav atbalstīts."
 
 #: ../src/plugins/evolution/e-contact-entry.c:910
 msgid "The operation was cancelled."
-msgstr "Operācija tika atcelta."
+msgstr "Darbība tika atcelta."
 
 #: ../src/plugins/evolution/e-contact-entry.c:912
 msgid "The operation could not be cancelled."
-msgstr "Operāciju nav iespējams atcelt."
+msgstr "Darbību nevarēja atcelt."
 
 #: ../src/plugins/evolution/e-contact-entry.c:914
 msgid "The address book authentication failed."
-msgstr "Adrešu grāmatas autentifikācija neizdevusies."
+msgstr "Adrešu grāmatas autentifikācija neizdevās."
 
 #: ../src/plugins/evolution/e-contact-entry.c:916
 msgid ""
@@ -206,7 +207,7 @@ msgstr "Drošs savienojums nav pieejams."
 
 #: ../src/plugins/evolution/e-contact-entry.c:920
 msgid "A CORBA error occurred whilst accessing the address book."
-msgstr "CORBA kļūda piekļūstot adrešu grāmatai."
+msgstr "CORBA kļūda, piekļūstot adrešu grāmatai."
 
 #: ../src/plugins/evolution/e-contact-entry.c:922
 msgid "The address book source does not exist."
@@ -215,11 +216,11 @@ msgstr "Adrešu grāmatas avots neeksistē."
 #: ../src/plugins/evolution/e-contact-entry.c:924
 #: ../src/plugins/evolution/e-contact-entry.c:927
 msgid "An unknown error occurred."
-msgstr "Parādījās nezināma kļūda."
+msgstr "Gadījās nezināma kļūda."
 
 #: ../src/plugins/gajim/gajim.c:417
 msgid "Unable to send file"
-msgstr "Nespēj nosūtīt failu"
+msgstr "Nevar nosūtīt datni"
 
 #: ../src/plugins/gajim/gajim.c:418
 msgid "There is no connection to gajim remote service."
@@ -227,7 +228,7 @@ msgstr "Nav savienojuma ar gajim attālināto servisu."
 
 #: ../src/plugins/gajim/gajim.c:442 ../src/plugins/gajim/gajim.c:482
 msgid "Sending file failed"
-msgstr "Faila nosūtīšana neizdevās"
+msgstr "Neizdevās nosūtīt datni"
 
 #: ../src/plugins/gajim/gajim.c:443
 msgid "Recipient is missing."
@@ -247,7 +248,7 @@ msgstr "Jauns CD/DVD"
 
 #: ../src/plugins/nautilus-burn/nautilus-burn.c:97
 msgid "Existing CD/DVD"
-msgstr "Eksistējošs CD/DVD"
+msgstr "Esošs CD/DVD"
 
 #: ../src/plugins/nautilus-burn/nautilus-burn.c:176
 msgid "CD/DVD Creator"
@@ -264,7 +265,7 @@ msgstr "Izņemamie diski un koplietojumi"
 #: ../src/plugins/socialweb/socialweb.c:186
 #, c-format
 msgid "Uploading '%s'"
-msgstr "Augšupielādē '%s'"
+msgstr "Augšupielādē “%s”"
 
 #: ../src/plugins/socialweb/socialweb.c:256
 msgid "Preparing upload"
@@ -273,7 +274,7 @@ msgstr "Gatavo augšupielādēšanai"
 #: ../src/plugins/socialweb/socialweb.c:316
 #, c-format
 msgid "Service '%s' is not configured."
-msgstr "Serviss '%s' nav nokonfigurēts."
+msgstr "Serviss “%s” nav nokonfigurēts."
 
 #: ../src/plugins/socialweb/socialweb.c:319
 #: ../src/plugins/socialweb/socialweb.c:336
@@ -284,16 +285,16 @@ msgstr "_Konfigurēt"
 #: ../src/plugins/socialweb/socialweb.c:343
 #, c-format
 msgid "Logged in to service '%s'."
-msgstr "Pieteicies servisā '%s'."
+msgstr "Pieteicies servisā “%s”."
 
 #: ../src/plugins/socialweb/socialweb.c:333
 #, c-format
 msgid "Could not log in to service '%s'."
-msgstr "Neizdevās pieteikties servisam '%s'."
+msgstr "Neizdevās pieteikties servisam “%s”."
 
 #: ../src/plugins/upnp/upnp.c:309
 msgid "UPnP Media Server"
-msgstr "UPnP mēdiju serveris"
+msgstr "UPnP mediju serveris"
 
 #~ msgid "Last plugin used to send"
 #~ msgstr "Pēdējais spraudnis, kas izmantots sūtīšanai"
