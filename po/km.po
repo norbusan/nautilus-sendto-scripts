@@ -1,0 +1,315 @@
+# translation of po_nautilus-sendto-km.po to Khmer
+# Khmer translation for nautilus-sendto
+# Copyright (c) 2012 Rosetta Contributors and Canonical Ltd 2012
+# This file is distributed under the same license as the nautilus-sendto package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2012.
+# Sok Sophea <sophea@khmeros.info>, 2012.
+msgid ""
+msgstr ""
+"Project-Id-Version: po_nautilus-sendto-km\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
+"product=nautilus-sendto&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2012-09-24 13:42+0000\n"
+"PO-Revision-Date: 2012-09-28 09:45+0700\n"
+"Last-Translator: Sok Sophea <sophea@khmeros.info>\n"
+"Language-Team: Khmer <>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: WordForge 0.8 RC1\n"
+"X-Language: km-KH\n"
+
+#: ../src/nautilus-sendto-command.c:80
+msgid "Run from build directory"
+msgstr "ដំណើរការ​ពី​ថត​ដែល​បាន​បង្កើត"
+
+#: ../src/nautilus-sendto-command.c:81
+msgid "Use XID as parent to the send dialogue"
+msgstr "ប្រើ XID ជា​មេ​ទៅកាន់​ប្រអប់​ផ្ញើ"
+
+#: ../src/nautilus-sendto-command.c:82
+msgid "Files to send"
+msgstr "ឯកសារ​ដែល​ត្រូវ​ផ្ញើ"
+
+#: ../src/nautilus-sendto-command.c:83
+msgid "Output version information and exit"
+msgstr "បង្ហាញ​ព័ត៌មាន​កំណែ រួច​ចេញ"
+
+#. FIXME, this needs to be done in UI now
+#: ../src/nautilus-sendto-command.c:667
+#, c-format
+msgid "Expects URIs or filenames to be passed as options\n"
+msgstr "រំពឹង URIs ឬ​ឈ្មោះ​ឯកសារ​ត្រូវ​បាន​បិទភ្ជាប់​ជា​ជម្រើស\n"
+
+#: ../src/nautilus-sendto-command.c:697
+#, c-format
+msgid "Could not parse command-line options: %s\n"
+msgstr "មិន​អាច​ញែក​ជម្រើស​បន្ទាត់​ពាក្យ​បញ្ជា​បាន​​ទេ ៖ %s\n"
+
+#: ../src/nautilus-sendto-mimetype.c:50
+#, c-format
+msgid "Sharing %d folder"
+msgid_plural "Sharing %d folders"
+msgstr[0] "ចែករំលែក %d ថត"
+
+#: ../src/nautilus-sendto-mimetype.c:52
+#, c-format
+msgid "Sharing %d folders and files"
+msgstr "ចែករំលែក %d ថត និង​ឯកសារ"
+
+#: ../src/nautilus-sendto-mimetype.c:77
+#, c-format
+msgid "Sharing %d video"
+msgid_plural "Sharing %d videos"
+msgstr[0] "ចែករំលែក %d វីដេអូ"
+
+#: ../src/nautilus-sendto-mimetype.c:79
+#, c-format
+msgid "Sharing %d photo"
+msgid_plural "Sharing %d photos"
+msgstr[0] "ចែករំលែក %d រូបថត"
+
+#: ../src/nautilus-sendto-mimetype.c:81
+#, c-format
+msgid "Sharing %d image"
+msgid_plural "Sharing %d images"
+msgstr[0] "ចែករំលែក %d រូបភាព"
+
+#: ../src/nautilus-sendto-mimetype.c:83
+#, c-format
+msgid "Sharing %d text file"
+msgid_plural "Sharing %d text files"
+msgstr[0] "ចែករំលែក %d ឯកសារ​អត្ថបទ"
+
+#: ../src/nautilus-sendto-mimetype.c:85
+#, c-format
+msgid "Sharing %d file"
+msgid_plural "Sharing %d files"
+msgstr[0] "ចែករំលែក %d ឯកសារ"
+
+#: ../data/nautilus-sendto.ui.h:1
+msgid "_Send"
+msgstr "ផ្ញើ"
+
+#: ../src/plugins/nautilus-sendto-packer.c:201
+msgid "Files"
+msgstr "ឯកសារ"
+
+#: ../src/plugins/nautilus-sendto-progress.c:187
+msgid "_Cancel"
+msgstr "បោះបង់"
+
+#: ../data/pack-entry.ui.h:1
+msgid "Send _packed in:"
+msgstr "ផ្ញើ​កញ្ចប់​នៅ​ក្នុង ៖"
+
+#: ../src/plugins/evolution/evolution.c:295
+msgid "Mail"
+msgstr "សំបុត្រ"
+
+#: ../src/plugins/evolution/e-contact-entry.c:153
+#, c-format
+msgid "Cannot get contact: %s"
+msgstr "មិន​អាច​ទាក់ទង​បាន​ទេ ៖ %s"
+
+#: ../src/plugins/evolution/e-contact-entry.c:186
+#, c-format
+msgid "Could not find contact: %s"
+msgstr "មិន​អាច​រក​ទំនាក់ទំនង​បាន​ទេ ៖ %s"
+
+#: ../src/plugins/evolution/e-contact-entry.c:414
+msgid "Cannot create searchable view."
+msgstr "មិន​បង្កើត​ទិដ្ឋភាព​ដែល​អាច​ស្វែងរក​បាន​ទេ ។"
+
+#: ../src/plugins/evolution/e-contact-entry.c:891
+msgid "Success"
+msgstr "ជោគជ័យ"
+
+#: ../src/plugins/evolution/e-contact-entry.c:893
+msgid "An argument was invalid."
+msgstr "អាគុយម៉ង់​មិន​ត្រឹមត្រូវ"
+
+#: ../src/plugins/evolution/e-contact-entry.c:895
+msgid "The address book is busy."
+msgstr "សៀវភៅ​អាសយដ្ឋាន​ជាប់​រវល់ ។"
+
+#: ../src/plugins/evolution/e-contact-entry.c:897
+msgid "The address book is offline."
+msgstr "សៀវភៅ​អាសយដ្ឋាន​ក្រៅ​បណ្ដាញ ។"
+
+#: ../src/plugins/evolution/e-contact-entry.c:899
+msgid "The address book does not exist."
+msgstr "គ្មាន​សៀវភៅ​អាសយដ្ឋាន​ឡើយ ។"
+
+#: ../src/plugins/evolution/e-contact-entry.c:901
+msgid "The \"Me\" contact does not exist."
+msgstr "\"ខ្ញុំ\" គ្មាន​ទំនាក់ទំនង​ឡើយ ។"
+
+#: ../src/plugins/evolution/e-contact-entry.c:903
+msgid "The address book is not loaded."
+msgstr "មិន​បាន​ផ្ទុក​សៀវភៅ​អាសយដ្ឋាន​ឡើយ ។"
+
+#: ../src/plugins/evolution/e-contact-entry.c:905
+msgid "The address book is already loaded."
+msgstr "បាន​ផ្ទុក​សៀវភៅ​អាសយដ្ឋាន​រួចហើយ ។"
+
+#: ../src/plugins/evolution/e-contact-entry.c:907
+msgid "Permission was denied when accessing the address book."
+msgstr "សិទ្ធិ​ត្រូវ​បាន​បដិសេធ នៅ​ពេល​ចូល​ដំណើរការ​សៀវភៅ​អាសយដ្ឋាន ។"
+
+#: ../src/plugins/evolution/e-contact-entry.c:909
+msgid "The contact was not found."
+msgstr "រក​មិន​ឃើញ​ទំនាក់ទំនង​ឡើយ ។"
+
+#: ../src/plugins/evolution/e-contact-entry.c:911
+msgid "This contact ID already exists."
+msgstr "មាន​លេខ​សម្គាល់​ទំនាក់ទំនង​រួចហើយ ។"
+
+#: ../src/plugins/evolution/e-contact-entry.c:913
+msgid "The protocol is not supported."
+msgstr "មិន​គាំទ្រ​ពិធីការ​ឡើយ ។"
+
+#: ../src/plugins/evolution/e-contact-entry.c:915
+msgid "The operation was cancelled."
+msgstr "បោះបង់​ប្រតិបត្តិការ ។"
+
+#: ../src/plugins/evolution/e-contact-entry.c:917
+msgid "The operation could not be cancelled."
+msgstr "មិន​អាច​បោះបង់​ប្រតិបត្តិការ​បាន​ឡើយ ។"
+
+#: ../src/plugins/evolution/e-contact-entry.c:919
+msgid "The address book authentication failed."
+msgstr "បាន​បរាជ័យ​ក្នុង​ការ​ផ្ទៀងផ្ទាត់​ភាព​ត្រឹមត្រូវ​សៀវភៅ​អាសយដ្ឋាន ។"
+
+#: ../src/plugins/evolution/e-contact-entry.c:921
+msgid ""
+"Authentication is required to access the address book and was not given."
+msgstr ""
+"ទាមទារ​ការ​ផ្ទៀងផ្ទាត់​ភាព​ត្រឹមត្រូវ ដើម្បី​ចូល​ដំណើរការ​សៀវភៅ​អាសយដ្ឋាន  ហើយ​មិន​ត្រូវ​បាន​ផ្ដល់​ឲ្យ​ឡើយ ។"
+
+#: ../src/plugins/evolution/e-contact-entry.c:923
+msgid "A secure connection is not available."
+msgstr "គ្មាន​ការ​តភ្ជាប់​ដែល​មាន​សុវត្ថិភាព​ឡើយ ។"
+
+#: ../src/plugins/evolution/e-contact-entry.c:925
+msgid "A CORBA error occurred whilst accessing the address book."
+msgstr "មាន​កំហុស CORBA ​ក្នុង​ខណៈ​ដែល​ចូល​ដំណើរការ​សៀវភៅ​អាសយដ្ឋាន ។"
+
+#: ../src/plugins/evolution/e-contact-entry.c:927
+msgid "The address book source does not exist."
+msgstr "គ្មាន​ប្រភព​សៀវភៅ​អាសយដ្ឋាន​ឡើយ ។"
+
+#: ../src/plugins/evolution/e-contact-entry.c:929
+#: ../src/plugins/evolution/e-contact-entry.c:932
+msgid "An unknown error occurred."
+msgstr "កំហុស​ដែល​មិន​ស្គាល់​បាន​​កើត​ឡើង ។"
+
+#: ../src/plugins/gajim/gajim.c:418
+msgid "Unable to send file"
+msgstr "មិន​អាច​ផ្ញើ​ឯកសារ​បាន​ទេ"
+
+#: ../src/plugins/gajim/gajim.c:419
+msgid "There is no connection to gajim remote service."
+msgstr "គ្មាន​ការ​តភ្ជាប់​ទៅកាន់​សេវាកម្ម​ពី​ចម្ងាយ​របស់​ gajim ឡើយ ។"
+
+#: ../src/plugins/gajim/gajim.c:443 ../src/plugins/gajim/gajim.c:483
+msgid "Sending file failed"
+msgstr "បាន​បរាជ័យ​ក្នុង​ការ​ផ្ញើ​ឯកសារ"
+
+#: ../src/plugins/gajim/gajim.c:444
+msgid "Recipient is missing."
+msgstr "បាត់​អ្នក​ទទួល ។"
+
+#: ../src/plugins/gajim/gajim.c:483
+msgid "Unknown recipient."
+msgstr "មិន​ស្គាល់​អ្នក​ទទួល ។"
+
+#: ../src/plugins/gajim/gajim.c:506
+msgid "Instant Message (Gajim)"
+msgstr "សារ​បន្ទាន់ (Gajim)"
+
+#: ../src/plugins/nautilus-burn/nautilus-burn.c:90
+msgid "New CD/DVD"
+msgstr "ស៊ីឌី/ឌីវីឌី​ថ្មី"
+
+#: ../src/plugins/nautilus-burn/nautilus-burn.c:97
+msgid "Existing CD/DVD"
+msgstr "ស៊ីឌី/ឌីវីឌី ដែល​មាន​ស្រាប់"
+
+#: ../src/plugins/nautilus-burn/nautilus-burn.c:176
+msgid "CD/DVD Creator"
+msgstr "កម្មវិធី​សរសេរ ស៊ីឌី/ឌីវីឌី"
+
+#: ../src/plugins/pidgin/pidgin.c:464
+msgid "Instant Message (Pidgin)"
+msgstr "សារ​បន្ទាន់ (Pidgin)"
+
+#: ../src/plugins/removable-devices/removable-devices.c:274
+msgid "Removable disks and shares"
+msgstr "ការ​ចែករំលែក និង​ថាស​ចល័ត"
+
+#: ../src/plugins/socialweb/socialweb.c:186
+#, c-format
+msgid "Uploading '%s'"
+msgstr "កំពុង​ផ្ទុក​ឡើង '%s'"
+
+#: ../src/plugins/socialweb/socialweb.c:256
+msgid "Preparing upload"
+msgstr "រៀបចំ​ការ​ផ្ទុកឡើង"
+
+#: ../src/plugins/socialweb/socialweb.c:316
+#, c-format
+msgid "Service '%s' is not configured."
+msgstr "មិន​បាន​កំណត់​រចនាសម្ព័ន្ធ​សេវា '%s' ។"
+
+#: ../src/plugins/socialweb/socialweb.c:319
+#: ../src/plugins/socialweb/socialweb.c:336
+msgid "_Configure"
+msgstr "កំណត់​រចនាសម្ព័ន្ធ"
+
+#: ../src/plugins/socialweb/socialweb.c:323
+#: ../src/plugins/socialweb/socialweb.c:343
+#, c-format
+msgid "Logged in to service '%s'."
+msgstr "បាន​ចូល​ទៅកាន់​សេវា '%s' ។"
+
+#: ../src/plugins/socialweb/socialweb.c:333
+#, c-format
+msgid "Could not log in to service '%s'."
+msgstr "មិន​អាច​ចូល​ទៅកាន់​សេវា %s បាន​ទេ ។"
+
+#: ../src/plugins/upnp/upnp.c:309
+msgid "UPnP Media Server"
+msgstr "ម៉ាស៊ីន​បម្រើ​មេឌៀ UPnP"
+
+#~ msgid "Send To..."
+#~ msgstr "ផ្ញើ​ជូន​ចំពោះ..."
+
+#~ msgid "Send file by mail, instant message..."
+#~ msgstr "ផ្ញើ​ឯកសារ​តាម​សំបុត្រ សារ​បន្ទាន់..."
+
+#~ msgid "Send files by mail, instant message..."
+#~ msgstr "ផ្ញើ​ឯកសារ​តាម​សំបុត្រ សារ​បន្ទាន់..."
+
+#~ msgid "Could not load any plugins."
+#~ msgstr "មិន​អាច​ផ្ទុក​កម្មវិធី​ជំនួយ​មួយ​ចំនួន​បាន​ឡើយ ។"
+
+#~ msgid "Please verify your installation"
+#~ msgstr "សូម​ផ្ទៀងផ្ទាត់​ការ​ដំឡើង​របស់​អ្នក"
+
+#~ msgid "<b>Destination</b>"
+#~ msgstr "<b>ទិសដៅ</b>"
+
+#~ msgid "Send _as:"
+#~ msgstr "ផ្ញើ​ជា ៖"
+
+#~ msgid "Send t_o:"
+#~ msgstr "ផ្ញើ​ជូន​ចំពោះ ៖"
+
+#~ msgid "<b>Compression</b>"
+#~ msgstr "<b>ការ​បង្ហាប់</b>"
+
+#~ msgid "Email"
+#~ msgstr "អ៊ីមែល"
