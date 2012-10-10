@@ -1,5 +1,5 @@
 # Slovak translation for nautilus-sendto.
-# Copyright (C) 2004, 2005, 2007, 2008, 2010 Free Software Foundation, Inc.
+# Copyright (C) 2004, 2005, 2007-2012 Free Software Foundation, Inc.
 # This file is distributed under the same license as the nautilus-sendto package.
 # Peter Tuharsky <tuharsky@misbb.sk>, 2007, 2008.
 # Marcel Telka <marcel@telka.sk>, 2004, 2005, 2010.
@@ -10,7 +10,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=nautilus-sendto&component=general\n"
 "POT-Creation-Date: 2010-03-15 16:37+0000\n"
-"PO-Revision-Date: 2010-03-15 20:51+0100\n"
+"PO-Revision-Date: 2012-10-10 12:56+0100\n"
 "Last-Translator: Marcel Telka <marcel@telka.sk>\n"
 "Language-Team: Slovak <gnome-sk-list@gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -79,7 +79,7 @@ msgstr "Očakáva, že URI alebo názvy súborov budú odovzdané ako voľby\n"
 #: ../src/nautilus-sendto-command.c:803
 #, c-format
 msgid "Could not parse command-line options: %s\n"
-msgstr "Nepodarilo sa analyzovať voľby príkazového riadku: %s\n"
+msgstr "Nepodarilo sa analyzovať voľby príkazového riadka: %s\n"
 
 #: ../src/nautilus-sendto-command.c:818
 msgid "Could not load any plugins."
@@ -144,7 +144,7 @@ msgstr "Okamžitá správa (Empathy)"
 
 #: ../src/plugins/evolution/evolution.c:369
 msgid "Email"
-msgstr "E-mail"
+msgstr "Email"
 
 #: ../src/plugins/evolution/e-contact-entry.c:153
 #, c-format
@@ -170,31 +170,31 @@ msgstr "Parameter bol neplatný."
 
 #: ../src/plugins/evolution/e-contact-entry.c:890
 msgid "The address book is busy."
-msgstr "Adresár je zaneprázdnený."
+msgstr "Adresár kontaktov je zaneprázdnený."
 
 #: ../src/plugins/evolution/e-contact-entry.c:892
 msgid "The address book is offline."
-msgstr "Adresár je off-line."
+msgstr "Adresár kontaktov je off-line."
 
 #: ../src/plugins/evolution/e-contact-entry.c:894
 msgid "The address book does not exist."
-msgstr "Adresár neexistuje."
+msgstr "Adresár kontaktov neexistuje."
 
 #: ../src/plugins/evolution/e-contact-entry.c:896
 msgid "The \"Me\" contact does not exist."
-msgstr "Kontakt \"Ja\" neexistuje."
+msgstr "Kontakt „Ja“ neexistuje."
 
 #: ../src/plugins/evolution/e-contact-entry.c:898
 msgid "The address book is not loaded."
-msgstr "Adresár nie je načítaný."
+msgstr "Adresár kontaktov nie je načítaný."
 
 #: ../src/plugins/evolution/e-contact-entry.c:900
 msgid "The address book is already loaded."
-msgstr "Adresár je už načítaný."
+msgstr "Adresár kontaktov je už načítaný."
 
 #: ../src/plugins/evolution/e-contact-entry.c:902
 msgid "Permission was denied when accessing the address book."
-msgstr "Oprávnenie bolo zamietnuté pri prístupe k adresáru."
+msgstr "Oprávnenie bolo zamietnuté pri prístupe k adresáru kontaktov."
 
 #: ../src/plugins/evolution/e-contact-entry.c:904
 msgid "The contact was not found."
@@ -218,13 +218,13 @@ msgstr "Operáciu sa nepodarilo zrušiť."
 
 #: ../src/plugins/evolution/e-contact-entry.c:914
 msgid "The address book authentication failed."
-msgstr "Overenie totožnosti adresára zlyhalo."
+msgstr "Overenie totožnosti adresára kontaktov zlyhalo."
 
 #: ../src/plugins/evolution/e-contact-entry.c:916
 msgid ""
 "Authentication is required to access the address book and was not given."
 msgstr ""
-"Pre prístup ku adresáru je vyžadované overenie totožnosti, ale nebolo "
+"Na prístup k adresáru kontaktov sa vyžaduje overenie totožnosti, ale nebolo "
 "poskytnuté."
 
 #: ../src/plugins/evolution/e-contact-entry.c:918
@@ -233,11 +233,11 @@ msgstr "Bezpečné pripojenie nie je dostupné."
 
 #: ../src/plugins/evolution/e-contact-entry.c:920
 msgid "A CORBA error occurred whilst accessing the address book."
-msgstr "Počas prístupu k adresáru nastala chyba CORBA."
+msgstr "Počas prístupu k adresáru kontaktov nastala chyba CORBA."
 
 #: ../src/plugins/evolution/e-contact-entry.c:922
 msgid "The address book source does not exist."
-msgstr "Zdroj adresára neexistuje."
+msgstr "Zdroj adresára kontaktov neexistuje."
 
 #: ../src/plugins/evolution/e-contact-entry.c:924
 #: ../src/plugins/evolution/e-contact-entry.c:927
@@ -250,7 +250,7 @@ msgstr "Nepodarilo sa odoslať súbor"
 
 #: ../src/plugins/gajim/gajim.c:418
 msgid "There is no connection to gajim remote service."
-msgstr "Nie je pripojenie k vzdialenej službe gajim."
+msgstr "Neexistuje pripojenie k vzdialenej službe gajim."
 
 #: ../src/plugins/gajim/gajim.c:442 ../src/plugins/gajim/gajim.c:482
 msgid "Sending file failed"
