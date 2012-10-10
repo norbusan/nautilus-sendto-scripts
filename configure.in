@@ -176,7 +176,7 @@ for plugin in ${used_plugins}; do
 			fi
 		;;
 		upnp)
-			PKG_CHECK_MODULES(UPNP, gupnp-1.0 >= $GUPNP_REQUIRED libpeas-1.0,
+			PKG_CHECK_MODULES(UPNP, gssdp-1.0 gupnp-1.0 >= $GUPNP_REQUIRED libpeas-1.0,
 					  enable_upnp=yes, enable_upnp=no)
 			if test "${enable_upnp}" != "yes" ; then
 				plugin_error_or_ignore "you need gupnp installed for the upnp plugin"
