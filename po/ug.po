@@ -6,9 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: nautilus-sendto\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
-"product=nautilus-sendto&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2011-05-22 21:02+0000\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=nautilus-sendto&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2012-01-06 13:05+0000\n"
 "PO-Revision-Date: 2011-03-04 21:53+0600\n"
 "Last-Translator: Sahran <sahran.ug@gmail.com>\n"
 "Language-Team: Uyghur Computer Science Association <UKIJ@yahoogroups.com>\n"
@@ -17,25 +16,29 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: ../src/nautilus-sendto-command.c:79
+#: ../src/nautilus-sendto-command.c:80
 msgid "Run from build directory"
 msgstr "قۇرۇلغان مۇندەرىجىدىن ئىجرا قىل"
 
-#: ../src/nautilus-sendto-command.c:80
+#: ../src/nautilus-sendto-command.c:81
 msgid "Use XID as parent to the send dialogue"
 msgstr "XID نى يوللاش سۆزلەشكۈسىنىڭ ئاتىسى قىلىپ ئىشلەت"
 
-#: ../src/nautilus-sendto-command.c:81
+#: ../src/nautilus-sendto-command.c:82
 msgid "Files to send"
 msgstr "ئەۋەتىش مەغلۇپ بولدى"
 
+#: ../src/nautilus-sendto-command.c:83
+msgid "Output version information and exit"
+msgstr "نەشر ئۇچۇرىنى كۆرسىتىپ ئاخىرلاشتۇرىدۇ"
+
 #. FIXME, this needs to be done in UI now
-#: ../src/nautilus-sendto-command.c:662
+#: ../src/nautilus-sendto-command.c:664
 #, c-format
 msgid "Expects URIs or filenames to be passed as options\n"
 msgstr "URI ياكى ھۆججەت ئاتى تاللانما قىلىنىدۇ\n"
 
-#: ../src/nautilus-sendto-command.c:692
+#: ../src/nautilus-sendto-command.c:694
 #, c-format
 msgid "Could not parse command-line options: %s\n"
 msgstr "بۇيرۇق قۇرى تاللانمىسىنى يېشەلمىدى: %s\n"
@@ -99,7 +102,7 @@ msgstr "بوغچا يوللا(_p):"
 
 #: ../src/plugins/evolution/evolution.c:308
 msgid "Mail"
-msgstr "خەت-چەك"
+msgstr "خەت"
 
 #: ../src/plugins/evolution/e-contact-entry.c:153
 #, c-format
@@ -117,7 +120,7 @@ msgstr "ئىزدەشچان كۆرۈنۈشنى قۇرالمىدى."
 
 #: ../src/plugins/evolution/e-contact-entry.c:886
 msgid "Success"
-msgstr "مۇۋەپپەقىيەتلىك"
+msgstr "مۇۋەپپەقىيەتلىك بولدى"
 
 #: ../src/plugins/evolution/e-contact-entry.c:888
 msgid "An argument was invalid."
@@ -145,7 +148,7 @@ msgstr "ئادرېس دەپتىرىنى يۈكلىيەلمىدى."
 
 #: ../src/plugins/evolution/e-contact-entry.c:900
 msgid "The address book is already loaded."
-msgstr "ئادرېس دەپتىرى يۈكلەندى."
+msgstr "ئادرېس دەپتىرى يۈكلەنگەن."
 
 #: ../src/plugins/evolution/e-contact-entry.c:902
 msgid "Permission was denied when accessing the address book."
@@ -157,7 +160,7 @@ msgstr "ئالاقەداشلار تېپىلمىدى."
 
 #: ../src/plugins/evolution/e-contact-entry.c:906
 msgid "This contact ID already exists."
-msgstr "بۇ ئالاقەداش ID سى مەۋجۇت."
+msgstr "بۇ ئالاقەداش كىملىكى مەۋجۇت."
 
 #: ../src/plugins/evolution/e-contact-entry.c:908
 msgid "The protocol is not supported."
@@ -178,8 +181,7 @@ msgstr "ئادرېس دەپتىرى سالاھىيىتىنى دەلىللىيە�
 #: ../src/plugins/evolution/e-contact-entry.c:916
 msgid ""
 "Authentication is required to access the address book and was not given."
-msgstr ""
-"ئادرېس دەپتىرىنى زىيارەت قىلىشتا دەلىللەش زۆرۈر، بۇ دەلىللەش بېرىلمىگەن."
+msgstr "ئادرېس دەپتىرىنى زىيارەت قىلىشتا سالاھىيەت دەلىللەش زۆرۈر، بۇ سالاھىيەت دەلىللەش بېرىلمىگەن."
 
 #: ../src/plugins/evolution/e-contact-entry.c:918
 msgid "A secure connection is not available."
@@ -220,7 +222,7 @@ msgstr "نامەلۇم تاپشۇرۇۋالغۇچى."
 
 #: ../src/plugins/gajim/gajim.c:505
 msgid "Instant Message (Gajim)"
-msgstr "مۇڭداشقۇچ (Gajim)"
+msgstr "مۇڭداشقۇ (Gajim)"
 
 #: ../src/plugins/nautilus-burn/nautilus-burn.c:90
 msgid "New CD/DVD"
@@ -240,7 +242,7 @@ msgstr "مۇڭداشقۇ (Pidgin)"
 
 #: ../src/plugins/removable-devices/removable-devices.c:274
 msgid "Removable disks and shares"
-msgstr "يان دىسكا ۋە ھەمبەھىر"
+msgstr "چىقىرىۋېتىشكە بولىدىغان دىسكىلار ۋە ھەمبەھىرلەر"
 
 #: ../src/plugins/socialweb/socialweb.c:186
 #, c-format
