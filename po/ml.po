@@ -5,20 +5,22 @@
 # Labeeb Elbiem <mmlabeeb@gmail.com>, 2010.
 # Reviewed by Praveen Arimbrathodiyil <pravi.a@gmail.com>, 2010.
 # Anish A <anish.nl@gmail.com>, 2010.
+# Jishnu Mohan <jishnu7@gmail.com>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: nautilus-sendto-master\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-20 18:37+0530\n"
-"PO-Revision-Date: 2010-12-19 10:20+0530\n"
-"Last-Translator: Anish A <anish.nl@gmail.com>\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
+"product=nautilus-sendto&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2013-01-13 10:45+0000\n"
+"PO-Revision-Date: 2013-02-11 11:41+0530\n"
+"Last-Translator: Jishnu Mohan <jishnu7@gmail.com>\n"
 "Language-Team: Swathantra Malayalam Computing <discuss@lists.smc.org.in>\n"
 "Language: ml\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Virtaal 0.5.2\n"
+"X-Generator: Poedit 1.5.4\n"
 
 #: ../src/nautilus-sendto-command.c:80
 msgid "Run from build directory"
@@ -34,15 +36,15 @@ msgstr "ആയ്ക്കേണ്ട ഫയല്‍"
 
 #: ../src/nautilus-sendto-command.c:83
 msgid "Output version information and exit"
-msgstr ""
+msgstr "പതിപ്പുവിവരം ഔട്ട്പുട്ട് ചെയ്ത് പുറത്തുകടക്കുക"
 
 #. FIXME, this needs to be done in UI now
-#: ../src/nautilus-sendto-command.c:664
+#: ../src/nautilus-sendto-command.c:667
 #, c-format
 msgid "Expects URIs or filenames to be passed as options\n"
 msgstr "യുആര്‍ഐകളോ ഫയല്‍നാമങ്ങളോ ഐച്ഛികങ്ങളായി നല്‍കാന്‍ പ്രതീക്ഷിക്കുന്നു\n"
 
-#: ../src/nautilus-sendto-command.c:694
+#: ../src/nautilus-sendto-command.c:697
 #, c-format
 msgid "Could not parse command-line options: %s\n"
 msgstr "ആജ്ഞാസ്ഥാനത്തു് നല്‍കിയ ഐച്ഛികങ്ങള്‍ വായിച്ചെടുക്കാന്‍ സാധിച്ചില്ല: %s\n"
@@ -98,19 +100,19 @@ msgstr[1] "%d ഫയലുകള്‍ പങ്കുവെയ്ക്കു�
 msgid "_Send"
 msgstr "_അയക്കുക"
 
-#: ../src/plugins/nautilus-sendto-packer.c:200
+#: ../src/plugins/nautilus-sendto-packer.c:201
 msgid "Files"
 msgstr "ഫയലുകള്‍"
 
 #: ../src/plugins/nautilus-sendto-progress.c:187
 msgid "_Cancel"
-msgstr ""
+msgstr "_റദ്ദാക്കുക"
 
 #: ../data/pack-entry.ui.h:1
 msgid "Send _packed in:"
 msgstr "കെട്ടി_പ്പൂട്ടി അയക്കുക:"
 
-#: ../src/plugins/evolution/evolution.c:308
+#: ../src/plugins/evolution/evolution.c:295
 msgid "Mail"
 msgstr "ഈമെയില്‍"
 
@@ -128,109 +130,109 @@ msgstr "%s: ഈ വിലാസം കണ്ടെത്തിയില്ല"
 msgid "Cannot create searchable view."
 msgstr "തെരയാന്‍ അനുയോജ്യമായ കാഴ്ച ഒരുക്കാന്‍ സാധിച്ചില്ല."
 
-#: ../src/plugins/evolution/e-contact-entry.c:886
+#: ../src/plugins/evolution/e-contact-entry.c:891
 msgid "Success"
 msgstr "വിജയിച്ചിരിക്കുന്നു"
 
-#: ../src/plugins/evolution/e-contact-entry.c:888
+#: ../src/plugins/evolution/e-contact-entry.c:893
 msgid "An argument was invalid."
 msgstr "ഒരു ആര്‍ഗ്യുമെന്റ് അസാധുവായിരുന്നു."
 
-#: ../src/plugins/evolution/e-contact-entry.c:890
+#: ../src/plugins/evolution/e-contact-entry.c:895
 msgid "The address book is busy."
 msgstr "വിലാസപുസ്തകം മറ്റൊരുപയോഗത്തിലാണ്."
 
-#: ../src/plugins/evolution/e-contact-entry.c:892
+#: ../src/plugins/evolution/e-contact-entry.c:897
 msgid "The address book is offline."
 msgstr "വിലാസപുസ്തകം ഓഫ്‌‌ലൈന്‍ ആണ്."
 
-#: ../src/plugins/evolution/e-contact-entry.c:894
+#: ../src/plugins/evolution/e-contact-entry.c:899
 msgid "The address book does not exist."
 msgstr "ഈ വിലാസപുസ്തകം നിലവിലില്ല."
 
-#: ../src/plugins/evolution/e-contact-entry.c:896
+#: ../src/plugins/evolution/e-contact-entry.c:901
 msgid "The \"Me\" contact does not exist."
 msgstr "\"ഞാന്‍\" എന്ന വിലാസം  നിലവിലില്ല."
 
-#: ../src/plugins/evolution/e-contact-entry.c:898
+#: ../src/plugins/evolution/e-contact-entry.c:903
 msgid "The address book is not loaded."
 msgstr "വിലാസപുസ്തകം തുറന്നിട്ടില്ല."
 
-#: ../src/plugins/evolution/e-contact-entry.c:900
+#: ../src/plugins/evolution/e-contact-entry.c:905
 msgid "The address book is already loaded."
 msgstr "വിലാസപുസ്തകം ഇപ്പൊഴേ നിലവിലുണ്ട്."
 
-#: ../src/plugins/evolution/e-contact-entry.c:902
+#: ../src/plugins/evolution/e-contact-entry.c:907
 msgid "Permission was denied when accessing the address book."
 msgstr "വിലാസപുസ്തകം നോക്കുന്നതിനുള്ള അനുവാദമില്ല."
 
-#: ../src/plugins/evolution/e-contact-entry.c:904
+#: ../src/plugins/evolution/e-contact-entry.c:909
 msgid "The contact was not found."
 msgstr "ഈ വിലാസം കണ്ടെത്തിയില്ല"
 
-#: ../src/plugins/evolution/e-contact-entry.c:906
+#: ../src/plugins/evolution/e-contact-entry.c:911
 msgid "This contact ID already exists."
 msgstr "ഈ വിലാസത്തിന്റെ ഐഡി നിലവിലുണ്ട്."
 
-#: ../src/plugins/evolution/e-contact-entry.c:908
+#: ../src/plugins/evolution/e-contact-entry.c:913
 msgid "The protocol is not supported."
 msgstr "ഈ പ്രോട്ടോകോള്‍ പിന്തുണയില്ലാത്തതാണ്."
 
-#: ../src/plugins/evolution/e-contact-entry.c:910
+#: ../src/plugins/evolution/e-contact-entry.c:915
 msgid "The operation was cancelled."
 msgstr "ഈ നടപടി നിര്‍ത്തിയിരിക്കുന്നു"
 
-#: ../src/plugins/evolution/e-contact-entry.c:912
+#: ../src/plugins/evolution/e-contact-entry.c:917
 msgid "The operation could not be cancelled."
 msgstr "ഈ നടപടി നിറുത്താന്‍ സാധ്യമല്ല"
 
-#: ../src/plugins/evolution/e-contact-entry.c:914
+#: ../src/plugins/evolution/e-contact-entry.c:919
 msgid "The address book authentication failed."
 msgstr "വിലാസപുസ്തകത്തിലേക്കുള്ള തിരിച്ചറിയല്‍ പരിശോധന പരാജയപ്പെട്ടു"
 
-#: ../src/plugins/evolution/e-contact-entry.c:916
+#: ../src/plugins/evolution/e-contact-entry.c:921
 msgid ""
 "Authentication is required to access the address book and was not given."
 msgstr "വിലാസപുസ്തകം പരിശോധിക്കാന്‍ ആവശ്യമായ തിരിച്ചറിയല്‍ നല്കിയിട്ടില്ല"
 
-#: ../src/plugins/evolution/e-contact-entry.c:918
+#: ../src/plugins/evolution/e-contact-entry.c:923
 msgid "A secure connection is not available."
 msgstr "സുരക്ഷിതമായ ഒരു ബന്ധം ലഭ്യമല്ല"
 
-#: ../src/plugins/evolution/e-contact-entry.c:920
+#: ../src/plugins/evolution/e-contact-entry.c:925
 msgid "A CORBA error occurred whilst accessing the address book."
 msgstr "വിലാസപുസ്തകം നോക്കുന്നതിനിടയില്‍ ഒരു കോര്‍ബ പിശക് സംഭവിച്ചു."
 
-#: ../src/plugins/evolution/e-contact-entry.c:922
+#: ../src/plugins/evolution/e-contact-entry.c:927
 msgid "The address book source does not exist."
 msgstr "വിലാസപുസ്തകത്തിന്റെ ഉറവിടം നിലവിലില്ല."
 
-#: ../src/plugins/evolution/e-contact-entry.c:924
-#: ../src/plugins/evolution/e-contact-entry.c:927
+#: ../src/plugins/evolution/e-contact-entry.c:929
+#: ../src/plugins/evolution/e-contact-entry.c:932
 msgid "An unknown error occurred."
 msgstr "അറിയപ്പെടാത്ത എന്തോ ഒരു തെറ്റ് സംഭവിച്ചു."
 
-#: ../src/plugins/gajim/gajim.c:417
+#: ../src/plugins/gajim/gajim.c:418
 msgid "Unable to send file"
 msgstr "ഫയല്‍ അയയ്ക്കാന്‍ പറ്റുന്നില്ല"
 
-#: ../src/plugins/gajim/gajim.c:418
+#: ../src/plugins/gajim/gajim.c:419
 msgid "There is no connection to gajim remote service."
 msgstr "ഗാജിം വിദൂര സേവനത്തിലേയ്ക്കു് ബന്ധമൊന്നും ഇല്ല."
 
-#: ../src/plugins/gajim/gajim.c:442 ../src/plugins/gajim/gajim.c:482
+#: ../src/plugins/gajim/gajim.c:443 ../src/plugins/gajim/gajim.c:483
 msgid "Sending file failed"
 msgstr "ഫയല്‍ അയയ്ക്കല്‍ പരാജയപ്പെട്ടു"
 
-#: ../src/plugins/gajim/gajim.c:443
+#: ../src/plugins/gajim/gajim.c:444
 msgid "Recipient is missing."
 msgstr "സ്വീകര്‍ത്താവിനെ നല്‍കിയിട്ടില്ല."
 
-#: ../src/plugins/gajim/gajim.c:482
+#: ../src/plugins/gajim/gajim.c:483
 msgid "Unknown recipient."
 msgstr "അറിയപ്പെടാത്ത സ്വീകര്‍ത്താവ്"
 
-#: ../src/plugins/gajim/gajim.c:505
+#: ../src/plugins/gajim/gajim.c:506
 msgid "Instant Message (Gajim)"
 msgstr "നിമിഷ സന്ദേശം (ഗാജിം)"
 
