@@ -129,7 +129,7 @@ msgstr "Kan geen doorzoekbare weergave krijgen."
 
 #: ../src/plugins/evolution/e-contact-entry.c:886
 msgid "Success"
-msgstr "Succes"
+msgstr "Succesvol"
 
 #: ../src/plugins/evolution/e-contact-entry.c:888
 msgid "An argument was invalid."
