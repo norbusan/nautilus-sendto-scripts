@@ -80,7 +80,7 @@ AC_MSG_NOTICE([installing nautilus plugin in ${ac_with_nautilusdir}])
 AC_SUBST([NAUTILUS_EXTENSION_DIR],[${ac_with_nautilusdir}])
 
 # The full list of plugins
-allowed_plugins="evolution gajim nautilus-burn pidgin removable-devices upnp"
+allowed_plugins="evolution gajim nautilus-burn pidgin removable-devices upnp scripts"
 
 plugin_error_or_ignore()
 {
@@ -252,6 +252,7 @@ src/plugins/gajim/Makefile
 src/plugins/nautilus-burn/Makefile
 src/plugins/pidgin/Makefile
 src/plugins/removable-devices/Makefile
+src/plugins/scripts/Makefile
 src/plugins/upnp/Makefile
 docs/Makefile
 docs/nautilus-sendto/Makefile
