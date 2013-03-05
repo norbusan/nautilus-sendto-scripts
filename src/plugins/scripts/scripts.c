@@ -29,6 +29,7 @@
 #include "nautilus-sendto-plugin.h"
 
 #define SCRIPTS_GROUP "scripts"
+#define NO_SCRIPTS "(no scripts defined)"
 
 enum {
 	NAME_COL,
@@ -51,31 +52,18 @@ init (NstPlugin *plugin)
 	return TRUE;
 }
 
-static GtkWidget*
-get_scripts_widget (NstPlugin *plugin)
-{
-	GtkListStore *store;
-	GtkTreeIter iter;
-	GtkCellRenderer *text_renderer;
-
-	store = gtk_list_store_new (NUM_COLS, G_TYPE_STRING, G_TYPE_STRING);
-
-	// TODO TODO
-	// here we need to iterate over the user defined scripts!
-	// probably good to use the keyfile parser 
-	// http://developer.gnome.org/glib/stable/glib-Key-value-file-parser.html
-	// see example code at 
-	// http://www.gtkbook.com/tutorial.php?page=keyfile
-	// https://gist.github.com/zdxerr/709169
-	GKeyFile *keyfile;
+int add_scripts_from_keyfile (GtkListStore *store, const gchar *pt) {
 	GError *error = NULL;
 	GKeyFileFlags flags;
-	flags = G_KEY_FILE_KEEP_COMMENTS | G_KEY_FILE_KEEP_TRANSLATIONS;
+	GKeyFile *keyfile;
+	GtkTreeIter iter;
 
+	flags = G_KEY_FILE_KEEP_COMMENTS | G_KEY_FILE_KEEP_TRANSLATIONS;
 	keyfile = g_key_file_new ();
-	if (!g_key_file_load_from_file (keyfile, "/etc/sendto-scripts.conf", flags, &error)) {
-		g_error ("%s", error->message);
-		return NULL;
+	if (!g_key_file_load_from_file (keyfile, pt, flags, &error)) {
+		g_message ("cannot read %s: %s", pt, error->message);
+		g_key_file_free(keyfile);
+		return 0;
 	}
 	char **script_names;
 	gsize num_scripts;
@@ -96,19 +84,52 @@ get_scripts_widget (NstPlugin *plugin)
 				    -1);
 		g_free (name);
 		g_free (script);
+	}
+	return num_scripts;
+}
 
+
+static GtkWidget*
+get_scripts_widget (NstPlugin *plugin)
+{
+	GtkListStore *store;
+	GtkCellRenderer *name_renderer, *script_renderer;
+
+	store = gtk_list_store_new (NUM_COLS, G_TYPE_STRING, G_TYPE_STRING);
+
+	// keyfile parser 
+	// http://developer.gnome.org/glib/stable/glib-Key-value-file-parser.html
+	// see example code at 
+	// http://www.gtkbook.com/tutorial.php?page=keyfile
+	// https://gist.github.com/zdxerr/709169
+	int nrscripts = 0;
+	nrscripts +=
+		add_scripts_from_keyfile(store, "/etc/sendto-scripts.conf");
+	nrscripts += 
+		add_scripts_from_keyfile(store, g_strdup_printf("%s%s",
+		g_get_user_config_dir(),
+		"/sendto-scripts.conf"));
+	if (nrscripts == 0) {
+		GtkTreeIter iter;
+		gtk_list_store_append (store, &iter);
+		gtk_list_store_set (store, &iter,
+				    NAME_COL, NO_SCRIPTS,
+				    SCRIPT_COL, NO_SCRIPTS,
+				    -1);
 	}
 
 	gtk_cell_layout_clear (GTK_CELL_LAYOUT (cb));
 	gtk_combo_box_set_model (GTK_COMBO_BOX (cb), GTK_TREE_MODEL (store));
 
-	text_renderer = gtk_cell_renderer_text_new ();
-	gtk_cell_layout_pack_start (GTK_CELL_LAYOUT (cb), text_renderer, FALSE);
+	name_renderer = gtk_cell_renderer_text_new ();
+	script_renderer = gtk_cell_renderer_text_new ();
 
-	gtk_cell_layout_set_attributes (GTK_CELL_LAYOUT (cb), text_renderer, "text", 0,  NULL);
-	gtk_cell_layout_set_attributes (GTK_CELL_LAYOUT (cb), text_renderer, "text", 1,  NULL);
+	gtk_cell_layout_pack_start (GTK_CELL_LAYOUT (cb), name_renderer, FALSE);
+	gtk_cell_layout_pack_start (GTK_CELL_LAYOUT (cb), script_renderer, FALSE);
+
+	gtk_cell_layout_set_attributes (GTK_CELL_LAYOUT (cb), name_renderer, "text", 0,  NULL);
+	gtk_cell_layout_set_attributes (GTK_CELL_LAYOUT (cb), script_renderer, "text", 1,  NULL);
 	gtk_combo_box_set_active (GTK_COMBO_BOX (cb), 0);
-
 
 	return cb;
 }
@@ -127,11 +148,25 @@ send_files (NstPlugin *plugin, GtkWidget *contact_widget,
 	store = GTK_LIST_STORE (gtk_combo_box_get_model (GTK_COMBO_BOX (cb)));
 	gtk_tree_model_get (GTK_TREE_MODEL (store), &iter, SCRIPT_COL, &script, -1);
 
-	// TODO TODO
-	// here we need to actually call the script!!!
-	// file_list is a GList, we need to create a command line for it
-	printf("calling %s with %s\n", script, file_list);
-
+	if (g_strcmp0(script, NO_SCRIPTS) == 0) {
+		g_message("No scripts defined, cannot execute anything!");
+		return TRUE;
+	}
+	gchar *cmdline, *foo;
+	cmdline = strdup(script);
+	foo = cmdline;
+	foo = g_stpcpy(foo, cmdline);
+	foo = g_stpcpy(foo, " ");
+	GList *elem;
+	for (elem = file_list; elem; elem = elem->next) {
+		foo = g_stpcpy(foo, (char *)elem->data);
+		foo = g_stpcpy(foo, " ");
+	}
+	GError *error = NULL;
+	g_message("calling %s\n", cmdline);
+	if (!g_spawn_command_line_async(cmdline, &error)) {
+		g_message("Some error occurred: %s\n", error->message);
+	}
 	return TRUE;
 }
 
